@@ -12,4 +12,22 @@
       {{ title }}
     </a>
   </span> -->
+  <span class="btn">
+    <mat-menu #appMenu="matMenu">
+      <ng-template matMenuContent>
+        <button mat-menu-item>Lista
+          <a href="#"></a>
+        </button>
+        <button mat-menu-item>Help
+          <a href="#"></a>
+        </button>
+      </ng-template>
+    </mat-menu>
+    <span class="btn" [matMenuTriggerFor]="appMenu">
+      <i class="material-icons medium">
+        edit_calendar
+      </i>
+      Cadastrar
+    </span>
+  </span>
 </mat-toolbar>

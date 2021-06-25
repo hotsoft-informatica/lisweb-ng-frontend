@@ -20,3 +20,15 @@
 .header .title-group i{
   padding-right: 5px;
 }
+
+.header .btn {
+  
+  font-size: large;
+  font-weight: 400;
+  color:white;
+}
+
+.header .btn i {
+  vertical-align: middle;
+  color:white;
+}
