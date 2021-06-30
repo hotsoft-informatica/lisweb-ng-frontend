@@ -22,7 +22,7 @@
 }
 
 .header .btn {
-  
+  margin: auto 0 auto auto;
   font-size: large;
   font-weight: 400;
   color:white;
