@@ -15,16 +15,16 @@
   <div class="btn">
     <mat-menu #appMenu="matMenu">
       <ng-template matMenuContent>
-        <button mat-menu-item>Lista
-          <a href="#"></a>
+        <button mat-menu-item>Laboratório
+          <a mat-list-item routerLink="/"></a>
         </button>
-        <button mat-menu-item>Help
-          <a href="#"></a>
+        <button mat-menu-item>Lab Domínio
+          <a mat-list-item routerLink="/"></a>
         </button>
       </ng-template>
     </mat-menu>
     <span [matMenuTriggerFor]="appMenu">
-      <i class="material-icons medium">
+      <i class="material-icons medium v-middle">
         edit_calendar
       </i>
       Cadastrar
