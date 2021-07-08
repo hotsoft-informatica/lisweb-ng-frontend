@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LaboratoryDomainService } from './../laboratory-domain.service';
 
 @Component({
   selector: 'app-laboratory-domain-create',
@@ -6,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./laboratory-domain-create.component.css'],
 })
 export class LaboratoryDomainCreateComponent implements OnInit {
-  atributoTeste = 'Testando';
-
-  constructor() { }
+  constructor(private laboratoryDomainService: LaboratoryDomainService) { }
 
   ngOnInit(): void { }
 
-  fazerAlgo(): void {
-    console.log('fazendo algo!!!');
+  createLaboratoryDomain(): void {
+    this.laboratoryDomainService.showMessage('Operação executada com sucesso!');
+  }
+
+  cancel(): void {
+
   }
 }
