@@ -17,6 +17,8 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
 import { LaboratoryDomainCrudComponent } from './views/laboratory-domain-crud/laboratory-domain-crud.component';
 import { LaboratoryDomainCreateComponent } from './components/laboratory-domain/laboratory-domain-create/laboratory-domain-create.component';
+
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { LaboratoryDomainCreateComponent } from './components/laboratory-domain/
     MatListModule,
     MatButtonModule,
     MatToolbarModule,
+    HttpClientModule,
     AppRoutingModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
