@@ -20,6 +20,7 @@ import { NavComponent } from './components/template/nav/nav.component';
 import { HomeComponent } from './views/home/home.component';
 import { LaboratoryDomainCrudComponent } from './views/laboratory-domain-crud/laboratory-domain-crud.component';
 import { LaboratoryDomainCreateComponent } from './components/laboratory-domain/laboratory-domain-create/laboratory-domain-create.component';
+import { LaboratoryDomainReadComponent } from './components/laboratory-domain/laboratory-domain-read/laboratory-domain-read.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LaboratoryDomainCreateComponent } from './components/laboratory-domain/
     HomeComponent,
     LaboratoryDomainCrudComponent,
     LaboratoryDomainCreateComponent,
+    LaboratoryDomainReadComponent,
   ],
   imports: [
     FormsModule,

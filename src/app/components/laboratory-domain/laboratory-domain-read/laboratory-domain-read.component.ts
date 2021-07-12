@@ -1,3 +1,5 @@
+import { LaboratoryDomainService } from './../laboratory-domain.service';
+import { LaboratoryDomain } from './../laboratory-domain.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./laboratory-domain-read.component.css']
 })
 export class LaboratoryDomainReadComponent implements OnInit {
+  laboratoryDomains: LaboratoryDomain[] | undefined;
 
-  constructor() { }
+  constructor(private laboratoryDomainService: LaboratoryDomainService) { }
 
   ngOnInit(): void {
+    this.laboratoryDomainService.read().subscribe(laboratoryDomains => {
+      this.laboratoryDomains = laboratoryDomains
+      console.log(laboratoryDomains);
+    })
   }
 
 }

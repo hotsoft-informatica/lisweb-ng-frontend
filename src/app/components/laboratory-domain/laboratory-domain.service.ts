@@ -24,4 +24,9 @@ export class LaboratoryDomainService {
   create(laboratoryDomain: LaboratoryDomain): Observable<LaboratoryDomain> {
     return this.http.post<LaboratoryDomain>(this.baseUrl, laboratoryDomain);
   }
+
+  read(): Observable<LaboratoryDomain[]> {
+    return this.http.get<LaboratoryDomain[]>(this.baseUrl);
+  }
+
 }
