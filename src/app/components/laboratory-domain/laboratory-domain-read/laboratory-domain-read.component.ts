@@ -9,6 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaboratoryDomainReadComponent implements OnInit {
   laboratoryDomains: LaboratoryDomain[] | undefined;
+  displayedColumns = [
+    'id',
+    'name',
+    'created_at',
+    'updated_at',
+    'version_id',
+    'deleted',
+    'sync_start_date',
+    'sync_deadline',
+    'criado_em'
+  ];
 
   constructor(private laboratoryDomainService: LaboratoryDomainService) { }
 

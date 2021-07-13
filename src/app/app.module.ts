@@ -1,4 +1,4 @@
-import { NgModule, Injectable } from '@angular/core';
+import { NgModule, LOCALE_ID, Injectable } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/template/header/header.component';
 import { FooterComponent } from './components/template/footer/footer.component';
@@ -21,6 +23,11 @@ import { HomeComponent } from './views/home/home.component';
 import { LaboratoryDomainCrudComponent } from './views/laboratory-domain-crud/laboratory-domain-crud.component';
 import { LaboratoryDomainCreateComponent } from './components/laboratory-domain/laboratory-domain-create/laboratory-domain-create.component';
 import { LaboratoryDomainReadComponent } from './components/laboratory-domain/laboratory-domain-read/laboratory-domain-read.component';
+
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -41,6 +48,7 @@ import { LaboratoryDomainReadComponent } from './components/laboratory-domain/la
     MatIconModule,
     MatListModule,
     MatInputModule,
+    MatTableModule,
     MatButtonModule,
     MatToolbarModule,
     HttpClientModule,
@@ -49,7 +57,12 @@ import { LaboratoryDomainReadComponent } from './components/laboratory-domain/la
     MatFormFieldModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

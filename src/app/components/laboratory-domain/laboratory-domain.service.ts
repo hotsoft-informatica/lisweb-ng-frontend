@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class LaboratoryDomainService {
-  baseUrl = 'http://127.0.0.1:3010';
+  baseUrl = 'http://127.0.0.1:3010/laboratory_domains';
 
   constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
 
