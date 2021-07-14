@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID, Injectable } from '@angular/core';
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/template/header/header.component';
@@ -55,6 +57,8 @@ registerLocaleData(localePt);
     AppRoutingModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     BrowserAnimationsModule,
   ],
   providers: [
@@ -64,5 +68,6 @@ registerLocaleData(localePt);
     },
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

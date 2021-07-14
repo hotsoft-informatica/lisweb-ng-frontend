@@ -1,14 +1,13 @@
 import { LaboratoryDomainService } from './../laboratory-domain.service';
 import { LaboratoryDomain } from './../laboratory-domain.model';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-laboratory-domain-read',
   templateUrl: './laboratory-domain-read.component.html',
   styleUrls: ['./laboratory-domain-read.component.css'],
 })
-export class LaboratoryDomainReadComponent implements AfterViewInit, OnInit {
+export class LaboratoryDomainReadComponent implements OnInit {
   laboratoryDomains: LaboratoryDomain[] = [];
-  table: any;
   displayedColumns = [
     'id',
     'name',
@@ -28,9 +27,5 @@ export class LaboratoryDomainReadComponent implements AfterViewInit, OnInit {
       this.laboratoryDomains = laboratoryDomains;
       console.log(laboratoryDomains);
     });
-  }
-
-  ngAfterViewInit() {
-    this.table.laboratoryDomains = this.laboratoryDomains;
   }
 }

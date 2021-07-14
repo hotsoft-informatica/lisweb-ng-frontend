@@ -2,7 +2,6 @@ import { LaboratoryDomain } from './../laboratory-domain.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LaboratoryDomainService } from './../laboratory-domain.service';
-
 @Component({
   selector: 'app-laboratory-domain-create',
   templateUrl: './laboratory-domain-create.component.html',

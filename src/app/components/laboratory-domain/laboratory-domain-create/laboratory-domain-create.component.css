@@ -7,3 +7,7 @@ form {
 button {
   margin: 20px 15px 0px 0px;
 }
+
+.form-field {
+  margin-right: 0px;
+}
