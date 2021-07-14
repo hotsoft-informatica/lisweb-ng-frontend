@@ -1,14 +1,14 @@
 import { LaboratoryDomainService } from './../laboratory-domain.service';
 import { LaboratoryDomain } from './../laboratory-domain.model';
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 @Component({
   selector: 'app-laboratory-domain-read',
   templateUrl: './laboratory-domain-read.component.html',
-  styleUrls: ['./laboratory-domain-read.component.css']
+  styleUrls: ['./laboratory-domain-read.component.css'],
 })
-export class LaboratoryDomainReadComponent implements OnInit {
-  laboratoryDomains: LaboratoryDomain[] | undefined;
+export class LaboratoryDomainReadComponent implements AfterViewInit, OnInit {
+  laboratoryDomains: LaboratoryDomain[] = [];
+  table: any;
   displayedColumns = [
     'id',
     'name',
@@ -18,16 +18,19 @@ export class LaboratoryDomainReadComponent implements OnInit {
     'deleted',
     'sync_start_date',
     'sync_deadline',
-    'criado_em'
+    'criado_em',
   ];
 
   constructor(private laboratoryDomainService: LaboratoryDomainService) { }
 
   ngOnInit(): void {
-    this.laboratoryDomainService.read().subscribe(laboratoryDomains => {
-      this.laboratoryDomains = laboratoryDomains
+    this.laboratoryDomainService.read().subscribe((laboratoryDomains) => {
+      this.laboratoryDomains = laboratoryDomains;
       console.log(laboratoryDomains);
-    })
+    });
   }
 
+  ngAfterViewInit() {
+    this.table.laboratoryDomains = this.laboratoryDomains;
+  }
 }
