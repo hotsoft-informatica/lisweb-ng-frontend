@@ -25,6 +25,8 @@ import { HomeComponent } from './views/home/home.component';
 import { LaboratoryDomainCrudComponent } from './views/laboratory-domain-crud/laboratory-domain-crud.component';
 import { LaboratoryDomainCreateComponent } from './components/laboratory-domain/laboratory-domain-create/laboratory-domain-create.component';
 import { LaboratoryDomainReadComponent } from './components/laboratory-domain/laboratory-domain-read/laboratory-domain-read.component';
+import { LaboratoryDomainUpdateComponent } from './components/laboratory-domain/laboratory-domain-update/laboratory-domain-update.component';
+import { LaboratoryDomainDeleteComponent } from './components/laboratory-domain/laboratory-domain-delete/laboratory-domain-delete.component';
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
@@ -41,6 +43,8 @@ registerLocaleData(localePt);
     LaboratoryDomainCrudComponent,
     LaboratoryDomainCreateComponent,
     LaboratoryDomainReadComponent,
+    LaboratoryDomainUpdateComponent,
+    LaboratoryDomainDeleteComponent,
   ],
   imports: [
     FormsModule,

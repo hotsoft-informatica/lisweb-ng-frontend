@@ -29,4 +29,14 @@ export class LaboratoryDomainService {
     return this.http.get<LaboratoryDomain[]>(this.baseUrl);
   }
 
+  readById(id: number): Observable<LaboratoryDomain> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<LaboratoryDomain>(url);
+  }
+
+  update(laboratoryDomain: LaboratoryDomain): Observable<LaboratoryDomain> {
+    const url = `${this.baseUrl}/${laboratoryDomain.id}`;
+    return this.http.put<LaboratoryDomain>(url, laboratoryDomain);
+  }
+
 }
