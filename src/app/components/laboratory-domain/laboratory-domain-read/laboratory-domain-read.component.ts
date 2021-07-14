@@ -18,6 +18,7 @@ export class LaboratoryDomainReadComponent implements OnInit {
     'sync_start_date',
     'sync_deadline',
     'criado_em',
+    'action',
   ];
 
   constructor(private laboratoryDomainService: LaboratoryDomainService) { }
