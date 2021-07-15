@@ -9,7 +9,7 @@ import { LaboratoryDomainService } from '../laboratory-domain.service';
   styleUrls: ['./laboratory-domain-update.component.css'],
 })
 export class LaboratoryDomainUpdateComponent implements OnInit {
-  laboratoryDomains: LaboratoryDomain[] = [];
+  laboratoryDomain!: LaboratoryDomain;
 
   constructor(
     private laboratoryDomainService: LaboratoryDomainService,
@@ -18,9 +18,24 @@ export class LaboratoryDomainUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.laboratoryDomainService.readById(id as unknown as number).subscribe(laboratoryDomainService => {
-      this.laboratoryDomains = this.laboratoryDomains;
+    const id = this.route.snapshot.paramMap.get('id');
+    this.laboratoryDomainService
+      .readById(id as unknown as number)
+      .subscribe((laboratoryDomain) => {
+        this.laboratoryDomain = laboratoryDomain;
+      });
+  }
+
+  updateLaboratoryDomain(): void {
+    this.laboratoryDomainService.update(this.laboratoryDomain).subscribe(() => {
+      this.laboratoryDomainService.showMessage(
+        'Domínio atualizado com sucesso!'
+      );
     });
+    this.router.navigate(['/laboratorydomains']);
+  }
+
+  cancel(): void {
+    this.router.navigate(['/laboratorydomains']);
   }
 }

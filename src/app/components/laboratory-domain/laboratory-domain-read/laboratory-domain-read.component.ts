@@ -26,7 +26,6 @@ export class LaboratoryDomainReadComponent implements OnInit {
   ngOnInit(): void {
     this.laboratoryDomainService.read().subscribe((laboratoryDomains) => {
       this.laboratoryDomains = laboratoryDomains;
-      console.log(laboratoryDomains);
     });
   }
 }

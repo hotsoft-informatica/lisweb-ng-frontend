@@ -18,11 +18,8 @@ const routes: Routes = [
     path: 'laboratorydomains/create',
     component: LaboratoryDomainCreateComponent,
   }, {
-    path: 'laboratorydomains/update',
+    path: 'laboratorydomains/update/:id',
     component: LaboratoryDomainUpdateComponent,
-  }, {
-    path: 'laboratorydomains/update',
-    component: LaboratoryDomainDeleteComponent,
   }
 ];
 

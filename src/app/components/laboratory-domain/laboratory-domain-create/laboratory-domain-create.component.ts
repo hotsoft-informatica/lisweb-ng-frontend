@@ -9,7 +9,7 @@ import { LaboratoryDomainService } from './../laboratory-domain.service';
 })
 export class LaboratoryDomainCreateComponent implements OnInit {
   laboratoryDomain: LaboratoryDomain = {
-    name: '',
+    name: null,
     created_at: null,
     updated_at: null,
     version_id: null,

@@ -1,11 +1,15 @@
-import { LaboratoryDomain } from './../laboratory-domain.model';
 import { DataSource } from '@angular/cdk/collections';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
+export interface LaboratoryDomainReadItem {
+  id: number;
+  name: string;
+}
+
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: LaboratoryDomain[] = [
-  { id: 1, name: 'Hydrogen' },
+const EXAMPLE_DATA: LaboratoryDomainReadItem[] = [
+  { id: 1, name: 'Hydrogen', },
   { id: 2, name: 'Helium' },
   { id: 3, name: 'Lithium' },
   { id: 4, name: 'Beryllium' },
@@ -27,14 +31,14 @@ const EXAMPLE_DATA: LaboratoryDomain[] = [
   { id: 20, name: 'Calcium' },
 ];
 
-export class LaboratoryDomainReadDataSource extends DataSource<LaboratoryDomain> {
-  data: LaboratoryDomain[] = ([] = EXAMPLE_DATA);
+export class LaboratoryDomainReadItemReadDataSource extends DataSource<LaboratoryDomainReadItem> {
+  data: LaboratoryDomainReadItem[] = EXAMPLE_DATA;
 
   constructor() {
     super();
   }
 
-  connect(): Observable<LaboratoryDomain[]> {
+  connect(): Observable<LaboratoryDomainReadItem[]> {
     const dataMutations = [observableOf(this.data)];
 
     return merge(...dataMutations).pipe(
@@ -45,4 +49,8 @@ export class LaboratoryDomainReadDataSource extends DataSource<LaboratoryDomain>
   }
 
   disconnect() { }
+}
+
+function compare(a: string | number, b: string | number, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
