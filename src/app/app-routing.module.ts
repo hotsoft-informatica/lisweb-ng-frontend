@@ -11,16 +11,23 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-  }, {
+  },
+  {
     path: 'laboratorydomains',
     component: LaboratoryDomainCrudComponent,
-  }, {
+  },
+  {
     path: 'laboratorydomains/create',
     component: LaboratoryDomainCreateComponent,
-  }, {
+  },
+  {
     path: 'laboratorydomains/update/:id',
     component: LaboratoryDomainUpdateComponent,
-  }
+  },
+  {
+    path: 'laboratorydomains/delete/:id',
+    component: LaboratoryDomainDeleteComponent,
+  },
 ];
 
 @NgModule({

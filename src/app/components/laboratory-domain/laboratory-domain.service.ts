@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LaboratoryDomain } from './laboratory-domain.model';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -39,4 +37,8 @@ export class LaboratoryDomainService {
     return this.http.put<LaboratoryDomain>(url, laboratoryDomain);
   }
 
+  delete(id: number): Observable<LaboratoryDomain> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<LaboratoryDomain>(url);
+  }
 }
