@@ -1,28 +1,23 @@
-import { LaboratoryDomain } from './../laboratory-domain.model';
+import { LaboratoryDomain } from './laboratory-domain.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { LaboratoryDomainService } from './../laboratory-domain.service';
+import { LaboratoryDomainService } from './laboratory-domain.service';
+import { Moment } from 'moment';
 @Component({
   selector: 'app-laboratory-domain-create',
   templateUrl: './laboratory-domain-create.component.html',
-  styleUrls: ['./laboratory-domain-create.component.css'],
+  styleUrls: ['./laboratory-domain.component.css'],
 })
 export class LaboratoryDomainCreateComponent implements OnInit {
-  laboratoryDomain: LaboratoryDomain = {
-    name: null,
-    created_at: null,
-    updated_at: null,
-    version_id: null,
-    deleted: null,
-    sync_start_date: null,
-    sync_deadline: null,
-    criado_em: null,
-  };
+  public laboratoryDomain: LaboratoryDomain;
 
   constructor(
     private laboratoryDomainService: LaboratoryDomainService,
-    private router: Router
-  ) { }
+    private router: Router,
+    laboratoryDomain: LaboratoryDomain
+  ) {
+    this.laboratoryDomain = new LaboratoryDomain({});
+  }
 
   ngOnInit(): void { }
 

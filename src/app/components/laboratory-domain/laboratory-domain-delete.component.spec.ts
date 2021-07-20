@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LaboratoryDomainDeleteComponent } from './laboratory-domain-delete.component';
 
 describe('LaboratoryDomainDeleteComponent', () => {

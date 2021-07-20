@@ -15,19 +15,19 @@
     <!-- created_at Column -->
     <ng-container matColumnDef="created_at">
       <th mat-header-cell *matHeaderCellDef>Data criação</th>
-      <td mat-cell *matCellDef="let row">{{ row.created_at }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.createdAt }}</td>
     </ng-container>
 
     <!-- updated_at Column -->
     <ng-container matColumnDef="updated_at">
       <th mat-header-cell *matHeaderCellDef>Data Atualização</th>
-      <td mat-cell *matCellDef="let row">{{ row.updated_at }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.updatedAt }}</td>
     </ng-container>
 
     <!-- version_id Column -->
     <ng-container matColumnDef="version_id">
       <th mat-header-cell *matHeaderCellDef>Versão</th>
-      <td mat-cell *matCellDef="let row">{{ row.version_id }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.versionId }}</td>
     </ng-container>
 
     <!-- deleted Column -->
@@ -39,21 +39,30 @@
     <!-- sync_start_date Column -->
     <ng-container matColumnDef="sync_start_date">
       <th mat-header-cell *matHeaderCellDef>Data sincronizado</th>
-      <td mat-cell *matCellDef="let row">{{ row.sync_start_date }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.syncStartDate }}</td>
     </ng-container>
 
     <!-- sync_deadline Column -->
     <ng-container matColumnDef="sync_deadline">
       <th mat-header-cell *matHeaderCellDef>Prazo limite</th>
-      <td mat-cell *matCellDef="let row">{{ row.sync_deadline }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.syncDeadline }}</td>
     </ng-container>
 
     <!-- criado_em Column -->
     <ng-container matColumnDef="criado_em">
       <th mat-header-cell *matHeaderCellDef>Criação</th>
-      <td mat-cell *matCellDef="let row">{{ row.criado_em }}</td>
+      <td mat-cell *matCellDef="let row">{{ row.criadoEm }}</td>
     </ng-container>
 
+  <ng-container matColumnDef="laboratorios">
+    <th mat-header-cell *matHeaderCellDef>Laboratorios</th>
+    <td mat-cell *matCellDef="let row">
+      <ul>
+        <li *ngFor="let lab of row.laboratorios">{{lab.nome}}</li>
+      </ul>
+    </td>
+    </ng-container>
+  
     <!-- action Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Ações</th>

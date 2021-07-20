@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LaboratoryDomainCreateComponent } from './laboratory-domain-create.component';
 
 describe('LaboratoryDomainCreateComponent', () => {

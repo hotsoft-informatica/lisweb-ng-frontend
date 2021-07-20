@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LaboratoryDomainReadComponent } from './laboratory-domain-read.component';
 
 describe('LaboratoryDomainReadComponent', () => {

@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>Novo Domínio</mat-card-title>
+  <mat-card-title>Excluir Domínio</mat-card-title>
   <form>
     <mat-form-field appearance="fill">
       <input
@@ -14,7 +14,7 @@
         matInput
         [matDatepicker]="sync_start_date"
         placeholder="Início da sincronização"
-        [(ngModel)]="laboratoryDomain.sync_start_date" name="sync_start_date" 
+        [(ngModel)]="laboratoryDomain.syncStartDate" name="syncStartDate" 
         required
       />
       <mat-datepicker-toggle
@@ -24,8 +24,8 @@
       <mat-datepicker #sync_start_date></mat-datepicker>
     </mat-form-field>
   </form>
-  <button mat-raised-button (click)="createLaboratoryDomain()" color="primary">
-    Salvar
+  <button mat-raised-button (click)="deleteLaboratoryDomain()" color="warn">
+    Excluir
   </button>
-  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+  <button mat-raised-button (click)="cancel()" color="accent">Cancelar</button>
 </mat-card>

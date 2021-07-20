@@ -1,21 +1,23 @@
-import { LaboratoryDomainService } from './../laboratory-domain.service';
+import { LaboratoryDomainService } from './laboratory-domain.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LaboratoryDomain } from '../laboratory-domain.model';
+import { LaboratoryDomain } from './laboratory-domain.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-laboratory-domain-delete',
   templateUrl: './laboratory-domain-delete.component.html',
-  styleUrls: ['./laboratory-domain-delete.component.css'],
+  styleUrls: ['./laboratory-domain.component.css'],
 })
 export class LaboratoryDomainDeleteComponent implements OnInit {
-  laboratoryDomain!: LaboratoryDomain;
+  public laboratoryDomain: LaboratoryDomain;
 
   constructor(
     private laboratoryDomainService: LaboratoryDomainService,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+  ) {
+    this.laboratoryDomain = new LaboratoryDomain({});
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
