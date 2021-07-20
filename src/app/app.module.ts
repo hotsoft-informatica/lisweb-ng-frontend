@@ -30,6 +30,10 @@ import { LaboratoryDomainDeleteComponent } from './components/laboratory-domain/
 
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio-create/laboratorio-create.component';
+import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio-delete/laboratorio-delete.component';
+import { LaboratorioReadComponent } from './components/laboratorio/laboratorio-read/laboratorio-read.component';
+import { LaboratorioUpdateComponent } from './components/laboratorio/laboratorio-update/laboratorio-update.component';
 
 registerLocaleData(localePt);
 
@@ -45,6 +49,10 @@ registerLocaleData(localePt);
     LaboratoryDomainReadComponent,
     LaboratoryDomainUpdateComponent,
     LaboratoryDomainDeleteComponent,
+    LaboratorioCreateComponent,
+    LaboratorioDeleteComponent,
+    LaboratorioReadComponent,
+    LaboratorioUpdateComponent,
   ],
   imports: [
     FormsModule,
