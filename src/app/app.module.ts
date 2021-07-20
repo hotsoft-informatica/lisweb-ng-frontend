@@ -34,6 +34,7 @@ import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio
 import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio-delete/laboratorio-delete.component';
 import { LaboratorioReadComponent } from './components/laboratorio/laboratorio-read/laboratorio-read.component';
 import { LaboratorioUpdateComponent } from './components/laboratorio/laboratorio-update/laboratorio-update.component';
+import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud/laboratorio-crud.component';
 
 registerLocaleData(localePt);
 
@@ -53,6 +54,7 @@ registerLocaleData(localePt);
     LaboratorioDeleteComponent,
     LaboratorioReadComponent,
     LaboratorioUpdateComponent,
+    LaboratorioCrudComponent,
   ],
   imports: [
     FormsModule,
