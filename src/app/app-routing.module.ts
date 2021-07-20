@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: 'laboratorydomains/delete/:id',
     component: LaboratoryDomainDeleteComponent,
-  }, ,
+  },
   {
     path: 'laboratorios',
     component: LaboratorioCrudComponent,
