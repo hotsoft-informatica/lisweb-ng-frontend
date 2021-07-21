@@ -19,4 +19,8 @@ export class LaboratorioService {
       verticalPosition: 'top',
     });
   }
+
+  read(): Observable<Laboratorio[]> {
+    return this.http.get<Laboratorio[]>(this.baseUrl);
+  }
 }
