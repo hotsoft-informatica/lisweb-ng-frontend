@@ -23,4 +23,8 @@ export class LaboratorioService {
   read(): Observable<Laboratorio[]> {
     return this.http.get<Laboratorio[]>(this.baseUrl);
   }
+
+  create(laboratorio: Laboratorio): Observable<Laboratorio> {
+    return this.http.post<Laboratorio>(this.baseUrl, laboratorio);
+  }
 }
