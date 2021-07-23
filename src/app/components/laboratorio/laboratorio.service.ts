@@ -24,7 +24,17 @@ export class LaboratorioService {
     return this.http.get<Laboratorio[]>(this.baseUrl);
   }
 
+  readById(id: number): Observable<Laboratorio> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Laboratorio>(url);
+  }
+
   create(laboratorio: Laboratorio): Observable<Laboratorio> {
     return this.http.post<Laboratorio>(this.baseUrl, laboratorio);
+  }
+
+  update(laboratorio: Laboratorio): Observable<Laboratorio> {
+    const url = `${this.baseUrl}/${laboratorio.id}`;
+    return this.http.put<Laboratorio>(url, laboratorio);
   }
 }

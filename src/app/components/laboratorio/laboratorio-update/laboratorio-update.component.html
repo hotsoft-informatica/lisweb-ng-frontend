@@ -1,1 +1,39 @@
-<p>laboratorio-update works!</p>
+<mat-card>
+  <mat-card-title>Editar Laboratório</mat-card-title>
+  <form>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Nome"
+        [(ngModel)]="laboratorio.nome"
+        name="name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="2000"
+        [(ngModel)]="laboratorio.serie"
+        name="serie"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        [matDatepicker]="criado_em"
+        placeholder="Criado em"
+        [(ngModel)]="laboratorio.criado_em" name="criado em" 
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="criado_em"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #criado_em></mat-datepicker>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="updateLaboratorio()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+</mat-card>
