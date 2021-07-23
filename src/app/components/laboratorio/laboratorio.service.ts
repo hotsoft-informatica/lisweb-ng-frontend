@@ -5,10 +5,10 @@ import { EMPTY, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LaboratorioService {
-  baseUrl = 'http://127.0.0.1:3010/laboratorios'
+  baseUrl = 'http://127.0.0.1:3010/laboratorios';
 
   constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
 
@@ -36,5 +36,10 @@ export class LaboratorioService {
   update(laboratorio: Laboratorio): Observable<Laboratorio> {
     const url = `${this.baseUrl}/${laboratorio.id}`;
     return this.http.put<Laboratorio>(url, laboratorio);
+  }
+
+  delete(id: number): Observable<Laboratorio> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<Laboratorio>(url);
   }
 }
