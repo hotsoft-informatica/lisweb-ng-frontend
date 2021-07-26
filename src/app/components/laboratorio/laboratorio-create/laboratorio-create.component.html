@@ -9,6 +9,16 @@
         name="name"
       />
     </mat-form-field>
+
+    <select [(ngModel)]="laboratorio.laboratory_domain_id" name="laboratory_domain_id">
+      <option
+        *ngFor="let laboratoryDomain of laboratoryDomains"
+        [ngValue]="laboratoryDomain.id"
+      >
+        {{ laboratoryDomain.name }}
+      </option>
+    </select>
+
     <mat-form-field appearance="fill">
       <input
         matInput
@@ -22,7 +32,8 @@
         matInput
         [matDatepicker]="criado_em"
         placeholder="Criado em"
-        [(ngModel)]="laboratorio.criado_em" name="criado em" 
+        [(ngModel)]="laboratorio.criado_em"
+        name="criado em"
         required
       />
       <mat-datepicker-toggle
