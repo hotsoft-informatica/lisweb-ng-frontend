@@ -1,5 +1,5 @@
 import { LaboratorioService } from '../laboratorio.service';
-import { Laboratorio } from '../laboratorio.model';
+import { Laboratorio } from '../../model/laboratorio.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

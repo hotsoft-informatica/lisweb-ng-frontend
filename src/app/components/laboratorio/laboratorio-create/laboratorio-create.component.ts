@@ -1,4 +1,4 @@
-import { Laboratorio } from '../laboratorio.model';
+import { Laboratorio } from '../../model/laboratorio.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LaboratorioService } from '../laboratorio.service';

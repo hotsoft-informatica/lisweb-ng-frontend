@@ -1,4 +1,4 @@
-import { Laboratorio } from './laboratorio.model';
+import { Laboratorio } from '../model/laboratorio.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
