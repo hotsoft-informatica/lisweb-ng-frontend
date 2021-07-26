@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { LaboratoryDomain } from './laboratory-domain.model';
+import { LaboratoryDomain } from '../model/laboratory-domain.model';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 @Injectable({

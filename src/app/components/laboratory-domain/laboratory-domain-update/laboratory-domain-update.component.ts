@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { LaboratoryDomain } from '../laboratory-domain.model';
+import { LaboratoryDomain } from '../../model/laboratory-domain.model';
 import { LaboratoryDomainService } from '../laboratory-domain.service';
 
 @Component({
