@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaboratorioReadComponent implements OnInit {
   laboratorios: Laboratorio[] = [];
-  displayedColumns = ['id', 'nome', 'serie', 'criado_em', 'action'];
+  displayedColumns = ['id', 'nome', 'laboratory_domain_id', 'serie', 'criado_em', 'action'];
 
   constructor(private laboratorioService: LaboratorioService) { }
 
