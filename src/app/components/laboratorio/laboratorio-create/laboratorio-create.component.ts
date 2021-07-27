@@ -20,7 +20,6 @@ export class LaboratorioCreateComponent implements OnInit {
     private laboratoryDomainService: LaboratoryDomainService
   ) {
     this.laboratorio = new Laboratorio({});
-    // this.laboratorio.laboratory_domain_id = 1;
   }
 
   ngOnInit(): void {

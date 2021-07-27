@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/template/header/header.component';
@@ -65,6 +66,7 @@ registerLocaleData(localePt);
     MatListModule,
     MatInputModule,
     MatTableModule,
+    MatSelectModule,
     MatButtonModule,
     MatToolbarModule,
     HttpClientModule,
