@@ -1,3 +1,5 @@
+import { LaboratoryDomain } from './../../model/laboratory-domain.model';
+import { LaboratoryDomainService } from '../../laboratory-domain/laboratory-domain.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Laboratorio } from '../../model/laboratorio.model';
@@ -10,9 +12,11 @@ import { LaboratorioService } from '../laboratorio.service';
 })
 export class LaboratorioUpdateComponent implements OnInit {
   laboratorio!: Laboratorio;
+  laboratoryDomains: LaboratoryDomain[] = [];
 
   constructor(
     private laboratorioService: LaboratorioService,
+    private laboratoryDomainService: LaboratoryDomainService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -23,6 +27,12 @@ export class LaboratorioUpdateComponent implements OnInit {
       .readById(id as unknown as number)
       .subscribe((laboratorio) => {
         this.laboratorio = laboratorio;
+      });
+
+    this.laboratoryDomainService
+      .read()
+      .subscribe((laboratoryDomains) => {
+        this.laboratoryDomains = laboratoryDomains;
       });
   }
 

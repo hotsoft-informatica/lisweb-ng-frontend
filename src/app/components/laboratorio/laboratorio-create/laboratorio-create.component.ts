@@ -23,12 +23,9 @@ export class LaboratorioCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.laboratoryDomainService
-      .read()
-      .subscribe((laboratoryDomains) => {
-        this.laboratoryDomains = laboratoryDomains;
-        console.table(this.laboratoryDomains);
-      });
+    this.laboratoryDomainService.read().subscribe((laboratoryDomains) => {
+      this.laboratoryDomains = laboratoryDomains;
+    });
   }
 
   createLaboratorio(): void {
