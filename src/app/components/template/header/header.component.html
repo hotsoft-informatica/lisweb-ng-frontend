@@ -1,0 +1,33 @@
+<mat-toolbar class="header mat-elevation-z4">
+  <div class="text">
+    <a routerLink="/">
+      LISWEB
+    </a>
+  </div>
+  <!-- <span class="title-group">
+    <a routerLink="{{ routeUrl }}">
+      <i class="material-icons">
+        {{ icon }}
+      </i>
+      {{ title }}
+    </a>
+  </span> -->
+  <div class="btn">
+    <mat-menu #appMenu="matMenu">
+      <ng-template matMenuContent>
+        <button mat-menu-item>
+          <a mat-list-item routerLink="/">Home</a>
+        </button>
+        <button mat-menu-item>
+          <a mat-list-item routerLink="/laboratorydomains">Lab Domínio</a>
+        </button>
+      </ng-template>
+    </mat-menu>
+    <span [matMenuTriggerFor]="appMenu">
+      <i class="material-icons medium v-middle">
+        assignment
+      </i>
+      Cadastrar
+    </span>
+  </div>
+</mat-toolbar>
