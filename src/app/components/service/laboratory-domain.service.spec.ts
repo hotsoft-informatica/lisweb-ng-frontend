@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LaboratoryDomainService } from './laboratory-domain.service';
+import { LaboratoryDomainService } from '../service/laboratory-domain.service';
 
 describe('LaboratoryDomainService', () => {
   let service: LaboratoryDomainService;

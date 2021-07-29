@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Laboratorio } from '../../model/laboratorio.model';
-import { LaboratorioService } from '../laboratorio.service';
+import { LaboratorioService } from '../../service/laboratorio.service';
 
 @Component({
   selector: 'app-laboratorio-delete',

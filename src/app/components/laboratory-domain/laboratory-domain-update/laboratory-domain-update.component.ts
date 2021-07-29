@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { LaboratoryDomain } from '../../model/laboratory-domain.model';
-import { LaboratoryDomainService } from '../laboratory-domain.service';
+import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 
 @Component({
   selector: 'app-laboratory-domain-update',

@@ -1,9 +1,9 @@
 import { LaboratoryDomain } from './../../model/laboratory-domain.model';
-import { LaboratoryDomainService } from '../../laboratory-domain/laboratory-domain.service';
+import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 import { Laboratorio } from '../../model/laboratorio.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LaboratorioService } from '../laboratorio.service';
+import { LaboratorioService } from '../../service/laboratorio.service';
 import { STRING_TYPE } from '@angular/compiler';
 @Component({
   selector: 'app-laboratorio-create',
