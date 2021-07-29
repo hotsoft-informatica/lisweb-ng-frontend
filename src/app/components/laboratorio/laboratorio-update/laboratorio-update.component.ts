@@ -13,16 +13,21 @@ import { LaboratorioService } from '../laboratorio.service';
 export class LaboratorioUpdateComponent implements OnInit {
   laboratorio!: Laboratorio;
   laboratoryDomains: LaboratoryDomain[] = [];
+  id: any;
 
   constructor(
     private laboratorioService: LaboratorioService,
     private laboratoryDomainService: LaboratoryDomainService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.load(this.id);
+  }
 
-  ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+  ngOnInit(): void { }
+
+  load(id: number): void {
     this.laboratorioService
       .readById(id as unknown as number)
       .subscribe((laboratorio) => {
