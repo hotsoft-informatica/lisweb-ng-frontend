@@ -17,6 +17,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/template/header/header.component';
@@ -63,6 +66,7 @@ registerLocaleData(localePt);
     MatMenuModule,
     MatCardModule,
     MatIconModule,
+    MatSortModule,
     MatListModule,
     MatInputModule,
     MatTableModule,
@@ -72,10 +76,12 @@ registerLocaleData(localePt);
     HttpClientModule,
     AppRoutingModule,
     MatSnackBarModule,
+    MatPaginatorModule,
     MatFormFieldModule,
     MatNativeDateModule,
     MatDatepickerModule,
     BrowserAnimationsModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
