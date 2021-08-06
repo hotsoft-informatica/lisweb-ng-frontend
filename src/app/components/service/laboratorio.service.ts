@@ -2,7 +2,8 @@ import { Laboratorio } from '../model/laboratorio.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +42,24 @@ export class LaboratorioService {
   delete(id: number): Observable<Laboratorio> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<Laboratorio>(url);
+  }
+
+  findLaboratorios(
+    id: number,
+    filter = '',
+    sortOrder = 'desc',
+    pageNumber = 0,
+    pageSize = 3
+  ): Observable<Laboratorio[]> {
+    return this.http
+      .get<Laboratorio>(this.baseUrl, {
+        params: new HttpParams()
+          .set('id', id.toString())
+          .set('filter', filter)
+          .set('sortOrder', sortOrder)
+          .set('pageNumber', pageNumber.toString())
+          .set('pageSize', pageSize.toString()),
+      })
+      .pipe(map((res) => res['payload']));
   }
 }

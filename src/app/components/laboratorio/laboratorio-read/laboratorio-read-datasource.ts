@@ -6,7 +6,6 @@ import { catchError, finalize } from 'rxjs/operators';
 
 export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
   private laboratoriosSubject = new BehaviorSubject<Laboratorio[]>([]);
-
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
   public loading$ = this.loadingSubject.asObservable();
@@ -14,7 +13,7 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
   constructor(private laboratorioService: LaboratorioService) { }
 
   loadLaboratorios(
-    laboratorioId: number,
+    id: number,
     filter: string,
     sortDirection: string,
     pageIndex: number,
@@ -23,13 +22,7 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
     this.loadingSubject.next(true);
 
     this.laboratorioService
-      .findLaboratorios(
-        laboratorioId,
-        filter,
-        sortDirection,
-        pageIndex,
-        pageSize
-      )
+      .findLaboratorios(id, filter, sortDirection, pageIndex, pageSize)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
