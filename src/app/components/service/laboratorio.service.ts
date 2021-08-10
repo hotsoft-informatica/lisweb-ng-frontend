@@ -45,21 +45,18 @@ export class LaboratorioService {
   }
 
   findLaboratorios(
-    id: number,
     filter = '',
     sortOrder = 'desc',
     pageNumber = 0,
     pageSize = 3
   ): Observable<Laboratorio[]> {
     return this.http
-      .get<Laboratorio>(this.baseUrl, {
+      .get<Laboratorio[]>(this.baseUrl, {
         params: new HttpParams()
-          .set('id', id.toString())
           .set('filter', filter)
           .set('sortOrder', sortOrder)
           .set('pageNumber', pageNumber.toString())
           .set('pageSize', pageSize.toString()),
       })
-      .pipe(map((res) => res['payload']));
   }
 }

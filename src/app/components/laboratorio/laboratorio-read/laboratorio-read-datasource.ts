@@ -13,7 +13,6 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
   constructor(private laboratorioService: LaboratorioService) { }
 
   loadLaboratorios(
-    id: number,
     filter: string,
     sortDirection: string,
     pageIndex: number,
@@ -22,7 +21,7 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
     this.loadingSubject.next(true);
 
     this.laboratorioService
-      .findLaboratorios(id, filter, sortDirection, pageIndex, pageSize)
+      .findLaboratorios(filter, sortDirection, pageIndex, pageSize)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
