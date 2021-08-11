@@ -13,15 +13,16 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
   constructor(private laboratorioService: LaboratorioService) { }
 
   loadLaboratorios(
-    filter: string,
+    active: string,
     sortDirection: string,
     pageIndex: number,
-    pageSize: number
+    pageSize: number,
+    filter: string
   ) {
     this.loadingSubject.next(true);
 
     this.laboratorioService
-      .findLaboratorios(filter, sortDirection, pageIndex, pageSize)
+      .findLaboratorios(active, sortDirection, pageIndex, pageSize)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

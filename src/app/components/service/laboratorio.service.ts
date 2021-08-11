@@ -45,18 +45,25 @@ export class LaboratorioService {
   }
 
   findLaboratorios(
-    filter = '',
-    sortOrder = 'desc',
-    pageNumber = 0,
-    pageSize = 3
+    active = '',
+    sortOrder = 'asc',
+    pageNumber = 1,
+    pageSize = 3,
+    filter = ''
   ): Observable<Laboratorio[]> {
-    return this.http
-      .get<Laboratorio[]>(this.baseUrl, {
-        params: new HttpParams()
-          .set('filter', filter)
-          .set('sortOrder', sortOrder)
-          .set('pageNumber', pageNumber.toString())
-          .set('pageSize', pageSize.toString()),
-      })
+    return this.http.get<Laboratorio[]>(this.baseUrl, {
+      params: new HttpParams()
+        .set('active', active)
+        .set('sortOrder', sortOrder)
+        .set('pageNumber', pageNumber.toString())
+        .set('pageSize', pageSize.toString())
+        .set('filter', filter),
+    });
+  }
+
+  countLaboratorios(): Observable<number> {
+    return this.http.get<number>(this.baseUrl, {
+      params: new HttpParams().set('totalCount', 'true'),
+    });
   }
 }

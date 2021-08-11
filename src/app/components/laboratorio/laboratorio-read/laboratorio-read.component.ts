@@ -26,7 +26,7 @@ import { merge, fromEvent } from 'rxjs';
   styleUrls: ['./laboratorio-read.component.css'],
 })
 export class LaboratorioReadComponent implements OnInit, AfterViewInit {
-  laboratorios: Laboratorio[] = [];
+  totalCount!: number;
   dataSource!: LaboratorioReadDataSource;
   displayedColumns = [
     'id',
@@ -56,36 +56,39 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
     // this.laboratorios = this.route.snapshot.data["laboratorio"];
 
     this.dataSource = new LaboratorioReadDataSource(this.laboratorioService);
-
-    this.dataSource.loadLaboratorios('', 'desc', 0, 3);
+    this.dataSource.loadLaboratorios('id', 'desc', 1, 10, '');
+    this.laboratorioService.countLaboratorios().subscribe((totalCount) => {
+      this.totalCount = totalCount;
+    });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
 
-    fromEvent(this.input.nativeElement, 'keyup')
-      .pipe(
-        debounceTime(150),
-        distinctUntilChanged(),
-        tap(() => {
-          this.paginator.pageIndex = 0;
+    // fromEvent(this.input.nativeElement, 'keyup') // Busca server-side
+    //   .pipe(
+    //     debounceTime(150),
+    //     distinctUntilChanged(),
+    //     tap(() => {
+    //       this.paginator.pageIndex = 0;
 
-          this.loadLaboratoriosPage();
-        })
-      )
-      .subscribe();
+    //       this.loadLaboratoriosPage();
+    //     })
+    //   )
+    //   .subscribe();
 
-    merge(this.sort.sortChange, this.paginator.page)
+    merge(this.sort.sortChange, this.paginator.page) //Na ordenação ou paginação, carrega uma nova página
       .pipe(tap(() => this.loadLaboratoriosPage()))
       .subscribe();
   }
 
   loadLaboratoriosPage() {
     this.dataSource.loadLaboratorios(
-      this.input.nativeElement.value,
+      this.sort.active,
       this.sort.direction,
       this.paginator.pageIndex,
-      this.paginator.pageSize
+      this.paginator.pageSize,
+      '' // this.input.nativeElement.value,
     );
   }
 }
