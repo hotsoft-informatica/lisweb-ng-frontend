@@ -17,7 +17,10 @@ import { MatTableModule } from '@angular/material/table';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginatorModule,
+  MatPaginatorIntl,
+} from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 
@@ -39,6 +42,7 @@ import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio
 import { LaboratorioReadComponent } from './components/laboratorio/laboratorio-read/laboratorio-read.component';
 import { LaboratorioUpdateComponent } from './components/laboratorio/laboratorio-update/laboratorio-update.component';
 import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
+import { getPtBrMatPaginatorIntl } from './pt-br-mat-paginator-intl';
 
 registerLocaleData(localePt);
 
@@ -84,6 +88,10 @@ registerLocaleData(localePt);
     MatProgressSpinnerModule,
   ],
   providers: [
+    {
+      provide: MatPaginatorIntl,
+      useValue: getPtBrMatPaginatorIntl(),
+    },
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR',
