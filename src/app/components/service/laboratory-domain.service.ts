@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LaboratoryDomain } from '../model/laboratory-domain.model';
 import { EMPTY, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
@@ -40,5 +40,28 @@ export class LaboratoryDomainService {
   delete(id: number): Observable<LaboratoryDomain> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<LaboratoryDomain>(url);
+  }
+
+  findLaboratoryDomains(
+    active = '',
+    sortOrder = 'asc',
+    pageNumber = 1,
+    pageSize = 3,
+    filter = ''
+  ): Observable<LaboratoryDomain[]> {
+    return this.http.get<LaboratoryDomain[]>(this.baseUrl, {
+      params: new HttpParams()
+        .set('active', active)
+        .set('sortOrder', sortOrder)
+        .set('pageNumber', pageNumber.toString())
+        .set('pageSize', pageSize.toString())
+        .set('filter', filter),
+    });
+  }
+
+  countLaboratoryDomains(): Observable<number> {
+    return this.http.get<number>(this.baseUrl, {
+      params: new HttpParams().set('totalCount', 'true'),
+    });
   }
 }

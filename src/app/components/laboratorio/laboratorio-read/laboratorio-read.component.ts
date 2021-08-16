@@ -1,6 +1,5 @@
 import { LaboratorioReadDataSource } from './laboratorio-read-datasource';
 import { LaboratorioService } from '../../service/laboratorio.service';
-import { Laboratorio } from '../../model/laboratorio.model';
 import {
   AfterViewInit,
   ElementRef,
@@ -8,7 +7,6 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -43,10 +41,7 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   @ViewChild('input') input: ElementRef | any;
 
-  constructor(
-    private laboratorioService: LaboratorioService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private laboratorioService: LaboratorioService) { }
 
   ngOnInit(): void {
     // this.laboratorioService.read().subscribe((laboratorios) => {

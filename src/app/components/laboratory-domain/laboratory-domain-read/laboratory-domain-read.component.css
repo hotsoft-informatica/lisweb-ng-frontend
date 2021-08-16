@@ -13,3 +13,14 @@ table {
 .delete > i {
   color: #e35e6b;
 }
+
+.spinner-container {
+  position: absolute;
+  left: 46%;
+  top: 45%;
+}
+
+.spinner-container mat-spinner {
+  margin: 0 auto;
+  width: 50%;
+}
