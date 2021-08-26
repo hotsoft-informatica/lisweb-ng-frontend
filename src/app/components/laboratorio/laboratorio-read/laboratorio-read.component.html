@@ -1,6 +1,6 @@
 <mat-form-field class="search-field">
   <mat-input-container>
-    <input matInput placeholder="Buscar em laboratórios" #input>
+    <input matInput type="text" placeholder="Buscar em laboratórios" (keyup.enter)="search('name', inputName.value)" #inputName />
   </mat-input-container>
 </mat-form-field>
 <div class="mat-elevation-z4">

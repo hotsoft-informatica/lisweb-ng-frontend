@@ -22,7 +22,7 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
     this.loadingSubject.next(true);
 
     this.laboratorioService
-      .findLaboratorios(active, sortDirection, pageIndex, pageSize)
+      .findLaboratorios(active, sortDirection, pageIndex, pageSize, filter)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

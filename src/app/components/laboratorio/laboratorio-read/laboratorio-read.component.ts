@@ -19,6 +19,13 @@ import {
   filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
+import { Hash } from 'crypto';
+
+export class Query {
+  key: string = '';
+  value: string = '';
+}
+
 @Component({
   selector: 'app-laboratorio-read',
   templateUrl: './laboratorio-read.component.html',
@@ -40,9 +47,18 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort | any;
 
-  @ViewChild('input') input: ElementRef | any;
+  // @ViewChild('input', { static: true }) input: ElementRef | any;
+
+
+  public query: Query[] = [];
 
   constructor(private laboratorioService: LaboratorioService) { }
+
+
+  search(key: string, value: string): void {
+    this.query.push({ key: key, value: value })
+    // q[name_contains]='teste'&q[serie_equals]=2001&
+  }
 
   ngOnInit(): void {
     this.dataSource = new LaboratorioReadDataSource(this.laboratorioService);
@@ -55,17 +71,19 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
 
-    fromEvent<any>(this.input.nativeElement, 'keyup') // Busca server-side
-      .pipe(
-        debounceTime(150),
-        filter((e: KeyboardEvent) => e.keyCode === 13),
-        distinctUntilChanged(),
-        tap(() => {
-          this.paginator.pageIndex = 0;
-          this.loadLaboratoriosPage();
-        })
-      )
-      .subscribe();
+    // fromEvent<any>(this.input.nativeElement, 'keyup') // Busca server-side
+    //   .pipe(
+    //     debounceTime(150),
+    //     filter((e: KeyboardEvent) => e.keyCode === 13),
+    //     distinctUntilChanged(),
+    //     tap(() => {
+    //       this.paginator.pageIndex = 0;
+    //       this.loadLaboratoriosPage();
+    //     })
+    //   )
+    //   .subscribe();
+
+    // console.log(this.input.nativeElement.value);
 
     merge(this.sort.sortChange, this.paginator.page) //Na ordenação ou paginação, carrega uma nova página
       .pipe(tap(() => this.loadLaboratoriosPage()))
@@ -78,7 +96,12 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
       this.sort.direction,
       this.paginator.pageIndex,
       this.paginator.pageSize,
-      this.input.nativeElement.value
+      this.query
     );
   }
+
+  //  estratificar o model de query para um arquivo
+  // fazer o import do service para o componente
+  // no service iterar o array de query fazendo o set de cada elemento
+  //  .set("q["+key+"]", value),
 }

@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { query } from '@angular/animations';
 
 @Injectable({
   providedIn: 'root',
@@ -45,19 +46,22 @@ export class LaboratorioService {
   }
 
   findLaboratorios(
-    active = '',
-    sortOrder = 'asc',
-    pageNumber = 1,
-    pageSize = 3,
-    filter = ''
+    active: string = '',
+    sortOrder: string = 'asc',
+    pageNumber: number = 1,
+    pageSize: number = 3,
+    filter: string = ''
   ): Observable<Laboratorio[]> {
+    let params = new HttpParams()
+      .set('active', active)
+      .set('sortOrder', sortOrder)
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString())
+      .set('filter', filter);
+    // iterar o array de query
+    params.set('xxx', 'yyy')
     return this.http.get<Laboratorio[]>(this.baseUrl, {
-      params: new HttpParams()
-        .set('active', active)
-        .set('sortOrder', sortOrder)
-        .set('pageNumber', pageNumber.toString())
-        .set('pageSize', pageSize.toString())
-        .set('filter', filter),
+      params,
     });
   }
 
