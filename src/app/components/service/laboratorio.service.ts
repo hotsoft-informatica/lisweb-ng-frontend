@@ -1,3 +1,4 @@
+import { Query } from './../model/query.model';
 import { Laboratorio } from '../model/laboratorio.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -50,16 +51,16 @@ export class LaboratorioService {
     sortOrder: string = 'asc',
     pageNumber: number = 1,
     pageSize: number = 3,
-    filter: string = ''
+    filter: Query[] | null
   ): Observable<Laboratorio[]> {
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString())
-      .set('filter', filter);
+    //.set('filter', filter);
     // iterar o array de query
-    params.set('xxx', 'yyy')
+    params.set('xxx', 'yyy');
     return this.http.get<Laboratorio[]>(this.baseUrl, {
       params,
     });

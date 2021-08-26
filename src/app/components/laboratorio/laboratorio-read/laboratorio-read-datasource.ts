@@ -3,6 +3,7 @@ import { LaboratorioService } from '../../service/laboratorio.service';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
+import { Query } from '../../model/query.model';
 
 export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
   private laboratoriosSubject = new BehaviorSubject<Laboratorio[]>([]);
@@ -17,7 +18,7 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
     sortDirection: string,
     pageIndex: number,
     pageSize: number,
-    filter: string
+    filter: Query[] | null
   ) {
     this.loadingSubject.next(true);
 

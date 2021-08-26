@@ -1,3 +1,4 @@
+import { Query } from '../../model/query.model';
 import { LaboratorioReadDataSource } from './laboratorio-read-datasource';
 import { LaboratorioService } from '../../service/laboratorio.service';
 import {
@@ -19,13 +20,6 @@ import {
   filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
-import { Hash } from 'crypto';
-
-export class Query {
-  key: string = '';
-  value: string = '';
-}
-
 @Component({
   selector: 'app-laboratorio-read',
   templateUrl: './laboratorio-read.component.html',
@@ -47,22 +41,27 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort | any;
 
-  // @ViewChild('input', { static: true }) input: ElementRef | any;
-
-
   public query: Query[] = [];
 
   constructor(private laboratorioService: LaboratorioService) { }
 
-
   search(key: string, value: string): void {
-    this.query.push({ key: key, value: value })
+    let query = new Query({ key, value });
+
+    this.query = this.query.filter(q => q.key !== key);
+
+    this.query.push(query);
     // q[name_contains]='teste'&q[serie_equals]=2001&
+
+    this.paginator.pageIndex = 0;
+    this.loadLaboratoriosPage();
+
+    console.table(Array.from(this.query));
   }
 
   ngOnInit(): void {
     this.dataSource = new LaboratorioReadDataSource(this.laboratorioService);
-    this.dataSource.loadLaboratorios('id', 'desc', 1, 10, '');
+    this.dataSource.loadLaboratorios('id', 'desc', 1, 10, null);
     this.laboratorioService.countLaboratorios().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
@@ -70,20 +69,6 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
-
-    // fromEvent<any>(this.input.nativeElement, 'keyup') // Busca server-side
-    //   .pipe(
-    //     debounceTime(150),
-    //     filter((e: KeyboardEvent) => e.keyCode === 13),
-    //     distinctUntilChanged(),
-    //     tap(() => {
-    //       this.paginator.pageIndex = 0;
-    //       this.loadLaboratoriosPage();
-    //     })
-    //   )
-    //   .subscribe();
-
-    // console.log(this.input.nativeElement.value);
 
     merge(this.sort.sortChange, this.paginator.page) //Na ordenação ou paginação, carrega uma nova página
       .pipe(tap(() => this.loadLaboratoriosPage()))
