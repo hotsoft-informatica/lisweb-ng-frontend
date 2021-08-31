@@ -6,12 +6,17 @@ import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { query } from '@angular/animations';
+import { PipeTransform, Pipe } from '@angular/core';
+import { Key } from 'protractor';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LaboratorioService {
   baseUrl = 'http://127.0.0.1:3010/laboratorios';
+  filter!: Iterable<unknown> | ArrayLike<unknown>;
+
+  query: Query[] = [];
 
   constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
 
@@ -51,19 +56,40 @@ export class LaboratorioService {
     sortOrder: string = 'asc',
     pageNumber: number = 1,
     pageSize: number = 3,
-    filter: Query[] | null
+    query: Query[] | null
   ): Observable<Laboratorio[]> {
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
       .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString())
-    //.set('filter', filter);
-    // iterar o array de query
-    params.set('xxx', 'yyy');
+      .set('pageSize', pageSize.toString());
+    query?.forEach((queryItem) => {
+      if (queryItem) {
+        const key = `queryItem[${queryItem.key}_contains]`
+        params = params.append(key, queryItem.value);
+      }
+    });
+
+    // q[name_contains]='teste'&q[serie_equals]=2001&
+
+
+    // if (filter) {
+    //   filter.forEach(([key, value]) => {
+    //     .set('key', value.toString());
+    //   });
+    // } else {
+    //   .set("q[" + key + "]", value);
+    // }
+
+    // filter?.forEach(.set("q[" + key + "]", value))
+
+    //.set("q["+key+"]", value)
+    // iterar o array de query .set("q["+key+"]", value),
+    //params.set('xxx', 'yyy');
     return this.http.get<Laboratorio[]>(this.baseUrl, {
       params,
     });
+    // console.table(Array.from(this.filter))
   }
 
   countLaboratorios(): Observable<number> {

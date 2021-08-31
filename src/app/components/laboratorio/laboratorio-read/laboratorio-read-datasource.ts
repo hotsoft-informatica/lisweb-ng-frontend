@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { Laboratorio } from './../../model/laboratorio.model';
 import { LaboratorioService } from '../../service/laboratorio.service';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
@@ -9,6 +10,8 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
   private laboratoriosSubject = new BehaviorSubject<Laboratorio[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
+  query: Query[] = [];
+
   public loading$ = this.loadingSubject.asObservable();
 
   constructor(private laboratorioService: LaboratorioService) { }
@@ -18,12 +21,12 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
     sortDirection: string,
     pageIndex: number,
     pageSize: number,
-    filter: Query[] | null
+    query: Query[] | null
   ) {
     this.loadingSubject.next(true);
 
     this.laboratorioService
-      .findLaboratorios(active, sortDirection, pageIndex, pageSize, filter)
+      .findLaboratorios(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

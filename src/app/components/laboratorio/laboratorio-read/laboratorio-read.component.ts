@@ -41,7 +41,7 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort | any;
 
-  public query: Query[] = [];
+  query: Query[] = [];
 
   constructor(private laboratorioService: LaboratorioService) { }
 
