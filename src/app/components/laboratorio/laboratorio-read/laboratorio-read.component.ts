@@ -47,16 +47,10 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   search(key: string, value: string): void {
     let query = new Query({ key, value });
-
-    this.query = this.query.filter(q => q.key !== key);
-
+    this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
-    // q[name_contains]='teste'&q[serie_equals]=2001&
-
     this.paginator.pageIndex = 0;
     this.loadLaboratoriosPage();
-
-    console.table(Array.from(this.query));
   }
 
   ngOnInit(): void {
@@ -84,9 +78,4 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
-
-  //  estratificar o model de query para um arquivo
-  // fazer o import do service para o componente
-  // no service iterar o array de query fazendo o set de cada elemento
-  //  .set("q["+key+"]", value),
 }

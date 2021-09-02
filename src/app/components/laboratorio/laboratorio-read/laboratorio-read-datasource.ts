@@ -1,4 +1,3 @@
-import { query } from '@angular/animations';
 import { Laboratorio } from './../../model/laboratorio.model';
 import { LaboratorioService } from '../../service/laboratorio.service';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
