@@ -1,3 +1,4 @@
+import { Query } from '../../model/query.model';
 import { LaboratoryDomainReadDataSource } from './laboratory-domain-read-datasource';
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 import {
@@ -44,21 +45,28 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort | any;
 
-  @ViewChild('input') input: ElementRef | any;
+  query: Query[] = [];
 
   constructor(private laboratoryDomainService: LaboratoryDomainService) { }
 
+  search(key: string, value: string): void {
+    let query = new Query({ key, value });
+    this.query = this.query.filter((q) => q.key !== key);
+    this.query.push(query);
+    this.paginator.pageIndex = 0;
+    this.loadLaboratoryDomainsPage();
+  }
+
   ngOnInit(): void {
-    // this.laboratoryDomainService.read().subscribe((laboratoryDomains) => {
-    //   this.laboratoryDomains = laboratoryDomains;
-    // });
-
-    this.dataSource = new LaboratoryDomainReadDataSource(this.laboratoryDomainService);
-    this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 10, '');
-    this.laboratoryDomainService.countLaboratoryDomains().subscribe((totalCount) => {
-      this.totalCount = totalCount;
-    });
-
+    this.dataSource = new LaboratoryDomainReadDataSource(
+      this.laboratoryDomainService
+    );
+    this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 10, null);
+    this.laboratoryDomainService
+      .countLaboratoryDomains()
+      .subscribe((totalCount) => {
+        this.totalCount = totalCount;
+      });
   }
 
   ngAfterViewInit() {
@@ -75,7 +83,7 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
       this.sort.direction,
       this.paginator.pageIndex,
       this.paginator.pageSize,
-      '' // this.input.nativeElement.value,
+      this.query
     );
   }
 }

@@ -1,3 +1,18 @@
+<mat-form-field class="search-field">
+  <mat-input-container>
+    <input matInput type="text" placeholder="Buscar Nome" (keyup.enter)="search('nome', inputNome.value)" #inputNome />
+  </mat-input-container>
+</mat-form-field>
+<mat-form-field class="search-field">
+  <mat-input-container>
+    <input matInput type="text" placeholder="Buscar Série" (keyup.enter)="search('serie', inputSerie.value)" #inputSerie />
+  </mat-input-container>
+</mat-form-field>
+<div>
+  <pre *ngFor="let q of this.query">
+    {{q.key}}: {{q.value}}
+  </pre>
+</div>
 <div class="mat-elevation-z4">
   <table
     mat-table
