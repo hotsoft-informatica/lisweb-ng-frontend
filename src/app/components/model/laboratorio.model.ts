@@ -27,7 +27,7 @@ export class Laboratorio {
   public sync_deadline?: number;
   public matrix?: number
 
-  constructor(values: Laboratorio) {
+  constructor(values: Laboratorio= {}) {
     Object.assign(this, values);
   }
 }

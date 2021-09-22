@@ -6,10 +6,8 @@ import { LaboratoryDomainCrudComponent } from './views/laboratory-domain-crud/la
 import { LaboratoryDomainCreateComponent } from './components/laboratory-domain/laboratory-domain-create/laboratory-domain-create.component';
 import { LaboratoryDomainUpdateComponent } from './components/laboratory-domain/laboratory-domain-update/laboratory-domain-update.component';
 import { LaboratoryDomainDeleteComponent } from './components/laboratory-domain/laboratory-domain-delete/laboratory-domain-delete.component';
-import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
 import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio-create/laboratorio-create.component';
-import { LaboratorioUpdateComponent } from './components/laboratorio/laboratorio-update/laboratorio-update.component';
-import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio-delete/laboratorio-delete.component';
+import { LaboratorioListComponent } from './components/laboratorio/laboratorio-list/laboratorio-list.component';
 
 const routes: Routes = [
   {
@@ -34,7 +32,7 @@ const routes: Routes = [
   },
   {
     path: 'laboratorios',
-    component: LaboratorioCrudComponent,
+    component: LaboratorioListComponent,
   },
   {
     path: 'laboratorios/create',
@@ -42,12 +40,8 @@ const routes: Routes = [
   },
   {
     path: 'laboratorios/update/:id',
-    component: LaboratorioUpdateComponent,
-  },
-  {
-    path: 'laboratorios/delete/:id',
-    component: LaboratorioDeleteComponent,
-  },
+    component: LaboratorioCreateComponent,
+  }
 ];
 
 @NgModule({

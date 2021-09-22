@@ -45,7 +45,7 @@
     <ng-container matColumnDef="criado_em">
       <th mat-header-cell *matHeaderCellDef>Criado em</th>
       <td mat-cell *matCellDef="let row">
-        {{ row?.criado_em | date: "dd-MM-yyyy" }}
+        {{ row?.criado_em }}
       </td>
     </ng-container>
 
@@ -56,9 +56,9 @@
         <a routerLink="/laboratorios/update/{{ row.id }}" class="edit">
           <i class="material-icons"> edit </i>
         </a>
-        <a routerLink="/laboratorios/delete/{{ row.id }}" class="delete">
-          <i class="material-icons"> delete </i>
-        </a>
+        <button mat-raised-button (click)="delete(row)" color="warn">
+          Excluir
+        </button>
       </td>
     </ng-container>
 
@@ -69,7 +69,7 @@
   <mat-paginator [length]="this.totalCount" [pageSize]="10"
   [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
 
-  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+  <div class="spinner-container" *ngIf="loading">
     <mat-spinner></mat-spinner>
   </div>
 </div>

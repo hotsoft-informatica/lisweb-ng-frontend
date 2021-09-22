@@ -24,13 +24,17 @@
         <button mat-menu-item>
           <a mat-list-item routerLink="/laboratorios">Laboratório</a>
         </button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>
+          <a mat-list-item routerLink="/laboratorios/create">Novo Laboratório</a>
+        </button>
       </ng-template>
     </mat-menu>
     <span [matMenuTriggerFor]="appMenu">
       <i class="material-icons medium v-middle">
         assignment
       </i>
-      Cadastrar
+      Menu
     </span>
   </div>
 </mat-toolbar>

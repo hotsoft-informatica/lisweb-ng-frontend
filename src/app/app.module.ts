@@ -38,11 +38,9 @@ import { LaboratoryDomainDeleteComponent } from './components/laboratory-domain/
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio-create/laboratorio-create.component';
-import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio-delete/laboratorio-delete.component';
-import { LaboratorioReadComponent } from './components/laboratorio/laboratorio-read/laboratorio-read.component';
-import { LaboratorioUpdateComponent } from './components/laboratorio/laboratorio-update/laboratorio-update.component';
-import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
+import { LaboratorioListComponent } from './components/laboratorio/laboratorio-list/laboratorio-list.component';
 import { getPtBrMatPaginatorIntl } from './pt-br-mat-paginator-intl';
+import { BaseComponent } from './components/base/base.component';
 
 registerLocaleData(localePt);
 
@@ -59,10 +57,8 @@ registerLocaleData(localePt);
     LaboratoryDomainUpdateComponent,
     LaboratoryDomainDeleteComponent,
     LaboratorioCreateComponent,
-    LaboratorioDeleteComponent,
-    LaboratorioReadComponent,
-    LaboratorioUpdateComponent,
-    LaboratorioCrudComponent,
+    LaboratorioListComponent,
+    BaseComponent,
   ],
   imports: [
     FormsModule,
