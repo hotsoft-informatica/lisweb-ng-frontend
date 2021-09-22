@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-title>Editar Domínio</mat-card-title>
+  <form *ngIf="laboratoryDomain ">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Nome"
+        [(ngModel)]="laboratoryDomain.name"
+        name="name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        [matDatepicker]="sync_start_date"
+        placeholder="Início da sincronização"
+        [(ngModel)]="laboratoryDomain.sync_start_date" name="sync_start_date" 
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="sync_start_date"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #sync_start_date></mat-datepicker>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="updateLaboratoryDomain()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+</mat-card>
