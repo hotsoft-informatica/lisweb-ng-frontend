@@ -36,6 +36,9 @@ import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio
 import { LaboratorioReadComponent } from './components/laboratorio/laboratorio-read/laboratorio-read.component';
 import { LaboratorioUpdateComponent } from './components/laboratorio/laboratorio-update/laboratorio-update.component';
 import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { BaseComponent } from './components/base/base.component';
 
 registerLocaleData(localePt);
 
@@ -56,10 +59,11 @@ registerLocaleData(localePt);
     LaboratorioReadComponent,
     LaboratorioUpdateComponent,
     LaboratorioCrudComponent,
+    BaseComponent,
   ],
   imports: [
-    FormsModule,
     BrowserModule,
+    FormsModule,
     MatMenuModule,
     MatCardModule,
     MatIconModule,
@@ -76,6 +80,12 @@ registerLocaleData(localePt);
     MatNativeDateModule,
     MatDatepickerModule,
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     {

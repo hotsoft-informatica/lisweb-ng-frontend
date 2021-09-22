@@ -25,9 +25,9 @@ export class Laboratorio {
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
   public sync_deadline?: number;
-  public matrix?: number
+  public matrix?: number;
 
-  constructor(values: Laboratorio) {
+  constructor(values: Laboratorio = {}) {
     Object.assign(this, values);
   }
 }

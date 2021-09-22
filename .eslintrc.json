@@ -1,0 +1,245 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*",
+    "dist",
+    "coverage"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module",
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": 1
+      },
+      "parser": "@typescript-eslint/parser",
+      "extends": [
+        "eslint:recommended",
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "quotes": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "dot-notation": "error",
+        "indent": ["error", 2, { "MemberExpression": 1 }],
+        "no-shadow": "error",
+        "no-unused-expressions": "error",
+        "no-use-before-define": "off",
+        "semi": "error"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+        // "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "no-conditional-assignment": false,
+        "no-constant-condition": 1,
+        "no-control-regex": 1,
+        "no-duplicate-case": 1,
+        "no-empty-character-class": 1,
+        "no-ex-assign": 1,
+        "no-extra-boolean-cast": 1,
+        "no-extra-semi": 1,
+        "no-inner-declarations": 1,
+        "no-invalid-regexp": 1,
+        "ter-no-irregular-whitespace": 1,
+        "no-regex-spaces": 1,
+        "ter-no-sparse-arrays": 1,
+        "no-unexpected-multiline": 1,
+        "valid-jsdoc": [true, {
+          "prefer": {
+            "returns": "return"
+          },
+          "requireParamDescription": false,
+          "requireParamType": 1,
+          "requireReturn": false,
+          "requireReturnDescription": false,
+          "requireReturnType": 1
+        }],
+        "valid-typeof": 1,
+        "curly": [true, "ignore-same-line"],
+        "no-switch-case-fall-through": 1, 
+        "no-invalid-this": 1, 
+        "no-multi-spaces": 1,
+        "no-duplicate-variable": 1,
+        "array-bracket-spacing": [true, "never"],
+        "block-spacing": [true, "never"],
+        "brace-style": [true, "1tbs"],
+        "trailing-comma": [true, {"multiline": "always"}],
+        "ter-func-call-spacing": [true, "never"],
+        "linebreak-style": [true, "LF"],
+        "ter-max-len": [true, {
+          "code": 80,
+          "tabWidth": 2,
+          "ignoreUrls": 1
+        }],
+        "object-curly-spacing": [true, "never"],
+        "quotemark": [true, "single"], 
+        "require-jsdoc": [2, {
+          "require": {
+            "FunctionDeclaration": 1,
+            "MethodDefinition": 1,
+            "ClassDeclaration": 1
+          }
+        }],
+        "ter-arrow-parens": [true, "always"],
+        "one-line": false,
+        "align": {
+          "options": [
+            "parameters",
+            "statements"
+          ]
+        },
+        "array-type": false,
+        "arrow-return-shorthand": 1,
+        "deprecation": {
+          "severity": "warning"
+        },
+        "eofline": 1,
+        "import-blacklist": [
+          true,
+          "rxjs/Rx"
+        ],
+        "import-spacing": 1,
+        "max-classes-per-file": false,
+        "max-line-length": [
+          true,
+          140
+        ],
+        "member-ordering": [
+          true,
+          {
+            "order": [
+              "static-field",
+              "instance-field",
+              "static-method",
+              "instance-method"
+            ]
+          }
+        ],
+        "no-console": [
+          true,
+          "debug",
+          "info",
+          "time",
+          "timeEnd",
+          "trace"
+        ],
+        "no-empty": 0,
+        "no-inferrable-types": [
+          true,
+          "ignore-params"
+        ],
+        "no-non-null-assertion": 1,
+        "no-redundant-jsdoc": 1,
+        "no-var-requires": false,
+        "object-literal-key-quotes": [
+          true,
+          "as-needed"
+        ],
+        "semicolon": {
+          "options": [
+            "always"
+          ]
+        },
+        "typedef": [
+          true,
+          "call-signature"
+        ],
+        "typedef-whitespace": {
+          "options": [
+            {
+              "call-signature": "nospace",
+              "index-signature": "nospace",
+              "parameter": "nospace",
+              "property-declaration": "nospace",
+              "variable-declaration": "nospace"
+            },
+            {
+              "call-signature": "onespace",
+              "index-signature": "onespace",
+              "parameter": "onespace",
+              "property-declaration": "onespace",
+              "variable-declaration": "onespace"
+            }
+          ]
+        },
+        "variable-name": {
+          "options": [
+            "ban-keywords",
+            "check-format",
+            "allow-pascal-case"
+          ]
+        },
+        "whitespace": {
+          "options": [
+            "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-separator",
+            "check-type",
+            "check-typecast"
+          ]
+        },
+        "component-class-suffix": 1,
+        "contextual-lifecycle": 1,
+        "directive-class-suffix": 1,
+        "no-conflicting-lifecycle": 1,
+        "no-host-metadata-property": 1,
+        "no-input-rename": 1,
+        "no-inputs-metadata-property": 1,
+        "no-output-native": 1,
+        "no-output-on-prefix": 1,
+        "no-output-rename": 1,
+        "no-outputs-metadata-property": 1,
+        "template-banana-in-box": 1,
+        "template-no-negated-async": 1,
+        "use-lifecycle-interface": 1,
+        "use-pipe-transform-interface": 1,
+        "directive-selector": [
+          true,
+          "attribute",
+          "app",
+          "camelCase"
+        ],
+        "component-selector": [
+          true,
+          "element",
+          "app",
+          "kebab-case"
+        ]
+      }
+    }
+  ]
+}
