@@ -22,7 +22,9 @@ export class LaboratoryDomainCreateComponent implements OnInit {
   createLaboratoryDomain(): void {
     this.laboratoryDomainService.create(this.laboratoryDomain).subscribe(() => {
       this.laboratoryDomainService.showMessage('Domínio criado com sucesso!');
-      this.router.navigate(['/laboratorydomains']);
+      this.router.navigate(['/laboratorydomains']).then(() => {
+        window.location.reload();
+      });
     });
   }
 
