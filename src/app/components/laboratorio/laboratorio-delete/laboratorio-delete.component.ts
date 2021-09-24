@@ -33,7 +33,9 @@ export class LaboratorioDeleteComponent implements OnInit {
         this.laboratorioService.showMessage(
           'Laboratório excluído com sucesso!'
         );
-        this.router.navigate(['/laboratorios']);
+        this.router.navigate(['/laboratorios']).then(() => {
+          window.location.reload();
+        });
       });
   }
 

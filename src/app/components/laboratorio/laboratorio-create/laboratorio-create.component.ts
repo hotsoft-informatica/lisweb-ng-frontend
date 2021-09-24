@@ -31,7 +31,9 @@ export class LaboratorioCreateComponent implements OnInit {
   createLaboratorio(): void {
     this.laboratorioService.create(this.laboratorio).subscribe(() => {
       this.laboratorioService.showMessage('Laboratório criado com sucesso!');
-      this.router.navigate(['/laboratorios']);
+      this.router.navigate(['/laboratorios']).then(() => {
+        window.location.reload();
+      });
     });
   }
 
