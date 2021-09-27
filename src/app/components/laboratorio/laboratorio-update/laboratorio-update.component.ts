@@ -34,11 +34,9 @@ export class LaboratorioUpdateComponent implements OnInit {
         this.laboratorio = laboratorio;
       });
 
-    this.laboratoryDomainService
-      .read()
-      .subscribe((laboratoryDomains) => {
-        this.laboratoryDomains = laboratoryDomains;
-      });
+    this.laboratoryDomainService.read().subscribe((laboratoryDomains) => {
+      this.laboratoryDomains = laboratoryDomains;
+    });
   }
 
   updateLaboratorio(): void {
@@ -47,7 +45,9 @@ export class LaboratorioUpdateComponent implements OnInit {
         'Laboratório atualizado com sucesso!'
       );
     });
-    this.router.navigate(['/laboratorios']);
+    this.router.navigate(['/laboratorios']).then(() => {
+      window.location.reload();
+    });
   }
 
   cancel(): void {

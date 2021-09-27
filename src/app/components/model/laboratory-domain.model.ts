@@ -1,11 +1,16 @@
-export interface LaboratoryDomain {
-  id?: number;
-  name?: string | null;
-  created_at?: Date | null;
-  updated_at?: Date | null;
-  version_id?: number | null;
-  deleted?: boolean | null;
-  sync_start_date?: Date | null;
-  sync_deadline?: Date | null;
-  criado_em?: Date | null;
+export class LaboratoryDomain {
+  public id?: number;
+  public name?: string;
+  public created_at?: Date;
+  public updated_at?: Date;
+  public version_id?: number;
+  public deleted?: boolean;
+  public sync_start_date?: Date;
+  public sync_deadline?: Date;
+  public criado_em?: Date;
+
+
+  constructor(values: LaboratoryDomain) {
+    Object.assign(this, values);
+  }
 }
