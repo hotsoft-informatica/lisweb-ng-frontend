@@ -9,7 +9,6 @@ export class LaboratoryDomain {
   public sync_deadline?: Date;
   public criado_em?: Date;
 
-
   constructor(values: LaboratoryDomain) {
     Object.assign(this, values);
   }
