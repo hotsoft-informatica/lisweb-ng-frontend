@@ -47,6 +47,10 @@ import { AmostraCreateComponent } from './components/amostra/amostra-create/amos
 import { AmostraReadComponent } from './components/amostra/amostra-read/amostra-read.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
 import { AmostraUpdateComponent } from './components/amostra/amostra-update/amostra-update.component';
+import { BancadaCreateComponent } from './components/bancada/bancada-create/bancada-create.component';
+import { BancadaReadComponent } from './components/bancada/bancada-read/bancada-read.component';
+import { BancadaUpdateComponent } from './components/bancada/bancada-update/bancada-update.component';
+import { BancadaDeleteComponent } from './components/bancada/bancada-delete/bancada-delete.component';
 
 registerLocaleData(localePt);
 
@@ -71,6 +75,10 @@ registerLocaleData(localePt);
     AmostraReadComponent,
     AmostraDeleteComponent,
     AmostraUpdateComponent,
+    BancadaCreateComponent,
+    BancadaReadComponent,
+    BancadaUpdateComponent,
+    BancadaDeleteComponent,
   ],
   imports: [
     FormsModule,
