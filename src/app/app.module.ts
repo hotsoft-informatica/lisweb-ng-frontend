@@ -63,6 +63,10 @@ import { ColetorCreateComponent } from './components/coletor/coletor-create/cole
 import { ColetorReadComponent } from './components/coletor/coletor-read/coletor-read.component';
 import { ColetorUpdateComponent } from './components/coletor/coletor-update/coletor-update.component';
 import { ColetorDeleteComponent } from './components/coletor/coletor-delete/coletor-delete.component';
+import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-amostra-delete/exame-amostra-delete.component';
+import { ExameAmostraCreateComponent } from './components/exame-amostra/exame-amostra-create/exame-amostra-create.component';
+import { ExameAmostraReadComponent } from './components/exame-amostra/exame-amostra-read/exame-amostra-read.component';
+import { ExameAmostraUpdateComponent } from './components/exame-amostra/exame-amostra-update/exame-amostra-update.component';
 
 registerLocaleData(localePt);
 
@@ -103,6 +107,10 @@ registerLocaleData(localePt);
     ColetorReadComponent,
     ColetorUpdateComponent,
     ColetorDeleteComponent,
+    ExameAmostraDeleteComponent,
+    ExameAmostraCreateComponent,
+    ExameAmostraReadComponent,
+    ExameAmostraUpdateComponent,
   ],
   imports: [
     FormsModule,
