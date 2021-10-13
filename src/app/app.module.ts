@@ -71,6 +71,10 @@ import { ExameUpdateComponent } from './components/exame/exame-update/exame-upda
 import { ExameCreateComponent } from './components/exame/exame-create/exame-create.component';
 import { ExameReadComponent } from './components/exame/exame-read/exame-read.component';
 import { ExameDeleteComponent } from './components/exame/exame-delete/exame-delete.component';
+import { LoteAmostraDeleteComponent } from './components/lote-amostra/lote-amostra-delete/lote-amostra-delete.component';
+import { LoteAmostraCreateComponent } from './components/lote-amostra/lote-amostra-create/lote-amostra-create.component';
+import { LoteAmostraReadComponent } from './components/lote-amostra/lote-amostra-read/lote-amostra-read.component';
+import { LoteAmostraUpdateComponent } from './components/lote-amostra/lote-amostra-update/lote-amostra-update.component';
 
 registerLocaleData(localePt);
 
@@ -119,6 +123,10 @@ registerLocaleData(localePt);
     ExameCreateComponent,
     ExameReadComponent,
     ExameDeleteComponent,
+    LoteAmostraDeleteComponent,
+    LoteAmostraCreateComponent,
+    LoteAmostraReadComponent,
+    LoteAmostraUpdateComponent,
   ],
   imports: [
     FormsModule,
