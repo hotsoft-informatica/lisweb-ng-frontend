@@ -59,6 +59,10 @@ import { BandejaAmostraCreateComponent } from './components/bandeja-amostra/band
 import { BandejaAmostraReadComponent } from './components/bandeja-amostra/bandeja-amostra-read/bandeja-amostra-read.component';
 import { BandejaAmostraUpdateComponent } from './components/bandeja-amostra/bandeja-amostra-update/bandeja-amostra-update.component';
 import { BandejaAmostraDeleteComponent } from './components/bandeja-amostra/bandeja-amostra-delete/bandeja-amostra-delete.component';
+import { ColetorCreateComponent } from './components/coletor/coletor-create/coletor-create.component';
+import { ColetorReadComponent } from './components/coletor/coletor-read/coletor-read.component';
+import { ColetorUpdateComponent } from './components/coletor/coletor-update/coletor-update.component';
+import { ColetorDeleteComponent } from './components/coletor/coletor-delete/coletor-delete.component';
 
 registerLocaleData(localePt);
 
@@ -95,6 +99,10 @@ registerLocaleData(localePt);
     BandejaAmostraReadComponent,
     BandejaAmostraUpdateComponent,
     BandejaAmostraDeleteComponent,
+    ColetorCreateComponent,
+    ColetorReadComponent,
+    ColetorUpdateComponent,
+    ColetorDeleteComponent,
   ],
   imports: [
     FormsModule,
