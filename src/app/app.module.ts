@@ -75,6 +75,10 @@ import { LoteAmostraDeleteComponent } from './components/lote-amostra/lote-amost
 import { LoteAmostraCreateComponent } from './components/lote-amostra/lote-amostra-create/lote-amostra-create.component';
 import { LoteAmostraReadComponent } from './components/lote-amostra/lote-amostra-read/lote-amostra-read.component';
 import { LoteAmostraUpdateComponent } from './components/lote-amostra/lote-amostra-update/lote-amostra-update.component';
+import { MaterialBiologicoUpdateComponent } from './components/material-biologico/material-biologico-update/material-biologico-update.component';
+import { MaterialBiologicoCreateComponent } from './components/material-biologico/material-biologico-create/material-biologico-create.component';
+import { MaterialBiologicoReadComponent } from './components/material-biologico/material-biologico-read/material-biologico-read.component';
+import { MaterialBiologicoDeleteComponent } from './components/material-biologico/material-biologico-delete/material-biologico-delete.component';
 
 registerLocaleData(localePt);
 
@@ -127,6 +131,10 @@ registerLocaleData(localePt);
     LoteAmostraCreateComponent,
     LoteAmostraReadComponent,
     LoteAmostraUpdateComponent,
+    MaterialBiologicoUpdateComponent,
+    MaterialBiologicoCreateComponent,
+    MaterialBiologicoReadComponent,
+    MaterialBiologicoDeleteComponent,
   ],
   imports: [
     FormsModule,
