@@ -55,6 +55,10 @@ import { BandejaCreateComponent } from './components/bandeja/bandeja-create/band
 import { BandejaReadComponent } from './components/bandeja/bandeja-read/bandeja-read.component';
 import { BandejaUpdateComponent } from './components/bandeja/bandeja-update/bandeja-update.component';
 import { BandejaDeleteComponent } from './components/bandeja/bandeja-delete/bandeja-delete.component';
+import { BandejaAmostraCreateComponent } from './components/bandeja-amostra/bandeja-amostra-create/bandeja-amostra-create.component';
+import { BandejaAmostraReadComponent } from './components/bandeja-amostra/bandeja-amostra-read/bandeja-amostra-read.component';
+import { BandejaAmostraUpdateComponent } from './components/bandeja-amostra/bandeja-amostra-update/bandeja-amostra-update.component';
+import { BandejaAmostraDeleteComponent } from './components/bandeja-amostra/bandeja-amostra-delete/bandeja-amostra-delete.component';
 
 registerLocaleData(localePt);
 
@@ -87,6 +91,10 @@ registerLocaleData(localePt);
     BandejaReadComponent,
     BandejaUpdateComponent,
     BandejaDeleteComponent,
+    BandejaAmostraCreateComponent,
+    BandejaAmostraReadComponent,
+    BandejaAmostraUpdateComponent,
+    BandejaAmostraDeleteComponent,
   ],
   imports: [
     FormsModule,
