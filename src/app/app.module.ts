@@ -51,6 +51,10 @@ import { BancadaCreateComponent } from './components/bancada/bancada-create/banc
 import { BancadaReadComponent } from './components/bancada/bancada-read/bancada-read.component';
 import { BancadaUpdateComponent } from './components/bancada/bancada-update/bancada-update.component';
 import { BancadaDeleteComponent } from './components/bancada/bancada-delete/bancada-delete.component';
+import { BandejaCreateComponent } from './components/bandeja/bandeja-create/bandeja-create.component';
+import { BandejaReadComponent } from './components/bandeja/bandeja-read/bandeja-read.component';
+import { BandejaUpdateComponent } from './components/bandeja/bandeja-update/bandeja-update.component';
+import { BandejaDeleteComponent } from './components/bandeja/bandeja-delete/bandeja-delete.component';
 
 registerLocaleData(localePt);
 
@@ -79,6 +83,10 @@ registerLocaleData(localePt);
     BancadaReadComponent,
     BancadaUpdateComponent,
     BancadaDeleteComponent,
+    BandejaCreateComponent,
+    BandejaReadComponent,
+    BandejaUpdateComponent,
+    BandejaDeleteComponent,
   ],
   imports: [
     FormsModule,
