@@ -43,6 +43,10 @@ import { LaboratorioReadComponent } from './components/laboratorio/laboratorio-r
 import { LaboratorioUpdateComponent } from './components/laboratorio/laboratorio-update/laboratorio-update.component';
 import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
 import { getPtBrMatPaginatorIntl } from './pt-br-mat-paginator-intl';
+import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
+import { AmostraReadComponent } from './components/amostra/amostra-read/amostra-read.component';
+import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
+import { AmostraUpdateComponent } from './components/amostra/amostra-update/amostra-update.component';
 
 registerLocaleData(localePt);
 
@@ -63,6 +67,10 @@ registerLocaleData(localePt);
     LaboratorioReadComponent,
     LaboratorioUpdateComponent,
     LaboratorioCrudComponent,
+    AmostraCreateComponent,
+    AmostraReadComponent,
+    AmostraDeleteComponent,
+    AmostraUpdateComponent,
   ],
   imports: [
     FormsModule,
