@@ -83,6 +83,10 @@ import { PacienteCreateComponent } from './components/paciente/paciente-create/p
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
+import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-update/requisicao-update.component';
+import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
+import { RequisicaoReadComponent } from './components/requisicao/requisicao-read/requisicao-read.component';
+import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
 
 registerLocaleData(localePt);
 
@@ -143,6 +147,10 @@ registerLocaleData(localePt);
     PacienteReadComponent,
     PacienteDeleteComponent,
     PacienteUpdateComponent,
+    RequisicaoUpdateComponent,
+    RequisicaoCreateComponent,
+    RequisicaoReadComponent,
+    RequisicaoDeleteComponent,
   ],
   imports: [
     FormsModule,
