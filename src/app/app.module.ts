@@ -91,6 +91,10 @@ import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-cre
 import { TipoExameReadComponent } from './components/tipo-exame/tipo-exame-read/tipo-exame-read.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
+import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
+import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
+import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
+import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 
 registerLocaleData(localePt);
 
@@ -159,6 +163,10 @@ registerLocaleData(localePt);
     TipoExameReadComponent,
     TipoExameUpdateComponent,
     TipoExameDeleteComponent,
+    UsuarioDeleteComponent,
+    UsuarioCreateComponent,
+    UsuarioUpdateComponent,
+    UsuarioReadComponent,
   ],
   imports: [
     FormsModule,
