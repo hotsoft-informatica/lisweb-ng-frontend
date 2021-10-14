@@ -95,6 +95,10 @@ import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usua
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
+import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
+import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
+import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
+import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 
 registerLocaleData(localePt);
 
@@ -167,6 +171,10 @@ registerLocaleData(localePt);
     UsuarioCreateComponent,
     UsuarioUpdateComponent,
     UsuarioReadComponent,
+    VersaoExameCreateComponent,
+    VersaoExameReadComponent,
+    VersaoExameUpdateComponent,
+    VersaoExameDeleteComponent,
   ],
   imports: [
     FormsModule,
