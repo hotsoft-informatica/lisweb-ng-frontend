@@ -87,6 +87,10 @@ import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-up
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoReadComponent } from './components/requisicao/requisicao-read/requisicao-read.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
+import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-create/tipo-exame-create.component';
+import { TipoExameReadComponent } from './components/tipo-exame/tipo-exame-read/tipo-exame-read.component';
+import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
+import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
 
 registerLocaleData(localePt);
 
@@ -151,6 +155,10 @@ registerLocaleData(localePt);
     RequisicaoCreateComponent,
     RequisicaoReadComponent,
     RequisicaoDeleteComponent,
+    TipoExameCreateComponent,
+    TipoExameReadComponent,
+    TipoExameUpdateComponent,
+    TipoExameDeleteComponent,
   ],
   imports: [
     FormsModule,
