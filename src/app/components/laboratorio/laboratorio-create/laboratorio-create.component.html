@@ -1,0 +1,57 @@
+<mat-card>
+  <mat-card-title>Novo Laboratório</mat-card-title>
+  <form>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Nome"
+        [(ngModel)]="laboratorio.nome"
+        name="name"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="2000"
+        [(ngModel)]="laboratorio.serie"
+        name="serie"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Laboratório domínio</mat-label>
+      <mat-select
+        [(ngModel)]="laboratorio.laboratory_domain_id"
+        name="laboratory_domain_id"
+      >
+        <mat-option
+          *ngFor="let laboratoryDomain of laboratoryDomains"
+          [value]="laboratoryDomain.id"
+        >
+          {{ laboratoryDomain.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        [matDatepicker]="criado_em"
+        placeholder="Criado em"
+        [(ngModel)]="laboratorio.criado_em"
+        name="criado em"
+        required
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="criado_em"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #criado_em></mat-datepicker>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="createLaboratorio()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+</mat-card>
