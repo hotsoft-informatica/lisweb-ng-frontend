@@ -79,6 +79,10 @@ import { MaterialBiologicoUpdateComponent } from './components/material-biologic
 import { MaterialBiologicoCreateComponent } from './components/material-biologico/material-biologico-create/material-biologico-create.component';
 import { MaterialBiologicoReadComponent } from './components/material-biologico/material-biologico-read/material-biologico-read.component';
 import { MaterialBiologicoDeleteComponent } from './components/material-biologico/material-biologico-delete/material-biologico-delete.component';
+import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
+import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
+import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
+import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
 
 registerLocaleData(localePt);
 
@@ -135,6 +139,10 @@ registerLocaleData(localePt);
     MaterialBiologicoCreateComponent,
     MaterialBiologicoReadComponent,
     MaterialBiologicoDeleteComponent,
+    PacienteCreateComponent,
+    PacienteReadComponent,
+    PacienteDeleteComponent,
+    PacienteUpdateComponent,
   ],
   imports: [
     FormsModule,
