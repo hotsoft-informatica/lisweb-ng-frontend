@@ -99,6 +99,7 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
+import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
 
 registerLocaleData(localePt);
 
@@ -175,6 +176,7 @@ registerLocaleData(localePt);
     VersaoExameReadComponent,
     VersaoExameUpdateComponent,
     VersaoExameDeleteComponent,
+    ConsultaAmostraShowComponent,
   ],
   imports: [
     FormsModule,
