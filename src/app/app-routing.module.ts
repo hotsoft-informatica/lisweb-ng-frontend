@@ -1,4 +1,3 @@
-import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -53,8 +52,7 @@ import { BancadaDeleteComponent } from './components/bancada/bancada-delete/banc
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraUpdateComponent } from './components/amostra/amostra-update/amostra-update.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
-import { ConsultaAmostraComponent } from './components/consulta-amostra/consulta-amostra/consulta-amostra.component';
-import { ConstultaAmostra } from './views/consulta-amostra/consulta-amostra.component';
+import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
 
 const routes: Routes = [
   {
