@@ -262,6 +262,10 @@ const routes: Routes = [
   {
     path: 'consulta_amostra/show/:id',
     component: ConsultaAmostraShowComponent,
+  },
+  {
+    path: 'consulta_amostra_show',
+    component: ConsultaAmostraShowComponent,
   }
 ];
 

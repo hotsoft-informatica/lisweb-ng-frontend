@@ -1,8 +1,6 @@
 <mat-toolbar class="header mat-elevation-z4">
   <div class="text">
-    <a routerLink="/">
-      LISWEB
-    </a>
+    <a routerLink="/"> LISWEB </a>
   </div>
   <!-- <span class="title-group">
     <a routerLink="{{ routeUrl }}">
@@ -13,24 +11,29 @@
     </a>
   </span> -->
   <div class="btn">
-    <mat-menu #appMenu="matMenu">
-      <ng-template matMenuContent>
-        <button mat-menu-item>
-          <a mat-list-item routerLink="/">Home</a>
-        </button>
-        <button mat-menu-item>
-          <a mat-list-item routerLink="/laboratorydomains">Lab Domínio</a>
-        </button>
-        <button mat-menu-item>
-          <a mat-list-item routerLink="/laboratorios">Laboratório</a>
-        </button>
-      </ng-template>
-    </mat-menu>
-    <span [matMenuTriggerFor]="appMenu">
-      <i class="material-icons medium v-middle">
-        assignment
-      </i>
+    <button mat-button [matMenuTriggerFor]="cadastro">
+      <mat-icon>assignment</mat-icon>
       Cadastrar
-    </span>
+    </button>
+    <mat-menu #cadastro="matMenu">
+      <button mat-menu-item>
+        <a mat-list-item routerLink="/laboratorydomains">Lab. Domínio</a>
+      </button>
+      <button mat-menu-item>
+        <a mat-list-item routerLink="/laboratorios">Laboratório</a>
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="consultar">
+      <mat-icon>pageview</mat-icon>
+      Consultar
+    </button>
+    <mat-menu #consultar="matMenu">
+      <button mat-menu-item>
+        <a mat-list-item routerLink="/consulta_amostra_show">
+          Cons. Amostra
+        </a>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>
