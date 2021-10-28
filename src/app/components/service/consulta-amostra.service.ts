@@ -22,41 +22,11 @@ export class ConsultaAmostraService {
     });
   }
 
-  create(exameAmostra: ConsultaAmostra): Observable<ConsultaAmostra> {
-    return this.http.post<ConsultaAmostra>(this.baseUrl, ConsultaAmostra);
-  }
-
-  read(): Observable<ConsultaAmostra[]> {
-    return this.http.get<ConsultaAmostra[]>(this.baseUrl);
-  }
-
-  readById(id: number): Observable<ConsultaAmostra> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.get<ConsultaAmostra>(url);
-  }
-
-  update(consultaAmostra: ConsultaAmostra): Observable<ConsultaAmostra> {
-    const url = `${this.baseUrl}/${consultaAmostra.id}`;
-    return this.http.put<ConsultaAmostra>(url, consultaAmostra);
-  }
-
-  delete(id: number): Observable<ConsultaAmostra> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<ConsultaAmostra>(url);
-  }
-
   findConsultaAmostras(
-    active: string = '',
-    sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
     query: Query[] | null
   ): Observable<ConsultaAmostra[]> {
     let params = new HttpParams()
-      .set('active', active)
-      .set('sortOrder', sortOrder)
-      .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
+      .set('query', Query.toString());
     query?.forEach((queryItem) => {
       if (queryItem) {
         const key = `queryItem[${queryItem.key}]`;
@@ -66,12 +36,6 @@ export class ConsultaAmostraService {
 
     return this.http.get<ConsultaAmostra[]>(this.baseUrl, {
       params,
-    });
-  }
-
-  countConsultaAmostras(): Observable<number> {
-    return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
     });
   }
 }
