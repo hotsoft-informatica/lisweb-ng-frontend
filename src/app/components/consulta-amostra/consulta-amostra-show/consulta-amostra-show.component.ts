@@ -39,10 +39,6 @@ export class ConsultaAmostraShowComponent implements OnInit {
     'action'
   ];
 
-  // @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
-  // @ViewChild(MatSort) sort: MatSort | any;
-
   query: Query[] = [];
 
   constructor(private consultaAmostraService: ConsultaAmostraService) { }
@@ -51,10 +47,8 @@ export class ConsultaAmostraShowComponent implements OnInit {
   }
 
   search(key: string, value: string): void {
-    let query = new Query({ key, value });
+    const query = new Query({ key, value });
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
-    // this.paginator.pageIndex = 0;
-    // this.loadLaboratoriosPage();
   }
 }
