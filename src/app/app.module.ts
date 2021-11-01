@@ -99,6 +99,12 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
+import { PacienteCreateDadosPessoaisComponent } from './components/paciente/paciente-create/paciente-create-dados-pessoais/paciente-create-dados-pessoais.component';
+import { PacienteCreateDadosOutrosComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-outros.component';
+import { PacienteCreateDadosConvenioComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-convenio/paciente-create-dados-convenio.component';
+import { PacienteCreateDadosContatosComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-contatos/paciente-create-dados-contatos.component';
+import { PacienteCreateDadosEnderecoComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-endereco/paciente-create-dados-endereco.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localePt);
 
@@ -175,8 +181,14 @@ registerLocaleData(localePt);
     VersaoExameReadComponent,
     VersaoExameUpdateComponent,
     VersaoExameDeleteComponent,
+    PacienteCreateDadosPessoaisComponent,
+    PacienteCreateDadosOutrosComponent,
+    PacienteCreateDadosConvenioComponent,
+    PacienteCreateDadosContatosComponent,
+    PacienteCreateDadosEnderecoComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     FormsModule,
     BrowserModule,
     MatMenuModule,

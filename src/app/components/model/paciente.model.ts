@@ -7,6 +7,7 @@ export class Paciente {
   public nome_mae?: string;
   public rg?: string;
   public data_nascimento?: Date = new Date();
+  public idade_paciente?: string;
   public sexo?: string;
   public cor?: string;
   public endereco?: string;
