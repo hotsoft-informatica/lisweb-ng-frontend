@@ -106,6 +106,21 @@ import { PacienteCreateDadosContatosComponent } from './components/paciente/paci
 import { PacienteCreateDadosEnderecoComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-endereco/paciente-create-dados-endereco.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { MY_DATE_FORMATS } from './formdata';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+
 registerLocaleData(localePt);
 
 @NgModule({
@@ -188,28 +203,40 @@ registerLocaleData(localePt);
     PacienteCreateDadosEnderecoComponent,
   ],
   imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserModule,
-    MatMenuModule,
-    MatCardModule,
-    MatIconModule,
-    MatSortModule,
-    MatListModule,
-    MatInputModule,
-    MatTableModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatToolbarModule,
-    HttpClientModule,
+    RouterModule,
+    FlexLayoutModule,
+    NgxMaskModule,
+    MatMomentDateModule,
     AppRoutingModule,
-    MatSnackBarModule,
-    MatPaginatorModule,
-    MatFormFieldModule,
-    MatNativeDateModule,
-    MatDatepickerModule,
     BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatMomentDateModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTreeModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
