@@ -43,7 +43,9 @@ export class ConsultaAmostraShowComponent implements OnInit {
 
   constructor(private consultaAmostraService: ConsultaAmostraService) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    // this.dataSource = new ConsultaAmostraService(
+    //   this.consultaAmostraService
+    // );
   }
 
   search(key: string, value: string): void {
