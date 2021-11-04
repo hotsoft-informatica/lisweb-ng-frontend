@@ -15,20 +15,19 @@ export class ConsultaAmostraShowDataSource implements DataSource<ConsultaAmostra
 
   constructor(private consultaAmostraService: ConsultaAmostraService) { }
 
-  consultaAmostras(
-    active: string,
+  loadConsultaAmostra(
     query: Query[] | null
   ) {
     this.loadingSubject.next(true);
 
     this.consultaAmostraService
-      .findConsultaAmostras(active, query)
+      .findConsultaAmostra(query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
       )
-      .subscribe((consultaAmostras: ConsultaAmostra[]) =>
-        this.consultaAmostraSubject.next(consultaAmostras)
+      .subscribe((consultaAmostra: ConsultaAmostra[]) =>
+        this.consultaAmostraSubject.next(consultaAmostra)
       );
   }
 

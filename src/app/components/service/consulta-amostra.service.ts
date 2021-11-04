@@ -22,8 +22,7 @@ export class ConsultaAmostraService {
     });
   }
 
-  findConsultaAmostras(
-    active: string = '',
+  findConsultaAmostra(
     query: Query[] | null
   ): Observable<ConsultaAmostra[]> {
     let params = new HttpParams()

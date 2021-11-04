@@ -1,3 +1,4 @@
+import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
@@ -21,8 +22,7 @@ import { merge, fromEvent } from 'rxjs';
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
-  totalCount!: number;
-  dataSource!: ConsultaAmostra;
+  dataSource!: ConsultaAmostraShowDataSource;
   displayedColumns = [
     'id',
     'original_id',
@@ -43,57 +43,20 @@ export class ConsultaAmostraShowComponent implements OnInit {
 
   constructor(private consultaAmostraService: ConsultaAmostraService) { }
   ngOnInit(): void {
-    // this.dataSource = new ConsultaAmostraService(
-    //   this.consultaAmostraService
-    // );
+    this.dataSource = new ConsultaAmostraShowDataSource(this.consultaAmostraService);
+    this.dataSource.loadConsultaAmostra(null);
   }
 
   search(key: string, value: string): void {
     const query = new Query({ key, value });
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
-    this.loadConsultaAmostrasPage();
+    this.loadConsultaAmostraPage();
   }
 
-  loadConsultaAmostrasPage() {
-    this.dataSource.loadConsultaAmostras(
+  loadConsultaAmostraPage() {
+    this.dataSource.loadConsultaAmostra(
       this.query
     );
   }
-
-
-
-------
-  search(key: string, value: string): void {
-    let query = new Query({ key, value });
-    this.query = this.query.filter((q) => q.key !== key);
-    this.query.push(query);
-    this.paginator.pageIndex = 0;
-    this.loadLaboratoriosPage();
-  }
-
-ngOnInit(): void {
-  this.dataSource = new LaboratorioReadDataSource(this.laboratorioService);
-  this.dataSource.loadLaboratorios('id', 'desc', 1, 10, null);
-  this.laboratorioService.countLaboratorios().subscribe((totalCount) => {
-    this.totalCount = totalCount;
-  });
-}
-
-ngAfterViewInit() {
-  this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
-
-  merge(this.sort.sortChange, this.paginator.page) //Na ordenação ou paginação, carrega uma nova página
-    .pipe(tap(() => this.loadLaboratoriosPage()))
-    .subscribe();
-}
-
-loadLaboratoriosPage() {
-  this.dataSource.loadLaboratorios(
-    this.sort.active,
-    this.sort.direction,
-    this.paginator.pageIndex,
-    this.paginator.pageSize,
-    this.query
-  );
 }
