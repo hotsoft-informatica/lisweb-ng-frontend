@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ConsultaAmostraService {
-  baseUrl = 'http://127.0.0.1:3010/exame-amostras';
+  baseUrl = 'http://127.0.0.1:3010/exames_amostras';
 
   query: Query[] = [];
 
