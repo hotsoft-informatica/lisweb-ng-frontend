@@ -22,11 +22,12 @@ export class ConsultaAmostraService {
     });
   }
 
-  findConsultaAmostra(
-    query: Query[] | null
-  ): Observable<ConsultaAmostra[]> {
-    let params = new HttpParams()
-      .set('query', Query.toString());
+  read(): Observable<ConsultaAmostra[]> {
+    return this.http.get<ConsultaAmostra[]>(this.baseUrl);
+  }
+
+  findConsultaAmostra(query: Query[] | null): Observable<ConsultaAmostra[]> {
+    let params = new HttpParams();
     query?.forEach((queryItem) => {
       if (queryItem) {
         const key = `queryItem[${queryItem.key}]`;

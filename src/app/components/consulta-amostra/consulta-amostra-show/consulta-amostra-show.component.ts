@@ -3,8 +3,6 @@ import { ConsultaAmostraService } from './../../service/consulta-amostra.service
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Query } from '../../model/query.model';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {
   debounceTime,
@@ -21,42 +19,31 @@ import { merge, fromEvent } from 'rxjs';
   templateUrl: './consulta-amostra-show.component.html',
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
-export class ConsultaAmostraShowComponent implements OnInit {
+export class ConsultaAmostraShowComponent implements OnInit, AfterViewInit {
   dataSource!: ConsultaAmostraShowDataSource;
-  displayedColumns = [
-    'id',
-    'original_id',
-    'laboratorio_id',
-    'exame_id',
-    'amostra_id',
-    'num_multi_amostra',
-    'created_at',
-    'updated_at',
-    'agrupamento_amostra_id',
-    'fracionamento_amostra_id',
-    'version_id',
-    'laboratory_domain_id',
-    'action'
-  ];
+  displayedColumns = ['amostra_id', 'laboratorio_id', 'exame_id', 'created_at'];
 
   query: Query[] = [];
 
   constructor(private consultaAmostraService: ConsultaAmostraService) { }
   ngOnInit(): void {
-    this.dataSource = new ConsultaAmostraShowDataSource(this.consultaAmostraService);
-    this.dataSource.loadConsultaAmostra(null);
+    this.dataSource = new ConsultaAmostraShowDataSource(
+      this.consultaAmostraService
+    );
+    this.dataSource.loadConsultaAmostra;
   }
 
   search(key: string, value: string): void {
-    const query = new Query({ key, value });
-    this.query = this.query.filter((q) => q.key !== key);
+    let query = new Query({ key, value });
     this.query.push(query);
     this.loadConsultaAmostraPage();
   }
 
+  ngAfterViewInit() {
+    tap(() => this.loadConsultaAmostraPage());
+  }
+
   loadConsultaAmostraPage() {
-    this.dataSource.loadConsultaAmostra(
-      this.query
-    );
+    this.dataSource.loadConsultaAmostra(this.query);
   }
 }
