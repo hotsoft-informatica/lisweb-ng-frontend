@@ -21,7 +21,7 @@ import { merge, fromEvent } from 'rxjs';
 })
 export class ConsultaAmostraShowComponent implements OnInit, AfterViewInit {
   dataSource!: ConsultaAmostraShowDataSource;
-  displayedColumns = ['amostra_id', 'laboratorio_id', 'exame_id', 'created_at'];
+  displayedColumns = ['id', 'num_amostra', 'laboratorio_id', 'created_at'];
 
   query: Query[] = [];
 
