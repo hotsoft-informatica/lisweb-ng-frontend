@@ -22,10 +22,6 @@ export class ConsultaAmostraService {
     });
   }
 
-  read(): Observable<ConsultaAmostra[]> {
-    return this.http.get<ConsultaAmostra[]>(this.baseUrl);
-  }
-
   findConsultaAmostra(query: Query[] | null): Observable<ConsultaAmostra[]> {
     let params = new HttpParams();
     query?.forEach((queryItem) => {
