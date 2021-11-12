@@ -1,7 +1,7 @@
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Query } from '../../model/query.model';
 import { MatTableDataSource } from '@angular/material/table';
 import {
@@ -20,6 +20,7 @@ import { merge, fromEvent } from 'rxjs';
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
+  clear!: boolean;
   dataSource!: ConsultaAmostraShowDataSource;
   displayedColumns = ['id', 'num_amostra', 'laboratorio_id', 'created_at'];
 
@@ -40,6 +41,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
   }
 
   loadConsultaAmostraPage() {
+    this.clear = true;
     this.dataSource.loadConsultaAmostra(this.query);
   }
 }
