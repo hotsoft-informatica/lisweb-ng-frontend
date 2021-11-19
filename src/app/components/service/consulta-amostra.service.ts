@@ -1,3 +1,4 @@
+import { Paciente } from '../model/paciente.model';
 import { ConsultaAmostra } from '../model/consulta-amostra.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
@@ -8,7 +9,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ConsultaAmostraService {
-  baseUrl = 'http://127.0.0.1:3010/amostras';
+  baseUrl = 'http://127.0.0.1:3010';
+  amostraUrl = 'http://127.0.0.1:3010/amostras';
+  pacienteUrl = 'http://127.0.0.1:3010/amostras_paciente';
 
   query: Query[] = [];
 
@@ -31,7 +34,21 @@ export class ConsultaAmostraService {
       }
     });
 
-    return this.http.get<ConsultaAmostra[]>(this.baseUrl, {
+    return this.http.get<ConsultaAmostra[]>(this.amostraUrl, {
+      params,
+    });
+  }
+
+  findPaciente(query: Query[] | null): Observable<Paciente> {
+    let params = new HttpParams();
+    query?.forEach((queryItem) => {
+      if (queryItem) {
+        const key = `queryItem[${queryItem.key}]`;
+        params = params.append(key, queryItem.value);
+      }
+    });
+
+    return this.http.get<Paciente>(this.pacienteUrl, {
       params,
     });
   }

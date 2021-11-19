@@ -1,7 +1,8 @@
+import { Paciente } from '../../model/paciente.model';
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Query } from '../../model/query.model';
 import { MatTableDataSource } from '@angular/material/table';
 import {
@@ -13,6 +14,7 @@ import {
   filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-consulta-amostra-show',
@@ -20,6 +22,7 @@ import { merge, fromEvent } from 'rxjs';
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
+  pacienteAmostra!: Paciente;
   clear!: boolean;
   dataSource!: ConsultaAmostraShowDataSource;
   displayedColumns = ['id', 'num_amostra', 'laboratorio_id', 'created_at'];
@@ -31,16 +34,22 @@ export class ConsultaAmostraShowComponent implements OnInit {
     this.dataSource = new ConsultaAmostraShowDataSource(
       this.consultaAmostraService
     );
-    this.dataSource.loadConsultaAmostra;
+    this.dataSource.loadConsultaAmostra(null);
+    this.pacienteAmostra = new Paciente({});
   }
 
   search(key: string, value: string): void {
-    let query = new Query({ key, value });
+    this.pacienteAmostra = new Paciente({});
+    const query = new Query({ key, value });
     this.query.push(query);
     this.loadConsultaAmostraPage();
+
+    this.consultaAmostraService
+      .findPaciente(this.query)
+      .subscribe((pacienteAmostra: Paciente) => (this.pacienteAmostra = pacienteAmostra));
   }
 
-  loadConsultaAmostraPage() {
+  loadConsultaAmostraPage(): void {
     this.clear = true;
     this.dataSource.loadConsultaAmostra(this.query);
   }
