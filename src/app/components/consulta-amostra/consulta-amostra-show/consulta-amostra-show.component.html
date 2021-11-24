@@ -5,16 +5,17 @@
     <mat-icon>close</mat-icon>
   </button>
   <!-- {{ pacienteAmostra?.nome }} -->
+  <!-- {{pacienteExame?.num_protocolo}} -->
 </mat-form-field>
 <div class="mat-elevation-z4">
   <table class="mat-table" id="pacienteAmostra">
     <tr class="mat-header-row">
       <th class="mat-header-cell">Paciente</th>
-      <th class="mat-header-cell">Dt. nascimento</th>
+      <th class="mat-header-cell">Protocolo</th>
     </tr>
     <tr class="mat-row">
-      <td class="mat-cell">{{pacienteAmostra.nome}}</td>
-      <td class="mat-cell">{{pacienteAmostra.data_nascimento}}</td>
+      <td class="mat-cell">{{pacienteAmostra?.nome}}</td>
+      <td class="mat-cell">{{pacienteExame?.num_protocolo}}</td>
     </tr>
   </table>
 
