@@ -2,7 +2,7 @@ import { Paciente } from '../../model/paciente.model';
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { Query } from '../../model/query.model';
 import { MatTableDataSource } from '@angular/material/table';
 import {
@@ -21,6 +21,7 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './consulta-amostra-show.component.html',
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
+
 export class ConsultaAmostraShowComponent implements OnInit {
   pacienteAmostra!: Paciente;
   clear!: boolean;
@@ -46,7 +47,9 @@ export class ConsultaAmostraShowComponent implements OnInit {
 
     this.consultaAmostraService
       .findPaciente(this.query)
-      .subscribe((pacienteAmostra: Paciente) => (this.pacienteAmostra = pacienteAmostra));
+      .subscribe(
+        (pacienteAmostra: Paciente) => (this.pacienteAmostra = pacienteAmostra)
+      );
   }
 
   loadConsultaAmostraPage(): void {
