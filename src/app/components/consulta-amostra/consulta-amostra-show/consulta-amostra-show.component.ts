@@ -1,5 +1,6 @@
 import { Paciente } from '../../model/paciente.model';
 import { Exame } from './../../model/exame.model';
+import { MaterialBiologico } from '../../model/material-biologico.model';
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
@@ -25,6 +26,7 @@ import { FormGroup } from '@angular/forms';
 export class ConsultaAmostraShowComponent implements OnInit {
   pacienteAmostra!: Paciente;
   pacienteExame!: Exame;
+  materialBiologico!: MaterialBiologico;
   clear!: boolean;
   dataSource!: ConsultaAmostraShowDataSource;
   displayedColumns = ['id', 'num_amostra', 'laboratorio_id', 'created_at'];
@@ -56,6 +58,12 @@ export class ConsultaAmostraShowComponent implements OnInit {
       .findExame(this.query)
       .subscribe(
         (pacienteExame: Exame) => (this.pacienteExame = pacienteExame)
+      );
+
+    this.consultaAmostraService
+      .findMaterialBiologico(this.query)
+      .subscribe(
+        (materialBiologico: MaterialBiologico) => (this.materialBiologico = materialBiologico)
       );
   }
 

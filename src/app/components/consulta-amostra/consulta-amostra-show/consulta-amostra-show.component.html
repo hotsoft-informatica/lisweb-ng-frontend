@@ -12,10 +12,12 @@
     <tr class="mat-header-row">
       <th class="mat-header-cell">Paciente</th>
       <th class="mat-header-cell">Protocolo</th>
+      <th class="mat-header-cell">Material</th>
     </tr>
     <tr class="mat-row">
       <td class="mat-cell">{{pacienteAmostra?.nome}}</td>
       <td class="mat-cell">{{pacienteExame?.num_protocolo}}</td>
+      <td class="mat-cell">{{materialBiologico?.nome}}</td>
     </tr>
   </table>
 
@@ -43,7 +45,7 @@
 
   <!-- created_at Column -->
   <ng-container matColumnDef="created_at">
-    <th mat-header-cell *matHeaderCellDef>Criado</th>
+    <th mat-header-cell *matHeaderCellDef>Data coleta</th>
     <td mat-cell *matCellDef="let row">
       {{ row?.created_at | date: "dd-MM-yyyy" }}
     </td>
