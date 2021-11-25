@@ -1,3 +1,5 @@
+import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
+import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -91,16 +93,28 @@ const routes: Routes = [
     component: LaboratorioDeleteComponent,
   },
   {
+    path: 'pacientes/read',
+    component: PacienteReadComponent,
+  },
+  {
+    path: 'pacientes/show:id',
+    component: PacienteReadComponent,
+  },
+  {
     path: 'pacientes/create',
     component: PacienteCreateComponent,
   },
   {
     path: 'pacientes/update/:id',
-    component: PacienteUpdateComponent,
+    component: PacienteCreateComponent,
   },
   {
     path: 'pacientes/delete/:id',
     component: PacienteDeleteComponent,
+  },
+  {
+    path: 'pacientes/show/:id',
+    component: PacienteShowComponent,
   },
   {
     path: 'requisicoes/create',

@@ -5,7 +5,6 @@ import { Paciente } from '../../../model/paciente.model';
 import { PacienteService } from 'src/app/components/service/paciente.service';
 
 
-
 @Component({
   selector: 'app-paciente-create-dados-pessoais',
   templateUrl: './paciente-create-dados-pessoais.component.html',
@@ -22,7 +21,7 @@ export class PacienteCreateDadosPessoaisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log('passou pelo paciente dados pessoas');
   }
   public calculaIdade(): void{
 
@@ -33,7 +32,7 @@ export class PacienteCreateDadosPessoaisComponent implements OnInit {
 
   createPaciente(): void {
     this.pacienteService.create(this.paciente).subscribe(() => {
-       this.router.navigate(['/pacientes']);
+       this.router.navigate(['/pacientes/read']);
     });
   }
 

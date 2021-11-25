@@ -26,8 +26,31 @@ export class PacienteService {
     return this.http.post<Paciente>(this.baseUrl, paciente);
   }
 
-  read(): Observable<Paciente[]> {
-    return this.http.get<Paciente[]>(this.baseUrl);
+  read(
+       sortActive: string = 'id',
+       sortDirection: string = 'desc',
+       pageNumber = 1,
+       pageSize = 3,
+       queries: Query[]): Observable<Paciente[]>
+  { // criando parametros e puxando dados do backend
+    let params = new HttpParams(); // cria paramaetros para leitura do backend
+
+    queries.forEach(busca => {
+      params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
+    });
+    params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
+    params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
+
+    queries?.forEach((queryItem) => {
+      if (queryItem) {
+        const key = `queryItem[${queryItem.key}]`;
+        params = params.append(key, queryItem.value);
+      }
+    });
+
+    return this.http.get<Paciente[]>(this.baseUrl, {params}); // Passa qual operação sera realizada pelo backend
   }
 
   readById(id: number): Observable<Paciente> {
@@ -43,30 +66,6 @@ export class PacienteService {
   delete(id: number): Observable<Paciente> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<Paciente>(url);
-  }
-
-  findPacientes(
-    active: string = '',
-    sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
-    query: Query[] | null
-  ): Observable<Paciente[]> {
-    let params = new HttpParams()
-      .set('active', active)
-      .set('sortOrder', sortOrder)
-      .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
-    query?.forEach((queryItem) => {
-      if (queryItem) {
-        const key = `queryItem[${queryItem.key}]`;
-        params = params.append(key, queryItem.value);
-      }
-    });
-
-    return this.http.get<Paciente[]>(this.baseUrl, {
-      params,
-    });
   }
 
   countPacientes(): Observable<number> {

@@ -1,7 +1,7 @@
 export class Paciente {
   public id?: number;
   public laboratorio_id?: number;
-  public original_id?: number;
+  public original_id?= 0;
   public cod_paciente?: string;
   public nome?: string;
   public nome_mae?: string;
@@ -29,6 +29,7 @@ export class Paciente {
   public comercial?: string;
   public ncns?: string;
   public validade_carteirinha?: Date = new Date();
+  public numero_carteirinha?: string;
   public numero?: string;
   public cod_ibge_municipio?: string;
   public cpf?: string;

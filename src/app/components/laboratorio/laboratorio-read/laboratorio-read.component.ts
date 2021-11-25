@@ -45,8 +45,8 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   constructor(private laboratorioService: LaboratorioService) { }
 
-  search(key: string, value: string): void {
-    let query = new Query({ key, value });
+  search(key: string, value: string, isNumeric: boolean= false): void {
+    const query = new Query({ key, value, isNumeric });
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
     this.paginator.pageIndex = 0;
@@ -64,7 +64,7 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
 
-    merge(this.sort.sortChange, this.paginator.page) //Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
       .pipe(tap(() => this.loadLaboratoriosPage()))
       .subscribe();
   }

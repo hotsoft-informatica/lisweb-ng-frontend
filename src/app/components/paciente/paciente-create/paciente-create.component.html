@@ -1,2 +1,9 @@
-<app-paciente-create-dados-pessoais></app-paciente-create-dados-pessoais>
-<app-paciente-create-dados-outros></app-paciente-create-dados-outros>
+<div>
+<app-paciente-create-dados-pessoais [paciente]='this.paciente'></app-paciente-create-dados-pessoais>
+<app-paciente-create-dados-outros [paciente]='this.paciente'></app-paciente-create-dados-outros>
+  <button mat-flat-button color="primary" class="fixed-bottom index"
+          (click)="createPaciente()">Salvar</button>
+          <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
+          (click)="cancel()">Cancelar</button>
+</div>
+

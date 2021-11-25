@@ -23,12 +23,12 @@ export class PacienteCreateDadosContatosComponent implements OnInit {
   createPaciente(): void {
     this.pacienteService.create(this.paciente).subscribe(() => {
       this.pacienteService.showMessage('Paciente criado com sucesso!');
-      this.router.navigate(['/pacientes']);
+      this.router.navigate(['/pacientes/read']);
     });
   }
 
   cancel(): void {
-   this.router.navigate(['/pacientes']);
+   this.router.navigate(['/pacientes/read']);
   }
 
 }

@@ -113,15 +113,17 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { MY_DATE_FORMATS } from './formdata';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
 
 registerLocaleData(localePt);
+export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
 
 @NgModule({
   declarations: [
@@ -201,11 +203,12 @@ registerLocaleData(localePt);
     PacienteCreateDadosConvenioComponent,
     PacienteCreateDadosContatosComponent,
     PacienteCreateDadosEnderecoComponent,
+    PacienteShowComponent,
   ],
   imports: [
     RouterModule,
     FlexLayoutModule,
-    NgxMaskModule,
+    NgxMaskModule.forRoot(),
     MatMomentDateModule,
     AppRoutingModule,
     BrowserAnimationsModule,

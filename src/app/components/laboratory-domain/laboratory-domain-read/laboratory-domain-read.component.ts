@@ -49,8 +49,8 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
 
   constructor(private laboratoryDomainService: LaboratoryDomainService) { }
 
-  search(key: string, value: string): void {
-    let query = new Query({ key, value });
+  search(key: string, value: string, isNumeric: boolean = false): void {
+    const query = new Query({ key, value, isNumeric});
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
     this.paginator.pageIndex = 0;

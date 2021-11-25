@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LaboratorioService } from '../../service/laboratorio.service';
 import { STRING_TYPE } from '@angular/compiler';
+
+
 @Component({
   selector: 'app-laboratorio-create',
   templateUrl: './laboratorio-create.component.html',
