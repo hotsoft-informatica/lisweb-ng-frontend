@@ -1,6 +1,8 @@
 import { Paciente } from '../../model/paciente.model';
 import { Exame } from './../../model/exame.model';
 import { MaterialBiologico } from '../../model/material-biologico.model';
+import { Coletor } from '../../model/coletor.model';
+import { Usuario } from '../../model/usuario.model';
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
@@ -27,6 +29,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
   pacienteAmostra!: Paciente;
   pacienteExame!: Exame;
   materialBiologico!: MaterialBiologico;
+  coletor!: Usuario;
   clear!: boolean;
   dataSource!: ConsultaAmostraShowDataSource;
   displayedColumns = ['id', 'num_amostra', 'laboratorio_id', 'created_at'];
@@ -63,7 +66,15 @@ export class ConsultaAmostraShowComponent implements OnInit {
     this.consultaAmostraService
       .findMaterialBiologico(this.query)
       .subscribe(
-        (materialBiologico: MaterialBiologico) => (this.materialBiologico = materialBiologico)
+        (materialBiologico: MaterialBiologico) =>
+          (this.materialBiologico = materialBiologico)
+      );
+
+    this.consultaAmostraService
+      .findColetor(this.query)
+      .subscribe(
+        (coletor: Usuario) =>
+          (this.coletor = coletor)
       );
   }
 

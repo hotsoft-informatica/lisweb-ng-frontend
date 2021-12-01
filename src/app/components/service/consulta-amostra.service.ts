@@ -1,6 +1,8 @@
 import { Paciente } from '../model/paciente.model';
 import { Exame } from '../model/exame.model';
 import { MaterialBiologico } from '../model/material-biologico.model';
+import { Coletor } from '../model/coletor.model';
+import { Usuario } from '../model/usuario.model';
 import { ConsultaAmostra } from '../model/consulta-amostra.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
@@ -15,6 +17,7 @@ export class ConsultaAmostraService {
   amostraUrl = 'http://127.0.0.1:3010/amostras';
   exameUrl = 'http://127.0.0.1:3010/exames_paciente';
   materialBiologicoUrl = 'http://127.0.0.1:3010/materiais_biologicos_paciente';
+  coletorUrl = 'http://127.0.0.1:3010/coletores_paciente';
   pacienteUrl = 'http://127.0.0.1:3010/amostras_paciente';
 
   query: Query[] = [];
@@ -81,6 +84,19 @@ export class ConsultaAmostraService {
     });
 
     return this.http.get<MaterialBiologico>(this.materialBiologicoUrl, {
+      params,
+    });
+  }
+  findColetor(query: Query[] | null): Observable<Usuario> {
+    let params = new HttpParams();
+    query?.forEach((queryItem) => {
+      if (queryItem) {
+        const key = `queryItem[${queryItem.key}]`;
+        params = params.append(key, queryItem.value);
+      }
+    });
+
+    return this.http.get<Usuario>(this.coletorUrl, {
       params,
     });
   }
