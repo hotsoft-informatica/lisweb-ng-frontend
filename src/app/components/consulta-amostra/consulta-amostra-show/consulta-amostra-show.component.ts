@@ -1,3 +1,4 @@
+import { Amostra } from '../../model/amostra.model';
 import { Paciente } from '../../model/paciente.model';
 import { Exame } from './../../model/exame.model';
 import { MaterialBiologico } from '../../model/material-biologico.model';
@@ -26,13 +27,14 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
+  amostra!: Amostra;
   pacienteAmostra!: Paciente;
   pacienteExame!: Exame;
   materialBiologico!: MaterialBiologico;
   coletor!: Usuario;
   clear!: boolean;
   dataSource!: ConsultaAmostraShowDataSource;
-  displayedColumns = ['id', 'num_amostra', 'laboratorio_id', 'created_at'];
+  displayedColumns = ['exame_id', 'amostra_id', 'laboratorio_id', 'version_id', 'created_at'];
 
   query: Query[] = [];
 
@@ -50,6 +52,12 @@ export class ConsultaAmostraShowComponent implements OnInit {
     const query = new Query({ key, value });
     this.query.push(query);
     this.loadConsultaAmostraPage();
+
+    this.consultaAmostraService
+      .findAmostra(this.query)
+      .subscribe(
+        (amostra: Amostra) => (this.amostra = amostra)
+      );
 
     this.consultaAmostraService
       .findPaciente(this.query)
