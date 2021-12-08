@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Query {\n  constructor(values) {\n    this.key = '';\n    this.value = '';\n    Object.assign(this, values);\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
