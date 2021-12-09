@@ -32,7 +32,9 @@ export class LaboratoryDomainUpdateComponent implements OnInit {
         'Domínio atualizado com sucesso!'
       );
     });
-    this.router.navigate(['/laboratorydomains']);
+    this.router.navigate(['/laboratorydomains']).then(() => {
+      window.location.reload();
+    });
   }
 
   cancel(): void {

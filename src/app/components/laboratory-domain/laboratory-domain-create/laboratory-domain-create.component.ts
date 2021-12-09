@@ -8,28 +8,23 @@ import { LaboratoryDomainService } from '../../service/laboratory-domain.service
   styleUrls: ['./laboratory-domain-create.component.css'],
 })
 export class LaboratoryDomainCreateComponent implements OnInit {
-  laboratoryDomain: LaboratoryDomain = {
-    name: null,
-    created_at: null,
-    updated_at: null,
-    version_id: null,
-    deleted: null,
-    sync_start_date: null,
-    sync_deadline: null,
-    criado_em: null,
-  };
+  laboratoryDomain: LaboratoryDomain;
 
   constructor(
-    private laboratoryDomainService: LaboratoryDomainService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private laboratoryDomainService: LaboratoryDomainService
+  ) {
+    this.laboratoryDomain = new LaboratoryDomain({});
+  }
 
   ngOnInit(): void { }
 
   createLaboratoryDomain(): void {
     this.laboratoryDomainService.create(this.laboratoryDomain).subscribe(() => {
       this.laboratoryDomainService.showMessage('Domínio criado com sucesso!');
-      this.router.navigate(['/laboratorydomains']);
+      this.router.navigate(['/laboratorydomains']).then(() => {
+        window.location.reload();
+      });
     });
   }
 

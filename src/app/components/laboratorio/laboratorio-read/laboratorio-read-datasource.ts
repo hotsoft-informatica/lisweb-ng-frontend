@@ -3,10 +3,13 @@ import { LaboratorioService } from '../../service/laboratorio.service';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
+import { Query } from '../../model/query.model';
 
 export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
   private laboratoriosSubject = new BehaviorSubject<Laboratorio[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
+
+  query: Query[] = [];
 
   public loading$ = this.loadingSubject.asObservable();
 
@@ -17,12 +20,12 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
     sortDirection: string,
     pageIndex: number,
     pageSize: number,
-    filter: string
+    query: Query[] | null
   ) {
     this.loadingSubject.next(true);
 
     this.laboratorioService
-      .findLaboratorios(active, sortDirection, pageIndex, pageSize)
+      .findLaboratorios(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

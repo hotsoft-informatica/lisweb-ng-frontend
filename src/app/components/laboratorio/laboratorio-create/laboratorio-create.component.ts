@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LaboratorioService } from '../../service/laboratorio.service';
 import { STRING_TYPE } from '@angular/compiler';
+
+
 @Component({
   selector: 'app-laboratorio-create',
   templateUrl: './laboratorio-create.component.html',
@@ -31,7 +33,9 @@ export class LaboratorioCreateComponent implements OnInit {
   createLaboratorio(): void {
     this.laboratorioService.create(this.laboratorio).subscribe(() => {
       this.laboratorioService.showMessage('Laboratório criado com sucesso!');
-      this.router.navigate(['/laboratorios']);
+      this.router.navigate(['/laboratorios']).then(() => {
+        window.location.reload();
+      });
     });
   }
 

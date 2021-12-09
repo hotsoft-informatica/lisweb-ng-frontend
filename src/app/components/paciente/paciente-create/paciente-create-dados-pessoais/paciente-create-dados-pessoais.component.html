@@ -1,0 +1,63 @@
+<form class= "example-container row container-fluid" fxShow.gt-xs>
+
+  <div class="row justify-content-around">
+
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
+        <mat-label>Nome:</mat-label>
+        <input matInput maxlength="50" placeholder="Nome completo" name="nome" [(ngModel)]="paciente.nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
+        <mat-label>RG:</mat-label>
+        <input matInput maxlength="12" mask="00.000.000-0" name="rg" [(ngModel)]="paciente.rg">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
+        <mat-label>CPF:</mat-label>
+        <input matInput maxlength="14" mask="000.000.000-00" name="cpf" [(ngModel)]="paciente.cpf">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" id="datanascimentopaciente" class="col-lg-2 col-md-12 p-2">
+        <mat-label>Data de nascimento</mat-label>
+        <input matInput type="date" id="datanascimentopaciente" name="data_nascimento"
+              (input)="calculaIdade()" [(ngModel)]="paciente.data_nascimento">
+      </mat-form-field>
+
+  </div>
+
+  <div class="row justify-content-around">
+
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
+        <mat-label>Nome da Mãe:</mat-label>
+        <input matInput maxlength="50" placeholder="Nome mãe compelto" name="nome_mae" [(ngModel)]="paciente.nome_mae">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class= "col-lg-2 col-md-12 p-2">
+        <mat-label>Sexo</mat-label>
+        <mat-select name="sexo" [(ngModel)]="paciente.sexo">
+          <mat-option value="masc">Masculino</mat-option>
+          <mat-option value="fem">Feminino</mat-option>
+          <mat-option value="sexoutros">Outros</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class= "col-lg-2 col-md-12 p-2">
+        <mat-label>Cor</mat-label>
+        <mat-select name="cor" [(ngModel)]="paciente.cor">
+          <mat-option value="amarelo">Amarelo</mat-option>
+          <mat-option value="branco">Branco</mat-option>
+          <mat-option value="preto">Preto</mat-option>
+          <mat-option value="coroutros">Outros</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="col-lg-2 col-md-12 p-2">
+        <mat-form-field appearance="fill">
+          <mat-label>Idade:</mat-label>
+          <input matInput disabled name="idade_paciente" [(ngModel)]="paciente.idade_paciente">
+        </mat-form-field>
+      </div>
+
+    </div>
+
+  </form>

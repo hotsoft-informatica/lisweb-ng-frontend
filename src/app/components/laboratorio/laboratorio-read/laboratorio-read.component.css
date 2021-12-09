@@ -24,3 +24,7 @@ table {
   margin: 0 auto;
   width: 50%;
 }
+
+.search-field{
+  margin: 0px 5px 5px 10px;
+}

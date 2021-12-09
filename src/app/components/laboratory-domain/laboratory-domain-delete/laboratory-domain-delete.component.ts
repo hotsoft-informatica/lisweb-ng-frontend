@@ -33,7 +33,9 @@ export class LaboratoryDomainDeleteComponent implements OnInit {
         this.laboratoryDomainService.showMessage(
           'Domínio excluído com sucesso!'
         );
-        this.router.navigate(['/laboratorydomains']);
+        this.router.navigate(['/laboratorydomains']).then(() => {
+          window.location.reload();
+        });
       });
   }
 
