@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class Laboratorio {\n  constructor(values) {\n    this.created_at = new Date();\n    this.updated_at = new Date();\n    this.criado_em = new Date();\n    Object.assign(this, values);\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

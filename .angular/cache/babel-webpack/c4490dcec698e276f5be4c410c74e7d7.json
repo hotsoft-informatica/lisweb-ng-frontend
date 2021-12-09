@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class LaboratoryDomain {\n  constructor(values) {\n    Object.assign(this, values);\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
