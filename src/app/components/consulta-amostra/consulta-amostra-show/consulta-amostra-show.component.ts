@@ -1,5 +1,9 @@
+import { Amostra } from '../../model/amostra.model';
 import { Paciente } from '../../model/paciente.model';
 import { Exame } from './../../model/exame.model';
+import { MaterialBiologico } from '../../model/material-biologico.model';
+import { Coletor } from '../../model/coletor.model';
+import { Usuario } from '../../model/usuario.model';
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
@@ -23,11 +27,14 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
+  amostra!: Amostra;
   pacienteAmostra!: Paciente;
   pacienteExame!: Exame;
+  materialBiologico!: MaterialBiologico;
+  coletor!: Usuario;
   clear!: boolean;
   dataSource!: ConsultaAmostraShowDataSource;
-  displayedColumns = ['id', 'num_amostra', 'laboratorio_id', 'created_at'];
+  displayedColumns = ['exame_id', 'amostra_id', 'laboratorio_id', 'version_id', 'created_at'];
 
   query: Query[] = [];
 
@@ -47,6 +54,12 @@ export class ConsultaAmostraShowComponent implements OnInit {
     this.loadConsultaAmostraPage();
 
     this.consultaAmostraService
+      .findAmostra(this.query)
+      .subscribe(
+        (amostra: Amostra) => (this.amostra = amostra)
+      );
+
+    this.consultaAmostraService
       .findPaciente(this.query)
       .subscribe(
         (pacienteAmostra: Paciente) => (this.pacienteAmostra = pacienteAmostra)
@@ -56,6 +69,20 @@ export class ConsultaAmostraShowComponent implements OnInit {
       .findExame(this.query)
       .subscribe(
         (pacienteExame: Exame) => (this.pacienteExame = pacienteExame)
+      );
+
+    this.consultaAmostraService
+      .findMaterialBiologico(this.query)
+      .subscribe(
+        (materialBiologico: MaterialBiologico) =>
+          (this.materialBiologico = materialBiologico)
+      );
+
+    this.consultaAmostraService
+      .findColetor(this.query)
+      .subscribe(
+        (coletor: Usuario) =>
+          (this.coletor = coletor)
       );
   }
 
