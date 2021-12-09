@@ -45,3 +45,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Cache
+.angular/*
+.angular/cache/*
+.angular/cache/angular-webpack/*
+
