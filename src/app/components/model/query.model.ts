@@ -1,9 +1,10 @@
 export class Query {
-  public key: string = '';
-  public value: string = '';
-  public isNumeric: boolean = false;
+  public key = '';
+  public value = '';
+  public isNumeric = false;
 
   constructor(values: Query) {
     Object.assign(this, values);
   }
 }
+
