@@ -1,0 +1,105 @@
+
+  <h2 class="col-12">
+    {{paciente.nome}}
+  </h2>
+
+
+  <mat-card>
+  <mat-divider inset></mat-divider>
+    <h3 class="mt-4">DADOS PESSOAIS:</h3>
+  <mat-divider inset></mat-divider>
+
+  <div class="p-2 row col-12">
+    <div class="col-3">
+      Data de Nascimento: {{paciente.data_nascimento}}
+    </div>
+    <div class="col-2">
+      RG: {{paciente.rg}}
+    </div>
+    <div class="col-2">
+      CPF: {{paciente.cpf}}
+    </div>
+    <div class="col-2">
+      Sexo: {{paciente.sexo}}
+    </div>
+    <div class="col-2">
+      Cor: {{paciente.cor}}
+    </div>
+  </div>
+  </mat-card>
+
+  <mat-card>
+    <mat-divider inset></mat-divider>
+      <h3 class="mt-4">ENDEREÇO:</h3>
+    <mat-divider inset></mat-divider>
+    <div class="p-2 row col-12">
+      <div class="col-2">
+        CEP: {{paciente.cep}}
+      </div>
+      <div class="col-3">
+        Logradouro: {{paciente.endereco}}
+      </div>
+      <div class="col-1">
+        N°: {{paciente.numero}}
+      </div>
+      <div class="col-1">
+        Cidade: {{paciente.cidade}}
+      </div>
+      <div class="col-1">
+        UF: {{paciente.uf}}
+      </div>
+      <div class="col-1">
+        Bairro: {{paciente.bairro}}
+      </div>
+      <div class="col-1">
+        IBGE: {{paciente.cod_ibge_municipio}}
+      </div>
+      <div class="col-1">
+        Complemtento: {{paciente.complemento_endereco}}
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card>
+    <mat-divider inset></mat-divider>
+      <h3 class="mt-4">CONTATOS:</h3>
+    <mat-divider inset></mat-divider>
+    <div class="p-2 row">
+      <div class="col-2">
+        Telefone: {{paciente.telefone}}
+      </div>
+      <div class="col-2">
+        Celular: {{paciente.celular}}
+      </div>
+      <div class="col-4">
+        E-mail: {{paciente.email}}
+      </div>
+      <div class="col-2">
+        Observação: {{paciente.observacao}}
+      </div>
+    </div>
+  </mat-card>
+
+
+  <mat-card>
+    <mat-divider inset></mat-divider>
+      <h3 class="mt-4">PLANO DE SAUDE:</h3>
+    <mat-divider inset></mat-divider>
+    <div class="p-2 row">
+      <div class="col-2">
+        Convênio: {{paciente.convenio_id}}
+      </div>
+      <div class="col-3">
+        Titular: {{paciente.nome_titular}}
+      </div>
+      <div class="col-2">
+        Carteirinha: {{paciente.numero_carteirinha}}
+      </div>
+      <div class="col-2">
+        Validade: {{paciente.validade_carteirinha}}
+      </div>
+      <div class="col-2">
+        CNS: {{paciente.ncns}}
+      </div>
+      </div>
+    </mat-card>

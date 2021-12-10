@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.red {
+  color: #e35e6b;
+  font-size: small;
+}
+
+.v-middle {
+  vertical-align: middle;
+}
+
+.msg-success {
+  background-color: seagreen;
+  color: #fff;
+}
+
+.msg-error {
+  background-color: #e35e6bed;
+  color: #fff;
+}
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
