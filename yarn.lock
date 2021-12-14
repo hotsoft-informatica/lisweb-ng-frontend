@@ -10,7 +10,7 @@
     "@jridgewell/resolve-uri" "1.0.0"
     sourcemap-codec "1.4.8"
 
-"@angular-devkit/architect@0.1300.4", "@angular-devkit/architect@^0.1300.4":
+"@angular-devkit/architect@0.1300.4":
   version "0.1300.4"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1300.4.tgz#2b3a0606138a4f1259bb146e378a835f667fd82c"
   integrity sha512-COW2W6rI9D69QEXGc/MyTbJY9gT+u8yMTpONpIjopd+KoSK/q2wGr0RleUf7XSCunZCs0SRI7z3Pw1EAdQCP7Q==
@@ -18,7 +18,7 @@
     "@angular-devkit/core" "13.0.4"
     rxjs "6.6.7"
 
-"@angular-devkit/architect@0.1301.1":
+"@angular-devkit/architect@^0.1301.1":
   version "0.1301.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1301.1.tgz#83ab7f59bdc31ac7883fcea2534f6142bc67ca7a"
   integrity sha512-3g1wlqihVEOhClsuSzyJYm8Sr4qc4IUDuOa45m8439bz9iQy2wZ3JUGTwX1NcpeLxmCDrgewuphIsW096HxYlg==
@@ -130,7 +130,30 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
+"@angular-devkit/schematics@13.0.4", "@angular-devkit/schematics@^13.0.4":
+  version "13.0.4"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.0.4.tgz#9455e695ae25b642d9a93179938149cd52ccdbb1"
+  integrity sha512-3LsmpfAEOxwPyachrktCHtGUYBzQCCzD0++CUjhK8W99v8/IAplkm4dgovFb1RiRkUm44l+HIS7387AbvEIf5A==
+  dependencies:
+    ajv "8.8.2"
+    ajv-formats "2.1.1"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.7"
+    source-map "0.7.3"
+
 "@angular-devkit/schematics@13.1.1", "@angular-devkit/schematics@^13.0.4":
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.1.1.tgz#63418e4c1efa24b5f9b6b5695249e6cfc02ea181"
+  integrity sha512-uDE0vzjx7MyiJOul91MYMVpRPnAW5/o+pHcINx85wR6t4/RDQSH3UdBCCFxxwv1W9YZSR4kMiwi/sUYqPqbQMw==
+  dependencies:
+    "@angular-devkit/core" "13.1.1"
+    jsonc-parser "3.0.0"
+    magic-string "0.25.7"
+    ora "5.4.1"
+    rxjs "6.6.7"
+
+"@angular-devkit/schematics@^13.1.1":
   version "13.1.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.1.1.tgz#63418e4c1efa24b5f9b6b5695249e6cfc02ea181"
   integrity sha512-uDE0vzjx7MyiJOul91MYMVpRPnAW5/o+pHcINx85wR6t4/RDQSH3UdBCCFxxwv1W9YZSR4kMiwi/sUYqPqbQMw==
@@ -1271,10 +1294,15 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-1.0.0.tgz#3fdf5798f0b49e90155896f6291df186eac06c83"
   integrity sha512-9oLAnygRMi8Q5QkYEU4XWK04B+nuoXoxjRvRxgjuChkLZFBja0YPSgdZ7dZtwhncLBcQe/I/E+fLuk5qxcYVJA==
 
-"@ngtools/webpack@13.0.4", "@ngtools/webpack@^13.0.4":
+"@ngtools/webpack@13.0.4":
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.0.4.tgz#9389c95fdbefb48fe061a30d81aab2f83bbf2081"
   integrity sha512-kH0kYOQvbv6SnVdcdi21AbJo17H1HSGlCy/8C1ujLdgtT6enKMnx9onYIoZSmb5U98GqYc+DV/W0HwpHwRcOoQ==
+
+"@ngtools/webpack@^13.1.1":
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.1.1.tgz#736988cda569b9b1eb925908ebe9ccf3faa095eb"
+  integrity sha512-TGCuscGFNHPoXScswuj9UxNv8E+A/PXs5XH8cyTtbkmlpBec1EShnaUTdDP5nhykjjaWzd3TLChlp9DinE+Ctg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3763,7 +3791,7 @@ istanbul-lib-coverage@^3.0.0, istanbul-lib-coverage@^3.2.0:
   resolved "https://registry.yarnpkg.com/istanbul-lib-coverage/-/istanbul-lib-coverage-3.2.0.tgz#189e7909d0a39fa5a3dfad5b03f71947770191d3"
   integrity sha512-eOeJ5BHCmHYvQK7xt9GkdHuzuCGS1Y6g9Gvnx3Ym33fz/HpLRYxiS0wHNr+m/MBC8B647Xt608vCDEvhl9c6Mw==
 
-istanbul-lib-instrument@^4.0.1:
+istanbul-lib-instrument@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/istanbul-lib-instrument/-/istanbul-lib-instrument-4.0.3.tgz#873c6fff897450118222774696a3f28902d77c1d"
   integrity sha512-BXgQl9kf4WTCPCCpmFGoJkz/+uhvm7h7PFKUYxh7qarQd3ER33vHG//qaE8eN25l07YqZPpHXU9I09l/RD5aGQ==
@@ -3793,7 +3821,7 @@ istanbul-lib-report@^3.0.0:
     make-dir "^3.0.0"
     supports-color "^7.1.0"
 
-istanbul-lib-source-maps@^4.0.0:
+istanbul-lib-source-maps@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/istanbul-lib-source-maps/-/istanbul-lib-source-maps-4.0.1.tgz#895f3a709fcfba34c6de5a42939022f3e4358551"
   integrity sha512-n3s8EwkdFIJCG3BPKBYvskgXGoy88ARzvegkitk60NxRdwltLOTaH7CUiMRXvwYorl0Q712iEjcWB+fK/MrWVw==
@@ -3802,7 +3830,7 @@ istanbul-lib-source-maps@^4.0.0:
     istanbul-lib-coverage "^3.0.0"
     source-map "^0.6.1"
 
-istanbul-reports@^3.0.0:
+istanbul-reports@^3.0.5:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/istanbul-reports/-/istanbul-reports-3.1.1.tgz#7085857f17d2441053c6ce5c3b8fdf6882289397"
   integrity sha512-q1kvhAXWSsXfMjCdNHNPKZZv94OlspKnoGv+R9RGbnqOOQ0VbNfLFgQDVgi7hHenKsndGq3/o0OBdzDXthWcNw==
@@ -3815,10 +3843,10 @@ jasmine-core@^3.10.1, jasmine-core@^3.6.0:
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.10.1.tgz#7aa6fa2b834a522315c651a128d940eca553989a"
   integrity sha512-ooZWSDVAdh79Rrj4/nnfklL3NQVra0BcuhcuWoAwwi+znLDoUeH87AFfeX8s+YeYi6xlv5nveRyaA1v7CintfA==
 
-jasmine-spec-reporter@~5.0.0:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/jasmine-spec-reporter/-/jasmine-spec-reporter-5.0.2.tgz#b61288ab074ad440dc2477c4d42840b0e74a6b95"
-  integrity sha512-6gP1LbVgJ+d7PKksQBc2H0oDGNRQI3gKUsWlswKaQ2fif9X5gzhQcgM5+kiJGCQVurOG09jqNhk7payggyp5+g==
+jasmine-spec-reporter@~7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/jasmine-spec-reporter/-/jasmine-spec-reporter-7.0.0.tgz#94b939448e63d4e2bd01668142389f20f0a8ea49"
+  integrity sha512-OtC7JRasiTcjsaCBPtMO0Tl8glCejM4J4/dNuOJdA8lBjz4PmWjYQ6pzb0uzpBNAWJMDudYuj9OdXJWqM2QTJg==
   dependencies:
     colors "1.4.0"
 
@@ -3912,16 +3940,16 @@ karma-chrome-launcher@~3.1.0:
   dependencies:
     which "^1.2.1"
 
-karma-coverage@~2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/karma-coverage/-/karma-coverage-2.0.3.tgz#c10f4711f4cf5caaaa668b1d6f642e7da122d973"
-  integrity sha512-atDvLQqvPcLxhED0cmXYdsPMCQuh6Asa9FMZW1bhNqlVEhJoB9qyZ2BY1gu7D/rr5GLGb5QzYO4siQskxaWP/g==
+karma-coverage@~2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/karma-coverage/-/karma-coverage-2.1.0.tgz#843564578d9e1fb889ec141a582c019bb6db14db"
+  integrity sha512-uIejpnArNFQIovB6EPsKO/T4XofELdJWXcA2ADXztFlKhHbr0Ws6ba7wKTMVWsIhEs4iJxdhQkCQrkkhFJSZCw==
   dependencies:
-    istanbul-lib-coverage "^3.0.0"
-    istanbul-lib-instrument "^4.0.1"
+    istanbul-lib-coverage "^3.2.0"
+    istanbul-lib-instrument "^4.0.3"
     istanbul-lib-report "^3.0.0"
-    istanbul-lib-source-maps "^4.0.0"
-    istanbul-reports "^3.0.0"
+    istanbul-lib-source-maps "^4.0.1"
+    istanbul-reports "^3.0.5"
     minimatch "^3.0.4"
 
 karma-jasmine-html-reporter@^1.7.0:
