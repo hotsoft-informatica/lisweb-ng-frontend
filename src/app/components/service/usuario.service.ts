@@ -26,9 +26,32 @@ export class UsuarioService {
     return this.http.post<Usuario>(this.baseUrl, usuario);
   }
 
-  read(): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.baseUrl);
-  }
+  read(
+    sortActive: string = 'id',
+    sortDirection: string = 'desc',
+    pageNumber = 1,
+    pageSize = 3,
+    queries: Query[]): Observable<Usuario[]>
+{ // criando parametros e puxando dados do backend
+ let params = new HttpParams(); // cria paramaetros para leitura do backend
+
+ queries.forEach(busca => {
+   params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
+ });
+ params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
+ params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
+ params = params.append('pageNumber', pageNumber.toString());
+ params = params.append('pageSize', pageSize.toString());
+
+ queries?.forEach((queryItem) => {
+   if (queryItem) {
+     const key = `queryItem[${queryItem.key}]`;
+     params = params.append(key, queryItem.value);
+   }
+ });
+
+ return this.http.get<Usuario[]>(this.baseUrl, {params}); // Passa qual operação sera realizada pelo backend
+}
 
   readById(id: number): Observable<Usuario> {
     const url = `${this.baseUrl}/${id}`;

@@ -17,6 +17,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import {
   MatPaginatorModule,
   MatPaginatorIntl,
@@ -105,7 +107,7 @@ import { PacienteCreateDadosConvenioComponent } from './components/paciente/paci
 import { PacienteCreateDadosContatosComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-contatos/paciente-create-dados-contatos.component';
 import { PacienteCreateDadosEnderecoComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-endereco/paciente-create-dados-endereco.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatChipsModule} from '@angular/material/chips';
 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -119,8 +121,12 @@ import { MY_DATE_FORMATS } from './formdata';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import {MatTabsModule} from '@angular/material/tabs';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
+import { LoginComponent } from './components/login/login.component';
+import { LgUsuarioComponent } from './components/login/lg-usuario/lg-usuario.component';
+import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
+
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -204,8 +210,13 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     PacienteCreateDadosContatosComponent,
     PacienteCreateDadosEnderecoComponent,
     PacienteShowComponent,
+    LoginComponent,
+    LgUsuarioComponent,
+    LgSenhaComponent,
   ],
   imports: [
+    MatAutocompleteModule,
+    MatChipsModule,
     RouterModule,
     FlexLayoutModule,
     NgxMaskModule.forRoot(),

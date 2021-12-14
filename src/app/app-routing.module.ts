@@ -1,3 +1,6 @@
+import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
+import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
+import { LoginComponent } from './components/login/login.component';
 import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
 import { NgModule, Component } from '@angular/core';
@@ -56,6 +59,14 @@ import { AmostraUpdateComponent } from './components/amostra/amostra-update/amos
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'senha',
+    component: LgSenhaComponent,
+  },
   {
     path: '',
     component: HomeComponent,
@@ -131,6 +142,10 @@ const routes: Routes = [
   {
     path: 'usuarios/create',
     component: UsuarioCreateComponent,
+  },
+  {
+    path: 'usuarios/read',
+    component: UsuarioReadComponent,
   },
   {
     path: 'usuarios/update/:id',
