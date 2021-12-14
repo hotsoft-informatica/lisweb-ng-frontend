@@ -1,3 +1,5 @@
+import { TipoExame } from "./tipo-exame.model";
+
 export class Exame {
   public id?: number;
   public original_id?: number;
@@ -82,6 +84,7 @@ export class Exame {
   public val_maximo_critico?: number;
   public val_minimo_critico?: number;
   public dado_auxiliar?: string;
+  public tipo_exame?: TipoExame;
 
   constructor(values: Exame) {
     Object.assign(this, values);
