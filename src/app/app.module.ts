@@ -1,3 +1,7 @@
+import { LoginComponent } from './components/login/login.component';
+import { LgUsuarioComponent } from './components/login/lg-usuario/lg-usuario.component';
+import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
+import { MatChipsModule } from '@angular/material/chips';
 import localePt from '@angular/common/locales/pt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,7 +12,8 @@ import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MY_DATE_FORMATS } from './formdata';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -18,7 +23,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MatNativeDateModule } from '@angular/material/core';
+
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -118,6 +127,7 @@ import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exa
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 
+
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
 
@@ -170,6 +180,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     LoteAmostraDeleteComponent,
     LoteAmostraReadComponent,
     LoteAmostraUpdateComponent,
+    LoginComponent,
+    LgSenhaComponent,
+    LgUsuarioComponent,
     MaterialBiologicoCreateComponent,
     MaterialBiologicoDeleteComponent,
     MaterialBiologicoReadComponent,
@@ -209,8 +222,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
+    MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,

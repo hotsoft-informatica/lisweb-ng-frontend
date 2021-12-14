@@ -15,6 +15,7 @@ export class Usuario {
   public enviar_stockfin?: string;
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
+  public grupos?: string;
 
   constructor(values: Usuario) {
     Object.assign(this, values);
