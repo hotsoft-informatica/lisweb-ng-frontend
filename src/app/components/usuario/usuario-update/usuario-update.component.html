@@ -1,1 +1,55 @@
-<p>usuario-update works!</p>
+<form class= "example-container row container-fluid" fxShow.gt-xs>
+
+  <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
+    <mat-label>Nome:</mat-label>
+    <input matInput maxlength="50" placeholder="Nome completo" name="nome" [(ngModel)]="usuario.nome">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
+    <mat-label>Usuario:</mat-label>
+    <input matInput maxlength="50" placeholder="Nome de usuario" name="login" [(ngModel)]="usuario.login">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
+    <mat-label>Cargo:</mat-label>
+    <input matInput maxlength="50" placeholder="Cargo de usuario" >
+  </mat-form-field>
+
+  <mat-form-field class="example-chip-list" appearance="fill">
+    <mat-label>Grupos</mat-label>
+    <mat-chip-list #chipList aria-label="grupo selection">
+      <mat-chip
+        *ngFor="let grupo of grupos"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(grupo)">
+        {{grupo}}
+        <button matChipRemove *ngIf="removable">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Digite o grupo de usuario"
+        #grupoInput
+        [formControl]="grupoCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+        name="grupos"
+        [(ngModel)]="usuario.grupos">
+    </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let grupo of filteredGrupos | async" [value]="grupo">
+      {{grupo}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
+</form>
+<div>
+  <button mat-flat-button color="primary" class="fixed-bottom index"
+  (click)="createUsuario()">Salvar</button>
+  <button mat-flat-button mat-dialog-close color="warn" class="fixed-bottom index ms-2">
+    Cancelar</button>
+</div>
