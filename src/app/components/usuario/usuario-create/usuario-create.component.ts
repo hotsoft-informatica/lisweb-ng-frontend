@@ -26,9 +26,7 @@ export class UsuarioCreateComponent implements OnInit {
   filteredGrupos: Observable<string[]>;
   grupos: string[] = [];
   allGrupos: string[] = ['Responsavel Técnico', 'Digitação', 'Recepção', 'Suporte'];
-  confirmaSenha = '';
   auxSenhas = 0;
-
   usuario: Usuario;
   id: number;
 
@@ -37,7 +35,7 @@ export class UsuarioCreateComponent implements OnInit {
   constructor(
     private router: Router,
     private usuarioService: UsuarioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {
     this.usuario = new Usuario({}); // criando usuario
 
@@ -104,19 +102,29 @@ export class UsuarioCreateComponent implements OnInit {
     this.router.navigate(['/usuarios/read/']);
   }
   createUsuario(): void {
+    if (this.senhasDiferentes()){
+      return;
+    }
     if (this.id > 0){
       this.update();
     }
     else{
       console.table(this.usuario);
       this.usuarioService.create(this.usuario).subscribe(() => {
-        this.router.navigate(['/usuarios/read']);
+      console.log('criado');
       });
     }
   }
-  senhasDiferentes(): any {
-    if (this.usuario.senha !== this.confirmaSenha) {
+
+  senhasDiferentes(): boolean {
+    if (this.usuario.senha !== this.usuario.confirmaSenha) {
+      console.log(this.usuario.senha);
+      console.log(this.usuario.confirmaSenha);
       this.usuarioService.showMessage('Senhas não conferem.');
+      return true;
+    }
+    else {
+      return false;
     }
   }
 

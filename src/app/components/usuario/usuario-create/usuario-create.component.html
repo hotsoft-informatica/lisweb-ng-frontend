@@ -28,7 +28,11 @@
 
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Confirmaçao:</mat-label>
-    <input matInput maxlength="50" placeholder="Confirme a senha" [type]="hide ? 'password' : 'text'">
+    <input matInput maxlength="50"
+           placeholder="Confirme a senha"
+           [type]="hide ? 'password' : 'text'"
+           name="confirmaSenha"
+           [(ngModel)]="usuario.confirmaSenha">
     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
