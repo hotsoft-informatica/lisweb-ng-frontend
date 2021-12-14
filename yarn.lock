@@ -1251,10 +1251,15 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-1.0.0.tgz#3fdf5798f0b49e90155896f6291df186eac06c83"
   integrity sha512-9oLAnygRMi8Q5QkYEU4XWK04B+nuoXoxjRvRxgjuChkLZFBja0YPSgdZ7dZtwhncLBcQe/I/E+fLuk5qxcYVJA==
 
-"@ngtools/webpack@13.0.4", "@ngtools/webpack@^13.0.4":
+"@ngtools/webpack@13.0.4":
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.0.4.tgz#9389c95fdbefb48fe061a30d81aab2f83bbf2081"
   integrity sha512-kH0kYOQvbv6SnVdcdi21AbJo17H1HSGlCy/8C1ujLdgtT6enKMnx9onYIoZSmb5U98GqYc+DV/W0HwpHwRcOoQ==
+
+"@ngtools/webpack@^13.1.1":
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.1.1.tgz#736988cda569b9b1eb925908ebe9ccf3faa095eb"
+  integrity sha512-TGCuscGFNHPoXScswuj9UxNv8E+A/PXs5XH8cyTtbkmlpBec1EShnaUTdDP5nhykjjaWzd3TLChlp9DinE+Ctg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
