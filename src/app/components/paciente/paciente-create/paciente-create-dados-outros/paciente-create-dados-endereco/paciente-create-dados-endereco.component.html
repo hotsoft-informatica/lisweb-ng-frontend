@@ -1,0 +1,70 @@
+<form class="example-container row container-fluid mt-4">
+
+  <div class="row justify-content-around">
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label for="cep">CEP:</mat-label>
+        <input matInput maxlength="9" mask="00000-000" id="cep" name="cep"
+               [(ngModel)]="paciente.cep"
+               (ngModelChange)="consulta()">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-4 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Cidade:</mat-label>
+        <input matInput maxlength="50" id="cidade" name="cidade"
+               [(ngModel)]="paciente.cidade">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-2 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>UF:</mat-label>
+        <input matInput maxlength="50" id="enderecoUf" name="uf"
+              [(ngModel)]="paciente.uf">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Cod. IBGE:</mat-label>
+        <input matInput maxlength="50" id="enderecoIbge" name="cod_ibge_municipio"
+               [(ngModel)]="paciente.cod_ibge_municipio">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Logradouro:</mat-label>
+        <input matInput maxlength="50" id="endereco" name="endereco"
+              [(ngModel)]="paciente.endereco">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>N°:</mat-label>
+        <input matInput maxlength="50" id="numero" name="numero" [(ngModel)]="paciente.numero">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Complemento:</mat-label>
+        <input matInput maxlength="50" id="enderecoComp" name="complemento"
+               [(ngModel)]="paciente.complemento_endereco">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Bairro:</mat-label>
+        <input matInput maxlength="50" id="enderecoBairro" name="bairro"
+               [(ngModel)]="paciente.bairro">
+      </mat-form-field>
+    </div>
+
+  </div>
+</form>

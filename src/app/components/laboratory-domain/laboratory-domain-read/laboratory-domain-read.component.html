@@ -1,0 +1,103 @@
+<mat-form-field class="search-field">
+  <mat-input-container>
+    <input matInput type="text" placeholder="Buscar Nome" (keyup.enter)="search('name', inputName.value)" #inputName />
+  </mat-input-container>
+</mat-form-field>
+<div class="mat-elevation-z4">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    matSortActive="name"
+    matSortDirection="asc"
+    matSortDisableClear
+  >
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="id">Id</th>
+      <td mat-cell *matCellDef="let row">{{ row?.id }}</td>
+    </ng-container>
+
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header="name">Nome</th>
+      <td mat-cell *matCellDef="let row">{{ row?.name }}</td>
+    </ng-container>
+
+    <!-- created_at Column -->
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef>Data criação</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row?.created_at | date: "dd-MM-yyyy" }}
+      </td>
+    </ng-container>
+
+    <!-- updated_at Column -->
+    <ng-container matColumnDef="updated_at">
+      <th mat-header-cell *matHeaderCellDef>Data Atualização</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row?.updated_at | date: "dd-MM-yyyy" }}
+      </td>
+    </ng-container>
+
+    <!-- version_id Column -->
+    <ng-container matColumnDef="version_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="version_id">Versão</th>
+      <td mat-cell *matCellDef="let row">{{ row?.version_id }}</td>
+    </ng-container>
+
+    <!-- deleted Column -->
+    <ng-container matColumnDef="deleted">
+      <th mat-header-cell *matHeaderCellDef>Apagado</th>
+      <td mat-cell *matCellDef="let row">{{ row?.deleted }}</td>
+    </ng-container>
+
+    <!-- sync_start_date Column -->
+    <ng-container matColumnDef="sync_start_date">
+      <th mat-header-cell *matHeaderCellDef>Data sincronizado</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row?.sync_start_date | date: "dd-MM-yyyy" }}
+      </td>
+    </ng-container>
+
+    <!-- sync_deadline Column -->
+    <ng-container matColumnDef="sync_deadline">
+      <th mat-header-cell *matHeaderCellDef>Prazo limite</th>
+      <td mat-cell *matCellDef="let row">{{ row?.sync_deadline }}</td>
+    </ng-container>
+
+    <!-- criado_em Column -->
+    <ng-container matColumnDef="criado_em">
+      <th mat-header-cell *matHeaderCellDef>Criação</th>
+      <td mat-cell *matCellDef="let row">
+        {{ row?.criado_em | date: "dd-MM-yyyy" }}
+      </td>
+    </ng-container>
+
+    <!-- action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let row">
+        <a routerLink="/laboratorydomains/update/{{ row.id }}" class="edit">
+          <i class="material-icons"> edit </i>
+        </a>
+        <a routerLink="/laboratorydomains/delete/{{ row.id }}" class="delete">
+          <i class="material-icons"> delete </i>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="this.totalCount"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 50]"
+  ></mat-paginator>
+
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

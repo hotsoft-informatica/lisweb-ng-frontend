@@ -1,0 +1,38 @@
+<form class= "example-container row container-fluid mt-4" fxShow.gt-xs>
+
+  <div class="row justify-content-around">
+
+      <mat-form-field appearance="fill" class="col-lg-2 p-2">
+        <mat-label>Telefone:</mat-label>
+        <input matInput #input maxlength="13" mask="(00)0000-0000"id="enderecoCidade" name="telefone"
+               [(ngModel)]="paciente.telefone">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-2 p-2">
+        <mat-label>Celular:</mat-label>
+        <input matInput #input maxlength="14" mask="(00)00000-0000" id="enderecoCidade" name="celular"
+               [(ngModel)]="paciente.celular">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-4 p-2">
+        <mat-label>E-mail:</mat-label>
+        <input matInput #input maxlength="50" id="enderecoCidade" name="email"
+              [(ngModel)]="paciente.email">
+      </mat-form-field>
+
+
+    <div class="row col-lg-4 p-2">
+      <mat-label>Deseja receber CRM? </mat-label>
+      <mat-slide-toggle class="mt-2" color="primary" name="receber_email"
+      [(ngModel)]="paciente.recebe_email">E-mail</mat-slide-toggle>
+      <mat-slide-toggle class="mt-2" color="primary" name="receber_sms"
+      [(ngModel)]="paciente.recebe_sms">SMS</mat-slide-toggle>
+    </div>
+
+    <mat-form-field class="example-full-width col-lg-12 p-2" appearance="fill" >
+      <mat-label>Observações</mat-label>
+      <textarea matInput [(ngModel)]="paciente.observacao" name="observacao"></textarea>
+    </mat-form-field>
+
+  </div>
+</form>
