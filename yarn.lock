@@ -18,7 +18,7 @@
     "@angular-devkit/core" "13.0.4"
     rxjs "6.6.7"
 
-"@angular-devkit/architect@^0.1301.1":
+"@angular-devkit/architect@0.1301.1", "@angular-devkit/architect@^0.1301.1":
   version "0.1301.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1301.1.tgz#83ab7f59bdc31ac7883fcea2534f6142bc67ca7a"
   integrity sha512-3g1wlqihVEOhClsuSzyJYm8Sr4qc4IUDuOa45m8439bz9iQy2wZ3JUGTwX1NcpeLxmCDrgewuphIsW096HxYlg==
@@ -130,30 +130,7 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@13.0.4", "@angular-devkit/schematics@^13.0.4":
-  version "13.0.4"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.0.4.tgz#9455e695ae25b642d9a93179938149cd52ccdbb1"
-  integrity sha512-3LsmpfAEOxwPyachrktCHtGUYBzQCCzD0++CUjhK8W99v8/IAplkm4dgovFb1RiRkUm44l+HIS7387AbvEIf5A==
-  dependencies:
-    ajv "8.8.2"
-    ajv-formats "2.1.1"
-    fast-json-stable-stringify "2.1.0"
-    magic-string "0.25.7"
-    rxjs "6.6.7"
-    source-map "0.7.3"
-
-"@angular-devkit/schematics@13.1.1", "@angular-devkit/schematics@^13.0.4":
-  version "13.1.1"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.1.1.tgz#63418e4c1efa24b5f9b6b5695249e6cfc02ea181"
-  integrity sha512-uDE0vzjx7MyiJOul91MYMVpRPnAW5/o+pHcINx85wR6t4/RDQSH3UdBCCFxxwv1W9YZSR4kMiwi/sUYqPqbQMw==
-  dependencies:
-    "@angular-devkit/core" "13.1.1"
-    jsonc-parser "3.0.0"
-    magic-string "0.25.7"
-    ora "5.4.1"
-    rxjs "6.6.7"
-
-"@angular-devkit/schematics@^13.1.1":
+"@angular-devkit/schematics@13.1.1", "@angular-devkit/schematics@^13.1.1":
   version "13.1.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.1.1.tgz#63418e4c1efa24b5f9b6b5695249e6cfc02ea181"
   integrity sha512-uDE0vzjx7MyiJOul91MYMVpRPnAW5/o+pHcINx85wR6t4/RDQSH3UdBCCFxxwv1W9YZSR4kMiwi/sUYqPqbQMw==
@@ -4395,12 +4372,12 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngx-mask@^12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-mask/-/ngx-mask-12.0.0.tgz#8eb363cc609ab71b687bbe6f87497c461ca120b1"
-  integrity sha512-q4vUjhjJfg4faRud/tUdCTOs3JA6B+rBB2OPZ2xBZy4LNTRKGfUK683LrDCitMVBezjEAVrkQdUT1I4C7LXBZQ==
+ngx-mask@^13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-mask/-/ngx-mask-13.0.1.tgz#2c45106424e36f7518ffbed6d471daa5481eb957"
+  integrity sha512-FbB/xVT+ILR35U0pILL7XWgPmDz+475vBxOVZuFOxnwi+dP8Bdl8l31c8FR39zB1nAPm/nSvK3MbU/RbTeoSRA==
   dependencies:
-    tslib "^2.1.0"
+    tslib "^2.3.0"
 
 nice-napi@^1.0.2:
   version "1.0.2"
@@ -6131,7 +6108,7 @@ ts-node@~10.4.0:
     make-error "^1.1.1"
     yn "3.1.1"
 
-tslib@2.3.1, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0:
+tslib@2.3.1, tslib@^2.0.0, tslib@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
