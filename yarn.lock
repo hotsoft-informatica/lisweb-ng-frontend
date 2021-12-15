@@ -18,7 +18,7 @@
     "@angular-devkit/core" "13.0.4"
     rxjs "6.6.7"
 
-"@angular-devkit/architect@^0.1301.1":
+"@angular-devkit/architect@0.1301.1", "@angular-devkit/architect@^0.1301.1":
   version "0.1301.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1301.1.tgz#83ab7f59bdc31ac7883fcea2534f6142bc67ca7a"
   integrity sha512-3g1wlqihVEOhClsuSzyJYm8Sr4qc4IUDuOa45m8439bz9iQy2wZ3JUGTwX1NcpeLxmCDrgewuphIsW096HxYlg==
@@ -130,30 +130,7 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@13.0.4", "@angular-devkit/schematics@^13.0.4":
-  version "13.0.4"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.0.4.tgz#9455e695ae25b642d9a93179938149cd52ccdbb1"
-  integrity sha512-3LsmpfAEOxwPyachrktCHtGUYBzQCCzD0++CUjhK8W99v8/IAplkm4dgovFb1RiRkUm44l+HIS7387AbvEIf5A==
-  dependencies:
-    ajv "8.8.2"
-    ajv-formats "2.1.1"
-    fast-json-stable-stringify "2.1.0"
-    magic-string "0.25.7"
-    rxjs "6.6.7"
-    source-map "0.7.3"
-
-"@angular-devkit/schematics@13.1.1", "@angular-devkit/schematics@^13.0.4":
-  version "13.1.1"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.1.1.tgz#63418e4c1efa24b5f9b6b5695249e6cfc02ea181"
-  integrity sha512-uDE0vzjx7MyiJOul91MYMVpRPnAW5/o+pHcINx85wR6t4/RDQSH3UdBCCFxxwv1W9YZSR4kMiwi/sUYqPqbQMw==
-  dependencies:
-    "@angular-devkit/core" "13.1.1"
-    jsonc-parser "3.0.0"
-    magic-string "0.25.7"
-    ora "5.4.1"
-    rxjs "6.6.7"
-
-"@angular-devkit/schematics@^13.1.1":
+"@angular-devkit/schematics@13.1.1", "@angular-devkit/schematics@^13.1.1":
   version "13.1.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.1.1.tgz#63418e4c1efa24b5f9b6b5695249e6cfc02ea181"
   integrity sha512-uDE0vzjx7MyiJOul91MYMVpRPnAW5/o+pHcINx85wR6t4/RDQSH3UdBCCFxxwv1W9YZSR4kMiwi/sUYqPqbQMw==
@@ -1299,10 +1276,10 @@
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.0.4.tgz#9389c95fdbefb48fe061a30d81aab2f83bbf2081"
   integrity sha512-kH0kYOQvbv6SnVdcdi21AbJo17H1HSGlCy/8C1ujLdgtT6enKMnx9onYIoZSmb5U98GqYc+DV/W0HwpHwRcOoQ==
 
-"@ngtools/webpack@^13.1.1":
-  version "13.1.1"
-  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.1.1.tgz#736988cda569b9b1eb925908ebe9ccf3faa095eb"
-  integrity sha512-TGCuscGFNHPoXScswuj9UxNv8E+A/PXs5XH8cyTtbkmlpBec1EShnaUTdDP5nhykjjaWzd3TLChlp9DinE+Ctg==
+"@ngtools/webpack@^13.1.2":
+  version "13.1.2"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.1.2.tgz#58d8bfe8b3d4ee3b5aa1ceb3f7911b77410c6c6b"
+  integrity sha512-F/KraxCCUjSn5nWVEQSuyVfnoE9j/bTcpIb+6e38/Hq/saPfsUoNiRjWlTAxCD44vHbMuVkJ/ZRZT6hdICAslw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
