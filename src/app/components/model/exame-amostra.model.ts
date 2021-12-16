@@ -1,3 +1,6 @@
+import { Amostra } from "./amostra.model";
+import { Exame } from "./exame.model";
+
 export class ExameAmostra {
   public id?: number;
   public original_id?: number;
@@ -14,6 +17,8 @@ export class ExameAmostra {
   public deleted?: boolean;
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number
+  public exame?: Exame;
+  public amostra?: Amostra;
 
   constructor(values: ExameAmostra) {
     Object.assign(this, values);

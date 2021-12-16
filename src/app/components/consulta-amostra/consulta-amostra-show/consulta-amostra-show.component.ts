@@ -1,3 +1,5 @@
+import { AmostraService } from './../../service/amostra.service';
+import { ExameAmostraService } from './../../service/exame-amostra.service';
 import { ExameAmostra } from './../../model/exame-amostra.model';
 import { Amostra } from '../../model/amostra.model';
 import { Paciente } from '../../model/paciente.model';
@@ -29,6 +31,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
+  exameAmostras!: ExameAmostra[];
   exameId!: number | undefined;
   exame!: Exame;
   amostra!: Amostra;
@@ -39,8 +42,8 @@ export class ConsultaAmostraShowComponent implements OnInit {
   clear!: boolean;
   dataSource!: ConsultaAmostraShowDataSource;
   displayedColumns = [
-    'exame_id',
-    'amostra_id',
+    'id',
+    'original_id',
     'laboratorio_id',
     'version_id',
     'created_at',
@@ -50,7 +53,9 @@ export class ConsultaAmostraShowComponent implements OnInit {
 
   constructor(
     private consultaAmostraService: ConsultaAmostraService,
-    private exameService: ExameService
+    private exameService: ExameService,
+    private exameAmostraService: ExameAmostraService,
+    private amostraService: AmostraService
   ) { }
   ngOnInit(): void {
     this.dataSource = new ConsultaAmostraShowDataSource(
@@ -68,7 +73,28 @@ export class ConsultaAmostraShowComponent implements OnInit {
 
     this.consultaAmostraService
       .findAmostra(this.query)
-      .subscribe((amostra: Amostra) => (this.amostra = amostra));
+      .subscribe((amostra: Amostra) => {
+        this.amostra = amostra;
+        this.exameAmostraService
+          .read(this.amostra.id, 0)
+          .subscribe((exameAmostras: ExameAmostra[]) => {
+            this.exameAmostras = exameAmostras;
+            this.exameAmostras.forEach((exameAmostra) => {
+              this.amostraService
+                .readById(exameAmostra.amostra_id as number)
+                .subscribe((amostra: Amostra) => {
+                  exameAmostra.amostra = amostra;
+                  console.log(exameAmostra.exame?.id);
+                });
+              this.exameService
+                .readById(exameAmostra.exame_id as number)
+                .subscribe((exame: Exame) => {
+                  exameAmostra.exame = exame;
+                  console.log(exameAmostra.amostra?.id);
+                });
+            });
+          });
+      });
 
     this.consultaAmostraService
       .findPaciente(this.query)
@@ -97,7 +123,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
   loadConsultaAmostraPage(): void {
     this.clear = true;
     this.dataSource.loadConsultaAmostra(this.query);
-    this.exameId = this.dataSource.first.exame_id;
+    // this.exameId = this.dataSource.first.exame_id;
     this.consultaExame();
   }
 
