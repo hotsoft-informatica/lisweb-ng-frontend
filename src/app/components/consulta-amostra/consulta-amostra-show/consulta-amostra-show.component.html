@@ -17,61 +17,57 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
-exame: {{this.exame?.id}}
 <div class="mat-elevation-z4">
   <table class="mat-table" id="pacienteAmostra">
-    <tr class="mat-header-row">
-      <th class="mat-header-cell">Paciente</th>
-      <th class="mat-header-cell">Protocolo</th>
-      <th class="mat-header-cell">Material</th>
-      <th class="mat-header-cell">Coletador</th>
-      <th class="mat-header-cell">Data coleta</th>
-    </tr>
-    <tr class="mat-row">
-      <td class="mat-cell">{{ pacienteAmostra?.nome }}</td>
-      <td class="mat-cell">{{ pacienteExame?.num_protocolo }}</td>
-      <td class="mat-cell">{{ materialBiologico?.nome }}</td>
-      <td class="mat-cell">{{ coletor?.nome }}</td>
-      <td class="mat-cell">{{ amostra?.created_at | date: "dd-MM-yyyy" }}</td>
-    </tr>
+    <thead>
+      <tr class="mat-header-row">
+        <th class="mat-header-cell">Paciente</th>
+        <th class="mat-header-cell">Protocolo</th>
+        <th class="mat-header-cell">Material</th>
+        <th class="mat-header-cell">Coletador</th>
+        <th class="mat-header-cell">Data coleta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="mat-row">
+        <td class="mat-cell">{{ pacienteAmostra?.nome }}</td>
+        <td class="mat-cell">{{ pacienteExame?.num_protocolo }}</td>
+        <td class="mat-cell">{{ materialBiologico?.nome }}</td>
+        <td class="mat-cell">{{ coletor?.nome }}</td>
+        <td class="mat-cell">{{ amostra?.created_at | date: "dd-MM-yyyy" }}</td>
+      </tr>
+    </tbody>
   </table>
 
-  <table mat-table [dataSource]="dataSource">
-    <!-- exame_id Column -->
-    <ng-container matColumnDef="exame_id">
-      <th mat-header-cell *matHeaderCellDef>Exame Id</th>
-      <td mat-cell *matCellDef="let row">{{ row?.exame_id }}</td>
-    </ng-container>
-
-    <!-- amostra_id Column -->
-    <ng-container matColumnDef="amostra_id">
-      <th mat-header-cell *matHeaderCellDef>Amostra id</th>
-      <td mat-cell *matCellDef="let row">{{ row?.amostra_id }}</td>
-    </ng-container>
-
-    <!-- laboratorio_id Column -->
-    <ng-container matColumnDef="laboratorio_id">
-      <th mat-header-cell *matHeaderCellDef>Laboratório Id</th>
-      <td mat-cell *matCellDef="let row">{{ row?.laboratorio_id }}</td>
-
-    </ng-container>
-    <!-- version_id Column -->
-    <ng-container matColumnDef="version_id">
-      <th mat-header-cell *matHeaderCellDef>Versão Id</th>
-      <td mat-cell *matCellDef="let row">{{ row?.version_id }}</td>
-    </ng-container>
-
-    <!-- created_at Column -->
-    <ng-container matColumnDef="created_at">
-      <th mat-header-cell *matHeaderCellDef>Data coleta</th>
-      <td mat-cell *matCellDef="let row">
-        {{ row?.created_at | date: "dd-MM-yyyy" }}
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+  <div class="mat-elevation-z4">
+    <table class="table table-striped">
+      <thead>
+        <tr class="mat-header-row">
+          <th class="mat-header-cell">Amostra Id</th>
+          <th class="mat-header-cell">Exame Id</th>
+          <th class="mat-header-cell">Laboratório Id</th>
+          <th class="mat-header-cell">Versão Id</th>
+          <th class="mat-header-cell">Status</th>
+          <th class="mat-header-cell">Data resultado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="mat-row"
+          *ngFor="let exameAmostra of this.exameAmostras as ExameAmostra"
+        >
+          <td class="mat-cell">{{ exameAmostra.amostra?.id }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.id }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.laboratorio_id }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.versao_exame_id }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.status }}</td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.data_hora_resultado | date: "dd-MM-yyyy" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="spinner-container" *ngIf="dataSource.loading$ | async">
     <mat-spinner></mat-spinner>
   </div>
