@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1301.1",
-    "@angular-devkit/build-angular": "^13.0.4",
+    "@angular-devkit/build-angular": "^13.1.2",
     "@angular-devkit/schematics": "^13.1.1",
     "@ngtools/webpack": "^13.1.2",
     "@types/jasmine": "~3.10.2",
