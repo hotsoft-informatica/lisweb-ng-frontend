@@ -43,12 +43,15 @@
     <table class="table table-striped">
       <thead>
         <tr class="mat-header-row">
-          <th class="mat-header-cell">Amostra Id</th>
-          <th class="mat-header-cell">Exame Id</th>
-          <th class="mat-header-cell">Laboratório Id</th>
-          <th class="mat-header-cell">Versão Id</th>
+          <th class="mat-header-cell">Mnemônico</th>
+          <th class="mat-header-cell">Tipo exame</th>
+          <th class="mat-header-cell">Versão exame</th>
+          <th class="mat-header-cell">Urgente</th>
           <th class="mat-header-cell">Status</th>
+          <th class="mat-header-cell">Data entrega</th>
           <th class="mat-header-cell">Data resultado</th>
+          <th class="mat-header-cell">Data liberação</th>
+          <th class="mat-header-cell">Data aprovação</th>
         </tr>
       </thead>
       <tbody>
@@ -56,13 +59,22 @@
           class="mat-row"
           *ngFor="let exameAmostra of this.exameAmostras as ExameAmostra"
         >
-          <td class="mat-cell">{{ exameAmostra.amostra?.id }}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.id }}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.laboratorio_id }}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.versao_exame_id }}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.status }}</td>
+        <td class="mat-cell">{{ exameAmostra.exame?.cod_exame}}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.versao_exame?.titulo_laudo }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.versao_exame?.descricao }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.urgente }}</td>
+          <td class="mat-cell">{{ exameAmostra?.exame?.status }}</td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.data_entrega | date: "dd-MM-yyyy" }}
+          </td>
           <td class="mat-cell">
             {{ exameAmostra.exame?.data_hora_resultado | date: "dd-MM-yyyy" }}
+          </td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.data_hora_resultado | date: "dd-MM-yyyy" }}
+          </td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.data_hora_aprovacao | date: "dd-MM-yyyy" }}
           </td>
         </tr>
       </tbody>

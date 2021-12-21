@@ -10,6 +10,7 @@ import { Usuario } from '../../model/usuario.model';
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ExameService } from '../../service/exame.service';
+import { VersaoExameService } from '../../service/versao-exame.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
 import { Component, OnInit, Input, Injectable } from '@angular/core';
 import { Query } from '../../model/query.model';
@@ -24,6 +25,7 @@ import {
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 import { FormGroup } from '@angular/forms';
+import { VersaoExame } from '../../model/versao-exame.model';
 
 @Component({
   selector: 'app-consulta-amostra-show',
@@ -34,6 +36,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
   exameAmostras!: ExameAmostra[];
   exameId!: number | undefined;
   exame!: Exame;
+  versaoExame!: VersaoExame;
   amostra!: Amostra;
   pacienteAmostra!: Paciente;
   pacienteExame!: Exame;
@@ -54,6 +57,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
   constructor(
     private consultaAmostraService: ConsultaAmostraService,
     private exameService: ExameService,
+    private versaoExameService: VersaoExameService,
     private exameAmostraService: ExameAmostraService,
     private amostraService: AmostraService
   ) { }
@@ -89,8 +93,14 @@ export class ConsultaAmostraShowComponent implements OnInit {
               this.exameService
                 .readById(exameAmostra.exame_id as number)
                 .subscribe((exame: Exame) => {
-                  exameAmostra.exame = exame;
                   console.log(exameAmostra.amostra?.id);
+                  this.versaoExameService
+                    .readById(exame?.versao_exame_id as number)
+                    .subscribe((versaoExame: VersaoExame) => {
+                      exame.versao_exame = versaoExame;
+                      console.log(exameAmostra.amostra?.id);
+                    });
+                  exameAmostra.exame = exame;
                 });
             });
           });
