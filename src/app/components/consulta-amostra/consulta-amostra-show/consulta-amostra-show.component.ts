@@ -142,4 +142,24 @@ export class ConsultaAmostraShowComponent implements OnInit {
       .readById(this.exameId as number)
       .subscribe((exame) => (this.exame = exame));
   }
+
+  consultaStatus(status: string | undefined): string {
+    switch (status) {
+      case 'A':
+        return '#01FC1A';
+        break;
+      case 'I':
+        return '#C0DCC0';
+        break;
+      case 'E':
+        return '#A6CAF0';
+        break;
+      case 'N':
+        return '#FFD700';
+        break;
+      default:
+        return '';
+        break;
+    }
+  }
 }
