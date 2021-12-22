@@ -64,18 +64,10 @@
           <td class="mat-cell">{{ exameAmostra.exame?.versao_exame?.descricao }}</td>
           <td class="mat-cell">{{ exameAmostra.exame?.urgente }}</td>
           <td class="mat-cell">{{ exameAmostra?.exame?.status }}</td>
-          <td class="mat-cell">
-            {{ exameAmostra.exame?.data_entrega | date: "dd-MM-yyyy" }}
-          </td>
-          <td class="mat-cell">
-            {{ exameAmostra.exame?.data_hora_resultado | date: "dd-MM-yyyy" }}
-          </td>
-          <td class="mat-cell">
-            {{ exameAmostra.exame?.data_hora_resultado | date: "dd-MM-yyyy" }}
-          </td>
-          <td class="mat-cell">
-            {{ exameAmostra.exame?.data_hora_aprovacao | date: "dd-MM-yyyy" }}
-          </td>
+          <td class="mat-cell">{{ exameAmostra.exame?.data_entrega | date: "dd/MM/yyyy" }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.data_hora_resultado | date: "dd/MM/yyyy" }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.data_hora_resultado | date: "dd/MM/yyyy" }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.data_hora_aprovacao | date: "dd/MM/yyyy" }}</td>
         </tr>
       </tbody>
     </table>
