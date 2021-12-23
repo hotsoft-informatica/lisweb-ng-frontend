@@ -174,8 +174,17 @@ export class ConsultaAmostraShowComponent implements OnInit {
       case 'E':
         return 'Resultado Liberado';
         break;
+      case 'L':
+        return 'Aguardando Liberação';
+        break;
       case 'N':
         return 'Aguardando Resultado';
+        break;
+      case 'N':
+        return 'Resultado Reprovado';
+        break;
+      case 'R':
+        return 'Requisitado';
         break;
       default:
         return '';
