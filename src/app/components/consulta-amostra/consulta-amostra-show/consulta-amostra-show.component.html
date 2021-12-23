@@ -59,17 +59,34 @@
           class="mat-row"
           *ngFor="let exameAmostra of this.exameAmostras as ExameAmostra"
         >
-        <td class="mat-cell">{{ exameAmostra.exame?.cod_exame}}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.versao_exame?.titulo_laudo }}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.versao_exame?.descricao }}</td>
+          <td class="mat-cell">{{ exameAmostra.exame?.cod_exame }}</td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.versao_exame?.titulo_laudo }}
+          </td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.versao_exame?.descricao }}
+          </td>
           <td class="mat-cell">{{ exameAmostra.exame?.urgente }}</td>
-          <td class="mat-cell" [ngStyle]="{'color': consultaStatus(exameAmostra?.exame?.status)}">
+          <td
+            class="mat-cell"
+            data-toggle="tooltip"
+            [title]="consultaStatusAlt(exameAmostra?.exame?.status)"
+            [ngStyle]="{ color: consultaStatus(exameAmostra?.exame?.status) }"
+          >
             {{ exameAmostra?.exame?.status }}
           </td>
-          <td class="mat-cell">{{ exameAmostra.exame?.data_entrega | date: "dd/MM/yyyy" }}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.data_hora_resultado | date: "dd/MM/yyyy" }}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.data_hora_resultado | date: "dd/MM/yyyy" }}</td>
-          <td class="mat-cell">{{ exameAmostra.exame?.data_hora_aprovacao | date: "dd/MM/yyyy" }}</td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.data_entrega | date: "dd/MM/yyyy" }}
+          </td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.data_hora_resultado | date: "dd/MM/yyyy" }}
+          </td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.data_hora_resultado | date: "dd/MM/yyyy" }}
+          </td>
+          <td class="mat-cell">
+            {{ exameAmostra.exame?.data_hora_aprovacao | date: "dd/MM/yyyy" }}
+          </td>
         </tr>
       </tbody>
     </table>

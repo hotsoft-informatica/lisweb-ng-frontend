@@ -162,4 +162,24 @@ export class ConsultaAmostraShowComponent implements OnInit {
         break;
     }
   }
+
+  consultaStatusAlt(status: string | undefined): string {
+    switch (status) {
+      case 'A':
+        return 'Resultado aprovado';
+        break;
+      case 'I':
+        return 'Resultado Informado';
+        break;
+      case 'E':
+        return 'Resultado Liberado';
+        break;
+      case 'N':
+        return 'Aguardando Resultado';
+        break;
+      default:
+        return '';
+        break;
+    }
+  }
 }
