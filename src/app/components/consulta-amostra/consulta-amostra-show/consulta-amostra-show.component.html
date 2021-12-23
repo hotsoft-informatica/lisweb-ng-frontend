@@ -69,8 +69,7 @@
           <td class="mat-cell">{{ exameAmostra.exame?.urgente }}</td>
           <td
             class="mat-cell"
-            data-toggle="tooltip"
-            [title]="consultaStatusAlt(exameAmostra?.exame?.status)"
+            [tippy]="consultaStatusAlt(exameAmostra?.exame?.status)"
             [ngStyle]="{ color: consultaStatus(exameAmostra?.exame?.status) }"
           >
             {{ exameAmostra?.exame?.status }}

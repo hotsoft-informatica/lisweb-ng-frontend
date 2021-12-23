@@ -1171,6 +1171,21 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-1.0.0.tgz#3fdf5798f0b49e90155896f6291df186eac06c83"
   integrity sha512-9oLAnygRMi8Q5QkYEU4XWK04B+nuoXoxjRvRxgjuChkLZFBja0YPSgdZ7dZtwhncLBcQe/I/E+fLuk5qxcYVJA==
 
+"@ngneat/helipopper@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@ngneat/helipopper/-/helipopper-5.1.0.tgz#69ed45da0a47ef6e9a748387bfcfa07a500d6e30"
+  integrity sha512-eQIMY7YzKkkfB625x6zd7ASQbM6Z/iAZUNSdSAAVpJ72HaOCjpbBkAFRCzblOSPGuwfX2NmA67yWkgpNm4v+Jg==
+  dependencies:
+    tippy.js "6.3.7"
+    tslib "2.3.1"
+
+"@ngneat/overview@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@ngneat/overview/-/overview-3.0.2.tgz#517cd74fc76078dda039e4fe66ee4568b22c8c73"
+  integrity sha512-2CpRlxqThQ2TWDYSHc77aM3MwH6DhrRWUZZMOtoKTVLWBv2f1qjCYrSuCpZQLG1bUvOoqMH9CK4xoIIOzx2eYw==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngtools/webpack@13.1.1", "@ngtools/webpack@^13.0.4":
   version "13.1.1"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.1.1.tgz#736988cda569b9b1eb925908ebe9ccf3faa095eb"
@@ -1213,7 +1228,7 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
-"@popperjs/core@^2.11.0":
+"@popperjs/core@^2.11.0", "@popperjs/core@^2.9.0":
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
   integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
@@ -5521,6 +5536,13 @@ thunky@^1.0.2:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.1.0.tgz#5abaf714a9405db0504732bbccd2cedd9ef9537d"
   integrity sha512-eHY7nBftgThBqOyHGVN+l8gF0BucP09fMo0oO/Lb0w1OF80dJv+lDVpXG60WMQvkcxAkNybKsrEIE3ZtKGmPrA==
+
+tippy.js@6.3.7:
+  version "6.3.7"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-6.3.7.tgz#8ccfb651d642010ed9a32ff29b0e9e19c5b8c61c"
+  integrity sha512-E1d3oP2emgJ9dRQZdf3Kkn0qJgI6ZLpyS5z6ZkY1DF3kaQaBsGZsndEpHwx+eC+tYM41HaSNvNtLx8tU57FzTQ==
+  dependencies:
+    "@popperjs/core" "^2.9.0"
 
 tmp@^0.0.33:
   version "0.0.33"
