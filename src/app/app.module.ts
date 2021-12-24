@@ -126,6 +126,7 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
+import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
 
 
 registerLocaleData(localePt);
@@ -249,9 +250,17 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
-    NgxMaskModule.forRoot(),
+    // NgxMaskModule.forRoot(), //TODO: encontrar biblioteca mascara compatível
     ReactiveFormsModule,
     RouterModule,
+    TippyModule.forRoot({
+      defaultVariation: 'tooltip',
+      variations: {
+        tooltip: tooltipVariation,
+        popper: popperVariation,
+      }
+    })
+
   ],
   providers: [
     {

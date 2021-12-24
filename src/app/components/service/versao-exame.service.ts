@@ -8,7 +8,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class VersaoExameService {
-  baseUrl = 'http://127.0.0.1:3010/versao-exames';
+  // TODO: Corrigir pluralizacao de versoes exame
+  baseUrl = 'http://127.0.0.1:3010/versoes_exame';
 
   query: Query[] = [];
 
