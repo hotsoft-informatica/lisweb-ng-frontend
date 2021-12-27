@@ -76,37 +76,6 @@ export class ConsultaAmostraShowComponent implements OnInit {
     this.loadConsultaAmostraPage();
 
     this.consultaAmostraService
-      .findAmostra(this.query)
-      .subscribe((amostra: Amostra) => {
-        this.amostra = amostra;
-        this.exameAmostraService
-          .read(this.amostra.id, 0)
-          .subscribe((exameAmostras: ExameAmostra[]) => {
-            this.exameAmostras = exameAmostras;
-            this.exameAmostras.forEach((exameAmostra) => {
-              this.amostraService
-                .readById(exameAmostra.amostra_id as number)
-                .subscribe((amostra: Amostra) => {
-                  exameAmostra.amostra = amostra;
-                  console.log(exameAmostra.exame?.id);
-                });
-              this.exameService
-                .readById(exameAmostra.exame_id as number)
-                .subscribe((exame: Exame) => {
-                  console.log(exameAmostra.amostra?.id);
-                  this.versaoExameService
-                    .readById(exame?.versao_exame_id as number)
-                    .subscribe((versaoExame: VersaoExame) => {
-                      exame.versao_exame = versaoExame;
-                      console.log(exameAmostra.amostra?.id);
-                    });
-                  exameAmostra.exame = exame;
-                });
-            });
-          });
-      });
-
-    this.consultaAmostraService
       .findPaciente(this.query)
       .subscribe(
         (pacienteAmostra: Paciente) => (this.pacienteAmostra = pacienteAmostra)
@@ -132,15 +101,41 @@ export class ConsultaAmostraShowComponent implements OnInit {
 
   loadConsultaAmostraPage(): void {
     this.clear = true;
-    this.dataSource.loadConsultaAmostra(this.query);
-    // this.exameId = this.dataSource.first.exame_id;
-    this.consultaExame();
+    this.consultaAmostraService
+      .findAmostra(this.query)
+      .subscribe((amostra: Amostra) => {
+        this.amostra = amostra;
+        // TODO: Revisar verificar se já existe consulta prévia da amostra.
+        this.exameAmostraService
+          .read(this.amostra.id, 0)
+          .subscribe((exameAmostras: ExameAmostra[]) => {
+            this.exameAmostras = exameAmostras;
+            this.exameAmostras.forEach((exameAmostra) => {
+              this.amostraService
+                .readById(exameAmostra.amostra_id as number)
+                .subscribe((amostra: Amostra) => {
+                  exameAmostra.amostra = amostra;
+                  console.log(exameAmostra.exame?.id);
+                });
+              this.consultaExame(exameAmostra);
+            });
+          });
+      });
   }
 
-  consultaExame(): void {
+  consultaExame(exameAmostra: ExameAmostra): void {
     this.exameService
-      .readById(this.exameId as number)
-      .subscribe((exame) => (this.exame = exame));
+      .readById(exameAmostra.exame_id as number)
+      .subscribe((exame: Exame) => {
+        console.log(exameAmostra.amostra?.id);
+        this.versaoExameService
+          .readById(exame?.versao_exame_id as number)
+          .subscribe((versaoExame: VersaoExame) => {
+            exame.versao_exame = versaoExame;
+            console.log(exameAmostra.amostra?.id);
+          });
+        exameAmostra.exame = exame;
+      });
   }
 
   consultaStatus(status: string | undefined): string {
