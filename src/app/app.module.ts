@@ -118,6 +118,7 @@ import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exa
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -244,6 +245,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
         tooltip: tooltipVariation,
         popper: popperVariation,
       }
+    }),
+    TranslateModule.forRoot({
+      defaultLanguage: 'en'
     })
 
   ],

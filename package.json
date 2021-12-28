@@ -29,6 +29,7 @@
     "@angular/router": "^13.0.3",
     "@ngneat/helipopper": "^5.1.0",
     "@ngneat/overview": "^3.0.2",
+    "@ngx-translate/core": "^14.0.0",
     "@popperjs/core": "^2.11.0",
     "bootstrap": "^5.1.0",
     "font-awesome": "^4.7.0",
