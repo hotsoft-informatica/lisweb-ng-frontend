@@ -26,6 +26,8 @@ import {
 import { merge, fromEvent } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { VersaoExame } from '../../model/versao-exame.model';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+// import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @Component({
   selector: 'app-consulta-amostra-show',
@@ -59,7 +61,8 @@ export class ConsultaAmostraShowComponent implements OnInit {
     private exameService: ExameService,
     private versaoExameService: VersaoExameService,
     private exameAmostraService: ExameAmostraService,
-    private amostraService: AmostraService
+    private amostraService: AmostraService,
+    private translate: TranslateService
   ) { }
   ngOnInit(): void {
     this.dataSource = new ConsultaAmostraShowDataSource(
@@ -68,6 +71,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
     this.dataSource.loadConsultaAmostra(null);
     this.pacienteAmostra = new Paciente({});
   }
+
 
   search(key: string, value: string, isNumeric = false): void {
     this.pacienteAmostra = new Paciente({});
@@ -161,21 +165,21 @@ export class ConsultaAmostraShowComponent implements OnInit {
   consultaStatusAlt(status: string | undefined): string {
     switch (status) {
       case 'A':
-        return 'Resultado aprovado';
+        return 'Resultado Aprovado';
         break;
       case 'I':
         return 'Resultado Informado';
         break;
       case 'E':
-        return 'Resultado Liberado';
+        return 'Laudo Entregue';
         break;
       case 'L':
-        return 'Aguardando Liberação';
+        return 'Resultado Liberado';
         break;
       case 'N':
-        return 'Aguardando Resultado';
+        return 'Em Análise';
         break;
-      case 'N':
+      case 'P':
         return 'Resultado Reprovado';
         break;
       case 'R':
