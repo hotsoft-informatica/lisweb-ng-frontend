@@ -12,9 +12,11 @@ import { ConsultaAmostraService } from './../../service/consulta-amostra.service
 import { ExameService } from '../../service/exame.service';
 import { VersaoExameService } from '../../service/versao-exame.service';
 import { ConsultaAmostra } from '../../model/consulta-amostra.model';
-import { Component, OnInit, Input, Injectable } from '@angular/core';
+import { Component, OnInit, Input, Injectable, OnChanges, AfterViewInit } from '@angular/core';
 import { Query } from '../../model/query.model';
 import { MatTableDataSource } from '@angular/material/table';
+import { catchError, finalize } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -23,7 +25,6 @@ import {
   delay,
   filter,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
@@ -35,6 +36,10 @@ import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-transla
   styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
+  private consultaAmostraSubject = new BehaviorSubject<ConsultaAmostraShowComponent[]>([]);
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+
+
   exameAmostras!: ExameAmostra[];
   exameId!: number | undefined;
   exame!: Exame;
@@ -55,6 +60,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
   ];
 
   query: Query[] = [];
+  public loading$ = this.loadingSubject.asObservable();
 
   constructor(
     private consultaAmostraService: ConsultaAmostraService,
@@ -74,6 +80,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
 
 
   search(key: string, value: string, isNumeric = false): void {
+    this.loadingSubject.next(true);
     this.pacienteAmostra = new Paciente({});
     const query = new Query({ key, value, isNumeric });
     this.query.push(query);
@@ -123,6 +130,8 @@ export class ConsultaAmostraShowComponent implements OnInit {
                 });
               this.consultaExame(exameAmostra);
             });
+          }).add(() => {
+            console.log("Carregou exame amostra");
           });
       });
   }
@@ -132,13 +141,19 @@ export class ConsultaAmostraShowComponent implements OnInit {
       .readById(exameAmostra.exame_id as number)
       .subscribe((exame: Exame) => {
         console.log(exameAmostra.amostra?.id);
-        this.versaoExameService
+        const versaoExameSubscribe = this.versaoExameService
           .readById(exame?.versao_exame_id as number)
           .subscribe((versaoExame: VersaoExame) => {
             exame.versao_exame = versaoExame;
             console.log(exameAmostra.amostra?.id);
-          });
+          })
+
+        versaoExameSubscribe.add(() => {
+          this.loadingSubject.next(false);
+        });
         exameAmostra.exame = exame;
+      }).add(() => {
+        console.log("Fim do consulta exame");
       });
   }
 

@@ -90,7 +90,7 @@
       </tbody>
     </table>
   </div>
-  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+  <div class="spinner-container" *ngIf="this.loading$ | async">
     <mat-spinner></mat-spinner>
   </div>
 </div>
