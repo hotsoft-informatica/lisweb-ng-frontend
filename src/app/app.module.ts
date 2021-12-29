@@ -101,6 +101,7 @@ import { PacienteDeleteComponent } from './components/paciente/paciente-delete/p
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
 import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
+import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
 import { RequisicaoReadComponent } from './components/requisicao/requisicao-read/requisicao-read.component';
@@ -158,8 +159,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    LaboratorioCreateComponent,
     LaboratorioCrudComponent,
+    LaboratorioCreateComponent,
     LaboratorioDeleteComponent,
     LaboratorioReadComponent,
     LaboratorioUpdateComponent,
@@ -187,6 +188,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     PacienteReadComponent,
     PacienteShowComponent,
     PacienteUpdateComponent,
+    RequisicaoCrudComponent,
     RequisicaoCreateComponent,
     RequisicaoDeleteComponent,
     RequisicaoReadComponent,

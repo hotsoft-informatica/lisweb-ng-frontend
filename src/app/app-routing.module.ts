@@ -15,6 +15,7 @@ import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
+import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-update/requisicao-update.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
@@ -116,6 +117,10 @@ const routes: Routes = [
   {
     path: 'pacientes/show/:id',
     component: PacienteShowComponent,
+  },
+  {
+    path: 'requisicoes',
+    component: RequisicaoCrudComponent,
   },
   {
     path: 'requisicoes/create',
