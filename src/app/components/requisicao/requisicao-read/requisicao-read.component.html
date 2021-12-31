@@ -1,11 +1,11 @@
 <mat-form-field class="search-field">
   <mat-input-container>
-    <input matInput type="text" placeholder="Buscar Nome" (keyup.enter)="search('nome', inputNome.value)" #inputNome />
+    <input matInput type="text" placeholder="Buscar Protocolo" (keyup.enter)="search('num_protocolo', inputNumProtocolo.value)" #inputNumProtocolo />
   </mat-input-container>
 </mat-form-field>
 <mat-form-field class="search-field">
   <mat-input-container>
-    <input matInput type="text" placeholder="Buscar Série" (keyup.enter)="search('serie', inputSerie.value)" #inputSerie />
+    <input matInput type="text" placeholder="Buscar Total" (keyup.enter)="search('total', inputTotal.value)" #inputTotal />
   </mat-input-container>
 </mat-form-field>
 <div class="mat-elevation-z4">
@@ -14,7 +14,7 @@
     mat-table
     [dataSource]="dataSource"
     matSort
-    matSortActive="nome"
+    matSortActive="id"
     matSortDirection="asc"
     matSortDisableClear
   >
@@ -77,6 +77,9 @@
         </a>
         <a routerLink="/laboratorios/delete/{{ row.id }}" class="delete">
           <i class="material-icons"> delete </i>
+        </a>
+        <a routerLink="/requisicoes/show/{{ row.id }}" class="show">
+          <i class="material-icons"> visibility </i>
         </a>
       </td>
     </ng-container>

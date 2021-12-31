@@ -105,6 +105,7 @@ import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
 import { RequisicaoReadComponent } from './components/requisicao/requisicao-read/requisicao-read.component';
+import { RequisicaoShowComponent } from './components/requisicao/requisicao-show/requisicao-show.component';
 import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-update/requisicao-update.component';
 import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-create/tipo-exame-create.component';
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
@@ -205,6 +206,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameDeleteComponent,
     VersaoExameReadComponent,
     VersaoExameUpdateComponent,
+    RequisicaoShowComponent,
   ],
   imports: [
     AppRoutingModule,

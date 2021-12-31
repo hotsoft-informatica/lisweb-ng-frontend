@@ -6,12 +6,24 @@ table {
   margin-right: 10px;
 }
 
+.delete {
+  margin-right: 10px;
+}
+
+.show {
+  margin-right: 10px;
+}
+
 .edit > i {
   color: #41d926;
 }
 
 .delete > i {
   color: #e35e6b;
+}
+
+.show > i {
+  color: #3d22d4;
 }
 
 .spinner-container {
