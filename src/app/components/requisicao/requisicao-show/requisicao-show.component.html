@@ -1,1 +1,72 @@
-<p>requisicao-show works!</p>
+<mat-card>
+<mat-divider inset></mat-divider>
+  <h3 class="mt-4">DADOS PESSOAIS:</h3>
+<mat-divider inset></mat-divider>
+
+<div class="p-2 row col-12">
+  <div class="col-2">
+    Paciente id: {{requisicao.paciente_id}}
+  </div>
+  <div class="col-2">
+    Sexo: {{requisicao.sexo}}
+  </div>
+  <div class="col-2">
+    Idade: {{requisicao.idade}}
+  </div>
+  <div class="col-2">
+    Sexo: {{requisicao.sexo}}
+  </div>
+  <div class="col-3">
+    Senha acesso: {{requisicao.senha_acesso_resultado}}
+  </div>
+</div>
+</mat-card>
+
+<mat-card>
+  <mat-divider inset></mat-divider>
+    <h3 class="mt-4">CONVÊNIO:</h3>
+  <mat-divider inset></mat-divider>
+  <div class="p-2 row col-12">
+    <div class="col-2">
+      Convênio: {{requisicao.convenio_id}}
+    </div>
+    <div class="col-2">
+      Seguro: {{requisicao.cod_seguro}}
+    </div>
+    <div class="col-3">
+      Nome quarto: {{requisicao.num_quarto}}
+    </div>
+    <div class="col-3">
+      Desconto: {{requisicao.valor_desconto}}
+    </div>
+    <div class="col-1">
+      Saldo: {{requisicao.valor_saldo}}
+    </div>
+    <div class="col-1">
+      Movimentado: {{requisicao.movimentado}}
+    </div>
+    <div class="col-1">
+      Solicitacao: {{requisicao.carater_solicitacao}}
+    </div>
+    <div class="col-1">
+      Total: {{requisicao.total}}
+    </div>
+  </div>
+</mat-card>
+
+<mat-card>
+  <mat-divider inset></mat-divider>
+    <h3 class="mt-4">PLANO DE SAUDE:</h3>
+  <mat-divider inset></mat-divider>
+  <div class="p-2 row">
+    <div class="col-2">
+      Convênio: {{requisicao.convenio_id}}
+    </div>
+    <div class="col-3">
+      Medico: {{requisicao.medico_id}}
+    </div>
+    <div class="col-2">
+      Data requisição: {{requisicao.inicio_requisicao | date: "dd/MM/yyyy"}}
+    </div>
+  </div>
+</mat-card>

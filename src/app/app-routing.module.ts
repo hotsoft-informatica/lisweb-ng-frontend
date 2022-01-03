@@ -17,6 +17,7 @@ import { PacienteUpdateComponent } from './components/paciente/paciente-update/p
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
 import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
+import { RequisicaoShowComponent } from './components/requisicao/requisicao-show/requisicao-show.component';
 import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-update/requisicao-update.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
@@ -125,6 +126,10 @@ const routes: Routes = [
   {
     path: 'requisicoes/create',
     component: RequisicaoCreateComponent,
+  },
+  {
+    path: 'requisicoes/show/:id',
+    component: RequisicaoShowComponent,
   },
   {
     path: 'requisicoes/update/:id',
