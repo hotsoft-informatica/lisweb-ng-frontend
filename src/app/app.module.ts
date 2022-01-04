@@ -125,6 +125,7 @@ import { OperadoraReadComponent } from './components/operadora/operadora-read/op
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
 import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
 import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
+import { OperadoraUpdateComponent } from './components/operadora/operadora-update/operadora-update.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -215,6 +216,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     OperadoraCreateComponent,
     OperadoraDeleteComponent,
     OperadoraShowComponent,
+    OperadoraUpdateComponent,
   ],
   imports: [
     AppRoutingModule,
