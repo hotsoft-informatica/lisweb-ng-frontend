@@ -38,6 +38,7 @@
     "node": "^17.2.0",
     "rxjs": "^7.4.0",
     "tslib": "^2.0.0",
+    "typescript-tslint-plugin": "^1.0.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
