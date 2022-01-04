@@ -124,6 +124,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
 import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
+import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -213,6 +214,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     OperadoraReadComponent,
     OperadoraCreateComponent,
     OperadoraDeleteComponent,
+    OperadoraShowComponent,
   ],
   imports: [
     AppRoutingModule,
