@@ -56,6 +56,11 @@ import { BancadaDeleteComponent } from './components/bancada/bancada-delete/banc
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraUpdateComponent } from './components/amostra/amostra-update/amostra-update.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
+import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
+import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
+import { OperadoraUpdateComponent } from './components/operadora/operadora-update/operadora-update.component';
+import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
+import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
 import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
 
 const routes: Routes = [
@@ -234,6 +239,26 @@ const routes: Routes = [
   {
     path: 'coletores/delete/:id',
     component: ColetorDeleteComponent,
+  },
+  {
+    path: 'operadoras',
+    component: OperadoraCrudComponent,
+  },
+  {
+    path: 'operadoras/create',
+    component: OperadoraCreateComponent,
+  },
+  {
+    path: 'operadoras/show/:id',
+    component: OperadoraShowComponent,
+  },
+  {
+    path: 'operadoras/update/:id',
+    component: OperadoraUpdateComponent,
+  },
+  {
+    path: 'operadoras/delete/:id',
+    component: OperadoraDeleteComponent,
   },
   {
     path: 'bandeja-amostras/create',
