@@ -123,6 +123,7 @@ import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopp
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
+import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -211,6 +212,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     RequisicaoShowComponent,
     OperadoraReadComponent,
     OperadoraCreateComponent,
+    OperadoraDeleteComponent,
   ],
   imports: [
     AppRoutingModule,
