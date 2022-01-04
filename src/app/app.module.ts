@@ -122,6 +122,7 @@ import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exa
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
+import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -209,6 +210,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameUpdateComponent,
     RequisicaoShowComponent,
     OperadoraReadComponent,
+    OperadoraCreateComponent,
   ],
   imports: [
     AppRoutingModule,
