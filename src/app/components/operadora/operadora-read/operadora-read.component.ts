@@ -32,16 +32,7 @@ export class OperadoraReadComponent implements OnInit, AfterViewInit {
 
   displayedColumns = [
     'id',
-    'laboratorio_id',
-    'original_id',
-    'created_at',
-    'updated_at',
-    'version_id',
-    'laboratory_domain_id',
-    'deleted',
     'empresa_id',
-    'criado_em',
-    'changed_by_lab_id',
     'action',
   ];
 
