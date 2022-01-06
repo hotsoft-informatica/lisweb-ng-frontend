@@ -1,12 +1,12 @@
-import { Operadora } from '../../model/operadora.model';
+import { Empresa } from '../../model/empresa.model';
 import { OperadoraService } from '../../service/operadora.service';
 import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { Query } from '../../model/query.model';
 
-export class OperadoraReadDataSource implements DataSource<Operadora> {
-  private laboratoriosSubject = new BehaviorSubject<Operadora[]>([]);
+export class OperadoraReadDataSource implements DataSource<Empresa> {
+  private operadorasSubject = new BehaviorSubject<Empresa[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
   query: Query[] = [];
@@ -30,18 +30,18 @@ export class OperadoraReadDataSource implements DataSource<Operadora> {
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
       )
-      .subscribe((operadoras: Operadora[]) =>
-        this.laboratoriosSubject.next(operadoras)
+      .subscribe((operadoras: Empresa[]) =>
+        this.operadorasSubject.next(operadoras)
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Operadora[]> {
+  connect(collectionViewer: CollectionViewer): Observable<Empresa[]> {
     console.log('Conectando ao data source');
-    return this.laboratoriosSubject.asObservable();
+    return this.operadorasSubject.asObservable();
   }
 
   disconnect(collectionViewer: CollectionViewer): void {
-    this.laboratoriosSubject.complete();
+    this.operadorasSubject.complete();
     this.loadingSubject.complete();
   }
 }

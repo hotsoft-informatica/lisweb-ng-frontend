@@ -1,5 +1,5 @@
 export class Empresa {
-  public i?: number;
+  public id?: number;
   public original_id?: number;
   public razao_social?: string;
   public nome_fantasia?: string;
