@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class OperadoraService {
-  baseUrl = 'http://127.0.0.1:3010/empresas';
+  baseUrl = 'http://127.0.0.1:3010/operadoras';
 
   query: Query[] = [];
 
