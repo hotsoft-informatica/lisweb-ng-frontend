@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class OperadoraService {
-  baseUrl = 'http://127.0.0.1:3010/operadoras';
+  public baseUrl: string = new Operadora({})?.endpoint as string;
 
   query: Query[] = [];
 
@@ -23,7 +23,9 @@ export class OperadoraService {
   }
 
   create(operadora: Operadora): Observable<Operadora> {
-    return this.http.post<Operadora>(this.baseUrl, operadora);
+    let data = this.http.post<Operadora>(this.baseUrl, operadora);
+    // data = magic(data, Operadora)
+    return data;
   }
 
   read(): Observable<Operadora[]> {

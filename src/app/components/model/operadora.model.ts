@@ -1,4 +1,6 @@
+import { Paciente } from './paciente.model';
 export class Operadora {
+  public endpoint?= 'http://localhost:3010/operadoras'
   public id?: number;
   public laboratorio_id?: number;
   public original_id?: number;
@@ -10,6 +12,7 @@ export class Operadora {
   public empresa_id?: number;
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
+  public belongs_to?= [Paciente]
 
   constructor(values: Operadora) {
     Object.assign(this, values);
