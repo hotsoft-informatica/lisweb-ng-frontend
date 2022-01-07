@@ -127,6 +127,7 @@ import { OperadoraDeleteComponent } from './components/operadora/operadora-delet
 import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
 import { OperadoraUpdateComponent } from './components/operadora/operadora-update/operadora-update.component';
 import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
+import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -219,6 +220,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     OperadoraShowComponent,
     OperadoraUpdateComponent,
     OperadoraCrudComponent,
+    EmpresaCreateComponent,
   ],
   imports: [
     AppRoutingModule,
