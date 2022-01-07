@@ -41,6 +41,11 @@ import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-am
 import { ExameCreateComponent } from './components/exame/exame-create/exame-create.component';
 import { ExameUpdateComponent } from './components/exame/exame-update/exame-update.component';
 import { ExameDeleteComponent } from './components/exame/exame-delete/exame-delete.component';
+import { EmpresaCrudComponent } from './views/empresa-crud/empresa-crud.component';
+import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
+import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
+import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
+import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 import { ColetorCreateComponent } from './components/coletor/coletor-create/coletor-create.component';
 import { ColetorUpdateComponent } from './components/coletor/coletor-update/coletor-update.component';
 import { ColetorDeleteComponent } from './components/coletor/coletor-delete/coletor-delete.component';
@@ -295,6 +300,26 @@ const routes: Routes = [
   {
     path: 'bancadas/delete/:id',
     component: BancadaDeleteComponent,
+  },
+  {
+    path: 'empresas',
+    component: EmpresaCrudComponent,
+  },
+  {
+    path: 'empresas/create',
+    component: EmpresaCreateComponent,
+  },
+  {
+    path: 'empresas/show/:id',
+    component: EmpresaShowComponent,
+  },
+  {
+    path: 'empresas/update/:id',
+    component: EmpresaUpdateComponent,
+  },
+  {
+    path: 'empresas/delete/:id',
+    component: EmpresaDeleteComponent,
   },
   {
     path: 'amostras/create',
