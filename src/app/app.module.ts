@@ -130,6 +130,7 @@ import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.co
 import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
 import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-read.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
+import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -225,6 +226,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     EmpresaCreateComponent,
     EmpresaReadComponent,
     EmpresaUpdateComponent,
+    EmpresaDeleteComponent,
   ],
   imports: [
     AppRoutingModule,
