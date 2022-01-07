@@ -131,6 +131,7 @@ import { EmpresaCreateComponent } from './components/empresa/empresa-create/empr
 import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-read.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
 import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
+import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -227,6 +228,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     EmpresaReadComponent,
     EmpresaUpdateComponent,
     EmpresaDeleteComponent,
+    EmpresaShowComponent,
   ],
   imports: [
     AppRoutingModule,
