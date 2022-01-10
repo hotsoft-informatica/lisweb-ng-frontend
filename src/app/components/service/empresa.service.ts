@@ -7,7 +7,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class OperadoraService {
+export class EmpresaService {
   baseUrl = 'http://127.0.0.1:3010/empresas';
 
   query: Query[] = [];
