@@ -10,7 +10,7 @@ export class EmpresaCrudComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  navigateToRequisicaoCreate(): void {
+  navigateToEmpresaCreate(): void {
     this.router.navigate(['/empresas/create']);
   }
 }
