@@ -33,16 +33,14 @@ export class EmpresaReadComponent implements OnInit, AfterViewInit {
   displayedColumns = [
     'id',
     'razao_social',
-    'cnpj',
     'bairro',
     'endereco',
-    'cep',
+    'numero',
     'cidade',
+    'cep',
     'uf',
     'telefone',
     'nome_contato',
-    'email',
-    'numero',
     'created_at',
     'action',
   ];
