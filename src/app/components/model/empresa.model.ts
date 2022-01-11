@@ -6,7 +6,7 @@ export class Empresa {
   public cnpj?: string;
   public inscricao_estadual?: string;
   public endereco?: string;
-  public bairr?: string;
+  public bairro?: string;
   public cep?: string;
   public cidade?: string;
   public uf?: string;
