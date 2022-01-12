@@ -116,25 +116,9 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        placeholder="Tipo Logradouro"
-        [(ngModel)]="empresa.tipo_logradouro"
-        name="tipo_logradouro"
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <input
-        matInput
         placeholder="Número"
         [(ngModel)]="empresa.numero"
         name="numero"
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <input
-        matInput
-        placeholder="Apagado"
-        [(ngModel)]="empresa.deleted"
-        name="deleted"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
@@ -152,22 +136,6 @@
         [(ngModel)]="empresa.alvara_uf"
         name="alvara_uf"
       />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <input
-        matInput
-        [matDatepicker]="criado_em"
-        placeholder="Criado em"
-        [(ngModel)]="empresa.criado_em"
-        name="criado em"
-        required
-      />
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="criado_em"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #criado_em></mat-datepicker>
     </mat-form-field>
   </form>
   <button mat-raised-button (click)="createEmpresa()" color="primary">
