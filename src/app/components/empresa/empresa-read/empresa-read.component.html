@@ -89,13 +89,13 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let row">
-        <a routerLink="/laboratorios/update/{{ row.id }}" class="edit">
+        <a routerLink="/empresas/update/{{ row.id }}" class="edit">
           <i class="material-icons"> edit </i>
         </a>
-        <a routerLink="/laboratorios/delete/{{ row.id }}" class="delete">
+        <a routerLink="/empresas/delete/{{ row.id }}" class="delete">
           <i class="material-icons"> delete </i>
         </a>
-        <a routerLink="/requisicoes/show/{{ row.id }}" class="show">
+        <a routerLink="/empresas/show/{{ row.id }}" class="show">
           <i class="material-icons"> visibility </i>
         </a>
       </td>
