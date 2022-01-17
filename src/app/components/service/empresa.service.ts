@@ -1,7 +1,7 @@
 import { Query } from './../model/query.model';
-import { Empresa } from '../model/empresa.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Empresa } from '../model/empresa.model';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
