@@ -1,0 +1,76 @@
+<form class="example-container row container-fluid mt-4">
+  <h3 class="ms-2">ENDEREÇO</h3>
+  <div class="row justify-content-around">
+
+    <div class="row col-lg-2 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label for="cep">CEP:</mat-label>
+        <input matInput maxlength="9" mask="00000-000" id="cep" name="cep"
+               [(ngModel)]="localdeatendimento.cep"
+               (ngModelChange)="consulta()">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Cidade:</mat-label>
+        <input matInput maxlength="50" id="cidade" name="cidade"
+               [(ngModel)]="localdeatendimento.cidade">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>UF:</mat-label>
+        <input matInput maxlength="50" id="enderecoUf" name="uf"
+              [(ngModel)]="localdeatendimento.uf">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-4 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Logradouro:</mat-label>
+        <input matInput maxlength="50" id="endereco" name="endereco"
+              [(ngModel)]="localdeatendimento.endereco">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>N°:</mat-label>
+        <input matInput maxlength="50" id="numero" name="numero" [(ngModel)]="localdeatendimento.numero">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-2 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Bairro:</mat-label>
+        <input matInput maxlength="50" id="enderecoBairro" name="bairro"
+               [(ngModel)]="localdeatendimento.bairro">
+      </mat-form-field>
+    </div>
+
+    <h3 class="ms-2">CONTATO</h3>
+    <div>
+      <mat-form-field appearance="fill" class="col-lg-2 pe-2">
+        <mat-label>Telefone:</mat-label>
+        <input matInput #input maxlength="13" mask="(00)0000-0000"id="enderecoCidade" name="telefone">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-2 p-2">
+        <mat-label>Celular:</mat-label>
+        <input matInput #input maxlength="14" mask="(00)00000-0000" id="enderecoCidade" name="celular">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-4 p-2">
+        <mat-label>E-mail:</mat-label>
+        <input matInput #input maxlength="50" id="enderecoCidade" name="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-4 ps-2">
+        <mat-label>E-mail Secundario:</mat-label>
+        <input matInput #input maxlength="50" id="enderecoCidade" name="email">
+      </mat-form-field>
+    </div>
+  </div>
+</form>

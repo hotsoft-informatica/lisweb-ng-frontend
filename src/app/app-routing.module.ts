@@ -1,3 +1,4 @@
+import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
 import { LoginComponent } from './components/login/login.component';
@@ -291,7 +292,11 @@ const routes: Routes = [
   {
     path: 'consulta_amostra_show',
     component: ConsultaAmostraShowComponent,
-  }
+  },
+  {
+    path: 'localdeatendimento/create',
+    component: LocalDeAtendimentoCreateComponent,
+  },
 ];
 
 @NgModule({

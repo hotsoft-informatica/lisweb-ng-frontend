@@ -1,136 +1,139 @@
-<div class="row">
+<div class="pb-2 ps-2 pe-2">
+  <div class="row">
 
-  <div class="p-3 col-sm-12 row">
+    <div class="p-3 col-sm-12 row">
 
-    <div class="col-sm-1 m-1">
-      <button mat-mini-fab color="primary" routerLink="/pacientes/create">
-        <mat-icon>add</mat-icon>
-      </button>
-      <mat-label class="ms-1 fs-6"></mat-label>
+      <div class="col-sm-1 m-1">
+        <button mat-mini-fab color="primary" routerLink="/pacientes/create">
+          <mat-icon>add</mat-icon>
+        </button>
+        <mat-label class="ms-1 fs-6"></mat-label>
+      </div>
+
+      <div class="col-sm-1 m-1">
+        <button mat-mini-fab color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+          aria-expanded="false" aria-controls="collapseExample">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+
     </div>
 
-    <div class="col-sm-1 m-1">
-      <button mat-mini-fab color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-        aria-expanded="false" aria-controls="collapseExample">
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
 
-  </div>
+        <div class="row">
+          <div class="mb-3 col-md-4 row">
+            <mat-form-field appearance="fill">
+              <mat-label>Nome:</mat-label>
+              <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome',nome.value)">
+            </mat-form-field>
+          </div>
 
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
+          <div class="mb-3 col-md-3 row">
+            <mat-form-field appearance="fill">
+              <mat-label>RG:</mat-label>
+              <input matInput #rg maxlength="12" placeholder="Filtre por RG" (input)="search('rg',rg.value,true)"
+                mask="00.000.000-0">
+            </mat-form-field>
+          </div>
 
-      <div class="row">
-        <div class="mb-3 col-md-4 row">
-          <mat-form-field appearance="fill">
-            <mat-label>Nome:</mat-label>
-            <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome',nome.value)">
-          </mat-form-field>
+          <div class="mb-3 col-md-3 row">
+            <mat-form-field appearance="fill">
+              <mat-label>CPF:</mat-label>
+              <input matInput #cpf maxlength="14" placeholder="Filtre por CPF" (input)="search('cpf',cpf.value,true)"
+                mask="000.000.000-00">
+            </mat-form-field>
+          </div>
+
         </div>
-
-        <div class="mb-3 col-md-3 row">
-          <mat-form-field appearance="fill">
-            <mat-label>RG:</mat-label>
-            <input matInput #rg maxlength="12" placeholder="Filtre por RG" (input)="search('rg',rg.value,true)"
-              mask="00.000.000-0">
-          </mat-form-field>
-        </div>
-
-        <div class="mb-3 col-md-3 row">
-          <mat-form-field appearance="fill">
-            <mat-label>CPF:</mat-label>
-            <input matInput #cpf maxlength="14" placeholder="Filtre por CPF" (input)="search('cpf',cpf.value,true)"
-              mask="000.000.000-00">
-          </mat-form-field>
-        </div>
-
       </div>
     </div>
+
+    <table mat-table
+          [dataSource]="dataSource"
+          class="mat-elevation-z8"
+          matSort (matSortChange)="sortData()">
+
+      <ng-container matColumnDef="Nome">
+        <th mat-header-cell mat-sort-header="nome" *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome | slice:0:12}} ...</td>
+      </ng-container>
+
+      <ng-container matColumnDef="RG">
+        <th mat-header-cell mat-sort-header="rg" *matHeaderCellDef> RG </th>
+        <td mat-cell *matCellDef="let element"> {{element.rg | slice:0:5}} ...</td>
+      </ng-container>
+
+      <ng-container matColumnDef="CPF">
+        <th mat-header-cell mat-sort-header="cpf" *matHeaderCellDef> CPF </th>
+        <td mat-cell *matCellDef="let element"> {{element.cpf | slice:0:5}} ...</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell mat-sort-header="email" *matHeaderCellDef> E-mail </th>
+        <td mat-cell *matCellDef="let element"> {{element.email | slice:0:9}} ...</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Telefone">
+        <th mat-header-cell mat-sort-header="telefone" *matHeaderCellDef> Telefone </th>
+        <td mat-cell *matCellDef="let element"> {{element.telefone | slice:0:7}} ...</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Celular">
+        <th mat-header-cell mat-sort-header="celular" *matHeaderCellDef> Celular </th>
+        <td mat-cell *matCellDef="let element"> {{element.celular | slice:0:7}} ...</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Operacoes">
+        <th mat-header-cell colspan="3" mat-sort-header="" *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="row">
+
+            <div class="col-1 me-3">
+              <a routerLink="/pacientes/update/{{element.id}}">
+                <button mat-icon-button>
+                  <mat-icon color="black">edit</mat-icon>
+                </button>
+              </a>
+            </div>
+
+            <div class="col-1 me-3">
+                <button mat-icon-button (click)="delete(element.id)">
+                  <mat-icon color="warn">delete</mat-icon>
+                </button>
+            </div>
+
+            <ng-template #deleteDialog>
+              <mat-dialog-content class="mat-typography">
+                Deseja apagar esse registro?
+              </mat-dialog-content>
+              <mat-dialog-actions align="end">
+                <button mat-button mat-dialog-close>Cancel</button>
+                <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Apagar</button>
+              </mat-dialog-actions>
+            </ng-template>
+
+            <div class="col-1 me-3">
+              <a routerLink="/pacientes/show/{{element.id}}">
+                <button mat-icon-button>
+                  <mat-icon color="black">visibility</mat-icon>
+                </button>
+              </a>
+            </div>
+
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator [length]="this.totalCount" [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+
+    <span>{{msgErro}}</span>
+    
   </div>
-
-  <table mat-table
-         [dataSource]="dataSource"
-         class="mat-elevation-z8"
-         matSort (matSortChange)="sortData()">
-
-    <ng-container matColumnDef="Nome">
-      <th mat-header-cell mat-sort-header="nome" *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let element"> {{element.nome | slice:0:12}} ...</td>
-    </ng-container>
-
-    <ng-container matColumnDef="RG">
-      <th mat-header-cell mat-sort-header="rg" *matHeaderCellDef> RG </th>
-      <td mat-cell *matCellDef="let element"> {{element.rg | slice:0:5}} ...</td>
-    </ng-container>
-
-    <ng-container matColumnDef="CPF">
-      <th mat-header-cell mat-sort-header="cpf" *matHeaderCellDef> CPF </th>
-      <td mat-cell *matCellDef="let element"> {{element.cpf | slice:0:5}} ...</td>
-    </ng-container>
-
-    <ng-container matColumnDef="Email">
-      <th mat-header-cell mat-sort-header="email" *matHeaderCellDef> E-mail </th>
-      <td mat-cell *matCellDef="let element"> {{element.email | slice:0:9}} ...</td>
-    </ng-container>
-
-    <ng-container matColumnDef="Telefone">
-      <th mat-header-cell mat-sort-header="telefone" *matHeaderCellDef> Telefone </th>
-      <td mat-cell *matCellDef="let element"> {{element.telefone | slice:0:7}} ...</td>
-    </ng-container>
-
-    <ng-container matColumnDef="Celular">
-      <th mat-header-cell mat-sort-header="celular" *matHeaderCellDef> Celular </th>
-      <td mat-cell *matCellDef="let element"> {{element.celular | slice:0:7}} ...</td>
-    </ng-container>
-
-    <ng-container matColumnDef="Operacoes">
-      <th mat-header-cell colspan="3" mat-sort-header="" *matHeaderCellDef> </th>
-      <td mat-cell *matCellDef="let element">
-        <div class="row">
-
-          <div class="col-1 me-3">
-            <a routerLink="/pacientes/update/{{element.id}}">
-              <button mat-icon-button>
-                <mat-icon color="black">edit</mat-icon>
-              </button>
-            </a>
-          </div>
-
-          <div class="col-1 me-3">
-              <button mat-icon-button (click)="delete(element.id)">
-                <mat-icon color="warn">delete</mat-icon>
-              </button>
-          </div>
-
-          <ng-template #deleteDialog>
-            <mat-dialog-content class="mat-typography">
-              Deseja apagar esse registro?
-            </mat-dialog-content>
-            <mat-dialog-actions align="end">
-              <button mat-button mat-dialog-close>Cancel</button>
-              <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Apagar</button>
-            </mat-dialog-actions>
-          </ng-template>
-
-          <div class="col-1 me-3">
-            <a routerLink="/pacientes/show/{{element.id}}">
-              <button mat-icon-button>
-                <mat-icon color="black">visibility</mat-icon>
-              </button>
-            </a>
-          </div>
-
-        </div>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-
-  <mat-paginator [length]="this.totalCount" [pageSize]="10"
-  [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
-
-  <span>{{msgErro}}</span>
 </div>

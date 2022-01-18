@@ -126,7 +126,14 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
-
+import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
+import { LocalDeAtendimentoDeleteComponent } from './components/local-de-atendimento/local-de-atendimento-delete/local-de-atendimento-delete.component';
+import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
+import { LocalDeAtendimentoUpdateComponent } from './components/local-de-atendimento/local-de-atendimento-update/local-de-atendimento-update.component';
+import { LocalDeAtendimentoEmpresaComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-empresa/local-de-atendimento-empresa.component';
+import { LocalDeAtendimentoEnderecoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-endereco/local-de-atendimento-endereco.component';
+import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -214,8 +221,16 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameDeleteComponent,
     VersaoExameReadComponent,
     VersaoExameUpdateComponent,
+    LocalDeAtendimentoCreateComponent,
+    LocalDeAtendimentoDeleteComponent,
+    LocalDeAtendimentoReadComponent,
+    LocalDeAtendimentoUpdateComponent,
+    LocalDeAtendimentoEmpresaComponent,
+    LocalDeAtendimentoEnderecoComponent,
+    LocalDeAtendimentoHorarioFuncionamentoComponent,
   ],
   imports: [
+    MatCheckboxModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
