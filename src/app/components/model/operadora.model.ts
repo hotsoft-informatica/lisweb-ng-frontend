@@ -1,3 +1,4 @@
+import { Empresa } from './empresa.model';
 export class Operadora {
   public id?: number;
   public laboratorio_id?: number;
@@ -10,6 +11,7 @@ export class Operadora {
   public empresa_id?: number;
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
+  public empresa?: Empresa;
 
   constructor(values: Operadora) {
     Object.assign(this, values);
