@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Empresa } from './../../model/empresa.model';
+import { EmpresaService } from '../../service/empresa.service';
 import { Operadora } from './../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
 import { Router } from '@angular/router';
@@ -10,15 +12,21 @@ import { Router } from '@angular/router';
 })
 export class OperadoraCreateComponent implements OnInit {
   operadora!: Operadora;
+  empresas: Empresa[] = [];
 
   constructor(
     private router: Router,
+    private empresaService: EmpresaService,
     private operadoraService: OperadoraService
   ) {
     this.operadora = new Operadora({});
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.empresaService.read().subscribe((empresas) => {
+      this.empresas = empresas;
+    });
+  }
 
   createOperadora(): void {
     this.operadoraService.create(this.operadora).subscribe(() => {
