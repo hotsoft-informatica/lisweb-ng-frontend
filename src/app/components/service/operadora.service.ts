@@ -1,5 +1,5 @@
 import { Query } from './../model/query.model';
-import { Empresa } from '../model/empresa.model';
+import { Operadora } from '../model/operadora.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -22,27 +22,27 @@ export class OperadoraService {
     });
   }
 
-  create(empresa: Empresa): Observable<Empresa> {
-    return this.http.post<Empresa>(this.baseUrl, empresa);
+  create(operadora: Operadora): Observable<Operadora> {
+    return this.http.post<Operadora>(this.baseUrl, operadora);
   }
 
-  read(): Observable<Empresa[]> {
-    return this.http.get<Empresa[]>(this.baseUrl);
+  read(): Observable<Operadora[]> {
+    return this.http.get<Operadora[]>(this.baseUrl);
   }
 
-  readById(id: number): Observable<Empresa> {
+  readById(id: number): Observable<Operadora> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<Empresa>(url);
+    return this.http.get<Operadora>(url);
   }
 
-  update(empresa: Empresa): Observable<Empresa> {
-    const url = `${this.baseUrl}/${empresa.id}`;
-    return this.http.put<Empresa>(url, empresa);
+  update(operadora: Operadora): Observable<Operadora> {
+    const url = `${this.baseUrl}/${operadora.id}`;
+    return this.http.put<Operadora>(url, operadora);
   }
 
-  delete(id: number): Observable<Empresa> {
+  delete(id: number): Observable<Operadora> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<Empresa>(url);
+    return this.http.delete<Operadora>(url);
   }
 
   findOperadoras(
@@ -51,7 +51,7 @@ export class OperadoraService {
     pageNumber: number = 1,
     pageSize: number = 3,
     query: Query[] | null
-  ): Observable<Empresa[]> {
+  ): Observable<Operadora[]> {
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -64,7 +64,7 @@ export class OperadoraService {
       }
     });
 
-    return this.http.get<Empresa[]>(this.baseUrl, {
+    return this.http.get<Operadora[]>(this.baseUrl, {
       params,
     });
   }

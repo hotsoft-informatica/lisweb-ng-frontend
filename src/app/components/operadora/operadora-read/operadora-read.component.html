@@ -10,7 +10,7 @@
     [dataSource]="dataSource"
     matSort
     matSortActive="id"
-    matSortDirection="asc"
+    matSortDirection="desc"
     matSortDisableClear
   >
     <!-- Id Column -->
@@ -37,10 +37,10 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let row">
-        <a routerLink="/laboratorios/delete/{{ row.id }}" class="delete">
+        <a routerLink="/operadoras/delete/{{ row.id }}" class="delete">
           <i class="material-icons"> delete </i>
         </a>
-        <a routerLink="/requisicoes/show/{{ row.id }}" class="show">
+        <a routerLink="/operadoras/show/{{ row.id }}" class="show">
           <i class="material-icons"> visibility </i>
         </a>
       </td>

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./operadora-create.component.css'],
 })
 export class OperadoraCreateComponent implements OnInit {
-  operadora!: Operadora;
+  operadora: Operadora;
   empresas: Empresa[] = [];
 
   constructor(

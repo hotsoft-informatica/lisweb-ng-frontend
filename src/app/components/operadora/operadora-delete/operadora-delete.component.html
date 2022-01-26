@@ -1,1 +1,52 @@
-<p>operadora-delete works!</p>
+<mat-card>
+  <mat-card-title>Excluir Operadora</mat-card-title>
+  <form>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Laboratório Id"
+        [(ngModel)]="operadora.laboratorio_id"
+        name="laboratorio_id"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Original Id"
+        [(ngModel)]="operadora.original_id"
+        name="original_id"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Versão Id"
+        [(ngModel)]="operadora.version_id"
+        name="version_id"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Apagado"
+        [(ngModel)]="operadora.deleted"
+        name="deleted"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Alterador Id"
+        [(ngModel)]="operadora.changed_by_lab_id"
+        name="changed_by_lab_id"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="deleteOperadora()" color="warn">
+    Excluir
+  </button>
+  <button mat-raised-button (click)="cancel()" color="accent">
+    Cancelar
+  </button>
+</mat-card>
+
