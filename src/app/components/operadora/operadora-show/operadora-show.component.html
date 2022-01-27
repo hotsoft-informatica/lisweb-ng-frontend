@@ -1,1 +1,14 @@
-<p>operadora-show works!</p>
+<mat-card>
+  <mat-divider inset></mat-divider>
+  <h3 class="mt-4">DADOS EMPRESA:</h3>
+  <mat-divider inset></mat-divider>
+  <div class="p-2 row col-12">
+    <div class="col-2">Id: {{ operadora.id }}</div>
+    <div class="col-2">Empresa Id: {{ operadora.empresa_id }}</div>
+    <div class="col-2">Laboratório Id: {{ operadora.laboratorio_id }}</div>
+    <div class="col-2">Id Original: {{ operadora.original_id }}</div>
+    <div class="col-2">Versão: {{ operadora.version_id }}</div>
+    <div class="col-2">Id Alterador: {{ operadora.changed_by_lab_id }}</div>
+  </div>
+</mat-card>
+<button mat-raised-button (click)="cancel()" color="accent">Voltar</button>

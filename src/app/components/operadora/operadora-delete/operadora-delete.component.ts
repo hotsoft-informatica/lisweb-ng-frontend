@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Operadora } from './../../model/operadora.model';
+import { Empresa } from './../../model/empresa.model';
+import { EmpresaService } from '../../service/empresa.service';
 import { OperadoraService } from '../../service/operadora.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -10,9 +12,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OperadoraDeleteComponent implements OnInit {
   operadora!: Operadora;
+  empresa!: Empresa;
 
   constructor(
     public operadoraService: OperadoraService,
+    public empresaService: EmpresaService,
     public router: Router,
     public route: ActivatedRoute
   ) { }
