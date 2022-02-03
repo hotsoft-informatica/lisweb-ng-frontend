@@ -4,6 +4,7 @@ export class Usuario {
   public nome?: string;
   public login?: string;
   public senha?: string;
+  public confirmaSenha?: string;
   public original_id?: number;
   public created_at?: Date = new Date();
   public updated_at?: Date = new Date();

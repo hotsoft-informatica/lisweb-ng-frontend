@@ -18,14 +18,14 @@
 <div class="card card-body">
 
   <div class="row">
-    <div class="mb-3 col-md-4">
+    <div class="mb-3 col-md-4 row">
       <mat-form-field appearance="fill">
         <mat-label>Nome:</mat-label>
         <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome',nome.value)">
       </mat-form-field>
     </div>
 
-    <div class="mb-3 col-md-3">
+    <div class="mb-3 col-md-2 row">
       <mat-form-field appearance="fill">
         <mat-label>Login:</mat-label>
         <input matInput #login maxlength="12" placeholder="Filtre por login" (input)="search('login',login.value)">
@@ -68,13 +68,29 @@
         <div class="row">
 
           <div class="col-1 me-3">
-              <button mat-icon-button (click)="openDialogUpdate()">
-                <mat-icon color="black">edit</mat-icon>
-              </button>
+              <a routerLink="/usuarios/update/{{element.id}}">
+                <button mat-icon-button>
+                  <mat-icon color="black">edit</mat-icon>
+                </button>
+              </a>
           </div>
 
+          <div class="modal fade" id="modelShow" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <app-usuario-update [pacienteInput]="this.currentPaciente"></app-usuario-update>
+                </div>
+                <div class="modal-footer">
+                  <button mat-flat-button color="warn" data-bs-dismiss="modal">Sair</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <div class="col-1 me-3">
-              <button mat-icon-button>
+              <button mat-icon-button (click)="delete(element.id)">
                 <mat-icon color="warn">delete</mat-icon>
               </button>
           </div>
