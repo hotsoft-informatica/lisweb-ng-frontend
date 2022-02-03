@@ -1,3 +1,7 @@
+import { LoginComponent } from './components/login/login.component';
+import { LgUsuarioComponent } from './components/login/lg-usuario/lg-usuario.component';
+import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
+import { MatChipsModule } from '@angular/material/chips';
 import localePt from '@angular/common/locales/pt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,7 +12,8 @@ import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MY_DATE_FORMATS } from './formdata';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -18,7 +23,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MatNativeDateModule } from '@angular/material/core';
+
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -121,6 +130,7 @@ import { VersaoExameReadComponent } from './components/versao-exame/versao-exame
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
 import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
 import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
@@ -133,6 +143,16 @@ import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empr
 import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
 import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 import { EmpresaCrudComponent } from './views/empresa-crud/empresa-crud.component';
+
+import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
+import { LocalDeAtendimentoDeleteComponent } from './components/local-de-atendimento/local-de-atendimento-delete/local-de-atendimento-delete.component';
+import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
+import { LocalDeAtendimentoUpdateComponent } from './components/local-de-atendimento/local-de-atendimento-update/local-de-atendimento-update.component';
+import { LocalDeAtendimentoEmpresaComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-empresa/local-de-atendimento-empresa.component';
+import { LocalDeAtendimentoEnderecoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-endereco/local-de-atendimento-endereco.component';
+import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -186,6 +206,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     LoteAmostraDeleteComponent,
     LoteAmostraReadComponent,
     LoteAmostraUpdateComponent,
+    LoginComponent,
+    LgSenhaComponent,
+    LgUsuarioComponent,
     MaterialBiologicoCreateComponent,
     MaterialBiologicoDeleteComponent,
     MaterialBiologicoReadComponent,
@@ -231,16 +254,26 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     EmpresaDeleteComponent,
     EmpresaShowComponent,
     EmpresaCrudComponent,
+    LocalDeAtendimentoCreateComponent,
+    LocalDeAtendimentoDeleteComponent,
+    LocalDeAtendimentoReadComponent,
+    LocalDeAtendimentoUpdateComponent,
+    LocalDeAtendimentoEmpresaComponent,
+    LocalDeAtendimentoEnderecoComponent,
+    LocalDeAtendimentoHorarioFuncionamentoComponent,
   ],
   imports: [
+    MatCheckboxModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
+    MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
