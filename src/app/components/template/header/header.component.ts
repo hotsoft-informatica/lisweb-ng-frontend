@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  routerStr = '';
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
+    this.routerStr = window.location.href;
+  }
+
+  hasRoute(route: string): boolean {
+    return this.routerStr.includes(route);
   }
 
 }
