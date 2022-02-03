@@ -1,6 +1,6 @@
 import { Query } from '../../model/query.model';
-import { RequisicaoReadDataSource } from './requisicao-read-datasource';
-import { RequisicaoService } from '../../service/requisicao.service';
+import { EmpresaService } from '../../service/empresa.service';
+import { EmpresaReadDataSource } from './empresa-read-datasource';
 import {
   AfterViewInit,
   ElementRef,
@@ -22,22 +22,26 @@ import {
 import { merge, fromEvent } from 'rxjs';
 
 @Component({
-  selector: 'app-requisicao-read',
-  templateUrl: './requisicao-read.component.html',
-  styleUrls: ['./requisicao-read.component.css'],
+  selector: 'app-empresa-read',
+  templateUrl: './empresa-read.component.html',
+  styleUrls: ['./empresa-read.component.css'],
 })
-export class RequisicaoReadComponent implements OnInit, AfterViewInit {
+export class EmpresaReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
-  dataSource!: RequisicaoReadDataSource;
+  dataSource!: EmpresaReadDataSource;
+
   displayedColumns = [
     'id',
-    'num_protocolo',
-    'total',
-    'valor_cobertura',
-    'valor_desconto',
-    'guia',
-    'observacao',
-    'data',
+    'razao_social',
+    'bairro',
+    'endereco',
+    'numero',
+    'cidade',
+    'cep',
+    'uf',
+    'telefone',
+    'nome_contato',
+    'created_at',
     'action',
   ];
 
@@ -47,20 +51,20 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
 
   query: Query[] = [];
 
-  constructor(private requisicaoService: RequisicaoService) { }
+  constructor(private empresaService: EmpresaService) { }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
     const query = new Query({ key, value, isNumeric });
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
     this.paginator.pageIndex = 0;
-    this.loadRequisicoesPage();
+    this.loadEmpresasPage();
   }
 
   ngOnInit(): void {
-    this.dataSource = new RequisicaoReadDataSource(this.requisicaoService);
-    this.dataSource.loadRequisicoes('id', 'desc', 1, 10, null);
-    this.requisicaoService.countRequisicoes().subscribe((totalCount) => {
+    this.dataSource = new EmpresaReadDataSource(this.empresaService);
+    this.dataSource.loadEmpresas('id', 'desc', 1, 10, null);
+    this.empresaService.countEmpresas().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
@@ -69,12 +73,12 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
 
     merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
-      .pipe(tap(() => this.loadRequisicoesPage()))
+      .pipe(tap(() => this.loadEmpresasPage()))
       .subscribe();
   }
 
-  loadRequisicoesPage() {
-    this.dataSource.loadRequisicoes(
+  loadEmpresasPage() {
+    this.dataSource.loadEmpresas(
       this.sort.active,
       this.sort.direction,
       this.paginator.pageIndex,

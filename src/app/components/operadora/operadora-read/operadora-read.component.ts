@@ -1,6 +1,6 @@
 import { Query } from '../../model/query.model';
-import { RequisicaoReadDataSource } from './requisicao-read-datasource';
-import { RequisicaoService } from '../../service/requisicao.service';
+import { OperadoraReadDataSource } from './operadora-read-datasource';
+import { OperadoraService } from '../../service/operadora.service';
 import {
   AfterViewInit,
   ElementRef,
@@ -22,22 +22,17 @@ import {
 import { merge, fromEvent } from 'rxjs';
 
 @Component({
-  selector: 'app-requisicao-read',
-  templateUrl: './requisicao-read.component.html',
-  styleUrls: ['./requisicao-read.component.css'],
+  selector: 'app-operadora-read',
+  templateUrl: './operadora-read.component.html',
+  styleUrls: ['./operadora-read.component.css'],
 })
-export class RequisicaoReadComponent implements OnInit, AfterViewInit {
+export class OperadoraReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
-  dataSource!: RequisicaoReadDataSource;
+  dataSource!: OperadoraReadDataSource;
+
   displayedColumns = [
     'id',
-    'num_protocolo',
-    'total',
-    'valor_cobertura',
-    'valor_desconto',
-    'guia',
-    'observacao',
-    'data',
+    'created_at',
     'action',
   ];
 
@@ -47,20 +42,20 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
 
   query: Query[] = [];
 
-  constructor(private requisicaoService: RequisicaoService) { }
+  constructor(private operadoraService: OperadoraService) { }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
     const query = new Query({ key, value, isNumeric });
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
     this.paginator.pageIndex = 0;
-    this.loadRequisicoesPage();
+    this.loadOperadorasPage();
   }
 
   ngOnInit(): void {
-    this.dataSource = new RequisicaoReadDataSource(this.requisicaoService);
-    this.dataSource.loadRequisicoes('id', 'desc', 1, 10, null);
-    this.requisicaoService.countRequisicoes().subscribe((totalCount) => {
+    this.dataSource = new OperadoraReadDataSource(this.operadoraService);
+    this.dataSource.loadOperadoras('id', 'desc', 1, 10, null);
+    this.operadoraService.countOperadoras().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
@@ -69,12 +64,12 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
 
     merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
-      .pipe(tap(() => this.loadRequisicoesPage()))
+      .pipe(tap(() => this.loadOperadorasPage()))
       .subscribe();
   }
 
-  loadRequisicoesPage() {
-    this.dataSource.loadRequisicoes(
+  loadOperadorasPage() {
+    this.dataSource.loadOperadoras(
       this.sort.active,
       this.sort.direction,
       this.paginator.pageIndex,

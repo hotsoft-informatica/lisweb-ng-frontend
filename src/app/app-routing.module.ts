@@ -19,7 +19,9 @@ import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
+import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
+import { RequisicaoShowComponent } from './components/requisicao/requisicao-show/requisicao-show.component';
 import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-update/requisicao-update.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
@@ -43,6 +45,11 @@ import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-am
 import { ExameCreateComponent } from './components/exame/exame-create/exame-create.component';
 import { ExameUpdateComponent } from './components/exame/exame-update/exame-update.component';
 import { ExameDeleteComponent } from './components/exame/exame-delete/exame-delete.component';
+import { EmpresaCrudComponent } from './views/empresa-crud/empresa-crud.component';
+import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
+import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
+import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
+import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 import { ColetorCreateComponent } from './components/coletor/coletor-create/coletor-create.component';
 import { ColetorUpdateComponent } from './components/coletor/coletor-update/coletor-update.component';
 import { ColetorDeleteComponent } from './components/coletor/coletor-delete/coletor-delete.component';
@@ -58,6 +65,11 @@ import { BancadaDeleteComponent } from './components/bancada/bancada-delete/banc
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraUpdateComponent } from './components/amostra/amostra-update/amostra-update.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
+import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
+import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
+import { OperadoraUpdateComponent } from './components/operadora/operadora-update/operadora-update.component';
+import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
+import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
 import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
 
 const routes: Routes = [
@@ -130,8 +142,16 @@ const routes: Routes = [
     component: PacienteShowComponent,
   },
   {
+    path: 'requisicoes',
+    component: RequisicaoCrudComponent,
+  },
+  {
     path: 'requisicoes/create',
     component: RequisicaoCreateComponent,
+  },
+  {
+    path: 'requisicoes/show/:id',
+    component: RequisicaoShowComponent,
   },
   {
     path: 'requisicoes/update/:id',
@@ -242,6 +262,26 @@ const routes: Routes = [
     component: ColetorDeleteComponent,
   },
   {
+    path: 'operadoras',
+    component: OperadoraCrudComponent,
+  },
+  {
+    path: 'operadoras/create',
+    component: OperadoraCreateComponent,
+  },
+  {
+    path: 'operadoras/show/:id',
+    component: OperadoraShowComponent,
+  },
+  {
+    path: 'operadoras/update/:id',
+    component: OperadoraUpdateComponent,
+  },
+  {
+    path: 'operadoras/delete/:id',
+    component: OperadoraDeleteComponent,
+  },
+  {
     path: 'bandeja-amostras/create',
     component: BandejaAmostraCreateComponent,
   },
@@ -276,6 +316,26 @@ const routes: Routes = [
   {
     path: 'bancadas/delete/:id',
     component: BancadaDeleteComponent,
+  },
+  {
+    path: 'empresas',
+    component: EmpresaCrudComponent,
+  },
+  {
+    path: 'empresas/create',
+    component: EmpresaCreateComponent,
+  },
+  {
+    path: 'empresas/show/:id',
+    component: EmpresaShowComponent,
+  },
+  {
+    path: 'empresas/update/:id',
+    component: EmpresaUpdateComponent,
+  },
+  {
+    path: 'empresas/delete/:id',
+    component: EmpresaDeleteComponent,
   },
   {
     path: 'amostras/create',
