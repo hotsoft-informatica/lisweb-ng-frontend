@@ -1,0 +1,146 @@
+<mat-card>
+  <mat-card-title>Editar Empresa</mat-card-title>
+  <form  *ngIf="empresa">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Razão Social"
+        [(ngModel)]="empresa.razao_social"
+        name="razao_social"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Nome Fantasia "
+        [(ngModel)]="empresa.nome_fantasia"
+        name="nome_fantasia"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="CNPJ"
+        [(ngModel)]="empresa.cnpj"
+        name="cnpj"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Isc. Estatual"
+        [(ngModel)]="empresa.inscricao_estadual"
+        name="inscricao_estadual"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Endereço"
+        [(ngModel)]="empresa.endereco"
+        name="endereco"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Bairro"
+        [(ngModel)]="empresa.bairro"
+        name="Bairro"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="CEP"
+        [(ngModel)]="empresa.cep"
+        name="cep"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Cidade"
+        [(ngModel)]="empresa.cidade"
+        name="cidade"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="UF"
+        [(ngModel)]="empresa.uf"
+        name="uf"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Telefone"
+        [(ngModel)]="empresa.telefone"
+        name="telefone"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Fax"
+        [(ngModel)]="empresa.fax"
+        name="fax"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Contato"
+        [(ngModel)]="empresa.nome_contato"
+        name="nome_contato"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Email"
+        [(ngModel)]="empresa.email"
+        name="email"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Cod Município"
+        [(ngModel)]="empresa.cod_ibge_municipio"
+        name="cod_ibge_municipio"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Número"
+        [(ngModel)]="empresa.numero"
+        name="numero"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Alvara"
+        [(ngModel)]="empresa.alvara"
+        name="alvara"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="Alvara UF"
+        [(ngModel)]="empresa.alvara_uf"
+        name="alvara_uf"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="updateEmpresa()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+</mat-card>
+

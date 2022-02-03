@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ElementRef, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { MatDialogRef } from '@angular/material/dialog';
+import Validation from '../../../utils/validation';
 
 @Component({
   selector: 'app-usuario-create',
@@ -29,13 +30,17 @@ export class UsuarioCreateComponent implements OnInit {
   auxSenhas = 0;
   usuario: Usuario;
   id: number;
+  userForm!: FormGroup;
+  submitted = false;
 
   @ViewChild('grupoInput') grupoInput: ElementRef<HTMLInputElement> = {} as ElementRef;
+
 
   constructor(
     private router: Router,
     private usuarioService: UsuarioService,
     private route: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) {
     this.usuario = new Usuario({}); // criando usuario
 
@@ -114,6 +119,7 @@ export class UsuarioCreateComponent implements OnInit {
       console.log('criado');
       });
     }
+    console.log('salvooooooou');
   }
 
   senhasDiferentes(): boolean {
@@ -129,6 +135,19 @@ export class UsuarioCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userForm = this.formBuilder.group(
+      {
+        nome: ['', Validators.required],
+        login: ['', Validators.required],
+        cargo: [''],
+        grupos: [''],
+        senha: ['', Validators.required],
+        confirmaSenha: ['', Validators.required],
+      },
+      {
+        validators: [Validation.match('senha', 'confirmaSenha')]
+      }
+    );
   }
 }
 

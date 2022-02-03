@@ -18,6 +18,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class UsuarioReadComponent implements AfterViewInit, OnInit {
 
+  currentPaciente = 0;
   displayedColumns =
   [ 'nome',
     'login',
@@ -50,16 +51,19 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-  openDialogUpdate(): void {
+  openDialogUpdate(id: string): void {
     const dialogRef = this.dialog.open(UsuarioUpdateComponent, {
       width: '450px',
+      data: {
+        id: {id}
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
-
+  // TODO: ATUALIZAR PAGINAÇÃO APOS BUSCA.
   search(key: string, value: string, isNumeric: boolean= false): void {
     const query = new Query({ key, value, isNumeric });
     this.queries = this.queries.filter((q) => q.key !== key);
@@ -112,7 +116,6 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
       }
     });
   }
-
   ngOnInit(): void {
     this.usuarioService.countUsuarios().subscribe((totalCount: number) => {
       this.totalCount = totalCount;
@@ -128,6 +131,13 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
       .pipe(tap(() => this.loadBack()))
       .subscribe();
   }
+
+  show(id: number): void{
+    if (id > 0){
+      this.currentPaciente = id;
+    }
+  }
+
 
 }
 

@@ -1,0 +1,106 @@
+<mat-card>
+  <mat-divider inset></mat-divider>
+    <h3 class="mt-4">DADOS EMPRESA:</h3>
+  <mat-divider inset></mat-divider>
+  <div class="p-2 row col-12">
+    <div class="col-1">
+      Id: {{empresa.id}}
+    </div>
+    <div class="col-2">
+      Id Original: {{empresa.original_id}}
+    </div>
+    <div class="col-3">
+      Razão Social: {{empresa.razao_social}}
+    </div>
+    <div class="col-3">
+      Fantasia: {{empresa.nome_fantasia}}
+    </div>
+    <div class="col-3">
+      CNPJ: {{empresa.cnpj}}
+    </div>
+    <div class="col-3">
+      Insc. Estadual: {{empresa.inscricao_estadual}}
+    </div>
+    <div class="col-2">
+      Faz: {{empresa.fax}}
+    </div>
+    <div class="col-2">
+      Laboratório: {{empresa.laboratorio_id}}
+    </div>
+    <div class="col-2">
+      Domínio: {{empresa.laboratory_domain_id}}
+    </div>
+    <div class="col-2">
+      Versão: {{empresa.version_id}}
+    </div>
+    <div class="col-2">
+      Alvará: {{empresa.alvara}}
+    </div>
+    <div class="col-2">
+      Alvará UF: {{empresa.alvara_uf}}
+    </div>
+    <div class="col-2">
+      Ativa: {{empresa.deleted}}
+    </div>
+    <div class="col-2">
+      Cadastrada em: {{empresa.criado_em | date: "dd/MM/yyyy"}}
+    </div>
+  </div>
+</mat-card>
+
+<mat-card>
+  <mat-divider inset></mat-divider>
+    <h3 class="mt-4">DADOS CONTATO:</h3>
+  <mat-divider inset></mat-divider>
+  
+  <div class="p-2 row col-12">
+    <div class="col-3">
+      Contato: {{empresa.nome_contato}}
+    </div>
+    <div class="col-3">
+      Email: {{empresa.email}}
+    </div>
+    <div class="col-2">
+      Telefone: {{empresa.telefone}}
+    </div>
+  </div>
+</mat-card>
+
+<mat-card>
+  <mat-divider inset></mat-divider>
+    <h3 class="mt-4">DADOS DE ENDEREÇO:</h3>
+  <mat-divider inset></mat-divider>
+
+  <div class="p-2 row">
+    <div class="col-3">
+      Endereço: {{empresa.endereco}}
+    </div>
+    <div class="col-3">
+      Bairro: {{empresa.bairro}}
+    </div>
+    <div class="col-2">
+      CEP: {{empresa.cep}}
+    </div>
+    <div class="col-2">
+      Cidade: {{empresa.cidade}}
+    </div>
+    <div class="col-1">
+      UF: {{empresa.uf}}
+    </div>
+    <div class="col-2">
+      Cod. Município: {{empresa.cod_ibge_municipio}}
+    </div>
+    <div class="col-2">
+      Tipo: {{empresa.tipo_logradouro}}
+    </div>
+    <div class="col-1">
+      Número: {{empresa.numero}}
+    </div>
+  </div>
+</mat-card>
+<button mat-raised-button (click)="cancel()" color="accent">
+  Voltar
+</button>
+
+
+
