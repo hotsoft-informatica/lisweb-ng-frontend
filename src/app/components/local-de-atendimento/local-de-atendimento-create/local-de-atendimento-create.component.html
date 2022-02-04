@@ -1,0 +1,95 @@
+<form class= "example-container row container-fluid mt-4">
+  <div class="row justify-content-around">
+
+    <div>
+      <mat-form-field appearance="fill" class="col-lg-6 p-2">
+        <mat-label>Local de Atendimento:</mat-label>
+        <input matInput #input
+              id="localdeatendimento"
+              name="localdeatendimento">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-3 p-2">
+        <mat-label>CNES:</mat-label>
+        <input matInput #input maxlength="13"
+              id="cnes"
+              name="cnes">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-3 p-2">
+        <mat-label>Grupo:</mat-label>
+        <input matInput #input
+              id="grupo_local_id"
+              name="grupo_local_id"
+              [(ngModel)]="localdeatendimento.grupo_local_id">
+      </mat-form-field>
+    </div>
+    <div>
+
+      <mat-form-field appearance="fill" class="col-lg-3 p-2">
+        <mat-label>Chave de Publicação:</mat-label>
+        <input matInput #input
+              id="chave_publicacao"
+              name="chave_publicacao"
+              [(ngModel)]="localdeatendimento.chave_internet">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-3 p-2">
+        <mat-label>Local de Impressão:</mat-label>
+        <input matInput #input
+              id="local_impressao"
+              name="local_impressao"
+              >
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-2 p-2">
+        <mat-label>Grupo Histórico no Laudo:</mat-label>
+        <input matInput #input
+              id="grupo_histlaudo"
+              name="grupo_histlaudo"
+              [(ngModel)]="localdeatendimento.grupo_historico">
+      </mat-form-field>
+
+      <mat-radio-group aria-label="Select an option" color="primary" class="p-2 me-5">
+        <mat-radio-button value="1">Coleta Interna</mat-radio-button>
+        <mat-radio-button value="2" class="ms-2">Coleta Externa</mat-radio-button>
+      </mat-radio-group>
+
+      <button mat-flat-button color="primary" class="col-1"
+              data-bs-toggle="modal" data-bs-target="#permissoes">
+        Permissões
+      </button>
+
+      <div class="modal fade" id="permissoes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="permissoesLabel">Permissões Local de Atendimento</h3>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="p-2">
+              <mat-checkbox class="example-margin col-12 fs-6" color="primary">Registro de coleta</mat-checkbox>
+              <mat-checkbox class="example-margin col-12 fs-6" color="primary">Biometria</mat-checkbox>
+              <mat-checkbox class="example-margin col-12 fs-6" color="primary">Painel Monitoramento</mat-checkbox>
+              <mat-checkbox class="example-margin col-12 fs-6" color="primary">Enviar resultados CRM</mat-checkbox>
+              <mat-checkbox class="example-margin col-12 fs-6" color="primary">Etiqueta Apoio Recepção</mat-checkbox>
+              <mat-checkbox class="example-margin col-12 fs-6" color="primary">Avisar dado adicional obrigatorio na triagem</mat-checkbox>
+            </div>
+              <div class="modal-footer">
+              <button mat-flat-button color="primary">Salvar</button>
+              <button mat-flat-button color="warn" data-bs-dismiss="modal" class="ms-2">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <mat-tab-group>
+        <mat-tab label="Empresa"> <app-local-de-atendimento-empresa></app-local-de-atendimento-empresa> </mat-tab>
+        <mat-tab label="Endereço/ Contato"> <app-local-de-atendimento-endereco></app-local-de-atendimento-endereco> </mat-tab>
+        <mat-tab label="Horario de Funcionamento/ Urgência"> <app-local-de-atendimento-horario-funcionamento></app-local-de-atendimento-horario-funcionamento> </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+  <button mat-flat-button color="primary" class="fixed-bottom index col-1">Salvar</button>
+  <button mat-flat-button color="warn" class="fixed-bottom index ms-2 col-1">Cancelar</button>
+</form>

@@ -1,0 +1,91 @@
+<form class="example-container row container-fluid mt-5">
+  <span class="fs-6">HORARIO DE FUNCIONAMENTO:</span>
+  <div class="ms-2">
+    SEGUNDA A SEXTA:
+    <mat-form-field appearance="fill" class="col-lg-1 ms-3 p-2">
+      <mat-label>Inicio:</mat-label>
+      <input matInput #input type="time"
+      name="horario_semana_inicio" id="horario_semana_inicio"
+      [(ngModel)]="localdeatendimento.horario_semana_inicio">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-1 p-2">
+      <mat-label>Fim:</mat-label>
+      <input matInput #input type="time"
+      name="horario_semana_fim" id="horario_semana_fim"
+      [(ngModel)]="localdeatendimento.horario_semana_fim">
+    </mat-form-field>
+
+  SABADOS:
+  <mat-form-field appearance="fill" class="col-lg-1 ms-3 p-2">
+    <mat-label>Inicio:</mat-label>
+    <input matInput #input type="time"
+    name="horario_sabado_inicio" id="horario_sabado_inicio"
+    [(ngModel)]="localdeatendimento.horario_sabado_inicio">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="col-lg-1 p-2">
+    <mat-label>Fim:</mat-label>
+    <input matInput #input type="time"
+    name="horario_sabado_fim" id="horario_sabado_fim"
+    [(ngModel)]="localdeatendimento.horario_sabado_fim">
+  </mat-form-field>
+
+
+  DOMINGOS:
+  <mat-form-field appearance="fill" class="col-lg-1 ms-1 p-2">
+    <mat-label>Inicio:</mat-label>
+    <input matInput #input type="time"
+    name="horario_domingo_inicio" id="horario_domingo_inicio"
+    [(ngModel)]="localdeatendimento.horario_domingo_inicio">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="col-lg-1 p-2">
+    <mat-label>Fim:</mat-label>
+    <input matInput #input type="time"
+    name="horario_domingo_fim" id="horario_domingo_fim"
+    [(ngModel)]="localdeatendimento.horario_domingo_fim">
+  </mat-form-field>
+
+  <mat-slide-toggle color="primary" class="ms-5">Posto 24HRS</mat-slide-toggle>
+
+</div>
+
+<div class="fs-6 mt-2 mb-2">
+  <span>URGENCIA:</span>
+  <div>
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>Emergencia:</mat-label>
+      <input matInput #input maxlength="5" mask="00:00"
+      name="tempo_emergencia" id="tempo_emergencia"
+      [(ngModel)]="localdeatendimento.tempo_emergencia"
+      >
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>Muito Urgente:</mat-label>
+      <input matInput #input maxlength="5" mask="00:00"
+      name="tempo_muito_urgente" id="tempo_muito_urgente"
+      [(ngModel)]="localdeatendimento.tempo_muito_urgente">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>Urgente:</mat-label>
+      <input matInput #input maxlength="5" mask="00:00"
+      name="tempo_urgente" id="tempo_urgente"
+      [(ngModel)]="localdeatendimento.tempo_urgente">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>Pouco Urgente:</mat-label>
+      <input matInput #input maxlength="5" mask="00:00"
+      name="tempo_pouco_urgente" id="tempo_pouco_urgente"
+      [(ngModel)]="localdeatendimento.tempo_pouco_urgente">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-4 p-2">
+      <mat-label>Padrão:</mat-label>
+      <input matInput #input
+      name="tempo_normal" id="tempo_normal"
+      [(ngModel)]="localdeatendimento.tempo_normal">
+    </mat-form-field>
+  </div>
+</div>
+
+</form>

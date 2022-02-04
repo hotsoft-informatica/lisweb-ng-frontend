@@ -4,6 +4,7 @@ export class Usuario {
   public nome?: string;
   public login?: string;
   public senha?: string;
+  public confirmaSenha?: string;
   public original_id?: number;
   public created_at?: Date = new Date();
   public updated_at?: Date = new Date();
@@ -15,6 +16,7 @@ export class Usuario {
   public enviar_stockfin?: string;
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
+  public grupos?: string;
 
   constructor(values: Usuario) {
     Object.assign(this, values);

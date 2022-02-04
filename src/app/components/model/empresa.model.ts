@@ -31,7 +31,6 @@ export class Empresa {
   public changed_by_lab_id?: number;
   public operadora?: Operadora;
 
-
   constructor(values: Empresa) {
     Object.assign(this, values);
   }
