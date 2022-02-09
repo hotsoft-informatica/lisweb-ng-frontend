@@ -1,6 +1,6 @@
 import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-empresa-create',
@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./empresa-create.component.css'],
 })
 export class EmpresaCreateComponent implements OnInit {
-  empresa: Empresa;
+  @Input('empresa') empresa: Empresa;
+  @Input('fromOperadora') fromOperadora!: boolean;
 
   constructor(private router: Router, private empresaService: EmpresaService) {
     this.empresa = new Empresa({});
