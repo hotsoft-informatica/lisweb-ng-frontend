@@ -23,6 +23,7 @@ export class OperadoraService {
   }
 
   create(operadora: Operadora): Observable<Operadora> {
+    operadora.laboratorio_id = 2; // TODO pegar id do laboratório logado na sessão.
     return this.http.post<Operadora>(this.baseUrl, operadora);
   }
 

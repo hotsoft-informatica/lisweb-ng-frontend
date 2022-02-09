@@ -3,7 +3,7 @@ import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { Operadora } from './../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-operadora-create',
@@ -12,27 +12,29 @@ import { Router } from '@angular/router';
 })
 export class OperadoraCreateComponent implements OnInit {
   operadora: Operadora;
-  empresas: Empresa[] = [];
+  empresa: Empresa;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private empresaService: EmpresaService,
     private operadoraService: OperadoraService
   ) {
     this.operadora = new Operadora({});
+    this.empresa ||= new Empresa({});
   }
 
-  ngOnInit(): void {
-    this.empresaService.read().subscribe((empresas) => {
-      this.empresas = empresas;
-    });
-  }
+  ngOnInit(): void { }
 
   createOperadora(): void {
-    this.operadoraService.create(this.operadora).subscribe(() => {
-      this.operadoraService.showMessage('Operadora criada com sucesso!');
-      this.router.navigate(['/operadoras']).then(() => {
-        window.location.reload();
+    this.empresaService.create(this.empresa).subscribe((empresa) => {
+      this.operadora.empresa_id = empresa.id;
+      this.operadora.empresa = empresa;
+      this.operadoraService.create(this.operadora).subscribe(() => {
+        this.operadoraService.showMessage('Operadora criada com sucesso!');
+        this.router.navigate(['/operadoras']).then(() => {
+          window.location.reload();
+        });
       });
     });
   }
