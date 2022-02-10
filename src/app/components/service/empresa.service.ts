@@ -23,7 +23,7 @@ export class EmpresaService {
   }
 
   create(empresa: Empresa): Observable<Empresa> {
-    empresa.laboratorio_id = 2; // TODO pegar id da emresa do laboratório logado na sessão.
+    empresa.laboratorio_id = 2; // TODO pegar id do laboratório logado na sessão.
     return this.http.post<Empresa>(this.baseUrl, empresa);
   }
 

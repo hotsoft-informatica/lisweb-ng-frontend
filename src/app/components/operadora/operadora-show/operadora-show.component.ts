@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Operadora } from '../../model/operadora.model';
 import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
+import { Operadora } from '../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -32,6 +32,12 @@ export class OperadoraShowComponent implements OnInit {
       .readById(id as unknown as number)
       .subscribe((operadora) => {
         this.operadora = operadora;
+        this.empresaService
+          .readById(this.operadora.empresa_id as number)
+          .subscribe((empresa) => {
+            this.empresa = empresa;
+            this.operadora.empresa = empresa;
+          });
       });
   }
 
