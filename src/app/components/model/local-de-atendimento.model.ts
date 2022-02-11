@@ -1,4 +1,8 @@
+import { Empresa } from '../model/empresa.model';
+
 export class LocalDeAtendimento {
+  public empresa?: Empresa;
+
   public id?: string;
   public nome?: string;
   public cnes?: string;
@@ -9,7 +13,7 @@ export class LocalDeAtendimento {
   public tipo_coleta?: string;
   public coleta_externa?: string;
 
-  public empresa_id?: string;
+  public empresa_id?: number;
 
   public utiliza_coleta?: string;
   public usa_biometria?: string;
@@ -41,13 +45,6 @@ export class LocalDeAtendimento {
   public tempo_urgente?: string;
   public tempo_muito_urgente?: string;
   public tempo_emergencia?: string;
-
-  public cep?: string;
-  public endereco?: string;
-  public numero?: string;
-  public bairro?: string;
-  public cidade?: string;
-  public uf?: string;
 
   constructor(values: LocalDeAtendimento) {
     Object.assign(this, values);
