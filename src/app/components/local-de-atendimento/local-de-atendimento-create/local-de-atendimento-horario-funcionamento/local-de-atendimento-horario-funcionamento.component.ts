@@ -8,6 +8,7 @@ import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendiment
 })
 export class LocalDeAtendimentoHorarioFuncionamentoComponent implements OnInit {
   integral = false;
+
   @Input('localdeatendimento') localdeatendimento: LocalDeAtendimento;
 
 
