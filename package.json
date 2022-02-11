@@ -44,12 +44,12 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1302.2",
+    "@angular-devkit/architect": "^0.1302.3",
     "@angular-devkit/build-angular": "^13.2.2",
     "@angular-devkit/schematics": "^13.2.2",
     "@ngtools/webpack": "^13.2.0",
     "@types/jasmine": "^3.10.3",
-    "@types/node": "^17.0.14",
+    "@types/node": "^17.0.17",
     "core-js": "^3.21.0",
     "jasmine-core": "^4.0.0",
     "jasmine-spec-reporter": "^7.0.0",
