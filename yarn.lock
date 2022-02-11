@@ -1247,10 +1247,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     sourcemap-codec "1.4.8"
 
-"@ngneat/helipopper@^5.1.0":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@ngneat/helipopper/-/helipopper-5.1.2.tgz#9af13a22d2009c39567a273f6cba29c648e32b2d"
-  integrity sha512-eOpXhsxCQBCN6kqREG9sJezAhMXRMsDsz9llT/5RU0XzW7HsZWvUNzF7HhkzwIhArjJ4PvENNjAi5YNYS8qkyA==
+"@ngneat/helipopper@^5.1.4":
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/@ngneat/helipopper/-/helipopper-5.1.4.tgz#9bee78806988d27d10731d9f4129374c7799373a"
+  integrity sha512-2O9YrL90T/AUjPdqTek2GoTNq0B9seHDPMWZWFnD08YnbZhAY0uap185zppLKquQOPsxAtDxlI61MLoOMwGM5Q==
   dependencies:
     tippy.js "6.3.7"
     tslib "2.3.1"
