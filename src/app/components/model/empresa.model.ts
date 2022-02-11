@@ -1,6 +1,5 @@
 export class Empresa {
-  public id?: string;
-  public empresa_id?: string;
+  public id?: number;
 
   public cep?: string;
   public endereco?: string;
@@ -8,10 +7,18 @@ export class Empresa {
   public bairro?: string;
   public cidade?: string;
   public uf?: string;
+  public cod_ibge_municipio?: string;
+
+  public telefone?: string;
+  public email?: string;
+  public fax?: string;
+
+  public alvara?: string;
+  public alvara_uf?: string;
+  public inscricao_estadual?: string;
 
   public razao_social?: string;
   public nome_fantasia?: string;
-  public razao_social?: string;
   public cnpj?: string;
 
   constructor(values: Empresa) {
