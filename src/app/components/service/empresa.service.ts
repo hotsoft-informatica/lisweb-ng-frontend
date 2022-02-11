@@ -31,7 +31,7 @@ export class EmpresaService {
     sortDirection: string = 'desc',
     pageNumber = 1,
     pageSize = 3,
-    queries: Query[]): Observable<Empresa[]> { // criando parametros e puxando dados do backend
+    queries: Query[] = []): Observable<Empresa[]> { // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
 
     queries.forEach(busca => {
