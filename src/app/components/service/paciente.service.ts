@@ -27,15 +27,16 @@ export class PacienteService {
   }
 
   read(
-       sortActive: string = 'id',
-       sortDirection: string = 'desc',
-       pageNumber = 1,
-       pageSize = 3,
-       queries: Query[]): Observable<Paciente[]>
-  { // criando parametros e puxando dados do backend
+    sortActive: string = 'id',
+    sortDirection: string = 'desc',
+    pageNumber = 1,
+    pageSize = 3,
+    queries: Query[]
+  ): Observable<Paciente[]> {
+    // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
 
-    queries.forEach(busca => {
+    queries.forEach((busca) => {
       params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
     });
     params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
@@ -50,7 +51,7 @@ export class PacienteService {
       }
     });
 
-    return this.http.get<Paciente[]>(this.baseUrl, {params}); // Passa qual operação sera realizada pelo backend
+    return this.http.get<Paciente[]>(this.baseUrl, { params }); // Passa qual operação sera realizada pelo backend
   }
 
   readById(id: number): Observable<Paciente> {

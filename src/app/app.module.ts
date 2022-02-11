@@ -110,9 +110,11 @@ import { PacienteDeleteComponent } from './components/paciente/paciente-delete/p
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
 import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
+import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
 import { RequisicaoReadComponent } from './components/requisicao/requisicao-read/requisicao-read.component';
+import { RequisicaoShowComponent } from './components/requisicao/requisicao-show/requisicao-show.component';
 import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-update/requisicao-update.component';
 import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-create/tipo-exame-create.component';
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
@@ -126,6 +128,22 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
+import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
+import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
+import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
+import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
+import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
+import { OperadoraUpdateComponent } from './components/operadora/operadora-update/operadora-update.component';
+import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
+import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
+import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-read.component';
+import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
+import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
+import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
+import { EmpresaCrudComponent } from './views/empresa-crud/empresa-crud.component';
+
 import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
 import { LocalDeAtendimentoDeleteComponent } from './components/local-de-atendimento/local-de-atendimento-delete/local-de-atendimento-delete.component';
 import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
@@ -134,6 +152,7 @@ import { LocalDeAtendimentoEmpresaComponent } from './components/local-de-atendi
 import { LocalDeAtendimentoEnderecoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-endereco/local-de-atendimento-endereco.component';
 import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -173,8 +192,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     FooterComponent,
     HeaderComponent,
     HomeComponent,
-    LaboratorioCreateComponent,
     LaboratorioCrudComponent,
+    LaboratorioCreateComponent,
     LaboratorioDeleteComponent,
     LaboratorioReadComponent,
     LaboratorioUpdateComponent,
@@ -205,6 +224,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     PacienteReadComponent,
     PacienteShowComponent,
     PacienteUpdateComponent,
+    RequisicaoCrudComponent,
     RequisicaoCreateComponent,
     RequisicaoDeleteComponent,
     RequisicaoReadComponent,
@@ -221,6 +241,19 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameDeleteComponent,
     VersaoExameReadComponent,
     VersaoExameUpdateComponent,
+    RequisicaoShowComponent,
+    OperadoraReadComponent,
+    OperadoraCreateComponent,
+    OperadoraDeleteComponent,
+    OperadoraShowComponent,
+    OperadoraUpdateComponent,
+    OperadoraCrudComponent,
+    EmpresaCreateComponent,
+    EmpresaReadComponent,
+    EmpresaUpdateComponent,
+    EmpresaDeleteComponent,
+    EmpresaShowComponent,
+    EmpresaCrudComponent,
     LocalDeAtendimentoCreateComponent,
     LocalDeAtendimentoDeleteComponent,
     LocalDeAtendimentoReadComponent,
@@ -264,9 +297,20 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
-    NgxMaskModule.forRoot(),
+    // NgxMaskModule.forRoot(), //TODO: encontrar biblioteca mascara compatível
     ReactiveFormsModule,
     RouterModule,
+    TippyModule.forRoot({
+      defaultVariation: 'tooltip',
+      variations: {
+        tooltip: tooltipVariation,
+        popper: popperVariation,
+      }
+    }),
+    TranslateModule.forRoot({
+      defaultLanguage: 'en'
+    })
+
   ],
   providers: [
     {

@@ -1,7 +1,7 @@
-import { Empresa } from './../model/empresa.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Empresa } from '../model/empresa.model';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
@@ -31,36 +31,35 @@ export class EmpresaService {
     sortDirection: string = 'desc',
     pageNumber = 1,
     pageSize = 3,
-    queries: Query[]): Observable<Empresa[]>
-{ // criando parametros e puxando dados do backend
- let params = new HttpParams(); // cria paramaetros para leitura do backend
+    queries: Query[]): Observable<Empresa[]> { // criando parametros e puxando dados do backend
+    let params = new HttpParams(); // cria paramaetros para leitura do backend
 
- queries.forEach(busca => {
-   params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
- });
- params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
- params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
- params = params.append('pageNumber', pageNumber.toString());
- params = params.append('pageSize', pageSize.toString());
+    queries.forEach(busca => {
+      params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
+    });
+    params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
+    params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
 
- queries?.forEach((queryItem) => {
-   if (queryItem) {
-     const key = `queryItem[${queryItem.key}]`;
-     params = params.append(key, queryItem.value);
-   }
- });
+    queries?.forEach((queryItem) => {
+      if (queryItem) {
+        const key = `queryItem[${queryItem.key}]`;
+        params = params.append(key, queryItem.value);
+      }
+    });
 
- return this.http.get<Empresa[]>(this.baseUrl, {params}); // Passa qual operação sera realizada pelo backend
-}
+    return this.http.get<Empresa[]>(this.baseUrl, { params }); // Passa qual operação sera realizada pelo backend
+  }
 
   readById(id: number): Observable<Empresa> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Empresa>(url);
   }
 
-  update(usuario: Empresa): Observable<Empresa> {
-    const url = `${this.baseUrl}/${usuario.id}`;
-    return this.http.put<Empresa>(url, usuario);
+  update(empresa: Empresa): Observable<Empresa> {
+    const url = `${this.baseUrl}/${empresa.id}`;
+    return this.http.put<Empresa>(url, empresa);
   }
 
   delete(id: number): Observable<Empresa> {

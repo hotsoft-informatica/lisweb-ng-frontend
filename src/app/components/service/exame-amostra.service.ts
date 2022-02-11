@@ -26,8 +26,19 @@ export class ExameAmostraService {
     return this.http.post<ExameAmostra>(this.baseUrl, exameAmostra);
   }
 
-  read(): Observable<ExameAmostra[]> {
-    return this.http.get<ExameAmostra[]>(this.baseUrl);
+  read(amostraId: number | undefined, exameId: number | undefined): Observable<ExameAmostra[]> {
+    let params = new HttpParams()
+
+    if (amostraId as number > 0) {
+      params = params.append('queryItem[amostra_id]', amostraId as number);
+    }
+    if (exameId as number > 0) {
+      params = params.append('queryItem[exame_id]', exameId as number);
+    }
+
+    return this.http.get<ExameAmostra[]>(this.baseUrl, {
+      params,
+    });
   }
 
   readById(id: number): Observable<ExameAmostra> {
