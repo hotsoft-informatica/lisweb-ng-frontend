@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,13 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./empresa-delete.component.css'],
 })
 export class EmpresaDeleteComponent implements OnInit {
-  empresa!: Empresa;
+  @Input('empresa') empresa: Empresa;
 
   constructor(
     private empresaService: EmpresaService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.empresa = new Empresa({});
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

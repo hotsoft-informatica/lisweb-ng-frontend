@@ -11,8 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./operadora-show.component.css'],
 })
 export class OperadoraShowComponent implements OnInit {
-  operadora!: Operadora;
-  empresa!: Empresa;
+  operadora: Operadora;
+  empresa: Empresa;
   id: any;
 
   constructor(
@@ -21,6 +21,8 @@ export class OperadoraShowComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.empresa = new Empresa({});
+    this.operadora = new Operadora({});
     this.id = this.route.snapshot.paramMap.get('id');
     this.load(this.id);
   }
