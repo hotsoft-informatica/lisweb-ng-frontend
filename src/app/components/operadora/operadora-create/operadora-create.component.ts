@@ -4,6 +4,7 @@ import { EmpresaService } from '../../service/empresa.service';
 import { Operadora } from './../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
 import { Router } from '@angular/router';
+import { TNODE } from '@angular/core/src/render3/interfaces/injector';
 
 @Component({
   selector: 'app-operadora-create',
@@ -12,20 +13,26 @@ import { Router } from '@angular/router';
 })
 export class OperadoraCreateComponent implements OnInit {
   operadora: Operadora;
-  empresas: Empresa[] = [];
+  empresa: Empresa;
 
   constructor(
     private router: Router,
     private empresaService: EmpresaService,
     private operadoraService: OperadoraService
   ) {
-    this.operadora = new Operadora({});
+    this.operadora ||= new Operadora({});
+    this.empresa ||= new Empresa({});
+    this.operadora.empresa = this.empresa;
   }
 
   ngOnInit(): void {
-    this.empresaService.read().subscribe((empresas) => {
-      this.empresas = empresas;
-    });
+    const empresa_id = this.operadora.empresa_id || 0
+    if (empresa_id > 0) {
+      this.empresaService.readById(this.operadora.empresa_id as number).subscribe((empresa) => {
+        this.empresa = empresa;
+        this.operadora.empresa = empresa;
+      });
+    }
   }
 
   createOperadora(): void {

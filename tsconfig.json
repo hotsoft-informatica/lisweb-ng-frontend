@@ -16,6 +16,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "paths": { "@angular/*": ["./node_modules/@angular/*"] },
     "plugins": [
       { "name": "typescript-tslint-plugin" }
     ],

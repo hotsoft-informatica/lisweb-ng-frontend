@@ -14,9 +14,9 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/cli": "^13.2.2",
     "@angular/animations": "^13.1.1",
     "@angular/cdk": "^13.1.1",
+    "@angular/cli": "^13.2.2",
     "@angular/common": "^13.1.1",
     "@angular/compiler": "^13.1.1",
     "@angular/compiler-cli": "^13.1.1",
@@ -66,10 +66,9 @@
     "webpack": "^5.65.0"
   },
   "volta": {
-    "node": "16.13.1",
+    "node": "17.6.0",
     "yarn": "1.22.17",
     "typescript": "^4.5.5",
     "webpack": "^5.68.0"
   }
 }
-

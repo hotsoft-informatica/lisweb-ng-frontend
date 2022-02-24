@@ -2,20 +2,6 @@
   <mat-card-title>Nova Operadora</mat-card-title>
   <form>
     <mat-form-field appearance="fill">
-      <mat-label>Selecione a  Empresa</mat-label>
-      <mat-select
-        [(ngModel)]="operadora.empresa_id"
-        name="laboratory_domain_id"
-      >
-        <mat-option
-          *ngFor="let empresa of empresas"
-          [value]="empresa.id"
-        >
-          {{ empresa.razao_social }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
       <input
         matInput
         placeholder="Laboratório Id"

@@ -1,23 +1,39 @@
-<div class="p-3 col-sm-12 row">
+<div class="p-3 col-12 row">
 
-  <div class="col-sm-1 m-1">
-    <button mat-mini-fab color="primary" routerLink="/localdeatendimento/create">
-      <mat-icon>add</mat-icon>
+<div class="row col-10 col-md-8 col-xs-6">
+    <h3>
+      <a routerLink="/">Inicio</a>
+      <a> > </a>
+      <a routerLink="/localdeatendimento/read">Locais de atendimentos</a>
+    </h3>
+</div>
+
+<div class="col-2 col-md-4 col-xs-6">
+  <div class="row">
+
+  <div class="p-1 col d-flex justify-content-end">
+    <button mat-flat-button class="dvm-button" color="primary" routerLink="/localdeatendimento/create">
+        <mat-icon>add</mat-icon>
+      Adicionar
     </button>
     <mat-label class="ms-1 fs-6"></mat-label>
   </div>
 
-  <div class="col-sm-1 m-1">
-    <button mat-mini-fab color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+  <div class="p-1 col d-flex justify-content-end">
+    <button mat-flat-button color="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
       aria-expanded="false" aria-controls="collapseExample">
       <mat-icon>search</mat-icon>
+      Buscar
     </button>
   </div>
+
+  </div>
+</div>
 
   <div class="collapse" id="collapseExample">
     <div class="card card-body">
       <div class="row">
-        <div class="mb-3 col-md-4 row">
+        <div class="mb-3 col row">
           <mat-form-field appearance="fill">
             <mat-label>Nome:</mat-label>
             <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome',nome.value)">

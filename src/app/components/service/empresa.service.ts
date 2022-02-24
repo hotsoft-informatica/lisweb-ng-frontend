@@ -57,7 +57,7 @@ export class EmpresaService {
     return this.http.get<Empresa>(url);
   }
 
-  update(empresa: Empresa): Observable<Empresa> {
+  update(empresa: Empresa = new Empresa({})): Observable<Empresa> {
     const url = `${this.baseUrl}/${empresa.id}`;
     return this.http.put<Empresa>(url, empresa);
   }
