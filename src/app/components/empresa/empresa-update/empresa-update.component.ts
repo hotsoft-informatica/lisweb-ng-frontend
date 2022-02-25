@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
@@ -9,21 +9,29 @@ import { EmpresaService } from '../../service/empresa.service';
   styleUrls: ['./empresa-update.component.css'],
 })
 export class EmpresaUpdateComponent implements OnInit {
-  empresa!: Empresa;
+  @Input('empresa') empresa: Empresa;
+  @Input('fromOperadora') fromOperadora!: boolean;
 
   constructor(
     private empresaService: EmpresaService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
+    this.empresa ||= new Empresa({});
+    console.table(this.empresa);
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.empresaService
-      .readById(id as unknown as number)
-      .subscribe((empresa) => {
-        this.empresa = empresa;
-      });
+    console.table(id);
+    if (id as unknown as number > 0) {
+      this.empresaService
+        .readById(id as unknown as number)
+        .subscribe((empresa) => {
+          console.table(empresa);
+          this.empresa ||= empresa;
+        });
+    }
   }
 
   updateEmpresa(): void {

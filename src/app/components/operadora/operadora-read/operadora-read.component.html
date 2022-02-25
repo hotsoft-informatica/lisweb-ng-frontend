@@ -37,6 +37,9 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let row">
+        <a routerLink="/operadoras/update/{{ row.id }}" class="edit">
+          <i class="material-icons"> edit </i>
+        </a>
         <a routerLink="/operadoras/delete/{{ row.id }}" class="delete">
           <i class="material-icons"> delete </i>
         </a>

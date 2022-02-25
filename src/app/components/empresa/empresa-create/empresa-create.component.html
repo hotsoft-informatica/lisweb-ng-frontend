@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>Nova Empresa</mat-card-title>
+  <mat-card-title *ngIf="!fromOperadora">Nova Empresa</mat-card-title>
   <form>
     <mat-form-field appearance="fill">
       <input
@@ -138,9 +138,11 @@
       />
     </mat-form-field>
   </form>
-  <button mat-raised-button (click)="createEmpresa()" color="primary">
-    Salvar
-  </button>
-  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
-</mat-card>
+  <div *ngIf="!fromOperadora">
+    <button mat-raised-button (click)="createEmpresa()" color="primary">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+  </div>
+  </mat-card>
 
