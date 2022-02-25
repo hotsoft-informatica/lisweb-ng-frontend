@@ -3,7 +3,6 @@ import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { Operadora } from './../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
-import { Router } from '@angular/router';
 // import { TNODE } from '@angular/core/src/render3/interfaces/injector';
 import { ActivatedRoute, Router } from '@angular/router';
 
