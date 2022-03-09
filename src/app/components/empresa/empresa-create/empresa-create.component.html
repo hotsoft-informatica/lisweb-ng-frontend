@@ -140,11 +140,20 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        type="text"
+        id="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         matInput
         placeholder="Email"
         [(ngModel)]="empresa.email"
+        #email="ngModel"
         name="email"
       />
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+        <div [hidden]="!email.errors?.pattern">
+          Padrão inválido para email!
+        </div>
+      </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
