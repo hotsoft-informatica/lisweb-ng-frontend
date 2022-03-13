@@ -44,7 +44,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1302.5",
+    "@angular-devkit/architect": "^0.1302.6",
     "@angular-devkit/build-angular": "^13.2.5",
     "@angular-devkit/schematics": "^13.2.5",
     "@ngtools/webpack": "^13.2.5",
@@ -58,7 +58,7 @@
     "karma-coverage": "^2.2.0",
     "karma-jasmine": "^4.0.1",
     "karma-jasmine-html-reporter": "^1.7.0",
-    "node-fetch": "^3.2.0",
+    "node-fetch": "^3.2.3",
     "rxjs-compat": "^6.6.7",
     "tapable": "^2.2.1",
     "ts-node": "^10.7.0",
