@@ -45,12 +45,12 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        mask="00.000.000/0000-00"
         type="text"
         pattern="\d*"
         id="cnpj"
         required
-        minlength="11"
-        maxlength="11"
+        minlength="14"
         matInput
         placeholder="CNPJ"
         [(ngModel)]="empresa.cnpj"
@@ -62,18 +62,18 @@
           O campo é obrigatório!
         </div>
         <div *ngIf="cnpj.errors?.['minlength']">
-          O cnpj dever conter 11 caracteres!
+          O cnpj dever conter 14 caracteres!
         </div>
       </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
       type="text"
+        mask="000.000.000.000"
         pattern="\d*"
         id="inscricao_estadual"
         required
-        minlength="9"
-        maxlength="9"
+        minlength="12"
         matInput
         placeholder="Isc. Estadual"
         [(ngModel)]="empresa.inscricao_estadual"
@@ -85,7 +85,7 @@
           O campo é obrigatório!
         </div>
         <div *ngIf="inscricao_estadual.errors?.['minlength']">
-          A Inscrição Estadual dever conter 9 caracteres!
+          A Inscrição Estadual dever conter 12 caracteres!
         </div>
       </div>
     </mat-form-field>

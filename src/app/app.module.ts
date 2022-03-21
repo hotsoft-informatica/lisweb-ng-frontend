@@ -151,7 +151,7 @@ import { LocalDeAtendimentoUpdateComponent } from './components/local-de-atendim
 import { LocalDeAtendimentoEmpresaComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-empresa/local-de-atendimento-empresa.component';
 import { LocalDeAtendimentoEnderecoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-endereco/local-de-atendimento-endereco.component';
 import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 registerLocaleData(localePt);
@@ -297,7 +297,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
-    // NgxMaskModule.forRoot(), //TODO: encontrar biblioteca mascara compatível
+    NgxMaskModule.forRoot(),
     ReactiveFormsModule,
     RouterModule,
     TippyModule.forRoot({
