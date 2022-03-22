@@ -17,12 +17,20 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@angular-devkit/architect@0.1302.5", "@angular-devkit/architect@^0.1302.5":
+"@angular-devkit/architect@0.1302.5":
   version "0.1302.5"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1302.5.tgz#24284a44dcfcfd6bd5ee00a086f10f8d58316ad3"
   integrity sha512-r07oo8GgUGY28SR3PCM1qNfLE6PNx6SfzBlG4p0OrQQ68ln8HipsEysDGakOWjNFK18SCGWOXAUNrUj8GnV+5g==
   dependencies:
     "@angular-devkit/core" "13.2.5"
+    rxjs "6.6.7"
+
+"@angular-devkit/architect@^0.1303.0":
+  version "0.1303.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1303.0.tgz#19910779a8178d00c1569ebae7f25557d0c721b8"
+  integrity sha512-kTcKB917ICA8j53SGo4gn+qAlzx8si+iHnOTbp5QlMr7qt/Iz07SVVI8mRlMD6c6lr7eE/fVlCLzEZ1+WCQpTA==
+  dependencies:
+    "@angular-devkit/core" "13.3.0"
     rxjs "6.6.7"
 
 "@angular-devkit/build-angular@^13.2.5":
@@ -121,6 +129,18 @@
   version "13.2.6"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-13.2.6.tgz#7032a7c474efacc564511cff0c21d1636404e437"
   integrity sha512-8h2mWdBTN/dYwZuzKMg2IODlOWMdbJcpQG4XVrkk9ejCPP+3aX5Aa3glCe/voN6eBNiRfs8YDM0jxmpN2aWVtg==
+  dependencies:
+    ajv "8.9.0"
+    ajv-formats "2.1.1"
+    fast-json-stable-stringify "2.1.0"
+    magic-string "0.25.7"
+    rxjs "6.6.7"
+    source-map "0.7.3"
+
+"@angular-devkit/core@13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-13.3.0.tgz#ad15f2a6b72599a3e22194ebf2decc35e91e592c"
+  integrity sha512-8YrreVbWlJVZnk5zs4vfkRItrPEtWhUcxWOBfYT/Kwu4FwJVAnNuhJAxxXOAQ2Ckd7cv30Idh/RFVLbTZ5Gs9w==
   dependencies:
     ajv "8.9.0"
     ajv-formats "2.1.1"
@@ -1301,10 +1321,15 @@
   dependencies:
     tslib "^2.0.0"
 
-"@ngtools/webpack@13.2.5", "@ngtools/webpack@^13.2.5":
+"@ngtools/webpack@13.2.5":
   version "13.2.5"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.2.5.tgz#083ac647926403df741d5f6b5a3edd3a545a9b2f"
   integrity sha512-obiPvwPe+UJUO8cfNbBxukLKG30F+gLF5/erexwklRknJzS4KP8ciH2on6XlTuXUahpDjbO0pffugFE2I/IszQ==
+
+"@ngtools/webpack@^13.3.0":
+  version "13.3.0"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.3.0.tgz#4aa73b6e05aafbe539b7442eae248a02d5f8619f"
+  integrity sha512-QbTQWXK2WzYU+aKKVDG0ya7WYT+6rNAUXVt5ov9Nz1SGgDeozpiOx8ZqPWUvnToTY8EoodwWFGCVtkLHXUR+wA==
 
 "@ngx-translate/core@^14.0.0":
   version "14.0.0"
