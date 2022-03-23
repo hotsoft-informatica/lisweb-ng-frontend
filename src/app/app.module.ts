@@ -1,3 +1,4 @@
+import { InterceptorModule } from './components/model/interceptor.model';
 import { LoginComponent } from './components/login/login.component';
 import { LgUsuarioComponent } from './components/login/lg-usuario/lg-usuario.component';
 import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
@@ -263,6 +264,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     LocalDeAtendimentoHorarioFuncionamentoComponent,
   ],
   imports: [
+    HttpClientModule,
+    InterceptorModule,
     MatCheckboxModule,
     AppRoutingModule,
     BrowserAnimationsModule,
