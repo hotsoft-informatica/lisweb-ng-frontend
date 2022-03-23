@@ -13,7 +13,12 @@
         #razao_social="ngModel"
         name="razao_social"
       />
-      <div *ngIf="razao_social.invalid && (razao_social.dirty || razao_social.touched)" class="alert">
+      <div
+        *ngIf="
+          razao_social.invalid && (razao_social.dirty || razao_social.touched)
+        "
+        class="alert"
+      >
         <div *ngIf="razao_social.errors?.['required']">
           O campo é obrigatório!
         </div>
@@ -34,7 +39,13 @@
         #nome_fantasia="ngModel"
         name="nome_fantasia"
       />
-      <div *ngIf="nome_fantasia.invalid && (nome_fantasia.dirty || nome_fantasia.touched)" class="alert">
+      <div
+        *ngIf="
+          nome_fantasia.invalid &&
+          (nome_fantasia.dirty || nome_fantasia.touched)
+        "
+        class="alert"
+      >
         <div *ngIf="nome_fantasia.errors?.['required']">
           O campo é obrigatório!
         </div>
@@ -45,8 +56,8 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
-        mask="00.000.000/0000-00"
         type="text"
+        mask="00.000.000/0000-00"
         pattern="\d*"
         id="cnpj"
         required
@@ -58,9 +69,7 @@
         name="cnpj"
       />
       <div *ngIf="cnpj.invalid && (cnpj.dirty || cnpj.touched)" class="alert">
-        <div *ngIf="cnpj.errors?.['required']">
-          O campo é obrigatório!
-        </div>
+        <div *ngIf="cnpj.errors?.['required']">O campo é obrigatório!</div>
         <div *ngIf="cnpj.errors?.['minlength']">
           O cnpj dever conter 14 caracteres!
         </div>
@@ -68,7 +77,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
-      type="text"
+        type="text"
         mask="000.000.000.000"
         pattern="\d*"
         id="inscricao_estadual"
@@ -77,10 +86,16 @@
         matInput
         placeholder="Isc. Estadual"
         [(ngModel)]="empresa.inscricao_estadual"
-        #inscricao_estadual= "ngModel"
+        #inscricao_estadual="ngModel"
         name="inscricao_estadual"
       />
-      <div *ngIf="inscricao_estadual.invalid && (inscricao_estadual.dirty || inscricao_estadual.touched)" class="alert">
+      <div
+        *ngIf="
+          inscricao_estadual.invalid &&
+          (inscricao_estadual.dirty || inscricao_estadual.touched)
+        "
+        class="alert"
+      >
         <div *ngIf="inscricao_estadual.errors?.['required']">
           O campo é obrigatório!
         </div>
@@ -121,6 +136,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        mask="(00) 00000-0000 || (00) 0000-0000"
         matInput
         placeholder="Telefone"
         [(ngModel)]="empresa.telefone"
@@ -128,7 +144,13 @@
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input matInput placeholder="Fax" [(ngModel)]="empresa.fax" name="fax" />
+      <input
+        mask="(00) 0000-0000"
+        matInput
+        placeholder="Fax"
+        [(ngModel)]="empresa.fax"
+        name="fax"
+      />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
@@ -149,10 +171,11 @@
         #email="ngModel"
         name="email"
       />
-      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
-        <div [hidden]="!email.errors?.pattern">
-          Padrão inválido para email!
-        </div>
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="alert"
+      >
+        <div [hidden]="!email.errors?.pattern">Padrão inválido para email!</div>
       </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
