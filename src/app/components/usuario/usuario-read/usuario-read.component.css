@@ -1,12 +1,15 @@
-table { width: 100%;}
-.dvm-button {
-
-  border-radius: 30px;
+table {
+  width: 100%;
 }
-.edit  {
+
+.edit {
   color: #41d926;
 }
 
-.delete  {
+.delete {
   color: #e35e6b;
+}
+
+.show {
+  color: #3d22d4;
 }
