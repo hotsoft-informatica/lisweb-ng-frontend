@@ -100,21 +100,18 @@
       <ng-container matColumnDef="Operacoes">
         <th mat-header-cell colspan="3" mat-sort-header="" *matHeaderCellDef>Operações</th>
         <td mat-cell *matCellDef="let element">
-          <div class="row">
+          <div class="col-4">
 
-            <div class="col-1 me-3">
               <a routerLink="/pacientes/update/{{element.id}}">
                 <button mat-icon-button>
                   <mat-icon class="edit">edit</mat-icon>
                 </button>
               </a>
-            </div>
 
-            <div class="col-1 me-3">
                 <button mat-icon-button (click)="delete(element.id)">
                   <mat-icon class="delete">delete</mat-icon>
                 </button>
-            </div>
+
 
             <ng-template #deleteDialog>
               <mat-dialog-content class="mat-typography">
@@ -126,13 +123,11 @@
               </mat-dialog-actions>
             </ng-template>
 
-            <div class="col-1 me-3">
               <a routerLink="/pacientes/show/{{element.id}}">
                 <button mat-icon-button>
                   <mat-icon color="black">visibility</mat-icon>
                 </button>
               </a>
-            </div>
 
           </div>
         </td>
