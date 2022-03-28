@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-title *ngIf="!fromOperadora">Editar Empresa</mat-card-title>
-  <form *ngIf="empresa">
+  <form #formUpdateEmpresa="ngForm">
     <mat-form-field appearance="fill">
       <input
         type="text"
@@ -212,7 +212,7 @@
     </mat-form-field>
   </form>
   <div *ngIf="!fromOperadora">
-    <button mat-raised-button (click)="updateEmpresa()" color="primary">
+    <button mat-raised-button [disabled]="formUpdateEmpresa.invalid" (click)="updateEmpresa()" color="primary">
       Salvar
     </button>
     <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
