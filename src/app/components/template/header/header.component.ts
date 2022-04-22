@@ -9,7 +9,7 @@ export class HeaderComponent implements OnInit {
   routerStr = '';
 
   constructor() {
-   }
+  }
 
   ngOnInit(): void {
     this.routerStr = window.location.href;
