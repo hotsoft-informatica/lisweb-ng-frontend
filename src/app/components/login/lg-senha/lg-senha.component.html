@@ -21,4 +21,9 @@
       <button mat-button color="primary" class="col-3" routerLink="/login">Retornar ao login</button>
       <button mat-raised-button color="primary" class="col-3" (click)="salveSenha()">Avançar</button>
     </div>
+    <div *ngIf="this.senhaIncorreta">
+      <mat-card class="mt-2 card-error text-danger">
+      {{this.mensagemErro}}
+      </mat-card>
+    </div>
   </mat-card>

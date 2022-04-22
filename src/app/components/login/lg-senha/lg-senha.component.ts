@@ -1,5 +1,7 @@
+import { LoginService } from './../../service/login.service';
 import { Component, OnInit } from '@angular/core';
-
+import { UsuarioService } from '../../service/usuario.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-lg-senha',
   templateUrl: './lg-senha.component.html',
@@ -7,18 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LgSenhaComponent implements OnInit {
   hide = true;
-  serie = 0;
+  serie = 2001;
   senha = '';
-  constructor() { }
+  storage: Storage = window.localStorage;
+  senhaCorresp = '';
+  mensagemErro = '';
+  senhaIncorreta = false;
+
+  constructor(private usuarioService: UsuarioService,
+              private router: Router,
+              private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
   salveSenha(): void {
-    localStorage.setItem('login', this.senha);
-    console.log(this.senha);
-    console.log(localStorage.getItem('login'));
+    localStorage.setItem('senha', this.senha);
+    const usuario = localStorage.getItem('login') || '';
+    this.loginService.autenticar(usuario, this.senha).subscribe(
+      resultado => {
+        this.router.navigate(['/']);
+      },
+      erro => {
+        this.mensagemErro = 'Senha incorreta';
+        this.senhaIncorreta = true;
+      }
+    )
   }
-
-  
 }
