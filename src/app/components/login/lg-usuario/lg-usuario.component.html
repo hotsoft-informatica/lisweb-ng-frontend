@@ -14,7 +14,13 @@
     </div>
     <div class="row justify-content-between">
       <button mat-button color="primary" class="col-3">Retornar ao site</button>
-      <button mat-raised-button color="primary" class="col-3" (click)="salveLogin()">Avançar</button>
+      <button mat-raised-button color="primary" class="col-3" (click)="salveLogin()">Avançar
+      </button>
+    </div>
+    <div *ngIf="this.loginIncorreto">
+      <mat-card class="mt-2 card-error text-danger">
+      {{this.mensagemErro}}
+      </mat-card>
     </div>
   </mat-card>
   <mat-spinner mode="determinate"></mat-spinner>

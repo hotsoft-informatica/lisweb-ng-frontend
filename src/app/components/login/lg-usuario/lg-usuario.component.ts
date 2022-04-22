@@ -2,8 +2,8 @@ import { combineLatest } from 'rxjs';
 import { Usuario } from './../../model/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../service/usuario.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap,map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-lg-usuario',
@@ -17,9 +17,11 @@ export class LgUsuarioComponent implements OnInit {
   storage: Storage = window.localStorage;
   existeUsuario = false;
   existeEmail = false;
+  loginIncorreto = false;
+  mensagemErro = '';
 
   constructor(private usuarioService: UsuarioService,
-              private router: Router,) { }
+              private router: Router) { }
 
   ngOnInit(): void {}
 
@@ -32,18 +34,19 @@ export class LgUsuarioComponent implements OnInit {
 
     combineLatest([getUsuario, getEmail])
     .subscribe(result => {
-      this.existeUsuario = (result[0].id as number > 0);
-      this.existeEmail = (result[1].id as number > 0);
-      console.log(this.existeUsuario);
-      console.log(this.existeEmail);
+      console.table(result);
+      this.existeUsuario = result && result[0] && (result[0].id as number > 0);
+      this.existeEmail = result && result[1] && (result[1].id as number > 0);
       if(this.existeUsuario || this.existeEmail){
         this.router.navigate(['/senha']);
       }
       else{
-        console.log('erro, usuario nao econtroado');
+        this.mensagemErro = 'Login inexistente';
+        this.loginIncorreto = true;
       }
     })
-
   }
+
+
 }
 
