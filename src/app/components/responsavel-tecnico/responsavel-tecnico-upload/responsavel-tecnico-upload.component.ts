@@ -49,7 +49,14 @@ export class ResponsavelTecnicoUploadComponent implements OnInit {
         .subscribe((retorno: any) => {
           console.table(retorno);
         });
+      this.router.navigate(['/responsavel_tecnicos']).then(() => {
+        window.location.reload();
+      });
     }
+  }
+
+  cancel(): void {
+    this.router.navigate(['/responsavel_tecnicos']);
   }
 
 }
