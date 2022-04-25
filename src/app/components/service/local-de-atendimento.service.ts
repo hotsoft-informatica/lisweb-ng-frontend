@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class LocalDeAtendimentoService {
-  baseUrl = 'http://127.0.0.1:3010/localdeatendimento';
+  baseUrl = 'http://127.0.0.1:3010/locais_atendimento';
 
   query: Query[] = [];
 

@@ -21,6 +21,9 @@
         <a mat-list-item routerLink="/pacientes/read">Pacientes</a>
       </button>
       <button mat-menu-item>
+        <a mat-list-item routerLink="/usuarios/read">Usuarios</a>
+      </button>
+      <button mat-menu-item>
         <a mat-list-item routerLink="/requisicoes">Requisições</a>
       </button>
       <button mat-menu-item>
@@ -30,21 +33,25 @@
         <a mat-list-item routerLink="/empresas">Empresas</a>
       </button>
       <button mat-menu-item>
-        <a mat-list-item routerLink="/localdeatendimento/read">Local de Atendimento</a>
+        <a mat-list-item routerLink="/localdeatendimento/read">
+          Local de Atendimento
+        </a>
       </button>
       <button mat-menu-item>
         <a mat-list-item routerLink="/responsavel_tecnicos">Resp. Tecnico</a>
       </button>
     </mat-menu>
-
     <button mat-button [matMenuTriggerFor]="consultar">
       <mat-icon>pageview</mat-icon>
       Consultar
     </button>
     <mat-menu #consultar="matMenu">
       <button mat-menu-item>
-        <a mat-list-item routerLink="/consulta_amostra_show"> Clta. Amostra </a>
+        <a mat-list-item routerLink="/consulta_amostra_show">
+          Clta. Amostra
+        </a>
       </button>
     </mat-menu>
   </div>
 </mat-toolbar>
+

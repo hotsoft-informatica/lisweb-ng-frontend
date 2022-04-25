@@ -1,1 +1,15 @@
-table { width: 100%;}
+table {
+  width: 100%;
+}
+
+.edit {
+  color: #41d926;
+}
+
+.delete {
+  color: #e35e6b;
+}
+
+.show {
+  color: #3d22d4;
+}

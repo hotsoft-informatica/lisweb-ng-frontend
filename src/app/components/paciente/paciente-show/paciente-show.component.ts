@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 
 
 @Component({
@@ -49,10 +49,11 @@ export class PacienteShowComponent implements OnChanges {
   }
 
   public calculaIdade(): void{
-    const tempo = moment(this.paciente.data_nascimento); // converte data
-    const diff = moment.duration(moment().diff(tempo)); // calcula diferença da data nascimento para data atual
-    this.paciente.idade_paciente = diff.years() + ' anos, '
-                                 + diff.months() + ' meses, '
-                                 + diff.days() + ' dias.'; // apresenta valor por diff
-  }
+    // TO-DO REVER
+  //   const tempo = moment(this.paciente.data_nascimento); // converte data
+  //   const diff = moment.duration(moment().diff(tempo)); // calcula diferença da data nascimento para data atual
+  //   this.paciente.idade_paciente = diff.years() + ' anos, '
+  //                                + diff.months() + ' meses, '
+  //                                + diff.days() + ' dias.'; // apresenta valor por diff
+   }
 }

@@ -29,7 +29,7 @@ export class UsuarioService {
   read(
     sortActive: string = 'id',
     sortDirection: string = 'desc',
-    pageNumber = 1,
+    pageNumber = 0,
     pageSize = 3,
     queries: Query[]): Observable<Usuario[]>
 { // criando parametros e puxando dados do backend
@@ -68,6 +68,16 @@ export class UsuarioService {
     return this.http.delete<Usuario>(url);
   }
 
+  readByEmail(email: String): Observable<Usuario> {
+    const url = `${this.baseUrl}/email/${email}`;
+    return this.http.get<Usuario>(url);
+  }
+
+  readByUsuario(usuario: String): Observable<Usuario> {
+    const url = `${this.baseUrl}/usuario/${usuario}`;
+    return this.http.get<Usuario>(url);
+  }
+
   findUsuarios(
     active: string = '',
     sortOrder: string = 'asc',
@@ -90,11 +100,14 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.baseUrl, {
       params,
     });
+
+
   }
 
   countUsuarios(): Observable<number> {
-    return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
+    let params = new HttpParams().set('totalCount', 'true');
+    return this.http.get<number>(this.baseUrl,{
+      params
     });
   }
 }

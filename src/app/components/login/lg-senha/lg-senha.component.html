@@ -9,7 +9,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Informe sua senha</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'">
+      <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="senha">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
@@ -19,6 +19,11 @@
     </div>
     <div class="row justify-content-between mt-4">
       <button mat-button color="primary" class="col-3" routerLink="/login">Retornar ao login</button>
-      <button mat-raised-button color="primary" class="col-3">Avançar</button>
+      <button mat-raised-button color="primary" class="col-3" (click)="salveSenha()">Avançar</button>
+    </div>
+    <div *ngIf="this.senhaIncorreta">
+      <mat-card class="mt-2 card-error text-danger">
+      {{this.mensagemErro}}
+      </mat-card>
     </div>
   </mat-card>

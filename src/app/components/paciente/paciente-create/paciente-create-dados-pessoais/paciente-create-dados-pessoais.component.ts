@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 import { Paciente } from '../../../model/paciente.model';
 import { PacienteService } from 'src/app/components/service/paciente.service';
 
@@ -24,10 +24,10 @@ export class PacienteCreateDadosPessoaisComponent implements OnInit {
     console.log('passou pelo paciente dados pessoas');
   }
   public calculaIdade(): void{
-
-    const tempo = moment(this.paciente.data_nascimento);
-    const diff = moment.duration(moment().diff(tempo));
-    this.paciente.idade_paciente = diff.years() + ' anos, ' + diff.months() + ' meses, ' + diff.days() + ' dias.';
+// TO-DO: REVER, TA DANDO RUIM
+    // const tempo = moment(this.paciente.data_nascimento);
+    // const diff = moment.duration(moment().diff(tempo));
+    // this.paciente.idade_paciente = diff.years() + ' anos, ' + diff.months() + ' meses, ' + diff.days() + ' dias.';
     }
 
   createPaciente(): void {

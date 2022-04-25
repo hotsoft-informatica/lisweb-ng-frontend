@@ -4,7 +4,7 @@
     <h3 class="text-center">Faça seu login abaixo</h3>
     <mat-form-field appearance="fill" class="col-12">
       <mat-label>Usuario ou Email</mat-label>
-      <input matInput placeholder="laboratorio@dominio.com" required>
+      <input matInput placeholder="laboratorio@dominio.com" required [(ngModel)]="login">
     </mat-form-field>
     <button mat-button color="primary" class="col-6">Não lembra de seu usuario e e-mail?</button>
     </div>
@@ -14,7 +14,13 @@
     </div>
     <div class="row justify-content-between">
       <button mat-button color="primary" class="col-3">Retornar ao site</button>
-      <button mat-raised-button color="primary" class="col-3" routerLink="/senha">Avançar</button>
+      <button mat-raised-button color="primary" class="col-3" (click)="salveLogin()">Avançar
+      </button>
+    </div>
+    <div *ngIf="this.loginIncorreto">
+      <mat-card class="mt-2 card-error text-danger">
+      {{this.mensagemErro}}
+      </mat-card>
     </div>
   </mat-card>
   <mat-spinner mode="determinate"></mat-spinner>
