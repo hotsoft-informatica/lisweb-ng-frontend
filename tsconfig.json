@@ -16,6 +16,7 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "paths": { "@angular/*": ["./node_modules/@angular/*"] },
     "plugins": [
       { "name": "typescript-tslint-plugin" }
     ],
@@ -25,9 +26,18 @@
     ]
   },
   "angularCompilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    // Develop configs TODO: Make conditional
+    "buildOptimizer": false,
+    "optimization": false,
+    "vendorChunk": true,
+    "extractLicenses": false,
+    "namedChunks": true,
+    "sourceMap": true
   }
 }

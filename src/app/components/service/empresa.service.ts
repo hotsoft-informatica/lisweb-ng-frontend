@@ -27,8 +27,30 @@ export class EmpresaService {
     return this.http.post<Empresa>(this.baseUrl, empresa);
   }
 
-  read(): Observable<Empresa[]> {
-    return this.http.get<Empresa[]>(this.baseUrl);
+  read(
+    sortActive: string = 'id',
+    sortDirection: string = 'desc',
+    pageNumber = 1,
+    pageSize = 3,
+    queries: Query[] = []): Observable<Empresa[]> { // criando parametros e puxando dados do backend
+    let params = new HttpParams(); // cria paramaetros para leitura do backend
+
+    queries.forEach(busca => {
+      params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
+    });
+    params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
+    params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
+
+    queries?.forEach((queryItem) => {
+      if (queryItem) {
+        const key = `queryItem[${queryItem.key}]`;
+        params = params.append(key, queryItem.value);
+      }
+    });
+
+    return this.http.get<Empresa[]>(this.baseUrl, { params }); // Passa qual operação sera realizada pelo backend
   }
 
   readById(id: number): Observable<Empresa> {
@@ -36,7 +58,7 @@ export class EmpresaService {
     return this.http.get<Empresa>(url);
   }
 
-  update(empresa: Empresa): Observable<Empresa> {
+  update(empresa: Empresa = new Empresa({})): Observable<Empresa> {
     const url = `${this.baseUrl}/${empresa.id}`;
     return this.http.put<Empresa>(url, empresa);
   }

@@ -1,3 +1,4 @@
+import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
 import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
@@ -363,6 +364,22 @@ const routes: Routes = [
     component: LocalDeAtendimentoCreateComponent,
   },
   {
+    path: 'localdeatendimento/read',
+    component: LocalDeAtendimentoReadComponent,
+  },
+  {
+    path: 'localdeatendimento/update/:id',
+    component: LocalDeAtendimentoCreateComponent,
+  },
+  {
+    path: 'localdeatendimento/show/:id',
+    component: LocalDeAtendimentoReadComponent,
+  },
+  {
+    path: 'localdeatendimento/delete/:id',
+    component: LocalDeAtendimentoReadComponent,
+  },
+  {
     path: 'upload-file',
     component: UploadFileComponent,
   },
@@ -390,7 +407,6 @@ const routes: Routes = [
     path: 'responsavel_tecnicos/delete/:id',
     component: EmpresaDeleteComponent,
   }
-
 ];
 
 @NgModule({
