@@ -23,7 +23,7 @@
           O campo é obrigatório!
         </div>
         <div *ngIf="titulo.errors?.['minlength']">
-          O registro dever conter no mínimo 4 caracteres!
+          O campo dever conter no mínimo 4 caracteres!
         </div>
       </div>
     </mat-form-field>
@@ -50,7 +50,7 @@
           O campo é obrigatório!
         </div>
         <div *ngIf="registro_profissional.errors?.['minlength']">
-          O registro dever conter no mínimo 4 caracteres!
+          O campo dever conter no mínimo 4 caracteres!
         </div>
       </div>
     </mat-form-field>
@@ -111,11 +111,10 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
-        type="text"
+        type="number"
+        oninput="if(this.value.length>=3) { this.value = this.value.slice(0,10); }"
         id="cbos"
         required
-        minlength="3"
-        maxlength="10"
         matInput
         placeholder="CBOS"
         [(ngModel)]="responsavelTecnico.cbos"
@@ -131,9 +130,6 @@
       >
         <div *ngIf="cbos.errors?.['required']">
           O campo é obrigatório!
-        </div>
-        <div *ngIf="cbos.errors?.['minlength']">
-          O campo dever conter no mínimo 3 caracteres!
         </div>
       </div>
     </mat-form-field>
