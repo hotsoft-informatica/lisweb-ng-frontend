@@ -22,11 +22,14 @@
       Cadastrada em: {{responsavelTecnico.criado_em | date: "dd/MM/yyyy"}}
     </div>
   </div>
+  <div  class="line_space">
+    Visualizar Assinatura:
+    <a routerLink="/responsavel_tecnicos/show/{{ responsavelTecnico.id }}" class="show">
+      <i class="material-icons"> border_color </i>
+    </a>
+  </div>
 </mat-card>
 
-<!--div class="col-3">
-      Assinatura: {{responsavelTecnico.assinatura | slice:0:10}}
-</div-->
 
 <button mat-raised-button (click)="cancel()" color="accent">
   Voltar
