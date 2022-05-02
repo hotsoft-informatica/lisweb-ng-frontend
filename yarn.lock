@@ -118,7 +118,7 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@13.3.4", "@angular-devkit/schematics@^13.2.6":
+"@angular-devkit/schematics@13.3.4", "@angular-devkit/schematics@^13.3.4":
   version "13.3.4"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.3.4.tgz#e3e3361099e4a449726b31b3616bfffc421b8b29"
   integrity sha512-gKNpMMoZJjLKdXxjuVembic4GWa4AYV7kU1ou3ZuZoDKtKcig9URISr1wjS+nrhKYz+miFy0zIqSGMMattDlDQ==
@@ -2496,7 +2496,7 @@ core-js@3.20.3:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.3.tgz#c710d0a676e684522f3db4ee84e5e18a9d11d69a"
   integrity sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag==
 
-core-js@^3.21.1:
+core-js@^3.22.3:
   version "3.22.3"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.22.3.tgz#498c41d997654cb00e81c7a54b44f0ab21ab01d5"
   integrity sha512-1t+2a/d2lppW1gkLXx3pKPVGbBdxXAkqztvWb1EJ8oF8O2gIGiytzflNiFEehYwVK/t2ryUsGBoOFFvNx95mbg==
@@ -4655,7 +4655,7 @@ node-domexception@^1.0.0:
   resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
   integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
 
-node-fetch@^3.2.3:
+node-fetch@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-3.2.4.tgz#3fbca2d8838111048232de54cb532bd3cf134947"
   integrity sha512-WvYJRN7mMyOLurFR2YpysQGuwYrJN+qrrpHjJDuKMcSPdfFccRUla/kng2mz6HWSBxJcqPbvatS6Gb4RhOzCJw==
