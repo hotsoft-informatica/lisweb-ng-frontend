@@ -1270,10 +1270,15 @@
   dependencies:
     tslib "^2.0.0"
 
-"@ngtools/webpack@13.3.3", "@ngtools/webpack@^13.2.5":
+"@ngtools/webpack@13.3.3":
   version "13.3.3"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.3.3.tgz#dc8471a89092d6f4074543c56a95ae0549f3470e"
   integrity sha512-O6EzafKfFuvI3Ju941u7ANs0mT7YDdChbVRhVECCPWOTm3Klr73js3bnCDzaJlxZNjzlG/KeUu5ghrhbMrHjSw==
+
+"@ngtools/webpack@^13.3.4":
+  version "13.3.4"
+  resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-13.3.4.tgz#34e21bd9d8b01d4dad0450ac550a92af602ebd02"
+  integrity sha512-dNDNeAOwtpX5A7TTEsgDbkg4jTmAJHD96qLqcpJqfBg8nZ4mqn6E0HinX9HZKaCST1/75T6GsFo1Muc4MsHYgA==
 
 "@ngx-translate/core@^14.0.0":
   version "14.0.0"
