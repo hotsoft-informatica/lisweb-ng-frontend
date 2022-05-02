@@ -77,6 +77,8 @@ import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-cru
 import { ResponsavelTecnicoReadComponent } from './components/responsavel-tecnico/responsavel-tecnico-read/responsavel-tecnico-read.component';
 import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecnico/responsavel-tecnico-create/responsavel-tecnico-create.component';
 import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
+import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
+import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 
 const routes: Routes = [
   {
@@ -393,11 +395,11 @@ const routes: Routes = [
   },
   {
     path: 'responsavel_tecnicos/show/:id',
-    component: EmpresaShowComponent,
+    component: ResponsavelTecnicoShowComponent,
   },
   {
     path: 'responsavel_tecnicos/update/:id',
-    component: EmpresaUpdateComponent,
+    component: ResponsavelTecnicoUpdateComponent,
   },
   {
     path: 'responsavel_tecnicos/upload/:id',
