@@ -159,6 +159,8 @@ import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecn
 import { ResponsavelTecnicoReadComponent } from './components/responsavel-tecnico/responsavel-tecnico-read/responsavel-tecnico-read.component';
 import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-crud/responsavel-tecnico-crud.component';
 import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
+import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
+import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 
 
 registerLocaleData(localePt);
@@ -273,6 +275,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ResponsavelTecnicoReadComponent,
     ResponsavelTecnicoCrudComponent,
     ResponsavelTecnicoUploadComponent,
+    ResponsavelTecnicoUpdateComponent,
+    ResponsavelTecnicoShowComponent,
   ],
   imports: [
     HttpClientModule,

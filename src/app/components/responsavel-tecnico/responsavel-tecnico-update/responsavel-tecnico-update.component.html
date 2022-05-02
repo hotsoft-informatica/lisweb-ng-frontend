@@ -1,6 +1,6 @@
 <mat-card>
-  <mat-card-title>Novo Responsável Técnico</mat-card-title>
-  <form #formCreateResponsavelTecnico="ngForm">
+  <mat-card-title>Editar Responsável Técnico</mat-card-title>
+  <form #formUpdateResponsavelTecnico="ngForm">
     <mat-form-field appearance="fill">
       <input
         type="text"
@@ -156,7 +156,7 @@
     </mat-form-field>
   </form>
   <div>
-    <button mat-raised-button [disabled]="formCreateResponsavelTecnico.invalid" (click)="createResponsavelTecnico()" color="primary">
+    <button mat-raised-button [disabled]="formUpdateResponsavelTecnico.invalid" (click)="updateResponsavelTecnico()" color="primary">
       Salvar
     </button>
     <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
