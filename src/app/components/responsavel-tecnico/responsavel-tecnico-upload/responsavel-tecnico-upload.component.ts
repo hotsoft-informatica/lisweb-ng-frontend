@@ -14,6 +14,7 @@ export class ResponsavelTecnicoUploadComponent implements OnInit {
   responsavel_tecnico: ResponsavelTecnico;
   selectedFile!: File;
   fileName: string = '';
+  formData!: FormData;
 
   constructor(
     private responsavelTecnicoService: ResponsavelTecnicoService,
@@ -23,6 +24,7 @@ export class ResponsavelTecnicoUploadComponent implements OnInit {
   ) {
     this.responsavel_tecnico = new ResponsavelTecnico({});
     console.table(this.responsavel_tecnico);
+    this.formData = new FormData();
   }
 
   ngOnInit(): void {
@@ -39,24 +41,25 @@ export class ResponsavelTecnicoUploadComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    const file: File = <File>event.target.files[0]
-    if (file) {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      this.responsavelTecnicoService
-        .upload(formData, this.responsavel_tecnico)
-        .subscribe((retorno: any) => {
-          console.table(retorno);
-        });
-      this.router.navigate(['/responsavel_tecnicos']).then(() => {
-        window.location.reload();
-      });
+    this.selectedFile = <File>event.target.files[0];
+    if (this.selectedFile) {
+      console.log(this.selectedFile);
+      this.formData.append("selectedFile", this.selectedFile);
     }
+  }
+
+  onUpload() {
+    this.responsavelTecnicoService
+      .upload(this.formData, this.responsavel_tecnico)
+      .subscribe((retorno: any) => {
+        console.table(retorno);
+      });
+    this.router.navigate(['/responsavel_tecnicos']).then(() => {
+      window.location.reload();
+    });
   }
 
   cancel(): void {
     this.router.navigate(['/responsavel_tecnicos']);
   }
-
 }

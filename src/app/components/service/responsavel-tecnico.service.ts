@@ -43,6 +43,11 @@ export class ResponsavelTecnicoService {
     return this.http.put<ResponsavelTecnico>(url, responsavel_tecnico);
   }
 
+  upload(file: FormData, responsavel_tecnico: ResponsavelTecnico): Observable<any> {
+    const url = this.baseUrl + '/' + responsavel_tecnico.id + '/upload'
+    return this.http.post<FormData>(url, file);
+  }
+
   delete(id: number): Observable<ResponsavelTecnico> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<ResponsavelTecnico>(url);
@@ -76,10 +81,5 @@ export class ResponsavelTecnicoService {
     return this.http.get<number>(this.baseUrl, {
       params: new HttpParams().set('totalCount', 'true'),
     });
-  }
-
-  upload(file: FormData, responsavel_tecnico: ResponsavelTecnico): Observable<any> {
-    const url = this.baseUrl + '/' + responsavel_tecnico.id + '/upload'
-    return this.http.post<FormData>(url, file);
   }
 }
