@@ -1,4 +1,5 @@
 import { ResponsavelTecnico } from '../model/responsavel-tecnico.model';
+import { ShowSignature } from '../model/show-signature.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,6 +10,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class ResponsavelTecnicoService {
   baseUrl = 'http://127.0.0.1:3010/responsaveis_tecnico';
+  showSignatureUrl = 'http://127.0.0.1:3010/responsaveis_tecnico/show_signature';
 
   query: Query[] = [];
 
@@ -38,14 +40,19 @@ export class ResponsavelTecnicoService {
     return this.http.get<ResponsavelTecnico>(url);
   }
 
+  readSigatureById(id: number): Observable<ShowSignature> {
+    const url = `${this.showSignatureUrl}/${id}`;
+    return this.http.get<ShowSignature>(url);
+  }
+
   update(responsavel_tecnico: ResponsavelTecnico): Observable<ResponsavelTecnico> {
     const url = `${this.baseUrl}/${responsavel_tecnico.id}`;
     return this.http.put<ResponsavelTecnico>(url, responsavel_tecnico);
   }
 
-  upload(file: FormData, responsavel_tecnico: ResponsavelTecnico): Observable<any> {
+  upload(selectedFile: FormData, responsavel_tecnico: ResponsavelTecnico): Observable<any> {
     const url = this.baseUrl + '/' + responsavel_tecnico.id + '/upload'
-    return this.http.post<FormData>(url, file);
+    return this.http.post<FormData>(url, selectedFile);
   }
 
   delete(id: number): Observable<ResponsavelTecnico> {
