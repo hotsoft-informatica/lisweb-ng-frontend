@@ -9,3 +9,8 @@ button {
 .show > i {
   color: #3d22d4;
 }
+
+img{
+  width:100%;
+  max-width:300px;
+}
