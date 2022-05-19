@@ -28,6 +28,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgAutoCompleteModule } from 'ng-auto-complete';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
@@ -291,6 +292,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     FormsModule,
     HttpClientModule,
     MatAutocompleteModule,
+    NgAutoCompleteModule,
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
