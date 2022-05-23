@@ -26,11 +26,12 @@ export class LgSenhaComponent implements OnInit {
   }
 
   salveSenha(): void {
+    localStorage.setItem('token', '');
     localStorage.setItem('senha', this.senha);
     const usuario = localStorage.getItem('login') || '';
-    const token = localStorage.getItem('token') || '';
-    this.loginService.autenticar(usuario, this.senha, token).subscribe(
+    this.loginService.autenticar(usuario, this.senha).subscribe(
       resultado => {
+        localStorage.setItem('token', resultado)
         this.router.navigate(['/']);
       },
       erro => {
