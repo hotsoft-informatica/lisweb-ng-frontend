@@ -1,3 +1,4 @@
+import { UsuarioToken } from './../model/usuario-token.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -21,10 +22,11 @@ export class LoginService {
     });
   }
 
-  autenticar(login:string, senha:string, token:string): Observable<any> {
+  autenticar(login:string, senha:string): Observable<any> {
     const url = `${this.baseUrl}/${login}`;
-    const autenticacao = this.http.post<any>(url, token);
-    return combineLatest([autenticacao]);
+    const usuarioToken: UsuarioToken = new UsuarioToken({'login':login, 'senha':senha});
+    console.table(usuarioToken);
+    return this.http.post<any>(url, usuarioToken);
   }
 
 }
