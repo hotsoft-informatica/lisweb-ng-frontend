@@ -132,7 +132,18 @@
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input matInput placeholder="UF" [(ngModel)]="empresa.uf" name="uf" />
+      <input
+        type="text"
+        placeholder="UF"
+        name="uf"
+        matInput [formControl]="formControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let item of autoFilter | async" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input

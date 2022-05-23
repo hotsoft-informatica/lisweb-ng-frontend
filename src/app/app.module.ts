@@ -7,7 +7,6 @@ import localePt from '@angular/common/locales/pt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MY_DATE_FORMATS } from './formdata';
@@ -43,7 +42,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { getPtBrMatPaginatorIntl } from './pt-br-mat-paginator-intl';
 import { registerLocaleData } from '@angular/common';
@@ -321,6 +320,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatTreeModule,
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
     RouterModule,
     TippyModule.forRoot({
       defaultVariation: 'tooltip',
