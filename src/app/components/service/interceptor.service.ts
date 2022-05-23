@@ -39,6 +39,7 @@ export class Interceptor implements HttpInterceptor {
                         .append('password', password_str as string)
                         .append('serie', this.serie.toString())
       }
+      console.log(this.token)
     }
     const requestAuth = request.clone({
       headers: headers
