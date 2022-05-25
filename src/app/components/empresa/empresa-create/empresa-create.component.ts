@@ -1,4 +1,3 @@
-import { options } from './../../../app.module';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
@@ -16,7 +15,8 @@ import { end } from '@popperjs/core';
 export class EmpresaCreateComponent implements OnInit {
   @Input('empresa') empresa: Empresa;
   @Input('fromOperadora') fromOperadora!: boolean;
-  formControl = new FormControl();
+  formControl1 = new FormControl();
+  formControl2 = new FormControl();
   stateFilter!: Observable<string[]>;
   citieFilter!: Observable<string[]>;
 
@@ -881,11 +881,11 @@ export class EmpresaCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.stateFilter = this.formControl.valueChanges.pipe(
+    this.stateFilter = this.formControl1.valueChanges.pipe(
       startWith(''),
       map(value => this.state_filter(value))
     );
-    this.citieFilter = this.formControl.valueChanges.pipe(
+    this.citieFilter = this.formControl2.valueChanges.pipe(
       startWith(''),
       map(value => this.citie_filter(value))
     );
@@ -893,11 +893,13 @@ export class EmpresaCreateComponent implements OnInit {
 
   private state_filter(value: string): string[] {
     const filterValue = value.toUpperCase();
+    console.log(filterValue);
     return this.states.filter(option => option.toUpperCase().indexOf(filterValue) === 0);
   }
 
   private citie_filter(value: string): string[] {
     const filterValue = value.toUpperCase();
+    console.log(filterValue);
     return this.cities.filter(option => option.toUpperCase().indexOf(filterValue) === 0);
   }
 
@@ -912,5 +914,9 @@ export class EmpresaCreateComponent implements OnInit {
 
   cancel(): void {
     this.router.navigate(['/empresas']);
+  }
+
+  displayFn(data: string): string {
+    return data.toUpperCase();
   }
 }

@@ -86,13 +86,14 @@
         type="text"
         id="uf_conselho"
         required
-        minlength="2"
+        minlength="1"
         maxlength="2"
-        matInput
+        matInput [matAutocomplete]="auto"
         placeholder="UF"
         [(ngModel)]="responsavelTecnico.uf_conselho"
         #uf_conselho="ngModel"
         name="uf_conselho"
+        (ngModelChange)="this.doFilter()"
       />
       <div
         *ngIf="
@@ -108,6 +109,11 @@
           O campo dever conter no mínimo 2 caracteres!
         </div>
       </div>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let state of this.filtered_states" [value]="state">
+            {{state}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
