@@ -31,6 +31,8 @@ export class LgSenhaComponent implements OnInit {
     const usuario = localStorage.getItem('login') || '';
     this.loginService.autenticar(usuario, this.senha).subscribe(
       resultado => {
+        localStorage.setItem('login', '');
+        localStorage.setItem('senha', '');
         localStorage.setItem('token', resultado)
         this.router.navigate(['/']);
       },
