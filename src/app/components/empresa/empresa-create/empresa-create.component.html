@@ -130,11 +130,11 @@
         name="cidade"
         required
         matInput [formControl]="formControl2"
-        [matAutocomplete]="autoCitie"
+        [matAutocomplete]="autoCity"
         [(ngModel)]="this.empresa.cidade"
       />
-      <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #autoCitie="matAutocomplete">
-        <mat-option *ngFor="let city of citieFilter | async" [value]="city">
+      <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #autoCity="matAutocomplete">
+        <mat-option *ngFor="let city of cityFilter | async" [value]="city">
           {{city}}
         </mat-option>
       </mat-autocomplete>

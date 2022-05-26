@@ -18,7 +18,7 @@ export class EmpresaCreateComponent implements OnInit {
   formControl1 = new FormControl();
   formControl2 = new FormControl();
   stateFilter!: Observable<string[]>;
-  citieFilter!: Observable<string[]>;
+  cityFilter!: Observable<string[]>;
 
   states: string[] = [
     'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO',
@@ -885,9 +885,9 @@ export class EmpresaCreateComponent implements OnInit {
       startWith(''),
       map(value => this.state_filter(value))
     );
-    this.citieFilter = this.formControl2.valueChanges.pipe(
+    this.cityFilter = this.formControl2.valueChanges.pipe(
       startWith(''),
-      map(value => this.citie_filter(value))
+      map(value => this.city_filter(value))
     );
   }
 
@@ -897,7 +897,7 @@ export class EmpresaCreateComponent implements OnInit {
     return this.states.filter(option => option.toUpperCase().indexOf(filterValue) === 0);
   }
 
-  private citie_filter(value: string): string[] {
+  private city_filter(value: string): string[] {
     const filterValue = value.toUpperCase();
     console.log(filterValue);
     return this.cities.filter(option => option.toUpperCase().indexOf(filterValue) === 0);
