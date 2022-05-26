@@ -13,13 +13,13 @@
       Fantasia: {{empresa.nome_fantasia}}
     </div>
     <div class="col-3">
-      CNPJ: {{empresa.cnpj}}
+      CNPJ: {{(empresa.cnpj || '') | mask:'00.000.000/0000-00'}}
     </div>
     <div class="col-3">
-      Insc. Estadual: {{empresa.inscricao_estadual}}
+      Insc. Estadual: {{(empresa.inscricao_estadual || '') | mask: '000.000.000.000'}}
     </div>
     <div class="col-2">
-      Faz: {{empresa.fax}}
+      Faz: {{(empresa.fax || '') | mask:'(00) 0000-0000'}}
     </div>
     <div class="col-2">
       Laboratório: {{empresa.laboratorio_id}}
@@ -58,7 +58,7 @@
       Email: {{empresa.email}}
     </div>
     <div class="col-2">
-      Telefone: {{empresa.telefone}}
+      Telefone: {{(empresa.telefone || '') | mask:'(00) 00000-0000 || (00) 0000-0000'}}
     </div>
   </div>
 </mat-card>

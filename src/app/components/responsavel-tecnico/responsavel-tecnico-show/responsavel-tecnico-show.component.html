@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-divider inset></mat-divider>
+    <h3 class="mt-4">DADOS RESPONSÁVEL TÉCNICO:</h3>
+  <mat-divider inset></mat-divider>
+  <div class="p-2 row col-12">
+    <div class="col-1">
+      Id: {{responsavelTecnico.id}}
+    </div>
+    <div class="col-3">
+      Título: {{responsavelTecnico.titulo}}
+    </div>
+    <div class="col-3">
+      Conselho: {{responsavelTecnico.conselho}}
+    </div>
+    <div class="col-2">
+      Conselho UF: {{responsavelTecnico.uf_conselho}}
+    </div>
+    <div class="col-3">
+      CPF: {{(responsavelTecnico.cpf || '') | mask:'000.000.000-00'}}
+    </div>
+    <div class="col-3">
+      Cadastrada em: {{responsavelTecnico.criado_em | date: "dd/MM/yyyy"}}
+    </div>
+  </div>
+</mat-card>
+
+<!--div class="col-3">
+      Assinatura: {{responsavelTecnico.assinatura | slice:0:10}}
+</div-->
+
+<button mat-raised-button (click)="cancel()" color="accent">
+  Voltar
+</button>
+
+
+

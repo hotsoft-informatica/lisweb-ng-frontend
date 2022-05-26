@@ -151,8 +151,16 @@ import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimen
 import { LocalDeAtendimentoUpdateComponent } from './components/local-de-atendimento/local-de-atendimento-update/local-de-atendimento-update.component';
 import { LocalDeAtendimentoEmpresaComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-empresa/local-de-atendimento-empresa.component';
 import { LocalDeAtendimentoEnderecoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-endereco/local-de-atendimento-endereco.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecnico/responsavel-tecnico-create/responsavel-tecnico-create.component';
+import { ResponsavelTecnicoReadComponent } from './components/responsavel-tecnico/responsavel-tecnico-read/responsavel-tecnico-read.component';
+import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-crud/responsavel-tecnico-crud.component';
+import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
+import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
+import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 
 
 registerLocaleData(localePt);
@@ -262,6 +270,13 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     LocalDeAtendimentoEmpresaComponent,
     LocalDeAtendimentoEnderecoComponent,
     LocalDeAtendimentoHorarioFuncionamentoComponent,
+    UploadFileComponent,
+    ResponsavelTecnicoCreateComponent,
+    ResponsavelTecnicoReadComponent,
+    ResponsavelTecnicoCrudComponent,
+    ResponsavelTecnicoUploadComponent,
+    ResponsavelTecnicoUpdateComponent,
+    ResponsavelTecnicoShowComponent,
   ],
   imports: [
     HttpClientModule,
@@ -300,7 +315,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
-    // NgxMaskModule.forRoot(), //TODO: encontrar biblioteca mascara compatível
+    NgxMaskModule.forRoot(),
     ReactiveFormsModule,
     RouterModule,
     TippyModule.forRoot({

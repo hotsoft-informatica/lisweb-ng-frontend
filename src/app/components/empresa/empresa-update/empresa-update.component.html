@@ -1,37 +1,108 @@
 <mat-card>
   <mat-card-title *ngIf="!fromOperadora">Editar Empresa</mat-card-title>
-  <form  *ngIf="empresa">
+  <form #formUpdateEmpresa="ngForm">
     <mat-form-field appearance="fill">
       <input
+        type="text"
+        id="razao_social"
+        required
+        minlength="4"
         matInput
         placeholder="Razão Social"
         [(ngModel)]="empresa.razao_social"
+        #razao_social="ngModel"
         name="razao_social"
       />
+      <div
+        *ngIf="
+          razao_social.invalid && (razao_social.dirty || razao_social.touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="razao_social.errors?.['required']">
+          O campo é obrigatório!
+        </div>
+        <div *ngIf="razao_social.errors?.['minlength']">
+          O nome dever conter no mínimo 4 caracteres!
+        </div>
+      </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        type="text"
+        id="nome_fantasia"
+        required
+        minlength="4"
         matInput
-        placeholder="Nome Fantasia "
+        placeholder="Nome Fantasia"
         [(ngModel)]="empresa.nome_fantasia"
+        #nome_fantasia="ngModel"
         name="nome_fantasia"
       />
+      <div
+        *ngIf="
+          nome_fantasia.invalid &&
+          (nome_fantasia.dirty || nome_fantasia.touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="nome_fantasia.errors?.['required']">
+          O campo é obrigatório!
+        </div>
+        <div *ngIf="nome_fantasia.errors?.['minlength']">
+          O nome dever conter no mínimo 4 caracteres!
+        </div>
+      </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        type="text"
+        mask="00.000.000/0000-00"
+        pattern="\d*"
+        id="cnpj"
+        required
+        minlength="14"
         matInput
         placeholder="CNPJ"
         [(ngModel)]="empresa.cnpj"
+        #cnpj="ngModel"
         name="cnpj"
       />
+      <div *ngIf="cnpj.invalid && (cnpj.dirty || cnpj.touched)" class="alert">
+        <div *ngIf="cnpj.errors?.['required']">O campo é obrigatório!</div>
+        <div *ngIf="cnpj.errors?.['minlength']">
+          O cnpj dever conter 14 caracteres!
+        </div>
+      </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        type="text"
+        mask="000.000.000.000"
+        pattern="\d*"
+        id="inscricao_estadual"
+        required
+        minlength="12"
         matInput
-        placeholder="Isc. Estatual"
+        placeholder="Isc. Estadual"
         [(ngModel)]="empresa.inscricao_estadual"
+        #inscricao_estadual="ngModel"
         name="inscricao_estadual"
       />
+      <div
+        *ngIf="
+          inscricao_estadual.invalid &&
+          (inscricao_estadual.dirty || inscricao_estadual.touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="inscricao_estadual.errors?.['required']">
+          O campo é obrigatório!
+        </div>
+        <div *ngIf="inscricao_estadual.errors?.['minlength']">
+          A Inscrição Estadual dever conter 12 caracteres!
+        </div>
+      </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
@@ -50,12 +121,7 @@
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input
-        matInput
-        placeholder="CEP"
-        [(ngModel)]="empresa.cep"
-        name="cep"
-      />
+      <input matInput placeholder="CEP" [(ngModel)]="empresa.cep" name="cep" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
@@ -66,15 +132,11 @@
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input
-        matInput
-        placeholder="UF"
-        [(ngModel)]="empresa.uf"
-        name="uf"
-      />
+      <input matInput placeholder="UF" [(ngModel)]="empresa.uf" name="uf" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        mask="(00) 00000-0000 || (00) 0000-0000"
         matInput
         placeholder="Telefone"
         [(ngModel)]="empresa.telefone"
@@ -83,6 +145,7 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        mask="(00) 0000-0000"
         matInput
         placeholder="Fax"
         [(ngModel)]="empresa.fax"
@@ -99,11 +162,21 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
+        type="text"
+        id="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         matInput
         placeholder="Email"
         [(ngModel)]="empresa.email"
+        #email="ngModel"
         name="email"
       />
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="alert"
+      >
+        <div [hidden]="!email.errors?.pattern">Padrão inválido para email!</div>
+      </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
@@ -139,10 +212,9 @@
     </mat-form-field>
   </form>
   <div *ngIf="!fromOperadora">
-    <button mat-raised-button (click)="updateEmpresa()" color="primary">
+    <button mat-raised-button [disabled]="formUpdateEmpresa.invalid" (click)="updateEmpresa()" color="primary">
       Salvar
     </button>
     <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
   </div>
 </mat-card>
-

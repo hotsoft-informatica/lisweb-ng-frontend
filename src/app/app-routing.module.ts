@@ -72,6 +72,13 @@ import { OperadoraUpdateComponent } from './components/operadora/operadora-updat
 import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
 import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
 import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-crud/responsavel-tecnico-crud.component';
+import { ResponsavelTecnicoReadComponent } from './components/responsavel-tecnico/responsavel-tecnico-read/responsavel-tecnico-read.component';
+import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecnico/responsavel-tecnico-create/responsavel-tecnico-create.component';
+import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
+import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
+import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 
 const routes: Routes = [
   {
@@ -374,6 +381,34 @@ const routes: Routes = [
     path: 'localdeatendimento/delete/:id',
     component: LocalDeAtendimentoReadComponent,
   },
+  {
+    path: 'upload-file',
+    component: UploadFileComponent,
+  },
+  {
+    path: 'responsavel_tecnicos',
+    component: ResponsavelTecnicoCrudComponent,
+  },
+  {
+    path: 'responsavel_tecnicos/create',
+    component: ResponsavelTecnicoCreateComponent,
+  },
+  {
+    path: 'responsavel_tecnicos/show/:id',
+    component: ResponsavelTecnicoShowComponent,
+  },
+  {
+    path: 'responsavel_tecnicos/update/:id',
+    component: ResponsavelTecnicoUpdateComponent,
+  },
+  {
+    path: 'responsavel_tecnicos/upload/:id',
+    component: ResponsavelTecnicoUploadComponent,
+  },
+  {
+    path: 'responsavel_tecnicos/delete/:id',
+    component: EmpresaDeleteComponent,
+  }
 ];
 
 @NgModule({

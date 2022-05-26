@@ -17,7 +17,7 @@ export class EmpresaUpdateComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.empresa ||= new Empresa({});
+    this.empresa = new Empresa({});
     console.table(this.empresa);
   }
 
@@ -29,7 +29,7 @@ export class EmpresaUpdateComponent implements OnInit {
         .readById(id as unknown as number)
         .subscribe((empresa) => {
           console.table(empresa);
-          this.empresa ||= empresa;
+          this.empresa = empresa;
         });
     }
   }

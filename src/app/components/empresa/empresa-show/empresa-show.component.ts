@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./empresa-show.component.css'],
 })
 export class EmpresaShowComponent implements OnInit {
-  empresa!: Empresa;
+  empresa: Empresa;
   id: any;
 
   constructor(
@@ -17,6 +17,7 @@ export class EmpresaShowComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
+    this.empresa = new Empresa({});
     this.id = this.route.snapshot.paramMap.get('id');
     this.load(this.id);
   }
@@ -27,7 +28,7 @@ export class EmpresaShowComponent implements OnInit {
     this.empresaService
       .readById(id as unknown as number)
       .subscribe((empresa) => {
-        this.empresa = empresa;
+        this.empresa = empresa
       });
   }
 

@@ -101,7 +101,7 @@
         <th mat-header-cell colspan="3" mat-sort-header="" *matHeaderCellDef>Operações</th>
         <td mat-cell *matCellDef="let element">
           <div class="col-4">
-
+            <div>
               <a routerLink="/pacientes/update/{{element.id}}">
                 <button mat-icon-button>
                   <mat-icon class="edit">edit</mat-icon>
@@ -128,7 +128,7 @@
                   <mat-icon color="black">visibility</mat-icon>
                 </button>
               </a>
-
+            </div>
           </div>
         </td>
       </ng-container>
