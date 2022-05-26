@@ -52,6 +52,22 @@
         </a>
       </button>
     </mat-menu>
+    <button mat-button [matMenuTriggerFor]="perfil">
+      <mat-icon>account_circle</mat-icon>
+      Perfil
+    </button>
+    <mat-menu #perfil="matMenu">
+      <button mat-menu-item>
+        <a mat-list-item routerLink="/">
+          Perfil do Usuario
+        </a>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <a mat-list-item>
+          Sair
+        </a>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>
 
