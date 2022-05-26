@@ -1,4 +1,7 @@
+import { LogoutService } from './../../service/logout.service';
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from '../../service/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   routerStr = '';
 
-  constructor() {
-  }
+  constructor(private usuarioService: UsuarioService,
+    private router: Router,
+    private logoutService: LogoutService) { }
 
   ngOnInit(): void {
     this.routerStr = window.location.href;
@@ -19,4 +23,11 @@ export class HeaderComponent implements OnInit {
     return this.routerStr.includes(route);
   }
 
+  logout(): void {
+    this.logoutService.sair().subscribe(
+      resultado => {
+        localStorage.setItem('token', '');
+        this.router.navigate(['/login']);
+      })
+  }
 }
