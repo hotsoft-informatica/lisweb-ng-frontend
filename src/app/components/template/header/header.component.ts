@@ -24,10 +24,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-    this.logoutService.sair().subscribe(
-      resultado => {
-        localStorage.setItem('token', '');
-        this.router.navigate(['/login']);
-      })
+    this.logoutService.sair();
   }
 }
