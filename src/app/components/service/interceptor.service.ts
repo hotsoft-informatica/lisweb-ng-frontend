@@ -1,3 +1,4 @@
+import { LogoutService } from './logout.service';
 import {
   HttpEvent,
   HttpInterceptor,
@@ -17,6 +18,9 @@ export class Interceptor implements HttpInterceptor {
   token: String = '';
   serie = 2001;
 
+  constructor(private logoutService: LogoutService) { }
+
+
  intercept( request: HttpRequest<any>, next: HttpHandler ):
  Observable<HttpEvent<any>> {
 
@@ -27,11 +31,21 @@ export class Interceptor implements HttpInterceptor {
     const token_str = this.storage.getItem('token') ? this.storage.getItem('token') : '';
     this.password = new String(password_str);
     this.user = new String(user_str);
+    console.table(this.storage.getItem('token'));
     this.token = new String(token_str);
+
+    const timeout = new Date(this.storage.getItem('timeoutAngular') as string);
+    const timeoutnow = new Date();
+    const logado = this.storage.getItem('logado');
+
+    if((logado == 'true') && (timeout <= timeoutnow)){
+      this.logoutService.sair();
+    }
 
     if(this.token.length > 1){
       headers = headers.append('token', token_str as string)
-      console.log('Autorizado por token')
+      console.log('Autorizado por token');
+      console.table(token_str);
     }
     else {
       if ((this.user.length > 1) && ( this.password.length > 1)){
