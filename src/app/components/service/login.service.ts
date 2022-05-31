@@ -21,7 +21,7 @@ export class LoginService {
     });
   }
 
-  autenticar(login:string, senha:string, token:string): Observable<any> {
+  autenticar(login: string, senha: string, token: string): Observable<any> {
     const url = `${this.baseUrl}/${login}`;
     const autenticacao = this.http.post<any>(url, token);
     return combineLatest([autenticacao]);
