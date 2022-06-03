@@ -1,3 +1,4 @@
+import { LaboratoryDomain } from './laboratory-domain.model';
 export class Laboratorio {
   public id?: number;
   public nome?: string;
@@ -16,6 +17,7 @@ export class Laboratorio {
   public token_nfe?: string;
   public url_nfe?: string;
   public laboratory_domain_id?: number;
+  public laboratoryDomain?: LaboratoryDomain;
   public version_id?: number;
   public deleted?: number;
   public empresa_id?: number;

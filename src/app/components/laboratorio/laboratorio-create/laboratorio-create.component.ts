@@ -1,11 +1,18 @@
+import { Query } from '../../model/query.model';
 import { LaboratoryDomain } from './../../model/laboratory-domain.model';
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 import { Laboratorio } from '../../model/laboratorio.model';
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LaboratorioService } from '../../service/laboratorio.service';
 import { STRING_TYPE } from '@angular/compiler';
-
+import { pipe, map } from 'rxjs';
+import { AfterViewInit, ElementRef, ViewChild, Component, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { debounceTime, distinctUntilChanged, startWith, tap, delay, filter } from 'rxjs/operators';
+import { merge, fromEvent } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-laboratorio-create',
@@ -15,6 +22,8 @@ import { STRING_TYPE } from '@angular/compiler';
 export class LaboratorioCreateComponent implements OnInit {
   laboratorio: Laboratorio;
   laboratoryDomains: LaboratoryDomain[] = [];
+  subject: Subject<any> = new Subject();
+  queries: Query[] = [];
 
   constructor(
     private router: Router,
@@ -25,9 +34,29 @@ export class LaboratorioCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.laboratoryDomainService.read().subscribe((laboratoryDomains) => {
-      this.laboratoryDomains = laboratoryDomains;
-    });
+    const query = new Query({ key: '', value: '', isNumeric: false })
+
+    this.subject
+      .pipe(debounceTime(500))
+      .subscribe(() => {
+        this.laboratoryDomainService
+          .findLaboratoryDomains('id', 'asc', 0, 60, this.queries)
+
+          .subscribe((laboratoryDomains) => {
+            console.table(this.queries);
+            this.laboratoryDomains = laboratoryDomains;
+          });
+      });
+    this.subject.next(null);
+  }
+
+  search(): void {
+    const query_string = this.laboratorio.laboratory_domain_id as unknown as string;
+    const query = new Query({ key: 'name', value: query_string, isNumeric: false });
+    this.queries = [];
+    this.queries.push(query);
+
+    this.subject.next(null);
   }
 
   createLaboratorio(): void {
@@ -42,4 +71,5 @@ export class LaboratorioCreateComponent implements OnInit {
   cancel(): void {
     this.router.navigate(['/laboratorios']);
   }
+
 }
