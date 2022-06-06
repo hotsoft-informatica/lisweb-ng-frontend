@@ -72,4 +72,11 @@ export class LaboratorioCreateComponent implements OnInit {
     this.router.navigate(['/laboratorios']);
   }
 
+  displayFn(options: LaboratoryDomain[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options) ? options.find(option => option.id === id) : null;
+      return correspondingOption ? correspondingOption.name : '';
+    }
+  }
+
 }
