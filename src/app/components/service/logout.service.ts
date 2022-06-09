@@ -25,13 +25,15 @@ export class LogoutService {
     });
   }
 
-  sair(): void {
+  sair(redirect: boolean = false): void {
     const url = `${this.baseUrl}`;
     this.http.get<any>(url).subscribe(
       resultado => {
         localStorage.setItem('logado', 'false');
         localStorage.setItem('token', '');
-        this.router.navigate(['/login']);
+        if(redirect){
+          this.router.navigate(['/login']);
+        }
       })
   }
 }
