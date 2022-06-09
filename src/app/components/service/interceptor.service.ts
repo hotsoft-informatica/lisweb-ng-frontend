@@ -4,8 +4,9 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
-  HttpParams }
-from '@angular/common/http';
+  HttpParams
+}
+  from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 
@@ -21,8 +22,8 @@ export class Interceptor implements HttpInterceptor {
   constructor(private logoutService: LogoutService) { }
 
 
- intercept( request: HttpRequest<any>, next: HttpHandler ):
- Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler):
+    Observable<HttpEvent<any>> {
 
     //TODO: puxar da variavel
     let headers = request.headers;
@@ -37,21 +38,22 @@ export class Interceptor implements HttpInterceptor {
     const timeout = new Date(this.storage.getItem('timeoutAngular') as string);
     const timeoutnow = new Date();
     const logado = this.storage.getItem('logado');
+    headers = headers.append('skip', 'true');
 
-    if((logado == 'true') && (timeout <= timeoutnow)){
-      this.logoutService.sair();
+    if ((logado == 'true') && (timeout <= timeoutnow)) {
+      this.logoutService.sair(false);
     }
 
-    if(this.token.length > 1){
-      headers = headers.append('token', token_str as string)
+    if (this.token.length > 1) {
+      // headers = headers.append('token', token_str as string)
       console.log('Autorizado por token');
       console.table(token_str);
     }
     else {
-      if ((this.user.length > 1) && ( this.password.length > 1)){
+      if ((this.user.length > 1) && (this.password.length > 1)) {
         headers = headers.append('user', user_str as string)
-                        .append('password', password_str as string)
-                        .append('serie', this.serie.toString())
+          .append('password', password_str as string)
+          .append('serie', this.serie.toString())
       }
       console.log(this.token)
     }
@@ -59,6 +61,6 @@ export class Interceptor implements HttpInterceptor {
       headers: headers
     });
     return next.handle(requestAuth);
- }
+  }
 }
 
