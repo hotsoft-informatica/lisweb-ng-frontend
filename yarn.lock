@@ -129,7 +129,7 @@
     rxjs "6.6.7"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@14.0.1":
+"@angular-devkit/schematics@14.0.1", "@angular-devkit/schematics@^14.0.1":
   version "14.0.1"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-14.0.1.tgz#5a8c2cf14f89f5cd00bc7abafbd545c4701555fe"
   integrity sha512-Ub9W2SIgmYs9+SWCW117/N+wSThOWWDo1j+JiZlh9jML7ZRc9HCTEzo8Yic+6/ZuouVcKExCUO90z0InVkOB7g==
@@ -137,17 +137,6 @@
     "@angular-devkit/core" "14.0.1"
     jsonc-parser "3.0.0"
     magic-string "0.26.1"
-    ora "5.4.1"
-    rxjs "6.6.7"
-
-"@angular-devkit/schematics@^13.3.4":
-  version "13.3.7"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-13.3.7.tgz#d3f62ec32b707baf0c81eb1d12970c929f82ad98"
-  integrity sha512-6TKpFMwiiXmPhiVdbkSJrkBXj8n7SVVhsHl2GodDLVTb8OT3fxYIB9EU8Il07AMfDcjpydOcJduCFPOsQYd7BA==
-  dependencies:
-    "@angular-devkit/core" "13.3.7"
-    jsonc-parser "3.0.0"
-    magic-string "0.25.7"
     ora "5.4.1"
     rxjs "6.6.7"
 
