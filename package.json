@@ -16,7 +16,7 @@
   "dependencies": {
     "@angular/animations": "^13.1.1",
     "@angular/cdk": "^13.1.1",
-    "@angular/cli": "^13.3.4",
+    "@angular/cli": "^14.0.1",
     "@angular/common": "^13.1.1",
     "@angular/compiler": "^13.1.1",
     "@angular/compiler-cli": "^13.1.1",
@@ -44,7 +44,7 @@
     "zone.js": "~0.11.5"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1303.4",
+    "@angular-devkit/architect": "^0.1400.1",
     "@angular-devkit/build-angular": "^13.3.4",
     "@angular-devkit/schematics": "^13.3.4",
     "@ngtools/webpack": "^13.3.4",
@@ -57,7 +57,7 @@
     "karma-chrome-launcher": "^3.1.1",
     "karma-coverage": "^2.2.0",
     "karma-jasmine": "^5.0.0",
-    "karma-jasmine-html-reporter": "^1.7.0",
+    "karma-jasmine-html-reporter": "^2.0.0",
     "node-fetch": "^3.2.4",
     "rxjs-compat": "^6.6.7",
     "tapable": "^2.2.1",
@@ -72,4 +72,3 @@
     "webpack": "^5.68.0"
   }
 }
-
