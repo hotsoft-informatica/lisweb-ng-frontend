@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ElementRef, ViewChild} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -22,7 +22,7 @@ export class UsuarioUpdateComponent implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  grupoCtrl = new FormControl();
+  grupoCtrl = new UntypedFormControl();
   filteredGrupos: Observable<string[]>;
   grupos: string[] = [];
   allGrupos: string[] = ['Responsavel Técnico', 'Digitação', 'Recepção', 'Suporte'];

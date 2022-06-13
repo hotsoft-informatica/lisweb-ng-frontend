@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { Empresa } from './../../model/empresa.model';
@@ -15,8 +15,8 @@ import { end } from '@popperjs/core';
 export class EmpresaCreateComponent implements OnInit {
   @Input('empresa') empresa: Empresa;
   @Input('fromOperadora') fromOperadora!: boolean;
-  formControl1 = new FormControl();
-  formControl2 = new FormControl();
+  formControl1 = new UntypedFormControl();
+  formControl2 = new UntypedFormControl();
   stateFilter!: Observable<string[]>;
   cityFilter!: Observable<string[]>;
 

@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ElementRef, ViewChild} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -23,14 +23,14 @@ export class UsuarioCreateComponent implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  grupoCtrl = new FormControl();
+  grupoCtrl = new UntypedFormControl();
   filteredGrupos: Observable<string[]>;
   grupos: string[] = [];
   allGrupos: string[] = ['Responsavel Técnico', 'Digitação', 'Recepção', 'Suporte'];
   auxSenhas = 0;
   usuario: Usuario;
   id: number;
-  userForm!: FormGroup;
+  userForm!: UntypedFormGroup;
   submitted = false;
 
   @ViewChild('grupoInput') grupoInput: ElementRef<HTMLInputElement> = {} as ElementRef;
@@ -40,7 +40,7 @@ export class UsuarioCreateComponent implements OnInit {
     private router: Router,
     private usuarioService: UsuarioService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {
     this.usuario = new Usuario({}); // criando usuario
 
