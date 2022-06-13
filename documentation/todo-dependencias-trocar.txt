@@ -1,0 +1,10 @@
+                  Package "@angular/flex-layout" has an incompatible peer dependency to "@angular/cdk" (requires "^13.0.0", would install "14.0.1").
+                  Package "ng-auto-complete" has an incompatible peer dependency to "@angular/common" (requires "^7.1.1" (extended), would install "14.0.1").
+                  Package "ng-auto-complete" has an incompatible peer dependency to "@angular/core" (requires "^7.1.1" (extended), would install "14.0.1").
+✖ Migration failed: Incompatible peer dependencies found.
+Peer dependency warnings when installing dependencies means that those dependencies might not work correctly together.
+You can use the '--force' option to ignore incompatible peer dependencies and instead address these warnings later.
+  See "/tmp/ng-2nD5xy/angular-errors.log" for further details.
+
+
+
