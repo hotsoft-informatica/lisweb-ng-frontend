@@ -162,6 +162,7 @@ import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecn
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -277,6 +278,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ResponsavelTecnicoUploadComponent,
     ResponsavelTecnicoUpdateComponent,
     ResponsavelTecnicoShowComponent,
+    SafeUrlPipe,
   ],
   imports: [
     HttpClientModule,

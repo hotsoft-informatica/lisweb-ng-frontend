@@ -3,8 +3,8 @@
   <form #formUpload="ngForm">
     <input type="file"  class="file-input" (change)="onFileSelected($event)" #fileUpload/>
   </form>
-  <button type="button" mat-raised-button (click)="fileUpload.click()" color="primary">
-    <!--mat-icon>attach_file</mat-icon-->
-  </button>
 </mat-card>
+<button type="button" mat-raised-button (click)="onUpload()" color="primary">
+  <mat-icon>attach_file</mat-icon>
+</button>
 <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
