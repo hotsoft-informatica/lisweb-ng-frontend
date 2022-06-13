@@ -233,17 +233,17 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/material-moment-adapter@^13.2.4":
-  version "13.3.9"
-  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-13.3.9.tgz#1eb6ddf6e6d3316dba8fa352be119b2a0c582958"
-  integrity sha512-H1mHd3oXFI0tnzWewlnXyO0qBe5xnl64KdDZW0KA089ElAXZf91/C6pWB7rxtJk8u7aWvg6shXg/9hSOoGn/4g==
+"@angular/material-moment-adapter@^14.0.1":
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/@angular/material-moment-adapter/-/material-moment-adapter-14.0.1.tgz#eca9f6ee86dd9b7618960766ab09b8f17be78a99"
+  integrity sha512-J51uck6cLo99Lzg4akOBO/I2s2DwbOFlaK8oJpKB5ny98Jm5ZLXcl71tpb5MdLPrqz6zcaVuvRzPT096SZwOfQ==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/material@^13.2.4":
-  version "13.3.9"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-13.3.9.tgz#efd8ab5800b654df01e36426391d31531e412425"
-  integrity sha512-FU8lcMgo+AL8ckd27B4V097ZPoIZNRHiCe3wpgkImT1qC0YwcyXZVn0MqQTTFSdC9a/aI8wPm3AbTClJEVw5Vw==
+"@angular/material@^14.0.1":
+  version "14.0.1"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-14.0.1.tgz#ad127e3c9908aab719e9e2aaec368099e79dad1c"
+  integrity sha512-SkH7MCfFBRj/+HP/JwYiYHd8uo38qtwR66hZKQcP2XaQgO323llVQ27MB+TRkbxO2mifpP2gh40nJCv6KaNsxg==
   dependencies:
     tslib "^2.3.0"
 
