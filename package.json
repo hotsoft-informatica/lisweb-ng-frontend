@@ -14,11 +14,11 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "^14.0.1",
     "@angular/animations": "^14.0.1",
     "@angular/cdk": "^14.0.1",
     "@angular/cli": "^14.0.1",
     "@angular/common": "^14.0.1",
-    "@angular/compiler": "^14.0.1",
     "@angular/compiler-cli": "^14.0.1",
     "@angular/core": "^14.0.1",
     "@angular/flex-layout": "^13.0.0-beta.38",
@@ -46,9 +46,8 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1400.1",
-    "@angular-devkit/build-angular": "^13.3.4",
     "@angular-devkit/schematics": "^14.0.1",
-    "@ngtools/webpack": "^13.3.4",
+    "@angular/compiler": "^14.0.1",
     "@types/jasmine": "^4.0.3",
     "@types/node": "^17.0.42",
     "core-js": "^3.22.3",

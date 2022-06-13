@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ResponsavelTecnico } from '../../model/responsavel-tecnico.model';
 import { ResponsavelTecnicoService } from '../../service/responsavel-tecnico.service';
 import { Router } from '@angular/router';
-import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
+// import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y/input-modality/input-modality-detector';
 @Component({
   selector: 'app-responsavel-tecnico-create',
   templateUrl: './responsavel-tecnico-create.component.html',
