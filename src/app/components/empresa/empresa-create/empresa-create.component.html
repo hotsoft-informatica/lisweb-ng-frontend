@@ -125,14 +125,35 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
-        matInput
+        type="text"
         placeholder="Cidade"
-        [(ngModel)]="empresa.cidade"
         name="cidade"
+        required
+        matInput [formControl]="formControl2"
+        [matAutocomplete]="autoCity"
+        [(ngModel)]="this.empresa.cidade"
       />
+      <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #autoCity="matAutocomplete">
+        <mat-option *ngFor="let city of cityFilter | async" [value]="city">
+          {{city}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input matInput placeholder="UF" [(ngModel)]="empresa.uf" name="uf" />
+      <input
+        type="text"
+        placeholder="UF"
+        name="uf"
+        required
+        matInput [formControl]="formControl1"
+        [matAutocomplete]="autoState"
+        [(ngModel)]="this.empresa.uf"
+      />
+      <mat-autocomplete autoActiveFirstOption #autoState="matAutocomplete">
+        <mat-option *ngFor="let state of stateFilter | async" [value]="state">
+          {{state}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input

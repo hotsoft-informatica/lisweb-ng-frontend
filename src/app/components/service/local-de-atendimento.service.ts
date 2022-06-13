@@ -27,12 +27,11 @@ export class LocalDeAtendimentoService {
   }
 
   read(
-       sortActive: string = 'id',
-       sortDirection: string = 'desc',
-       pageNumber = 1,
-       pageSize = 3,
-       queries: Query[]): Observable<LocalDeAtendimento[]>
-  { // criando parametros e puxando dados do backend
+    sortActive: string = 'id',
+    sortDirection: string = 'desc',
+    pageNumber = 1,
+    pageSize = 3,
+    queries: Query[]): Observable<LocalDeAtendimento[]> { // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
 
     queries.forEach(busca => {
@@ -50,7 +49,7 @@ export class LocalDeAtendimentoService {
       }
     });
 
-    return this.http.get<LocalDeAtendimento[]>(this.baseUrl, {params}); // Passa qual operação sera realizada pelo backend
+    return this.http.get<LocalDeAtendimento[]>(this.baseUrl, { params }); // Passa qual operação sera realizada pelo backend
   }
 
   readById(id: number): Observable<LocalDeAtendimento> {
