@@ -15,10 +15,10 @@
       </button>
     </mat-form-field>
 
-    <button mat-button color="primary" class="col-4 mb-5">Esqueci minha senha.</button>
+    <a href="/" class="text-primary col-5 mb-5">Esqueci minha senha.</a>
     </div>
     <div class="row justify-content-between mt-4">
-      <button mat-button color="primary" class="col-3" routerLink="/login">Retornar ao login</button>
+      <a href="/" class="text-primary col-5" routerLink="/login">Retornar ao login</a>
       <button mat-raised-button color="primary" class="col-3" (click)="salveSenha()">Avançar</button>
     </div>
     <div *ngIf="this.senhaIncorreta">

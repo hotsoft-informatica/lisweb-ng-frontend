@@ -1,4 +1,5 @@
-import { InterceptorModule } from './components/model/interceptor.model';
+import { InterceptorModule } from './components/model/interceptor.module';
+import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
 import { LoginComponent } from './components/login/login.component';
 import { LgUsuarioComponent } from './components/login/lg-usuario/lg-usuario.component';
 import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
@@ -161,6 +162,7 @@ import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-cru
 import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
+import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
@@ -279,6 +281,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ResponsavelTecnicoUpdateComponent,
     ResponsavelTecnicoShowComponent,
     SafeUrlPipe,
+    DialogErroAutenticacaoComponent,
   ],
   imports: [
     HttpClientModule,
@@ -287,6 +290,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    ErroInterceptorModule,
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
