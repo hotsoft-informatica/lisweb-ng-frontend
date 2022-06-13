@@ -2,7 +2,7 @@ import { Query } from './../model/query.model';
 import { Laboratorio } from '../model/laboratorio.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, Observable, of, map, pipe } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
@@ -11,8 +11,20 @@ export class LaboratorioService {
   baseUrl = 'http://127.0.0.1:3010/laboratorios';
 
   query: Query[] = [];
+  labDomains = [];
 
   constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+
+  getData() {
+    return this.labDomains.length ? of(this.labDomains)
+      : this.http.get<any>('baseUrl')
+        .pipe(
+          map((data) => {
+            this.labDomains = data.values;
+            return this.labDomains;
+          })
+        )
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {
