@@ -166,6 +166,7 @@ import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
+import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -284,6 +285,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     SafeUrlPipe,
     DialogErroAutenticacaoComponent,
     VersaoExameGeralCreateComponent,
+    VersaoExameCrudComponent,
   ],
   imports: [
     HttpClientModule,

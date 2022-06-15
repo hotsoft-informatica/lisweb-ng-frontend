@@ -31,15 +31,9 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   dataSource!: VersaoExameReadDataSource;
 
   displayedColumns = [
-    'id',
-    'laboratorio_id',
-    'versao',
-    'agrupamento',
+    'titulo_laudo',
     'descricao',
-    'volume',
     'status',
-    'aprovado',
-    'created_at',
     'action',
   ];
 
