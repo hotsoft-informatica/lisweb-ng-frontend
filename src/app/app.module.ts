@@ -165,6 +165,7 @@ import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnic
 import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -282,6 +283,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ResponsavelTecnicoShowComponent,
     SafeUrlPipe,
     DialogErroAutenticacaoComponent,
+    VersaoExameGeralCreateComponent,
   ],
   imports: [
     HttpClientModule,
