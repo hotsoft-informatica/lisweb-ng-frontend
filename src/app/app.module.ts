@@ -130,6 +130,9 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
+import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
+import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
+import { VersaoExameGeralUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-geral-update/versao-exame-geral-update.component';
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
@@ -165,8 +168,6 @@ import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnic
 import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
-import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
-import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -284,8 +285,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ResponsavelTecnicoShowComponent,
     SafeUrlPipe,
     DialogErroAutenticacaoComponent,
-    VersaoExameGeralCreateComponent,
     VersaoExameCrudComponent,
+    VersaoExameGeralCreateComponent,
+    VersaoExameGeralUpdateComponent,
   ],
   imports: [
     HttpClientModule,
