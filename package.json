@@ -47,7 +47,7 @@
     "zone.js": "~0.11.5"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1400.1",
+    "@angular-devkit/architect": "^0.1400.2",
     "@angular-devkit/schematics": "^14.0.1",
     "@angular/compiler": "^14.0.1",
     "@nrwl/workspace": "^14.2.4",
@@ -71,7 +71,7 @@
   },
   "volta": {
     "node": "18.3.0",
-    "yarn": "1.22.17",
+    "yarn": "1.22.19",
     "typescript": "^4.6.4",
     "webpack": "^5.68.0"
   }
