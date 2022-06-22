@@ -1,3 +1,6 @@
+import { TipoExame } from './tipo-exame.model';
+import { MetodoExame } from './metodo-exame.model';
+import { Marcacao } from './marcacao.model';
 export class VersaoExame {
   public id?: number;
   public laboratorio_id?: number;
@@ -51,7 +54,10 @@ export class VersaoExame {
   public deleted?: boolean;
   public formula?: string;
   public criado_em?: Date = new Date();
-  public changed_by_lab_id?: number
+  public changed_by_lab_id?: number;
+  public tipoExame?: TipoExame;
+  public metodoExame?: MetodoExame;
+  public marcacao?: Marcacao;
 
   constructor(values: VersaoExame) {
     Object.assign(this, values);
