@@ -36,16 +36,6 @@ export class VersaoExameService {
     return this.http.get<VersaoExame>(url);
   }
 
-  update(versaoExame: VersaoExame): Observable<VersaoExame> {
-    const url = `${this.baseUrl}/${versaoExame.id}`;
-    return this.http.put<VersaoExame>(url, versaoExame);
-  }
-
-  delete(id: number): Observable<VersaoExame> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<VersaoExame>(url);
-  }
-
   findVersaoExames(
     active: string = '',
     sortOrder: string = 'asc',

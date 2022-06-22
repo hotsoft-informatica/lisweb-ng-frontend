@@ -1,1 +1,53 @@
-<p>versao-exame-geral-create works!</p>
+<form class="example-container row container-fluid mt-4">
+  <div class="row justify-content-around">
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Versão:</mat-label>
+        <input matInput maxlength="9" id="versao" name="versao"
+          [(ngModel)]="versaoExame.versao">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
+      <mat-label>Tabela Marcação:</mat-label>
+      <input
+        name="marcacao"
+        matInput [matAutocomplete]="auto" 
+        [(ngModel)]="versaoExame.marcacao_id"
+        (ngModelChange)="searchMarcacao()"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnMarcacao(marcacao)">
+        <mat-option *ngFor="let marcacao of marcacao" [value]=" marcacao.id">
+          {{ marcacao.nome }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div class="row col-lg-4 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Título laudo:</mat-label>
+        <input matInput maxlength="50" id="titulo"name="titulo_laudo"
+          [(ngModel)]="versaoExame.titulo_laudo">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-2 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Descrição:</mat-label>
+        <input matInput maxlength="50" id="descricao" name="descricao"
+          [(ngModel)]="versaoExame.descricao">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Status:</mat-label>
+        <input matInput maxlength="50" id="status" name="status"
+          [(ngModel)]="versaoExame.status">
+      </mat-form-field>
+    </div>
+
+  </div>
+</form>
+
