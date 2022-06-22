@@ -24,16 +24,18 @@ import {
 })
 export class VersaoExameGeralCreateComponent implements OnInit {
   @Input('versaoExame') versaoExame: VersaoExame;
-  @Input('metodoExame') metodoExame: MetodoExame[] = [];
   @Input('marcacao') marcacao: Marcacao[] = [];
+  @Input('metodoExame') metodoExame: MetodoExame[] = [];
 
   queries: Query[] = [];
-  subject: Subject<any> = new Subject();
+  subjectMarcacao: Subject<any> = new Subject();
+  subjectMetodo: Subject<any> = new Subject();
 
   constructor(
     private router: Router,
+    private macacaoService: MarcacaoService,
     private versaoExameService: VersaoExameService,
-    private macacaoService: MarcacaoService
+    private metodoExameService: MetodoExameService
 
   ) {
     this.versaoExame = new VersaoExame({});
@@ -42,7 +44,7 @@ export class VersaoExameGeralCreateComponent implements OnInit {
   ngOnInit(): void {
     const query = new Query({ key: '', value: '', isNumeric: false });
 
-    this.subject.pipe(debounceTime(500)).subscribe(() => {
+    this.subjectMarcacao.pipe(debounceTime(500)).subscribe(() => {
       this.macacaoService
         .findMarcacoes('id', 'asc', 0, 60, this.queries)
         .subscribe((marcacao) => {
@@ -50,7 +52,17 @@ export class VersaoExameGeralCreateComponent implements OnInit {
           this.marcacao = marcacao;
         });
     });
-    this.subject.next(null);
+    this.subjectMarcacao.next(null);
+
+    this.subjectMetodo.pipe(debounceTime(500)).subscribe(() => {
+      this.metodoExameService
+        .findMetodoExames('id', 'asc', 0, 60, this.queries)
+        .subscribe((metodoExame) => {
+          console.table(this.queries);
+          this.metodoExame = metodoExame;
+        });
+    });
+    this.subjectMetodo.next(null);
   }
 
   searchMarcacao(): void {
@@ -63,7 +75,20 @@ export class VersaoExameGeralCreateComponent implements OnInit {
     });
     this.queries = [];
     this.queries.push(query);
-    this.subject.next(null);
+    this.subjectMarcacao.next(null);
+  }
+
+  searchMetodo(): void {
+    const query_string = this.versaoExame
+      .metodo_exame_id as unknown as string;
+    const query = new Query({
+      key: 'descricao',
+      value: query_string,
+      isNumeric: false,
+    });
+    this.queries = [];
+    this.queries.push(query);
+    this.subjectMetodo.next(null);
   }
 
   createVersaoExame(): void {
@@ -85,6 +110,15 @@ export class VersaoExameGeralCreateComponent implements OnInit {
         ? options.find((option) => option.id === id)
         : null;
       return correspondingOption ? correspondingOption.nome : '';
+    };
+  }
+
+  displayFnMetodo(options: MetodoExame[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.descricao : '';
     };
   }
 }

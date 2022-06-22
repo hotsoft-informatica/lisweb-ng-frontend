@@ -13,41 +13,63 @@
       <mat-label>Tabela Marcação:</mat-label>
       <input
         name="marcacao"
-        matInput [matAutocomplete]="auto" 
+        matInput [matAutocomplete]="autoMarcacao" 
         [(ngModel)]="versaoExame.marcacao_id"
         (ngModelChange)="searchMarcacao()"
       />
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnMarcacao(marcacao)">
+      <mat-autocomplete #autoMarcacao="matAutocomplete" [displayWith]="displayFnMarcacao(marcacao)">
         <mat-option *ngFor="let marcacao of marcacao" [value]=" marcacao.id">
           {{ marcacao.nome }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
 
-    <div class="row col-lg-4 p-2">
+    <mat-form-field appearance="fill" class= "col-lg-1 col-md-12 p-2">
+      <mat-label>Situação:</mat-label>
+      <mat-select name="status" [(ngModel)]="versaoExame.status">
+        <mat-option value="A">Ativo</mat-option>
+        <mat-option value="I">Inativo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+      <mat-label>Método:</mat-label>
+      <input
+        name="metodo_exame_id"
+        matInput [matAutocomplete]="autoMetodo" 
+        [(ngModel)]="versaoExame.metodo_exame_id"
+        (ngModelChange)="searchMetodo()"
+      />
+      <mat-autocomplete #autoMetodo="matAutocomplete" [displayWith]="displayFnMetodo(metodoExame)">
+        <mat-option *ngFor="let metodoExame of metodoExame" [value]=" metodoExame.id">
+          {{ metodoExame.descricao }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div class="row col-lg-5 p-2">
       <mat-form-field appearance="fill">
-        <mat-label>Título laudo:</mat-label>
-        <input matInput maxlength="50" id="titulo"name="titulo_laudo"
+        <mat-label>Título Laudo:</mat-label>
+        <input matInput maxlength="25" id="titulo_laudo" name="titulo_laudo"
           [(ngModel)]="versaoExame.titulo_laudo">
       </mat-form-field>
     </div>
 
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
-        <mat-label>Descrição:</mat-label>
-        <input matInput maxlength="50" id="descricao" name="descricao"
-          [(ngModel)]="versaoExame.descricao">
+        <mat-label>Agrupador Histórico:</mat-label>
+        <input type="number" matInput min="1" id="agrupamento_historico" name="agrupamento_historico"
+          [(ngModel)]="versaoExame.agrupamento_historico">
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-3 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
-        <mat-label>Status:</mat-label>
-        <input matInput maxlength="50" id="status" name="status"
-          [(ngModel)]="versaoExame.status">
+        <mat-label>Tempo de Repouso:</mat-label>
+        <input type="number" matInput min="1" id="agrupamento_historico" name="agrupamento_historico"
+          [(ngModel)]="versaoExame.tempo_repouso" placeholder="Min">
       </mat-form-field>
     </div>
 
   </div>
 </form>
-
