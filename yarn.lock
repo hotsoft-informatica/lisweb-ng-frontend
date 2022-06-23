@@ -118,14 +118,21 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
-"@angular/animations@^14.0.1":
+"@angular-material-extensions/input-counter@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@angular-material-extensions/input-counter/-/input-counter-0.1.1.tgz#453a6bfa368cfce494e7f475be21e2c1ab9bb93f"
+  integrity sha512-02gn7+fRFhJZN2ey9qhiyM3l6Xli4xEolTQTiNPGjEnuofkN3axSD96yEV5TRgRX9dqMKHAwqKi8z+96/gLbdg==
+  dependencies:
+    tslib "^1.10.0"
+
+"@angular/animations@^14.0.2":
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-14.0.2.tgz#12959e97cdc501c56135dd2befc4fd0215a9fd3e"
   integrity sha512-F65G62clU+8tpYXkRGTeQ8nNlyUsviJp9fFTMFXZTm0EHUCiHB6PRf5vpp7edN0Hy+moG6rKt8VnKbraFqaO1g==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/cdk@^14.0.1":
+"@angular/cdk@^14.0.2":
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-14.0.2.tgz#49755c854c4fa3ab64d91d9855bcd1807f9945c5"
   integrity sha512-751Sshu+HKYOqmnGRriHjd4ybMradgkLYOM9dBoX7YFpZce+IcEtojALGfLA4YDZwJF2RhBD6lFcJdWJPC9wCw==
@@ -204,7 +211,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@^14.0.1":
+"@angular/forms@^14.0.2":
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-14.0.2.tgz#f90c532865c74a6355eb7c6bcced013ba340829d"
   integrity sha512-sOLes/B7YkRocZExsxi1H+OIBFbSpVB6+i8+6cQK2ZIwXQMxCZm95PL42rMqWEOJhEuVyR3U47bjA2G4eC3TKg==
@@ -218,7 +225,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/material@^14.0.1":
+"@angular/material@^14.0.2":
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/@angular/material/-/material-14.0.2.tgz#6a2b74d2b8767c69a58a3af520b3b979aea7e733"
   integrity sha512-w1QHmQK02eF4mZZ6mixgKNaIp0cg71MQEDgoeZppUjrOij2TYkorHhT9Ma2XguV5Xi2wSGoGUzNKJ0OucB8hLA==
@@ -2235,15 +2242,10 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-1.3.2.tgz#93e25bf9ee75fe0fd80b594bc4feb0e862111b5a"
   integrity sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==
 
-"@types/node@*", "@types/node@>=10.0.0":
+"@types/node@*", "@types/node@>=10.0.0", "@types/node@^18.0.0":
   version "18.0.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.0.tgz#67c7b724e1bcdd7a8821ce0d5ee184d3b4dd525a"
   integrity sha512-cHlGmko4gWLVI27cGJntjs/Sj8th9aYwplmZFwmmgYQQvL5NUsgVJG7OddLvNfLqYS31KFN0s3qlaD9qCaxACA==
-
-"@types/node@^17.0.42":
-  version "17.0.45"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.45.tgz#2c0fafd78705e7a18b7906b5201a522719dc5190"
-  integrity sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -8198,7 +8200,7 @@ tslib@2.4.0, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
-tslib@^1.9.0:
+tslib@^1.10.0, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==

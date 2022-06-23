@@ -164,6 +164,8 @@ import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecn
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
 
+import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
+
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
 registerLocaleData(localePt);
@@ -326,6 +328,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    MatInputCounterModule,
     TippyModule.forRoot({
       defaultVariation: 'tooltip',
       variations: {
