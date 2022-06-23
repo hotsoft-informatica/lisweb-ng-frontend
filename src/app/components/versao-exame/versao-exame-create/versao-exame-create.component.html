@@ -1,5 +1,7 @@
 <div class="row justify-content-around">
-
+  <div>
+    Cadastrar versão de exame
+  </div>
   <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
     <mat-label>Tipo exame:</mat-label>
     <input
@@ -17,13 +19,13 @@
 
   <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
     <mat-label>Descrição:</mat-label>
-    <input matInput maxlength="12" name="descricao" [(ngModel)]="versaoExame.descricao">
+    <input matInput maxlength="50" name="descricao" [(ngModel)]="versaoExame.descricao">
   </mat-form-field>
 </div>
 
 <mat-tab-group>
   <mat-tab label="Geral">
-    <app-versao-exame-geral-create></app-versao-exame-geral-create>
+    <app-versao-exame-geral-create [versaoExame]="this.versaoExame"></app-versao-exame-geral-create>
   </mat-tab>
 </mat-tab-group>
 

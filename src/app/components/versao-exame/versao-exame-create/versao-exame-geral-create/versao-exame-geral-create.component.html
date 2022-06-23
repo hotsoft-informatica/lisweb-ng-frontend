@@ -4,7 +4,7 @@
     <div class="row col-lg-1 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Versão:</mat-label>
-        <input matInput maxlength="9" id="versao" name="versao"
+        <input type="number" matInput min="1" matInput maxlength="9" id="versao" name="versao"
           [(ngModel)]="versaoExame.versao">
       </mat-form-field>
     </div>
@@ -31,6 +31,9 @@
         <mat-option value="I">Inativo</mat-option>
       </mat-select>
     </mat-form-field>
+    <span>
+      {{this.versaoExame.descricao}}
+    </span>
 
     <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
       <mat-label>Método:</mat-label>
@@ -63,11 +66,11 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-2 p-2">
-      <mat-form-field appearance="fill">
-        <mat-label>Tempo de Repouso:</mat-label>
-        <input type="number" matInput min="1" id="agrupamento_historico" name="agrupamento_historico"
-          [(ngModel)]="versaoExame.tempo_repouso" placeholder="Min">
+    <div class="row col-lg-10 p-2">
+      <mat-form-field appearance="outline">
+        <mat-label>Nota do Laudo:</mat-label>
+        <input type="text" matInput min="1" id="descritivo" name="descritivo"
+          [(ngModel)]="versaoExame.descritivo">
       </mat-form-field>
     </div>
 

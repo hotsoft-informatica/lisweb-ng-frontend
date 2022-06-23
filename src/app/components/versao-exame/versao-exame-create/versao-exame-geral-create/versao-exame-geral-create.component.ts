@@ -38,7 +38,7 @@ export class VersaoExameGeralCreateComponent implements OnInit {
     private metodoExameService: MetodoExameService
 
   ) {
-    this.versaoExame = new VersaoExame({});
+    this.versaoExame ||= new VersaoExame({});
   }
 
   ngOnInit(): void {
@@ -89,19 +89,6 @@ export class VersaoExameGeralCreateComponent implements OnInit {
     this.queries = [];
     this.queries.push(query);
     this.subjectMetodo.next(null);
-  }
-
-  createVersaoExame(): void {
-    this.versaoExameService.create(this.versaoExame).subscribe(() => {
-      this.versaoExameService.showMessage('Versão de exame criada com sucesso!');
-      this.router.navigate(['/versao_exames']).then(() => {
-        window.location.reload();
-      });
-    });
-  }
-
-  cancel(): void {
-    this.router.navigate(['/versao_exames']);
   }
 
   displayFnMarcacao(options: Marcacao[]): (id: any) => any {
