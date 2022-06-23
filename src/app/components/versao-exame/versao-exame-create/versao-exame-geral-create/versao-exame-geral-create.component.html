@@ -9,7 +9,7 @@
       </mat-form-field>
     </div>
 
-    <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
+    <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
       <mat-label>Tabela Marcação:</mat-label>
       <input
         name="marcacao"
@@ -35,7 +35,7 @@
       {{this.versaoExame.descricao}}
     </span>
 
-    <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+    <mat-form-field appearance="fill" class="col-lg-4 col-md-12 p-2">
       <mat-label>Método:</mat-label>
       <input
         name="metodo_exame_id"
@@ -50,7 +50,7 @@
       </mat-autocomplete>
     </mat-form-field>
 
-    <div class="row col-lg-5 p-2">
+    <div class="row col-lg-4 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Título Laudo:</mat-label>
         <input matInput maxlength="25" id="titulo_laudo" name="titulo_laudo"
@@ -66,7 +66,15 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-10 p-2">
+    <div class="row col-lg-2 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Tempo de Repouso:</mat-label>
+        <input type="number" placeholder="Minutos" matInput min="1" id="tempo_repouso" name="tempo_repouso"
+          [(ngModel)]="versaoExame.tempo_repouso">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-12 p-2">
       <mat-form-field appearance="outline">
         <mat-label>Nota do Laudo:</mat-label>
         <input type="text" matInput min="1" id="descritivo" name="descritivo"
