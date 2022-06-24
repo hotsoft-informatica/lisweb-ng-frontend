@@ -31,9 +31,6 @@
         <mat-option value="I">Inativo</mat-option>
       </mat-select>
     </mat-form-field>
-    <span>
-      {{this.versaoExame.descricao}}
-    </span>
 
     <mat-form-field appearance="fill" class="col-lg-4 col-md-12 p-2">
       <mat-label>Método:</mat-label>
@@ -77,8 +74,9 @@
     <div class="row col-lg-12 p-2">
       <mat-form-field appearance="outline">
         <mat-label>Nota do Laudo:</mat-label>
-        <input type="text" matInput min="1" id="descritivo" name="descritivo"
+        <textarea matInput id="descritivo" name="descritivo"
           [(ngModel)]="versaoExame.descritivo">
+      </textarea>
       </mat-form-field>
     </div>
 
