@@ -63,16 +63,6 @@
     matSortDisableClear
   >
 
-  'id',
-  'laboratorio_id',
-  'titulo_laudo',
-  'versao',
-  'agrupamento',
-  'descricao',
-  'volume',
-  'status',
-  'aprovado',
-
   <ng-container matColumnDef="titulo_laudo">
     <th mat-header-cell mat-sort-header="titulo_laudo" class="col-5" *matHeaderCellDef> Título laudo </th>
     <td mat-cell *matCellDef="let row"> {{row.titulo_laudo | slice:0:25}} ...</td>

@@ -40,7 +40,7 @@
         [(ngModel)]="versaoExame.metodo_exame_id"
         (ngModelChange)="searchMetodo()"
       />
-      <mat-autocomplete #autoMetodo="matAutocomplete" [displayWith]="displayFnMetodo(metodoExame)">
+      <mat-autocomplete #autoMetodo="matAutocomplete" [displayWith]="displayFnMetodo(this.metodoExame)">
         <mat-option *ngFor="let metodoExame of metodoExame" [value]=" metodoExame.id">
           {{ metodoExame.descricao }}
         </mat-option>

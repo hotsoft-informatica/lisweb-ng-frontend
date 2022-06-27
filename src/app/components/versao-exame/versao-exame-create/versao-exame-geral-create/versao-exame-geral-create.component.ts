@@ -23,7 +23,7 @@ import {
   styleUrls: ['./versao-exame-geral-create.component.css']
 })
 export class VersaoExameGeralCreateComponent implements OnInit {
-  @Input('versaoExame') versaoExame: VersaoExame;
+  @Input('versaoExame') versaoExame!: VersaoExame;
   @Input('marcacao') marcacao: Marcacao[] = [];
   @Input('metodoExame') metodoExame: MetodoExame[] = [];
 
@@ -37,9 +37,7 @@ export class VersaoExameGeralCreateComponent implements OnInit {
     private versaoExameService: VersaoExameService,
     private metodoExameService: MetodoExameService
 
-  ) {
-    this.versaoExame ||= new VersaoExame({});
-  }
+  ) { }
 
   ngOnInit(): void {
     const query = new Query({ key: '', value: '', isNumeric: false });
