@@ -132,7 +132,6 @@ import { VersaoExameReadComponent } from './components/versao-exame/versao-exame
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
-import { VersaoExameGeralUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-geral-update/versao-exame-geral-update.component';
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
@@ -287,7 +286,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     DialogErroAutenticacaoComponent,
     VersaoExameCrudComponent,
     VersaoExameGeralCreateComponent,
-    VersaoExameGeralUpdateComponent,
   ],
   imports: [
     HttpClientModule,
