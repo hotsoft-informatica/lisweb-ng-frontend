@@ -9,11 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MY_DATE_FORMATS } from './formdata';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -132,9 +129,8 @@ import { VersaoExameReadComponent } from './components/versao-exame/versao-exame
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
-import { VersaoExameGeralUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-geral-update/versao-exame-geral-update.component';
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
@@ -287,7 +283,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     DialogErroAutenticacaoComponent,
     VersaoExameCrudComponent,
     VersaoExameGeralCreateComponent,
-    VersaoExameGeralUpdateComponent,
   ],
   imports: [
     HttpClientModule,

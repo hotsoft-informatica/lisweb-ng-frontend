@@ -1,24 +1,16 @@
 import { Query } from '../../model/query.model';
-import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
 import { VersaoExameReadDataSource } from './versao-exame-read-datasource';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
   tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 @Component({
@@ -38,9 +30,7 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
-
   query: Query[] = [];
 
   constructor(private versaoExameService: VersaoExameService) { }

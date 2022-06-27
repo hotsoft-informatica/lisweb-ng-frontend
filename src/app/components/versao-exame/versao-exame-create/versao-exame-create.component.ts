@@ -4,25 +4,12 @@ import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
 import { Router } from '@angular/router';
-import { STRING_TYPE } from '@angular/compiler';
-import { pipe, map } from 'rxjs';
 import {
-  AfterViewInit,
-  ElementRef,
-  ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
   debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 import { Subject } from 'rxjs';

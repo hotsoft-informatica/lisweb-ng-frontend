@@ -10,11 +10,6 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import {
   debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
 
 @Component({
