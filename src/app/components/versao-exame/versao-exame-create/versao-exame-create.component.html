@@ -2,17 +2,18 @@
   <div>
     Cadastrar versão de exame
   </div>
+
   <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
     <mat-label>Tipo exame:</mat-label>
     <input
-      name="tipo_exame_id"
+      name="tipo_exame"
       matInput [matAutocomplete]="auto" 
       [(ngModel)]="versaoExame.tipo_exame_id"
       (ngModelChange)="search()"
     />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(tiposExame)">
-      <mat-option *ngFor="let tiposExame of tiposExame" [value]=" tiposExame.id">
-        {{ tiposExame.descricao}}
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(tipoExames)">
+      <mat-option *ngFor="let tipoExame of tipoExames" [value]="tipoExame.id">
+        {{ tipoExame.descricao }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
