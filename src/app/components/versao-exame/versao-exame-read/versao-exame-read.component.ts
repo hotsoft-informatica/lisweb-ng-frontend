@@ -6,7 +6,6 @@ import { VersaoExameService } from '../../service/versao-exame.service';
 import { VersaoExameReadDataSource } from './versao-exame-read-datasource';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
@@ -14,14 +13,8 @@ import {
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
   tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 @Component({
@@ -36,7 +29,6 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   displayedColumns = ['titulo_laudo', 'descricao', 'status', 'action'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;

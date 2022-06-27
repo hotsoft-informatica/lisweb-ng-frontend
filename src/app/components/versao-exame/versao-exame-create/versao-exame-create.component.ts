@@ -3,33 +3,20 @@ import { TipoExame } from 'src/app/components/model/tipo-exame.model';
 import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
+
 import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
 import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
 import { Marcacao } from 'src/app/components/model/marcacao.model';
 import { MarcacaoService } from 'src/app/components/service/marcacao.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { STRING_TYPE } from '@angular/compiler';
-import { pipe, map } from 'rxjs';
 import {
-  AfterViewInit,
-  ElementRef,
-  ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
   debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -66,7 +53,7 @@ export class VersaoExameCreateComponent implements OnInit {
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
-      this.tipoExameService
+      this.tipoExameService 
         .findTipoExames('id', 'asc', 0, 60, this.queries)
         .subscribe((tipoExames) => {
           this.tipoExames = tipoExames;
