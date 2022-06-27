@@ -50,7 +50,7 @@
     "@angular/compiler": "^14.0.1",
     "@types/jasmine": "^4.0.3",
     "@types/node": "^17.0.42",
-    "core-js": "^3.23.0",
+    "core-js": "^3.23.3",
     "jasmine-core": "^4.2.0",
     "jasmine-spec-reporter": "^7.0.0",
     "karma": "^6.3.17",
