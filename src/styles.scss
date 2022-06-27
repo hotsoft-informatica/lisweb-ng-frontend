@@ -41,3 +41,8 @@ body {
 @import '~tippy.js/dist/tippy.css';
 @import '~tippy.js/themes/light.css';
 @import '~tippy.js/animations/scale.css';
+
+// https://stackoverflow.com/questions/44950374/angular-material-2-0-autocomplete-suggestions-panel-appears-behind-bootstrap-m/50599696#50599696
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}

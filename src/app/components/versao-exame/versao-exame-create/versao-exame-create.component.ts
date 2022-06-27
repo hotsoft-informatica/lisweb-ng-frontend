@@ -1,9 +1,15 @@
 import { Query } from '../../model/query.model';
-import { TipoExame } from './../../model/tipo-exame.model';
+import { TipoExame } from 'src/app/components/model/tipo-exame.model';
 import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
-import { Router } from '@angular/router';
+
+import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
+import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
+import { Marcacao } from 'src/app/components/model/marcacao.model';
+import { MarcacaoService } from 'src/app/components/service/marcacao.service';
+
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
   OnInit,
@@ -11,7 +17,6 @@ import {
 import {
   debounceTime,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -20,31 +25,76 @@ import { Subject } from 'rxjs';
   styleUrls: ['./versao-exame-create.component.css']
 })
 export class VersaoExameCreateComponent implements OnInit {
-  versaoExame: VersaoExame;
-  tiposExame: TipoExame[] = [];
+  versaoExame!: VersaoExame;
+  tipoExames: TipoExame[] = [];
+  metodoExames: MetodoExame[] = [];
+  marcacoes: Marcacao[] = [];
   queries: Query[] = [];
+
   subject: Subject<any> = new Subject();
+  id: number;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private versaoExameService: VersaoExameService,
-    private tipoExameService: TipoExameService
+    private tipoExameService: TipoExameService,
+    private marcacaoService: MarcacaoService,
+    private metodoExameService: MetodoExameService
+
   ) {
-    this.versaoExame = new VersaoExame({});
+    this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
+    if (this.id > 0) {
+      this.loadVersaoExame(this.id);
+    }
   }
 
   ngOnInit(): void {
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
-      this.tipoExameService
+      this.tipoExameService 
         .findTipoExames('id', 'asc', 0, 60, this.queries)
-        .subscribe((tiposExame) => {
-          console.table(this.queries);
-          this.tiposExame = tiposExame;
+        .subscribe((tipoExames) => {
+          this.tipoExames = tipoExames;
         });
     });
     this.subject.next(null);
+  }
+
+  updateVersaoExame(): void {
+    this.versaoExameService.update(this.versaoExame).subscribe((versaoExame) => {
+      this.versaoExame = versaoExame;
+    });
+    this.router.navigate(['/versao_exames']).then(() => {
+      window.location.reload();
+    });
+  }
+
+  loadVersaoExame(id: number): void {
+    this.versaoExameService.readById(id).subscribe((versaoExame) => {
+      this.versaoExame = versaoExame;
+      console.warn(this.versaoExame.tipo_exame_id);
+
+      this.tipoExameService
+        .readById(this.versaoExame?.tipo_exame_id as number)
+        .subscribe((tipoExame) => {
+          this.versaoExame.tipoExame = tipoExame;
+          this.tipoExames.push(tipoExame);
+        });
+      this.marcacaoService
+        .readById(this.versaoExame?.marcacao_id as number)
+        .subscribe((marcacao) => {
+          this.versaoExame.marcacao = marcacao;
+          this.marcacoes.push(marcacao);
+        });
+      this.metodoExameService
+        .readById(this.versaoExame?.metodo_exame_id as number)
+        .subscribe((metodoExame) => {
+          this.versaoExame.metodoExame = metodoExame;
+          this.metodoExames.push(metodoExame);
+        });
+    });
   }
 
   search(): void {
@@ -61,12 +111,16 @@ export class VersaoExameCreateComponent implements OnInit {
   }
 
   createVersaoExame(): void {
-    this.versaoExameService.create(this.versaoExame).subscribe(() => {
-      this.versaoExameService.showMessage('Versão de exame criada com sucesso!');
-      this.router.navigate(['/versao_exames']).then(() => {
-        window.location.reload();
+    if (this.id > 0) {
+      this.updateVersaoExame();
+    } else {
+      this.versaoExameService.create(this.versaoExame).subscribe(() => {
+        this.versaoExameService.showMessage('Versão de exame criada com sucesso!');
+        this.router.navigate(['/versao_exames']).then(() => {
+          window.location.reload();
+        });
       });
-    });
+    }
   }
 
   cancel(): void {

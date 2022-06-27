@@ -2,7 +2,7 @@ import { VersaoExame } from './../model/versao-exame.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
@@ -25,6 +25,11 @@ export class VersaoExameService {
 
   create(versaoExame: VersaoExame): Observable<VersaoExame> {
     return this.http.post<VersaoExame>(this.baseUrl, versaoExame);
+  }
+
+  update(versaoExame: VersaoExame = new VersaoExame({})): Observable<VersaoExame> {
+    const url = `${this.baseUrl}/${versaoExame.id}`;
+    return this.http.put<VersaoExame>(url, versaoExame);
   }
 
   read(): Observable<VersaoExame[]> {

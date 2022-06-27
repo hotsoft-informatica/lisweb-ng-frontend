@@ -56,9 +56,9 @@ export class VersaoExame {
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
   public tempo_repouso?: number;
-  public tipoExame?: TipoExame;
-  public metodoExame?: MetodoExame;
-  public marcacao?: Marcacao;
+  public tipoExame: TipoExame = new TipoExame({});
+  public metodoExame: MetodoExame = new MetodoExame({});
+  public marcacao: Marcacao = new Marcacao({});
 
   constructor(values: VersaoExame) {
     Object.assign(this, values);
