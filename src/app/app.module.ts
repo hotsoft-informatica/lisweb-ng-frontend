@@ -166,6 +166,8 @@ import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro
 import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { ConfigComponent } from './components/config/config.component';
+import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -285,6 +287,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     DialogErroAutenticacaoComponent,
     VersaoExameCrudComponent,
     VersaoExameGeralCreateComponent,
+    ConfigComponent,
+    BackendIpComponent,
   ],
   imports: [
     HttpClientModule,
