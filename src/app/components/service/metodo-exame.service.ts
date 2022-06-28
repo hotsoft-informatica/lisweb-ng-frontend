@@ -1,15 +1,14 @@
-import { VersaoExame } from './../model/versao-exame.model';
+import { MetodoExame } from '../model/metodo-exame.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class VersaoExameService {
-  // TODO: Corrigir pluralizacao de versoes exame
-  baseUrl = 'http://127.0.0.1:3010/versoes_exame';
+export class MetodoExameService {
+  baseUrl = 'http://127.0.0.1:3010/metodos_exame';
 
   query: Query[] = [];
 
@@ -23,36 +22,36 @@ export class VersaoExameService {
     });
   }
 
-  create(versaoExame: VersaoExame): Observable<VersaoExame> {
-    return this.http.post<VersaoExame>(this.baseUrl, versaoExame);
+  create(metodoExame: MetodoExame): Observable<MetodoExame> {
+    return this.http.post<MetodoExame>(this.baseUrl, metodoExame);
   }
 
-  read(): Observable<VersaoExame[]> {
-    return this.http.get<VersaoExame[]>(this.baseUrl);
+  read(): Observable<MetodoExame[]> {
+    return this.http.get<MetodoExame[]>(this.baseUrl);
   }
 
-  readById(id: number): Observable<VersaoExame> {
+  readById(id: number): Observable<MetodoExame> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<VersaoExame>(url);
+    return this.http.get<MetodoExame>(url);
   }
 
-  update(versaoExame: VersaoExame): Observable<VersaoExame> {
-    const url = `${this.baseUrl}/${versaoExame.id}`;
-    return this.http.put<VersaoExame>(url, versaoExame);
+  update(metodoExame: MetodoExame): Observable<MetodoExame> {
+    const url = `${this.baseUrl}/${metodoExame.id}`;
+    return this.http.put<MetodoExame>(url, metodoExame);
   }
 
-  delete(id: number): Observable<VersaoExame> {
+  delete(id: number): Observable<MetodoExame> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<VersaoExame>(url);
+    return this.http.delete<MetodoExame>(url);
   }
 
-  findVersaoExames(
+  findMetodoExames(
     active: string = '',
     sortOrder: string = 'asc',
     pageNumber: number = 1,
     pageSize: number = 3,
     query: Query[] | null
-  ): Observable<VersaoExame[]> {
+  ): Observable<MetodoExame[]> {
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -65,12 +64,12 @@ export class VersaoExameService {
       }
     });
 
-    return this.http.get<VersaoExame[]>(this.baseUrl, {
+    return this.http.get<MetodoExame[]>(this.baseUrl, {
       params,
     });
   }
 
-  countVersaoExames(): Observable<number> {
+  countTipoExames(): Observable<number> {
     return this.http.get<number>(this.baseUrl, {
       params: new HttpParams().set('totalCount', 'true'),
     });

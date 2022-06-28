@@ -9,11 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MY_DATE_FORMATS } from './formdata';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -130,8 +127,10 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
+import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
+import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
@@ -163,6 +162,8 @@ import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecn
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
+
+import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
@@ -285,9 +286,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ResponsavelTecnicoShowComponent,
     SafeUrlPipe,
     DialogErroAutenticacaoComponent,
-    VersaoExameGeralCreateComponent,
     VersaoExameCrudComponent,
     DialogErroQuinhentosComponent,
+    VersaoExameGeralCreateComponent,
   ],
   imports: [
     HttpClientModule,
@@ -332,6 +333,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    MatInputCounterModule,
     TippyModule.forRoot({
       defaultVariation: 'tooltip',
       variations: {

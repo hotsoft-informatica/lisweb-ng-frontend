@@ -208,7 +208,7 @@ const routes: Routes = [
   },
   {
     path: 'versao_exames/update/:id',
-    component: VersaoExameUpdateComponent,
+    component: VersaoExameCreateComponent,
   },
   {
     path: 'versao_exames/delete/:id',

@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class TipoExameService {
-  baseUrl = 'http://127.0.0.1:3010/tipo-exames';
+  baseUrl = 'http://127.0.0.1:3010/tipos_exame';
 
   query: Query[] = [];
 

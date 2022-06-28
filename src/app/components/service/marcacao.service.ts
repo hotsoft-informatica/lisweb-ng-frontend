@@ -1,15 +1,15 @@
-import { VersaoExame } from './../model/versao-exame.model';
+import { Marcacao } from '../model/marcacao.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class VersaoExameService {
+export class MarcacaoService {
   // TODO: Corrigir pluralizacao de versoes exame
-  baseUrl = 'http://127.0.0.1:3010/versoes_exame';
+  baseUrl = 'http://127.0.0.1:3010/marcacoes';
 
   query: Query[] = [];
 
@@ -23,36 +23,26 @@ export class VersaoExameService {
     });
   }
 
-  create(versaoExame: VersaoExame): Observable<VersaoExame> {
-    return this.http.post<VersaoExame>(this.baseUrl, versaoExame);
+  create(marcacao: Marcacao): Observable<Marcacao> {
+    return this.http.post<Marcacao>(this.baseUrl, marcacao);
   }
 
-  read(): Observable<VersaoExame[]> {
-    return this.http.get<VersaoExame[]>(this.baseUrl);
+  read(): Observable<Marcacao[]> {
+    return this.http.get<Marcacao[]>(this.baseUrl);
   }
 
-  readById(id: number): Observable<VersaoExame> {
+  readById(id: number): Observable<Marcacao> {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<VersaoExame>(url);
+    return this.http.get<Marcacao>(url);
   }
 
-  update(versaoExame: VersaoExame): Observable<VersaoExame> {
-    const url = `${this.baseUrl}/${versaoExame.id}`;
-    return this.http.put<VersaoExame>(url, versaoExame);
-  }
-
-  delete(id: number): Observable<VersaoExame> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<VersaoExame>(url);
-  }
-
-  findVersaoExames(
+  findMarcacoes(
     active: string = '',
     sortOrder: string = 'asc',
     pageNumber: number = 1,
     pageSize: number = 3,
     query: Query[] | null
-  ): Observable<VersaoExame[]> {
+  ): Observable<Marcacao[]> {
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -65,12 +55,12 @@ export class VersaoExameService {
       }
     });
 
-    return this.http.get<VersaoExame[]>(this.baseUrl, {
+    return this.http.get<Marcacao[]>(this.baseUrl, {
       params,
     });
   }
 
-  countVersaoExames(): Observable<number> {
+  countMarcacaoes(): Observable<number> {
     return this.http.get<number>(this.baseUrl, {
       params: new HttpParams().set('totalCount', 'true'),
     });
