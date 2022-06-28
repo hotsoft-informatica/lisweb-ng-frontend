@@ -47,13 +47,14 @@ export class VersaoExameCreateComponent implements OnInit {
     if (this.id > 0) {
       this.loadVersaoExame(this.id);
     }
+    this.versaoExame ||= new VersaoExame({});
   }
 
   ngOnInit(): void {
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
-      this.tipoExameService 
+      this.tipoExameService
         .findTipoExames('id', 'asc', 0, 60, this.queries)
         .subscribe((tipoExames) => {
           this.tipoExames = tipoExames;

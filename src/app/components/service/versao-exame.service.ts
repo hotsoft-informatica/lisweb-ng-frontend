@@ -27,7 +27,7 @@ export class VersaoExameService {
     return this.http.post<VersaoExame>(this.baseUrl, versaoExame);
   }
 
-  update(versaoExame: VersaoExame = new VersaoExame({})): Observable<VersaoExame> {
+  update(versaoExame: VersaoExame): Observable<VersaoExame> {
     const url = `${this.baseUrl}/${versaoExame.id}`;
     return this.http.put<VersaoExame>(url, versaoExame);
   }
