@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Houve um erro no servidor</h1>
+<div mat-dialog-content><strong>Status do erro:</strong> {{statusTextErro500}}</div>
+<div mat-dialog-content><strong>Tente recarregar a página, se casos persistir entre em contato com o suporte.</strong></div>
+<div mat-dialog-actions>
+  <p>
+    <button mat-button mat-dialog-close button type="button"
+            data-bs-toggle="collapse" data-bs-target="#collapseErro500"
+            aria-expanded="false" aria-controls="collapseErro500">
+            Mostrar mais detalhes...</button>
+    <button mat-button mat-dialog-close routerLink="/">Recarregar</button>
+  </p>
+  <div class="collapse" id="collapseErro500">
+    <div class="card card-body">
+      <div mat-dialog-content>
+        <strong>{{nameErro500}}</strong>
+        {{mensagemErro500}}
+
+      </div>
+    </div>
+  </div>
+</div>
