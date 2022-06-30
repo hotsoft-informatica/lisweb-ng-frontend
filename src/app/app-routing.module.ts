@@ -418,10 +418,6 @@ const routes: Routes = [
   {
     path: 'backend_ip/create',
     component: BackendIpComponent,
-  },
-  {
-    path: 'backend_ip/update/:id',
-    component: BackendIpComponent,
   }
 ];
 
