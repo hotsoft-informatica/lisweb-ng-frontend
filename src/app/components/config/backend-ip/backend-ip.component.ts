@@ -24,6 +24,7 @@ export class BackendIpComponent implements OnInit {
   setIp(): void {
     this.backendIp = this.backendIpService.setIp(this.backendIp.ip as string);
     this.backendIpService.showMessage('Ip inserido com sucesso!');
+    window.location.reload();
   }
 
   cancel(): void {
