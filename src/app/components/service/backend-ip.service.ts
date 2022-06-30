@@ -9,14 +9,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class BackendIpService {
-  [x: string]: any;
   backendIp: BackendIp;
 
   baseIp = '127.0.0.1';
 
   public ipUrl = `http://${this.baseIp}:3010`;
 
-  constructor() {
+  constructor(private snackbar: MatSnackBar) {
+    console.warn(this.ipUrl);
     this.backendIp = new BackendIp({ ip: this.baseIp })
   }
 
@@ -37,7 +37,9 @@ export class BackendIpService {
   }
 
   public getIp(): BackendIp {
-    return this.setIp('');
+    let ip = localStorage.getItem('ip');
+    this.backendIp.ip = ip as string;
+    return this.setIp(this.backendIp.ip);
   }
 
 }
