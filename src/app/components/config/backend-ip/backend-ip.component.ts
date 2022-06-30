@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, } from '@angular/core';
+import { BackendIp } from '../../model/backend-ip.model';
+import { BackendIpService } from '../../service/backend-ip.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-backend-ip',
@@ -6,10 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./backend-ip.component.css']
 })
 export class BackendIpComponent implements OnInit {
+  backendIp!: BackendIp;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private backendIpService: BackendIpService,
+  ) {
+    this.backendIp = this.backendIpService.getIp();
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  setIp(): void {
+    this.backendIp = this.backendIpService.setIp(this.backendIp.ip as string);
+    this.backendIpService.showMessage('Ip inserido com sucesso!');
+  }
+
+  cancel(): void {
+    this.router.navigate(['']);
   }
 
 }
