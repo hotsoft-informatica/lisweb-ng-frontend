@@ -13,7 +13,6 @@ export class BackendIpService {
   baseIp = '127.0.0.1';
   ipUrl: string = '';
 
-
   constructor(private snackbar: MatSnackBar) {
     this.backendIp = new BackendIp({ ip: this.baseIp })
   }
@@ -29,12 +28,11 @@ export class BackendIpService {
   getUrl(): string {
     console.log("Passou pelo getUrl")
     this.ipUrl = `http://${this.getIp().ip}:3010`;
-    console.warn(this.ipUrl);
+
     return this.ipUrl;
   }
 
   public setIp(ip: string | undefined): BackendIp {
-    console.warn("ip: " + ip);
     this.baseIp = ip ? ip as unknown as string : this.baseIp;
     localStorage.setItem('ip', this.baseIp);
     this.backendIp = new BackendIp({ ip: this.baseIp });
@@ -45,6 +43,7 @@ export class BackendIpService {
   public getIp(): BackendIp {
     let ip = localStorage.getItem('ip');
     this.backendIp.ip = ip as string;
+
     return this.setIp(this.backendIp.ip);
   }
 

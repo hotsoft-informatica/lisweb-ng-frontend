@@ -1,6 +1,7 @@
 import { ResponsavelTecnico } from '../model/responsavel-tecnico.model';
 import { ShowSignature } from '../model/show-signature.model';
 import { Query } from './../model/query.model';
+import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -9,15 +10,22 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ResponsavelTecnicoService {
-  baseUrl = 'http://127.0.0.1:3010/responsaveis_tecnico';
-  showSignatureUrl = 'http://127.0.0.1:3010/responsaveis_tecnico/show_signature';
+  baseUrl = '/responsaveis_tecnico';
+  showSignatureUrl = '/responsaveis_tecnico/show_signature';
 
   query: Query[] = [];
 
   selectedFile!: File;
   fileName: string = '';
 
-  constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private backendIpService: BackendIpService
+  ) {
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.showSignatureUrl = backendIpService.getUrl() + this.showSignatureUrl;
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {

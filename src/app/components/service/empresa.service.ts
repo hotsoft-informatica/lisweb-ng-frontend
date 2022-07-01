@@ -2,17 +2,24 @@ import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Empresa } from '../model/empresa.model';
+import { BackendIpService } from './backend-ip.service';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class EmpresaService {
-  baseUrl = 'http://127.0.0.1:3010/empresas';
+  baseUrl = '/empresas';
 
   query: Query[] = [];
 
-  constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private backendIpService: BackendIpService
+  ) {
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {

@@ -13,7 +13,11 @@ export class LaboratoryDomainService {
 
   query: Query[] = [];
 
-  constructor(private snackbar: MatSnackBar, private http: HttpClient, private backendIpService: BackendIpService) {
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private backendIpService: BackendIpService
+  ) {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
   }
 
