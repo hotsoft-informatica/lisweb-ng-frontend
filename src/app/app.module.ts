@@ -127,8 +127,6 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
-import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
-import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -169,6 +167,7 @@ import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { DialogErroQuinhentosComponent } from './components/DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
+import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -289,6 +288,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameCrudComponent,
     DialogErroQuinhentosComponent,
     VersaoExameGeralCreateComponent,
+    VersaoExameInterfaceamentoCreateComponent
   ],
   imports: [
     HttpClientModule,
