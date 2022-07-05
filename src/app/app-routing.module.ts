@@ -31,6 +31,7 @@ import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usua
 import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-create/tipo-exame-create.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
+import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
@@ -79,6 +80,7 @@ import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecn
 import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
+import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 
 const routes: Routes = [
   {
@@ -198,15 +200,19 @@ const routes: Routes = [
     component: TipoExameDeleteComponent,
   },
   {
-    path: 'versao-exames/create',
+    path: 'versao_exames',
+    component: VersaoExameCrudComponent,
+  },
+  {
+    path: 'versao_exames/create',
     component: VersaoExameCreateComponent,
   },
   {
-    path: 'versao-exames/update/:id',
-    component: VersaoExameUpdateComponent,
+    path: 'versao_exames/update/:id',
+    component: VersaoExameCreateComponent,
   },
   {
-    path: 'versao-exames/delete/:id',
+    path: 'versao_exames/delete/:id',
     component: VersaoExameDeleteComponent,
   },
   {
@@ -408,11 +414,17 @@ const routes: Routes = [
   {
     path: 'responsavel_tecnicos/delete/:id',
     component: EmpresaDeleteComponent,
+  },
+  {
+    path: 'backend_ip/create',
+    component: BackendIpComponent,
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    onSameUrlNavigation: 'reload'
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

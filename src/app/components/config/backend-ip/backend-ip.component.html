@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-title>Backend IP</mat-card-title>
+  <form>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        placeholder="127.0.0.1"
+        [(ngModel)]="backendIp.ip"
+        name="ip"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="setIp()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="warn">Sair</button>
+</mat-card>
+

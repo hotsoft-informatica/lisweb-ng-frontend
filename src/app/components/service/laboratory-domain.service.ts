@@ -1,6 +1,7 @@
 import { Query } from '../model/query.model';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BackendIpService } from '../service/backend-ip.service';
 import { LaboratoryDomain } from '../model/laboratory-domain.model';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -8,11 +9,17 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class LaboratoryDomainService {
-  baseUrl = 'http://127.0.0.1:3010/laboratory_domains';
+  baseUrl = '/laboratory_domains';
 
   query: Query[] = [];
 
-  constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private backendIpService: BackendIpService
+  ) {
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {

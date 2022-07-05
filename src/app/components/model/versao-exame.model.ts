@@ -1,3 +1,6 @@
+import { TipoExame } from './tipo-exame.model';
+import { MetodoExame } from './metodo-exame.model';
+import { Marcacao } from './marcacao.model';
 export class VersaoExame {
   public id?: number;
   public laboratorio_id?: number;
@@ -5,7 +8,7 @@ export class VersaoExame {
   public agrupamento?: number;
   public descricao?: string;
   public descritivo?: string;
-  public volume?: Date = new Date();
+  public volume?: number;
   public diluicao?: number;
   public analito?: string;
   public escala?: string;
@@ -24,7 +27,7 @@ export class VersaoExame {
   public tipo_propriedade?: string;
   public aspecto_temporal?: string;
   public cod_exame_laboratorio?: string;
-  public custo_laboratorio?: Date = new Date();
+  public custo_laboratorio?: number;
   public dias_entrega_laboratorio?: number;
   public recebe_material?: string;
   public amostra_exclusiva?: string;
@@ -51,7 +54,11 @@ export class VersaoExame {
   public deleted?: boolean;
   public formula?: string;
   public criado_em?: Date = new Date();
-  public changed_by_lab_id?: number
+  public changed_by_lab_id?: number;
+  public tempo_repouso?: number;
+  public tipoExame?: TipoExame;
+  public metodoExame?: MetodoExame;
+  public marcacao?: Marcacao;
 
   constructor(values: VersaoExame) {
     Object.assign(this, values);

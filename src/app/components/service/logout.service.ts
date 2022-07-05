@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { UsuarioToken } from './../model/usuario-token.model';
+import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -11,11 +12,16 @@ import { combineLatest } from 'rxjs';
   providedIn: 'root',
 })
 export class LogoutService {
-  baseUrl = 'http://127.0.0.1:3010/logout';
+  baseUrl = '/logout';
 
-
-  constructor(private snackbar: MatSnackBar, private http: HttpClient,
-              private router: Router,) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private router: Router,
+    private backendIpService: BackendIpService
+  ) {
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {
@@ -31,7 +37,7 @@ export class LogoutService {
       resultado => {
         localStorage.setItem('logado', 'false');
         localStorage.setItem('token', '');
-        if(redirect){
+        if (redirect) {
           this.router.navigate(['/login']);
         }
       })

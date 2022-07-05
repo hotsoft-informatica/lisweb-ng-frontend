@@ -6,6 +6,7 @@ import { Coletor } from '../model/coletor.model';
 import { Usuario } from '../model/usuario.model';
 import { ConsultaAmostra } from '../model/consulta-amostra.model';
 import { Query } from './../model/query.model';
+import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -14,17 +15,29 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ConsultaAmostraService {
-  baseUrl = 'http://127.0.0.1:3010';
-  amostraUrl = 'http://127.0.0.1:3010/paciente_amostra';
-  exameUrl = 'http://127.0.0.1:3010/exames_paciente';
-  exameAmostrasUrl = 'http://127.0.0.1:3010/exames_amostra';
-  materialBiologicoUrl = 'http://127.0.0.1:3010/materiais_biologicos_paciente';
-  coletorUrl = 'http://127.0.0.1:3010/coletores_paciente';
-  pacienteUrl = 'http://127.0.0.1:3010/amostras_paciente';
+  baseUrl = '';
+  amostraUrl = '/paciente_amostra';
+  exameUrl = '/exames_paciente';
+  exameAmostrasUrl = '/exames_amostra';
+  materialBiologicoUrl = '/materiais_biologicos_paciente';
+  coletorUrl = '/coletores_paciente';
+  pacienteUrl = '/amostras_paciente';
 
   query: Query[] = [];
 
-  constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private backendIpService: BackendIpService
+  ) {
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.amostraUrl = backendIpService.getUrl() + this.amostraUrl;
+    this.exameUrl = backendIpService.getUrl() + this.exameUrl;
+    this.exameAmostrasUrl = backendIpService.getUrl() + this.exameAmostrasUrl;
+    this.materialBiologicoUrl = backendIpService.getUrl() + this.materialBiologicoUrl;
+    this.coletorUrl = backendIpService.getUrl() + this.coletorUrl;
+    this.pacienteUrl = backendIpService.getUrl() + this.pacienteUrl;
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {

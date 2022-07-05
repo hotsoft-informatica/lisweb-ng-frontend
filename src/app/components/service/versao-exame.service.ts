@@ -1,19 +1,26 @@
 import { VersaoExame } from './../model/versao-exame.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
+import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class VersaoExameService {
   // TODO: Corrigir pluralizacao de versoes exame
-  baseUrl = 'http://127.0.0.1:3010/versoes_exame';
+  baseUrl = '/versoes_exame';
 
   query: Query[] = [];
 
-  constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private backendIpService: BackendIpService
+  ) {
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {
@@ -76,3 +83,4 @@ export class VersaoExameService {
     });
   }
 }
+

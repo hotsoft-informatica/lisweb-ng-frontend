@@ -9,11 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MY_DATE_FORMATS } from './formdata';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -130,8 +127,10 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
+import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
+import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
@@ -167,6 +166,8 @@ import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro
 import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { ConfigComponent } from './components/config/config.component';
+import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -284,6 +285,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ResponsavelTecnicoShowComponent,
     SafeUrlPipe,
     DialogErroAutenticacaoComponent,
+    VersaoExameCrudComponent,
+    VersaoExameGeralCreateComponent,
+    ConfigComponent,
+    BackendIpComponent,
   ],
   imports: [
     HttpClientModule,
