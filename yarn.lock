@@ -204,10 +204,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/flex-layout@^13.0.0-beta.38":
-  version "13.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-13.0.0-beta.38.tgz#b0993a255ba51d2cfd16537ba8a8d88c3adf6587"
-  integrity sha512-kcWb7CcoHbvw7fjo/knizWVmSSmvaTnr8v1ML6zOdxu1PK9UPPOcOS8RTm6fy61zoC2LABivP1/6Z2jF5XfpdQ==
+"@angular/flex-layout@^14.0.0-beta.40":
+  version "14.0.0-beta.40"
+  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-14.0.0-beta.40.tgz#ec3c09389f5ae277d09aebcb2a0c8bf7c1329967"
+  integrity sha512-lYi2BKovNk5u2wmj/AMIMqfUzCBEt99Wu/Gfa+1mUIlw3voKCmIsV2XYBhX4adRdD+dRagY3Opger43JR7PXEw==
   dependencies:
     tslib "^2.3.0"
 
@@ -5620,7 +5620,7 @@ karma-jasmine-html-reporter@^2.0.0:
   resolved "https://registry.yarnpkg.com/karma-jasmine-html-reporter/-/karma-jasmine-html-reporter-2.0.0.tgz#76c26ce40e217dc36a630fbcd7b31c3462948bf2"
   integrity sha512-SB8HNNiazAHXM1vGEzf8/tSyEhkfxuDdhYdPBX2Mwgzt0OuF2gicApQ+uvXLID/gXyJQgvrM9+1/2SxZFUUDIA==
 
-karma-jasmine@^5.0.0:
+karma-jasmine@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/karma-jasmine/-/karma-jasmine-5.1.0.tgz#3af4558a6502fa16856a0f346ec2193d4b884b2f"
   integrity sha512-i/zQLFrfEpRyQoJF9fsCdTMOF5c2dK7C7OmsuKg2D0YSsuZSfQDiLuaiktbuio6F2wiCsZSnSnieIQ0ant/uzQ==
@@ -6154,7 +6154,7 @@ ng-auto-complete@^5.0.3:
   dependencies:
     tslib "^2.0.0"
 
-ngx-mask@^14.0.2:
+ngx-mask@^14.0.3:
   version "14.0.3"
   resolved "https://registry.yarnpkg.com/ngx-mask/-/ngx-mask-14.0.3.tgz#8900b6fd4a5f6c632074535fa8e92f4a52269322"
   integrity sha512-qhB1l+Inr4Ovy9wXcpCq8+FmOilJE1Bg7U5Aenl7PCG88GjTKCe1f8YivjKGAAwP3UlLFqijy2iaND92JsOJyA==
@@ -8185,7 +8185,7 @@ ts-loader@^9.2.6:
     micromatch "^4.0.0"
     semver "^7.3.4"
 
-ts-node@^10.7.0, ts-node@~10.8.0:
+ts-node@^10.8.2, ts-node@~10.8.0:
   version "10.8.2"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-10.8.2.tgz#3185b75228cef116bf82ffe8762594f54b2a23f2"
   integrity sha512-LYdGnoGddf1D6v8REPtIH+5iq/gTDuZqv2/UJUU7tKjuEU8xVZorBM+buCGNjj+pGEud+sOoM4CX3/YzINpENA==
