@@ -1,7 +1,7 @@
 <form class="example-container row container-fluid mt-4">
   <div class="row justify-content-around">
 
-    <mat-form-field class="col-3 row">
+    <mat-form-field class="col-6 row">
       <mat-label>Tipo Instrumento: </mat-label>
       <input matInput name="tipo_instrumento_id"
       [matAutocomplete]="autoTipoInstrumento"
@@ -11,7 +11,7 @@
 
     <mat-autocomplete #autoTipoInstrumento="matAutocomplete" [displayWith]="displayFn(tipoInstrumentos)">
       <mat-option *ngFor="let tipoInstrumento of tipoInstrumentos" [value]="tipoInstrumento.id">
-        {{ tipoInstrumento.descricao }}
+ {{ tipoInstrumento.descricao }}
       </mat-option>
     </mat-autocomplete>
 
