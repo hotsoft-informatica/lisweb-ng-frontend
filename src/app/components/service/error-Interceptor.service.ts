@@ -1,3 +1,4 @@
+import { DialogErroQuinhentosComponent } from './../DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
 import { DialogErroAutenticacaoComponent } from './../DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
 import {Injectable} from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
@@ -5,6 +6,7 @@ import {EmptyError, Observable, of, throwError, EMPTY} from 'rxjs';
 import {mergeMap, delay, retryWhen} from 'rxjs/operators';
 import { catchError, retry, tap } from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
+
 // import { ToastrService } from 'ngx-toastr';
 
 export const maxRetries = 2;
@@ -23,14 +25,20 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.autorizacaoDialog();
             break;
           case 500:
-            console.log('Error desconhecido');
+            localStorage.setItem('mensagemErro500', error.message);
+            localStorage.setItem('statusTextErro500', error.statusText);
+            localStorage.setItem('nameErro500', error.name);
+            this.erroDesconhecidoDialg();
             break;
         };
         console.table(error);
         return throwError(() => new Error(error));
     }));
   }
- autorizacaoDialog(){
+  erroDesconhecidoDialg(){
+    this.dialog.open(DialogErroQuinhentosComponent);
+  }
+  autorizacaoDialog(){
   this.dialog.open(DialogErroAutenticacaoComponent);
- }
+  }
 }

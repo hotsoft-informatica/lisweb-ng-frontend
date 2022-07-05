@@ -1,0 +1,29 @@
+<form class="example-container row container-fluid mt-4">
+  <div class="row justify-content-around">
+
+    <mat-form-field class="col-6 row">
+      <mat-label>Tipo Instrumento: </mat-label>
+      <input matInput name="tipo_instrumento_id"
+      [matAutocomplete]="autoTipoInstrumento"
+      [(ngModel)]="versaoExame.tipo_instrumento_id"
+      (ngModelChange)="search()"/>
+    </mat-form-field>
+
+    <mat-autocomplete #autoTipoInstrumento="matAutocomplete" [displayWith]="displayFn(tipoInstrumentos)">
+      <mat-option *ngFor="let tipoInstrumento of tipoInstrumentos" [value]="tipoInstrumento.id">
+ {{ tipoInstrumento.descricao }}
+      </mat-option>
+    </mat-autocomplete>
+
+    <mat-form-field class="col-3">
+      <mat-label>Agrupamento: </mat-label>
+      <input matInput name="agrupamentp"/>
+    </mat-form-field>
+
+    <mat-form-field class="col-3">
+      <mat-label>Diluição: </mat-label>
+      <input matInput name="diluição"/>
+    </mat-form-field>
+
+  </div>
+</form>
