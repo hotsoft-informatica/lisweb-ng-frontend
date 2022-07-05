@@ -141,7 +141,7 @@
   optionalDependencies:
     parse5 "^5.0.0"
 
-"@angular/cli@^14.0.2":
+"@angular/cli@^14.0.4":
   version "14.0.4"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-14.0.4.tgz#574f5d8cb5ccfa6fe3b3b9881336f27a72441b39"
   integrity sha512-hb6mJk6/vJwHCuMaGResQh9aXgoSyfrJ/WuFgLcPspdFRkm4EQcTSx8DwrRo7YawuCa12UJdPoK0dASXYN6JHA==
@@ -3394,7 +3394,7 @@ core-js-compat@^3.21.0, core-js-compat@^3.22.1:
     browserslist "^4.21.0"
     semver "7.0.0"
 
-core-js@^3.23.0, core-js@^3.6.5:
+core-js@^3.23.3, core-js@^3.6.5:
   version "3.23.3"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.23.3.tgz#3b977612b15da6da0c9cc4aec487e8d24f371112"
   integrity sha512-oAKwkj9xcWNBAvGbT//WiCdOMpb9XQG92/Fe3ABFM/R16BsHgePG00mFOgKf7IsCtfj8tA1kHtf/VwErhriz5Q==
