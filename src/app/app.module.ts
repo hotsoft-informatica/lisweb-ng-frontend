@@ -168,6 +168,7 @@ import { VersaoExameGeralCreateComponent } from './components/versao-exame/versa
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { DialogErroQuinhentosComponent } from './components/DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
 import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component';
+import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -288,7 +289,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameCrudComponent,
     DialogErroQuinhentosComponent,
     VersaoExameGeralCreateComponent,
-    VersaoExameInterfaceamentoCreateComponent
+    VersaoExameInterfaceamentoCreateComponent,
+    MetodoExameComponent
   ],
   imports: [
     HttpClientModule,
