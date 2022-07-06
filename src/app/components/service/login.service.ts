@@ -1,4 +1,5 @@
 import { UsuarioToken } from './../model/usuario-token.model';
+import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
@@ -9,10 +10,15 @@ import { combineLatest } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  baseUrl = 'http://127.0.0.1:3010/login';
+  baseUrl = '/login';
 
-
-  constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private backendIpService: BackendIpService
+  ) {
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {
@@ -22,9 +28,9 @@ export class LoginService {
     });
   }
 
-  autenticar(login:string, senha:string): Observable<any> {
+  autenticar(login: string, senha: string): Observable<any> {
     const url = `${this.baseUrl}/${login}`;
-    const usuarioToken: UsuarioToken = new UsuarioToken({'login':login, 'senha':senha});
+    const usuarioToken: UsuarioToken = new UsuarioToken({ 'login': login, 'senha': senha });
     console.table(usuarioToken);
     return this.http.post<any>(url, usuarioToken);
   }

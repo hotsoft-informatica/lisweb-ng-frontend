@@ -80,6 +80,7 @@ import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecn
 import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
+import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 
 const routes: Routes = [
   {
@@ -413,11 +414,17 @@ const routes: Routes = [
   {
     path: 'responsavel_tecnicos/delete/:id',
     component: EmpresaDeleteComponent,
+  },
+  {
+    path: 'backend_ip/create',
+    component: BackendIpComponent,
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    onSameUrlNavigation: 'reload'
+  })],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

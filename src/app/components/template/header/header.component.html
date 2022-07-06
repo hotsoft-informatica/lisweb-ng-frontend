@@ -44,6 +44,7 @@
         <a mat-list-item routerLink="/responsavel_tecnicos">Resp. Técnico</a>
       </button>
     </mat-menu>
+
     <button mat-button [matMenuTriggerFor]="consultar">
       <mat-icon>pageview</mat-icon>
       Consultar
@@ -55,10 +56,32 @@
         </a>
       </button>
     </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="configurar">
+      <mat-icon>settings</mat-icon>
+      Configurar
+    </button>
+    <mat-menu #configurar="matMenu">
+      <button mat-menu-item>
+        <a mat-list-item routerLink="backend_ip/create">
+          Backend IP
+        </a>
+      </button>
+    </mat-menu>
+
     <button mat-button [matMenuTriggerFor]="perfil">
       <mat-icon>account_circle</mat-icon>
       Perfil
     </button>
+
+    <mat-menu #consultar="matMenu">
+      <button mat-menu-item>
+        <a mat-list-item routerLink="/consulta_amostra_show">
+          Clta. Amostra
+        </a>
+      </button>
+    </mat-menu>
+
     <mat-menu #perfil="matMenu">
       <button mat-menu-item>
         <a mat-list-item routerLink="/">

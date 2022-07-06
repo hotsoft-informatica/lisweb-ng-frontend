@@ -1,18 +1,27 @@
 import { Bancada } from '../model/bancada.model';
 import { Query } from './../model/query.model';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { BackendIp } from '../model/backend-ip.model';
+import { BackendIpService } from '../service/backend-ip.service';
 @Injectable({
   providedIn: 'root',
 })
 export class BancadaService {
-  baseUrl = 'http://127.0.0.1:3010/bancadas';
+  baseUrl = '/bancadas';
 
   query: Query[] = [];
 
-  constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    private http: HttpClient,
+    private backendIpService: BackendIpService
+  ) {
+    this.baseUrl = (this.backendIpService.getIp().ip as string) + this.baseUrl;
+    console.warn(this.baseUrl)
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {
