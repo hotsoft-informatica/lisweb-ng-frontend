@@ -166,10 +166,12 @@ import { MatInputCounterModule } from '@angular-material-extensions/input-counte
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ConfigComponent } from './components/config/config.component';
 import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
+
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { DialogErroQuinhentosComponent } from './components/DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
 import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component';
+import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -290,9 +292,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameCrudComponent,
     DialogErroQuinhentosComponent,
     VersaoExameGeralCreateComponent,
+    VersaoExameInterfaceamentoCreateComponent,
+    MetodoExameComponent,
     ConfigComponent,
     BackendIpComponent,
-    VersaoExameInterfaceamentoCreateComponent
   ],
   imports: [
     HttpClientModule,
