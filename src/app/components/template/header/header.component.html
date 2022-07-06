@@ -8,40 +8,44 @@
       Cadastrar
     </button>
     <mat-menu #cadastro="matMenu">
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/">Home</a>
+      <button mat-menu-item [matMenuTriggerFor]="versaoexames">Versão Exames</button>
+      <button mat-menu-item routerLink="/">
+        Home
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/laboratorydomains">Lab. Domínio</a>
+      <button mat-menu-item routerLink="/laboratorydomains">
+        Lab. Domínio
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/laboratorios">Laboratório</a>
+      <button mat-menu-item routerLink="/laboratorios">
+        Laboratório
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/pacientes/read">Pacientes</a>
+      <button mat-menu-item routerLink="/pacientes/read">
+        Pacientes
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/usuarios/read">Usuarios</a>
+      <button mat-menu-item routerLink="/usuarios/read">
+        Usuarios
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/requisicoes">Requisições</a>
+      <button mat-menu-item routerLink="/requisicoes">
+        Requisições
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/operadoras">Operadoras</a>
+      <button mat-menu-item routerLink="/operadoras">
+        Operadoras
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/empresas">Empresas</a>
+      <button mat-menu-item routerLink="/empresas">
+        Empresas
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/versao_exames">Versão Exames</a>
+      <mat-menu #versaoexames="matMenu">
+        <button mat-menu-item routerLink="/versao_exames">
+          Listar Versões
+        </button>
+        <button mat-menu-item routerLink="/versao_exames">
+          Tabela Marcação
+        </button>
+      </mat-menu>
+      <button mat-menu-item routerLink="/localdeatendimento/read">
+        Local de Atendimento
       </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/localdeatendimento/read">
-          Local de Atendimento
-        </a>
-      </button>
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/responsavel_tecnicos">Resp. Técnico</a>
+      <button mat-menu-item routerLink="/responsavel_tecnicos">
+        Resp. Técnico
       </button>
     </mat-menu>
 
@@ -50,10 +54,8 @@
       Consultar
     </button>
     <mat-menu #consultar="matMenu">
-      <button mat-menu-item>
-        <a mat-list-item routerLink="/consulta_amostra_show">
-          Clta. Amostra
-        </a>
+      <button mat-menu-item routerLink="/consulta_amostra_show">
+        Clta. Amostra
       </button>
     </mat-menu>
 
@@ -62,10 +64,8 @@
       Configurar
     </button>
     <mat-menu #configurar="matMenu">
-      <button mat-menu-item>
-        <a mat-list-item routerLink="backend_ip/create">
-          Backend IP
-        </a>
+      <button mat-menu-item routerLink="backend_ip/create">
+        Backend IP
       </button>
     </mat-menu>
 

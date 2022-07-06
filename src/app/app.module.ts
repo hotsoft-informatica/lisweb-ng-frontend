@@ -165,6 +165,8 @@ import { MatInputCounterModule } from '@angular-material-extensions/input-counte
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
+import { ConfigComponent } from './components/config/config.component';
+import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { DialogErroQuinhentosComponent } from './components/DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
@@ -298,6 +300,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MetodoExameComponent,
     ConfigComponent,
     BackendIpComponent,
+    ConfigComponent,
+    BackendIpComponent,
+    VersaoExameInterfaceamentoCreateComponent
   ],
   imports: [
     HttpClientModule,
