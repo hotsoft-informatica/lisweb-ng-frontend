@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MarcacaoComponent } from './marcacao.component';
+import { MarcacaoReadComponent } from './marcacao-read.component';
 
-describe('MarcacaoComponent', () => {
-  let component: MarcacaoComponent;
-  let fixture: ComponentFixture<MarcacaoComponent>;
+describe('MarcacaoReadComponent', () => {
+  let component: MarcacaoReadComponent;
+  let fixture: ComponentFixture<MarcacaoReadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MarcacaoComponent ]
+      declarations: [ MarcacaoReadComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MarcacaoComponent);
+    fixture = TestBed.createComponent(MarcacaoReadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
