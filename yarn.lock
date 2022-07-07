@@ -10,7 +10,7 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@angular-devkit/architect@0.1400.5", "@angular-devkit/architect@^0.1400.2":
+"@angular-devkit/architect@0.1400.5", "@angular-devkit/architect@^0.1400.5":
   version "0.1400.5"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.5.tgz#423f7c81b6bac39a9d0ba3c31868de781afe08d0"
   integrity sha512-A5sRLPK3qGJAehYtX4ayUDwxQZ02yvsrxcpf3sv492IxbF7ymdMhcxIp+0UG6wIsLvpQkpW9ekJUdKmFB6GVAw==
@@ -6845,9 +6845,9 @@ node-releases@^2.0.5:
   integrity sha512-U9h1NLROZTq9uE1SNffn6WuPDg8icmi3ns4rEl/oTfIle4iLjTliCzgTsbaIFMq/Xn078/lfY/BL0GWZ+psK4Q==
 
 node@^18.4.0:
-  version "18.4.0"
-  resolved "https://registry.yarnpkg.com/node/-/node-18.4.0.tgz#94e9a09f7303ad5cc64bc60950dba78e9a5664c5"
-  integrity sha512-uOeU340PxuLdddq9IWLBNrPU1x/ndr+p7UE3C9D+hHeXqjWC7zfe+QY67pfis/1Z5e0WXIImU5eBj7tfOpHIVg==
+  version "18.5.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-18.5.0.tgz#8a89fa3b0a801de4888155e7ce3b7d3c60dc15c4"
+  integrity sha512-o0o7TfrD92IRQrwbvbExjl+i1ZXAyXdYS3vAMYn/1Oez6hKVnIp+bWxXBnh3USCpYK65zTW9VLAIBrCiyfhUuA==
   dependencies:
     node-bin-setup "^1.0.0"
 
