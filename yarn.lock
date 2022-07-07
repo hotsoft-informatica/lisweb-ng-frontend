@@ -18,7 +18,7 @@
     "@angular-devkit/core" "14.0.5"
     rxjs "6.6.7"
 
-"@angular-devkit/build-angular@^14.0.4":
+"@angular-devkit/build-angular@^14.0.5":
   version "14.0.5"
   resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-14.0.5.tgz#b247c67c8a0a5cc7f9d8b0be33c86d6dd68ddc88"
   integrity sha512-Yjp0KyuJz4BvvW3xGC6UzYyVhMXTr5geYQskI7pkXaoNvVVD9Su4kaxl78dZBT/GRNZmNkrB2fJ4D8OOWH/oBg==
