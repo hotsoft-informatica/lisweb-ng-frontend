@@ -38,6 +38,9 @@ import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exa
 import { MaterialBiologicoCreateComponent } from './components/material-biologico/material-biologico-create/material-biologico-create.component';
 import { MaterialBiologicoUpdateComponent } from './components/material-biologico/material-biologico-update/material-biologico-update.component';
 import { MaterialBiologicoDeleteComponent } from './components/material-biologico/material-biologico-delete/material-biologico-delete.component';
+import { MarcacaoReadComponent } from './components/marcacao/marcacao-read/marcacao-read.component';
+import { MarcacaoCreateComponent } from './components/marcacao/marcacao-create/marcacao-create.component';
+import { MarcacaoDeleteComponent } from './components/marcacao/marcacao-delete/marcacao-delete.component';
 import { LoteAmostraCreateComponent } from './components/lote-amostra/lote-amostra-create/lote-amostra-create.component';
 import { LoteAmostraUpdateComponent } from './components/lote-amostra/lote-amostra-update/lote-amostra-update.component';
 import { LoteAmostraDeleteComponent } from './components/lote-amostra/lote-amostra-delete/lote-amostra-delete.component';
@@ -226,6 +229,22 @@ const routes: Routes = [
   {
     path: 'material-biologicos/delete/:id',
     component: MaterialBiologicoDeleteComponent,
+  },
+  {
+    path: 'marcacoes/read',
+    component: MarcacaoReadComponent,
+  },
+  {
+    path: 'marcacoes/create',
+    component: MarcacaoCreateComponent,
+  },
+  {
+    path: 'marcacoes/update/:id',
+    component: MarcacaoCreateComponent,
+  },
+  {
+    path: 'marcacoes/delete/:id',
+    component: MarcacaoDeleteComponent,
   },
   {
     path: 'lote-amostras/create',
