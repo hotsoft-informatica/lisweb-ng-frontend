@@ -43,6 +43,11 @@ export class MarcacaoService {
     return this.http.put<Marcacao>(url, marcacao);
   }
 
+  delete(id: number): Observable<Marcacao> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<Marcacao>(url);
+  }
+
   readById(id: number): Observable<Marcacao> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Marcacao>(url);

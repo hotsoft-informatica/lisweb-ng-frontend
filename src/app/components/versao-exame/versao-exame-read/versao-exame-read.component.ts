@@ -13,9 +13,7 @@ import {
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {
-  tap,
-} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-versao-exame-read',
@@ -30,8 +28,8 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
-
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
+
 
   query: Query[] = [];
 

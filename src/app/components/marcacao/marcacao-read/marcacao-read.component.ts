@@ -1,12 +1,15 @@
 import { Query } from '../../model/query.model';
+import { MatDialog } from '@angular/material/dialog';
 import { MarcacaoService } from '../../service/marcacao.service';
 import { MarcacaoReadDataSource } from './marcacao-read-datasource';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   AfterViewInit,
   ElementRef,
   ViewChild,
   Component,
   OnInit,
+  TemplateRef,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -37,12 +40,17 @@ export class MarcacaoReadComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
+  @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
 
   query: Query[] = [];
 
-  constructor(private marcacaoService: MarcacaoService) { }
+  constructor(
+    private marcacaoService: MarcacaoService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public dialog: MatDialog
+  ) { }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
     const query = new Query({ key, value, isNumeric });
@@ -76,6 +84,22 @@ export class MarcacaoReadComponent implements OnInit, AfterViewInit {
       this.paginator.pageSize,
       this.query
     );
+  }
+
+  deleteMarcacao(id: number): void {
+    const dialogRef = this.dialog.open(this.deleteDialog);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.marcacaoService
+          .delete(id)
+          .subscribe(() => {
+            this.router.navigate(['/marcacoes/read']).then(() => {
+              window.location.reload();
+            });
+          });
+      }
+    });
   }
 
 }

@@ -87,9 +87,9 @@
         </div>
 
         <div class="col-1 me-3">
-            <!--button class="delete" mat-icon-button (click)="deleteMarcacao(row.id)">
+            <button class="delete" mat-icon-button (click)="deleteMarcacao(row.id)">
               <mat-icon class="delete">delete</mat-icon>
-            </button-->
+            </button>
         </div>
 
         <ng-template #deleteDialog>
@@ -110,5 +110,5 @@
   </table>
 
   <mat-paginator [length]="this.totalCount" [pageSize]="10"
-      [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+    [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
 </div>
