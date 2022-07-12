@@ -1,3 +1,7 @@
+import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
+import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
+import { MetodosExamesUpdateComponent } from './components/metodos-exames/metodos-exames-update/metodos-exames-update.component';
+import { MetodosExamesCreateComponent } from './components/metodos-exames/metodos-exames-create/metodos-exames-create.component';
 import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
 import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
@@ -81,6 +85,8 @@ import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecn
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
+import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
+import { MetodoExame } from './components/model/metodo-exame.model';
 
 const routes: Routes = [
   {
@@ -126,6 +132,22 @@ const routes: Routes = [
   {
     path: 'laboratorios/delete/:id',
     component: LaboratorioDeleteComponent,
+  },
+  {
+    path: 'metodos-exames/read',
+    component: MetodosExamesReadComponent,
+  },
+  {
+    path: 'metodos-exame/create',
+    component: MetodoExameComponent,
+  },
+  {
+    path: 'metodos-exame/update/:id',
+    component: MetodoExameComponent,
+  },
+  {
+    path: 'metodos-exames/delete/:id',
+    component: MetodosExamesDeleteComponent,
   },
   {
     path: 'pacientes/read',
