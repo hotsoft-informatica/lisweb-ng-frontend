@@ -1,5 +1,19 @@
-<form>
-  <div>
-    
+<form class= "example-container row container-fluid" fxShow.gt-xs>
+  <div class="row ">
+    <mat-form-field appearance="fill" class="col-lg-8 col-md-12 p-2">
+      <mat-label>Descrição:</mat-label>
+      <input matInput maxlength="50" placeholder="Descrição Método" name="descricao" [(ngModel)]="metodoExame.descricao">
+    </mat-form-field>
   </div>
+  <div>
+    <mat-form-field class="example-full-width col-12" appearance="fill">
+      <mat-label>Bibliografia</mat-label>
+      <textarea matInput placeholder="Texto descritivo do método" name="bibliografia" [(ngModel)]="metodoExame.bibliografia"></textarea>
+    </mat-form-field>
+  </div>
+  <button mat-flat-button mat-dialog-close color="primary" class="col-2 fixed-bottom index"
+          (click)="createMetodoExame()">Salvar</button>
+  <button mat-flat-button mat-dialog-close color="warn" class="col-2 fixed-bottom index ms-2"
+          >Cancelar</button>
 </form>
+
