@@ -46,16 +46,6 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
               public dialog: MatDialog,
              ){  }
 
-  openDialogCreate(): void {
-    const dialogRef = this.dialog.open(MetodoExameComponent, {
-      width: '750px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
   search(key: string, value: string, isNumeric: boolean= false): void {
     const query = new Query({ key, value, isNumeric });
     this.queries = this.queries.filter((q) => q.key !== key);
@@ -99,6 +89,17 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
       }
     });
   }
+
+  openDialogCreate(): void {
+    const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {
+        width: '750px',
+      }
+      const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }
 
   openDialogEdit(id: number): void {
     this.metodoExameService.readById(id).subscribe((metodoExame) =>{
