@@ -165,8 +165,6 @@ import { MatInputCounterModule } from '@angular-material-extensions/input-counte
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 
-import { ConfigComponent } from './components/config/config.component';
-import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { DialogErroQuinhentosComponent } from './components/DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
@@ -175,6 +173,10 @@ import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.com
 
 import { ConfigComponent } from './components/config/config.component';
 import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
+import { MetodosExamesCreateComponent } from './components/metodos-exames/metodos-exames-create/metodos-exames-create.component';
+import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
+import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
+import { MetodosExamesUpdateComponent } from './components/metodos-exames/metodos-exames-update/metodos-exames-update.component';
 
 
 registerLocaleData(localePt);
@@ -302,7 +304,11 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     BackendIpComponent,
     ConfigComponent,
     BackendIpComponent,
-    VersaoExameInterfaceamentoCreateComponent
+    VersaoExameInterfaceamentoCreateComponent,
+    MetodosExamesCreateComponent,
+    MetodosExamesDeleteComponent,
+    MetodosExamesReadComponent,
+    MetodosExamesUpdateComponent
   ],
   imports: [
     HttpClientModule,
