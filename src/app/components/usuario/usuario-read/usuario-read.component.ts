@@ -6,10 +6,10 @@ import {MatDialog} from '@angular/material/dialog';
 import { Usuario } from '../../model/usuario.model';
 import { MatSort } from '@angular/material/sort';
 import { UsuarioService } from '../../service/usuario.service';
-import { merge, throwError } from 'rxjs';
+import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
-import { MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-usuario-read',
