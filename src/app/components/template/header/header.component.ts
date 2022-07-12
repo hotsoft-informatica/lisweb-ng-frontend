@@ -1,3 +1,4 @@
+import { MatDialogConfig } from '@angular/material/dialog';
 import { UsuarioCreateComponent } from './../../usuario/usuario-create/usuario-create.component';
 import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
 import { LogoutService } from './../../service/logout.service';
@@ -5,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../service/usuario.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-header',
@@ -32,12 +34,14 @@ export class HeaderComponent implements OnInit {
   }
 
   openDialogCreate(): void {
-    const dialogRef = this.dialog.open(MetodoExameComponent, {
-      width: '750px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {
+        width: '750px',
+      }
+      const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }
   }
-}
+
