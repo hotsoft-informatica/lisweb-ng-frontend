@@ -1,7 +1,6 @@
 import { MatDialog } from '@angular/material/dialog';
 import { Query } from '../../model/query.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
 import { VersaoExameReadDataSource } from './versao-exame-read-datasource';
 import {
