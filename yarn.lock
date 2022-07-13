@@ -118,12 +118,12 @@
     ora "5.4.1"
     rxjs "6.6.7"
 
-"@angular-material-extensions/input-counter@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@angular-material-extensions/input-counter/-/input-counter-0.1.1.tgz#453a6bfa368cfce494e7f475be21e2c1ab9bb93f"
-  integrity sha512-02gn7+fRFhJZN2ey9qhiyM3l6Xli4xEolTQTiNPGjEnuofkN3axSD96yEV5TRgRX9dqMKHAwqKi8z+96/gLbdg==
+"@angular-material-extensions/input-counter@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@angular-material-extensions/input-counter/-/input-counter-1.0.1.tgz#c3f2c985c0335e7ba50b44c60e64772d733dcba1"
+  integrity sha512-vXOn/R4Tb1SGWwH1kpwTs9MpJidNoNqohZXDLQLM2R+/FBCUxehtOUXYnmQOGEvLqjui/IWdZ3Vb3IM0REl1lg==
   dependencies:
-    tslib "^1.10.0"
+    tslib "^2.0.0"
 
 "@angular/animations@^14.0.2":
   version "14.0.5"
