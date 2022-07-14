@@ -10,7 +10,7 @@
           "strict": true
         }
       },
-      "root": "",
+      "root": "src/app/components",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -134,5 +134,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b5781e43-172b-4f53-8620-9aaaaabb365e"
   }
 }
