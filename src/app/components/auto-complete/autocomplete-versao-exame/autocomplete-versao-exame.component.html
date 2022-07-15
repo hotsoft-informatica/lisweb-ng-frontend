@@ -1,0 +1,20 @@
+<span>{{this.tipoExame.descricao}}</span>
+<mat-form-field *ngIf="this.onCreate || this.manualEdit" class="col-lg-5 col-md-11 ps-lg-3 p-md-2">
+  <mat-label>Tipo exame:</mat-label>
+  <input
+    name="tipo_exame"
+    matInput [matAutocomplete]="auto"
+    [(ngModel)]="this.tipoExame.id"
+    (ngModelChange)="search()"
+  />
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(tipoExames)">
+    <mat-option *ngFor="let tipoExame of tipoExames" [value]="tipoExame.id">
+      {{ tipoExame.descricao }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<<mat-slide-toggle *ngIf="!this.onCreate" (toggleChange)="this.manualEdit = !this.manualEdit" [(ngModel)]="this.manualEdit" color="primary">
+    Edit
+</mat-slide-toggle>
+{{this.manualEdit}}
+{{this.onCreate}}
