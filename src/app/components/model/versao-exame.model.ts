@@ -56,7 +56,7 @@ export class VersaoExame {
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
   public tempo_repouso?: number;
-  public tipoExame?: TipoExame;
+  public tipoExame: TipoExame = new TipoExame({});
   public metodoExame?: MetodoExame;
   public marcacao?: Marcacao;
 
