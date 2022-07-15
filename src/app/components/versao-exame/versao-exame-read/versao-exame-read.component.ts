@@ -34,6 +34,7 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
 
   query: Query[] = [];
+  edit = false;
 
   constructor(
     private versaoExameService: VersaoExameService,
@@ -91,4 +92,5 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
+
 }

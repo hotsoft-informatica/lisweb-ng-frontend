@@ -1,9 +1,9 @@
+import { VersaoExameReadComponent } from './../versao-exame-read/versao-exame-read.component';
 import { Query } from '../../model/query.model';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
 import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
-
 import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
 import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
 import { Marcacao } from 'src/app/components/model/marcacao.model';
@@ -33,6 +33,8 @@ export class VersaoExameCreateComponent implements OnInit {
 
   subject: Subject<any> = new Subject();
   id: number;
+  onEdit: boolean = false;
+  onCreate: boolean = false;
 
   constructor(
     private router: Router,
@@ -46,8 +48,11 @@ export class VersaoExameCreateComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
     if (this.id > 0) {
       this.loadVersaoExame(this.id);
+      this.onEdit = true;
+    } else {
+      this.onCreate = true;
     }
-    this.versaoExame ||= new VersaoExame({});
+    this.versaoExame ||= new VersaoExame({tipoExame: new TipoExame({})});
   }
 
   ngOnInit(): void {
