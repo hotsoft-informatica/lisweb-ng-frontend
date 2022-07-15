@@ -226,11 +226,11 @@ const routes: Routes = [
     component: VersaoExameCrudComponent,
   },
   {
-    path: 'versao_exames/create',
+    path: 'versao_exames/create/:create',
     component: VersaoExameCreateComponent,
   },
   {
-    path: 'versao_exames/update/:id',
+    path: 'versao_exames/update/:id/:edit',
     component: VersaoExameCreateComponent,
   },
   {

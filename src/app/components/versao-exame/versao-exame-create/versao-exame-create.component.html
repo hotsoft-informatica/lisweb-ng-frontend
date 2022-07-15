@@ -1,19 +1,22 @@
-<div class="row justify-content-around">
   <div>
     Cadastrar versão de exame
   </div>
+<div class ="row, justify-content-around">
 
-  <mat-form-field appearance="fill" class="col-lg-5 col-md-11 ps-lg-3 p-md-2">
-    <mat-label>Tipo exame:</mat-label>
-    <input disabled matInput name="tipo_exame" [(ngModel)]="versaoExame.tipoExame!.descricao">
-  </mat-form-field>
+  <div appearance="fill" *ngIf="onEdit && !isEdit" class="col-5">
+    <div>Tipo exame:</div>
+    <div>{{versaoExame?.tipoExame?.descricao}}</div>
+  </div>
 
-  <app-autocomplete-versao-exame [tipoExame]="versaoExame.tipoExame" [onCreate]="this.onCreate"></app-autocomplete-versao-exame>
+  <app-autocomplete-versao-exame *ngIf="onCreate || isEdit" [tipoExame]='this.versaoExame.tipoExame'></app-autocomplete-versao-exame>
 
-  <mat-form-field appearance="fill" class="col-lg-5 col-md-12 pe-lg-5 p-md-2">
+  <mat-slide-toggle *ngIf="onEdit" [(ngModel)]="isEdit" color="primary">Editar</mat-slide-toggle>
+
+  <mat-form-field appearance="fill" class="col-5 p-2">
     <mat-label>Descrição:</mat-label>
     <input matInput maxlength="50" name="descricao" [(ngModel)]="versaoExame.descricao">
   </mat-form-field>
+
 </div>
 
 <mat-tab-group>

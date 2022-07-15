@@ -14,8 +14,6 @@ import { debounceTime, Subject } from 'rxjs';
 })
 export class AutoCompleteVersaoExameComponent implements OnInit{
   @Input('tipoExame') tipoExame:TipoExame;
-  @Input('onCreate') onCreate = false;
-  manualEdit = this.onCreate;
 
   versaoExame!: VersaoExame;
   tipoExames: TipoExame[] = [];
@@ -30,6 +28,7 @@ export class AutoCompleteVersaoExameComponent implements OnInit{
     private tipoExameService: TipoExameService,
   ) {
     this.tipoExame ||= new TipoExame({});
+    console.table(this.tipoExame);
   }
 
   ngOnInit(): void {
@@ -65,5 +64,6 @@ export class AutoCompleteVersaoExameComponent implements OnInit{
       return correspondingOption ? correspondingOption.descricao : '';
     };
   }
+
 
 }

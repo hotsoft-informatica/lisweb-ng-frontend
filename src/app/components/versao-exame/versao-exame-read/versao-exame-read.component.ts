@@ -10,6 +10,7 @@ import {
   Component,
   OnInit,
   TemplateRef,
+  Input,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -25,6 +26,9 @@ import { merge, fromEvent } from 'rxjs';
 export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
   dataSource!: VersaoExameReadDataSource;
+
+  onEdit = false;
+  onCreate = false;
 
   displayedColumns = ['titulo_laudo', 'descricao', 'status', 'action'];
 

@@ -1,3 +1,4 @@
+import { AutoCompleteVersaoExameComponent } from './../../auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
 import { VersaoExameReadComponent } from './../versao-exame-read/versao-exame-read.component';
 import { Query } from '../../model/query.model';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
@@ -12,6 +13,7 @@ import { MarcacaoService } from 'src/app/components/service/marcacao.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
+  Input,
   OnInit,
 } from '@angular/core';
 import {
@@ -25,6 +27,7 @@ import { Subject } from 'rxjs';
   styleUrls: ['./versao-exame-create.component.css']
 })
 export class VersaoExameCreateComponent implements OnInit {
+
   versaoExame!: VersaoExame;
   tipoExames: TipoExame[] = [];
   metodoExames: MetodoExame[] = [];
@@ -33,8 +36,10 @@ export class VersaoExameCreateComponent implements OnInit {
 
   subject: Subject<any> = new Subject();
   id: number;
-  onEdit: boolean = false;
-  onCreate: boolean = false;
+
+  isEdit: boolean = false;
+  onEdit!: boolean;
+  onCreate!: boolean;
 
   constructor(
     private router: Router,
@@ -45,6 +50,9 @@ export class VersaoExameCreateComponent implements OnInit {
     private metodoExameService: MetodoExameService
 
   ) {
+    this.onEdit = this.route.snapshot.paramMap.get('edit') as unknown as boolean;
+    this.onCreate = this.route.snapshot.paramMap.get('create') as unknown as boolean;
+
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
     if (this.id > 0) {
       this.loadVersaoExame(this.id);
@@ -117,19 +125,30 @@ export class VersaoExameCreateComponent implements OnInit {
   }
 
   createVersaoExame(): void {
-    if (this.id > 0) {
-      this.updateVersaoExame();
-    } else {
-      this.versaoExameService.create(this.versaoExame).subscribe(() => {
-        this.versaoExameService.showMessage('Versão de exame criada com sucesso!');
-        this.router.navigate(['/versao_exames']).then(() => {
-          window.location.reload();
+    console.table(this.versaoExame.tipoExame);
+    this.tipoExameService.readById(this.versaoExame.tipoExame.id as number).subscribe((tipoExame) =>{
+      this.versaoExame.tipoExame = tipoExame;
+      this.versaoExame.tipo_exame_id = tipoExame.id;
+      if (this.id > 0) {
+        this.updateVersaoExame();
+        this.onEdit = false;
+        this.onCreate = false;
+      } else {
+        this.versaoExameService.create(this.versaoExame).subscribe(() => {
+          this.versaoExameService.showMessage('Versão de exame criada com sucesso!');
+          this.onEdit = false;
+          this.onCreate = false;
+          this.router.navigate(['/versao_exames']).then(() => {
+            window.location.reload();
+          });
         });
-      });
-    }
+      }
+    })
   }
 
   cancel(): void {
+    this.onEdit = false;
+    this.onCreate = false;
     this.router.navigate(['/versao_exames']);
   }
 
