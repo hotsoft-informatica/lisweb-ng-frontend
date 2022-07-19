@@ -203,7 +203,6 @@ const routes: Routes = [
     path: 'tipo-exames/delete/:id',
     component: TipoExameDeleteComponent,
   },
-  ,
   {
     path: 'valores_referencia/read',
     component: ValorReferenciaReadComponent,
@@ -219,7 +218,7 @@ const routes: Routes = [
   {
     path: 'valores_referencia/delete/:id',
     component: ValorReferenciaReadComponent,
-  }
+  },
   {
     path: 'versao_exames',
     component: VersaoExameCrudComponent,
