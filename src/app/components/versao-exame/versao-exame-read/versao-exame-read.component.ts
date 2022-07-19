@@ -9,6 +9,7 @@ import {
   Component,
   OnInit,
   TemplateRef,
+  Input,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -23,6 +24,9 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
   dataSource!: VersaoExameReadDataSource;
 
+  onEdit = false;
+  onCreate = false;
+
   displayedColumns = ['titulo_laudo', 'descricao', 'status', 'action'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -31,6 +35,7 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
 
 
   query: Query[] = [];
+  edit = false;
 
   constructor(
     private versaoExameService: VersaoExameService,
@@ -88,4 +93,5 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
+
 }

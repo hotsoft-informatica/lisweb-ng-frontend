@@ -165,18 +165,23 @@ import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro
 import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
 
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
-import { ConfigComponent } from './components/config/config.component';
-import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 
-import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
-import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
+import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
+import { ConfigComponent } from './components/config/config.component';
 import { DialogErroQuinhentosComponent } from './components/DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
-import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component';
-import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
-import { MarcacaoReadComponent } from './components/marcacao/marcacao-read/marcacao-read.component';
 import { MarcacaoCreateComponent } from './components/marcacao/marcacao-create/marcacao-create.component';
 import { MarcacaoDeleteComponent } from './components/marcacao/marcacao-delete/marcacao-delete.component';
+import { MarcacaoReadComponent } from './components/marcacao/marcacao-read/marcacao-read.component';
+import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
 import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read/valor-referencia-read.component';
+import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
+import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
+import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component';
+import { MetodosExamesCreateComponent } from './components/metodos-exames/metodos-exames-create/metodos-exames-create.component';
+import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
+import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
+import { MetodosExamesUpdateComponent } from './components/metodos-exames/metodos-exames-update/metodos-exames-update.component';
+import { AutoCompleteVersaoExameComponent } from './components/auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -307,6 +312,14 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MarcacaoDeleteComponent,
     VersaoExameStatusPipe,
     ValorReferenciaReadComponent,
+    ConfigComponent,
+    BackendIpComponent,
+    VersaoExameInterfaceamentoCreateComponent,
+    MetodosExamesCreateComponent,
+    MetodosExamesDeleteComponent,
+    MetodosExamesReadComponent,
+    MetodosExamesUpdateComponent,
+    AutoCompleteVersaoExameComponent,
   ],
   imports: [
     HttpClientModule,

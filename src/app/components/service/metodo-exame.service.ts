@@ -15,8 +15,8 @@ export class MetodoExameService {
 
   constructor(
     private snackbar: MatSnackBar,
+    private backendIpService: BackendIpService,
     private http: HttpClient,
-    private backendIpService: BackendIpService
   ) {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
   }
@@ -33,8 +33,30 @@ export class MetodoExameService {
     return this.http.post<MetodoExame>(this.baseUrl, metodoExame);
   }
 
-  read(): Observable<MetodoExame[]> {
-    return this.http.get<MetodoExame[]>(this.baseUrl);
+  read(
+    sortActive: string = 'id',
+    sortDirection: string = 'desc',
+    pageNumber = 0,
+    pageSize = 3,
+    queries: Query[]): Observable<MetodoExame[]> { // criando parametros e puxando dados do backend
+    let params = new HttpParams(); // cria paramaetros para leitura do backend
+
+    queries.forEach(busca => {
+      params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
+    });
+    params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
+    params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
+    params = params.append('pageNumber', pageNumber.toString());
+    params = params.append('pageSize', pageSize.toString());
+
+    queries?.forEach((queryItem) => {
+      if (queryItem) {
+        const key = `queryItem[${queryItem.key}]`;
+        params = params.append(key, queryItem.value);
+      }
+    });
+
+    return this.http.get<MetodoExame[]>(this.baseUrl, { params }); // Passa qual operação sera realizada pelo backend
   }
 
   readById(id: number): Observable<MetodoExame> {
@@ -76,9 +98,10 @@ export class MetodoExameService {
     });
   }
 
-  countTipoExames(): Observable<number> {
+  countMetodoExame(): Observable<number> {
+    let params = new HttpParams().set('totalCount', 'true');
     return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
+      params
     });
   }
 }

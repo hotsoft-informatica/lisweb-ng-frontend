@@ -51,6 +51,9 @@ import { MarcacaoReadComponent } from './components/marcacao/marcacao-read/marca
 import { MaterialBiologicoCreateComponent } from './components/material-biologico/material-biologico-create/material-biologico-create.component';
 import { MaterialBiologicoDeleteComponent } from './components/material-biologico/material-biologico-delete/material-biologico-delete.component';
 import { MaterialBiologicoUpdateComponent } from './components/material-biologico/material-biologico-update/material-biologico-update.component';
+import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
+import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
+import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
 import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
 import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
@@ -60,7 +63,6 @@ import { PacienteCreateComponent } from './components/paciente/paciente-create/p
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
 import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
-import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
@@ -68,7 +70,6 @@ import { RequisicaoShowComponent } from './components/requisicao/requisicao-show
 import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-update/requisicao-update.component';
 import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecnico/responsavel-tecnico-create/responsavel-tecnico-create.component';
 import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-crud/responsavel-tecnico-crud.component';
-import { ResponsavelTecnicoReadComponent } from './components/responsavel-tecnico/responsavel-tecnico-read/responsavel-tecnico-read.component';
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
@@ -129,6 +130,22 @@ const routes: Routes = [
   {
     path: 'laboratorios/delete/:id',
     component: LaboratorioDeleteComponent,
+  },
+  {
+    path: 'metodos-exames/read',
+    component: MetodosExamesReadComponent,
+  },
+  {
+    path: 'metodos-exame/create',
+    component: MetodoExameComponent,
+  },
+  {
+    path: 'metodos-exame/update/:id',
+    component: MetodoExameComponent,
+  },
+  {
+    path: 'metodos-exames/delete/:id',
+    component: MetodosExamesDeleteComponent,
   },
   {
     path: 'pacientes/read',
@@ -223,11 +240,11 @@ const routes: Routes = [
     component: VersaoExameCrudComponent,
   },
   {
-    path: 'versao_exames/create',
+    path: 'versao_exames/create/:create',
     component: VersaoExameCreateComponent,
   },
   {
-    path: 'versao_exames/update/:id',
+    path: 'versao_exames/update/:id/:edit',
     component: VersaoExameCreateComponent,
   },
   {
