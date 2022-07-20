@@ -10,12 +10,20 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
-"@angular-devkit/architect@0.1400.6", "@angular-devkit/architect@^0.1400.5":
+"@angular-devkit/architect@0.1400.6":
   version "0.1400.6"
   resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1400.6.tgz#545f65e7aa9a8c8fb09756a43491679ea259b760"
   integrity sha512-POqWsCvo5O4/5dsPYGA68YU9x5k/xAU+a5h/QvhjeRJVCuYZ0IX97EPQ+w/tXRRL3kdwS6zfaIXR2p+U3F1DmA==
   dependencies:
     "@angular-devkit/core" "14.0.6"
+    rxjs "6.6.7"
+
+"@angular-devkit/architect@^0.1401.0":
+  version "0.1401.0"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/architect/-/architect-0.1401.0.tgz#7cd9b2bb6567ca1d5284e487885838328aabfdae"
+  integrity sha512-dHgP2/5EXkJpdf6Y1QHQX2RP8xTli/CFZH3uNnTh+EuAib/kwu+Z6K3UttZWB5VGhAF1u/xf97Vly/UkXvjKAg==
+  dependencies:
+    "@angular-devkit/core" "14.1.0"
     rxjs "6.6.7"
 
 "@angular-devkit/build-angular@^14.0.5":
