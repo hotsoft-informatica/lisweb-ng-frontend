@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class MarcacaoService {
+export class ValorReferenciaService {
   // TODO: Corrigir pluralizacao de versoes exame
   baseUrl = '/valores_referencia';
 
@@ -53,7 +53,7 @@ export class MarcacaoService {
     return this.http.get<ValorReferencia>(url);
   }
 
-  findValoresReferencia(
+  findValorReferencia(
     active: string = '',
     sortOrder: string = 'asc',
     pageNumber: number = 1,
