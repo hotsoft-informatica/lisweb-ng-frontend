@@ -1,3 +1,11 @@
+<div class="row col-10 col-md-8 col-xs-6">
+  <h3>
+    <a routerLink="/">Inicio</a>
+    <span> > </span>
+    <a routerLink="/empresas">Empresas</a>
+  </h3>
+</div>
+
 <button
   mat-raised-button
   (click)="navigateToEmpresaCreate()"
@@ -5,13 +13,6 @@
 >
   Nova Empresa
 </button>
+
 <app-empresa-read></app-empresa-read>
 
-
-<div class="row col-10 col-md-8 col-xs-6">
-  <h3>
-    <a routerLink="/">Inicio</a>
-    <a> > </a>
-    <a routerLink="/localdeatendimento/read">Locais de atendimentos</a>
-  </h3>
-</div>

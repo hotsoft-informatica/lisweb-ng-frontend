@@ -33,10 +33,10 @@
     <div class="card card-body">
       <div class="row">
         <div class="mb-3 col row">
-          <mat-form-field style="text-align:center;" appearance="fill">
+          <div style="text-align:center;" appearance="fill">
             <img *ngIf="this.showSignature.imagem" [src]="this.showSignature.imagem | safeurl"/>
             <p *ngIf="!this.showSignature.imagem">Imagem não localizada</p>
-          </mat-form-field>
+          </div>
         </div>
       </div>
     </div>

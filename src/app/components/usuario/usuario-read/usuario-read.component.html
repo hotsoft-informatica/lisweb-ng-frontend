@@ -3,7 +3,7 @@
   <div class="row col-10 col-md-8 col-xs-6">
     <h3>
       <a routerLink="/">Inicio</a>
-      <a> > </a>
+      <span> > </span>
       <a routerLink="/usuarios/read">Usuarios</a>
     </h3>
   </div>
@@ -69,12 +69,12 @@
 
       <ng-container matColumnDef="nome">
         <th mat-header-cell mat-sort-header="nome" *matHeaderCellDef> Nome </th>
-        <td mat-cell *matCellDef="let element"> {{element?.nome | slice:0:4}} ...</td>
+        <td mat-cell *matCellDef="let element"> {{element?.nome | slice:0:15}} ...</td>
       </ng-container>
 
       <ng-container matColumnDef="login">
         <th mat-header-cell mat-sort-header="login" *matHeaderCellDef> Usuario </th>
-        <td mat-cell *matCellDef="let element"> {{element?.login | slice:0:4}} ...</td>
+        <td mat-cell *matCellDef="let element"> {{element?.login | slice:0:15}} ...</td>
       </ng-container>
 
       <ng-container matColumnDef="Cargo">
@@ -140,3 +140,4 @@
     <mat-paginator [length]="this.totalCount" [pageSize]="10"
     [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
 </div>
+
