@@ -4,16 +4,15 @@
       <h3>
         <a routerLink="/">Inicio</a>
         <a> > </a>
-        <a routerLink="/versao_exames">Versão Exames</a>
+        <a routerLink="/marcacoes/read">Tabela Marcação</a>
       </h3>
   </div>
 
   <div class="col-2 col-md-4 col-xs-6">
     <div class="row">
-
+      
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button"
-                color="primary" routerLink="/versao_exames/create/true">
+        <button mat-flat-button class="dvm-button" color="primary" routerLink="/marcacoes/create">
             <mat-icon>add</mat-icon>
           Adicionar
         </button>
@@ -37,16 +36,16 @@
     <div class="row">
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
-          <mat-label>Título laudo:</mat-label>
-          <input matInput #titulo_laudo maxlength="50" placeholder="Filtre por título laudo" (input)="search('titulo_laudo', titulo_laudo.value)"
+          <mat-label>Nome:</mat-label>
+          <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome', nome.value)"
           >
         </mat-form-field>
       </div>
 
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
-          <mat-label>Descrição:</mat-label>
-          <input matInput #descricao maxlength="12" placeholder="Filtre por Descrição" (input)="search('descricao', descricao.value)"
+          <mat-label>Tipo:</mat-label>
+          <input matInput #tipo maxlength="12" placeholder="Filtre por tipo" (input)="search('tipo', tipo.value)"
           >
         </mat-form-field>
       </div>
@@ -64,19 +63,14 @@
     matSortDisableClear
   >
 
-  <ng-container matColumnDef="titulo_laudo">
-    <th mat-header-cell mat-sort-header="titulo_laudo" class="col-5" *matHeaderCellDef> Título laudo </th>
-    <td mat-cell *matCellDef="let row"> {{row.titulo_laudo | slice:0:25}} ...</td>
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell mat-sort-header="nome" class="col-5" *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let row"> {{row.nome | slice:0:25}} ...</td>
   </ng-container>
 
-  <ng-container matColumnDef="descricao">
-    <th mat-header-cell mat-sort-header="descricao" class="col-3" *matHeaderCellDef> Descrição </th>
-    <td mat-cell *matCellDef="let row"> {{row.descricao | slice:0:20}} ...</td>
-  </ng-container>
-
-  <ng-container matColumnDef="status">
-    <th mat-header-cell mat-sort-header="status" class="col-3" *matHeaderCellDef> Status </th>
-    <td mat-cell *matCellDef="let row"> {{row.status | versaoexamestatus}}</td>
+  <ng-container matColumnDef="tipo">
+    <th mat-header-cell mat-sort-header="tipo" class="col-3" *matHeaderCellDef> Tipo </th>
+    <td mat-cell *matCellDef="let row"> {{row.tipo | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="action">
@@ -85,7 +79,7 @@
       <div class="row">
 
         <div class="col-1 me-3">
-          <a routerLink="/versao_exames/update/{{row.id}}/true">
+          <a routerLink="/marcacoes/update/{{row.id}}">
             <button mat-icon-button>
               <mat-icon class="edit">edit</mat-icon>
             </button>
@@ -93,7 +87,7 @@
         </div>
 
         <div class="col-1 me-3">
-            <button class="delete" mat-icon-button (click)="deleteVersaoExame(row.id)">
+            <button class="delete" mat-icon-button (click)="deleteMarcacao(row.id)">
               <mat-icon class="delete">delete</mat-icon>
             </button>
         </div>

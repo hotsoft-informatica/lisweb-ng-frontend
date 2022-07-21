@@ -1,47 +1,55 @@
-import { MatDialog } from '@angular/material/dialog';
 import { Query } from '../../model/query.model';
+import { MatDialog } from '@angular/material/dialog';
+import { MarcacaoService } from '../../service/marcacao.service';
+import { MarcacaoReadDataSource } from './marcacao-read-datasource';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VersaoExameService } from '../../service/versao-exame.service';
-import { VersaoExameReadDataSource } from './versao-exame-read-datasource';
 import {
   AfterViewInit,
+  ElementRef,
   ViewChild,
   Component,
   OnInit,
   TemplateRef,
-  Input,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { tap } from 'rxjs/operators';
+import { MatTableDataSource } from '@angular/material/table';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  startWith,
+  tap,
+  delay,
+  filter,
+} from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
+
 @Component({
-  selector: 'app-versao-exame-read',
-  templateUrl: './versao-exame-read.component.html',
-  styleUrls: ['./versao-exame-read.component.css'],
+  selector: 'app-marcacao-read',
+  templateUrl: './marcacao-read.component.html',
+  styleUrls: ['./marcacao-read.component.css']
 })
-export class VersaoExameReadComponent implements OnInit, AfterViewInit {
+export class MarcacaoReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
-  dataSource!: VersaoExameReadDataSource;
+  dataSource!: MarcacaoReadDataSource;
 
-  onEdit = false;
-  onCreate = false;
-
-  displayedColumns = ['titulo_laudo', 'descricao', 'status', 'action'];
+  displayedColumns = [
+    'nome',
+    'tipo',
+    'action',
+  ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
 
-
   query: Query[] = [];
-  edit = false;
 
   constructor(
-    private versaoExameService: VersaoExameService,
-    public dialog: MatDialog,
+    private marcacaoService: MarcacaoService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) { }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
@@ -49,13 +57,13 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
     this.paginator.pageIndex = 0;
-    this.loadVersaoExamesPage();
+    this.loadMarcacoesPage();
   }
 
   ngOnInit(): void {
-    this.dataSource = new VersaoExameReadDataSource(this.versaoExameService);
-    this.dataSource.loadVersaoExames('id', 'desc', 1, 10, null);
-    this.versaoExameService.countVersaoExames().subscribe((totalCount) => {
+    this.dataSource = new MarcacaoReadDataSource(this.marcacaoService);
+    this.dataSource.loadMarcacoes('id', 'desc', 1, 10, null);
+    this.marcacaoService.countMarcacaoes().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
@@ -64,34 +72,34 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
 
     merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
-      .pipe(tap(() => this.loadVersaoExamesPage()))
+      .pipe(tap(() => this.loadMarcacoesPage()))
       .subscribe();
   }
 
-  deleteVersaoExame(id: number): void {
-    const dialogRef = this.dialog.open(this.deleteDialog);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.versaoExameService
-          .delete(id)
-          .subscribe(() => {
-            this.router.navigate(['/versao_exames']).then(() => {
-              window.location.reload();
-            });
-          });
-      }
-    });
-  }
-
-  loadVersaoExamesPage() {
-    this.dataSource.loadVersaoExames(
+  loadMarcacoesPage() {
+    this.dataSource.loadMarcacoes(
       this.sort.active,
       this.sort.direction,
       this.paginator.pageIndex,
       this.paginator.pageSize,
       this.query
     );
+  }
+
+  deleteMarcacao(id: number): void {
+    const dialogRef = this.dialog.open(this.deleteDialog);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.marcacaoService
+          .delete(id)
+          .subscribe(() => {
+            this.router.navigate(['/marcacoes/read']).then(() => {
+              window.location.reload();
+            });
+          });
+      }
+    });
   }
 
 }

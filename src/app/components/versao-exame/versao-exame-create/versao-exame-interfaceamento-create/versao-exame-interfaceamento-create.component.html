@@ -11,7 +11,7 @@
 
     <mat-autocomplete #autoTipoInstrumento="matAutocomplete" [displayWith]="displayFn(tipoInstrumentos)">
       <mat-option *ngFor="let tipoInstrumento of tipoInstrumentos" [value]="tipoInstrumento.id">
- {{ tipoInstrumento.descricao }}
+        {{ tipoInstrumento.descricao }}
       </mat-option>
     </mat-autocomplete>
 
