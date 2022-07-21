@@ -5,7 +5,7 @@
 
   <div appearance="fill" *ngIf="onEdit && !isEdit" class="col-5">
     <div>Tipo exame:</div>
-    <div>{{versaoExame?.tipoExame?.descricao}}</div>
+    <div>{{versaoExame.tipoExame?.descricao}}</div>
   </div>
 
   <app-autocomplete-versao-exame *ngIf="onCreate || isEdit" [tipoExame]='this.versaoExame.tipoExame'></app-autocomplete-versao-exame>
