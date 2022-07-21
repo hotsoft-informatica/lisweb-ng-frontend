@@ -64,56 +64,52 @@
   >
 
   <ng-container matColumnDef="sexo">
-    <th mat-header-cell mat-sort-header="sexo" class="col-5" *matHeaderCellDef> Sexo </th>
+    <th mat-header-cell mat-sort-header="sexo" class="col-2" *matHeaderCellDef>Sexo</th>
     <td mat-cell *matCellDef="let row"> {{row.sexo | slice:0:25}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="val_minimo">
-    <th mat-header-cell mat-sort-header="val_minimo" class="col-3" *matHeaderCellDef> Valor Mínimo </th>
+    <th mat-header-cell mat-sort-header="val_minimo" class="col-2" *matHeaderCellDef>Val. Mínimo</th>
     <td mat-cell *matCellDef="let row"> {{row.val_minimo | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="val_maximo">
-    <th mat-header-cell mat-sort-header="val_maximo" class="col-3" *matHeaderCellDef> Valor Máximo </th>
+    <th mat-header-cell mat-sort-header="val_maximo" class="col-2" *matHeaderCellDef>Val. Máximo</th>
     <td mat-cell *matCellDef="let row"> {{row.val_maximo | slice:0:20}} ...</td>
   </ng-container>
 
-  <ng-container matColumnDef="texto">
-    <th mat-header-cell mat-sort-header="texto" class="col-3" *matHeaderCellDef> Texto </th>
-    <td mat-cell *matCellDef="let row"> {{row.texto | slice:0:50}} ...</td>
-  </ng-container>
-
-  <ng-container matColumnDef="val_minimo_absurdo">
-    <th mat-header-cell mat-sort-header="val_minimo_absurdo" class="col-3" *matHeaderCellDef> Valor Máximo Absurdo </th>
-    <td mat-cell *matCellDef="let row"> {{row.val_minimo_absurdo | slice:0:20}} ...</td>
-  </ng-container>
-
   <ng-container matColumnDef="val_maximo_absurdo">
-    <th mat-header-cell mat-sort-header="val_maximo_absurdo" class="col-3" *matHeaderCellDef> Valor Mínimo Absurdo </th>
+    <th mat-header-cell mat-sort-header="val_maximo_absurdo" class="col-2" *matHeaderCellDef>Val. Mín. Absurdo</th>
     <td mat-cell *matCellDef="let row"> {{row.val_maximo_absurdo | slice:0:20}} ...</td>
   </ng-container>
 
+  <ng-container matColumnDef="val_minimo_absurdo">
+    <th mat-header-cell mat-sort-header="val_minimo_absurdo" class="col-2" *matHeaderCellDef>Val. Máx. Absurdo</th>
+    <td mat-cell *matCellDef="let row"> {{row.val_minimo_absurdo | slice:0:20}} ...</td>
+  </ng-container>
+
   <ng-container matColumnDef="idade_minima">
-    <th mat-header-cell mat-sort-header="idade_minima" class="col-3" *matHeaderCellDef> Idade Mínima </th>
+    <th mat-header-cell mat-sort-header="idade_minima" class="col-2" *matHeaderCellDef>Idade Mínima</th>
     <td mat-cell *matCellDef="let row"> {{row.idade_minima | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="idade_maxima">
-    <th mat-header-cell mat-sort-header="idade_maxima" class="col-3" *matHeaderCellDef> Idade Máxima </th>
+    <th mat-header-cell mat-sort-header="idade_maxima" class="col-2" *matHeaderCellDef>Idade Máxima</th>
     <td mat-cell *matCellDef="let row"> {{row.idade_maxima | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="val_minimo_critico">
-    <th mat-header-cell mat-sort-header="val_minimo_critico" class="col-3" *matHeaderCellDef> Valor Min. Crítico </th>
+    <th mat-header-cell mat-sort-header="val_minimo_critico" class="col-2" *matHeaderCellDef>Val. Min. Crítico</th>
     <td mat-cell *matCellDef="let row"> {{row.val_minimo_critico | slice:0:20}} ...</td>
   </ng-container>
+
   <ng-container matColumnDef="val_maximo_critico">
-    <th mat-header-cell mat-sort-header="val_maximo_critico" class="col-3" *matHeaderCellDef> Valor Max. Crítico </th>
+    <th mat-header-cell mat-sort-header="val_maximo_critico" class="col-2" *matHeaderCellDef>Val. Max. Crítico</th>
     <td mat-cell *matCellDef="let row"> {{row.val_maximo_critico | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="action">
-    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3" *matHeaderCellDef> Operações </th>
+    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3" *matHeaderCellDef>Operações</th>
     <td mat-cell *matCellDef="let row">
       <div class="row">
 
