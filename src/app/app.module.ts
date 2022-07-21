@@ -174,7 +174,8 @@ import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-e
 import { MarcacaoReadComponent } from './components/marcacao/marcacao-read/marcacao-read.component';
 import { MarcacaoCreateComponent } from './components/marcacao/marcacao-create/marcacao-create.component';
 import { MarcacaoDeleteComponent } from './components/marcacao/marcacao-delete/marcacao-delete.component';
-import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read/valor-referencia-read.component';
+import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
+import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -303,6 +304,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MarcacaoDeleteComponent,
     VersaoExameStatusPipe,
     ValorReferenciaReadComponent,
+    ValorReferenciaCreateComponent,
   ],
   imports: [
     HttpClientModule,

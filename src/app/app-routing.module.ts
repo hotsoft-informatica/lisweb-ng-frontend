@@ -31,7 +31,8 @@ import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usua
 import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-create/tipo-exame-create.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
-import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read/valor-referencia-read.component';
+import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
+import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
@@ -209,7 +210,7 @@ const routes: Routes = [
   },
   {
     path: 'valores_referencia/create',
-    component: ValorReferenciaReadComponent,
+    component: ValorReferenciaCreateComponent,
   },
   {
     path: 'valores_referencia/update/:id',
