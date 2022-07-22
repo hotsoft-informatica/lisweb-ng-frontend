@@ -1,1 +1,125 @@
-<p>valor-referencia-create works!</p>
+<form class="example-container row container-fluid mt-4">
+  <div class="row justify-content-around">
+
+    <mat-form-field appearance="fill" class= "col-lg-1 col-md-12 p-2">
+      <mat-label>Sexo:</mat-label>
+      <mat-select name="sexo" [(ngModel)]="valorReferencia.sexo">
+        <mat-option value="A">Ambos</mat-option>
+        <mat-option value="F">Feminino</mat-option>
+        <mat-option value="M">Masculino</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Val. Mínimo:</mat-label>
+        <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo" name="val_minimo"
+          [(ngModel)]="valorReferencia.val_minimo">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Val. Máximo:</mat-label>
+        <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo" name="val_maximo"
+          [(ngModel)]="valorReferencia.val_maximo">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Val. Min. Absurdo:</mat-label>
+        <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo_absurdo" name="val_minimo_absurdo"
+          [(ngModel)]="valorReferencia.val_minimo_absurdo">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Val. Máx. Absurdo:</mat-label>
+        <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo_absurdo" name="val_maximo_absurdo"
+          [(ngModel)]="valorReferencia.val_maximo_absurdo">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Idade Mínima:</mat-label>
+        <input type="number" matInput min="1" matInput maxlength="3" id="idade_minima" name="idade_minima"
+          [(ngModel)]="valorReferencia.idade_minima">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Idade Máxima:</mat-label>
+        <input type="number" matInput min="1" matInput maxlength="3" id="idade_maxima" name="idade_maxima"
+          [(ngModel)]="valorReferencia.idade_maxima">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Val. Min. Crítico:</mat-label>
+        <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo_critico" name="val_minimo_critico"
+          [(ngModel)]="valorReferencia.val_minimo_critico">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Val. Máx. Crítico:</mat-label>
+        <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo_critico" name="val_maximo_critico"
+          [(ngModel)]="valorReferencia.val_maximo_critico">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
+      <mat-label>Versão Exame:</mat-label>
+      <input
+        name="versao_exame_id"
+        matInput [matAutocomplete]="autoVersaoExame"
+        [(ngModel)]="valorReferencia.versao_exame_id"
+        (ngModelChange)="searchVersaoExame()"
+      />
+      <mat-autocomplete #autoVersaoExame="matAutocomplete" [displayWith]="displayFnVersaoExame(versaoExame)">
+        <mat-option *ngFor="let versaoExame of versaoExame" [value]=" versaoExame.id">
+          {{ versaoExame.descricao }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-2 col-md-8 p-2">
+      <mat-label>Atributo Exame:</mat-label>
+      <input
+        name="atributo_exame_id"
+        matInput [matAutocomplete]="autoAtributoExame"
+        [(ngModel)]="valorReferencia.atributo_exame_id"
+        (ngModelChange)="searchAtributoExame()"
+      />
+      <mat-autocomplete #autoAtributoExame="matAutocomplete" [displayWith]="displayFnAtributoExame(this.atributoExame)">
+        <mat-option *ngFor="let atributoExame of atributoExame" [value]=" atributoExame.id">
+          {{ atributoExame.rotulo }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class= "col-lg-1 col-md-12 p-2">
+      <mat-label>Deletado:</mat-label>
+      <mat-select name="deleted" [(ngModel)]="valorReferencia.deleted">
+        <mat-option value="false">Não</mat-option>
+        <mat-option value="true">Sim</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="row col-lg-8 p-2">
+      <mat-form-field appearance="outline">
+        <mat-label>Texto:</mat-label>
+        <textarea matInput id="texto" name="texto"
+          [(ngModel)]="valorReferencia.texto">
+      </textarea>
+      </mat-form-field>
+    </div>
+
+  </div>
+</form>
