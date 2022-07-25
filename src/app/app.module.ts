@@ -49,6 +49,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './views/home/home.component';
 import { VersaoExameStatusPipe } from './pipes/versao-exame-status.pipe';
+import { ValorReferenciaSexoPipe } from './pipes/valor-referencia.pipe';
 
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
@@ -303,6 +304,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MarcacaoCreateComponent,
     MarcacaoDeleteComponent,
     VersaoExameStatusPipe,
+    ValorReferenciaSexoPipe,
     ValorReferenciaReadComponent,
     ValorReferenciaCreateComponent,
   ],
