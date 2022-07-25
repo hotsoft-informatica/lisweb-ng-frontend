@@ -83,4 +83,20 @@ export class ValorReferenciaReadComponent implements OnInit, AfterViewInit {
     );
   }
 
+  deleteValorReferencia(id: number): void {
+    const dialogRef = this.dialog.open(this.deleteDialog);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.valorReferenciaService
+          .delete(id)
+          .subscribe(() => {
+            this.router.navigate(['/valores_referencia/read']).then(() => {
+              window.location.reload();
+            });
+          });
+      }
+    });
+  }
+
 }
