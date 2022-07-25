@@ -10,7 +10,7 @@
       </mat-select>
     </mat-form-field>
 
-    <div class="row col-lg-1 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Mínimo:</mat-label>
         <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo" name="val_minimo"
@@ -18,7 +18,7 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-1 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Máximo:</mat-label>
         <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo" name="val_maximo"
@@ -26,7 +26,7 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-1 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Min. Absurdo:</mat-label>
         <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo_absurdo" name="val_minimo_absurdo"
@@ -34,7 +34,7 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-1 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Máx. Absurdo:</mat-label>
         <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo_absurdo" name="val_maximo_absurdo"
@@ -42,7 +42,7 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-1 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Idade Mínima:</mat-label>
         <input type="number" matInput min="1" matInput maxlength="3" id="idade_minima" name="idade_minima"
@@ -50,7 +50,7 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-1 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Idade Máxima:</mat-label>
         <input type="number" matInput min="1" matInput maxlength="3" id="idade_maxima" name="idade_maxima"
@@ -58,7 +58,7 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-1 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Min. Crítico:</mat-label>
         <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo_critico" name="val_minimo_critico"
@@ -66,7 +66,7 @@
       </mat-form-field>
     </div>
 
-    <div class="row col-lg-1 p-2">
+    <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Máx. Crítico:</mat-label>
         <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo_critico" name="val_maximo_critico"
@@ -74,7 +74,7 @@
       </mat-form-field>
     </div>
 
-    <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
+    <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
       <mat-label>Versão Exame:</mat-label>
       <input
         name="versao_exame_id"
@@ -82,14 +82,14 @@
         [(ngModel)]="valorReferencia.versao_exame_id"
         (ngModelChange)="searchVersaoExame()"
       />
-      <mat-autocomplete #autoVersaoExame="matAutocomplete" [displayWith]="displayFnVersaoExame(versaoExame)">
-        <mat-option *ngFor="let versaoExame of versaoExame" [value]=" versaoExame.id">
+      <mat-autocomplete #autoVersaoExame="matAutocomplete" [displayWith]="displayFnVersaoExame(versoesExame)">
+        <mat-option *ngFor="let versaoExame of versoesExame" [value]=" versaoExame.id">
           {{ versaoExame.descricao }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="col-lg-2 col-md-8 p-2">
+    <mat-form-field appearance="fill" class="col-lg-3 col-md-8 p-2">
       <mat-label>Atributo Exame:</mat-label>
       <input
         name="atributo_exame_id"
@@ -97,8 +97,8 @@
         [(ngModel)]="valorReferencia.atributo_exame_id"
         (ngModelChange)="searchAtributoExame()"
       />
-      <mat-autocomplete #autoAtributoExame="matAutocomplete" [displayWith]="displayFnAtributoExame(this.atributoExame)">
-        <mat-option *ngFor="let atributoExame of atributoExame" [value]=" atributoExame.id">
+      <mat-autocomplete #autoAtributoExame="matAutocomplete" [displayWith]="displayFnAtributoExame(this.atributosExame)">
+        <mat-option *ngFor="let atributoExame of atributosExame" [value]=" atributoExame.id">
           {{ atributoExame.rotulo }}
         </mat-option>
       </mat-autocomplete>
@@ -123,3 +123,9 @@
 
   </div>
 </form>
+<div>
+  <button mat-flat-button color="primary" class="fixed-bottom index"
+    (click)="createValorReferencia()">Salvar</button>
+  <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
+    (click)="cancel()">Cancelar</button>
+</div>

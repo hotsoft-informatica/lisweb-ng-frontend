@@ -6,7 +6,7 @@ import { VersaoExameService } from '../../service/versao-exame.service';
 import { ValorReferencia } from '../../model/valor-referencia.model';
 import { ValorReferenciaService } from '../../service/valor-referencia.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -17,15 +17,15 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class ValorReferenciaCreateComponent implements OnInit {
   valorReferencia!: ValorReferencia;
+  id: number;
 
-  @Input('versaoExame') versaoExame: VersaoExame[] = [];
-  @Input('atributoExame') atributoExame: AtributoExame[] = [];
-
+  versoesExame: VersaoExame[] = [];
+  atributosExame: AtributoExame[] = [];
   queries: Query[] = [];
+
   subjectVersaoExame: Subject<any> = new Subject();
   subjectAtributoExame: Subject<any> = new Subject();
 
-  id: any = '';
 
   constructor(
     private router: Router,
@@ -34,7 +34,13 @@ export class ValorReferenciaCreateComponent implements OnInit {
     private atributoExameService: AtributoExameService,
     private valorReferenciaService: ValorReferenciaService,
 
-  ) { }
+  ) {
+    this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
+    if (this.id > 0) {
+      this.loadValorReferencia(this.id);
+    }
+    this.valorReferencia ||= new ValorReferencia({});
+  }
 
   ngOnInit(): void {
     const query = new Query({ key: '', value: '', isNumeric: false });
@@ -44,7 +50,7 @@ export class ValorReferenciaCreateComponent implements OnInit {
         .findVersaoExames('id', 'asc', 0, 60, this.queries)
         .subscribe((versaoExame) => {
           console.table(this.queries);
-          this.versaoExame = versaoExame;
+          this.versoesExame = versaoExame;
         });
     });
     this.subjectVersaoExame.next(null);
@@ -54,10 +60,29 @@ export class ValorReferenciaCreateComponent implements OnInit {
         .findAtributoExame('id', 'asc', 0, 60, this.queries)
         .subscribe((atributoExame) => {
           console.table(this.queries);
-          this.atributoExame = atributoExame;
+          this.atributosExame = atributoExame;
         });
     });
     this.subjectAtributoExame.next(null);
+  }
+
+  loadValorReferencia(id: number): void {
+    this.valorReferenciaService.readById(id).subscribe((valorReferencia) => {
+      this.valorReferencia = valorReferencia;
+
+      this.versaoExameService
+        .readById(this.valorReferencia?.versao_exame_id as number)
+        .subscribe((versaoExame) => {
+          this.valorReferencia.versaoExame = versaoExame;
+          this.versoesExame.push(versaoExame);
+        });
+      this.atributoExameService
+        .readById(this.valorReferencia?.atributo_exame_id as number)
+        .subscribe((atributoExame) => {
+          this.valorReferencia.atributoExame = atributoExame;
+          this.atributosExame.push(atributoExame);
+        });
+    });
   }
 
   updateValorReferencia(): void {
@@ -119,7 +144,7 @@ export class ValorReferenciaCreateComponent implements OnInit {
     } else {
       this.valorReferenciaService.create(this.valorReferencia).subscribe(() => {
         this.valorReferenciaService.showMessage('Valor de referência criado com sucesso!');
-        this.router.navigate(['/valores_referencia']).then(() => {
+        this.router.navigate(['valores_referencia/read']).then(() => {
           window.location.reload();
         });
       });
@@ -127,7 +152,7 @@ export class ValorReferenciaCreateComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/valores_referencia']);
+    this.router.navigate(['valores_referencia/read']);
   }
 
 }

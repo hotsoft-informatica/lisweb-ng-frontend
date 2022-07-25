@@ -1,11 +1,10 @@
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Query } from 'src/app/components/model/query.model';
 import { ValorReferenciaService } from 'src/app/components/service/valor-referencia.service';
 import { ValorReferenciaReadDataSource } from './valor-referencia-read-datasource';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
@@ -13,16 +12,8 @@ import {
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { merge } from 'rxjs';
 @Component({
   selector: 'app-valor-referencia-read',
   templateUrl: './valor-referencia-read.component.html',
@@ -40,8 +31,9 @@ export class ValorReferenciaReadComponent implements OnInit, AfterViewInit {
     'val_maximo_absurdo',
     'idade_minima',
     'idade_maxima',
-    'val_maximo_critico',
     'val_minimo_critico',
+    'val_maximo_critico',
+    'action'
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -52,9 +44,9 @@ export class ValorReferenciaReadComponent implements OnInit, AfterViewInit {
 
   constructor(
     private valorReferenciaService: ValorReferenciaService,
+    public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute,
-    public dialog: MatDialog
+    private route: ActivatedRoute
   ) { }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
