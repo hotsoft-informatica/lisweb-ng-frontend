@@ -214,7 +214,7 @@ const routes: Routes = [
   },
   {
     path: 'valores_referencia/update/:id',
-    component: ValorReferenciaReadComponent,
+    component: ValorReferenciaCreateComponent,
   },
   {
     path: 'valores_referencia/delete/:id',

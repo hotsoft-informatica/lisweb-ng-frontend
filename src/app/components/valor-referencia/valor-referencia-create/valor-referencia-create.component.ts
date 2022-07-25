@@ -85,15 +85,6 @@ export class ValorReferenciaCreateComponent implements OnInit {
     });
   }
 
-  updateValorReferencia(): void {
-    this.valorReferenciaService.update(this.valorReferencia).subscribe((valorReferencia) => {
-      this.valorReferencia = valorReferencia;
-    });
-    this.router.navigate(['/valores_referencia']).then(() => {
-      window.location.reload();
-    });
-  }
-
   searchVersaoExame(): void {
     const query_string = this.valorReferencia
       .versao_exame_id as unknown as string;
@@ -136,6 +127,15 @@ export class ValorReferenciaCreateComponent implements OnInit {
         : null;
       return correspondingOption ? correspondingOption.rotulo : '';
     };
+  }
+
+  updateValorReferencia(): void {
+    this.valorReferenciaService.update(this.valorReferencia).subscribe((valorReferencia) => {
+      this.valorReferencia = valorReferencia;
+    });
+    this.router.navigate(['/valores_referencia/read']).then(() => {
+      window.location.reload();
+    });
   }
 
   createValorReferencia(): void {
