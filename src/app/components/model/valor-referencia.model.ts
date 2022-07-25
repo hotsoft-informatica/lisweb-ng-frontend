@@ -1,3 +1,5 @@
+import { AtributoExame } from "./atributo-exame.model";
+import { VersaoExame } from "./versao-exame.model";
 export class ValorReferencia {
   public id?: number;
   public laboratorio_id?: number;
@@ -19,6 +21,8 @@ export class ValorReferencia {
   public changed_by_lab_id?: number;
   public val_maximo_critico?: number;
   public val_minimo_critico?: number;
+  public versaoExame?: VersaoExame;
+  public atributoExame?: AtributoExame;
 
   constructor(values: ValorReferencia) {
     Object.assign(this, values);
