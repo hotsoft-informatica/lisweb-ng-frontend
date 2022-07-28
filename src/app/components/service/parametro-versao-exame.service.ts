@@ -5,11 +5,13 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { VersaoExame } from '../model/versao-exame.model';
 @Injectable({
   providedIn: 'root',
 })
 export class ParametroVersaoExameService {
   baseUrl = '/parametros_versao_exame';
+  versaoExameUrl: string = '';
 
   query: Query[] = [];
 
@@ -19,6 +21,7 @@ export class ParametroVersaoExameService {
     private backendIpService: BackendIpService
   ) {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.versaoExameUrl = backendIpService.getUrl() + 'versoes_exame';
   }
 
   showMessage(msg: string): void {
@@ -50,6 +53,11 @@ export class ParametroVersaoExameService {
   delete(id: number): Observable<ParametroVersaoExame> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<ParametroVersaoExame>(url);
+  }
+
+  getByVersaoExameId(versaoExameId: number): Observable<ParametroVersaoExame[]> {
+    const url = `${this.versaoExameUrl}/${versaoExameId}/parametros`;
+    return this.http.get<ParametroVersaoExame[]>(url);
   }
 
   findParametroVersaoExames(
