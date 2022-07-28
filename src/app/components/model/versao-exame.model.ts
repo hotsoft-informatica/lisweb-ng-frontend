@@ -1,6 +1,7 @@
 import { TipoExame } from './tipo-exame.model';
 import { MetodoExame } from './metodo-exame.model';
 import { Marcacao } from './marcacao.model';
+import { ParametroVersaoExame } from './parametro-versao-exame.model';
 export class VersaoExame {
   public id?: number;
   public laboratorio_id?: number;
@@ -59,6 +60,7 @@ export class VersaoExame {
   public tipoExame?: TipoExame;
   public metodoExame?: MetodoExame;
   public marcacao?: Marcacao;
+  public parametroVersaoExame?: ParametroVersaoExame;
 
   constructor(values: VersaoExame) {
     Object.assign(this, values);
