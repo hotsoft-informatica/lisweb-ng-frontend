@@ -177,7 +177,7 @@ import { MarcacaoCreateComponent } from './components/marcacao/marcacao-create/m
 import { MarcacaoDeleteComponent } from './components/marcacao/marcacao-delete/marcacao-delete.component';
 import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
-import { VersaoExameParametroCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-parametro-create/versao-exame-parametro-create.component';
+import { VersaoExameParametroComponent } from './components/versao-exame/versao-exame-parametro/versao-exame-parametro.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -308,7 +308,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ValorReferenciaSexoPipe,
     ValorReferenciaReadComponent,
     ValorReferenciaCreateComponent,
-    VersaoExameParametroCreateComponent,
+    VersaoExameParametroComponent,
   ],
   imports: [
     HttpClientModule,
