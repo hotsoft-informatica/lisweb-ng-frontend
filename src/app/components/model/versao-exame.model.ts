@@ -60,7 +60,7 @@ export class VersaoExame {
   public tipoExame?: TipoExame;
   public metodoExame?: MetodoExame;
   public marcacao?: Marcacao;
-  public parametroVersaoExame?: ParametroVersaoExame;
+  public parametrosVersaoExame?: ParametroVersaoExame[];
 
   constructor(values: VersaoExame) {
     Object.assign(this, values);
