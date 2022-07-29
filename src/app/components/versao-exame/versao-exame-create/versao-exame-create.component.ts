@@ -1,4 +1,6 @@
 import { Query } from '../../model/query.model';
+import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
+import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
 import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
@@ -26,6 +28,7 @@ import { Subject } from 'rxjs';
 })
 export class VersaoExameCreateComponent implements OnInit {
   versaoExame!: VersaoExame;
+  parametrosVersaoExame: ParametroVersaoExame[] = [];
   tipoExames: TipoExame[] = [];
   metodoExames: MetodoExame[] = [];
   marcacoes: Marcacao[] = [];
@@ -40,7 +43,8 @@ export class VersaoExameCreateComponent implements OnInit {
     private versaoExameService: VersaoExameService,
     private tipoExameService: TipoExameService,
     private marcacaoService: MarcacaoService,
-    private metodoExameService: MetodoExameService
+    private metodoExameService: MetodoExameService,
+    private parametroVersaoExameService: ParametroVersaoExameService
 
   ) {
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
@@ -77,6 +81,12 @@ export class VersaoExameCreateComponent implements OnInit {
       this.versaoExame = versaoExame;
       console.warn(this.versaoExame.tipo_exame_id);
 
+      this.parametroVersaoExameService
+        .getByVersaoExameId(this.versaoExame?.id as number)
+        .subscribe((parametrosVersaoExame) => {
+          this.versaoExame.parametrosVersaoExame = parametrosVersaoExame;
+          this.parametrosVersaoExame = parametrosVersaoExame;
+        });
       this.tipoExameService
         .readById(this.versaoExame?.tipo_exame_id as number)
         .subscribe((tipoExame) => {
