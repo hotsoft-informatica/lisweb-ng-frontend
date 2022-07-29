@@ -31,7 +31,7 @@ export class VersaoExameParametroComponent implements OnChanges {
 
   ngOnChanges(): void {
     console.warn(this.versaoExame?.id);
-    if (this.versaoExame?.id) {
+    if (this.versaoExame?.id && this.parametrosVersaoExame.length == 0) {
       this.parametroVersaoExameService
         .getByVersaoExameId(this.versaoExame.id as number)
         .subscribe((parametrosVersaoExame) => {
