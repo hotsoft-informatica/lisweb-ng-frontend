@@ -45,6 +45,15 @@ export class ParametroVersaoExameService {
     return this.http.get<ParametroVersaoExame>(url);
   }
 
+  updateAll(parametrosVErsaoExame: ParametroVersaoExame[]) {
+    parametrosVErsaoExame?.forEach((parametroVErsaoExame) => {
+      if (parametroVErsaoExame) {
+        this.update(parametroVErsaoExame).subscribe((parametroVErsaoExame) => { })
+      }
+    });
+    return parametrosVErsaoExame;
+  }
+
   update(parametroVersaoExame: ParametroVersaoExame): Observable<ParametroVersaoExame> {
     const url = `${this.baseUrl}/${parametroVersaoExame.id}`;
     return this.http.put<ParametroVersaoExame>(url, parametroVersaoExame);
