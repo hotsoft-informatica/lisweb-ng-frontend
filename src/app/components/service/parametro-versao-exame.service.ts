@@ -21,7 +21,7 @@ export class ParametroVersaoExameService {
     private backendIpService: BackendIpService
   ) {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
-    this.versaoExameUrl = backendIpService.getUrl() + 'versoes_exame';
+    this.versaoExameUrl = backendIpService.getUrl() + '/versoes_exame';
   }
 
   showMessage(msg: string): void {

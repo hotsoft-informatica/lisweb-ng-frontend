@@ -3,7 +3,7 @@ import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
@@ -12,9 +12,13 @@ import { debounceTime } from 'rxjs/operators';
   templateUrl: './versao-exame-parametro.component.html',
   styleUrls: ['./versao-exame-parametro.component.css']
 })
-export class VersaoExameParametroComponent implements OnInit {
+export class VersaoExameParametroComponent implements OnChanges {
   @Input('versaoExame') versaoExame!: VersaoExame;
   @Input('parametrosVersaoExame') parametrosVersaoExame: ParametroVersaoExame[] = [];
+  totalCount!: number;
+  currentParametroVersaoExame: ParametroVersaoExame = new ParametroVersaoExame({});
+
+  displayedColumns = ['chave', 'valor', 'action'];
 
   queries: Query[] = [];
   subjectParametroVersaoExame: Subject<any> = new Subject();
@@ -25,8 +29,9 @@ export class VersaoExameParametroComponent implements OnInit {
     private parametroVersaoExameService: ParametroVersaoExameService
   ) { }
 
-  ngOnInit(): void {
-    if (this.versaoExame) {
+  ngOnChanges(): void {
+    console.warn(this.versaoExame?.id);
+    if (this.versaoExame?.id) {
       this.parametroVersaoExameService
         .getByVersaoExameId(this.versaoExame.id as number)
         .subscribe((parametrosVersaoExame) => {
