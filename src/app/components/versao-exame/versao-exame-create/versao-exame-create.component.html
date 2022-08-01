@@ -3,15 +3,10 @@
   </div>
 <div class ="row, justify-content-around">
 
-  <!-- <mat-form-field appearance="fill" *ngIf="onEdit && !isEdit" class="col-5">
+  <mat-form-field appearance="fill" *ngIf="onEdit && !isEdit" class="col-5">
     <mat-label>Tipo exame:</mat-label>
     <input matInput disabled matInput [value]="versaoExame.tipoExame!.descricao">
-  </mat-form-field> -->
-
-  <div appearance="fill" *ngIf="onEdit && !isEdit" class="col-5">
-    <div>Tipo exame:</div>
-    <div>{{versaoExame.tipoExame?.descricao}}</div>
-  </div>
+  </mat-form-field>
 
   <app-autocomplete-versao-exame *ngIf="onCreate || isEdit" [tipoExame]='this.versaoExame.tipoExame'></app-autocomplete-versao-exame>
 
