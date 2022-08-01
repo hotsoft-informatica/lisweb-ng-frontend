@@ -183,6 +183,7 @@ import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodo
 import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
 import { MetodosExamesUpdateComponent } from './components/metodos-exames/metodos-exames-update/metodos-exames-update.component';
 import { AutoCompleteVersaoExameComponent } from './components/auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
+import { AutocompleteTipoInterfaceamentoComponent } from './components/auto-complete/autocomplete-tipo-interfaceamento/autocomplete-tipo-interfaceamento.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -322,6 +323,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MetodosExamesReadComponent,
     MetodosExamesUpdateComponent,
     AutoCompleteVersaoExameComponent,
+    AutocompleteTipoInterfaceamentoComponent,
   ],
   imports: [
     HttpClientModule,
