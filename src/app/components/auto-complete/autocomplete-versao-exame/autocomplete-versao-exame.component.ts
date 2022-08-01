@@ -13,7 +13,7 @@ import { debounceTime, Subject } from 'rxjs';
   styleUrls: ['./autocomplete-versao-exame.component.css']
 })
 export class AutoCompleteVersaoExameComponent implements OnInit{
-  @Input('tipoExame') tipoExame:TipoExame;
+  @Input('tipoExame') tipoExame:TipoExame | undefined;
 
   versaoExame!: VersaoExame;
   tipoExames: TipoExame[] = [];
@@ -45,15 +45,17 @@ export class AutoCompleteVersaoExameComponent implements OnInit{
   }
 
   search(): void {
-    const query_string = this.tipoExame.id as unknown as string;
-    const query = new Query({
+    if (this.tipoExame){
+      const query_string = this.tipoExame.id as unknown as string;
+      const query = new Query({
 
-      key: 'descricao',
-      value: query_string,
-      isNumeric: false,
-    });
-    this.queries.push(query);
-    this.subject.next(null);
+        key: 'descricao',
+        value: query_string,
+        isNumeric: false,
+      });
+      this.queries.push(query);
+      this.subject.next(null);
+    }
   }
 
   displayFn(options: TipoExame[]): (id: any) => any {
