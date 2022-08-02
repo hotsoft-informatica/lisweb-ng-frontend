@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Requisicao } from './../../model/requisicao.model';
+import { Component, OnInit, Input } from '@angular/core';
+;
 
 @Component({
   selector: 'app-requisicao-create',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./requisicao-create.component.css']
 })
 export class RequisicaoCreateComponent implements OnInit {
-
-  constructor() { }
+  @Input('requisicao') requisicao: Requisicao;
+  constructor() {
+    this.requisicao = new Requisicao({})
+   }
 
   ngOnInit(): void {
   }
