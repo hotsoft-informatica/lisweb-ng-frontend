@@ -63,6 +63,7 @@ import { PacienteCreateComponent } from './components/paciente/paciente-create/p
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
 import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
+import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
@@ -81,10 +82,12 @@ import { UsuarioCreateComponent } from './components/usuario/usuario-create/usua
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
-import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read/valor-referencia-read.component';
+import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
+import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
+import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 
 const routes: Routes = [
   {
@@ -225,11 +228,11 @@ const routes: Routes = [
   },
   {
     path: 'valores_referencia/create',
-    component: ValorReferenciaReadComponent,
+    component: ValorReferenciaCreateComponent,
   },
   {
     path: 'valores_referencia/update/:id',
-    component: ValorReferenciaReadComponent,
+    component: ValorReferenciaCreateComponent,
   },
   {
     path: 'valores_referencia/delete/:id',
