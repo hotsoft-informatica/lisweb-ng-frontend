@@ -184,7 +184,7 @@ import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-
 import { MetodosExamesUpdateComponent } from './components/metodos-exames/metodos-exames-update/metodos-exames-update.component';
 import { AutoCompleteVersaoExameComponent } from './components/auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
 import { AutocompleteTipoInterfaceamentoComponent } from './components/auto-complete/autocomplete-tipo-interfaceamento/autocomplete-tipo-interfaceamento.component';
-import { RequisicaoCreateExamesComponent } from './components/requisicao/requisicao-create/requisicao-create-exames/requisicao-create-exames.component';
+import { RequisicaoUpdateExamesComponent } from './components/requisicao/requisicao-update/requisicao-update-exames/requisicao-update-exames.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -325,7 +325,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MetodosExamesUpdateComponent,
     AutoCompleteVersaoExameComponent,
     AutocompleteTipoInterfaceamentoComponent,
-    RequisicaoCreateExamesComponent,
+    RequisicaoUpdateExamesComponent,
   ],
   imports: [
     HttpClientModule,
