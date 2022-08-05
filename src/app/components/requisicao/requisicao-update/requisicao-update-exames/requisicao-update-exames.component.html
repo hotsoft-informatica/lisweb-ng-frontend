@@ -1,0 +1,56 @@
+<table
+mat-table
+[dataSource]="dataSource"
+matSort
+matSortActive="id"
+matSortDirection="asc"
+matSortDisableClear
+>
+<!-- Id Column -->
+<ng-container matColumnDef="tipo_exame">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header="tipo_exame">Tipo Exame</th>
+  <td mat-cell *matCellDef="let row">{{row?.tipo_exame_id | slice:0:9}}</td>
+</ng-container>
+
+<!-- situacao Column -->
+<ng-container matColumnDef="situacao">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header="situacao">Situação</th>
+  <td mat-cell *matCellDef="let row">{{row?.status | slice:0:15}}</td>
+</ng-container>
+
+<!-- material_biologico Column -->
+<ng-container matColumnDef="material_biologico">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header="material_biologico">Material Biológico</th>
+  <td mat-cell *matCellDef="let row">{{row?.material_biologico_id | slice:0:15}}</td>
+</ng-container>
+
+<!-- nivel_urgencia Column -->
+<ng-container matColumnDef="nivel_urgencia">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header="nivel_urgencia">Nível Urgência</th>
+  <td mat-cell *matCellDef="let row">{{row?.nivel_urgencia | slice:0:12}}</td>
+</ng-container>
+
+<!-- nao_coletado Column -->
+<ng-container matColumnDef="nao_coletado">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header="nao_coletado">Não Coletado</th>
+  <td mat-cell *matCellDef="let row">{{row?.nao_coletar | slice:0:2}}</td>
+</ng-container>
+
+<!-- usuario_conferencia_guia Column -->
+<ng-container matColumnDef="usuario_conferencia_guia">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header="usuario_conferencia_guia">Usuario Conferencia Guia</th>
+  <td mat-cell *matCellDef="let row">{{row?.usuario_conferencia_guia_id| slice:0:15}}</td>
+
+</ng-container>
+<!-- dado_auxiliar Column -->
+<ng-container matColumnDef="dado_auxiliar">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header="dado_auxiliar">Dado Auxiliar</th>
+  <td mat-cell *matCellDef="let row">{{row?.dado_auxiliar}</td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<mat-paginator [length]="this.totalCount" [pageSize]="10"
+[pageSizeOptions]="[10, 20, 50]"></mat-paginator>

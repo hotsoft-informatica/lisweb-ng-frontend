@@ -1,1 +1,73 @@
-<p>requisicao-update works!</p>
+<form>
+  <div>
+    <mat-form-field appearance="fill" class="col-4">
+      <mat-label>Protocolo</mat-label>
+        <input matInput maxlength="8"
+               placeholder="Protocolo"
+               name="num_protocolo"
+               [(ngModel)]="requisicao.num_protocolo"
+               disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-4">
+      <mat-label>Data Requisição:</mat-label>
+      <input matInput placeholder="Data Requisição"
+             name="data_requisicao" type="date"
+             [(ngModel)]="requisicao.data"
+             disabled>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-4">
+      <mat-label>Data de Entrega do Laudo:</mat-label>
+      <input matInput placeholder="Data dehaze Entrega do Laudo"
+             name="data_requisicao_entrega" type="date"
+             disabled>
+    </mat-form-field>
+
+  </div>
+  <div>
+    <mat-form-field appearance="fill" class="col-6">
+      <mat-label>Paciente</mat-label>
+        <input matInput maxlength="50"
+               placeholder="Paciente" name="paciente"
+               [(ngModel)]="requisicao.paciente_id"
+               disabled>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-6">
+      <mat-label>Local De Atendimento</mat-label>
+        <input matInput maxlength="50"
+               placeholder="Local De Atendimento" name="local_atendimento"
+               [(ngModel)]="requisicao.local_atendimento_id"
+               disabled>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-6">
+      <mat-label>Medico</mat-label>
+        <input matInput maxlength="50"
+               placeholder="Medico" name="medico"
+               [(ngModel)]="requisicao.medico_id"
+               disabled>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-6">
+      <mat-label>Convênio</mat-label>
+        <input matInput maxlength="50"
+        placeholder="Convenio" name="convenio"
+        [(ngModel)]="requisicao.convenio_id"
+        disabled>
+    </mat-form-field>
+  </div>
+  <mat-tab-group>
+    <mat-tab label="1-Exames">
+      <app-requisicao-create-exames></app-requisicao-create-exames>
+    </mat-tab>
+    <mat-tab label="2-Amostras">
+
+    </mat-tab>
+    <mat-tab label="3-valores">
+
+    </mat-tab>
+  </mat-tab-group>
+  <button mat-flat-button color="primary" class="fixed-bottom index"
+          (click)="updateRequisicao()">Salvar</button>
+          <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
+          mat-dialog-close>Cancelar</button>
+</form>
