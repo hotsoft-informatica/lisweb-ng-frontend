@@ -22,7 +22,6 @@ export class MetodoExameComponent implements OnInit {
               ) {
     this.metodoExame = this.data.metodoExame;
     this.metodoExame ||= new MetodoExame({});
-    console.table(this.data.metodoExame);
   }
   createMetodoExame(): void {
     console.table(this.metodoExame);
