@@ -1,3 +1,5 @@
+import { MatDialogConfig } from '@angular/material/dialog';
+import { RequisicaoUpdateComponent } from './../requisicao-update/requisicao-update.component';
 import { Query } from '../../model/query.model';
 import { RequisicaoReadDataSource } from './requisicao-read-datasource';
 import { RequisicaoService } from '../../service/requisicao.service';
@@ -20,6 +22,7 @@ import {
   filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-requisicao-read',
@@ -47,7 +50,8 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
 
   query: Query[] = [];
 
-  constructor(private requisicaoService: RequisicaoService) { }
+  constructor(private requisicaoService: RequisicaoService,
+              public dialog: MatDialog) { }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
     const query = new Query({ key, value, isNumeric });
@@ -81,5 +85,19 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
       this.paginator.pageSize,
       this.query
     );
+  }
+  openDialogEdit(id: number) {
+    this.requisicaoService.readById(id).subscribe((requisicao) =>{
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.data = {
+        requisicao: requisicao,
+        width: '750px',
+      }
+
+      const dialogRef = this.dialog.open(RequisicaoUpdateComponent);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    })
   }
 }
