@@ -8,9 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./requisicao-create.component.css']
 })
 export class RequisicaoCreateComponent implements OnInit {
-  @Input('requisicao') requisicao: Requisicao;
   constructor() {
-    this.requisicao = new Requisicao({})
    }
 
   ngOnInit(): void {
