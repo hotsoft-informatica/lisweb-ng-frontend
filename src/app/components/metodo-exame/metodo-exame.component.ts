@@ -24,7 +24,6 @@ export class MetodoExameComponent implements OnInit {
     this.metodoExame ||= new MetodoExame({});
   }
   createMetodoExame(): void {
-    console.table(this.metodoExame);
     this.metodoExameService.create(this.metodoExame).subscribe(() => {
 
     });
