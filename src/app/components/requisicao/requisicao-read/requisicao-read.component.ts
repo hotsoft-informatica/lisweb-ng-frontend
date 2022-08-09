@@ -86,7 +86,7 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
-  openDialogEdit(id: number) {
+  openDialogEdit(id: number): void {
     this.requisicaoService.readById(id).subscribe((requisicao) =>{
       const dialogConfig = new MatDialogConfig();
       dialogConfig.data = {
@@ -94,7 +94,7 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
         width: '750px',
       }
 
-      const dialogRef = this.dialog.open(RequisicaoUpdateComponent);
+      const dialogRef = this.dialog.open(RequisicaoUpdateComponent, dialogConfig);
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
       });
