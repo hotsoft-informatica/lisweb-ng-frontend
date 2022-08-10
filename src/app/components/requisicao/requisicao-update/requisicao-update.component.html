@@ -16,7 +16,7 @@
              [(ngModel)]="requisicao.data"
              disabled>
     </mat-form-field>
-
+    {{requisicao.data}}
     <mat-form-field appearance="fill" class="col-4">
       <mat-label>Data de Entrega do Laudo:</mat-label>
       <input matInput placeholder="Data dehaze Entrega do Laudo"
@@ -30,34 +30,34 @@
       <mat-label>Paciente</mat-label>
         <input matInput maxlength="50"
                placeholder="Paciente" name="paciente"
-               [(ngModel)]="requisicao.paciente_id"
+               [(ngModel)]="this.paciente.nome"
                disabled>
     </mat-form-field>
     <mat-form-field appearance="fill" class="col-6">
       <mat-label>Local De Atendimento</mat-label>
         <input matInput maxlength="50"
                placeholder="Local De Atendimento" name="local_atendimento"
-               [(ngModel)]="requisicao.local_atendimento_id"
+               [(ngModel)]="this.localDeAtendimento.nome"
                disabled>
     </mat-form-field>
     <mat-form-field appearance="fill" class="col-6">
       <mat-label>Medico</mat-label>
         <input matInput maxlength="50"
                placeholder="Medico" name="medico"
-               [(ngModel)]="requisicao.medico_id"
+               [(ngModel)]="this.medicos.nome"
                disabled>
     </mat-form-field>
     <mat-form-field appearance="fill" class="col-6">
       <mat-label>Convênio</mat-label>
         <input matInput maxlength="50"
         placeholder="Convenio" name="convenio"
-        [(ngModel)]="requisicao.convenio_id"
+        [(ngModel)]="this.convenios.nome"
         disabled>
     </mat-form-field>
   </div>
   <mat-tab-group>
     <mat-tab label="1-Exames">
-      <app-requisicao-create-exames></app-requisicao-create-exames>
+      <app-requisicao-create-exames [requisicaoId]="requisicao.id"></app-requisicao-create-exames>
     </mat-tab>
     <mat-tab label="2-Amostras">
     </mat-tab>

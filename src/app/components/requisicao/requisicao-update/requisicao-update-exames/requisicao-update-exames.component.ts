@@ -1,5 +1,6 @@
+import { RequisicaoService } from './../../../service/requisicao.service';
 import { Exame } from '../../../model/exame.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-requisicao-update-exames',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./requisicao-update-exames.component.css']
 })
 export class RequisicaoUpdateExamesComponent implements OnInit {
+  @Input('requisicaoId') requisicaoId!: number;
+
   dataSource: Exame[] = [];
   displayedColumns = [
     'tipo_exame',
@@ -19,9 +22,12 @@ export class RequisicaoUpdateExamesComponent implements OnInit {
   ];
   totalCount!: number;
 
-  constructor() { }
+  constructor(private requisicaoService: RequisicaoService) { }
 
   ngOnInit(): void {
+    this.requisicaoService.searchExames(this.requisicaoId).subscribe((exames)=>{
+      this.dataSource = exames;
+    })
   }
 
 }
