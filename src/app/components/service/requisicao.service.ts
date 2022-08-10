@@ -1,3 +1,5 @@
+import { Medicos } from './../model/medicos.model';
+import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendimento.model';
 import { Requisicao } from './../model/requisicao.model';
 import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
@@ -5,11 +7,15 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Exame } from '../model/exame.model';
+import { Paciente } from '../model/paciente.model';
+import { Convenios } from '../model/convenios.model';
+
 @Injectable({
   providedIn: 'root',
 })
 export class RequisicaoService {
-  baseUrl = '/requisicoes';
+  baseUrl = '/requisicoes/';
 
   query: Query[] = [];
 
@@ -27,6 +33,26 @@ export class RequisicaoService {
       horizontalPosition: 'right',
       verticalPosition: 'top',
     });
+  }
+
+  searchExames(requisicaoId: number): Observable<Exame[]> {
+    return this.http.get<Exame[]>(this.baseUrl + requisicaoId + '/exames');
+  }
+
+  searchPaciente(requisicaoId: number): Observable<Paciente> {
+    return this.http.get<Paciente>(this.baseUrl + requisicaoId + '/paciente');
+  }
+
+  searchLocalDeAtendimento(requisicaoId: number): Observable<LocalDeAtendimento> {
+    return this.http.get<LocalDeAtendimento>(this.baseUrl + requisicaoId + '/paciente');
+  }
+
+  searchMedico(requisicaoId: number): Observable<Medicos> {
+    return this.http.get<Medicos>(this.baseUrl + requisicaoId + '/paciente');
+  }
+
+  searchConvenio(requisicaoId: number): Observable<Convenios> {
+    return this.http.get<Convenios>(this.baseUrl + requisicaoId + '/paciente');
   }
 
   create(requisicao: Requisicao): Observable<Requisicao> {
