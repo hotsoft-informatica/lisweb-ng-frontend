@@ -22,7 +22,7 @@ export class PacienteShowComponent implements OnChanges {
     private pacienteService: PacienteService,
     private route: ActivatedRoute,
     ){
-      this.paciente = new Paciente({}); // alternativa memory leak //Dont repeat yourself DRY
+      this.paciente = new Paciente(); // alternativa memory leak //Dont repeat yourself DRY
 
       this.id = this.route.snapshot.paramMap.get('id') as unknown as number; // abertura por id
       if (this.id > 0) {
