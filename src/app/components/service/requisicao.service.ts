@@ -44,15 +44,15 @@ export class RequisicaoService {
   }
 
   searchLocalDeAtendimento(requisicaoId: number): Observable<LocalDeAtendimento> {
-    return this.http.get<LocalDeAtendimento>(this.baseUrl + requisicaoId + '/paciente');
+    return this.http.get<LocalDeAtendimento>(this.baseUrl + requisicaoId + '/locais_atendimento');
   }
 
   searchMedico(requisicaoId: number): Observable<Medicos> {
-    return this.http.get<Medicos>(this.baseUrl + requisicaoId + '/paciente');
+    return this.http.get<Medicos>(this.baseUrl + requisicaoId + '/medico');
   }
 
   searchConvenio(requisicaoId: number): Observable<Convenios> {
-    return this.http.get<Convenios>(this.baseUrl + requisicaoId + '/paciente');
+    return this.http.get<Convenios>(this.baseUrl + requisicaoId + '/convenio');
   }
 
   create(requisicao: Requisicao): Observable<Requisicao> {
