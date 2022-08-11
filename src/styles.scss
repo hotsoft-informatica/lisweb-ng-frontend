@@ -44,5 +44,9 @@ body {
 
 // https://stackoverflow.com/questions/44950374/angular-material-2-0-autocomplete-suggestions-panel-appears-behind-bootstrap-m/50599696#50599696
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
-  z-index: 99999 !important;
+  z-index: 999 !important;
 }
+.cdk-overlay-backdrop
+ {
+   z-index:998 !important;
+ }
