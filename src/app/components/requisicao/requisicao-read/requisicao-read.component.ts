@@ -9,6 +9,7 @@ import {
   ViewChild,
   Component,
   OnInit,
+  TemplateRef,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -48,6 +49,8 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort: MatSort | any;
 
+  @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
+
   query: Query[] = [];
 
   constructor(private requisicaoService: RequisicaoService,
@@ -86,15 +89,31 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
+
+  delete(id: number): void {
+    const dialogRef = this.dialog.open(this.deleteDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.requisicaoService
+        .delete(id)
+        .subscribe(() => {
+          // this.page = 1;
+          // this.loadBack();
+        });
+      }
+    });
+  }
   openDialogEdit(id: number): void {
     this.requisicaoService.readById(id).subscribe((requisicao) =>{
       const dialogConfig = new MatDialogConfig();
       dialogConfig.data = {
         requisicao: requisicao,
-        width: '750px',
+        width: '90%',
+        disableClose: true,
       }
 
-      const dialogRef = this.dialog.open(RequisicaoUpdateComponent, dialogConfig);
+      const dialogRef = this.dialog.open(RequisicaoUpdateComponent, dialogConfig );
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
       });
