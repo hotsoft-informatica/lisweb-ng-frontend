@@ -17,7 +17,7 @@ export class PacienteCreateComponent implements OnInit {
     private pacienteService: PacienteService,
     private route: ActivatedRoute,
   ) {
-    this.paciente = new Paciente({}); // criando paciente
+    this.paciente = new Paciente(); // criando paciente
 
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
     if (this.id > 0) {

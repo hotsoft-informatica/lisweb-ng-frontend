@@ -15,7 +15,7 @@ export class PacienteCreateDadosContatosComponent implements OnInit {
     private router: Router,
     private pacienteService: PacienteService,
   ) {
-    this.paciente = new Paciente({});
+    this.paciente = new Paciente();
   }
 
   ngOnInit(): void {
