@@ -18,7 +18,7 @@ export class MaterialBiologicoService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
   }
 
   showMessage(msg: string): void {

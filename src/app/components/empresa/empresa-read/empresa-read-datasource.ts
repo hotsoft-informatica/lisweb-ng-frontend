@@ -36,7 +36,6 @@ export class EmpresaReadDataSource implements DataSource<Empresa> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<Empresa[]> {
-    console.log('Conectando ao data source');
     return this.empresasSubject.asObservable();
   }
 

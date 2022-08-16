@@ -23,7 +23,7 @@ export class ResponsavelTecnicoService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
     this.showSignatureUrl = backendIpService.getUrl() + this.showSignatureUrl;
   }
 

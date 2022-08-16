@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BackendIpService } from '../service/backend-ip.service';
 import { LaboratoryDomain } from '../model/laboratory-domain.model';
-import { EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class LaboratoryDomainService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
   }
 
   showMessage(msg: string): void {

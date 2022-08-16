@@ -87,7 +87,9 @@ import { ValorReferenciaReadComponent } from './components/valor-referencia/valo
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
+import { LancamentoComponent } from './components/lancamento/lancamento.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
+
 
 const routes: Routes = [
   {
@@ -473,6 +475,10 @@ const routes: Routes = [
   {
     path: 'backend_ip/create',
     component: BackendIpComponent,
+  },
+  {
+    path: 'lancamentos',
+    component: LancamentoComponent,
   },
 ];
 
