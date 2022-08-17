@@ -1,3 +1,5 @@
+import { VersaoExame } from "./versao-exame.model";
+
 export class ParametroVersaoExame {
   public id?: number;
   public laboratorio_id?: number;
@@ -10,6 +12,7 @@ export class ParametroVersaoExame {
   public deleted?: boolean;
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
+  public versaoExame?: VersaoExame;
 
   constructor(values: ParametroVersaoExame) {
     Object.assign(this, values);
