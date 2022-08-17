@@ -3,10 +3,11 @@ import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
-import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { MatTableDataSource } from '@angular/material/table';
+
 @Component({
   selector: 'app-versao-exame-parametro',
   templateUrl: './versao-exame-parametro.component.html',
@@ -15,6 +16,8 @@ import { debounceTime } from 'rxjs/operators';
 export class VersaoExameParametroComponent implements OnChanges {
   @Input('versaoExame') versaoExame!: VersaoExame;
   @Input('parametrosVersaoExame') parametrosVersaoExame: ParametroVersaoExame[] = [];
+  datasource = new MatTableDataSource<any>([]);
+
   totalCount!: number;
   currentParametroVersaoExame: ParametroVersaoExame = new ParametroVersaoExame({});
 
@@ -26,10 +29,11 @@ export class VersaoExameParametroComponent implements OnChanges {
   constructor(
     private router: Router,
     private versaoExameService: VersaoExameService,
-    private parametroVersaoExameService: ParametroVersaoExameService
+    private parametroVersaoExameService: ParametroVersaoExameService,
   ) { }
 
   ngOnChanges(): void {
+    this.datasource.data = this.parametrosVersaoExame;
     console.warn(this.versaoExame?.id);
     if (this.versaoExame?.id && this.parametrosVersaoExame.length == 0) {
       this.parametroVersaoExameService
@@ -40,4 +44,12 @@ export class VersaoExameParametroComponent implements OnChanges {
         });
     }
   }
+
+  addParametroVersaoExame(): void {
+    this.parametrosVersaoExame.push(this.currentParametroVersaoExame);
+    this.currentParametroVersaoExame = new ParametroVersaoExame({});
+    this.datasource.data = this.parametrosVersaoExame;
+    // Mensagem bonita
+  }
+
 }

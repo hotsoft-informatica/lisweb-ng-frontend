@@ -16,17 +16,17 @@
   </div>
 
   <div>
-    <button mat-flat-button color="primary" class="fixed-bottom index">
-      Salvar / Alterar
+    <button mat-flat-button color="primary" class="fixed-bottom index" (click)="addParametroVersaoExame()">
+      Adicionar / Alterar
     </button>
     <button mat-flat-button color="warn" class="fixed-bottom index ms-2">Cancelar</button>
   </div>
 </div>
-
+<!-- {{ this.parametrosVersaoExame | json}} -->
 <div class="mat-elevation-z4">
   <table
     mat-table
-    [dataSource]="this.parametrosVersaoExame"
+    [dataSource]="this.datasource"
   >
     <!-- Chave Column -->
     <ng-container matColumnDef="chave">
