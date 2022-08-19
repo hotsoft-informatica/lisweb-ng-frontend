@@ -3,7 +3,7 @@ import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,15 +16,15 @@ import { MatTableDataSource } from '@angular/material/table';
 export class VersaoExameParametroComponent implements OnChanges {
   @Input('versaoExame') versaoExame!: VersaoExame;
   @Input('parametrosVersaoExame') parametrosVersaoExame: ParametroVersaoExame[] = [];
-  datasource = new MatTableDataSource<any>([]);
 
+  datasource = new MatTableDataSource<any>([]);
   totalCount!: number;
+  oldParametroVersaoExame: ParametroVersaoExame = new ParametroVersaoExame({});
   currentParametroVersaoExame: ParametroVersaoExame = new ParametroVersaoExame({});
+  subjectParametroVersaoExame: Subject<any> = new Subject();
+  queries: Query[] = [];
 
   displayedColumns = ['chave', 'valor', 'action'];
-
-  queries: Query[] = [];
-  subjectParametroVersaoExame: Subject<any> = new Subject();
 
   constructor(
     private router: Router,
@@ -49,7 +49,21 @@ export class VersaoExameParametroComponent implements OnChanges {
     this.parametrosVersaoExame.push(this.currentParametroVersaoExame);
     this.currentParametroVersaoExame = new ParametroVersaoExame({});
     this.datasource.data = this.parametrosVersaoExame;
-    // Mensagem bonita
+    this.parametroVersaoExameService.showMessage('Parâmetro versão de exame adicionado com sucesso!');
   }
 
+  cancelar(): void {
+    Object.assign(this.currentParametroVersaoExame, this.oldParametroVersaoExame);
+    this.currentParametroVersaoExame = new ParametroVersaoExame({});
+  }
+
+  updateParametroVersaoExame(row: ParametroVersaoExame): void {
+    Object.assign(this.oldParametroVersaoExame, row);
+    this.currentParametroVersaoExame = row;
+  }
+
+  delete(position: number) {
+    this.parametrosVersaoExame.splice(position, 1);
+    this.datasource.data = this.parametrosVersaoExame;
+  }
 }
