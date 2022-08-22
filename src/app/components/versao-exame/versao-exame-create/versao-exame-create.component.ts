@@ -81,7 +81,7 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
 
     // Traz o dado do componente filho
     this.parametrosVersaoExame = this.parametrosComponent.parametrosVersaoExame;
-    console.table(this.parametrosVersaoExame);
+
     this.versaoExameService.update(this.versaoExame).subscribe((versaoExame) => {
       this.versaoExame = versaoExame;
 
@@ -104,9 +104,7 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
         });
       }
 
-      console.table(this.requests);
       forkJoin(this.requests).subscribe(() => {
-        console.warn('Rodou o Forkjoin');
         this.requests = [];
         this.router.navigate(['/versao_exames']).then(() => {
           window.location.reload();
@@ -118,7 +116,6 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   loadVersaoExame(id: number): void {
     this.versaoExameService.readById(id).subscribe((versaoExame) => {
       this.versaoExame = versaoExame;
-      console.warn(this.versaoExame.tipo_exame_id);
 
       this.parametroVersaoExameService
         .getByVersaoExameId(this.versaoExame?.id as number)
