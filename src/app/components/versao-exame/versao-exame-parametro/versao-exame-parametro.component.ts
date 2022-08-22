@@ -62,7 +62,9 @@ export class VersaoExameParametroComponent implements OnChanges {
     this.currentParametroVersaoExame = row;
   }
 
-  delete(position: number) {
+  deleteGrid(position: number) {
+    console.table(this.datasource.data);
+
     this.parametrosVersaoExame.splice(position, 1);
     this.datasource.data = this.parametrosVersaoExame;
   }
