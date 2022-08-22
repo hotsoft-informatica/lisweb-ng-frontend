@@ -20,7 +20,7 @@ import {
 import {
   debounceTime,
 } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, forkJoin, Observable, from, map } from 'rxjs';
 
 @Component({
   selector: 'app-versao-exame-create',
@@ -36,6 +36,8 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   queries: Query[] = [];
   subject: Subject<any> = new Subject();
   id: number;
+
+  requests: Observable<any>[] = [];
 
   @ViewChild(VersaoExameParametroComponent)
   private parametrosComponent!: VersaoExameParametroComponent;
@@ -76,10 +78,10 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   }
 
   updateVersaoExame(): void {
+
     // Traz o dado do componente filho
     this.parametrosVersaoExame = this.parametrosComponent.parametrosVersaoExame;
     console.table(this.parametrosVersaoExame);
-
     this.versaoExameService.update(this.versaoExame).subscribe((versaoExame) => {
       this.versaoExame = versaoExame;
 
@@ -88,56 +90,30 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
         parametroVersaoExame.versao_exame_id = this.versaoExame.id;
 
         if (parametroVersaoExame.id as number > 0) {
-          this.parametroVersaoExameService
-            .update(parametroVersaoExame)
-            .subscribe();
+          this.requests.push(this.parametroVersaoExameService
+            .update(parametroVersaoExame));
         } else {
-          this.parametroVersaoExameService
-            .create(parametroVersaoExame)
-            .subscribe();
+          this.requests.push(this.parametroVersaoExameService
+            .create(parametroVersaoExame));
         }
       });
-      this.router.navigate(['/versao_exames']).then(() => {
-        window.location.reload();
+
+      if (this.requests.length == 0) {
+        this.router.navigate(['/versao_exames']).then(() => {
+          window.location.reload();
+        });
+      }
+
+      console.table(this.requests);
+      forkJoin(this.requests).subscribe(() => {
+        console.warn('Rodou o Forkjoin');
+        this.requests = [];
+        this.router.navigate(['/versao_exames']).then(() => {
+          window.location.reload();
+        });
       });
     });
   }
-
-  // updateVersaoExame(): void {
-  //   // Traz o dado do componente filho
-  //   this.parametrosVersaoExame = this.parametrosComponent.parametrosVersaoExame;
-  //   console.table(this.parametrosVersaoExame);
-
-  //   if (this.parametrosVersaoExame.length == 0 || this.parametrosVersaoExame.length > 0) {
-  //     this.versaoExameService.update(this.versaoExame).subscribe((versaoExame) => {
-  //       this.versaoExame = versaoExame;
-  //       // Salva os parametros
-  //       this.parametrosVersaoExame.forEach((parametroVersaoExame) => {
-  //         parametroVersaoExame.versao_exame_id = this.versaoExame.id;
-
-  //         if (parametroVersaoExame.id as number > 0) {
-  //           this.parametroVersaoExameService
-  //             .update(parametroVersaoExame)
-  //             .subscribe();
-  //           this.parametroVersaoExameService.showMessage('Parâmetro versão de exame atualizado com sucesso!');
-  //         } else {
-  //           this.parametroVersaoExameService
-  //             .create(parametroVersaoExame)
-  //             .subscribe();
-  //           this.parametroVersaoExameService.showMessage('Parâmetro versão de exame criado com sucesso!');
-  //         }
-  //       });
-  //     });
-  //   } else {
-  //     this.versaoExameService.update(this.versaoExame).subscribe((versaoExame) => {
-  //       this.versaoExame = versaoExame;
-
-  //       this.router.navigate(['/versao_exames']).then(() => {
-  //         window.location.reload();
-  //       });
-  //     });
-  //   }
-  // }
 
   loadVersaoExame(id: number): void {
     this.versaoExameService.readById(id).subscribe((versaoExame) => {
