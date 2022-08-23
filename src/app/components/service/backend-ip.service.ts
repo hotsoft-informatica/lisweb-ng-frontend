@@ -26,7 +26,6 @@ export class BackendIpService {
   }
 
   getUrl(): string {
-    console.log("Passou pelo getUrl")
     this.ipUrl = `http://${this.getIp().ip}:3010`;
 
     return this.ipUrl;
