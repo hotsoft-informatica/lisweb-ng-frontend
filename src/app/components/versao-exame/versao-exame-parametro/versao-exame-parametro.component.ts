@@ -25,21 +25,25 @@ export class VersaoExameParametroComponent implements OnChanges {
   queries: Query[] = [];
 
   displayedColumns = ['chave', 'valor', 'action'];
+  parametrosApagados: ParametroVersaoExame[] = [];
+
+  onEdit = false;
+  onCreate = false;
 
   constructor(
     private router: Router,
     private versaoExameService: VersaoExameService,
     private parametroVersaoExameService: ParametroVersaoExameService,
-  ) { }
+  ) {
+    this.currentParametroVersaoExame = new ParametroVersaoExame({});
+  }
 
   ngOnChanges(): void {
     this.datasource.data = this.parametrosVersaoExame;
-    console.warn(this.versaoExame?.id);
     if (this.versaoExame?.id && this.parametrosVersaoExame.length == 0) {
       this.parametroVersaoExameService
         .getByVersaoExameId(this.versaoExame.id as number)
         .subscribe((parametrosVersaoExame) => {
-          console.table(this.parametrosVersaoExame);
           this.parametrosVersaoExame = parametrosVersaoExame;
         });
     }
@@ -52,19 +56,27 @@ export class VersaoExameParametroComponent implements OnChanges {
     this.parametroVersaoExameService.showMessage('Parâmetro versão de exame adicionado com sucesso!');
   }
 
+  atualizar(): void {
+    this.onCreate = false;
+    this.onEdit = false;
+  }
+
   cancelar(): void {
+    this.onCreate = false;
+    this.onEdit = false;
     Object.assign(this.currentParametroVersaoExame, this.oldParametroVersaoExame);
     this.currentParametroVersaoExame = new ParametroVersaoExame({});
   }
 
   updateParametroVersaoExame(row: ParametroVersaoExame): void {
+    this.onCreate = false;
+    this.onEdit = true;
     Object.assign(this.oldParametroVersaoExame, row);
     this.currentParametroVersaoExame = row;
   }
 
   deleteGrid(position: number) {
-    console.table(this.datasource.data);
-
+    this.parametrosApagados.push(this.parametrosVersaoExame[position]);
     this.parametrosVersaoExame.splice(position, 1);
     this.datasource.data = this.parametrosVersaoExame;
   }

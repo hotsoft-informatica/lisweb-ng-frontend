@@ -1,27 +1,32 @@
 <div class="mat-elevation-z4">
   <div class="row justify-content-around">
     <div>
-      Criar parâmetro
+      <button mat-mini-fab color="primary" title="Adicionar parâmetro"
+      (click)="onCreate=true" *ngIf="!onCreate && !onEdit">
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
-  
-    <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-      <mat-label>Chave:</mat-label>
-      <input matInput maxlength="50" name="chave" [(ngModel)]="currentParametroVersaoExame.chave">
-    </mat-form-field>
+    <div *ngIf="onCreate || onEdit">
+      <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+        <mat-label>Chave:</mat-label>
+        <input matInput maxlength="50" name="chave" [(ngModel)]="currentParametroVersaoExame.chave">
+      </mat-form-field>
 
-    <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-      <mat-label>Valor:</mat-label>
-      <input matInput maxlength="50" name="valor" [(ngModel)]="currentParametroVersaoExame.valor">
-    </mat-form-field>
+      <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+        <mat-label>Valor:</mat-label>
+        <input matInput maxlength="50" name="valor" [(ngModel)]="currentParametroVersaoExame.valor">
+      </mat-form-field>
+      
+      <div>
+        <button mat-button
+        (click)="addParametroVersaoExame()" *ngIf="onCreate">Salvar</button>
+        <button mat-button
+        (click)="atualizar()" *ngIf="onEdit">Salvar</button>
+        <button mat-button color="warn"
+        (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <button mat-flat-button color="primary" class="fixed-bottom index"
-    (click)="addParametroVersaoExame()">Adicionar</button>
-    <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
-    (click)="cancelar()">Cancelar</button>
-  </div>
-
 </div>
 
 <div class="mat-elevation-z4">
