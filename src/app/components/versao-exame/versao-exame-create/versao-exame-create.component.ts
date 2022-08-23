@@ -78,12 +78,19 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   }
 
   updateVersaoExame(): void {
-
     // Traz o dado do componente filho
     this.parametrosVersaoExame = this.parametrosComponent.parametrosVersaoExame;
 
     this.versaoExameService.update(this.versaoExame).subscribe((versaoExame) => {
       this.versaoExame = versaoExame;
+
+      this.parametrosComponent.parametrosApagados.forEach((parametroApagado) => {
+        console.log("Apagando o parametro: " + parametroApagado.id);
+        if (parametroApagado.id as number > 0) {
+          this.requests.push(this.parametroVersaoExameService
+            .delete(parametroApagado.id as number));
+        };
+      });
 
       // Salva os parametros
       this.parametrosVersaoExame.forEach((parametroVersaoExame) => {
@@ -100,14 +107,12 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
 
       if (this.requests.length == 0) {
         this.router.navigate(['/versao_exames']).then(() => {
-          window.location.reload();
         });
       }
 
       forkJoin(this.requests).subscribe(() => {
         this.requests = [];
         this.router.navigate(['/versao_exames']).then(() => {
-          window.location.reload();
         });
       });
     });
