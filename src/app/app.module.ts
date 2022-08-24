@@ -185,6 +185,10 @@ import { AutoCompleteVersaoExameComponent } from './components/auto-complete/aut
 import { AutocompleteTipoInterfaceamentoComponent } from './components/auto-complete/autocomplete-tipo-interfaceamento/autocomplete-tipo-interfaceamento.component';
 import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
+import { LaboratoryGetFilterCreateComponent } from './components/laboratory-get-filter/laboratory-get-filter-create/laboratory-get-filter-create.component';
+import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
+import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-filter/laboratory-get-filter-delete/laboratory-get-filter-delete.component';
+import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
 
 
 registerLocaleData(localePt);
@@ -326,6 +330,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameReadComponent,
     VersaoExameStatusPipe,
     VersaoExameUpdateComponent,
+    LaboratoryGetFilterCreateComponent,
+    LaboratoryGetFilterUpdateComponent,
+    LaboratoryGetFilterDeleteComponent,
+    LaboratoryGetFilterReadComponent,
   ],
   imports: [
     HttpClientModule,
