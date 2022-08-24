@@ -17,8 +17,7 @@ table {
   margin-right: 10px
 }
 
-.mat-column-action {
-  text-align: center;
-  padding: 15px 0;
-  justify-content: flex-end;
+.gridAddButton {
+  display: flex;
+  justify-content:flex-end;
 }

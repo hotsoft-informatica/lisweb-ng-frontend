@@ -83,9 +83,11 @@ export class VersaoExameParametroComponent implements OnChanges {
     const dialogRef = this.dialog.open(this.deleteDialog);
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.parametrosApagados.push(this.parametrosVersaoExame[position]);
-      this.parametrosVersaoExame.splice(position, 1);
-      this.datasource.data = this.parametrosVersaoExame;
+      if (result) {
+        this.parametrosApagados.push(this.parametrosVersaoExame[position]);
+        this.parametrosVersaoExame.splice(position, 1);
+        this.datasource.data = this.parametrosVersaoExame;
+      }
     });
   }
 }
