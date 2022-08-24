@@ -1,9 +1,10 @@
+import { MatDialog } from '@angular/material/dialog';
 import { Query } from 'src/app/components/model/query.model';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
-import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, ViewChild, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
@@ -23,14 +24,17 @@ export class VersaoExameParametroComponent implements OnChanges {
   currentParametroVersaoExame: ParametroVersaoExame = new ParametroVersaoExame({});
   subjectParametroVersaoExame: Subject<any> = new Subject();
   queries: Query[] = [];
+  parametrosApagados: ParametroVersaoExame[] = [];
 
   displayedColumns = ['chave', 'valor', 'action'];
-  parametrosApagados: ParametroVersaoExame[] = [];
+
+  @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
 
   onEdit = false;
   onCreate = false;
 
   constructor(
+    public dialog: MatDialog,
     private router: Router,
     private versaoExameService: VersaoExameService,
     private parametroVersaoExameService: ParametroVersaoExameService,
@@ -76,8 +80,12 @@ export class VersaoExameParametroComponent implements OnChanges {
   }
 
   deleteGrid(position: number) {
-    this.parametrosApagados.push(this.parametrosVersaoExame[position]);
-    this.parametrosVersaoExame.splice(position, 1);
-    this.datasource.data = this.parametrosVersaoExame;
+    const dialogRef = this.dialog.open(this.deleteDialog);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      this.parametrosApagados.push(this.parametrosVersaoExame[position]);
+      this.parametrosVersaoExame.splice(position, 1);
+      this.datasource.data = this.parametrosVersaoExame;
+    });
   }
 }
