@@ -48,7 +48,7 @@ export class LaboratoryGetFilterCreateComponent implements OnInit {
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
-      this.clientServerTableService.findClientServerTables('id', 'asc', 0, 60, this.queries).subscribe((clientServerTables) => {
+      this.clientServerTableService.findClientServerTables('client_name', 'asc', 0, 60, this.queries).subscribe((clientServerTables) => {
           console.table(this.queries);
           this.clientServerTables = clientServerTables;
         });
@@ -72,7 +72,7 @@ export class LaboratoryGetFilterCreateComponent implements OnInit {
   search(): void {
     const query_string = this.laboratory_get_filter.client_server_table_id as unknown as string;
     const query = new Query({
-      key: 'name',
+      key: 'client_name',
       value: query_string,
       isNumeric: false,
     });

@@ -9,7 +9,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class LaboratoryGetFilterService {
-  baseUrl = '/laboratorio_get_filters';
+  baseUrl = '/laboratory_get_filters';
 
   query: Query[] = [];
   labDomains = [];
