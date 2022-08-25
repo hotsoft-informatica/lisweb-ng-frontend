@@ -5,9 +5,9 @@ import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
-import { Component, Input, OnChanges, ViewChild, TemplateRef } from '@angular/core';
+import { Component, Input, OnChanges, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, timer } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -27,16 +27,18 @@ export class VersaoExameParametroComponent implements OnChanges {
   queries: Query[] = [];
   parametrosApagados: ParametroVersaoExame[] = [];
 
-  displayedColumns = ['id', 'chave', 'valor', 'action'];
+  displayedColumns = ['chave', 'valor', 'action'];
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort = new MatSort({});
+  @ViewChild('chave') chave!: ElementRef;
 
   onEdit = false;
   onCreate = false;
 
   constructor(
     public dialog: MatDialog,
+    private renderer: Renderer2,
     private router: Router,
     private versaoExameService: VersaoExameService,
     private parametroVersaoExameService: ParametroVersaoExameService,
@@ -44,7 +46,22 @@ export class VersaoExameParametroComponent implements OnChanges {
     this.currentParametroVersaoExame = new ParametroVersaoExame({});
   }
 
+  new(): void {
+    this.onCreate = true;
+    this.onFocus();
+  }
+
+  onFocus(): void {
+    timer(250).subscribe(() => {
+      if (this.chave !== undefined) {
+        console.log("Entrou no onfocus");
+        this.renderer.selectRootElement(this.chave["nativeElement"]).focus();
+      }
+    });
+  }
+
   ngOnChanges(): void {
+
     this.datasource.data = this.parametrosVersaoExame;
     this.datasource.sort = this.sort;
 
@@ -63,15 +80,17 @@ export class VersaoExameParametroComponent implements OnChanges {
   }
 
   addParametroVersaoExame(): void {
-    this.parametrosVersaoExame.push(this.currentParametroVersaoExame);
+    this.parametrosVersaoExame.unshift(this.currentParametroVersaoExame);
     this.currentParametroVersaoExame = new ParametroVersaoExame({});
     this.datasource.data = this.parametrosVersaoExame;
     this.parametroVersaoExameService.showMessage('Parâmetro versão de exame adicionado com sucesso!');
+    this.onFocus();
   }
 
   atualizar(): void {
     this.onCreate = false;
     this.onEdit = false;
+    this.onFocus();
   }
 
   cancelar(): void {
@@ -86,10 +105,16 @@ export class VersaoExameParametroComponent implements OnChanges {
     this.onEdit = true;
     Object.assign(this.oldParametroVersaoExame, row);
     this.currentParametroVersaoExame = row;
+    this.onFocus();
   }
 
   deleteGrid(position: number) {
+    console.log(position);
     const dialogRef = this.dialog.open(this.deleteDialog);
+
+    this.onCreate = false;
+    this.onEdit = false;
+    this.currentParametroVersaoExame = new ParametroVersaoExame({});
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {

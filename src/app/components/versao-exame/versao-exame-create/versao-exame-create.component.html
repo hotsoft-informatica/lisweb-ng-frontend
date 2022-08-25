@@ -39,8 +39,8 @@
 </mat-tab-group>
 
 <div class="gridAddButton">
-  <button mat-flat-button color="primary" class="m-2"
+  <button appDebounceClick mat-flat-button color="primary" class="m-2"
     (click)="createVersaoExame()">Salvar</button>
-  <button mat-flat-button color="warn" class="m-2"
+  <button appDebounceClick mat-flat-button color="warn" class="m-2"
     (click)="cancel()">Cancelar</button>
 </div>
