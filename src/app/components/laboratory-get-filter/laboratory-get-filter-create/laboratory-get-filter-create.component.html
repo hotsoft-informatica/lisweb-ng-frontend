@@ -1,58 +1,54 @@
 <mat-card>
-    <mat-card-title>Novo filtro de GET para o Híbrido</mat-card-title>
-    <form>
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          placeholder="Nome"
-          [(ngModel)]="laboratorio.nome"
-          name="name"
-        />
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          placeholder="2000"
-          [(ngModel)]="laboratorio.serie"
-          name="serie"
-        />
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Laboratório domínio</mat-label>
-        <input
-          name="laboratory_domain"
-          matInput [matAutocomplete]="auto" 
-          [(ngModel)]="laboratorio.laboratory_domain_id"
-          (ngModelChange)="search()"
-        />
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(laboratoryDomains)">
-          <mat-option *ngFor="let laboratoryDomain of laboratoryDomains" [value]="laboratoryDomain.id">
-            {{laboratoryDomain.name}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <input
-          matInput
-          [matDatepicker]="criado_em"
-          placeholder="Criado em"
-          [(ngModel)]="laboratorio.criado_em"
-          name="criado em"
-          required
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="criado_em"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #criado_em></mat-datepicker>
-      </mat-form-field>
-    </form>
-    <button mat-raised-button (click)="createLaboratorio()" color="primary">
-      Salvar
-    </button>
-    <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
-  </mat-card>
+  <mat-card-title>Novo filtro de GET para o Híbrido</mat-card-title>
+  <form>
+    <mat-form-field appearance="fill" [style.width.%]="25">
+      <input
+        matInput
+        required
+        placeholder="Nome"
+        [(ngModel)]="laboratory_get_filter.name"
+        name="name"
+      />
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill" [style.width.%]="25">
+      <mat-label>Tabela</mat-label>
+      <input
+        required
+        name="client_server_table"
+        matInput [matAutocomplete]="auto" 
+        [(ngModel)]="laboratory_get_filter.client_server_table_id"
+        (ngModelChange)="search()"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(clientServerTables)">
+        <mat-option *ngFor="let clientServerTable of clientServerTables" [value]="clientServerTable.id">
+          {{clientServerTable.client_name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill" [style.width.%]="50">
+      <mat-label>Where</mat-label>
+      <textarea 
+        matInput 
+        required
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="10"
+        cdkAutosizeMaxRows="50"
+        placeholder="Where" 
+        name="custom_where" 
+        [(ngModel)]="laboratory_get_filter.custom_where">
+      </textarea>
+    </mat-form-field> 
+  </form>
+  <button mat-raised-button (click)="createLaboratoryGetFilter()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+</mat-card>
   

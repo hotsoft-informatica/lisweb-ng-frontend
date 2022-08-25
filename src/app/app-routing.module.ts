@@ -88,7 +88,10 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
-
+import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
+import { LaboratoryGetFilterCreateComponent } from './components/laboratory-get-filter/laboratory-get-filter-create/laboratory-get-filter-create.component';
+import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-filter/laboratory-get-filter-delete/laboratory-get-filter-delete.component';
+import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -473,6 +476,22 @@ const routes: Routes = [
   {
     path: 'backend_ip/create',
     component: BackendIpComponent,
+  },
+  {
+    path: 'laboratory_get_filters/create',
+    component: LaboratoryGetFilterCreateComponent,
+  },
+  {
+    path: 'laboratory_get_filters/update',
+    component: LaboratoryGetFilterUpdateComponent,
+  },
+  {
+    path: 'laboratory_get_filters/delete',
+    component: LaboratoryGetFilterDeleteComponent,
+  },
+  {
+    path: 'laboratory_get_filters/read',
+    component: LaboratoryGetFilterReadComponent,
   },
 ];
 
