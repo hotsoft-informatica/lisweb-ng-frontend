@@ -1,4 +1,5 @@
 import { MatDialog } from '@angular/material/dialog';
+import { MatSort, Sort } from '@angular/material/sort';
 import { Query } from 'src/app/components/model/query.model';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
@@ -26,9 +27,10 @@ export class VersaoExameParametroComponent implements OnChanges {
   queries: Query[] = [];
   parametrosApagados: ParametroVersaoExame[] = [];
 
-  displayedColumns = ['chave', 'valor', 'action'];
+  displayedColumns = ['id', 'chave', 'valor', 'action'];
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
+  @ViewChild(MatSort) sort: MatSort = new MatSort({});
 
   onEdit = false;
   onCreate = false;
@@ -44,6 +46,13 @@ export class VersaoExameParametroComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.datasource.data = this.parametrosVersaoExame;
+    this.datasource.sort = this.sort;
+
+    const sortState: Sort = { active: 'id', direction: 'desc' }
+    this.sort.active = sortState.active;
+    this.sort.direction = sortState.direction
+    this.sort.sortChange.emit(sortState);
+
     if (this.versaoExame?.id && this.parametrosVersaoExame.length == 0) {
       this.parametroVersaoExameService
         .getByVersaoExameId(this.versaoExame.id as number)
