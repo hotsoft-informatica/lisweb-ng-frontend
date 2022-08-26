@@ -8,24 +8,55 @@
     </div>
 
     <div *ngIf="onCreate || onEdit">
-      <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-        <mat-label>Chave:</mat-label>
-        <input #chave matInput maxlength="50" name="chave" [(ngModel)]="currentParametroVersaoExame.chave" autofocus>
-      </mat-form-field>
+      <form #formCreateParametro="ngForm">
+        <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+          <mat-label>Chave:</mat-label>
+          <input
+            type="text"
+            id="chave"
+            required
+            matInput
+            maxlength="50"
+            name="chave"
+            [(ngModel)]="currentParametroVersaoExame.chave"
+            #chave2="ngModel"
+            #chave
+            autofocus
+          >
+          <mat-error *ngIf="chave2.invalid && (chave2.dirty || chave2.touched)">
+            <span *ngIf="chave2.errors?.['required']">
+                O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-        <mat-label>Valor:</mat-label>
-        <input matInput maxlength="50" name="valor" [(ngModel)]="currentParametroVersaoExame.valor">
-      </mat-form-field>
-      
-      <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
-        <button mat-button
-        (click)="addParametroVersaoExame()" *ngIf="onCreate">Inserir</button>
-        <button mat-button
-        (click)="atualizar()" *ngIf="onEdit">Alterar</button>
-        <button mat-button color="warn"
-        (click)="cancelar()">Cancelar</button>
-      </div>
+        <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+          <mat-label>Valor:</mat-label>
+          <input
+            type="text"
+            id="valor"
+            required
+            matInput
+            maxlength="50"
+            name="valor"
+            [(ngModel)]="currentParametroVersaoExame.valor"
+            #valor="ngModel"
+          >
+          <mat-error *ngIf="valor.invalid && (valor.dirty || valor.touched)">
+            <span *ngIf="valor.errors?.['required']">
+                O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+        <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
+          <button mat-button
+          (click)="addParametroVersaoExame()" *ngIf="onCreate" [disabled]="formCreateParametro.invalid">Inserir</button>
+          <button mat-button
+          (click)="atualizar()" *ngIf="onEdit">Alterar</button>
+          <button mat-button color="warn"
+          (click)="cancelar()">Cancelar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
