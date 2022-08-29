@@ -482,15 +482,15 @@ const routes: Routes = [
     component: LaboratoryGetFilterCreateComponent,
   },
   {
-    path: 'laboratory_get_filters/update',
+    path: 'laboratory_get_filters/update/:id',
     component: LaboratoryGetFilterUpdateComponent,
   },
   {
-    path: 'laboratory_get_filters/delete',
+    path: 'laboratory_get_filters/delete/:id',
     component: LaboratoryGetFilterDeleteComponent,
   },
   {
-    path: 'laboratory_get_filters/read',
+    path: 'laboratory_get_filters',
     component: LaboratoryGetFilterReadComponent,
   },
 ];

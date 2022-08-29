@@ -86,7 +86,7 @@ export class LaboratoryGetFilterCreateComponent implements OnInit {
       const correspondingOption = Array.isArray(options)
         ? options.find((option) => option.id === id)
         : null;
-      return correspondingOption ? correspondingOption.name : '';
+      return correspondingOption ? correspondingOption.name: '';
     };
   }
 }

@@ -64,7 +64,7 @@ export class LaboratoryGetFilterService {
     return this.http.delete<LaboratoryGetFilter>(url);
   }
 
-  findLaboratoryGetFilter(
+  findLaboratoryGetFilters(
     active: string = '',
     sortOrder: string = 'asc',
     pageNumber: number = 1,
@@ -88,7 +88,7 @@ export class LaboratoryGetFilterService {
     });
   }
 
-  countLaboratorios(): Observable<number> {
+  countLaboratoryGetFilter(): Observable<number> {
     return this.http.get<number>(this.baseUrl, {
       params: new HttpParams().set('totalCount', 'true'),
     });
