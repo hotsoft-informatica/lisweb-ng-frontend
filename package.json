@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1402.1",
-    "@angular-devkit/schematics": "^14.1.2",
+    "@angular-devkit/schematics": "^14.2.1",
     "@angular/compiler": "^14.0.1",
     "@nrwl/workspace": "^14.6.4",
     "@types/node": "^18.7.15",
