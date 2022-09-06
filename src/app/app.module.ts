@@ -191,6 +191,10 @@ import { ValorReferenciaReadComponent } from './components/valor-referencia/valo
 import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
 import { LancamentoComponent } from './components/lancamento/lancamento.component';
 import { RequisicaoUpdateExamesComponent } from './components/requisicao/requisicao-update/requisicao-update-exames/requisicao-update-exames.component';
+import { LaboratoryGetFilterCreateComponent } from './components/laboratory-get-filter/laboratory-get-filter-create/laboratory-get-filter-create.component';
+import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
+import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-filter/laboratory-get-filter-delete/laboratory-get-filter-delete.component';
+import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -344,6 +348,10 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     AutoCompleteVersaoExameComponent,
     AutocompleteTipoInterfaceamentoComponent,
     RequisicaoUpdateExamesComponent,
+    LaboratoryGetFilterCreateComponent,
+    LaboratoryGetFilterUpdateComponent,
+    LaboratoryGetFilterDeleteComponent,
+    LaboratoryGetFilterReadComponent,
   ],
   imports: [
     HttpClientModule,

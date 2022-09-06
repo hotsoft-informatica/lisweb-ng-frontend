@@ -1,0 +1,46 @@
+<mat-card>
+  <mat-card-title>Editar filtro de GET para o Híbrido</mat-card-title>
+  <form *ngIf="laboratoryGetFilter" >
+    <mat-form-field appearance="fill" [style.width.%]="25">
+      <input
+        matInput
+        required
+        placeholder="Nome"
+        [(ngModel)]="laboratoryGetFilter.name"
+        name="name"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill" [style.width.%]="25">
+      <mat-label>Tabela</mat-label>
+      <input
+        #required
+        name="clientServerTable"
+        matInput [matAutocomplete]="auto" 
+        [(ngModel)]="laboratoryGetFilter.client_server_table_id"
+        (ngModelChange)="search()"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(clientServerTables)">
+        <mat-option *ngFor="let clientServerTable of clientServerTables" [value]="clientServerTable.id">
+          {{clientServerTable.client_name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" [style.width.%]="50">
+      <mat-label>Where</mat-label>
+      <textarea 
+        matInput 
+        required
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="10"
+        cdkAutosizeMaxRows="50"
+        placeholder="Where" 
+        name="custom_where" 
+        [(ngModel)]="laboratoryGetFilter.custom_where">
+      </textarea>
+    </mat-form-field> 
+  </form>  
+  <button mat-raised-button (click)="updateLaboratoryGetFilter()" color="primary">Salvar</button>
+  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>    
+</mat-card>

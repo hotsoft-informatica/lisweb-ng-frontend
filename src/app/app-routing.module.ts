@@ -90,6 +90,10 @@ import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exa
 import { LancamentoComponent } from './components/lancamento/lancamento.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 
+import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
+import { LaboratoryGetFilterCreateComponent } from './components/laboratory-get-filter/laboratory-get-filter-create/laboratory-get-filter-create.component';
+import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-filter/laboratory-get-filter-delete/laboratory-get-filter-delete.component';
+import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
 
 const routes: Routes = [
   {
@@ -479,6 +483,22 @@ const routes: Routes = [
   {
     path: 'lancamentos',
     component: LancamentoComponent,
+  },
+  {
+    path: 'laboratory_get_filters/create',
+    component: LaboratoryGetFilterCreateComponent,
+  },
+  {
+    path: 'laboratory_get_filters/update/:id',
+    component: LaboratoryGetFilterUpdateComponent,
+  },
+  {
+    path: 'laboratory_get_filters/delete/:id',
+    component: LaboratoryGetFilterDeleteComponent,
+  },
+  {
+    path: 'laboratory_get_filters',
+    component: LaboratoryGetFilterReadComponent,
   },
 ];
 
