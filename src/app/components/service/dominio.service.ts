@@ -52,7 +52,7 @@ export class DominioService {
     return this.http.delete<Dominio>(url);
   }
 
-  findDominios(
+  find(
     active: string = '',
     sortOrder: string = 'asc',
     pageNumber: number = 1,
