@@ -190,6 +190,7 @@ import { AutocompleteTipoInterfaceamentoComponent } from './components/auto-comp
 import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
 import { LancamentoComponent } from './components/lancamento/lancamento.component';
+import { RequisicaoUpdateExamesComponent } from './components/requisicao/requisicao-update/requisicao-update-exames/requisicao-update-exames.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -331,7 +332,18 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameReadComponent,
     VersaoExameStatusPipe,
     VersaoExameUpdateComponent,
-    LancamentoComponent
+    LancamentoComponent,
+    ValorReferenciaReadComponent,
+    ConfigComponent,
+    BackendIpComponent,
+    VersaoExameInterfaceamentoCreateComponent,
+    MetodosExamesCreateComponent,
+    MetodosExamesDeleteComponent,
+    MetodosExamesReadComponent,
+    MetodosExamesUpdateComponent,
+    AutoCompleteVersaoExameComponent,
+    AutocompleteTipoInterfaceamentoComponent,
+    RequisicaoUpdateExamesComponent,
   ],
   imports: [
     HttpClientModule,

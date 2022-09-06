@@ -128,7 +128,7 @@ export class VersaoExameCreateComponent implements OnInit {
     console.table(this.versaoExame.tipoExame);
     this.tipoExameService.readById(this.versaoExame.tipoExame!.id as number).subscribe((tipoExame) =>{
       this.versaoExame.tipoExame = tipoExame;
-      this.versaoExame.tipo_exame_id = tipoExame.id;
+      this.versaoExame.tipo_exame_id = tipoExame.id; 
       if (this.id > 0) {
         this.updateVersaoExame();
         this.onEdit = false;

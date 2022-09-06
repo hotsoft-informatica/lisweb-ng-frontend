@@ -1,9 +1,9 @@
-<mat-form-field *ngIf="this.tipoExame" class="col-5">
+<mat-form-field class="col-5">
  <mat-label>Tipo exame:</mat-label>
   <input
     name="tipo_exame"
     matInput [matAutocomplete]="auto"
-    [(ngModel)]="this.tipoExame.id"
+    [(ngModel)]="this.tipoExame!.id"
     (ngModelChange)="search()"
   />
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(tipoExames)">

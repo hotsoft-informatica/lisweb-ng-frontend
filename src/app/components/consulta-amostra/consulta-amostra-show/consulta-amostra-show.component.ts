@@ -75,13 +75,13 @@ export class ConsultaAmostraShowComponent implements OnInit {
       this.consultaAmostraService
     );
     this.dataSource.loadConsultaAmostra(null);
-    this.pacienteAmostra = new Paciente({});
+    this.pacienteAmostra = new Paciente();
   }
 
 
   search(key: string, value: string, isNumeric = false): void {
     this.loadingSubject.next(true);
-    this.pacienteAmostra = new Paciente({});
+    this.pacienteAmostra = new Paciente();
     const query = new Query({ key, value, isNumeric });
     this.query.push(query);
     this.loadConsultaAmostraPage();

@@ -67,13 +67,11 @@
         <th mat-header-cell colspan="3" mat-sort-header="" *matHeaderCellDef> Ações</th>
         <td mat-cell *matCellDef="let element">
           <div >
-
               <a (click)="openDialogEdit(element.id)">
                 <button mat-icon-button>
                   <mat-icon class="edit">edit</mat-icon>
                 </button>
               </a>
-
             <div class="modal fade" id="modelShow" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">

@@ -6,6 +6,7 @@ import { debounceTime, Subject } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 import { Query } from '../../model/query.model';
 import { VersaoExame } from '../../model/versao-exame.model';
+import { Paciente } from '../../model/paciente.model';
 
 
 @Component({

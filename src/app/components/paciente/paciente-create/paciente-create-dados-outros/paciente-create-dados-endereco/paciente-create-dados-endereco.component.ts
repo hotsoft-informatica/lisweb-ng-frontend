@@ -22,7 +22,7 @@ export class PacienteCreateDadosEnderecoComponent implements OnInit {
     private pacienteService: PacienteService,
     private cepService: CepService
   ) {
-    this.paciente = new Paciente({});
+    this.paciente = new Paciente();
     this.cep = new Cep();
   }
 
