@@ -97,7 +97,6 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
       }
       const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
       dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
       });
     }
 
@@ -110,7 +109,6 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
       }
       const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
       dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
       });
     })
   }

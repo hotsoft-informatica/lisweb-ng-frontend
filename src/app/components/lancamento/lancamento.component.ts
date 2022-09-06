@@ -3,11 +3,9 @@ import { Pessoa } from '../model/pessoa.model';
 import { Query } from '../model/query.model';
 import { LancamentoService } from '../service/lancamento.service';
 import {
-  ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
 import { Lancamento } from '../model/lancamento.model';
 @Component({
   selector: 'app-lancamento',
@@ -54,9 +52,21 @@ export class LancamentoComponent implements OnInit {
   loadPessoas(): void {
     this.dataSource.forEach((lancamento) => {
       this.pessoaService.readById(lancamento.pessoa_id as unknown as number)
-      .subscribe((pessoa: Pessoa) => {
+        .subscribe((pessoa: Pessoa) => {
           lancamento.pessoa = pessoa;
+      });/*
+      this.UnidadeAtendimentoService.readById(lancamento.unidade_atendimento_id as unknown as number)
+        .subscribe((unidade_atendimento: UnidadeAtendimento) => {
+          lancamento.unidade_atendimento = unidade_atendimento;
       });
+      this.ContaContabilService.readById(lancamento.conta_contabil_id as unknown as number)
+        .subscribe((conta_contabil: ContaContabil) => {
+          lancamento.conta_contabil = conta_contabil;
+      });
+      this.ContaService.readById(lancamento.conta_id as unknown as number)
+        .subscribe((conta: Conta) => {
+          lancamento.conta = conta;
+      });*/
     });
   }
 

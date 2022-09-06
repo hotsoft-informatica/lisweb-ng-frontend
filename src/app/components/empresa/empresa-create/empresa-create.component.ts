@@ -893,13 +893,11 @@ export class EmpresaCreateComponent implements OnInit {
 
   private state_filter(value: string): string[] {
     const filterValue = value.toUpperCase();
-    console.log(filterValue);
     return this.states.filter(option => option.toUpperCase().indexOf(filterValue) === 0);
   }
 
   private city_filter(value: string): string[] {
     const filterValue = value.toUpperCase();
-    console.log(filterValue);
     return this.cities.filter(option => option.toUpperCase().indexOf(filterValue) === 0);
   }
 

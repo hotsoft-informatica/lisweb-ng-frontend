@@ -34,7 +34,6 @@ export class ResponsavelTecnicoCreateComponent implements OnInit {
         state => state.toUpperCase().startsWith((this.responsavelTecnico.uf_conselho as string).toUpperCase())
       );
       console.table(this.filtered_states);
-      console.log(this.responsavelTecnico.uf_conselho);
     } else {
       this.filtered_states = this.states;
     }

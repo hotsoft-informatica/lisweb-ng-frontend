@@ -40,7 +40,6 @@ export class HeaderComponent implements OnInit {
       }
       const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
       dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
       });
     }
   }

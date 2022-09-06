@@ -36,7 +36,6 @@ export class PacienteShowComponent implements OnChanges {
     if (this.id > 0){
       this.load(this.id);
     }
-    console.log(this.id);
   }
 
   load(id: number): void { // Dont repeat yourself DRY //abertura por id

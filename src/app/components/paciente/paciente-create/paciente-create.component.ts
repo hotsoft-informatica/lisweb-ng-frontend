@@ -34,7 +34,6 @@ export class PacienteCreateComponent implements OnInit {
   load(id: number): void {
     this.pacienteService
       .readById(id)
-
       .subscribe((paciente) => {
         this.paciente = paciente;
       });
@@ -45,12 +44,10 @@ export class PacienteCreateComponent implements OnInit {
 
   // TODO: #14 Despersonificar nome das funcoes, deixar generico o nome
   createPaciente(): void {
-    console.log('Passou aqui create');
     if (this.id > 0){
       this.update();
     }
     else{
-      console.table(this.paciente);
       this.pacienteService.create(this.paciente).subscribe(() => {
         this.router.navigate(['/pacientes/read']);
       });
