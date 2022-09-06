@@ -23,14 +23,19 @@
   <mat-tab label="Geral">
     <app-versao-exame-geral-create [versaoExame]="this.versaoExame"></app-versao-exame-geral-create>
   </mat-tab>
+
   <mat-tab label="Interfaceamento">
     <app-versao-exame-interfaceamento-create [versaoExame]="this.versaoExame"></app-versao-exame-interfaceamento-create>
   </mat-tab>
+
+  <mat-tab label="Parâmetro">
+    <app-versao-exame-parametro [versaoExame]="this.versaoExame" [parametrosVersaoExame]="this.parametrosVersaoExame"></app-versao-exame-parametro>
+  </mat-tab>
 </mat-tab-group>
 
-<div>
-  <button mat-flat-button color="primary" class="fixed-bottom index"
+<div class="gridAddButton">
+  <button appDebounceClick mat-flat-button color="primary" class="m-2"
     (click)="createVersaoExame()">Salvar</button>
-  <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
+  <button appDebounceClick mat-flat-button color="warn" class="m-2"
     (click)="cancel()">Cancelar</button>
 </div>

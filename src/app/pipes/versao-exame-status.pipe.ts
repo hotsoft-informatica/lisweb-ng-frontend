@@ -17,10 +17,8 @@ export class VersaoExameStatusPipe implements PipeTransform {
           break;
         }
       }
-      console.warn(status);
       return status;
     } else {
-      console.warn(value);
       return value;
     }
   }

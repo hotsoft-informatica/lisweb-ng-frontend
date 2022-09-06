@@ -1,4 +1,7 @@
 import { Query } from '../../model/query.model';
+import { VersaoExameParametroComponent } from '../versao-exame-parametro/versao-exame-parametro.component';
+import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
+import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
 import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
@@ -7,37 +10,41 @@ import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
 import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
 import { Marcacao } from 'src/app/components/model/marcacao.model';
 import { MarcacaoService } from 'src/app/components/service/marcacao.service';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
   Input,
   OnInit,
+  ViewChild,
+  AfterViewInit,
 } from '@angular/core';
 import {
   debounceTime,
 } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, forkJoin, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-versao-exame-create',
   templateUrl: './versao-exame-create.component.html',
   styleUrls: ['./versao-exame-create.component.css']
 })
-export class VersaoExameCreateComponent implements OnInit {
-
+export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   versaoExame!: VersaoExame;
+  parametrosVersaoExame: ParametroVersaoExame[] = [];
   tipoExames: TipoExame[] = [];
   metodoExames: MetodoExame[] = [];
   marcacoes: Marcacao[] = [];
   queries: Query[] = [];
-
   subject: Subject<any> = new Subject();
   id: number;
 
   isEdit: boolean = false;
   onEdit!: boolean;
   onCreate!: boolean;
+  requests: Observable<any>[] = [];
+
+  @ViewChild(VersaoExameParametroComponent)
+  private parametrosComponent!: VersaoExameParametroComponent;
 
   constructor(
     private router: Router,
@@ -45,7 +52,8 @@ export class VersaoExameCreateComponent implements OnInit {
     private versaoExameService: VersaoExameService,
     private tipoExameService: TipoExameService,
     private marcacaoService: MarcacaoService,
-    private metodoExameService: MetodoExameService
+    private metodoExameService: MetodoExameService,
+    private parametroVersaoExameService: ParametroVersaoExameService
 
   ) {
     this.onEdit = this.route.snapshot.paramMap.get('edit') as unknown as boolean;
@@ -62,6 +70,7 @@ export class VersaoExameCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
@@ -74,22 +83,61 @@ export class VersaoExameCreateComponent implements OnInit {
     this.subject.next(null);
   }
 
+  ngAfterViewInit(): void {
+    this.parametrosVersaoExame = this.parametrosComponent.parametrosVersaoExame;
+  }
+
   updateVersaoExame(): void {
+    // Traz o dado do componente filho
+    this.parametrosVersaoExame = this.parametrosComponent.parametrosVersaoExame;
+
     this.versaoExameService.update(this.versaoExame).subscribe((versaoExame) => {
       this.versaoExame = versaoExame;
 
-      this.router.navigate(['/versao_exames']).then(() => {
-        window.location.reload();
+      this.parametrosComponent.parametrosApagados.forEach((parametroApagado) => {
+        console.log("Apagando o parametro: " + parametroApagado.id);
+        if (parametroApagado.id as number > 0) {
+          this.requests.push(this.parametroVersaoExameService
+            .delete(parametroApagado.id as number));
+        };
+      });
+
+      // Salva os parametros
+      this.parametrosVersaoExame.forEach((parametroVersaoExame) => {
+        parametroVersaoExame.versao_exame_id = this.versaoExame.id;
+
+        if (parametroVersaoExame.id as number > 0) {
+          this.requests.push(this.parametroVersaoExameService
+            .update(parametroVersaoExame));
+        } else {
+          this.requests.push(this.parametroVersaoExameService
+            .create(parametroVersaoExame));
+        }
+      });
+
+      if (this.requests.length == 0) {
+        this.router.navigate(['/versao_exames']).then(() => {
+        });
+      }
+
+      forkJoin(this.requests).subscribe(() => {
+        this.requests = [];
+        this.router.navigate(['/versao_exames']).then(() => {
+        });
       });
     });
-
   }
 
   loadVersaoExame(id: number): void {
     this.versaoExameService.readById(id).subscribe((versaoExame) => {
       this.versaoExame = versaoExame;
-      console.warn(this.versaoExame.tipo_exame_id);
 
+      this.parametroVersaoExameService
+        .getByVersaoExameId(this.versaoExame?.id as number)
+        .subscribe((parametrosVersaoExame) => {
+          this.versaoExame.parametrosVersaoExame = parametrosVersaoExame;
+          this.parametrosVersaoExame = parametrosVersaoExame;
+        });
       this.tipoExameService
         .readById(this.versaoExame?.tipo_exame_id as number)
         .subscribe((tipoExame) => {
@@ -128,7 +176,7 @@ export class VersaoExameCreateComponent implements OnInit {
     console.table(this.versaoExame.tipoExame);
     this.tipoExameService.readById(this.versaoExame.tipoExame!.id as number).subscribe((tipoExame) =>{
       this.versaoExame.tipoExame = tipoExame;
-      this.versaoExame.tipo_exame_id = tipoExame.id; 
+      this.versaoExame.tipo_exame_id = tipoExame.id;
       if (this.id > 0) {
         this.updateVersaoExame();
         this.onEdit = false;
@@ -150,6 +198,10 @@ export class VersaoExameCreateComponent implements OnInit {
     this.onEdit = false;
     this.onCreate = false;
     this.router.navigate(['/versao_exames']);
+  }
+
+  crossOffParametrosVersaoExame(parametrosVersaoExame: ParametroVersaoExame[]): void {
+    this.parametrosVersaoExame = parametrosVersaoExame;
   }
 
   displayFn(options: TipoExame[]): (id: any) => any {

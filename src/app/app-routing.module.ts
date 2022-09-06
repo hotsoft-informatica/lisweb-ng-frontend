@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
 import { AmostraUpdateComponent } from './components/amostra/amostra-update/amostra-update.component';
@@ -18,6 +19,7 @@ import { ColetorCreateComponent } from './components/coletor/coletor-create/cole
 import { ColetorDeleteComponent } from './components/coletor/coletor-delete/coletor-delete.component';
 import { ColetorUpdateComponent } from './components/coletor/coletor-update/coletor-update.component';
 import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
+import { DominioComponent } from './components/dominio/dominio.component';
 import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
 import { EmpresaCrudComponent } from './views/empresa-crud/empresa-crud.component';
 import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
@@ -38,6 +40,11 @@ import { LaboratoryDomainCreateComponent } from './components/laboratory-domain/
 import { LaboratoryDomainCrudComponent } from './views/laboratory-domain-crud/laboratory-domain-crud.component';
 import { LaboratoryDomainDeleteComponent } from './components/laboratory-domain/laboratory-domain-delete/laboratory-domain-delete.component';
 import { LaboratoryDomainUpdateComponent } from './components/laboratory-domain/laboratory-domain-update/laboratory-domain-update.component';
+import { LaboratoryGetFilterCreateComponent } from './components/laboratory-get-filter/laboratory-get-filter-create/laboratory-get-filter-create.component';
+import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-filter/laboratory-get-filter-delete/laboratory-get-filter-delete.component';
+import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
+import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
+import { LancamentoComponent } from './components/lancamento/lancamento.component';
 import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
 import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
 import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
@@ -87,13 +94,8 @@ import { ValorReferenciaReadComponent } from './components/valor-referencia/valo
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
-import { LancamentoComponent } from './components/lancamento/lancamento.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 
-import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
-import { LaboratoryGetFilterCreateComponent } from './components/laboratory-get-filter/laboratory-get-filter-create/laboratory-get-filter-create.component';
-import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-filter/laboratory-get-filter-delete/laboratory-get-filter-delete.component';
-import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
 
 const routes: Routes = [
   {
@@ -107,6 +109,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path: 'dominios',
+    component: DominioComponent,
   },
   {
     path: 'laboratorydomains',
@@ -510,3 +516,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
+

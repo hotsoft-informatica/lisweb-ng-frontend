@@ -1,0 +1,23 @@
+table {
+  width: 100%;
+}
+.dvm-button {
+
+  border-radius: 30px;
+}
+.edit  {
+  color: #41d926;
+}
+
+.delete  {
+  color: #e35e6b;
+}
+
+.btn {
+  margin-right: 10px
+}
+
+.gridAddButton {
+  display: flex;
+  justify-content:flex-end;
+}

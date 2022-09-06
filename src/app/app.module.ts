@@ -51,14 +51,20 @@ import { registerLocaleData } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './views/home/home.component';
-import { VersaoExameStatusPipe } from './pipes/versao-exame-status.pipe';
-import { MarcacaoTipoPipe } from './pipes/marcacao-tipo.pipe';
-import { ValorReferenciaSexoPipe } from './pipes/valor-referencia.pipe';
-import { PessoaIdPipe } from './pipes/pessoa-id.pipe';
+import { NavComponent } from './components/template/nav/nav.component';
+
+import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
+
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
 import { AmostraReadComponent } from './components/amostra/amostra-read/amostra-read.component';
 import { AmostraUpdateComponent } from './components/amostra/amostra-update/amostra-update.component';
+import { AutoCompleteVersaoExameComponent } from './components/auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
+import { AutocompleteTipoInterfaceamentoComponent } from './components/auto-complete/autocomplete-tipo-interfaceamento/autocomplete-tipo-interfaceamento.component';
+import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 import { BancadaCreateComponent } from './components/bancada/bancada-create/bancada-create.component';
 import { BancadaDeleteComponent } from './components/bancada/bancada-delete/bancada-delete.component';
 import { BancadaReadComponent } from './components/bancada/bancada-read/bancada-read.component';
@@ -75,7 +81,16 @@ import { ColetorCreateComponent } from './components/coletor/coletor-create/cole
 import { ColetorDeleteComponent } from './components/coletor/coletor-delete/coletor-delete.component';
 import { ColetorReadComponent } from './components/coletor/coletor-read/coletor-read.component';
 import { ColetorUpdateComponent } from './components/coletor/coletor-update/coletor-update.component';
+import { ConfigComponent } from './components/config/config.component';
 import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
+import { DialogErroQuinhentosComponent } from './components/DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
+import { DominioComponent } from './components/dominio/dominio.component';
+import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
+import { EmpresaCrudComponent } from './views/empresa-crud/empresa-crud.component';
+import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
+import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-read.component';
+import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
+import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
 import { ExameAmostraCreateComponent } from './components/exame-amostra/exame-amostra-create/exame-amostra-create.component';
 import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-amostra-delete/exame-amostra-delete.component';
 import { ExameAmostraReadComponent } from './components/exame-amostra/exame-amostra-read/exame-amostra-read.component';
@@ -96,15 +111,41 @@ import { LaboratoryDomainCrudComponent } from './views/laboratory-domain-crud/la
 import { LaboratoryDomainDeleteComponent } from './components/laboratory-domain/laboratory-domain-delete/laboratory-domain-delete.component';
 import { LaboratoryDomainReadComponent } from './components/laboratory-domain/laboratory-domain-read/laboratory-domain-read.component';
 import { LaboratoryDomainUpdateComponent } from './components/laboratory-domain/laboratory-domain-update/laboratory-domain-update.component';
+import { LaboratoryGetFilterCreateComponent } from './components/laboratory-get-filter/laboratory-get-filter-create/laboratory-get-filter-create.component';
+import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-filter/laboratory-get-filter-delete/laboratory-get-filter-delete.component';
+import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
+import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
+import { LancamentoComponent } from './components/lancamento/lancamento.component';
+import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
+import { LocalDeAtendimentoDeleteComponent } from './components/local-de-atendimento/local-de-atendimento-delete/local-de-atendimento-delete.component';
+import { LocalDeAtendimentoEmpresaComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-empresa/local-de-atendimento-empresa.component';
+import { LocalDeAtendimentoEnderecoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-endereco/local-de-atendimento-endereco.component';
+import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
+import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
+import { LocalDeAtendimentoUpdateComponent } from './components/local-de-atendimento/local-de-atendimento-update/local-de-atendimento-update.component';
 import { LoteAmostraCreateComponent } from './components/lote-amostra/lote-amostra-create/lote-amostra-create.component';
 import { LoteAmostraDeleteComponent } from './components/lote-amostra/lote-amostra-delete/lote-amostra-delete.component';
 import { LoteAmostraReadComponent } from './components/lote-amostra/lote-amostra-read/lote-amostra-read.component';
 import { LoteAmostraUpdateComponent } from './components/lote-amostra/lote-amostra-update/lote-amostra-update.component';
+import { MarcacaoCreateComponent } from './components/marcacao/marcacao-create/marcacao-create.component';
+import { MarcacaoDeleteComponent } from './components/marcacao/marcacao-delete/marcacao-delete.component';
+import { MarcacaoReadComponent } from './components/marcacao/marcacao-read/marcacao-read.component';
+import { MarcacaoTipoPipe } from './pipes/marcacao-tipo.pipe';
 import { MaterialBiologicoCreateComponent } from './components/material-biologico/material-biologico-create/material-biologico-create.component';
 import { MaterialBiologicoDeleteComponent } from './components/material-biologico/material-biologico-delete/material-biologico-delete.component';
 import { MaterialBiologicoReadComponent } from './components/material-biologico/material-biologico-read/material-biologico-read.component';
 import { MaterialBiologicoUpdateComponent } from './components/material-biologico/material-biologico-update/material-biologico-update.component';
-import { NavComponent } from './components/template/nav/nav.component';
+import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
+import { MetodosExamesCreateComponent } from './components/metodos-exames/metodos-exames-create/metodos-exames-create.component';
+import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
+import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
+import { MetodosExamesUpdateComponent } from './components/metodos-exames/metodos-exames-update/metodos-exames-update.component';
+import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
+import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
+import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
+import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
+import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
+import { OperadoraUpdateComponent } from './components/operadora/operadora-update/operadora-update.component';
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 import { PacienteCreateDadosContatosComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-contatos/paciente-create-dados-contatos.component';
 import { PacienteCreateDadosConvenioComponent } from './components/paciente/paciente-create/paciente-create-dados-outros/paciente-create-dados-convenio/paciente-create-dados-convenio.component';
@@ -115,86 +156,43 @@ import { PacienteDeleteComponent } from './components/paciente/paciente-delete/p
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
 import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
 import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
-import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
+import { PessoaIdPipe } from './pipes/pessoa-id.pipe';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
+import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
 import { RequisicaoReadComponent } from './components/requisicao/requisicao-read/requisicao-read.component';
 import { RequisicaoShowComponent } from './components/requisicao/requisicao-show/requisicao-show.component';
 import { RequisicaoUpdateComponent } from './components/requisicao/requisicao-update/requisicao-update.component';
+import { RequisicaoUpdateExamesComponent } from './components/requisicao/requisicao-update/requisicao-update-exames/requisicao-update-exames.component';
+import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecnico/responsavel-tecnico-create/responsavel-tecnico-create.component';
+import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-crud/responsavel-tecnico-crud.component';
+import { ResponsavelTecnicoReadComponent } from './components/responsavel-tecnico/responsavel-tecnico-read/responsavel-tecnico-read.component';
+import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
+import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
+import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
 import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-create/tipo-exame-create.component';
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
 import { TipoExameReadComponent } from './components/tipo-exame/tipo-exame-read/tipo-exame-read.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
+import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
+import { TranslateModule } from '@ngx-translate/core';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
 import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usuario-update.component';
+import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
+import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
+import { ValorReferenciaSexoPipe } from './pipes/valor-referencia.pipe';
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
-import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
-import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
-import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
-import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
-import { TranslateModule } from '@ngx-translate/core';
-
-import { OperadoraReadComponent } from './components/operadora/operadora-read/operadora-read.component';
-import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
-import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
-import { OperadoraShowComponent } from './components/operadora/operadora-show/operadora-show.component';
-import { OperadoraUpdateComponent } from './components/operadora/operadora-update/operadora-update.component';
-import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
-import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
-import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-read.component';
-import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
-import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empresa-delete.component';
-import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
-import { EmpresaCrudComponent } from './views/empresa-crud/empresa-crud.component';
-
-import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
-import { LocalDeAtendimentoDeleteComponent } from './components/local-de-atendimento/local-de-atendimento-delete/local-de-atendimento-delete.component';
-import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
-import { LocalDeAtendimentoUpdateComponent } from './components/local-de-atendimento/local-de-atendimento-update/local-de-atendimento-update.component';
-import { LocalDeAtendimentoEmpresaComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-empresa/local-de-atendimento-empresa.component';
-import { LocalDeAtendimentoEnderecoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-endereco/local-de-atendimento-endereco.component';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
-import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
-
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ResponsavelTecnicoCreateComponent } from './components/responsavel-tecnico/responsavel-tecnico-create/responsavel-tecnico-create.component';
-import { ResponsavelTecnicoReadComponent } from './components/responsavel-tecnico/responsavel-tecnico-read/responsavel-tecnico-read.component';
-import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-crud/responsavel-tecnico-crud.component';
-import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
-import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
-import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
-import { DialogErroAutenticacaoComponent } from './components/DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
-
-import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
-
-import { SafeUrlPipe } from './pipes/safe-url.pipe';
-
-import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
-import { ConfigComponent } from './components/config/config.component';
-import { DialogErroQuinhentosComponent } from './components/DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
-import { MarcacaoCreateComponent } from './components/marcacao/marcacao-create/marcacao-create.component';
-import { MarcacaoDeleteComponent } from './components/marcacao/marcacao-delete/marcacao-delete.component';
-import { MarcacaoReadComponent } from './components/marcacao/marcacao-read/marcacao-read.component';
-import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
+import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component';
-import { MetodosExamesCreateComponent } from './components/metodos-exames/metodos-exames-create/metodos-exames-create.component';
-import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
-import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
-import { MetodosExamesUpdateComponent } from './components/metodos-exames/metodos-exames-update/metodos-exames-update.component';
-import { AutoCompleteVersaoExameComponent } from './components/auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
-import { AutocompleteTipoInterfaceamentoComponent } from './components/auto-complete/autocomplete-tipo-interfaceamento/autocomplete-tipo-interfaceamento.component';
-import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
-import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
-import { LancamentoComponent } from './components/lancamento/lancamento.component';
-import { RequisicaoUpdateExamesComponent } from './components/requisicao/requisicao-update/requisicao-update-exames/requisicao-update-exames.component';
-import { LaboratoryGetFilterCreateComponent } from './components/laboratory-get-filter/laboratory-get-filter-create/laboratory-get-filter-create.component';
-import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
-import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-filter/laboratory-get-filter-delete/laboratory-get-filter-delete.component';
-import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
+import { VersaoExameParametroComponent } from './components/versao-exame/versao-exame-parametro/versao-exame-parametro.component';
+import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
+import { VersaoExameStatusPipe } from './pipes/versao-exame-status.pipe';
+import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -206,8 +204,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     AmostraReadComponent,
     AmostraUpdateComponent,
     AppComponent,
-    AutocompleteTipoInterfaceamentoComponent,
     AutoCompleteVersaoExameComponent,
+    AutocompleteTipoInterfaceamentoComponent,
     BackendIpComponent,
     BancadaCreateComponent,
     BancadaDeleteComponent,
@@ -229,6 +227,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ConsultaAmostraShowComponent,
     DialogErroAutenticacaoComponent,
     DialogErroQuinhentosComponent,
+    DominioComponent,
     EmpresaCreateComponent,
     EmpresaCrudComponent,
     EmpresaDeleteComponent,
@@ -256,6 +255,11 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     LaboratoryDomainDeleteComponent,
     LaboratoryDomainReadComponent,
     LaboratoryDomainUpdateComponent,
+    LaboratoryGetFilterCreateComponent,
+    LaboratoryGetFilterDeleteComponent,
+    LaboratoryGetFilterReadComponent,
+    LaboratoryGetFilterUpdateComponent,
+    LancamentoComponent,
     LgSenhaComponent,
     LgUsuarioComponent,
     LocalDeAtendimentoCreateComponent,
@@ -300,12 +304,14 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     PacienteReadComponent,
     PacienteShowComponent,
     PacienteUpdateComponent,
+    PessoaIdPipe,
     RequisicaoCreateComponent,
     RequisicaoCrudComponent,
     RequisicaoDeleteComponent,
     RequisicaoReadComponent,
     RequisicaoShowComponent,
     RequisicaoUpdateComponent,
+    RequisicaoUpdateExamesComponent,
     ResponsavelTecnicoCreateComponent,
     ResponsavelTecnicoCrudComponent,
     ResponsavelTecnicoReadComponent,
@@ -325,38 +331,17 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ValorReferenciaCreateComponent,
     ValorReferenciaReadComponent,
     ValorReferenciaSexoPipe,
-    PessoaIdPipe,
     VersaoExameCreateComponent,
     VersaoExameCrudComponent,
     VersaoExameDeleteComponent,
     VersaoExameGeralCreateComponent,
     VersaoExameInterfaceamentoCreateComponent,
-    VersaoExameInterfaceamentoCreateComponent,
-    VersaoExameInterfaceamentoCreateComponent,
+    VersaoExameParametroComponent,
     VersaoExameReadComponent,
     VersaoExameStatusPipe,
     VersaoExameUpdateComponent,
-    LancamentoComponent,
-    ValorReferenciaReadComponent,
-    ConfigComponent,
-    BackendIpComponent,
-    VersaoExameInterfaceamentoCreateComponent,
-    MetodosExamesCreateComponent,
-    MetodosExamesDeleteComponent,
-    MetodosExamesReadComponent,
-    MetodosExamesUpdateComponent,
-    AutoCompleteVersaoExameComponent,
-    AutocompleteTipoInterfaceamentoComponent,
-    RequisicaoUpdateExamesComponent,
-    LaboratoryGetFilterCreateComponent,
-    LaboratoryGetFilterUpdateComponent,
-    LaboratoryGetFilterDeleteComponent,
-    LaboratoryGetFilterReadComponent,
   ],
   imports: [
-    HttpClientModule,
-    InterceptorModule,
-    MatCheckboxModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
@@ -364,10 +349,11 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
+    InterceptorModule,
     MatAutocompleteModule,
-    NgAutoCompleteModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
@@ -377,7 +363,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    MatMomentDateModule,
     MatMomentDateModule,
     MatNativeDateModule,
     MatPaginatorModule,
@@ -392,9 +377,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
+    NgAutoCompleteModule,
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule,
     RouterModule,
     MatInputCounterModule,
     TippyModule.forRoot({
