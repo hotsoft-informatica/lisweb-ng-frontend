@@ -2773,7 +2773,7 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-5.1.2.tgz#07508b45797cb81ec3f273011b054cd0755eddca"
   integrity sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==
 
-"@types/node@*", "@types/node@>=10.0.0", "@types/node@^18.7.6":
+"@types/node@*", "@types/node@>=10.0.0", "@types/node@^18.7.15":
   version "18.7.15"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.15.tgz#20ae1ec80c57ee844b469f968a1cd511d4088b29"
   integrity sha512-XnjpaI8Bgc3eBag2Aw4t2Uj/49lLBSStHWfqKvIuXD7FIrZyMLWp8KuAFHAqxMZYTF9l08N1ctUn9YNybZJVmQ==
@@ -6063,7 +6063,7 @@ jake@^10.8.5:
     filelist "^1.0.1"
     minimatch "^3.0.4"
 
-jasmine-core@^4.1.0, jasmine-core@^4.3.0:
+jasmine-core@^4.1.0, jasmine-core@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-4.4.0.tgz#848fe45c1839cacaf1f2429d400d1d4f85d2856a"
   integrity sha512-+l482uImx5BVd6brJYlaHe2UwfKoZBqQfNp20ZmdNfsjGFTemGfqHLsXjKEW23w9R/m8WYeFc9JmIgjj6dUtAA==
@@ -7598,7 +7598,7 @@ node-releases@^2.0.6:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.6.tgz#8a7088c63a55e493845683ebf3c828d8c51c5503"
   integrity sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==
 
-node@^18.7.0:
+node@^18.8.0:
   version "18.8.0"
   resolved "https://registry.yarnpkg.com/node/-/node-18.8.0.tgz#f6121c3d30409197985387121ed1f4f25c2de536"
   integrity sha512-4HfBoHqqzAZwP5D7lZk5R1K0IPQMa9ZNb62BtAFLTEY5YleMF3qK5zJwlyDfBG+zafeg8jToOu3gTC++ubOCfA==
@@ -9334,9 +9334,9 @@ select-hose@^2.0.0:
   integrity sha512-mEugaLK+YfkijB4fx0e6kImuJdCIt2LxCRcbEYPqRGCs4F2ogyfZU5IAZRdjCP8JPq2AtdNoC/Dux63d9Kiryg==
 
 selfsigned@^2.0.1:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/selfsigned/-/selfsigned-2.1.0.tgz#a3a8d9958ce4de44e5d3e057683373751b694c47"
-  integrity sha512-eJrI/k4EnaBWykO01ORYvsQgkFwWPnDxmMZd6zVb5S+zWIFFn+jgTR/CSdSyT3RZrKBMCpenh3qb2APaaKI5Lw==
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/selfsigned/-/selfsigned-2.1.1.tgz#18a7613d714c0cd3385c48af0075abf3f266af61"
+  integrity sha512-GSL3aowiF7wa/WtSFwnUrludWFoNhftq8bUkH9pkzjpN2XSPOAYEgg6e0sS9s0rZwgJzJiQRPU18A6clnoW5wQ==
   dependencies:
     node-forge "^1"
 
