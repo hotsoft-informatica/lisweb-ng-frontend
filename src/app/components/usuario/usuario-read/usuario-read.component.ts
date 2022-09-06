@@ -48,7 +48,6 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
   openDialogUpdate(id: string): void {
@@ -60,7 +59,6 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
   // TODO: ATUALIZAR PAGINAÇÃO APOS BUSCA.

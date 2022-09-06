@@ -36,7 +36,6 @@ export class VersaoExameReadDataSource implements DataSource<VersaoExame> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<VersaoExame[]> {
-    console.log('Conectando ao data source');
     return this.versaoExamesSubject.asObservable();
   }
 

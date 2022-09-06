@@ -46,3 +46,22 @@ body {
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
   z-index: 99999 !important;
 }
+
+@page {
+  margin: 0.5cm;
+  counter-reset: page 1;
+  counter-increment: page;
+}
+
+@media screen {
+  .print, .timestamp {
+    display: none
+  }
+}
+
+@media print {
+  .no-print, header, footer, aside, form, mat-toolbar, .mat-toolbar, .footer, .header, mat-paginator, .mat-paginator, mat-form-field, .mat-form-field, input, button, .mat-button-base, app-footer, app-header, .cdk-column-action, .mat-column-action, .cdk-column-Opercaoes {
+    display: none !important;
+  }
+}
+

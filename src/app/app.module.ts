@@ -19,6 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+// Moment.js is a legacy project, now in maintenance mode.
+//  In most cases, you should choose a different library
+//  TODO: Trocar essa dependencia quando possivel
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -51,6 +54,7 @@ import { HomeComponent } from './views/home/home.component';
 import { VersaoExameStatusPipe } from './pipes/versao-exame-status.pipe';
 import { MarcacaoTipoPipe } from './pipes/marcacao-tipo.pipe';
 import { ValorReferenciaSexoPipe } from './pipes/valor-referencia.pipe';
+import { PessoaIdPipe } from './pipes/pessoa-id.pipe';
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
 import { AmostraReadComponent } from './components/amostra/amostra-read/amostra-read.component';
@@ -185,7 +189,7 @@ import { AutoCompleteVersaoExameComponent } from './components/auto-complete/aut
 import { AutocompleteTipoInterfaceamentoComponent } from './components/auto-complete/autocomplete-tipo-interfaceamento/autocomplete-tipo-interfaceamento.component';
 import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
-
+import { LancamentoComponent } from './components/lancamento/lancamento.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -316,6 +320,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ValorReferenciaCreateComponent,
     ValorReferenciaReadComponent,
     ValorReferenciaSexoPipe,
+    PessoaIdPipe,
     VersaoExameCreateComponent,
     VersaoExameCrudComponent,
     VersaoExameDeleteComponent,
@@ -326,6 +331,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameReadComponent,
     VersaoExameStatusPipe,
     VersaoExameUpdateComponent,
+    LancamentoComponent
   ],
   imports: [
     HttpClientModule,

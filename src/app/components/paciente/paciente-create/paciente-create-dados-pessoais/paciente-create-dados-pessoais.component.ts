@@ -21,7 +21,6 @@ export class PacienteCreateDadosPessoaisComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('passou pelo paciente dados pessoas');
   }
   public calculaIdade(): void{
 // TO-DO: REVER, TA DANDO RUIM

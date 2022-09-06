@@ -53,3 +53,6 @@ Thumbs.db
 
 megalinter-reports/
 
+# yarn
+/.yarn/*
+.yarn/*

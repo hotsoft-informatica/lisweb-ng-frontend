@@ -36,7 +36,6 @@ export class OperadoraReadDataSource implements DataSource<Operadora> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<Operadora[]> {
-    console.log('Conectando ao data source');
     return this.operadorasSubject.asObservable();
   }
 

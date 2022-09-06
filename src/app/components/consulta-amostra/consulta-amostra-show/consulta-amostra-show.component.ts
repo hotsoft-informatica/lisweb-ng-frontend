@@ -126,12 +126,10 @@ export class ConsultaAmostraShowComponent implements OnInit {
                 .readById(exameAmostra.amostra_id as number)
                 .subscribe((amostra: Amostra) => {
                   exameAmostra.amostra = amostra;
-                  console.log(exameAmostra.exame?.id);
                 });
               this.consultaExame(exameAmostra);
             });
           }).add(() => {
-            console.log("Carregou exame amostra");
           });
       });
   }
@@ -140,12 +138,10 @@ export class ConsultaAmostraShowComponent implements OnInit {
     this.exameService
       .readById(exameAmostra.exame_id as number)
       .subscribe((exame: Exame) => {
-        console.log(exameAmostra.amostra?.id);
         const versaoExameSubscribe = this.versaoExameService
           .readById(exame?.versao_exame_id as number)
           .subscribe((versaoExame: VersaoExame) => {
             exame.versao_exame = versaoExame;
-            console.log(exameAmostra.amostra?.id);
           })
 
         versaoExameSubscribe.add(() => {
@@ -153,7 +149,6 @@ export class ConsultaAmostraShowComponent implements OnInit {
         });
         exameAmostra.exame = exame;
       }).add(() => {
-        console.log("Fim do consulta exame");
       });
   }
 

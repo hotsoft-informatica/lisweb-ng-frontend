@@ -48,7 +48,6 @@ export class VersaoExameCreateComponent implements OnInit {
     private metodoExameService: MetodoExameService
 
   ) {
-    console.log('Construtor');
     this.onEdit = this.route.snapshot.paramMap.get('edit') as unknown as boolean;
     this.onCreate = this.route.snapshot.paramMap.get('create') as unknown as boolean;
 
@@ -63,7 +62,6 @@ export class VersaoExameCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
@@ -77,7 +75,6 @@ export class VersaoExameCreateComponent implements OnInit {
   }
 
   updateVersaoExame(): void {
-    console.log('Update');
     this.versaoExameService.update(this.versaoExame).subscribe((versaoExame) => {
       this.versaoExame = versaoExame;
 
@@ -89,7 +86,6 @@ export class VersaoExameCreateComponent implements OnInit {
   }
 
   loadVersaoExame(id: number): void {
-    console.log('Load');
     this.versaoExameService.readById(id).subscribe((versaoExame) => {
       this.versaoExame = versaoExame;
       console.warn(this.versaoExame.tipo_exame_id);
@@ -116,7 +112,6 @@ export class VersaoExameCreateComponent implements OnInit {
   }
 
   search(): void {
-    console.log('Search');
     const query_string = this.versaoExame
       .tipo_exame_id as unknown as string;
     const query = new Query({
@@ -130,7 +125,6 @@ export class VersaoExameCreateComponent implements OnInit {
   }
 
   createVersaoExame(): void {
-    console.log('Create');
     console.table(this.versaoExame.tipoExame);
     this.tipoExameService.readById(this.versaoExame.tipoExame!.id as number).subscribe((tipoExame) =>{
       this.versaoExame.tipoExame = tipoExame;

@@ -36,7 +36,6 @@ export class ValorReferenciaReadDataSource implements DataSource<ValorReferencia
   }
 
   connect(collectionViewer: CollectionViewer): Observable<ValorReferencia[]> {
-    console.log('Conectando ao data source');
     return this.valoresReferenciaSubject.asObservable();
   }
 

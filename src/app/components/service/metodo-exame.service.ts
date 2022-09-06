@@ -18,7 +18,7 @@ export class MetodoExameService {
     private backendIpService: BackendIpService,
     private http: HttpClient,
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
   }
 
   showMessage(msg: string): void {

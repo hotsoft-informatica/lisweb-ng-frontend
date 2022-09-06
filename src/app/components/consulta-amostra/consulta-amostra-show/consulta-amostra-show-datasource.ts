@@ -36,7 +36,6 @@ export class ConsultaAmostraShowDataSource implements DataSource<ConsultaAmostra
   }
 
   connect(collectionViewer: CollectionViewer): Observable<ConsultaAmostra[]> {
-    console.log('Conectando ao data source');
     return this.consultaAmostraSubject.asObservable();
   }
 

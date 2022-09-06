@@ -36,7 +36,6 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<Laboratorio[]> {
-    console.log('Conectando ao data source');
     return this.laboratoriosSubject.asObservable();
   }
 

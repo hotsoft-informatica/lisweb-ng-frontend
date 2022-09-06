@@ -36,7 +36,6 @@ export class RequisicaoReadDataSource implements DataSource<Requisicao> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<Requisicao[]> {
-    console.log('Conectando ao data source');
     return this.requisicoesSubject.asObservable();
   }
 

@@ -41,7 +41,7 @@ export class ResponsavelTecnicoShowComponent implements OnInit {
       .subscribe({
         next: (signature) => this.showSignature = signature,
         error: (err) => {
-          console.log(err)
+          console.warn(err)
           this.showSignature.imagem = undefined;
         }
       });

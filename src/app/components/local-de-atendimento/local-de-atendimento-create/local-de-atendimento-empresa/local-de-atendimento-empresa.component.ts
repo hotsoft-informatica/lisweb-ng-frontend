@@ -18,12 +18,10 @@ export class LocalDeAtendimentoEmpresaComponent implements OnInit {
     this.localdeatendimento = new LocalDeAtendimento({});
     this.empresa ||= new Empresa({});
     console.table(this.empresa);
-    console.log('passou aqui');
     this.localdeatendimento.empresa = this.empresa;
   }
   ngOnInit(): void {
     this.empresa ||= new Empresa({});
-    console.log(this.empresa);
   }
 
 }
