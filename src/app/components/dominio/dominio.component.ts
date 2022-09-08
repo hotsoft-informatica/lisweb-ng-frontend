@@ -1,9 +1,8 @@
 import { Query } from '../model/query.model';
-import { Component, OnInit, OnChanges, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-import { DominioDataSource } from './dominio.datasource.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,7 +15,7 @@ import { merge, fromEvent } from 'rxjs';
   templateUrl: './dominio.component.html',
   styleUrls: ['./dominio.component.css']
 })
-export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
+export class DominioComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
   record!: any;
@@ -30,7 +29,7 @@ export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
 
   displayedColumns = ['descricao', 'num_ordem', 'action'];
 
-  // @ViewChild('descricao') descricao!: ElementRef;
+  @ViewChild('descricao') descricao!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -46,22 +45,13 @@ export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
     private recordService: DominioService,
   ) {
     this.currentRecord = new Dominio({});
-
-    // this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
-    // if (this.id > 0) {
-    //   this.loadDominio(this.id);
-    // }
     this.record ||= new Dominio({});
   }
 
   ngOnInit(): void {
-    console.log('passou pelo ng on init');
-    // this.dataSource = new DominioDataSource(this.dominioService);
-    // this.dataSource.loadDominios('id', 'desc', 1, 10, null);
     this.recordService.countDominios().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
-    // this.loadPage();
   }
 
   ngAfterViewInit() {
@@ -72,12 +62,6 @@ export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
       .pipe(tap(() => this.loadPage()))
       .subscribe();
   }
-
-  // loadDominio(id: number): void {
-  //   this.dominioService.readById(id).subscribe((dominio) => {
-  //     this.record = dominio;
-  //   });
-  // }
 
   loadPage() {
     this.recordService
@@ -91,39 +75,28 @@ export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
       });
   }
 
-  ngOnChanges(): void {
-    // console.table(this.dominios);
-
-    // this.datasource.data = this.dominios;
-
-    // this.dominioService
-    //   .readById(this.dominio.id as number)
-    //   .subscribe((dominios) => {
-    //     this.dominio = dominios;
-    //   });
-  }
-
   new(): void {
     this.onCreate = true;
     this.onFocus();
   }
 
   onFocus(): void {
-    // timer(250).subscribe(() => {
-    //   if (this.descricao !== undefined) {
-    //     console.log("Entrou no onfocus");
-    //     this.renderer.selectRootElement(this.descricao["nativeElement"]).focus();
-    //   }
-    // });
+    timer(250).subscribe(() => {
+      if (this.descricao !== undefined) {
+        console.log("Entrou no onfocus");
+        this.renderer.selectRootElement(this.descricao["nativeElement"]).focus();
+      }
+    });
   }
 
   addGridData(): void {
     console.table(this.currentRecord);
-
+    this.onCreate = true;
+    this.onEdit = false;
     this.recordService.create(this.currentRecord).subscribe((record) => {
       this.records.unshift(record);
       this.datasource.data = [...this.records];
-      this.recordService.showMessage('Domínio adicionado com sucesso!');
+      this.recordService.showMessage('Domínio criado com sucesso!');
     });
 
     this.currentRecord = new Dominio({});
@@ -131,9 +104,20 @@ export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
     this.onFocus();
   }
 
-  atualizar(): void {
+  updateGridData(): void {
     this.onCreate = false;
     this.onEdit = false;
+    this.recordService.update(this.currentRecord).subscribe((dominio) => {
+      this.recordService.showMessage('Domínio atualizado com sucesso!');
+      this.onFocus();
+    });
+    this.currentRecord = new Dominio({});
+  }
+
+  atualizar(row: Dominio): void {
+    this.currentRecord = row;
+    this.onCreate = false;
+    this.onEdit = true;
     this.onFocus();
   }
 
@@ -142,14 +126,6 @@ export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
     this.onEdit = false;
     Object.assign(this.currentRecord, this.oldRecord);
     this.currentRecord = new Dominio({});
-  }
-
-  updateGridData(row: Dominio): void {
-    this.onCreate = false;
-    this.onEdit = true;
-    Object.assign(this.oldRecord, row);
-    this.currentRecord = row;
-    this.onFocus();
   }
 
   deleteGridData(position: number) {
@@ -168,20 +144,4 @@ export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
       }
     });
   }
-
-  // createVersaoExame(): void {
-  //   if (this.id > 0) {
-  //     this.updateVersaoExame();
-  //   } else {
-  //     this.versaoExameService.create(this.versaoExame).subscribe(() => {
-  //       this.versaoExameService.showMessage('Versão de exame criada com sucesso!');
-  //       this.router.navigate(['/versao_exames']).then(() => {
-  //         window.location.reload();
-  //       });
-  //     });
-  //   }
-  // }
-
-
-
 }
