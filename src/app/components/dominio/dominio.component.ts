@@ -100,7 +100,6 @@ export class DominioComponent implements OnInit, AfterViewInit {
     });
 
     this.currentRecord = new Dominio({});
-    // this.loadPage();
     this.onFocus();
   }
 
@@ -111,6 +110,7 @@ export class DominioComponent implements OnInit, AfterViewInit {
       this.recordService.showMessage('Domínio atualizado com sucesso!');
       this.onFocus();
     });
+
     this.currentRecord = new Dominio({});
   }
 
@@ -129,10 +129,7 @@ export class DominioComponent implements OnInit, AfterViewInit {
   }
 
   deleteGridData(id: number): void {
-    console.log('entrou no delete grid data');
-    console.warn(id);
     const dialogRef = this.dialog.open(this.deleteDialog);
-
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log("entrou no if do result");
@@ -143,5 +140,13 @@ export class DominioComponent implements OnInit, AfterViewInit {
           });
       }
     });
+  }
+
+  search(key: string, value: string, isNumeric: boolean = false): void {
+    const query = new Query({ key, value, isNumeric });
+    this.query = this.query.filter((q) => q.key !== key);
+    this.query.push(query);
+    this.paginator.pageIndex = 0;
+    this.loadPage();
   }
 }
