@@ -66,10 +66,16 @@
     mat-table
     [dataSource]="datasource"
     matSort
-    matSortActive="descricao"
-    matSortDirection="asc"
+    matSortActive="id"
+    matSortDirection="desc"
     matSortDisableClear
   >
+
+  <!-- Descrição Column -->
+  <ng-container matColumnDef="id" class="col-5">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="id">Id</th>
+    <td mat-cell *matCellDef="let row">{{ row?.id }}</td>
+  </ng-container>
 
     <!-- Descrição Column -->
     <ng-container matColumnDef="descricao" class="col-5">
@@ -96,7 +102,7 @@
           </div>
   
           <div class="col-1 me-3">
-              <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(position)">
+              <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
                 <mat-icon class="delete">delete</mat-icon>
               </button>
           </div>

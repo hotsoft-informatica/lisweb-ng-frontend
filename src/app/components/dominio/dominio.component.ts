@@ -27,7 +27,7 @@ export class DominioComponent implements OnInit, AfterViewInit {
   id!: number;
   totalCount!: number;
 
-  displayedColumns = ['descricao', 'num_ordem', 'action'];
+  displayedColumns = ['id', 'descricao', 'num_ordem', 'action'];
 
   @ViewChild('descricao') descricao!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
@@ -128,19 +128,19 @@ export class DominioComponent implements OnInit, AfterViewInit {
     this.currentRecord = new Dominio({});
   }
 
-  deleteGridData(position: number) {
-    console.log(position);
+  deleteGridData(id: number): void {
+    console.log('entrou no delete grid data');
+    console.warn(id);
     const dialogRef = this.dialog.open(this.deleteDialog);
-
-    this.onCreate = false;
-    this.onEdit = false;
-    this.currentRecord = new Dominio({});
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.deletedRecords.push(this.records[position]);
-        this.records.splice(position, 1);
-        this.loadPage();
+        console.log("entrou no if do result");
+        this.recordService.delete(id)
+          .subscribe((record) => {
+            this.recordService.showMessage('Domínio apagado com sucesso!');
+            window.location.reload();
+          });
       }
     });
   }
