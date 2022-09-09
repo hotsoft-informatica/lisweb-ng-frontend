@@ -179,6 +179,7 @@ import { ValorReferenciaReadComponent } from './components/valor-referencia/valo
 import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
 import { VersaoExameParametroComponent } from './components/versao-exame/versao-exame-parametro/versao-exame-parametro.component';
 import { DominioComponent } from './components/dominio/dominio.component';
+import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -311,6 +312,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ValorReferenciaCreateComponent,
     VersaoExameParametroComponent,
     DominioComponent,
+    LaboratoryGetRuleComponent,
   ],
   imports: [
     HttpClientModule,
