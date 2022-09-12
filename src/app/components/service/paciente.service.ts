@@ -1,36 +1,27 @@
-import { Paciente } from '../model/paciente.model';
-import { BackendIpService } from './backend-ip.service';
+import { Injectable, Inject, Injector } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DefaultService } from './default.service';
 import { Query } from './../model/query.model';
-import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+
+
 @Injectable({
   providedIn: 'root',
 })
 export class PacienteService {
-  baseUrl = '/pacientes';
+  endpoint = '/pacientes';
 
-  query: Query[] = [];
+  constructor(@Inject(Injector) private readonly injector: Injector) { }
 
-  constructor(
-    private snackbar: MatSnackBar,
-    private http: HttpClient,
-    private backendIpService: BackendIpService
-  ) {
-    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
+  private get defaultService() {
+    return this.injector.get(DefaultService);
   }
 
   showMessage(msg: string): void {
-    this.snackbar.open(msg, 'X', {
-      duration: 3000,
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-    });
+    this.defaultService.showMessage(msg);
   }
 
-  create(paciente: Paciente): Observable<Paciente> {
-    return this.http.post<Paciente>(this.baseUrl, paciente);
+  create(record: any): Observable<any> {
+    return this.defaultService.create(record, this.endpoint);
   }
 
   read(
@@ -39,46 +30,33 @@ export class PacienteService {
     pageNumber = 1,
     pageSize = 3,
     queries: Query[]
-  ): Observable<Paciente[]> {
-    // criando parametros e puxando dados do backend
-    let params = new HttpParams(); // cria paramaetros para leitura do backend
-
-    queries.forEach((busca) => {
-      params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
-    });
-    params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
-    params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
-    params = params.append('pageNumber', pageNumber.toString());
-    params = params.append('pageSize', pageSize.toString());
-
-    queries?.forEach((queryItem) => {
-      if (queryItem) {
-        const key = `queryItem[${queryItem.key}]`;
-        params = params.append(key, queryItem.value);
-      }
-    });
-
-    return this.http.get<Paciente[]>(this.baseUrl, { params }); // Passa qual operação sera realizada pelo backend
+  ): Observable<any[]> {
+    return this.defaultService.read(sortActive, sortDirection, pageNumber, pageSize, queries, this.endpoint);
   }
 
-  readById(id: number): Observable<Paciente> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.get<Paciente>(url);
+  readById(id: number): Observable<any> {
+    return this.defaultService.readById(id, this.endpoint);
   }
 
-  update(paciente: Paciente): Observable<Paciente> {
-    const url = `${this.baseUrl}/${paciente.id}`;
-    return this.http.put<Paciente>(url, paciente);
+  update(record: any): Observable<any> {
+    return this.defaultService.update(record, this.endpoint);
   }
 
-  delete(id: number): Observable<Paciente> {
-    const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<Paciente>(url);
+  delete(id: number): Observable<any> {
+    return this.defaultService.delete(id, this.endpoint);
   }
 
-  countPacientes(): Observable<number> {
-    return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
-    });
+  find(
+    active: string = '',
+    sortOrder: string = 'asc',
+    pageNumber: number = 1,
+    pageSize: number = 3,
+    query: Query[] | null
+  ): Observable<any[]> {
+    return this.defaultService.find(active, sortOrder, pageNumber, pageSize, query, this.endpoint);
+  }
+
+  count(): Observable<number> {
+    return this.defaultService.count(this.endpoint);
   }
 }

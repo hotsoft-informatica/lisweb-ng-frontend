@@ -47,7 +47,7 @@ export class ValorReferenciaCreateComponent implements OnInit {
 
     this.subjectVersaoExame.pipe(debounceTime(500)).subscribe(() => {
       this.versaoExameService
-        .findVersaoExames('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, this.queries)
         .subscribe((versaoExame) => {
           console.table(this.queries);
           this.versoesExame = versaoExame;

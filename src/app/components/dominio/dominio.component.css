@@ -32,3 +32,11 @@ table {
   margin: 0 auto;
   width: 50%;
 }
+
+.buttons {
+  position: relative;
+  float: right;
+  position: relative;
+  padding-right: 30px;
+  padding-top: 20px;
+}
