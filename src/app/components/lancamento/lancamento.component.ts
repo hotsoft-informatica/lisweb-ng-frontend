@@ -42,6 +42,8 @@ export class LancamentoComponent implements OnInit {
     this.lancamentoService.read(
       'id',
       'desc',
+      1,
+      1000,
       this.query
     ).subscribe((records) => {
       this.dataSource = records;
