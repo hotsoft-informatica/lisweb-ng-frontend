@@ -58,7 +58,7 @@ export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
     console.log('passou pelo ng on init');
     // this.dataSource = new DominioDataSource(this.dominioService);
     // this.dataSource.loadDominios('id', 'desc', 1, 10, null);
-    this.recordService.countDominios().subscribe((totalCount) => {
+    this.recordService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
     // this.loadPage();

@@ -43,7 +43,7 @@ export class LancamentoComponent implements OnInit {
       'id',
       'desc',
       1,
-      1000,
+      500,
       this.query
     ).subscribe((records) => {
       this.dataSource = records;
