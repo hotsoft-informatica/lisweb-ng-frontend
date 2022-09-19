@@ -180,6 +180,7 @@ import { ValorReferenciaCreateComponent } from './components/valor-referencia/va
 import { VersaoExameParametroComponent } from './components/versao-exame/versao-exame-parametro/versao-exame-parametro.component';
 import { DominioComponent } from './components/dominio/dominio.component';
 import { RecursoComponent } from './components/recurso/recurso.component';
+import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -313,6 +314,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameParametroComponent,
     DominioComponent,
     RecursoComponent,
+    TipoRecursoComponent,
   ],
   imports: [
     HttpClientModule,
