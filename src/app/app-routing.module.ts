@@ -86,6 +86,8 @@ import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecn
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 import { DominioComponent } from './components/dominio/dominio.component';
+import { RecursoComponent } from './components/recurso/recurso.component';
+import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 
 const routes: Routes = [
@@ -104,6 +106,14 @@ const routes: Routes = [
   {
     path: 'dominios',
     component: DominioComponent,
+  },
+  {
+    path: 'recursos',
+    component: RecursoComponent,
+  },
+  {
+    path: 'tipos_recurso',
+    component: TipoRecursoComponent,
   },
   {
     path: 'laboratorydomains',
