@@ -1,5 +1,6 @@
 import { Dominio } from "./dominio.model";
 import { TipoRecurso } from "./tipo-recurso.model";
+import { Laboratorio } from "./laboratorio.model";
 
 export class Recurso {
   public id?: number;
@@ -24,6 +25,7 @@ export class Recurso {
   public changed_by_lab_id?: number;
   public dominios?: Dominio;
   public recursos?: TipoRecurso;
+  public laboratorios?: Laboratorio;
 
   constructor(values: Recurso) {
     Object.assign(this, values);
