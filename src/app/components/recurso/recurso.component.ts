@@ -1,17 +1,16 @@
 import { Query } from '../model/query.model';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Recurso } from '../model/recurso.model';
 import { RecursoService } from '../service/recurso.service';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { tap } from 'rxjs/operators';
+import { tap, debounceTime } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 
 @Component({
@@ -20,7 +19,9 @@ import { merge, fromEvent } from 'rxjs';
   styleUrls: ['./recurso.component.css']
 })
 export class RecursoComponent implements OnInit, AfterViewInit {
+  @Input('dominios') dominios: Dominio[] = [];
   datasource = new MatTableDataSource<any>([]);
+  recurso: Recurso = new Recurso({});
   records: any[] = [];
   record!: any;
 
@@ -36,16 +37,17 @@ export class RecursoComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
+  queries: Query[] = [];
+  subjectDominio: Subject<any> = new Subject();
+
   onEdit = false;
   onCreate = false;
 
   displayedColumns = [
-    'laboratorio_id',
-    'tipo_recurso_id',
     'nome',
-    'filter_def_name',
-    'data_class_name',
-    'res_class_name',
+    'tipo_recurso_id',
+    'dominio_id',
+    'laboratorio_id',
     'action'
   ];
 
@@ -55,6 +57,7 @@ export class RecursoComponent implements OnInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private recordService: RecursoService,
+    private dominioService: DominioService,
   ) {
     this.currentRecord = new Recurso({});
     this.record ||= new Recurso({});
@@ -64,6 +67,18 @@ export class RecursoComponent implements OnInit, AfterViewInit {
     this.recordService.countRegisters().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
+
+    const query = new Query({ key: '', value: '', isNumeric: false });
+
+    this.subjectDominio.pipe(debounceTime(500)).subscribe(() => {
+      this.dominioService
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((dominios) => {
+          console.table(this.queries);
+          this.dominios = dominios;
+        });
+    });
+    this.subjectDominio.next(null);
   }
 
   ngAfterViewInit() {
@@ -160,6 +175,29 @@ export class RecursoComponent implements OnInit, AfterViewInit {
     this.query.push(query);
     this.paginator.pageIndex = 0;
     this.loadPage();
+  }
+
+  searchDominio(): void {
+    const query_string = this.recurso
+      .dominio_id as unknown as string;
+    const query = new Query({
+      key: 'descricao',
+      value: query_string,
+      isNumeric: false,
+    });
+    console.warn(query_string);
+    this.queries = [];
+    this.queries.push(query);
+    this.subjectDominio.next(null);
+  }
+
+  displayFnDominio(options: Dominio[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.descricao : '';
+    };
   }
 
 }

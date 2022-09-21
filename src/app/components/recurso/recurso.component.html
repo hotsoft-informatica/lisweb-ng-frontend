@@ -37,25 +37,40 @@
     <div *ngIf="onCreate || onEdit">
       <form #formCreateRecurso="ngForm">
         <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-          <mat-label>Descrição:</mat-label>
+          <mat-label>Domínio</mat-label>
+          <input
+            name="dominio"
+            matInput [matAutocomplete]="auto" 
+            [(ngModel)]="recurso.dominio_id"
+            (ngModelChange)="searchDominio()"
+          />
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnDominio(dominios)">
+            <mat-option *ngFor="let dominio of dominios" [value]="dominio.id">
+              {{dominio.descricao}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <!-- mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+          <mat-label>Domínio:</mat-label>
           <input
             type="text"
-            id="laboratorio_id"
+            id="dominio_id"
             required
             matInput
             maxlength="50"
-            name="laboratorio_id"
-            [(ngModel)]="currentRecord.laboratorio_id"
-            #laboratorio_id2="ngModel"
-            #laboratorio_id
+            name="dominio_id"
+            [(ngModel)]="currentRecord.dominio_id"
+            #dominio_id2="ngModel"
+            #dominio_id
             autofocus
           >
-          <mat-error *ngIf="laboratorio_id2.invalid && (laboratorio_id2.dirty || laboratorio_id2.touched)">
-            <span *ngIf="laboratorio_id2.errors?.['required']">
+          <mat-error *ngIf="dominio_id2.invalid && (dominio_id2.dirty || dominio_id2.touched)">
+            <span *ngIf="dominio_id2.errors?.['required']">
                 O campo é obrigatório!
             </span>
           </mat-error>
-        </mat-form-field>
+        </mat-form-field-->
 
         <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
           <mat-label>Num. Ordem:</mat-label>
@@ -98,53 +113,29 @@
   matSortDisableClear
 >
 
-  <!-- Laboratório Column -->
-  <ng-container matColumnDef="laboratorio_id" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratorio_id">Laboratório</th>
-    <td mat-cell *matCellDef="let row">{{ row?.laboratorio_id }}</td>
-  </ng-container>
-
-  <!-- Tipo Column -->
-  <ng-container matColumnDef="tipo_recurso_id" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="tipo_recurso_id">Tipo Recurso</th>
-    <td mat-cell *matCellDef="let row">{{ row?.tipo_recurso_id }}</td>
-  </ng-container>
-
   <!-- Nome Column -->
   <ng-container matColumnDef="nome" class="col-2">
     <th mat-header-cell *matHeaderCellDef mat-sort-header="nome">Nome</th>
     <td mat-cell *matCellDef="let row">{{ row?.nome }}</td>
   </ng-container>
 
-  <!-- Descrição Column -->
-  <ng-container matColumnDef="descricao" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="descricao">Descrição</th>
-    <td mat-cell *matCellDef="let row">{{ row?.descricao }}</td>
+    <!-- Tipo Column -->
+    <ng-container matColumnDef="tipo_recurso_id" class="col-2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="tipo_recurso_id">Tipo Recurso</th>
+      <td mat-cell *matCellDef="let row">{{ row?.tipo_recurso?.descricao }}</td>
+    </ng-container>
+
+  <!-- Domínio Column -->
+  <ng-container matColumnDef="dominio_id" class="col-2">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="dominio_id:">Domínio</th>
+    <td mat-cell *matCellDef="let row">{{ row?.dominio?.descricao }}</td>
   </ng-container>
 
-  <!-- filter_def_name Column -->
-  <ng-container matColumnDef="filter_def_name" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="filter_def_name">filter_def_name</th>
-    <td mat-cell *matCellDef="let row">{{ row?.filter_def_name }}</td>
-  </ng-container>
-
-  <!-- data_class_name Column -->
-  <ng-container matColumnDef="data_class_name" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="data_class_name">data_class_name</th>
-    <td mat-cell *matCellDef="let row">{{ row?.data_class_name }}</td>
-  </ng-container>
-
-  <!-- res_class_name Column -->
-  <ng-container matColumnDef="res_class_name" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="res_class_name">res_class_name</th>
-    <td mat-cell *matCellDef="let row">{{ row?.res_class_name }}</td>
-  </ng-container>
-
-  <!-- report_class_name Column -->
-  <ng-container matColumnDef="report_class_name" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="report_class_name">report_class_name</th>
-    <td mat-cell *matCellDef="let row">{{ row?.report_class_name }}</td>
-  </ng-container>
+    <!-- Laboratório Column -->
+    <ng-container matColumnDef="laboratorio_id" class="col-2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratorio_id">Laboratório</th>
+      <td mat-cell *matCellDef="let row">{{ row?.laboratorio?.nome }}</td>
+    </ng-container>
 
   <!-- action Column -->
   <ng-container matColumnDef="action" class="col-1">

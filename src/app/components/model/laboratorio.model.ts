@@ -1,4 +1,5 @@
 import { LaboratoryDomain } from './laboratory-domain.model';
+import { Recurso } from './recurso.model';
 export class Laboratorio {
   public id?: number;
   public nome?: string;
@@ -18,6 +19,7 @@ export class Laboratorio {
   public url_nfe?: string;
   public laboratory_domain_id?: number;
   public laboratoryDomain?: LaboratoryDomain;
+  public recursos?: Recurso;
   public version_id?: number;
   public deleted?: number;
   public empresa_id?: number;

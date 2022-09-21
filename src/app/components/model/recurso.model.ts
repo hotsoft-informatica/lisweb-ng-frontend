@@ -24,7 +24,7 @@ export class Recurso {
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
   public dominios?: Dominio;
-  public recursos?: TipoRecurso;
+  public tipos_recurso?: TipoRecurso;
   public laboratorios?: Laboratorio;
 
   constructor(values: Recurso) {
