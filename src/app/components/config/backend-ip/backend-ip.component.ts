@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-backend-ip',
   templateUrl: './backend-ip.component.html',
-  styleUrls: ['./backend-ip.component.css']
 })
 export class BackendIpComponent implements OnInit {
   backendIp!: BackendIp;

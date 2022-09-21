@@ -95,7 +95,7 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
 import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
-
+import { NotaComponent } from './components/nota/nota.component';
 
 const routes: Routes = [
   {
@@ -505,6 +505,10 @@ const routes: Routes = [
   {
     path: 'laboratory_get_filters',
     component: LaboratoryGetFilterReadComponent,
+  },
+  {
+    path: 'notas',
+    component: NotaComponent,
   },
 ];
 

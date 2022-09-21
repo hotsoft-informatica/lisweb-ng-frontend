@@ -14,7 +14,6 @@ import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-dominio',
   templateUrl: './dominio.component.html',
-  styleUrls: ['./dominio.component.css']
 })
 export class DominioComponent implements OnInit, OnChanges, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);

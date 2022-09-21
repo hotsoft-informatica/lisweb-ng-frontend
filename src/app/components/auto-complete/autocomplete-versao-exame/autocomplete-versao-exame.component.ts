@@ -10,7 +10,6 @@ import { debounceTime, Subject } from 'rxjs';
 @Component({
   selector: 'app-autocomplete-versao-exame',
   templateUrl: './autocomplete-versao-exame.component.html',
-  styleUrls: ['./autocomplete-versao-exame.component.css']
 })
 export class AutoCompleteVersaoExameComponent implements OnInit{
   @Input('tipoExame') tipoExame:TipoExame | undefined;

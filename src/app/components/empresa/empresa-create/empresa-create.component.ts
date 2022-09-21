@@ -9,7 +9,6 @@ import { end } from '@popperjs/core';
 @Component({
   selector: 'app-empresa-create',
   templateUrl: './empresa-create.component.html',
-  styleUrls: ['./empresa-create.component.css'],
 })
 
 export class EmpresaCreateComponent implements OnInit {

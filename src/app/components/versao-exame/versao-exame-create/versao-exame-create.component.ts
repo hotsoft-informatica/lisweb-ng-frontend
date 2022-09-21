@@ -26,7 +26,6 @@ import { Subject, forkJoin, Observable } from 'rxjs';
 @Component({
   selector: 'app-versao-exame-create',
   templateUrl: './versao-exame-create.component.html',
-  styleUrls: ['./versao-exame-create.component.css']
 })
 export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   versaoExame!: VersaoExame;

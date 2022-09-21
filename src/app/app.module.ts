@@ -1,5 +1,6 @@
 import { InterceptorModule } from './components/model/interceptor.module';
 import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
+import { MatTableModule } from '@angular/material/table';
 import { LoginComponent } from './components/login/login.component';
 import { LgUsuarioComponent } from './components/login/lg-usuario/lg-usuario.component';
 import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
@@ -37,7 +38,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
@@ -193,6 +193,7 @@ import { VersaoExameParametroComponent } from './components/versao-exame/versao-
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameStatusPipe } from './pipes/versao-exame-status.pipe';
 import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
+import { NotaComponent } from './components/nota/nota.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -340,6 +341,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameReadComponent,
     VersaoExameStatusPipe,
     VersaoExameUpdateComponent,
+    NotaComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -408,4 +410,3 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
-

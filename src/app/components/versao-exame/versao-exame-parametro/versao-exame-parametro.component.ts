@@ -13,7 +13,6 @@ import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-versao-exame-parametro',
   templateUrl: './versao-exame-parametro.component.html',
-  styleUrls: ['./versao-exame-parametro.component.css']
 })
 export class VersaoExameParametroComponent implements OnChanges {
   @Input('versaoExame') versaoExame!: VersaoExame;

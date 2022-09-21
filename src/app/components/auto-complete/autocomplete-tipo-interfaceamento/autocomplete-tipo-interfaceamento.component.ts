@@ -6,13 +6,10 @@ import { debounceTime, Subject } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 import { Query } from '../../model/query.model';
 import { VersaoExame } from '../../model/versao-exame.model';
-import { Paciente } from '../../model/paciente.model';
-
 
 @Component({
   selector: 'app-autocomplete-tipo-interfaceamento',
   templateUrl: './autocomplete-tipo-interfaceamento.component.html',
-  styleUrls: ['./autocomplete-tipo-interfaceamento.component.css']
 })
 export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
   @Input('versaoExame') versaoExame:VersaoExame;
