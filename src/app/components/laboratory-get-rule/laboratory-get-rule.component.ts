@@ -1,6 +1,7 @@
 import { Query } from '../model/query.model';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Laboratorio } from '../model/laboratorio.model';
 import { LaboratoryGetRule } from '../model/laboratory-get-rule.model';
 import { LaboratoryGetRuleService } from '../service/laboratory-get-rule.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -19,6 +20,7 @@ import { merge, fromEvent } from 'rxjs';
   styleUrls: ['./laboratory-get-rule.component.css']
 })
 export class LaboratoryGetRuleComponent implements OnInit {
+  laboratoryGetRule!: LaboratoryGetRule;
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
   record!: any;
@@ -29,6 +31,8 @@ export class LaboratoryGetRuleComponent implements OnInit {
   query: Query[] = [];
   id!: number;
   totalCount!: number;
+  laboratorios: any[] = []
+  subject: Subject<any> = new Subject();
 
   displayedColumns = ['id', 'laboratorio_id', 'laboratory_get_filter_id', 'client_server_table_id', 'can_get', 'action'];
 
@@ -149,6 +153,27 @@ export class LaboratoryGetRuleComponent implements OnInit {
     this.query.push(query);
     this.paginator.pageIndex = 0;
     this.loadPage();
+  }
+
+  searchLaboratorio(): void {
+    const query_string = this.laboratoryGetRule.laboratorio_id as unknown as string;
+    const query = new Query({
+      key: 'nome',
+      value: query_string,
+      isNumeric: false,
+    });
+    this.query = [];
+    this.query.push(query);
+    this.subject.next(null);
+  }
+
+  displayFn(options: Laboratorio[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.nome : '';
+    };
   }
 
 }
