@@ -98,7 +98,7 @@ export class LaboratoryGetRuleComponent implements OnInit {
     this.recordService.create(this.currentRecord).subscribe((record) => {
       this.records.unshift(record);
       this.datasource.data = [...this.records];
-      this.recordService.showMessage('Domínio criado com sucesso!');
+      this.recordService.showMessage('Regra de GET criada com sucesso!');
     });
 
     this.currentRecord = new LaboratoryGetRule({});
@@ -108,7 +108,7 @@ export class LaboratoryGetRuleComponent implements OnInit {
   updateGridData(): void {
     this.onCreate = false;
     this.onEdit = false;
-    this.recordService.update(this.currentRecord).subscribe((dominio) => {
+    this.recordService.update(this.currentRecord).subscribe((laboratory_get_rule) => {
       this.recordService.showMessage('Regra de GET atualizada com sucesso!');
       this.onFocus();
     });

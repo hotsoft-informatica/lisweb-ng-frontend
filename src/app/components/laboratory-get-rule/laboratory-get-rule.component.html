@@ -34,7 +34,7 @@
       </div>
   
       <div *ngIf="onCreate || onEdit">
-        <form #formCreateDominio="ngForm">
+        <form #formCreateLaboratoryGetRule="ngForm">
           <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
             <mat-label>Tabela:</mat-label>
             <input
@@ -49,25 +49,27 @@
             >
           </mat-form-field>
   
-          <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+          <mat-form-field appearance="fill">
             <mat-label>Laboratório:</mat-label>
             <input
-              type="text"
-              id="laboratorio_id"
-              required
-              matInput
-              maxlength="50"
               name="laboratorio_id"
-              [(ngModel)]="currentRecord.laboratorio_id"
-            >
+              matInput [matAutocomplete]="auto" 
+              [(ngModel)]="laboratorio.laboratorio_id"
+              (ngModelChange)="search()"
+            />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(laboratorios)">
+              <mat-option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">
+                {{laboratorio.nome}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
 
+          
           <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
             <mat-label>Pode Baixar:</mat-label>
             <input
               type="text"
               id="can_get"
-              required
               matInput
               maxlength="50"
               name="can_get"
@@ -80,7 +82,6 @@
             <input
               type="text"
               id="laboratory_get_filter_id"
-              required
               matInput
               maxlength="50"
               name="laboratory_get_filter_id"
@@ -90,7 +91,7 @@
 
           <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
             <button mat-button
-            (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateDominio.invalid">Inserir</button>
+            (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateLaboratoryGetRule.invalid">Inserir</button>
             <button mat-button
             (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
             <button mat-button color="warn"
