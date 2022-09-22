@@ -40,13 +40,28 @@
           <mat-label>Domínio</mat-label>
           <input
             name="dominio"
-            matInput [matAutocomplete]="auto" 
+            matInput [matAutocomplete]="autoDominios" 
             [(ngModel)]="recurso.dominio_id"
             (ngModelChange)="searchDominio()"
           />
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnDominio(dominios)">
+          <mat-autocomplete #autoDominios="matAutocomplete" [displayWith]="displayFnDominio(dominios)">
             <mat-option *ngFor="let dominio of dominios" [value]="dominio.id">
               {{dominio.descricao}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+          <mat-label>Tipo Recurso</mat-label>
+          <input
+            name="tipo_recurso_id"
+            matInput [matAutocomplete]="autoTipoRecursos" 
+            [(ngModel)]="recurso.tipo_recurso_id"
+            (ngModelChange)="searchTipoRecurso()"
+          />
+          <mat-autocomplete #autoTipoRecursos="matAutocomplete" [displayWith]="displayFnTipoRecurso(tipos_recurso)">
+            <mat-option *ngFor="let tipo_recurso of tipos_recurso" [value]="tipo_recurso.id">
+              {{tipo_recurso.descricao}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -72,7 +87,7 @@
           </mat-error>
         </mat-form-field-->
 
-        <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+        <!-- <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
           <mat-label>Num. Ordem:</mat-label>
           <input
             type="text"
@@ -89,7 +104,7 @@
                 O campo é obrigatório!
             </span>
           </mat-error>
-        </mat-form-field>
+        </mat-form-field> -->
         <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
           <button mat-button
           (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateRecurso.invalid">Inserir</button>

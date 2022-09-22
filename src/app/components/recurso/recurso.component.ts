@@ -5,6 +5,8 @@ import { Recurso } from '../model/recurso.model';
 import { RecursoService } from '../service/recurso.service';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
+import { TipoRecurso } from '../model/tipo-recurso.model';
+import { TipoRecursoService } from '../service/tipo-recurso.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,11 +22,12 @@ import { merge, fromEvent } from 'rxjs';
 })
 export class RecursoComponent implements OnInit, AfterViewInit {
   @Input('dominios') dominios: Dominio[] = [];
+  @Input('tipos_recurso') tipos_recurso: TipoRecurso[] = [];
+
   datasource = new MatTableDataSource<any>([]);
   recurso: Recurso = new Recurso({});
   records: any[] = [];
   record!: any;
-
   oldRecord: any;
   currentRecord: any;
   deletedRecords: any[] = [];
@@ -39,6 +42,7 @@ export class RecursoComponent implements OnInit, AfterViewInit {
 
   queries: Query[] = [];
   subjectDominio: Subject<any> = new Subject();
+  subjectTipoRecurso: Subject<any> = new Subject();
 
   onEdit = false;
   onCreate = false;
@@ -58,6 +62,7 @@ export class RecursoComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private recordService: RecursoService,
     private dominioService: DominioService,
+    private tipoRecursoService: TipoRecursoService
   ) {
     this.currentRecord = new Recurso({});
     this.record ||= new Recurso({});
@@ -79,6 +84,16 @@ export class RecursoComponent implements OnInit, AfterViewInit {
         });
     });
     this.subjectDominio.next(null);
+
+    this.subjectTipoRecurso.pipe(debounceTime(500)).subscribe(() => {
+      this.tipoRecursoService
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((tipos_recurso) => {
+          console.table(this.queries);
+          this.tipos_recurso = tipos_recurso;
+        });
+    });
+    this.subjectTipoRecurso.next(null);
   }
 
   ngAfterViewInit() {
@@ -192,6 +207,29 @@ export class RecursoComponent implements OnInit, AfterViewInit {
   }
 
   displayFnDominio(options: Dominio[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.descricao : '';
+    };
+  }
+
+  searchTipoRecurso(): void {
+    const query_string = this.recurso
+      .tipo_recurso_id as unknown as string;
+    const query = new Query({
+      key: 'descricao',
+      value: query_string,
+      isNumeric: false,
+    });
+    console.warn(query_string);
+    this.queries = [];
+    this.queries.push(query);
+    this.subjectTipoRecurso.next(null);
+  }
+
+  displayFnTipoRecurso(options: TipoRecurso[]): (id: any) => any {
     return (id: any) => {
       const correspondingOption = Array.isArray(options)
         ? options.find((option) => option.id === id)
