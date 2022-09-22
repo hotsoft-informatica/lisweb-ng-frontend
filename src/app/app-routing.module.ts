@@ -89,6 +89,7 @@ import { DominioComponent } from './components/dominio/dominio.component';
 import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
 import { LaboratoryStatementRuleComponent } from './components/laboratory-statement-rule/laboratory-statement-rule.component';
+import { LaboratoryPostRuleComponent } from './components/laboratory-post-rule/laboratory-post-rule.component';
 
 const routes: Routes = [
   {
@@ -470,6 +471,10 @@ const routes: Routes = [
   {
     path: 'laboratory_statement_rules',
     component: LaboratoryStatementRuleComponent,
+  },
+  {
+    path: 'laboratory_post_rules',
+    component: LaboratoryPostRuleComponent,
   },
 ];
 

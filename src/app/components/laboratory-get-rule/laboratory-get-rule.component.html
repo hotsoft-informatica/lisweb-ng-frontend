@@ -50,7 +50,7 @@
             <mat-label>Laboratório:</mat-label>
             <input
             name="laboratorio_id"
-            matInput [matAutocomplete]="auto" 
+            matInput [matAutocomplete]="auto"
             [(ngModel)]="currentRecord.laboratorio_id"
             (ngModelChange)="searchLaboratorio()"
             >
@@ -61,7 +61,7 @@
             </mat-autocomplete>
           </mat-form-field>
 
-          <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+          <mat-checkbox appearance="fill" class="col-lg-5 col-md-12 p-2">
             <mat-label>Pode Baixar:</mat-label>
             <input
               type="text"
@@ -71,7 +71,7 @@
               name="can_get"
               [(ngModel)]="currentRecord.can_get"
             >
-          </mat-form-field>
+          </mat-checkbox>
 
           <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
             <mat-label>Filtro:</mat-label>
@@ -106,19 +106,19 @@
       matSortDirection="desc"
       matSortDisableClear
     >
-  
+
     <!-- Id Column -->
     <ng-container matColumnDef="id" class="col-2">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="id">Id</th>
       <td mat-cell *matCellDef="let row">{{ row?.id }}</td>
     </ng-container>
-  
+
       <!-- Tabela Column -->
       <ng-container matColumnDef="client_server_table_id" class="col-4">
         <th mat-header-cell *matHeaderCellDef mat-sort-header="client_server_table_id">Tabela</th>
         <td mat-cell *matCellDef="let row">{{ row?.client_server_table_id }}</td>
       </ng-container>
-  
+
       <!-- Laboratorio Column -->
       <ng-container matColumnDef="laboratorio_id" class="col-4">
         <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratorio_id">Laboratório</th>
@@ -136,25 +136,25 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratory_get_filter_id">Filtro</th>
         <td mat-cell *matCellDef="let row">{{ row?.laboratory_get_filter_id }}</td>
       </ng-container>
-  
+
       <!-- action Column -->
       <ng-container matColumnDef="action" class="col-2">
         <th mat-header-cell *matHeaderCellDef> Ações </th>
         <td mat-cell *matCellDef="let row; index as position">
           <div class="row">
-  
+
             <div class="col-1 me-3">
               <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
                 <mat-icon class="edit">edit</mat-icon>
               </button>
             </div>
-  
+
             <div class="col-1 me-3">
                 <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
                   <mat-icon class="delete">delete</mat-icon>
                 </button>
             </div>
-    
+
             <ng-template #deleteDialog>
               <mat-dialog-content class="mat-typography">
                 Deseja apagar esse registro?
@@ -167,13 +167,12 @@
           </div>
         </td>
       </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
     <mat-paginator [length]="this.totalCount" [pageSize]="10"
     [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
-  </div>  
+  </div>
 </div>
-  
-  
+

@@ -181,6 +181,7 @@ import { VersaoExameParametroComponent } from './components/versao-exame/versao-
 import { DominioComponent } from './components/dominio/dominio.component';
 import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
 import { LaboratoryStatementRuleComponent } from './components/laboratory-statement-rule/laboratory-statement-rule.component';
+import { LaboratoryPostRuleComponent } from './components/laboratory-post-rule/laboratory-post-rule.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -315,6 +316,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     DominioComponent,
     LaboratoryGetRuleComponent,
     LaboratoryStatementRuleComponent,
+    LaboratoryPostRuleComponent,
   ],
   imports: [
     HttpClientModule,
