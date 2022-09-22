@@ -88,6 +88,7 @@ import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnic
 import { DominioComponent } from './components/dominio/dominio.component';
 import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
+import { LaboratoryStatementRuleComponent } from './components/laboratory-statement-rule/laboratory-statement-rule.component';
 
 const routes: Routes = [
   {
@@ -465,6 +466,10 @@ const routes: Routes = [
   {
     path: 'laboratory_get_rules',
     component: LaboratoryGetRuleComponent,
+  },
+  {
+    path: 'laboratory_statement_rules',
+    component: LaboratoryStatementRuleComponent,
   },
 ];
 
