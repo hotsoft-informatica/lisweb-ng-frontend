@@ -136,7 +136,10 @@ export class DominioComponent implements OnInit, AfterViewInit {
         this.recordService.delete(id)
           .subscribe((record) => {
             this.recordService.showMessage('Domínio apagado com sucesso!');
-            window.location.reload();
+
+            // Carrega os dados do backend e faz refresh do datasource
+            this.loadPage();
+            this.datasource.data = [...this.records];
           });
       }
     });

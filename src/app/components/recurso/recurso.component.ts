@@ -25,7 +25,6 @@ export class RecursoComponent implements OnInit, AfterViewInit {
   @Input('tipos_recurso') tipos_recurso: TipoRecurso[] = [];
 
   datasource = new MatTableDataSource<any>([]);
-  recurso: Recurso = new Recurso({});
   records: any[] = [];
   record!: any;
   oldRecord: any;
@@ -35,7 +34,7 @@ export class RecursoComponent implements OnInit, AfterViewInit {
   id!: number;
   totalCount!: number;
 
-  @ViewChild('descricao') descricao!: ElementRef;
+  @ViewChild('dominio_id') dominio_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -124,16 +123,15 @@ export class RecursoComponent implements OnInit, AfterViewInit {
 
   onFocus(): void {
     timer(250).subscribe(() => {
-      if (this.descricao !== undefined) {
+      if (this.dominio_id !== undefined) {
         console.log("Entrou no onfocus");
-        this.renderer.selectRootElement(this.descricao["nativeElement"]).focus();
+        this.renderer.selectRootElement(this.dominio_id["nativeElement"]).focus();
       }
     });
   }
 
   addGridData(): void {
-    console.table(this.currentRecord);
-    this.onCreate = true;
+    this.onCreate = false;
     this.onEdit = false;
     this.recordService.create(this.currentRecord).subscribe((record) => {
       this.records.unshift(record);
@@ -178,7 +176,10 @@ export class RecursoComponent implements OnInit, AfterViewInit {
         this.recordService.delete(id)
           .subscribe((record) => {
             this.recordService.showMessage('Recurso apagado com sucesso!');
-            window.location.reload();
+
+            // Carrega os dados do backend e faz refresh do datasource
+            this.loadPage();
+            this.datasource.data = [...this.records];
           });
       }
     });
@@ -193,7 +194,7 @@ export class RecursoComponent implements OnInit, AfterViewInit {
   }
 
   searchDominio(): void {
-    const query_string = this.recurso
+    const query_string = this.currentRecord
       .dominio_id as unknown as string;
     const query = new Query({
       key: 'descricao',
@@ -216,7 +217,7 @@ export class RecursoComponent implements OnInit, AfterViewInit {
   }
 
   searchTipoRecurso(): void {
-    const query_string = this.recurso
+    const query_string = this.currentRecord
       .tipo_recurso_id as unknown as string;
     const query = new Query({
       key: 'descricao',
@@ -237,5 +238,4 @@ export class RecursoComponent implements OnInit, AfterViewInit {
       return correspondingOption ? correspondingOption.descricao : '';
     };
   }
-
 }

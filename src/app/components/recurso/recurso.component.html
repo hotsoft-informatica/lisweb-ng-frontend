@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between col-sm-12 p-2">
-  <button mat-flat-button color="primary" class="col-sm-1 col-lg-1 float-start" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+  <button mat-flat-button color="primary" class="col-sm-2 col-md-2 col-lg-1 float-start" data-bs-toggle="collapse" data-bs-target="#collapseExample"
     aria-expanded="false" aria-controls="collapseExample">
     <mat-icon>search</mat-icon>
     Buscar
@@ -36,14 +36,22 @@
   <div class="">
     <div *ngIf="onCreate || onEdit">
       <form #formCreateRecurso="ngForm">
-        <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+        <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
           <mat-label>Domínio</mat-label>
           <input
-            name="dominio"
+            name="dominio_id"
             matInput [matAutocomplete]="autoDominios" 
-            [(ngModel)]="recurso.dominio_id"
+            [(ngModel)]="currentRecord.dominio_id"
             (ngModelChange)="searchDominio()"
+            #dominio_id2="ngModel"
+            #dominio_id
+            required
           />
+          <mat-error *ngIf="dominio_id2.invalid && (dominio_id2.dirty || dominio_id2.touched)">
+            <span *ngIf="dominio_id2.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
           <mat-autocomplete #autoDominios="matAutocomplete" [displayWith]="displayFnDominio(dominios)">
             <mat-option *ngFor="let dominio of dominios" [value]="dominio.id">
               {{dominio.descricao}}
@@ -51,14 +59,21 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+        <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
           <mat-label>Tipo Recurso</mat-label>
           <input
             name="tipo_recurso_id"
             matInput [matAutocomplete]="autoTipoRecursos" 
-            [(ngModel)]="recurso.tipo_recurso_id"
+            [(ngModel)]="currentRecord.tipo_recurso_id"
             (ngModelChange)="searchTipoRecurso()"
+            #tipo_recurso_id="ngModel"
+            required
           />
+          <mat-error *ngIf="tipo_recurso_id.invalid && (tipo_recurso_id.dirty || tipo_recurso_id.touched)">
+            <span *ngIf="tipo_recurso_id.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
           <mat-autocomplete #autoTipoRecursos="matAutocomplete" [displayWith]="displayFnTipoRecurso(tipos_recurso)">
             <mat-option *ngFor="let tipo_recurso of tipos_recurso" [value]="tipo_recurso.id">
               {{tipo_recurso.descricao}}
@@ -66,31 +81,55 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <!-- mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-          <mat-label>Domínio:</mat-label>
+        <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
+          <mat-label>Nome:</mat-label>
           <input
             type="text"
-            id="dominio_id"
+            id="nome"
             required
             matInput
             maxlength="50"
-            name="dominio_id"
-            [(ngModel)]="currentRecord.dominio_id"
-            #dominio_id2="ngModel"
-            #dominio_id
-            autofocus
+            name="nome"
+            [(ngModel)]="currentRecord.nome"
+            #nome2="ngModel"
+            #nome
           >
-          <mat-error *ngIf="dominio_id2.invalid && (dominio_id2.dirty || dominio_id2.touched)">
-            <span *ngIf="dominio_id2.errors?.['required']">
+          <mat-error *ngIf="nome2.invalid && (nome2.dirty || nome2.touched)">
+            <span *ngIf="nome2.errors?.['required']">
                 O campo é obrigatório!
             </span>
           </mat-error>
-        </mat-form-field-->
+        </mat-form-field>
 
-        <!-- <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-          <mat-label>Num. Ordem:</mat-label>
+        <mat-form-field appearance="fill" class="col-lg-2  p-2">
+          <mat-label>Imagem:</mat-label>
           <input
-            type="text"
+            type="number"
+            min="1"
+            maxlength="9"
+            id="indice_imagem"
+            required
+            matInput
+            maxlength="50"
+            name="indice_imagem"
+            [(ngModel)]="currentRecord.indice_imagem"
+            #indice_imagem2="ngModel"
+            #indice_imagem
+            >
+            <mat-error *ngIf="indice_imagem2.invalid && (indice_imagem2.dirty || indice_imagem2.touched)">
+              <span *ngIf="indice_imagem2.errors?.['required']">
+                O campo é obrigatório!
+              </span>
+            </mat-error>
+          </mat-form-field>
+          {{this.currentRecord.indice_imagem}}
+
+        <mat-form-field appearance="fill" class="col-lg-2 p-2">
+          <mat-label>Ordem:</mat-label>
+          <input
+            type="number"
+            min="1"
+            maxlength="9"
             id="num_ordem"
             required
             matInput
@@ -104,7 +143,92 @@
                 O campo é obrigatório!
             </span>
           </mat-error>
-        </mat-form-field> -->
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class= "col-lg-2 p-2">
+          <mat-label>Habilitar editar todos?</mat-label>
+          <mat-select name="habilita_editar_todos" [(ngModel)]="currentRecord.habilita_editar_todos">
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="row col-lg-6 p-2">
+          <mat-form-field appearance="outline">
+            <mat-label>Descrição:</mat-label>
+            <textarea matInput id="descricao" name="descricao"
+              [(ngModel)]="currentRecord.descricao">
+          </textarea>
+          </mat-form-field>
+        </div>
+
+        <mat-tab-group>
+          <mat-tab label="Classe">
+
+            <mat-form-field appearance="fill" class="col-lg-6 p-2">
+              <mat-label>Nome da definição de Filtro:</mat-label>
+              <input
+                type="text"
+                id="filter_def_name"
+                matInput
+                maxlength="50"
+                name="filter_def_name"
+                [(ngModel)]="currentRecord.filter_def_name"
+                #filter_def_name="ngModel"
+              >
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-lg-6 p-2">
+              <mat-label>Nome da classe de Dados:</mat-label>
+              <input
+                type="text"
+                id="data_class_name"
+                matInput
+                maxlength="50"
+                name="data_class_name"
+                [(ngModel)]="currentRecord.data_class_name"
+              >
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-lg-6 p-2">
+              <mat-label>Nome da classe do Recurso:</mat-label>
+              <input
+                type="text"
+                id="res_class_name"
+                matInput
+                maxlength="50"
+                name="res_class_name"
+                [(ngModel)]="currentRecord.res_class_name"
+              >
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="col-lg-6 p-2">
+              <mat-label>Nome da classe do Relatório:</mat-label>
+              <input
+                type="text"
+                id="report_class_name"
+                matInput
+                maxlength="50"
+                name="report_class_name"
+                [(ngModel)]="currentRecord.report_class_name"
+              >
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class= "col-lg-3 p-2">
+              <mat-label>Forçar execução após registro modificado?</mat-label>
+              <mat-select name="forcar_execucao_filtro" [(ngModel)]="currentRecord.forcar_execucao_filtro">
+                <mat-option value="S">Sim</mat-option>
+                <mat-option value="N">Não</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </mat-tab>
+
+          <mat-tab label="Ações">
+            <!-- <app-versao-exame-interfaceamento-create [versaoExame]="this.versaoExame"></app-versao-exame-interfaceamento-create> -->
+          </mat-tab>
+        </mat-tab-group>
+
         <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
           <button mat-button
           (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateRecurso.invalid">Inserir</button>
@@ -119,75 +243,76 @@
 </div>
 
 <div class="mat-elevation-z4">
-<table
-  mat-table
-  [dataSource]="datasource"
-  matSort
-  matSortActive="id"
-  matSortDirection="desc"
-  matSortDisableClear
->
+  <table
+    mat-table
+    [dataSource]="datasource"
+    matSort
+    matSortActive="id"
+    matSortDirection="desc"
+    matSortDisableClear
+  >
 
-  <!-- Nome Column -->
-  <ng-container matColumnDef="nome" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="nome">Nome</th>
-    <td mat-cell *matCellDef="let row">{{ row?.nome }}</td>
-  </ng-container>
-
-    <!-- Tipo Column -->
-    <ng-container matColumnDef="tipo_recurso_id" class="col-2">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header="tipo_recurso_id">Tipo Recurso</th>
-      <td mat-cell *matCellDef="let row">{{ row?.tipo_recurso?.descricao }}</td>
+    <!-- Nome Column -->
+    <ng-container matColumnDef="nome" class="col-2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="nome">Nome</th>
+      <td mat-cell *matCellDef="let row">{{ row?.nome }}</td>
     </ng-container>
 
-  <!-- Domínio Column -->
-  <ng-container matColumnDef="dominio_id" class="col-2">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header="dominio_id:">Domínio</th>
-    <td mat-cell *matCellDef="let row">{{ row?.dominio?.descricao }}</td>
-  </ng-container>
+      <!-- Tipo Column -->
+      <ng-container matColumnDef="tipo_recurso_id" class="col-2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="tipo_recurso_id">Tipo Recurso</th>
+        <td mat-cell *matCellDef="let row">{{ row?.tipo_recurso?.descricao }}</td>
+      </ng-container>
 
-    <!-- Laboratório Column -->
-    <ng-container matColumnDef="laboratorio_id" class="col-2">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratorio_id">Laboratório</th>
-      <td mat-cell *matCellDef="let row">{{ row?.laboratorio?.nome }}</td>
+    <!-- Domínio Column -->
+    <ng-container matColumnDef="dominio_id" class="col-2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="dominio_id:">Domínio</th>
+      <td mat-cell *matCellDef="let row">{{ row?.dominio?.descricao }}</td>
     </ng-container>
 
-  <!-- action Column -->
-  <ng-container matColumnDef="action" class="col-1">
-    <th mat-header-cell *matHeaderCellDef> Ações </th>
-    <td mat-cell *matCellDef="let row; index as position">
-      <div class="row">
+      <!-- Laboratório Column -->
+      <ng-container matColumnDef="laboratorio_id" class="col-2">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratorio_id">Laboratório</th>
+        <td mat-cell *matCellDef="let row">{{ row?.laboratorio?.nome }}</td>
+      </ng-container>
 
-        <div class="col-1 me-3">
-          <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
-            <mat-icon class="edit">edit</mat-icon>
-          </button>
-        </div>
+    <!-- action Column -->
+    <ng-container matColumnDef="action" class="col-1">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let row; index as position">
+        <div class="row">
 
-        <div class="col-1 me-3">
-            <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
-              <mat-icon class="delete">delete</mat-icon>
+          <div class="col-1 me-3">
+            <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
+              <mat-icon class="edit">edit</mat-icon>
             </button>
+          </div>
+
+          <div class="col-1 me-3">
+              <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
+                <mat-icon class="delete">delete</mat-icon>
+              </button>
+          </div>
+
+          <ng-template #deleteDialog>
+            <mat-dialog-content class="mat-typography">
+              Deseja apagar esse registro?
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+              <button mat-button mat-dialog-close>Cancel</button>
+              <button mat-button [mat-dialog-close]="true">Apagar</button>
+            </mat-dialog-actions>
+          </ng-template>
         </div>
+      </td>
+    </ng-container>
 
-        <ng-template #deleteDialog>
-          <mat-dialog-content class="mat-typography">
-            Deseja apagar esse registro?
-          </mat-dialog-content>
-          <mat-dialog-actions align="end">
-            <button mat-button mat-dialog-close>Cancel</button>
-            <button mat-button [mat-dialog-close]="true">Apagar</button>
-          </mat-dialog-actions>
-        </ng-template>
-      </div>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-<mat-paginator [length]="this.totalCount" [pageSize]="10"
-[pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator 
+    [length]="this.totalCount"
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 50]">
+  </mat-paginator>
 </div>
-
-
