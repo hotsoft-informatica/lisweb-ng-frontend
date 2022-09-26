@@ -1848,13 +1848,6 @@
     webpack "^5.58.1"
     webpack-merge "5.7.3"
 
-"@nrwl/cli@14.7.11":
-  version "14.7.11"
-  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-14.7.11.tgz#c762915c2a5137c05d46973a8225d0a1b5afb362"
-  integrity sha512-x6mRGFtETKvLfimpNH9YKabiCjPsJ7OjsjGrK/w1g+kjQ9Ls6iGdk7hsJYvmiquHWsfZVAWyNoDnuhiiAEFuJQ==
-  dependencies:
-    nx "14.7.11"
-
 "@nrwl/cli@14.7.13":
   version "14.7.13"
   resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-14.7.13.tgz#32ab43fd2cc385e573496a45f1cc9bc95a2e5e9e"
@@ -2001,13 +1994,6 @@
     "@nrwl/workspace" "14.7.8"
     dotenv "~10.0.0"
     semver "7.3.4"
-
-"@nrwl/tao@14.7.11":
-  version "14.7.11"
-  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-14.7.11.tgz#12daf00c61b8f641543d00ce23eae631f789a5b6"
-  integrity sha512-fV34dIkAGZD0wRl1Od1AnxBsUJgAwDdnu+7ILx9jt8FsS/RdrBu0gUlzX7P2CMsxrTWKhM/dcjS9edUFXWGdng==
-  dependencies:
-    nx "14.7.11"
 
 "@nrwl/tao@14.7.13":
   version "14.7.13"
@@ -6596,46 +6582,6 @@ nth-check@^2.0.1:
   integrity sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==
   dependencies:
     boolbase "^1.0.0"
-
-nx@14.7.11:
-  version "14.7.11"
-  resolved "https://registry.yarnpkg.com/nx/-/nx-14.7.11.tgz#99d9602ee1dfce9dafc17e730129822505c63c87"
-  integrity sha512-OMHkpReawEsI93b6zVfAs+gl6u2r8X7ebHCGOstvrI3BBP6q+TTCxJmuD99lrHLgXWGfPuQxhIEoBDINU+kNPA==
-  dependencies:
-    "@nrwl/cli" "14.7.11"
-    "@nrwl/tao" "14.7.11"
-    "@parcel/watcher" "2.0.4"
-    "@yarnpkg/lockfile" "^1.1.0"
-    "@yarnpkg/parsers" "^3.0.0-rc.18"
-    "@zkochan/js-yaml" "0.0.6"
-    chalk "4.1.0"
-    chokidar "^3.5.1"
-    cli-cursor "3.1.0"
-    cli-spinners "2.6.1"
-    cliui "^7.0.2"
-    dotenv "~10.0.0"
-    enquirer "~2.3.6"
-    fast-glob "3.2.7"
-    figures "3.2.0"
-    flat "^5.0.2"
-    fs-extra "^10.1.0"
-    glob "7.1.4"
-    ignore "^5.0.4"
-    js-yaml "4.1.0"
-    jsonc-parser "3.2.0"
-    minimatch "3.0.5"
-    npm-run-path "^4.0.1"
-    open "^8.4.0"
-    semver "7.3.4"
-    string-width "^4.2.3"
-    strong-log-transformer "^2.1.0"
-    tar-stream "~2.2.0"
-    tmp "~0.2.1"
-    tsconfig-paths "^3.9.0"
-    tslib "^2.3.0"
-    v8-compile-cache "2.3.0"
-    yargs "^17.4.0"
-    yargs-parser "21.0.1"
 
 nx@14.7.13:
   version "14.7.13"
