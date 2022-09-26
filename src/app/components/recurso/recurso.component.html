@@ -21,21 +21,13 @@
             >
           </mat-form-field>
         </div>
-
-        <div class="mb-3 col-md-3 row">
-          <mat-form-field appearance="fill">
-            <mat-label>Nome Filtro:</mat-label>
-            <input matInput #filter_def_name maxlength="12" placeholder="Filtre por Nome Filtro" (input)="search('filter_def_name', filter_def_name.value)"
-            >
-          </mat-form-field>
-        </div>
       </div>
     </div>
   </div>
 
   <div class="">
     <div *ngIf="onCreate || onEdit">
-      <form #formCreateRecurso="ngForm">
+      <form #formCreateRecurso="ngForm" class="justify-content-md-center">
         <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
           <mat-label>Domínio</mat-label>
           <input
@@ -81,7 +73,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
+        <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
           <mat-label>Nome:</mat-label>
           <input
             type="text"
@@ -101,7 +93,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-2  p-2">
+        <mat-form-field appearance="fill" class="col-md-auto">
           <mat-label>Imagem:</mat-label>
           <input
             type="number"
@@ -124,7 +116,7 @@
           </mat-form-field>
           {{this.currentRecord.indice_imagem}}
 
-        <mat-form-field appearance="fill" class="col-lg-2 p-2">
+        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Ordem:</mat-label>
           <input
             type="number"
@@ -145,7 +137,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class= "col-lg-2 p-2">
+        <mat-form-field appearance="fill" class= "col-lg-2 col-md-2 p-2">
           <mat-label>Habilitar editar todos?</mat-label>
           <mat-select name="habilita_editar_todos" [(ngModel)]="currentRecord.habilita_editar_todos">
             <mat-option value="S">Sim</mat-option>
