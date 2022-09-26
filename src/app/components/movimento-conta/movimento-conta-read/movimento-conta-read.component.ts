@@ -2,7 +2,7 @@ import { Query } from '../../model/query.model';
 // Analisar necessidade real de "datasources"
 // import { LaboratoryDomainReadDataSource } from './laboratory-domain-read-datasource';
 // TODO: Criar Service de Movimento Conta
-// import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
+import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 import {
   AfterViewInit,
   ElementRef,
@@ -10,22 +10,15 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
   tap,
-  delay,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-laboratory-domain-read',
-  templateUrl: './laboratory-domain-read.component.html',
-  styleUrls: ['./laboratory-domain-read.component.css'],
+  templateUrl: './movimento-conta-read.component.html',
 })
 export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -61,15 +54,15 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = new LaboratoryDomainReadDataSource(
-      this.laboratoryDomainService
-    );
-    this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 10, null);
-    this.laboratoryDomainService
-      .countLaboratoryDomains()
-      .subscribe((totalCount) => {
-        this.totalCount = totalCount;
-      });
+    // this.dataSource = new LaboratoryDomainReadDataSource(
+    //   this.laboratoryDomainService
+    // );
+    // this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 10, null);
+    // this.laboratoryDomainService
+    //   .countLaboratoryDomains()
+    //   .subscribe((totalCount) => {
+    //     this.totalCount = totalCount;
+    //   });
   }
 
   ngAfterViewInit() {
@@ -81,12 +74,12 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
   }
 
   loadLaboratoryDomainsPage() {
-    this.dataSource.loadLaboratoryDomains(
-      this.sort.active,
-      this.sort.direction,
-      this.paginator.pageIndex,
-      this.paginator.pageSize,
-      this.query
-    );
+    // this.dataSource.loadLaboratoryDomains(
+    //   this.sort.active,
+    //   this.sort.direction,
+    //   this.paginator.pageIndex,
+    //   this.paginator.pageSize,
+    //   this.query
+    // );
   }
 }

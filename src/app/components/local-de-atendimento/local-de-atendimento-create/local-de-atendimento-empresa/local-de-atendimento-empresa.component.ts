@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Empresa } from 'src/app/components/model/empresa.model';
 import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendimento.model';
-import { EmpresaService } from 'src/app/components/service/empresa.service';
 
 
 @Component({

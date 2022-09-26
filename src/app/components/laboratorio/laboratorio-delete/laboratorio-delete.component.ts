@@ -6,7 +6,6 @@ import { LaboratorioService } from '../../service/laboratorio.service';
 @Component({
   selector: 'app-laboratorio-delete',
   templateUrl: './laboratorio-delete.component.html',
-  styleUrls: ['./laboratorio-delete.component.css']
 })
 export class LaboratorioDeleteComponent implements OnInit {
   laboratorio!: Laboratorio;

@@ -4,7 +4,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendimento.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from '../../service/empresa.service';
-import { typeCheckFilePath } from '@angular/compiler-cli/src/ngtsc/typecheck';
 
 @Component({
   selector: 'app-local-de-atendimento-create',

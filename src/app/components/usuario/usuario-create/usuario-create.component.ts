@@ -9,13 +9,11 @@ import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } 
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { MatDialogRef } from '@angular/material/dialog';
 import Validation from '../../../utils/validation';
 
 @Component({
   selector: 'app-usuario-create',
   templateUrl: './usuario-create.component.html',
-  styleUrls: ['./usuario-create.component.css']
 })
 
 export class UsuarioCreateComponent implements OnInit {

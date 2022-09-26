@@ -13,7 +13,6 @@ import { debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'app-valor-referencia-create',
   templateUrl: './valor-referencia-create.component.html',
-  styleUrls: ['./valor-referencia-create.component.css']
 })
 export class ValorReferenciaCreateComponent implements OnInit {
   valorReferencia!: ValorReferencia;

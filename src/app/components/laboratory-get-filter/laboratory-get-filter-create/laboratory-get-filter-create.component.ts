@@ -3,24 +3,12 @@ import { Router } from '@angular/router';
 import { LaboratoryGetFilterService } from '../../service/laboratory-get-filter.service';
 import { ClientServerTableService } from '../../service/client-server-table.service';
 import {
-  AfterViewInit,
-  ElementRef,
-  ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
   debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 import { Subject } from 'rxjs';
 import { LaboratoryGetFilter } from '../../model/laboratory-get-filter.model';
 import { ClientServerTable } from '../../model/client-server-table.model';
@@ -28,7 +16,6 @@ import { ClientServerTable } from '../../model/client-server-table.model';
 @Component({
   selector: 'app-laboratory-get-filter-create',
   templateUrl: './laboratory-get-filter-create.component.html',
-  styleUrls: ['./laboratory-get-filter-create.component.css'],
 })
 export class LaboratoryGetFilterCreateComponent implements OnInit {
   laboratory_get_filter: LaboratoryGetFilter;

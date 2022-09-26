@@ -3,7 +3,6 @@ import { OperadoraReadDataSource } from './operadora-read-datasource';
 import { OperadoraService } from '../../service/operadora.service';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
@@ -12,19 +11,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
   tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-operadora-read',
   templateUrl: './operadora-read.component.html',
-  styleUrls: ['./operadora-read.component.css'],
 })
 export class OperadoraReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;

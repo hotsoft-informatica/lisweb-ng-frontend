@@ -1,5 +1,4 @@
 import { combineLatest } from 'rxjs';
-import { Usuario } from './../../model/usuario.model';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../service/usuario.service';
 import { Router } from '@angular/router';

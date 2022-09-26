@@ -1,9 +1,8 @@
 // TODO: Model de movimento conta
-// import { LaboratoryDomain } from '../../model/laboratory-domain.model';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 // TODO: Service de movimento conta
-//import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
+
 @Component({
   selector: 'app-movimento-conta-create',
   templateUrl: './movimento-conta-create.component.html',

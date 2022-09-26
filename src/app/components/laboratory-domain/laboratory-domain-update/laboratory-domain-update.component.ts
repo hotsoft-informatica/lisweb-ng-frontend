@@ -6,7 +6,6 @@ import { LaboratoryDomainService } from '../../service/laboratory-domain.service
 @Component({
   selector: 'app-laboratory-domain-update',
   templateUrl: './laboratory-domain-update.component.html',
-  styleUrls: ['./laboratory-domain-update.component.css'],
 })
 export class LaboratoryDomainUpdateComponent implements OnInit {
   laboratoryDomain!: LaboratoryDomain;

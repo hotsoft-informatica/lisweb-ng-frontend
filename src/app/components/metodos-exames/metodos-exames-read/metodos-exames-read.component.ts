@@ -4,22 +4,15 @@ import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef } from '@angul
 import { MatDialog } from '@angular/material/dialog';
 import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
 import { MatSort } from '@angular/material/sort';
-import { UsuarioService } from '../../service/usuario.service';
 import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
 import { MetodoExame } from '../../model/metodo-exame.model';
 import { MatPaginator } from '@angular/material/paginator';
-import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-metodos-exames-read',
   templateUrl: './metodos-exames-read.component.html',
-  styleUrls: ['./metodos-exames-read.component.css']
 })
 export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
 

@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-operadora-create',
   templateUrl: './operadora-create.component.html',
-  styleUrls: ['./operadora-create.component.css'],
 })
 export class OperadoraCreateComponent implements OnInit {
   operadora: Operadora;

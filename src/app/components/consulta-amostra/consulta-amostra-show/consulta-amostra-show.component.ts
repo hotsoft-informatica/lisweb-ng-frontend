@@ -5,40 +5,25 @@ import { Amostra } from '../../model/amostra.model';
 import { Paciente } from '../../model/paciente.model';
 import { Exame } from './../../model/exame.model';
 import { MaterialBiologico } from '../../model/material-biologico.model';
-import { Coletor } from '../../model/coletor.model';
 import { Usuario } from '../../model/usuario.model';
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ExameService } from '../../service/exame.service';
 import { VersaoExameService } from '../../service/versao-exame.service';
-import { ConsultaAmostra } from '../../model/consulta-amostra.model';
 import { Component, OnInit, Input, Injectable, OnChanges, AfterViewInit } from '@angular/core';
 import { Query } from '../../model/query.model';
-import { MatTableDataSource } from '@angular/material/table';
-import { catchError, finalize } from 'rxjs/operators';
-import { Observable, BehaviorSubject, of } from 'rxjs';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
-} from 'rxjs/operators';
-import { FormGroup } from '@angular/forms';
+import { BehaviorSubject, of } from 'rxjs';
+
 import { VersaoExame } from '../../model/versao-exame.model';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 // import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 @Component({
   selector: 'app-consulta-amostra-show',
   templateUrl: './consulta-amostra-show.component.html',
-  styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
-  private consultaAmostraSubject = new BehaviorSubject<ConsultaAmostraShowComponent[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
-
 
   exameAmostras!: ExameAmostra[];
   exameId!: number | undefined;
@@ -77,7 +62,6 @@ export class ConsultaAmostraShowComponent implements OnInit {
     this.dataSource.loadConsultaAmostra(null);
     this.pacienteAmostra = new Paciente();
   }
-
 
   search(key: string, value: string, isNumeric = false): void {
     this.loadingSubject.next(true);

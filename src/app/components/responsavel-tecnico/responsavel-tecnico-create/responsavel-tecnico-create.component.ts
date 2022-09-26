@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-responsavel-tecnico-create',
   templateUrl: './responsavel-tecnico-create.component.html',
-  styleUrls: ['./responsavel-tecnico-create.component.css']
 })
 export class ResponsavelTecnicoCreateComponent implements OnInit {
   responsavelTecnico: ResponsavelTecnico;

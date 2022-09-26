@@ -1,5 +1,4 @@
 import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
-import { Router } from '@angular/router';
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MetodoExame } from '../model/metodo-exame.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -10,7 +9,6 @@ export interface DialogData{
 @Component({
   selector: 'app-metodo-exame',
   templateUrl: './metodo-exame.component.html',
-  styleUrls: ['./metodo-exame.component.css']
 })
 
 export class MetodoExameComponent implements OnInit {

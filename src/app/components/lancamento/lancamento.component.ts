@@ -10,7 +10,6 @@ import { Lancamento } from '../model/lancamento.model';
 @Component({
   selector: 'app-lancamento',
   templateUrl: './lancamento.component.html',
-  styleUrls: ['./lancamento.component.css'],
 })
 export class LancamentoComponent implements OnInit {
   totalCount!: number;

@@ -9,7 +9,6 @@ import {
   Component,
   OnInit,
   TemplateRef,
-  Input,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';

@@ -18,7 +18,6 @@ import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model
 @Component({
   selector: 'app-versao-exame-interfaceamento-create',
   templateUrl: './versao-exame-interfaceamento-create.component.html',
-  styleUrls: ['./versao-exame-interfaceamento-create.component.css']
 })
 export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
   @Input('versaoExame') versaoExame!: VersaoExame;
@@ -43,7 +42,6 @@ export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
 
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
   }
-
 
   ngOnInit(){
     const query = new Query({ key: '', value: '', isNumeric: false });

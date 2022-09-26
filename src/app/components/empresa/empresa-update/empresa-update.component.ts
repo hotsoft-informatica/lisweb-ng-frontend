@@ -6,7 +6,6 @@ import { EmpresaService } from '../../service/empresa.service';
 @Component({
   selector: 'app-empresa-update',
   templateUrl: './empresa-update.component.html',
-  styleUrls: ['./empresa-update.component.css'],
 })
 export class EmpresaUpdateComponent implements OnInit {
   @Input('empresa') empresa: Empresa;

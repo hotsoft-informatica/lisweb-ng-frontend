@@ -9,7 +9,6 @@ import { Query } from '../../model/query.model';
 @Component({
   selector: 'app-laboratory-get-filter-delete',
   templateUrl: './laboratory-get-filter-delete.component.html',
-  styleUrls: ['./laboratory-get-filter-delete.component.css']
 })
 export class LaboratoryGetFilterDeleteComponent implements OnInit {
   laboratoryGetFilter!: LaboratoryGetFilter;
@@ -44,7 +43,7 @@ export class LaboratoryGetFilterDeleteComponent implements OnInit {
         });
       });
   }
-  
+
   displayFn(options: LaboratoryGetFilter[]): (id: any) => any {
     return (id: any) => {
       const correspondingOption = Array.isArray(options)

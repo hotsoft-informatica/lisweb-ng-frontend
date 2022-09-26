@@ -3,7 +3,6 @@ import { LaboratoryGetFilterReadDataSource } from './laboratory-get-filter-read-
 import { LaboratoryGetFilterService } from '../../service/laboratory-get-filter.service';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
@@ -12,18 +11,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
   tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-laboratory-get-filter-read',
   templateUrl: './laboratory-get-filter-read.component.html',
-  styleUrls: ['./laboratory-get-filter-read.component.css'],
 })
 export class LaboratoryGetFilterReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;

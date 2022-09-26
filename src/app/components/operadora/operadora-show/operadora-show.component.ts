@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-operadora-show',
   templateUrl: './operadora-show.component.html',
-  styleUrls: ['./operadora-show.component.css'],
 })
 export class OperadoraShowComponent implements OnInit {
   operadora: Operadora;
