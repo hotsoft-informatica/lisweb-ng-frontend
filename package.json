@@ -65,7 +65,7 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
     "node-fetch": "^3.2.10",
-    "nx": "14.7.13",
+    "nx": "14.8.2",
     "rxjs-compat": "^6.6.7",
     "tapable": "^2.2.1",
     "ts-node": "^10.8.2",
