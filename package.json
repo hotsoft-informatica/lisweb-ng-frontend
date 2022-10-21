@@ -15,7 +15,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/build-angular": "^14.2.1",
+    "@angular-devkit/build-angular": "^14.2.6",
     "@angular-material-extensions/input-counter": "^1.0.1",
     "@angular/animations": "^14.0.2",
     "@angular/cdk": "^14.0.2",
