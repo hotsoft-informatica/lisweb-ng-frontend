@@ -2304,10 +2304,10 @@
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.1.tgz#5f8f2bca0a5863cb69bc0b0acd88c96cb1d4ae10"
   integrity sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==
 
-"@types/node@*", "@types/node@>=10.0.0", "@types/node@^18.7.15":
-  version "18.7.21"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.21.tgz#63ee6688070e456325b6748dc492a7b948593871"
-  integrity sha512-rLFzK5bhM0YPyCoTC8bolBjMk7bwnZ8qeZUBslBfjZQou2ssJdWslx9CZ8DGM+Dx7QXQiiTVZ/6QO6kwtHkZCA==
+"@types/node@*", "@types/node@>=10.0.0", "@types/node@^18.8.3":
+  version "18.8.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.3.tgz#ce750ab4017effa51aed6a7230651778d54e327c"
+  integrity sha512-0os9vz6BpGwxGe9LOhgP/ncvYN5Tx1fNcd2TM3rD/aCGBkysb+ZWpXEocG24h6ZzOi13+VB8HndAQFezsSOw1w==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -6341,10 +6341,10 @@ node-releases@^2.0.6:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.6.tgz#8a7088c63a55e493845683ebf3c828d8c51c5503"
   integrity sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==
 
-node@^18.8.0:
-  version "18.9.1"
-  resolved "https://registry.yarnpkg.com/node/-/node-18.9.1.tgz#4deb2dc8c7b2c959b8b67018abbe027490a1d853"
-  integrity sha512-zwavq9di485wVxk+D9B6W8P9rd12iYEPtFrbObyM/Asyx70ZI4jkeXyVgsJlaPJMUKDSiFH6gM2g5z5UH4remQ==
+node@^18.10.0:
+  version "18.10.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-18.10.0.tgz#f2a8746eb1410bbc6d353f4d8259a425494dcf11"
+  integrity sha512-MzDb4jEaBYQoXoQQHalG5jOs7V4VUGB39/BJDSpPZo9mkRUO0y1rclJCNm5667YykgKVUHXK3P2zSpr/w4NO8w==
   dependencies:
     node-bin-setup "^1.0.0"
 
