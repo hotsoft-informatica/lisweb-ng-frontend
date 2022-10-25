@@ -181,6 +181,7 @@ import { VersaoExameParametroComponent } from './components/versao-exame/versao-
 import { DominioComponent } from './components/dominio/dominio.component';
 import { RecursoComponent } from './components/recurso/recurso.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
+import { UserCreateComponent } from './components/user/user-create/user-create.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -315,6 +316,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     DominioComponent,
     RecursoComponent,
     TipoRecursoComponent,
+    UserCreateComponent,
   ],
   imports: [
     HttpClientModule,
