@@ -182,7 +182,7 @@ import { DominioComponent } from './components/dominio/dominio.component';
 import { RecursoComponent } from './components/recurso/recurso.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { UserComponent } from './components/user/user.component';
-import { UserGuard } from './user.guard';
+import { UserGuard } from './guards/user.guard';
 
 
 registerLocaleData(localePt);
