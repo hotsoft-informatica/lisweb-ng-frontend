@@ -12,4 +12,12 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  canExit(): boolean {
+    if (confirm("Você quer sair da rota?")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
