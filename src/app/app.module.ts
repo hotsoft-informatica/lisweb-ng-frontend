@@ -182,6 +182,7 @@ import { DominioComponent } from './components/dominio/dominio.component';
 import { RecursoComponent } from './components/recurso/recurso.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { UserCreateComponent } from './components/user/user-create/user-create.component';
+import { UserGuard } from './user.guard';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -383,9 +384,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
       provide: LOCALE_ID,
       useValue: 'pt-BR',
     },
+    UserGuard,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
-
