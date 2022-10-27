@@ -89,6 +89,8 @@ import { DominioComponent } from './components/dominio/dominio.component';
 import { RecursoComponent } from './components/recurso/recurso.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
+import { UserComponent } from './components/user/user.component';
+import { UserExitGuard } from './guards/user-exit.guard';
 
 const routes: Routes = [
   {
@@ -470,7 +472,12 @@ const routes: Routes = [
   {
     path: 'backend_ip/create',
     component: BackendIpComponent,
+  },
+  {
+    path: 'user',
+    component: UserComponent, canDeactivate: [UserExitGuard]
   }
+
 ];
 
 @NgModule({
@@ -480,3 +487,8 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'user', component: UserComponent, canDeactivate: [UserExitGuard] }
+];
