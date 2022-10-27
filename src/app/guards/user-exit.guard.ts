@@ -9,11 +9,11 @@ import { UserComponent } from '../components/user/user.component';
 })
 export class UserExitGuard implements CanDeactivate<unknown> {
   canDeactivate(
-    component: unknown,
+    component: UserComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    return component.canExit();
   }
 
 }

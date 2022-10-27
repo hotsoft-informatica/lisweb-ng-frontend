@@ -183,7 +183,7 @@ import { RecursoComponent } from './components/recurso/recurso.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { UserComponent } from './components/user/user.component';
 import { UserGuard } from './guards/user.guard';
-
+import { UserExitGuard } from './guards/user-exit.guard';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
