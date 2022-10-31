@@ -14,7 +14,7 @@ export class UserGuard implements CanActivate {
 
     alert('Sem autorização para acessar a rota.');
     this.router.navigate(['']);
-    return false;
+    return true;
   }
 
 }

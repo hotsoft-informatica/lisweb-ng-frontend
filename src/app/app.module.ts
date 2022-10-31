@@ -386,6 +386,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
       useValue: 'pt-BR',
     },
     UserGuard,
+    UserExitGuard,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
