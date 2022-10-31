@@ -90,7 +90,9 @@ import { RecursoComponent } from './components/recurso/recurso.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 import { UserComponent } from './components/user/user.component';
+import { UserGuard } from './guards/user.guard';
 import { UserExitGuard } from './guards/user-exit.guard';
+
 
 const routes: Routes = [
   {
@@ -105,6 +107,11 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
   },
+  // # TODO Criar notFoundComponet classe e rota
+  // {
+  //   path: '**',
+  //   component: NotFoundComponent,
+  // },
   {
     path: 'dominios',
     component: DominioComponent,
@@ -475,6 +482,10 @@ const routes: Routes = [
   },
   {
     path: 'user',
+    component: UserComponent, canActivate: [UserGuard]
+  },
+  {
+    path: 'user',
     component: UserComponent, canDeactivate: [UserExitGuard]
   }
 
@@ -487,8 +498,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
-
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'user', component: UserComponent, canDeactivate: [UserExitGuard] }
-];
