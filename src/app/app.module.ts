@@ -1,6 +1,7 @@
 import { InterceptorModule } from './components/model/interceptor.module';
 import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
 import { LoginComponent } from './components/login/login.component';
+import { LgUserComponent } from './components/login/lg-user/lg-user.component';
 import { LgUsuarioComponent } from './components/login/lg-usuario/lg-usuario.component';
 import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
 import { MatChipsModule } from '@angular/material/chips';
@@ -319,6 +320,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     RecursoComponent,
     TipoRecursoComponent,
     UserComponent,
+    LgUserComponent,
   ],
   imports: [
     HttpClientModule,
