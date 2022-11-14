@@ -97,7 +97,12 @@
           Perfil do Usuario
         </a>
       </button>
-      <button mat-menu-item (click)="logout()">
+      <button mat-menu-item>
+        <a mat-list-item routerLink="/login">
+          Login
+        </a>
+      </button>
+      <button mat-menu-item (click)="userLogout()">
         <a mat-list-item>
           Sair
         </a>
