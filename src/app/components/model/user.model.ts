@@ -4,6 +4,7 @@ export class User {
   public uid?: string;
   public encrypted_password?: string;
   public reset_password_token?: string;
+  public password?: string;
   public reset_password_sent_at?: string;
   public allow_password_change?: boolean;
   public remember_created_at?: Date = new Date();
