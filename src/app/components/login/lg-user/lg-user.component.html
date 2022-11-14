@@ -1,1 +1,42 @@
-<p>lg-user works!</p>
+<mat-card>
+  <mat-card-title>Fazer Login</mat-card-title>
+  <mat-card-content>
+    <form #formUserLogin="ngForm">
+      <p>
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input
+            type="email"
+            id="email"
+            matInput
+            placeholder="exemplo@email.com"
+            name="email"
+            [(ngModel)]="login.user.email"
+            #email
+            required
+            autocomplete="on"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input
+            type="password"
+            id="password"
+            matInput
+            name="password"
+            [(ngModel)]="login.user.password"
+            #password
+            required
+            />
+        </mat-form-field>
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-button (click)="UserLogin()">Entrar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
