@@ -1,6 +1,7 @@
 import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
 import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
+import { LgUserComponent } from './components/login/lg-user/lg-user.component';
 import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
 import { LoginComponent } from './components/login/login.component';
 import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
@@ -97,7 +98,7 @@ import { UserExitGuard } from './guards/user-exit.guard';
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    component: LgUserComponent,
   },
   {
     path: 'senha',
