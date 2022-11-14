@@ -1,4 +1,5 @@
 import { User } from '../model/user.model';
+import { Login } from '../model/login.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
@@ -9,7 +10,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-  baseUrl = '/users';
+  baseUrl = '/users'
+  authLoginUrl = '/auth/sign_in';
+  authLogoutUrl = '/auth/sign_out';
 
   query: Query[] = [];
 
@@ -19,6 +22,8 @@ export class UserService {
     private backendIpService: BackendIpService
   ) {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.authLoginUrl = backendIpService.getUrl() + this.authLoginUrl;
+    this.authLogoutUrl = backendIpService.getUrl() + this.authLogoutUrl;
   }
 
   showMessage(msg: string): void {
@@ -27,6 +32,16 @@ export class UserService {
       horizontalPosition: 'right',
       verticalPosition: 'top',
     });
+  }
+
+  login(user: Login): Observable<User> {
+    const url = `${this.authLoginUrl}.json`;
+    return this.http.post<User>(url, user);
+  }
+
+  logout(): Observable<User> {
+    const url = `${this.authLogoutUrl}.json`;
+    return this.http.delete(url);
   }
 
   create(user: User): Observable<User> {
