@@ -1,11 +1,10 @@
 import { DialogErroQuinhentosComponent } from './../DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
 import { DialogErroAutenticacaoComponent } from './../DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { EmptyError, Observable, of, throwError, EMPTY } from 'rxjs';
-import { mergeMap, delay, retryWhen } from 'rxjs/operators';
-import { catchError, retry, tap } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { MatDialog, MatDialogState } from '@angular/material/dialog';
 
 // import { ToastrService } from 'ngx-toastr';
 
@@ -17,7 +16,20 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   constructor(public dialog: MatDialog) { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  erroDesconhecidoDialg() {
+    this.dialog.open(DialogErroQuinhentosComponent);
+  }
+
+  autorizacaoDialog() {
+
+    const matDialogRef = this.dialog.open(DialogErroAutenticacaoComponent);
+    if (matDialogRef.getState() === MatDialogState.OPEN) {
+      localStorage.setItem('dialogOpened', "true");
+    }
+  }
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler):
+   Observable<HttpEvent<unknown>> {
 
     return next.handle(request).pipe(catchError((error) => {
       /* TODO: Em retornos do backend, como login
@@ -41,10 +53,5 @@ export class ErrorInterceptor implements HttpInterceptor {
       return throwError(() => new Error(error));
     }));
   }
-  erroDesconhecidoDialg() {
-    this.dialog.open(DialogErroQuinhentosComponent);
-  }
-  autorizacaoDialog() {
-    this.dialog.open(DialogErroAutenticacaoComponent);
-  }
+
 }

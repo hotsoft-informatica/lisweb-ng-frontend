@@ -5,9 +5,7 @@ import { Usuario } from './../model/usuario.model';
 
 @NgModule({
  providers: [
-
   Interceptor,
-
   {
     provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,

@@ -33,22 +33,21 @@ import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-transla
 @Component({
   selector: 'app-consulta-amostra-show',
   templateUrl: './consulta-amostra-show.component.html',
-  styleUrls: ['./consulta-amostra-show.component.css'],
 })
 export class ConsultaAmostraShowComponent implements OnInit {
   private consultaAmostraSubject = new BehaviorSubject<ConsultaAmostraShowComponent[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
 
-  exameAmostras!: ExameAmostra[];
-  exameId!: number | undefined;
-  exame!: Exame;
-  versaoExame!: VersaoExame;
-  amostra!: Amostra;
-  pacienteAmostra!: Paciente;
-  pacienteExame!: Exame;
-  materialBiologico!: MaterialBiologico;
-  coletor!: Usuario;
+  exameAmostras: ExameAmostra[] = [];
+  exameId: number | undefined;
+  exame: Exame = new Exame({});
+  versaoExame: VersaoExame = new  VersaoExame({});
+  amostra: Amostra = new Amostra({});
+  pacienteAmostra: Paciente = new Paciente({});
+  pacienteExame: Exame = new Exame({});
+  materialBiologico: MaterialBiologico = new MaterialBiologico({});
+  coletor: Usuario= new Usuario({});
   clear!: boolean;
   dataSource!: ConsultaAmostraShowDataSource;
   displayedColumns = [

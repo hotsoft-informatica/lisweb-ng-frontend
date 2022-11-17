@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/lisweb-ng-frontend",
             "index": "src/index.html",
@@ -134,5 +134,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "af95b7d5-bebd-41ca-a1e0-506bbea158e7"
   }
 }

@@ -36,7 +36,7 @@ export class UserService {
 
   login(user: Login): Observable<User> {
     const url = `${this.authLoginUrl}.json`;
-    return this.http.post<User>(url, user);
+    return this.http.post<User>(url, user, { withCredentials: true });
   }
 
   logout(): Observable<User> {
