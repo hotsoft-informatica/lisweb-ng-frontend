@@ -36,7 +36,6 @@ export class ResponsavelTecnicoReadDataSource implements DataSource<ResponsavelT
   }
 
   connect(collectionViewer: CollectionViewer): Observable<ResponsavelTecnico[]> {
-    console.log('Conectando ao data source');
     return this.responsavelTecnicoSubject.asObservable();
   }
 

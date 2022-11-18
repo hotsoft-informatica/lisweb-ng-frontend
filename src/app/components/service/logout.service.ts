@@ -20,7 +20,7 @@ export class LogoutService {
     private router: Router,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
   }
 
   showMessage(msg: string): void {

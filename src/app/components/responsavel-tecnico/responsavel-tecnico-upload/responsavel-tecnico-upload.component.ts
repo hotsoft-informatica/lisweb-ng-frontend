@@ -43,7 +43,6 @@ export class ResponsavelTecnicoUploadComponent implements OnInit {
   onFileSelected(event: any) {
     this.selectedFile = <File>event.target.files[0];
     if (this.selectedFile) {
-      console.log(this.selectedFile);
       this.formData.append("selectedFile", this.selectedFile);
     }
   }

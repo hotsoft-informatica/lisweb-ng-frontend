@@ -49,6 +49,7 @@
             #descricao2="ngModel"
             #descricao
             autofocus
+            title="descricao"
           >
           <mat-error *ngIf="descricao2.invalid && (descricao2.dirty || descricao2.touched)">
             <span *ngIf="descricao2.errors?.['required']">
@@ -68,6 +69,7 @@
             name="num_ordem"
             [(ngModel)]="currentRecord.num_ordem"
             #num_ordem="ngModel"
+            title="Ordem"
           >
           <mat-error *ngIf="num_ordem.invalid && (num_ordem.dirty || num_ordem.touched)">
             <span *ngIf="num_ordem.errors?.['required']">
@@ -75,12 +77,12 @@
             </span>
           </mat-error>
         </mat-form-field>
-        <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
-          <button mat-button
+        <div id="buttons">
+          <button mat-button type="button"
           (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateDominio.invalid">Inserir</button>
-          <button mat-button
+          <button mat-button type="button"
           (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
-          <button mat-button color="warn"
+          <button mat-button color="warn" type="button"
           (click)="cancelar()">Cancelar</button>
         </div>
       </form>
@@ -133,7 +135,7 @@
                 <mat-icon class="delete">delete</mat-icon>
               </button>
           </div>
-  
+
           <ng-template #deleteDialog>
             <mat-dialog-content class="mat-typography">
               Deseja apagar esse registro?
@@ -153,4 +155,3 @@
   <mat-paginator [length]="this.totalCount" [pageSize]="10"
   [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
 </div>
-

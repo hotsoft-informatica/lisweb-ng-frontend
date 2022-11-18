@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-operadora-delete',
   templateUrl: './operadora-delete.component.html',
-  styleUrls: ['./operadora-delete.component.css'],
 })
 export class OperadoraDeleteComponent implements OnInit {
   operadora: Operadora;

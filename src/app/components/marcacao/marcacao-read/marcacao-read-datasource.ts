@@ -36,7 +36,6 @@ export class MarcacaoReadDataSource implements DataSource<Marcacao> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<Marcacao[]> {
-    console.log('Conectando ao data source');
     return this.marcacoesSubject.asObservable();
   }
 

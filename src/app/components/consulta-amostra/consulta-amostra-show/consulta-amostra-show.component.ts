@@ -1,54 +1,37 @@
-import { AmostraService } from './../../service/amostra.service';
-import { ExameAmostraService } from './../../service/exame-amostra.service';
-import { ExameAmostra } from './../../model/exame-amostra.model';
 import { Amostra } from '../../model/amostra.model';
-import { Paciente } from '../../model/paciente.model';
-import { Exame } from './../../model/exame.model';
-import { MaterialBiologico } from '../../model/material-biologico.model';
-import { Coletor } from '../../model/coletor.model';
-import { Usuario } from '../../model/usuario.model';
-import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
-import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
-import { ExameService } from '../../service/exame.service';
-import { VersaoExameService } from '../../service/versao-exame.service';
-import { ConsultaAmostra } from '../../model/consulta-amostra.model';
+import { AmostraService } from './../../service/amostra.service';
+import { BehaviorSubject, of } from 'rxjs';
 import { Component, OnInit, Input, Injectable, OnChanges, AfterViewInit } from '@angular/core';
+import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
+import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
+import { Exame } from './../../model/exame.model';
+import { ExameAmostra } from './../../model/exame-amostra.model';
+import { ExameAmostraService } from './../../service/exame-amostra.service';
+import { ExameService } from '../../service/exame.service';
+import { MaterialBiologico } from '../../model/material-biologico.model';
+import { Paciente } from '../../model/paciente.model';
 import { Query } from '../../model/query.model';
-import { MatTableDataSource } from '@angular/material/table';
-import { catchError, finalize } from 'rxjs/operators';
-import { Observable, BehaviorSubject, of } from 'rxjs';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
-} from 'rxjs/operators';
-import { FormGroup } from '@angular/forms';
+import { Usuario } from '../../model/usuario.model';
 import { VersaoExame } from '../../model/versao-exame.model';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
-// import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { VersaoExameService } from '../../service/versao-exame.service';
 
 @Component({
   selector: 'app-consulta-amostra-show',
   templateUrl: './consulta-amostra-show.component.html',
 })
 export class ConsultaAmostraShowComponent implements OnInit {
-  private consultaAmostraSubject = new BehaviorSubject<ConsultaAmostraShowComponent[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
 
-
+  amostra: Amostra = new Amostra({});
+  clear!: boolean;
+  coletor: Usuario = new Usuario({});
+  exame: Exame = new Exame({});
   exameAmostras: ExameAmostra[] = [];
   exameId: number | undefined;
-  exame: Exame = new Exame({});
-  versaoExame: VersaoExame = new  VersaoExame({});
-  amostra: Amostra = new Amostra({});
-  pacienteAmostra: Paciente = new Paciente({});
-  pacienteExame: Exame = new Exame({});
   materialBiologico: MaterialBiologico = new MaterialBiologico({});
-  coletor: Usuario= new Usuario({});
-  clear!: boolean;
+  pacienteAmostra: Paciente = new Paciente();
+  pacienteExame: Exame = new Exame({});
+  versaoExame: VersaoExame = new  VersaoExame({});
   dataSource!: ConsultaAmostraShowDataSource;
   displayedColumns = [
     'id',
@@ -67,20 +50,18 @@ export class ConsultaAmostraShowComponent implements OnInit {
     private versaoExameService: VersaoExameService,
     private exameAmostraService: ExameAmostraService,
     private amostraService: AmostraService,
-    private translate: TranslateService
   ) { }
   ngOnInit(): void {
     this.dataSource = new ConsultaAmostraShowDataSource(
       this.consultaAmostraService
     );
     this.dataSource.loadConsultaAmostra(null);
-    this.pacienteAmostra = new Paciente({});
+    this.pacienteAmostra = new Paciente();
   }
-
 
   search(key: string, value: string, isNumeric = false): void {
     this.loadingSubject.next(true);
-    this.pacienteAmostra = new Paciente({});
+    this.pacienteAmostra = new Paciente();
     const query = new Query({ key, value, isNumeric });
     this.query.push(query);
     this.loadConsultaAmostraPage();
@@ -125,12 +106,10 @@ export class ConsultaAmostraShowComponent implements OnInit {
                 .readById(exameAmostra.amostra_id as number)
                 .subscribe((amostra: Amostra) => {
                   exameAmostra.amostra = amostra;
-                  console.log(exameAmostra.exame?.id);
                 });
               this.consultaExame(exameAmostra);
             });
           }).add(() => {
-            console.log("Carregou exame amostra");
           });
       });
   }
@@ -139,12 +118,10 @@ export class ConsultaAmostraShowComponent implements OnInit {
     this.exameService
       .readById(exameAmostra.exame_id as number)
       .subscribe((exame: Exame) => {
-        console.log(exameAmostra.amostra?.id);
         const versaoExameSubscribe = this.versaoExameService
           .readById(exame?.versao_exame_id as number)
           .subscribe((versaoExame: VersaoExame) => {
             exame.versao_exame = versaoExame;
-            console.log(exameAmostra.amostra?.id);
           })
 
         versaoExameSubscribe.add(() => {
@@ -152,7 +129,6 @@ export class ConsultaAmostraShowComponent implements OnInit {
         });
         exameAmostra.exame = exame;
       }).add(() => {
-        console.log("Fim do consulta exame");
       });
   }
 

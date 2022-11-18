@@ -6,9 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Query } from '../../model/query.model';
 import { MatSort } from '@angular/material/sort';
 import { tap } from 'rxjs/operators';
-import { merge, throwError } from 'rxjs';
-import { Empresa } from '../../model/empresa.model';
-// import { EmpresaService } from './../../service/empresa.service';
+import { merge } from 'rxjs';
 
 @Component({
   selector: 'app-local-de-atendimento-read',

@@ -1,8 +1,12 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogConfig } from '@angular/material/dialog';
+
 import { UserService } from '../../service/user.service';
 import { LogoutService } from './../../service/logout.service';
-import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../service/usuario.service';
-import { Router } from '@angular/router';
+import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +16,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   routerStr = '';
 
-  constructor(private usuarioService: UsuarioService,
-    private router: Router,
+  constructor(private router: Router,
     private logoutService: LogoutService,
+    public dialog: MatDialog,
     private userService: UserService
   ) { }
 
@@ -34,5 +38,14 @@ export class HeaderComponent implements OnInit {
     this.userService.logout().subscribe(() => {
       this.router.navigate(['/']);
     });
+  }
+
+  openDialogCreate(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      width: '750px',
+    }
+    const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {});
   }
 }

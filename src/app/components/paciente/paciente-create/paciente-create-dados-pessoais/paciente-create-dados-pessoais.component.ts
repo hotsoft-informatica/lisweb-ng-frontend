@@ -17,11 +17,10 @@ export class PacienteCreateDadosPessoaisComponent implements OnInit {
     private router: Router,
     private pacienteService: PacienteService,
   ) {
-    this.paciente = new Paciente({});
+    this.paciente = new Paciente();
   }
 
   ngOnInit(): void {
-    console.log('passou pelo paciente dados pessoas');
   }
   public calculaIdade(): void{
 // TO-DO: REVER, TA DANDO RUIM

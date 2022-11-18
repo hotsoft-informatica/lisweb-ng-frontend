@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-requisicao-crud',
   templateUrl: './requisicao-crud.component.html',
-  styleUrls: ['./requisicao-crud.component.css']
 })
 export class RequisicaoCrudComponent implements OnInit {
 

@@ -36,7 +36,6 @@ export class LaboratoryDomainReadDataSource implements DataSource<LaboratoryDoma
   }
 
   connect(collectionViewer: CollectionViewer): Observable<LaboratoryDomain[]> {
-    console.log('Conectando ao data source');
     return this.laboratoryDomainsSubject.asObservable();
   }
 

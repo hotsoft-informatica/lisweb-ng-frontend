@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-responsavel-tecnico-create',
   templateUrl: './responsavel-tecnico-create.component.html',
-  styleUrls: ['./responsavel-tecnico-create.component.css']
 })
 export class ResponsavelTecnicoCreateComponent implements OnInit {
   responsavelTecnico: ResponsavelTecnico;
@@ -34,7 +33,6 @@ export class ResponsavelTecnicoCreateComponent implements OnInit {
         state => state.toUpperCase().startsWith((this.responsavelTecnico.uf_conselho as string).toUpperCase())
       );
       console.table(this.filtered_states);
-      console.log(this.responsavelTecnico.uf_conselho);
     } else {
       this.filtered_states = this.states;
     }

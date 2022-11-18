@@ -10,7 +10,7 @@
           "strict": true
         }
       },
-      "root": "",
+      "root": "src/app/components",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -33,12 +33,12 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
+            "vendorChunk": true,
             "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
@@ -136,6 +136,6 @@
     }
   },
   "cli": {
-    "analytics": "af95b7d5-bebd-41ca-a1e0-506bbea158e7"
+    "analytics": "f303fcb5-6dc9-4447-9ee4-6d9fb263100e"
   }
 }

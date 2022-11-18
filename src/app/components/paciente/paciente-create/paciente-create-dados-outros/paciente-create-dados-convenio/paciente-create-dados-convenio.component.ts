@@ -16,7 +16,7 @@ export class PacienteCreateDadosConvenioComponent implements OnInit {
     private router: Router,
     private pacienteService: PacienteService,
   ) {
-    this.paciente = new Paciente({});
+    this.paciente = new Paciente();
   }
 
   convenios: string[] = [

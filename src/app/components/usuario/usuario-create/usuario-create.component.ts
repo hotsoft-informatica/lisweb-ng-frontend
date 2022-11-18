@@ -9,13 +9,11 @@ import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } 
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
-import { MatDialogRef } from '@angular/material/dialog';
 import Validation from '../../../utils/validation';
 
 @Component({
   selector: 'app-usuario-create',
   templateUrl: './usuario-create.component.html',
-  styleUrls: ['./usuario-create.component.css']
 })
 
 export class UsuarioCreateComponent implements OnInit {
@@ -116,16 +114,12 @@ export class UsuarioCreateComponent implements OnInit {
     else{
       console.table(this.usuario);
       this.usuarioService.create(this.usuario).subscribe(() => {
-      console.log('criado');
       });
     }
-    console.log('salvooooooou');
   }
 
   senhasDiferentes(): boolean {
     if (this.usuario.senha !== this.usuario.confirmaSenha) {
-      console.log(this.usuario.senha);
-      console.log(this.usuario.confirmaSenha);
       this.usuarioService.showMessage('Senhas não conferem.');
       return true;
     }

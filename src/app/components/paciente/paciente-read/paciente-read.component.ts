@@ -1,13 +1,12 @@
 import { MatSort } from '@angular/material/sort';
 import { PacienteService } from 'src/app/components/service/paciente.service';
-import { Component, Inject, OnInit, AfterViewInit, ViewChild, TemplateRef} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef} from '@angular/core';
 import { Paciente } from '../../model/paciente.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
 import { merge, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-paciente-read',
@@ -53,7 +52,7 @@ export class PacienteReadComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.pacienteService.countPacientes().subscribe((totalCount: number) => {
+    this.pacienteService.count().subscribe((totalCount: number) => {
       this.totalCount = totalCount;
     });
     this.loadBack('id', 'desc', 0, 10, this.queries);

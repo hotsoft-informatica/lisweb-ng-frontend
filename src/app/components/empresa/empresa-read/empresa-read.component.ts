@@ -3,7 +3,6 @@ import { EmpresaService } from '../../service/empresa.service';
 import { EmpresaReadDataSource } from './empresa-read-datasource';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
@@ -12,19 +11,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
   tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { merge } from 'rxjs';
 
 @Component({
   selector: 'app-empresa-read',
   templateUrl: './empresa-read.component.html',
-  styleUrls: ['./empresa-read.component.css'],
 })
 export class EmpresaReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;

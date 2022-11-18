@@ -1,19 +1,19 @@
-import { Query } from '../model/query.model';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Dominio } from '../model/dominio.model';
-import { DominioService } from '../service/dominio.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, timer } from 'rxjs';
+import { timer, merge } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { tap } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+
+import { Query } from '../model/query.model';
+import { Dominio } from '../model/dominio.model';
+import { DominioService } from '../service/dominio.service';
 @Component({
   selector: 'app-dominio',
   templateUrl: './dominio.component.html',
-  styleUrls: ['./dominio.component.css']
 })
 export class DominioComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);
@@ -49,7 +49,10 @@ export class DominioComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.recordService.countDominios().subscribe((totalCount) => {
+    console.log('passou pelo ng on init');
+    // this.dataSource = new DominioDataSource(this.dominioService);
+    // this.dataSource.loadDominios('id', 'desc', 1, 10, null);
+    this.recordService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }

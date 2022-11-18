@@ -3,27 +3,19 @@ import { LaboratorioReadDataSource } from './laboratorio-read-datasource';
 import { LaboratorioService } from '../../service/laboratorio.service';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
   tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-laboratorio-read',
   templateUrl: './laboratorio-read.component.html',
-  styleUrls: ['./laboratorio-read.component.css'],
 })
 export class LaboratorioReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;

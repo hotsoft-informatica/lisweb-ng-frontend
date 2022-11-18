@@ -13,7 +13,6 @@ import { debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'app-valor-referencia-create',
   templateUrl: './valor-referencia-create.component.html',
-  styleUrls: ['./valor-referencia-create.component.css']
 })
 export class ValorReferenciaCreateComponent implements OnInit {
   valorReferencia!: ValorReferencia;
@@ -47,7 +46,7 @@ export class ValorReferenciaCreateComponent implements OnInit {
 
     this.subjectVersaoExame.pipe(debounceTime(500)).subscribe(() => {
       this.versaoExameService
-        .findVersaoExames('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, this.queries)
         .subscribe((versaoExame) => {
           console.table(this.queries);
           this.versoesExame = versaoExame;

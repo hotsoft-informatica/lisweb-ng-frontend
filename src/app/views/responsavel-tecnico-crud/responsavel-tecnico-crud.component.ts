@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-responsavel-tecnico-crud',
   templateUrl: './responsavel-tecnico-crud.component.html',
-  styleUrls: ['./responsavel-tecnico-crud.component.css']
 })
 export class ResponsavelTecnicoCrudComponent implements OnInit {
 

@@ -25,7 +25,7 @@ export class VersaoExameReadDataSource implements DataSource<VersaoExame> {
     this.loadingSubject.next(true);
 
     this.versaoExameService
-      .findVersaoExames(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -36,7 +36,6 @@ export class VersaoExameReadDataSource implements DataSource<VersaoExame> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<VersaoExame[]> {
-    console.log('Conectando ao data source');
     return this.versaoExamesSubject.asObservable();
   }
 

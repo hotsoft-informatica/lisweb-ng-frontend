@@ -3,27 +3,19 @@ import { LaboratoryDomainReadDataSource } from './laboratory-domain-read-datasou
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
   tap,
-  delay,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { merge } from 'rxjs';
 @Component({
   selector: 'app-laboratory-domain-read',
   templateUrl: './laboratory-domain-read.component.html',
-  styleUrls: ['./laboratory-domain-read.component.css'],
 })
 export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;

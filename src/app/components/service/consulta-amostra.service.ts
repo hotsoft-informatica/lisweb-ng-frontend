@@ -30,7 +30,7 @@ export class ConsultaAmostraService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
     this.amostraUrl = backendIpService.getUrl() + this.amostraUrl;
     this.exameUrl = backendIpService.getUrl() + this.exameUrl;
     this.exameAmostrasUrl = backendIpService.getUrl() + this.exameAmostrasUrl;

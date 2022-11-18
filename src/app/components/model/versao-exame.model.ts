@@ -1,3 +1,4 @@
+import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
 import { TipoExame } from './tipo-exame.model';
 import { MetodoExame } from './metodo-exame.model';
 import { Marcacao } from './marcacao.model';
@@ -21,6 +22,7 @@ export class VersaoExame {
   public updated_at?: Date = new Date();
   public metodo_exame_id?: number;
   public tipo_exame_id?: number;
+  public tipoInstrumento?: TipoInstrumento = new TipoInstrumento({});
   public tipo_instrumento_id?: number;
   public material_biologico_id?: number;
   public laboratorio_apoio_id?: number;
@@ -57,7 +59,7 @@ export class VersaoExame {
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
   public tempo_repouso?: number;
-  public tipoExame?: TipoExame;
+  public tipoExame?: TipoExame = new TipoExame({});
   public metodoExame?: MetodoExame;
   public marcacao?: Marcacao;
   public parametrosVersaoExame?: ParametroVersaoExame[];

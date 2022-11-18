@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-dialog-erro-quinhentos',
   templateUrl: './dialog-erro-quinhentos.component.html',
-  styleUrls: ['./dialog-erro-quinhentos.component.css']
 })
 export class DialogErroQuinhentosComponent implements OnInit {
 

@@ -19,7 +19,7 @@ export class VersaoExameService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
   }
 
   showMessage(msg: string): void {
@@ -53,7 +53,7 @@ export class VersaoExameService {
     return this.http.delete<VersaoExame>(url);
   }
 
-  findVersaoExames(
+  find(
     active: string = '',
     sortOrder: string = 'asc',
     pageNumber: number = 1,
@@ -77,7 +77,7 @@ export class VersaoExameService {
     });
   }
 
-  countVersaoExames(): Observable<number> {
+  count(): Observable<number> {
     return this.http.get<number>(this.baseUrl, {
       params: new HttpParams().set('totalCount', 'true'),
     });

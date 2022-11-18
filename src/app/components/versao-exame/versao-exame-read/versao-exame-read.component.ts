@@ -17,11 +17,13 @@ import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-versao-exame-read',
   templateUrl: './versao-exame-read.component.html',
-  styleUrls: ['./versao-exame-read.component.css'],
 })
 export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
   dataSource!: VersaoExameReadDataSource;
+
+  onEdit = false;
+  onCreate = false;
 
   displayedColumns = ['titulo_laudo', 'descricao', 'status', 'action'];
 
@@ -31,6 +33,7 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
 
 
   query: Query[] = [];
+  edit = false;
 
   constructor(
     private versaoExameService: VersaoExameService,
@@ -50,7 +53,7 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dataSource = new VersaoExameReadDataSource(this.versaoExameService);
     this.dataSource.loadVersaoExames('id', 'desc', 1, 10, null);
-    this.versaoExameService.countVersaoExames().subscribe((totalCount) => {
+    this.versaoExameService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
@@ -88,4 +91,5 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
+
 }

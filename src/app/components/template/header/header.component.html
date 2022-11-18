@@ -43,6 +43,9 @@
         <button mat-menu-item routerLink="/valores_referencia/read">
           Valor Referência
         </button>
+        <button mat-menu-item routerLink="/metodos-exames/read">
+          Listar Métodos de Exame
+        </button>
       </mat-menu>
       <button mat-menu-item routerLink="/localdeatendimento/read">
         Local de Atendimento
@@ -65,6 +68,73 @@
     <mat-menu #consultar="matMenu">
       <button mat-menu-item routerLink="/consulta_amostra_show">
         Clta. Amostra
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="stockfin">
+      <mat-icon>timer</mat-icon>
+      Stockfin
+    </button>
+    <mat-menu #stockfin="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="tipos">Categorias e Tipos</button>
+      <mat-menu #tipos="matMenu">
+        <button mat-menu-item routerLink="/lancamentos">
+          Categorias de Produto
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Tipos de Produto
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Unidades de Entrada/Saída
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Tipos de pessoa
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Grupos de Centros de Custo
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Marcas
+        </button>
+      </mat-menu>
+      <button mat-menu-item [matMenuTriggerFor]="cadastros">Cadastros</button>
+      <mat-menu #cadastros="matMenu">
+        <button mat-menu-item routerLink="/lancamentos">
+          Pessoas
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Centros de Custo
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Produtos
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Contas
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Plano de Contas
+        </button>
+        <button mat-menu-item routerLink="/lancamentos">
+          Unidades de Atendimento
+        </button>
+      </mat-menu>
+      <button mat-menu-item routerLink="/lancamentos">
+        Lancamentos
+      </button>
+      <button mat-menu-item routerLink="/notas">
+        Notas
+      </button>
+      <button mat-menu-item routerLink="/lancamentos">
+        Pedidos
+      </button>
+      <button mat-menu-item routerLink="/lancamentos">
+        Lista de Compras
+      </button>
+      <button mat-menu-item routerLink="/lancamentos">
+        Orçamentos
+      </button>
+      <button mat-menu-item routerLink="/lancamentos">
+        Pedidos
       </button>
     </mat-menu>
 

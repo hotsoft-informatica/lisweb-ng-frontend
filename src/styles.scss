@@ -35,14 +35,251 @@ body {
 }
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '~bootstrap/dist/css/bootstrap.min.css';
+ @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+ @import '~bootstrap/dist/css/bootstrap.min.css';
 
-@import '~tippy.js/dist/tippy.css';
-@import '~tippy.js/themes/light.css';
-@import '~tippy.js/animations/scale.css';
+ @import '~tippy.js/dist/tippy.css';
+ @import '~tippy.js/themes/light.css';
+ @import '~tippy.js/animations/scale.css';
 
 // https://stackoverflow.com/questions/44950374/angular-material-2-0-autocomplete-suggestions-panel-appears-behind-bootstrap-m/50599696#50599696
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
-  z-index: 99999 !important;
+  z-index: 999 !important;
+}
+
+.cdk-overlay-backdrop
+ {
+   z-index:998 !important;
+ }
+
+@page {
+  margin: 0.5cm;
+  counter-reset: page 1;
+  counter-increment: page;
+}
+
+@media screen {
+  .print, .timestamp {
+    display: none
+  }
+}
+
+@media print {
+  .no-print, header, footer, aside, form, mat-toolbar, .mat-toolbar, .footer, .header, mat-paginator, .mat-paginator, mat-form-field, .mat-form-field, input, button, .mat-button-base, app-footer, app-header, .cdk-column-action, .mat-column-action, .cdk-column-Opercaoes {
+    display: none !important;
+  }
+}
+
+/* table {
+  width: 100%;
+}
+.dvm-button {
+
+  border-radius: 30px;
+}
+.edit  {
+  color: #41d926;
+}
+
+.delete  {
+  color: #e35e6b;
+}
+
+.btn {
+  margin-right: 10px
+}
+
+.gridAddButton {
+  display: flex;
+  justify-content:flex-end;
+}
+
+table {
+  width: 100%;
+}
+.dvm-button {
+
+  border-radius: 30px;
+}
+.edit  {
+  color: #41d926;
+}
+
+.delete  {
+  color: #e35e6b;
+}
+
+.btn {
+  margin-right: 10px
+}
+
+.gridAddButton {
+  display: flex;
+  justify-content:flex-end;
+}
+
+.spinner-container {
+  position: absolute;
+  left: 46%;
+  top: 45%;
+}
+
+.spinner-container mat-spinner {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.buttons {
+  position: relative;
+  float: right;
+  position: relative;
+  padding-right: 30px;
+  padding-top: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+.edit {
+  margin-right: 10px;
+}
+
+.delete {
+  margin-right: 10px;
+}
+
+.show {
+  margin-right: 10px;
+}
+
+.edit > i {
+  color: #41d926;
+}
+
+.delete > i {
+  color: #e35e6b;
+}
+
+.show > i {
+  color: #3d22d4;
+}
+
+.spinner-container {
+  position: absolute;
+  left: 46%;
+  top: 45%;
+}
+
+.spinner-container mat-spinner {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.search-field{
+  margin: 0px 5px 5px 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.edit {
+  margin-right: 10px;
+}
+
+.edit > i {
+  color: #41d926;
+}
+
+.delete > i {
+  color: #e35e6b;
+}
+
+.spinner-container {
+  position: absolute;
+  left: 46%;
+  top: 45%;
+}
+
+.spinner-container mat-spinner {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.search-field{
+  margin: 0px 5px 5px 10px;
+}
+
+*/
+
+.footer {
+  position:static ;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer > span {
+  font-size: 1.0rem;
+  font-weight: 350;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+button {
+  margin: 20px 15px 0px 0px;
+}
+
+.form-field {
+  margin-right: 0px;
+}
+
+table {
+  width: 100%;
+}
+
+.dvm-button {
+
+  border-radius: 30px;
+}
+
+.edit {
+  color: #41d926;
+}
+
+.delete {
+  color: #e35e6b;
+}
+
+.btn {
+  margin-right: 10px
+}
+
+.gridAddButton {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.spinner-container {
+  position: absolute;
+  left: 46%;
+  top: 45%;
+}
+
+.spinner-container mat-spinner {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.buttons {
+  position: relative;
+  float: right;
+  position: relative;
+  padding-right: 30px;
+  padding-top: 20px;
 }

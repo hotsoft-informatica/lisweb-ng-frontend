@@ -1,4 +1,5 @@
 import { Data } from "@angular/router";
+import { VersaoExame } from "./versao-exame.model";
 
 export class TipoInstrumento{
   public id?: number;

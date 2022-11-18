@@ -14,7 +14,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-usuario-update',
   templateUrl: './usuario-update.component.html',
-  styleUrls: ['./usuario-update.component.css']
 })
 export class UsuarioUpdateComponent implements OnInit {
 

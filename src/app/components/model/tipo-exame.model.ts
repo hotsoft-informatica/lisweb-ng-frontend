@@ -1,3 +1,6 @@
+import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
+import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
+import { VersaoExame } from './versao-exame.model';
 export class TipoExame {
   public id?: number;
   public laboratorio_id?: number;
@@ -25,7 +28,8 @@ export class TipoExame {
   public laboratory_domain_id?: number;
   public deleted?: boolean;
   public criado_em?: Date = new Date();
-  public changed_by_lab_id?: number
+  public changed_by_lab_id?: number;
+  public tipoInstrumento?: TipoInstrumento; //= new TipoInstrumento({});
 
   constructor(values: TipoExame) {
     Object.assign(this, values);

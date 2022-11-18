@@ -14,15 +14,15 @@ table {
   margin-right: 10px;
 }
 
-.edit > i {
+.edit {
   color: #41d926;
 }
 
-.delete > i {
+.delete {
   color: #e35e6b;
 }
 
-.show > i {
+.show {
   color: #3d22d4;
 }
 
