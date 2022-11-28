@@ -1,4 +1,4 @@
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { MatSort, Sort } from '@angular/material/sort';
 import { Query } from 'src/app/components/model/query.model';
 import { VersaoExame } from '../../model/versao-exame.model';
@@ -8,7 +8,7 @@ import { ParametroVersaoExameService } from '../../service/parametro-versao-exam
 import { Component, Input, OnChanges, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 
 @Component({
   selector: 'app-versao-exame-parametro',

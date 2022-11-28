@@ -4,7 +4,7 @@ import { Requisicao } from './../model/requisicao.model';
 import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Exame } from '../model/exame.model';

@@ -1,14 +1,14 @@
-import { MatDialogConfig } from '@angular/material/dialog';
+import { MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 import { MetodoExameService } from './../../service/metodo-exame.service';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
 import { MatSort } from '@angular/material/sort';
 import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
 import { MetodoExame } from '../../model/metodo-exame.model';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 
 @Component({
   selector: 'app-metodos-exames-read',

@@ -1,6 +1,6 @@
 import { Query } from '../model/query.model';
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { BackendIpService } from '../service/backend-ip.service';
 import { LaboratoryDomain } from '../model/laboratory-domain.model';
 import { Observable } from 'rxjs';

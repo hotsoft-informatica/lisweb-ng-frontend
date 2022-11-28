@@ -1,8 +1,8 @@
 import { LocalDeAtendimentoService } from './../../service/local-de-atendimento.service';
 import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
 import { LocalDeAtendimento } from '../../model/local-de-atendimento.model';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Query } from '../../model/query.model';
 import { MatSort } from '@angular/material/sort';
 import { tap } from 'rxjs/operators';

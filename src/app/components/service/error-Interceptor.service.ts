@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { MatDialog, MatDialogState } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog, MatLegacyDialogState as MatDialogState } from '@angular/material/legacy-dialog';
 
 // import { ToastrService } from 'ngx-toastr';
 

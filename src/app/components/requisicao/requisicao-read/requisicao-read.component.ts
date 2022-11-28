@@ -1,4 +1,4 @@
-import { MatDialogConfig } from '@angular/material/dialog';
+import { MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
 import { RequisicaoUpdateComponent } from './../requisicao-update/requisicao-update.component';
 import { Query } from '../../model/query.model';
 import { RequisicaoReadDataSource } from './requisicao-read-datasource';
@@ -11,9 +11,9 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -23,7 +23,7 @@ import {
   filter,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 
 @Component({
   selector: 'app-requisicao-read',

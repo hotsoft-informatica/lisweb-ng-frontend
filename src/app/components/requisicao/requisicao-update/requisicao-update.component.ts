@@ -3,7 +3,7 @@ import { RequisicaoService } from './../../service/requisicao.service';
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Requisicao } from './../../model/requisicao.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { Paciente } from '../../model/paciente.model';
 import { Convenios } from '../../model/convenios.model';
 import { Medicos } from '../../model/medicos.model';

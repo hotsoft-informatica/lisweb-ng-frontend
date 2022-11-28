@@ -5,7 +5,7 @@ import { ExameService } from './../../../service/exame.service';
 import { RequisicaoService } from './../../../service/requisicao.service';
 import { Exame } from '../../../model/exame.model';
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { TipoExameService } from 'src/app/components/service/tipo-exame.service';
 
 @Component({

@@ -1,11 +1,11 @@
 import { UsuarioService } from './../../service/usuario.service';
 import { Usuario } from './../../model/usuario.model';
 import { Component, OnInit } from '@angular/core';
-import {MatChipInputEvent} from '@angular/material/chips';
+import {MatLegacyChipInputEvent as MatChipInputEvent} from '@angular/material/legacy-chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {ElementRef, ViewChild} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent} from '@angular/material/legacy-autocomplete';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';

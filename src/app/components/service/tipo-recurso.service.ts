@@ -2,7 +2,7 @@ import { TipoRecurso } from '../model/tipo-recurso.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({

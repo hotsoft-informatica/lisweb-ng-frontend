@@ -1,6 +1,6 @@
 import { Query } from '../model/query.model';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Recurso } from '../model/recurso.model';
 import { RecursoService } from '../service/recurso.service';
 import { Dominio } from '../model/dominio.model';
@@ -9,8 +9,8 @@ import { TipoRecurso } from '../model/tipo-recurso.model';
 import { TipoRecursoService } from '../service/tipo-recurso.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort } from '@angular/material/sort';
 import { tap, debounceTime } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';

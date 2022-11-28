@@ -1,4 +1,4 @@
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { Query } from '../../model/query.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VersaoExameService } from '../../service/versao-exame.service';
@@ -10,7 +10,7 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort } from '@angular/material/sort';
 import { tap } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';

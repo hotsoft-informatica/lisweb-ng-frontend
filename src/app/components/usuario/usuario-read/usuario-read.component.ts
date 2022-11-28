@@ -1,8 +1,8 @@
 import { UsuarioUpdateComponent } from './../usuario-update/usuario-update.component';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { UsuarioCreateComponent } from './../usuario-create/usuario-create.component';
 import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import { Usuario } from '../../model/usuario.model';
 import { MatSort } from '@angular/material/sort';
 import { UsuarioService } from '../../service/usuario.service';
