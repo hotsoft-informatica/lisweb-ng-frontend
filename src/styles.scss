@@ -34,13 +34,13 @@ body {
   color: #fff;
 }
 
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
- @import "~@angular/material/prebuilt-themes/indigo-pink.css";
- @import '~bootstrap/dist/css/bootstrap.min.css';
+ @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+ // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+ // @import '~bootstrap/dist/css/bootstrap.min.css';
 
- @import '~tippy.js/dist/tippy.css';
- @import '~tippy.js/themes/light.css';
- @import '~tippy.js/animations/scale.css';
+ // @import '~tippy.js/dist/tippy.css';
+ // @import '~tippy.js/themes/light.css';
+ // @import '~tippy.js/animations/scale.css';
 
 // https://stackoverflow.com/questions/44950374/angular-material-2-0-autocomplete-suggestions-panel-appears-behind-bootstrap-m/50599696#50599696
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
