@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from '../service/interceptor.service';
-import { Usuario } from './../model/usuario.model';
 
 @NgModule({
  providers: [

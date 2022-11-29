@@ -1,3 +1,4 @@
+import { Base } from './base.model';
 export class Medicos {
   public id?:number;
   public original_id?: number;

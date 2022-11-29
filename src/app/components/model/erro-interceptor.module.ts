@@ -4,9 +4,7 @@ import { ErrorInterceptor } from '../service/error-Interceptor.service';
 
 @NgModule({
  providers: [
-
   ErrorInterceptor,
-
   {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorInterceptor,

@@ -1,3 +1,4 @@
+import { Base } from './base.model';
 import { VersaoExame } from "./versao-exame.model";
 
 export class ParametroVersaoExame {

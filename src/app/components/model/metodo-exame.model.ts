@@ -1,3 +1,5 @@
+import { Base } from './base.model';
+
 export class MetodoExame {
   public id?: number;
   public laboratorio_id?: number;

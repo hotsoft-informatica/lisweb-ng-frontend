@@ -1,3 +1,4 @@
+import { Base } from './base.model';
 export class Coletor {
   public id?: number;
   public original_id?: number;

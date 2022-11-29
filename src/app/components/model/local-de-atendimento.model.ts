@@ -1,9 +1,9 @@
 import { Empresa } from '../model/empresa.model';
+import { Base } from './base.model'
 
-export class LocalDeAtendimento {
+export class LocalDeAtendimento extends Base{
   public empresa?: Empresa;
 
-  public id?: string;
   public nome?: string;
   public cnes?: string;
   public grupo_local_id?: number;
@@ -47,6 +47,7 @@ export class LocalDeAtendimento {
   public tempo_emergencia?: string;
 
   constructor(values: LocalDeAtendimento) {
+    super(values);
     Object.assign(this, values);
   }
 }

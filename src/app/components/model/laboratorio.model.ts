@@ -1,4 +1,3 @@
-import { LaboratoryDomain } from './laboratory-domain.model';
 import { Recurso } from './recurso.model';
 export class Laboratorio {
   public id?: number;
@@ -17,19 +16,16 @@ export class Laboratorio {
   public sincronizar?: number;
   public token_nfe?: string;
   public url_nfe?: string;
-  public laboratory_domain_id?: number;
-  public laboratoryDomain?: LaboratoryDomain;
   public recursos?: Recurso;
-  public version_id?: number;
-  public deleted?: number;
   public empresa_id?: number;
-  public original_id?: number;
-  public synchronized?: number;
   public domain_id?: number;
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
   public sync_deadline?: number;
   public matrix?: number
+
+  // TODO: Mover para interface
+  public laboratory_domain_id?: number;
 
   constructor(values: Laboratorio) {
     Object.assign(this, values);

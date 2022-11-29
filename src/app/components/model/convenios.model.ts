@@ -1,10 +1,9 @@
-export class Convenios {
-  public id?: number;
-  public laboratorio_id?: number;
+import { Base } from './base.model'
+
+export class Convenios extends Base{
   public nome?: string;
   public mascara_guia?: string;
   public mascara_codigo?: string;
-  public original_id?: number;
   public vias_relatorio?: number;
   public idrelatorioguia?: number;
   public idrelatoriofatura?: number;
@@ -27,19 +26,12 @@ export class Convenios {
   public versao_nominal?: string;
   public email?: string;
   public chave_web?: string;
-  public created_at?: Date = new Date();
-  public updated_at?: Date = new Date();
   public x_filter_defs_id?: number;
   public dllintegracao?: string;
   public pastaintegracao?: string;
-  public version_id?: number;
-  public laboratory_domain_id?: number;
-  public deleted?: boolean;
-  public criado_em?: Date = new Date();
-
-
 
   constructor(values: Convenios) {
+    super(values);
     Object.assign(this, values);
   }
 }
