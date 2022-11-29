@@ -5,7 +5,7 @@
       <input
         matInput
         required
-        placeholder="Nome"
+        class="form-control" title="Nome"
         [(ngModel)]="laboratory_get_filter.name"
         name="name"
       />
@@ -36,7 +36,7 @@
         #autosize="cdkTextareaAutosize"
         cdkAutosizeMinRows="10"
         cdkAutosizeMaxRows="50"
-        placeholder="Where" 
+        class="form-control" title="Where" 
         name="custom_where" 
         [(ngModel)]="laboratory_get_filter.custom_where">
       </textarea>

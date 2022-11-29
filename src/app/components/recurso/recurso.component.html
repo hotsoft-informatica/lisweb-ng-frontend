@@ -17,7 +17,8 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>Nome:</mat-label>
-            <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome', nome.value)"
+            <input matInput #nome maxlength="50" 
+            class="form-control" title="Filtre por nome" (input)="search('nome', nome.value)"
             >
           </mat-form-field>
         </div>

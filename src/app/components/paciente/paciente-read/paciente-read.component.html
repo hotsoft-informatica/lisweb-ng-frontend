@@ -36,15 +36,15 @@
       <div class="row">
         <div class="mb-3 col row">
           <mat-form-field appearance="fill">
-            <mat-label>Nome:</mat-label>
-            <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome',nome.value)">
+            Nome
+            <input matInput #nome maxlength="50" title="Nome" (input)="search('nome',nome.value)">
           </mat-form-field>
         </div>
 
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>RG:</mat-label>
-            <input matInput #rg maxlength="12" placeholder="Filtre por RG" (input)="search('rg',rg.value,true)"
+            <input matInput #rg maxlength="12" class="form-control" title="Filtre por RG" (input)="search('rg',rg.value,true)"
               mask="00.000.000-0">
           </mat-form-field>
         </div>
@@ -52,7 +52,7 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>CPF:</mat-label>
-            <input matInput #cpf maxlength="14" placeholder="Filtre por CPF" (input)="search('cpf',cpf.value,true)"
+            <input matInput #cpf maxlength="14" class="form-control" title="Filtre por CPF" (input)="search('cpf',cpf.value,true)"
               mask="000.000.000-00">
           </mat-form-field>
         </div>

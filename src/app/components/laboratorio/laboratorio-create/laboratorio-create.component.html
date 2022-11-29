@@ -1,27 +1,31 @@
 <mat-card>
   <mat-card-title>Novo Laboratório</mat-card-title>
   <form>
-    <mat-form-field appearance="fill">
+    <mat-form-field>
+      Nome
       <input
+        class="form-control"
         matInput
-        placeholder="Nome"
+        title="Nome"
         [(ngModel)]="laboratorio.nome"
         name="name"
       />
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <input
+        class="form-control"
         matInput
-        placeholder="2000"
+        title="Serie"
         [(ngModel)]="laboratorio.serie"
         name="serie"
       />
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Laboratório domínio</mat-label>
+    <mat-form-field>
       <input
+        class="form-control"
+        title="Domain"
         name="laboratory_domain"
         matInput [matAutocomplete]="auto" 
         [(ngModel)]="laboratorio.laboratory_domain_id"
@@ -34,11 +38,12 @@
       </mat-autocomplete>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field>
       <input
+        class="form-control"
         matInput
         [matDatepicker]="criado_em"
-        placeholder="Criado em"
+        title="Criado em"
         [(ngModel)]="laboratorio.criado_em"
         name="criado em"
         required

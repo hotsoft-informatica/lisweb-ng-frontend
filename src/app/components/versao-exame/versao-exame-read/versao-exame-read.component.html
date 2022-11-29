@@ -37,16 +37,18 @@
     <div class="row">
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
-          <mat-label>Título laudo:</mat-label>
-          <input matInput #titulo_laudo maxlength="50" placeholder="Filtre por título laudo" (input)="search('titulo_laudo', titulo_laudo.value)"
+          Título laudo
+          <input matInput #titulo_laudo maxlength="50" title="Titulo do Laudo"
+          (input)="search('titulo_laudo', titulo_laudo.value)" class="form-control"
           >
         </mat-form-field>
       </div>
 
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
-          <mat-label>Descrição:</mat-label>
-          <input matInput #descricao maxlength="12" placeholder="Filtre por Descrição" (input)="search('descricao', descricao.value)"
+          Descrição
+          <input matInput #descricao maxlength="12" class="form-control" title="Descricao"
+          (input)="search('descricao', descricao.value)"
           >
         </mat-form-field>
       </div>
@@ -83,7 +85,6 @@
     <th mat-header-cell colspan="3" mat-sort-header="" class="col-3" *matHeaderCellDef> Operações </th>
     <td mat-cell *matCellDef="let row">
       <div class="row">
-
         <div class="col-1 me-3">
           <a routerLink="/versao_exames/update/{{row.id}}/true">
             <button mat-icon-button>

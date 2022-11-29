@@ -8,7 +8,7 @@
         required
         minlength="4"
         matInput
-        placeholder="Título"
+        class="form-control" title="Título"
         [(ngModel)]="responsavelTecnico.titulo"
         #titulo="ngModel"
         name="titulo"
@@ -34,7 +34,7 @@
         required
         minlength="4"
         matInput
-        placeholder="Registro Profissional"
+        class="form-control" title="Registro Profissional"
         [(ngModel)]="responsavelTecnico.registro_profissional"
         #registro_profissional="ngModel"
         name="registro_profissional"
@@ -61,7 +61,7 @@
         required
         minlength="3"
         matInput
-        placeholder="Conselho"
+        class="form-control" title="Conselho"
         [(ngModel)]="responsavelTecnico.conselho"
         #conselho="ngModel"
         name="conselho"
@@ -89,7 +89,7 @@
         minlength="2"
         maxlength="2"
         matInput
-        placeholder="UF"
+        class="form-control" title="UF"
         [(ngModel)]="responsavelTecnico.uf_conselho"
         #uf_conselho="ngModel"
         name="uf_conselho"
@@ -116,7 +116,7 @@
         id="cbos"
         required
         matInput
-        placeholder="CBOS"
+        class="form-control" title="CBOS"
         [(ngModel)]="responsavelTecnico.cbos"
         #cbos="ngModel"
         name="cbos"
@@ -142,7 +142,7 @@
         required
         minlength="11"
         matInput
-        placeholder="CPF"
+        class="form-control" title="CPF"
         [(ngModel)]="responsavelTecnico.cpf"
         #cpf="ngModel"
         name="cpf"

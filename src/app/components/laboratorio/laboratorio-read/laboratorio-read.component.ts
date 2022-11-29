@@ -13,6 +13,7 @@ import {
   tap,
 } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
+
 @Component({
   selector: 'app-laboratorio-read',
   templateUrl: './laboratorio-read.component.html',
@@ -30,10 +31,10 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
-
   query: Query[] = [];
+  serieSearch: string = '';
+  nomeSearch: string = '';
 
   constructor(private laboratorioService: LaboratorioService) { }
 

@@ -1,11 +1,11 @@
 <mat-form-field class="search-field">
   <mat-input-container>
-    <input matInput type="text" placeholder="Buscar Título" (keyup.enter)="search('titulo', inputTitulo.value)" #inputTitulo />
+    <input matInput type="text" class="form-control" title="Buscar Título" (keyup.enter)="search('titulo', inputTitulo.value)" #inputTitulo />
   </mat-input-container>
 </mat-form-field>
 <mat-form-field class="search-field">
   <mat-input-container>
-    <input matInput type="text" placeholder="Buscar CPF" (keyup.enter)="search('cpf', inputCpf.value)" #inputCpf />
+    <input matInput type="text" class="form-control" title="Buscar CPF" (keyup.enter)="search('cpf', inputCpf.value)" #inputCpf />
   </mat-input-container>
 </mat-form-field>
 <div class="mat-elevation-z4">

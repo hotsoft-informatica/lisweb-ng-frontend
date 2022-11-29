@@ -31,7 +31,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-          <mat-label>Valor:</mat-label>
+          Valor
           <input
             type="text"
             id="valor"
@@ -41,6 +41,8 @@
             name="valor"
             [(ngModel)]="currentParametroVersaoExame.valor"
             #valor="ngModel"
+            class="form-control"
+            title="Valor"
           >
           <mat-error *ngIf="valor.invalid && (valor.dirty || valor.touched)">
             <span *ngIf="valor.errors?.['required']">

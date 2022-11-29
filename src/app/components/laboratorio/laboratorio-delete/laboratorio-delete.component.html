@@ -4,7 +4,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        placeholder="Nome"
+        class="form-control" title="Nome"
         [(ngModel)]="laboratorio.nome"
         name="name"
       />
@@ -12,7 +12,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        placeholder="2000"
+        class="form-control" title="2000"
         [(ngModel)]="laboratorio.serie"
         name="serie"
       />
@@ -21,7 +21,7 @@
       <input
         matInput
         [matDatepicker]="criado_em"
-        placeholder="Criado em"
+        class="form-control" title="Criado em"
         [(ngModel)]="laboratorio.criado_em" name="criado em" 
         required
       />

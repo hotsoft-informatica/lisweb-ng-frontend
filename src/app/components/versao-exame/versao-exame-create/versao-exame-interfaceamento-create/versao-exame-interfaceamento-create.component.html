@@ -1,22 +1,26 @@
 <div class="example-container row container-fluid mt-4">
   <div class="row justify-content-around">
-
     <mat-form-field appearance="fill" *ngIf="onEdit && !isEditInst" class="col-5">
-      <mat-label>Tipo Instrumento:</mat-label>
-      <input matInput disabled matInput [value]="versaoExame.tipoInstrumento!.descricao">
+      Tipo Instrumento
+      <input matInput disabled matInput class="form-control" title="Tipo instrumento"
+       [value]="versaoExame.tipoInstrumento!.descricao">
     </mat-form-field>
 
-  <app-autocomplete-tipo-interfaceamento class="col-5" *ngIf="onCreate || isEditInst" [tipoInstrumento]='this.versaoExame.tipoInstrumento'></app-autocomplete-tipo-interfaceamento>
+    <app-autocomplete-tipo-interfaceamento class="col-5" 
+      *ngIf="onCreate || isEditInst" [tipoInstrumento]='this.versaoExame.tipoInstrumento'>
+    </app-autocomplete-tipo-interfaceamento>
 
-  <mat-slide-toggle *ngIf="onEdit" class="col-2" [(ngModel)]="isEditInst" color="primary">Editar</mat-slide-toggle>
+    <mat-slide-toggle *ngIf="onEdit" class="col-2" [(ngModel)]="isEditInst" color="primary">
+      Editar
+    </mat-slide-toggle>
 
     <mat-form-field class="col-3">
-      <mat-label>Agrupamento: </mat-label>
-      <input matInput name="agrupamentp"/>
+      Agrupamento
+      <input matInput name="agrupamento" class="form-control" title="Agrupamento"/>
     </mat-form-field>
     <mat-form-field class="col-2">
-      <mat-label>Diluição: </mat-label>
-      <input matInput name="diluição"/>
+      Diluição
+      <input matInput name="diluição" class="form-control" title="Diluição"/>
     </mat-form-field>
   </div>
 </div>

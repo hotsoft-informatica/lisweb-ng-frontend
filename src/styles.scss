@@ -34,13 +34,11 @@ body {
   color: #fff;
 }
 
- @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
- // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
- // @import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
- // @import '~tippy.js/dist/tippy.css';
- // @import '~tippy.js/themes/light.css';
- // @import '~tippy.js/animations/scale.css';
+@import 'tippy.js/dist/tippy.css';
+@import 'tippy.js/themes/light.css';
+@import 'tippy.js/animations/scale.css';
 
 // https://stackoverflow.com/questions/44950374/angular-material-2-0-autocomplete-suggestions-panel-appears-behind-bootstrap-m/50599696#50599696
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
@@ -231,9 +229,11 @@ form {
   margin-top: 20px;
 }
 
-button {
+// TODO: Revisar customizacoes css
+/* button {
   margin: 20px 15px 0px 0px;
 }
+*/
 
 .form-field {
   margin-right: 0px;
