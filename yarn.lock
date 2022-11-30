@@ -1863,6 +1863,13 @@
   dependencies:
     nx "15.2.1"
 
+"@nrwl/cli@15.2.4":
+  version "15.2.4"
+  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-15.2.4.tgz#7cf18d474c428d6b4aaf7b511c298369c47de39a"
+  integrity sha512-Urhkzj/hzhTlJqOHFZyibYGjvzHvSQhkjN3keHiYCNEOaAGp9DPF+oC5cYrPcqWbu3ZkldDWTk7aVBbeqwDWZQ==
+  dependencies:
+    nx "15.2.4"
+
 "@nrwl/cypress@15.0.13":
   version "15.0.13"
   resolved "https://registry.yarnpkg.com/@nrwl/cypress/-/cypress-15.0.13.tgz#84ad84ed30a5efb44f5e433104ce30e334b8a66e"
@@ -2012,6 +2019,13 @@
   integrity sha512-6ApglWKORasLhtjlJmqo2co/UexSSiD7mWVxT2886oKG2Y/T/5RnPFNhJgGnKJIURCNMxiSKhq7GAA+CE9zRZg==
   dependencies:
     nx "15.2.1"
+
+"@nrwl/tao@15.2.4":
+  version "15.2.4"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-15.2.4.tgz#c335e0774e5b7ee26bb3b257a436fe154693d619"
+  integrity sha512-ebGJCkg84yfptuNhGMnIrgHvnknJkeyxWLqRQ7AlMXTzxXOfMS+whjVImM9XjfVYVpBVFWc5QBU5gaKQtzLHmA==
+  dependencies:
+    nx "15.2.4"
 
 "@nrwl/webpack@15.0.13":
   version "15.0.13"
@@ -6714,13 +6728,13 @@ nx@15.2.1:
     yargs "^17.6.2"
     yargs-parser "21.1.1"
 
-nx@15.0.7:
-  version "15.0.7"
-  resolved "https://registry.yarnpkg.com/nx/-/nx-15.0.7.tgz#232182952c17e80f701643e8e6b883df1546cc8b"
-  integrity sha512-noXi5Cjd/NSyKDJ+HrkiUFkSRORFFDVAeQYX8LwRrVPvgex/8pv1okzJRXd2diPq3/tft2Cm9EXHLAE2xRvtlQ==
+nx@15.2.4:
+  version "15.2.4"
+  resolved "https://registry.yarnpkg.com/nx/-/nx-15.2.4.tgz#de55a1342deb3ff2f7b123fe2bbef46c8495f792"
+  integrity sha512-8rTLo5WGmM6hEo5R/u03Jllkyj4vIUbBk2MRAppCvVRXWLS4xJUEOityXJ5BAvaKoLYm6sWUP1gqU7xlldnT5A==
   dependencies:
-    "@nrwl/cli" "15.0.7"
-    "@nrwl/tao" "15.0.7"
+    "@nrwl/cli" "15.2.4"
+    "@nrwl/tao" "15.2.4"
     "@parcel/watcher" "2.0.4"
     "@yarnpkg/lockfile" "^1.1.0"
     "@yarnpkg/parsers" "^3.0.0-rc.18"
@@ -6752,8 +6766,8 @@ nx@15.0.7:
     tsconfig-paths "^3.9.0"
     tslib "^2.3.0"
     v8-compile-cache "2.3.0"
-    yargs "^17.4.0"
-    yargs-parser "21.0.1"
+    yargs "^17.6.2"
+    yargs-parser "21.1.1"
 
 object-assign@^4:
   version "4.1.1"
