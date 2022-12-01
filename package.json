@@ -50,7 +50,7 @@
     "@angular-devkit/architect": "^0.1500.2",
     "@angular-devkit/schematics": "^15.0.2",
     "@angular/compiler": "^15.0.2",
-    "@nrwl/workspace": "^15.2.1",
+    "@nrwl/workspace": "^15.2.4",
     "@types/jasmine": "^4.3.0",
     "@types/node": "^18.11.9",
     "core-js": "^3.26.1",
