@@ -32,9 +32,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { getPtBrMatPaginatorIntl } from './pt-br-mat-paginator-intl';
 
-// TODO: Substituir NgAutoCompleteModule
-// import { NgAutoCompleteModule } from 'ng-auto-complete';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
