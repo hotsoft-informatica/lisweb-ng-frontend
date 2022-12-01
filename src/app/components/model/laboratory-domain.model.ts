@@ -1,15 +1,11 @@
-export class LaboratoryDomain {
-  public id?: number;
+import { BaseRaw } from './base-raw.model'
+export class LaboratoryDomain extends BaseRaw{
   public name?: string;
-  public created_at?: Date;
-  public updated_at?: Date;
-  public version_id?: number;
-  public deleted?: boolean;
   public sync_start_date?: Date;
   public sync_deadline?: Date;
-  public criado_em?: Date;
 
   constructor(values: LaboratoryDomain) {
+    super(values);
     Object.assign(this, values);
   }
 }

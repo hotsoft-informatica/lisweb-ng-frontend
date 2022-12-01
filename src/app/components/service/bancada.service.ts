@@ -1,11 +1,10 @@
+import { BackendIpService } from '../service/backend-ip.service';
 import { Bancada } from '../model/bancada.model';
-import { Query } from './../model/query.model';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { BackendIp } from '../model/backend-ip.model';
-import { BackendIpService } from '../service/backend-ip.service';
+import { Observable } from 'rxjs';
+import { Query } from './../model/query.model';
 @Injectable({
   providedIn: 'root',
 })

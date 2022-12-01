@@ -1,8 +1,12 @@
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator'
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
 import { Query } from 'src/app/components/model/query.model';
-import { ValorReferenciaService } from 'src/app/components/service/valor-referencia.service';
+import { tap } from 'rxjs/operators';
 import { ValorReferenciaReadDataSource } from './valor-referencia-read-datasource';
+import { ValorReferenciaService } from 'src/app/components/service/valor-referencia.service';
 import {
   AfterViewInit,
   ViewChild,
@@ -10,10 +14,6 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-import { tap } from 'rxjs/operators';
-import { merge } from 'rxjs';
 @Component({
   selector: 'app-valor-referencia-read',
   templateUrl: './valor-referencia-read.component.html',
@@ -97,5 +97,4 @@ export class ValorReferenciaReadComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
 }

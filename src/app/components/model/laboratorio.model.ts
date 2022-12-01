@@ -1,10 +1,9 @@
 import { Recurso } from './recurso.model';
-export class Laboratorio {
-  public id?: number;
+import { BaseRaw } from './base-raw.model';
+
+export class Laboratorio extends BaseRaw{
   public nome?: string;
   public access_token?: string;
-  public created_at?: Date = new Date();
-  public updated_at?: Date = new Date();
   public version_counter?: number;
   public serie?: number;
   public next_numero_atendimento?: number;
@@ -19,8 +18,6 @@ export class Laboratorio {
   public recursos?: Recurso;
   public empresa_id?: number;
   public domain_id?: number;
-  public criado_em?: Date = new Date();
-  public changed_by_lab_id?: number;
   public sync_deadline?: number;
   public matrix?: number
 
@@ -28,6 +25,7 @@ export class Laboratorio {
   public laboratory_domain_id?: number;
 
   constructor(values: Laboratorio) {
+    super(values);
     Object.assign(this, values);
   }
 }

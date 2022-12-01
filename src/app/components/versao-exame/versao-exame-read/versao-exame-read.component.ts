@@ -1,8 +1,12 @@
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
-import { Query } from '../../model/query.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VersaoExameService } from '../../service/versao-exame.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import { Query } from '../../model/query.model';
+import { tap } from 'rxjs/operators';
 import { VersaoExameReadDataSource } from './versao-exame-read-datasource';
+import { VersaoExameService } from '../../service/versao-exame.service';
 import {
   AfterViewInit,
   ViewChild,
@@ -10,10 +14,6 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-import { tap } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-versao-exame-read',
   templateUrl: './versao-exame-read.component.html',

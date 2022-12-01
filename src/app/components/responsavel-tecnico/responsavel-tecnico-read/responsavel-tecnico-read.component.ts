@@ -1,25 +1,16 @@
+import { merge } from 'rxjs';
 import { Query } from "../../model/query.model";
 import { ResponsavelTecnicoService } from "../../service/responsavel-tecnico.service";
 import { ResponsavelTecnicoReadDataSource } from "./responsavel-tecnico-read.datasource";
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-responsavel-tecnico-read',
@@ -42,7 +33,6 @@ export class ResponsavelTecnicoReadComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
 
   query: Query[] = [];

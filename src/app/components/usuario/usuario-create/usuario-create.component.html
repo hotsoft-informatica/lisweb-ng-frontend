@@ -61,14 +61,12 @@
         <mat-icon>cancel</mat-icon>
       </button>
     </mat-chip>
+    <!-- TODO: unificar tela de cadastro e edicao -->
     <input
       class="form-control" title="Digite o grupo de usuario"
       #grupoInput
       [formControl]="grupoCtrl"
       [matAutocomplete]="auto"
-      [matChipInputFor]="chipList"
-      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)"
       name="grupos"
       [(ngModel)]="usuario.grupos"
       formControlName="grupos"

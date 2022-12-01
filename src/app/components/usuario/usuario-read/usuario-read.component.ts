@@ -1,15 +1,14 @@
 import { UsuarioUpdateComponent } from './../usuario-update/usuario-update.component';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator'
 import { UsuarioCreateComponent } from './../usuario-create/usuario-create.component';
 import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog'
 import { Usuario } from '../../model/usuario.model';
 import { MatSort } from '@angular/material/sort';
 import { UsuarioService } from '../../service/usuario.service';
 import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
-
 
 @Component({
   selector: 'app-usuario-read',

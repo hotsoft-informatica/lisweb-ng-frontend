@@ -2,8 +2,8 @@ import { Query } from './../model/query.model';
 import { Operadora } from '../model/operadora.model';
 import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
-import { EMPTY, Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',

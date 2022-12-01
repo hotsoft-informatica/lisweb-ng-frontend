@@ -1,7 +1,7 @@
-import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
 import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MetodoExame } from '../model/metodo-exame.model';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
 
 export interface DialogData{
   metodoExame: MetodoExame;

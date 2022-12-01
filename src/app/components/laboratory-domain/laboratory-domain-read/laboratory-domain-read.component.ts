@@ -1,18 +1,18 @@
 import { Query } from '../../model/query.model';
 import { LaboratoryDomainReadDataSource } from './laboratory-domain-read-datasource';
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import {
+  tap,
+} from 'rxjs/operators';
 import {
   AfterViewInit,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-import {
-  tap,
-} from 'rxjs/operators';
-import { merge } from 'rxjs';
 @Component({
   selector: 'app-laboratory-domain-read',
   templateUrl: './laboratory-domain-read.component.html',

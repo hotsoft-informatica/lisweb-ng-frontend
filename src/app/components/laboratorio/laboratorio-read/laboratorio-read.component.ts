@@ -1,18 +1,18 @@
-import { Query } from '../../model/query.model';
 import { LaboratorioReadDataSource } from './laboratorio-read-datasource';
 import { LaboratorioService } from '../../service/laboratorio.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import { Query } from '../../model/query.model';
 import {
   AfterViewInit,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
 import {
   tap,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-laboratorio-read',

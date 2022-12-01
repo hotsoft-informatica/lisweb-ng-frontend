@@ -2,8 +2,7 @@ import { Query } from './../model/query.model';
 import { LaboratoryGetFilter } from '../model/laboratory-get-filter.model';
 import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
-import { EMPTY, Observable, of, map, pipe } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';import { EMPTY, Observable, of, map, pipe } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',

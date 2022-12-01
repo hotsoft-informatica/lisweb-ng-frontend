@@ -1,19 +1,18 @@
 import { Query } from '../../model/query.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { EmpresaReadDataSource } from './empresa-read-datasource';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
 import {
   AfterViewInit,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import {
   tap,
 } from 'rxjs/operators';
-import { merge } from 'rxjs';
 
 @Component({
   selector: 'app-empresa-read',
@@ -39,7 +38,6 @@ export class EmpresaReadComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
 
   query: Query[] = [];

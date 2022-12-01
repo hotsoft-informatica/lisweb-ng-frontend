@@ -1,14 +1,14 @@
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { Component, Input, OnChanges, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog'
 import { MatSort, Sort } from '@angular/material/sort';
-import { Query } from 'src/app/components/model/query.model';
-import { VersaoExame } from '../../model/versao-exame.model';
-import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
+import { MatTableDataSource } from '@angular/material/table'
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
-import { Component, Input, OnChanges, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
+import { Query } from 'src/app/components/model/query.model';
 import { Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
+import { VersaoExame } from '../../model/versao-exame.model';
+import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
 
 @Component({
   selector: 'app-versao-exame-parametro',

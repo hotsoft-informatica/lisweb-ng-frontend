@@ -2,7 +2,7 @@ import { Marcacao } from '../model/marcacao.model';
 import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({

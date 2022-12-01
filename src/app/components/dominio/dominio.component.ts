@@ -1,16 +1,15 @@
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { timer, merge } from 'rxjs';
-import { tap } from 'rxjs/operators';
-
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
-import { MatSort } from '@angular/material/sort';
-
-import { Query } from '../model/query.model';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Query } from '../model/query.model';
+import { tap } from 'rxjs/operators';
+import { timer, merge } from 'rxjs';
+
 @Component({
   selector: 'app-dominio',
   templateUrl: './dominio.component.html',

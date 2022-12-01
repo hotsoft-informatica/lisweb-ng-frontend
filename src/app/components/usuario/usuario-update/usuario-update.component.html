@@ -29,14 +29,12 @@
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip>
+      <!-- TODO: Refazer este input de tags pro angular atual -->
       <input
         class="form-control" title="Digite o grupo de usuario"
         #grupoInput
         [formControl]="grupoCtrl"
         [matAutocomplete]="auto"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)"
         name="grupos"
         [(ngModel)]="usuario.grupos">
     </mat-chip-list>
