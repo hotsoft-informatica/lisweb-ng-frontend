@@ -74,7 +74,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lisweb-ng-frontend:build"
+            "browserTarget": "lisweb-ng-frontend:build",
+            "host": "0.0.0.0"
           },
           "configurations": {
             "production": {

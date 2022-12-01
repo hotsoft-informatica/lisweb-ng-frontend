@@ -2,21 +2,21 @@ import { Amostra } from '../model/amostra.model';
 import { Paciente } from '../model/paciente.model';
 import { Exame } from '../model/exame.model';
 import { MaterialBiologico } from '../model/material-biologico.model';
-import { Coletor } from '../model/coletor.model';
 import { Usuario } from '../model/usuario.model';
 import { ConsultaAmostra } from '../model/consulta-amostra.model';
 import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
 import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
-import { EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class ConsultaAmostraService {
   baseUrl = '';
-  amostraUrl = '/paciente_amostra';
+  amostraUrl = '/amostras';
+  pacienteAmostraUrl = '/paciente_amostra';
   exameUrl = '/exames_paciente';
   exameAmostrasUrl = '/exames_amostra';
   materialBiologicoUrl = '/materiais_biologicos_paciente';
@@ -32,6 +32,7 @@ export class ConsultaAmostraService {
   ) {
     this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
     this.amostraUrl = backendIpService.getUrl() + this.amostraUrl;
+    this.pacienteAmostraUrl = backendIpService.getUrl() + this.pacienteAmostraUrl;
     this.exameUrl = backendIpService.getUrl() + this.exameUrl;
     this.exameAmostrasUrl = backendIpService.getUrl() + this.exameAmostrasUrl;
     this.materialBiologicoUrl = backendIpService.getUrl() + this.materialBiologicoUrl;
@@ -61,6 +62,12 @@ export class ConsultaAmostraService {
     });
   }
 
+  findAmostraId(id: string | undefined): Observable<Amostra> {
+    // TODO: Implementar busca por num_amostra e nao ID!
+    const url = `${this.amostraUrl}/${id}`;
+    return this.http.get<Amostra>(url, {});
+  }
+
   findAmostra(query: Query[] | null): Observable<Amostra> {
     let params = new HttpParams();
     query?.forEach((queryItem) => {
@@ -70,7 +77,7 @@ export class ConsultaAmostraService {
       }
     });
 
-    return this.http.get<Amostra>(this.amostraUrl, {
+    return this.http.get<Amostra>(this.pacienteAmostraUrl, {
       params,
     });
   }

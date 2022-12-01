@@ -6,8 +6,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MatLegacyDialog as MatDialog, MatLegacyDialogState as MatDialogState } from '@angular/material/legacy-dialog';
 
-// import { ToastrService } from 'ngx-toastr';
-
 export const maxRetries = 2;
 export const delayMs = 2000;
 
@@ -21,7 +19,6 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   autorizacaoDialog() {
-
     const matDialogRef = this.dialog.open(DialogErroAutenticacaoComponent);
     if (matDialogRef.getState() === MatDialogState.OPEN) {
       localStorage.setItem('dialogOpened', "true");
@@ -53,5 +50,4 @@ export class ErrorInterceptor implements HttpInterceptor {
       return throwError(() => new Error(error));
     }));
   }
-
 }

@@ -1,7 +1,7 @@
 import { Amostra } from '../../model/amostra.model';
 import { AmostraService } from './../../service/amostra.service';
-import { BehaviorSubject, of } from 'rxjs';
-import { Component, OnInit, Input, Injectable, OnChanges, AfterViewInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { ConsultaAmostraService } from './../../service/consulta-amostra.service';
 import { ConsultaAmostraShowDataSource } from './consulta-amostra-show-datasource';
 import { Exame } from './../../model/exame.model';
@@ -61,56 +61,91 @@ export class ConsultaAmostraShowComponent implements OnInit {
 
   search(key: string, value: string, isNumeric = false): void {
     this.loadingSubject.next(true);
+
+    this.amostra = new Amostra({});
+    this.coletor= new Usuario({});
+    this.exame = new Exame({});
+    this.exameAmostras= [];
+    this.materialBiologico = new MaterialBiologico({});
     this.pacienteAmostra = new Paciente();
-    const query = new Query({ key, value, isNumeric });
-    this.query.push(query);
+    this.pacienteExame = new Exame({});
+    this.versaoExame = new VersaoExame({});
+    
+    this.query = []; // Limpar buscas anteriores, importante
+    const searchQuery = new Query({ key, value, isNumeric });
+    this.query.push(searchQuery);
     this.loadConsultaAmostraPage();
 
     this.consultaAmostraService
       .findPaciente(this.query)
       .subscribe(
-        (pacienteAmostra: Paciente) => (this.pacienteAmostra = pacienteAmostra)
-      );
+        (pacienteAmostra: Paciente) => {
+          if (pacienteAmostra) {
+            this.pacienteAmostra = pacienteAmostra 
+          }
+        });
 
     this.consultaAmostraService
       .findExame(this.query)
       .subscribe(
-        (pacienteExame: Exame) => (this.pacienteExame = pacienteExame)
-      );
+        (pacienteExame: Exame) => {
+          if (pacienteExame) {
+            this.pacienteExame = pacienteExame
+          }
+        });
 
     this.consultaAmostraService
       .findMaterialBiologico(this.query)
       .subscribe(
-        (materialBiologico: MaterialBiologico) =>
-          (this.materialBiologico = materialBiologico)
-      );
+        (materialBiologico: MaterialBiologico) => {
+          if (materialBiologico) {
+            this.materialBiologico = materialBiologico
+          }
+        });
 
     this.consultaAmostraService
       .findColetor(this.query)
-      .subscribe((coletor: Usuario) => (this.coletor = coletor));
+      .subscribe((coletor: Usuario) => {
+        if (coletor) {
+          this.coletor = coletor
+        }
+      });
   }
 
   loadConsultaAmostraPage(): void {
+    let AmostraId;
+ 
+    this.query?.forEach((queryItem) => {
+      if (queryItem) {
+        if (queryItem.key == "id") {
+          AmostraId = queryItem.value
+        }
+      }
+    });
+
     this.clear = true;
     this.consultaAmostraService
-      .findAmostra(this.query)
+      .findAmostraId(AmostraId)
       .subscribe((amostra: Amostra) => {
-        this.amostra = amostra;
-        // TODO: Revisar verificar se já existe consulta prévia da amostra.
-        this.exameAmostraService
-          .read(this.amostra.id, 0)
-          .subscribe((exameAmostras: ExameAmostra[]) => {
-            this.exameAmostras = exameAmostras;
-            this.exameAmostras.forEach((exameAmostra) => {
-              this.amostraService
-                .readById(exameAmostra.amostra_id as number)
-                .subscribe((amostra: Amostra) => {
-                  exameAmostra.amostra = amostra;
+        if (amostra) {
+          this.amostra = amostra;
+          // TODO: Revisar verificar se já existe consulta prévia da amostra.
+          this.exameAmostraService
+            .read(this.amostra.id, 0)
+            .subscribe((exameAmostras: ExameAmostra[]) => {
+              if (exameAmostras) {
+                this.exameAmostras = exameAmostras;
+                this.exameAmostras.forEach((exameAmostra) => {
+                  this.amostraService
+                    .readById(exameAmostra.amostra_id as number)
+                    .subscribe((amostra: Amostra) => {
+                      exameAmostra.amostra = amostra;
+                    });
+                  this.consultaExame(exameAmostra);
                 });
-              this.consultaExame(exameAmostra);
-            });
-          }).add(() => {
-          });
+              }
+            }).add(() => {});
+        }
       });
   }
 
@@ -128,10 +163,10 @@ export class ConsultaAmostraShowComponent implements OnInit {
           this.loadingSubject.next(false);
         });
         exameAmostra.exame = exame;
-      }).add(() => {
-      });
+      }).add(() => {});
   }
 
+  // TODO: Usar outros recursos do angular como pipes
   consultaStatus(status: string | undefined): string {
     switch (status) {
       case 'A':
@@ -152,6 +187,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
     }
   }
 
+  // TODO: Transformar em pipe de tranformacao
   consultaStatusAlt(status: string | undefined): string {
     switch (status) {
       case 'A':
