@@ -15,7 +15,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatInputCounterModule } from '@angular-material-extensions/input-counter';
 import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
 import { MatLegacyMenuModule as MatMenuModule } from '@angular/material/legacy-menu';
