@@ -1,13 +1,13 @@
 import { ActivatedRoute, Router } from '@angular/router';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
+import { ElementRef, ViewChild } from '@angular/core';
+import { map, startWith } from 'rxjs/operators';
 import { MatChipInputEvent } from '@angular/material/chips'
+import { MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent } from '@angular/material/legacy-autocomplete';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Usuario } from './../../model/usuario.model';
 import { UsuarioService } from './../../service/usuario.service';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ElementRef, ViewChild} from '@angular/core';
-import {map, startWith} from 'rxjs/operators';
-import {MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent} from '@angular/material/legacy-autocomplete';
 import {Observable} from 'rxjs';
 import Validation from '../../../utils/validation';
 

@@ -7,13 +7,10 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import {
-  tap,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { tap } from 'rxjs/operators';import { merge, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-operadora-read',

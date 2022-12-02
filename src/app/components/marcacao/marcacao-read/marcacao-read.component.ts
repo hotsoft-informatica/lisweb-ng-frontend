@@ -1,5 +1,5 @@
 import { Query } from '../../model/query.model';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MarcacaoService } from '../../service/marcacao.service';
 import { MarcacaoReadDataSource } from './marcacao-read-datasource';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,12 +10,9 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {
-  tap,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { tap } from 'rxjs/operators';import { merge, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-marcacao-read',

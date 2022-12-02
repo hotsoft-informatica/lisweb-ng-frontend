@@ -3,7 +3,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
 import { ElementRef, ViewChild } from '@angular/core';
 import { map, startWith } from 'rxjs/operators';
-import { MatChipInputEvent } from '@angular/material/chips'
+import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { UntypedFormControl} from '@angular/forms';
 import { Usuario } from './../../model/usuario.model';

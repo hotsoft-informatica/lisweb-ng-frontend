@@ -12,10 +12,7 @@ import {
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {
-  tap,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { tap } from 'rxjs/operators';import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-laboratory-domain-read',
   templateUrl: './movimento-conta-read.component.html',

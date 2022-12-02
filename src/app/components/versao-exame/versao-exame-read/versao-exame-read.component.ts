@@ -91,5 +91,4 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
-
 }

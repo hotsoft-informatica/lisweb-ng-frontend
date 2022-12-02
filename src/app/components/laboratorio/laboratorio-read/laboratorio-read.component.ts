@@ -10,10 +10,7 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import {
-  tap,
-} from 'rxjs/operators';
-
+import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-laboratorio-read',
   templateUrl: './laboratorio-read.component.html',

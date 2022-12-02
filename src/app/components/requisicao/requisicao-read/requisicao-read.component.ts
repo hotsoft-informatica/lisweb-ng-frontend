@@ -5,23 +5,14 @@ import { RequisicaoReadDataSource } from './requisicao-read-datasource';
 import { RequisicaoService } from '../../service/requisicao.service';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
-} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
 import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 

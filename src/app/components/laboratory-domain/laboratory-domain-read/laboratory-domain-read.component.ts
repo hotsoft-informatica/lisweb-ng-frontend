@@ -4,10 +4,7 @@ import { LaboratoryDomainService } from '../../service/laboratory-domain.service
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge } from 'rxjs';
-import {
-  tap,
-} from 'rxjs/operators';
-import {
+import { tap } from 'rxjs/operators';import {
   AfterViewInit,
   ViewChild,
   Component,
