@@ -53,7 +53,8 @@ export class LocalDeAtendimentoReadComponent implements AfterViewInit, OnInit {
       this.localdeatendimentoService.countLocaisdeAtendimentos().subscribe((totalCount: number) => {
         this.totalCount = totalCount;
       });
-      this.loadBack('id', 'desc', 0, 10, this.queries);
+      // TODO: Revisar junto a paginacao via config
+      this.loadBack('id', 'desc', 0, 5, this.queries);
     }
 
     ngAfterViewInit(): void { // executar apos ser desenhado a pagina

@@ -17,7 +17,7 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>Nome:</mat-label>
-            <input matInput #nome maxlength="50" 
+            <input matInput #nome maxlength="50"
             class="form-control" title="Filtre por nome" (input)="search('nome', nome.value)"
             >
           </mat-form-field>
@@ -33,7 +33,7 @@
           <mat-label>Domínio</mat-label>
           <input
             name="dominio_id"
-            matInput [matAutocomplete]="autoDominios" 
+            matInput [matAutocomplete]="autoDominios"
             [(ngModel)]="currentRecord.dominio_id"
             (ngModelChange)="searchDominio()"
             #dominio_id2="ngModel"
@@ -56,7 +56,7 @@
           <mat-label>Tipo Recurso</mat-label>
           <input
             name="tipo_recurso_id"
-            matInput [matAutocomplete]="autoTipoRecursos" 
+            matInput [matAutocomplete]="autoTipoRecursos"
             [(ngModel)]="currentRecord.tipo_recurso_id"
             (ngModelChange)="searchTipoRecurso()"
             #tipo_recurso_id="ngModel"
@@ -302,9 +302,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator 
+  <mat-paginator
     [length]="this.totalCount"
-    [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 50]">
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20, 50]">
   </mat-paginator>
 </div>

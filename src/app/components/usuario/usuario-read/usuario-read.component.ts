@@ -116,7 +116,7 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     this.usuarioService.countUsuarios().subscribe((totalCount: number) => {
       this.totalCount = totalCount;
     });
-    this.loadBack('id', 'desc', 0, 10, this.queries);
+    this.loadBack('id', 'desc', 0, 5, this.queries);
   }
 
   ngAfterViewInit(): void { // executar apos ser desenhado a pagina

@@ -1,8 +1,3 @@
-import { MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
-import { RequisicaoUpdateComponent } from './../requisicao-update/requisicao-update.component';
-import { Query } from '../../model/query.model';
-import { RequisicaoReadDataSource } from './requisicao-read-datasource';
-import { RequisicaoService } from '../../service/requisicao.service';
 import {
   AfterViewInit,
   ViewChild,
@@ -10,11 +5,17 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import { Query } from '../../model/query.model';
+import { RequisicaoReadDataSource } from './requisicao-read-datasource';
+import { RequisicaoService } from '../../service/requisicao.service';
+import { RequisicaoUpdateComponent } from './../requisicao-update/requisicao-update.component';
 import { tap } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+
 
 @Component({
   selector: 'app-requisicao-read',
@@ -57,7 +58,7 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new RequisicaoReadDataSource(this.requisicaoService);
-    this.dataSource.loadRequisicoes('id', 'desc', 1, 10, null);
+    this.dataSource.loadRequisicoes('id', 'desc', 1, 5, null);
     this.requisicaoService.countRequisicoes().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

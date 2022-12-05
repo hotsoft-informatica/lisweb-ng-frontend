@@ -52,7 +52,7 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new VersaoExameReadDataSource(this.versaoExameService);
-    this.dataSource.loadVersaoExames('id', 'desc', 1, 10, null);
+    this.dataSource.loadVersaoExames('id', 'desc', 1, 5, null);
     this.versaoExameService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

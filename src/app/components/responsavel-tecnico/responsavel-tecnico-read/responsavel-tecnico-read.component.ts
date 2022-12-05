@@ -49,7 +49,7 @@ export class ResponsavelTecnicoReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new ResponsavelTecnicoReadDataSource(this.responsavelTecnicoService);
-    this.dataSource.loadResponsavelTecnico('id', 'desc', 1, 10, null);
+    this.dataSource.loadResponsavelTecnico('id', 'desc', 1, 5, null);
     this.responsavelTecnicoService.countResponsavelTecnico().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

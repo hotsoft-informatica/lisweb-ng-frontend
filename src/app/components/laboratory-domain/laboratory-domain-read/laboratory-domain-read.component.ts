@@ -50,7 +50,7 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
     this.dataSource = new LaboratoryDomainReadDataSource(
       this.laboratoryDomainService
     );
-    this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 10, null);
+    this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 5, null);
     this.laboratoryDomainService
       .countLaboratoryDomains()
       .subscribe((totalCount) => {

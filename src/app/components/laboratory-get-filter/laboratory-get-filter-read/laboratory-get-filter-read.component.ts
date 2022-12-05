@@ -43,7 +43,7 @@ export class LaboratoryGetFilterReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new LaboratoryGetFilterReadDataSource(this.laboratoryGetFilterService);
-    this.dataSource.loadLaboratoryGetFilters('id', 'desc', 1, 10, null);
+    this.dataSource.loadLaboratoryGetFilters('id', 'desc', 1, 5, null);
     this.laboratoryGetFilterService.countLaboratoryGetFilter().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

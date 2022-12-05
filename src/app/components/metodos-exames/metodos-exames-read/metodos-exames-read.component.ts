@@ -1,14 +1,14 @@
-import { MatLegacyDialogConfig as MatDialogConfig } from '@angular/material/legacy-dialog';
-import { MetodoExameService } from './../../service/metodo-exame.service';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
+import { MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge } from 'rxjs';
+import { MetodoExame } from '../../model/metodo-exame.model';
+import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
+import { MetodoExameService } from './../../service/metodo-exame.service';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
-import { MetodoExame } from '../../model/metodo-exame.model';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-metodos-exames-read',
@@ -110,7 +110,7 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
     this.metodoExameService.countMetodoExame().subscribe((totalCount: number) => {
       this.totalCount = totalCount;
     });
-    this.loadBack('id', 'desc', 0, 10, this.queries);
+    this.loadBack('id', 'desc', 0, 5, this.queries);
   }
 
   ngAfterViewInit(): void { // executar apos ser desenhado a pagina

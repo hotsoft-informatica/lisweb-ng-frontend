@@ -58,7 +58,7 @@ export class ValorReferenciaReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new ValorReferenciaReadDataSource(this.valorReferenciaService);
-    this.dataSource.loadValoresReferencia('id', 'desc', 1, 10, null);
+    this.dataSource.loadValoresReferencia('id', 'desc', 1, 5, null);
     this.valorReferenciaService.countValoresReferencia().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

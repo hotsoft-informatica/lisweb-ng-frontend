@@ -33,19 +33,19 @@
     <!-- total Column -->
     <ng-container matColumnDef="total">
       <th mat-header-cell *matHeaderCellDef>Total</th>
-      <td mat-cell *matCellDef="let row">{{ row?.total }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.total | number : '1.0-2' }}</td>
     </ng-container>
 
     <!-- valor_cobertura Column -->
     <ng-container matColumnDef="valor_cobertura">
       <th mat-header-cell *matHeaderCellDef>Valor Cobertura</th>
-      <td mat-cell *matCellDef="let row">{{ row?.valor_cobertura }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.valor_cobertura | number : '1.0-2' }}</td>
     </ng-container>
 
     <!-- valor_desconto Column -->
     <ng-container matColumnDef="valor_desconto">
       <th mat-header-cell *matHeaderCellDef>Desconto</th>
-      <td mat-cell *matCellDef="let row">{{ row?.valor_desconto }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.valor_desconto | number : '1.0-2' }}</td>
     </ng-container>
 
     <!-- guia Column -->
@@ -107,8 +107,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [length]="this.totalCount" [pageSize]="10"
-  [pageSizeOptions]="[05, 10, 20, 60, 240, 1200]"></mat-paginator>
+  <mat-paginator [length]="this.totalCount" [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
 
   <div class="spinner-container" *ngIf="dataSource.loading$ | async">
     <mat-spinner></mat-spinner>

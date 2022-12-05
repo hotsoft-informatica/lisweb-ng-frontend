@@ -105,8 +105,8 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [length]="this.totalCount" [pageSize]="10"
-  [pageSizeOptions]="[05, 10, 20, 60, 240, 1200]"></mat-paginator>
+  <mat-paginator [length]="this.totalCount" [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
 
   <div class="spinner-container" *ngIf="dataSource.loading$ | async">
     <mat-spinner></mat-spinner>

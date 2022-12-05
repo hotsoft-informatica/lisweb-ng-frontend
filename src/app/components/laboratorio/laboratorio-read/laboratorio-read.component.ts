@@ -45,7 +45,7 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new LaboratorioReadDataSource(this.laboratorioService);
-    this.dataSource.loadLaboratorios('id', 'desc', 1, 10, null);
+    this.dataSource.loadLaboratorios('id', 'desc', 1, 5, null);
     this.laboratorioService.countLaboratorios().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

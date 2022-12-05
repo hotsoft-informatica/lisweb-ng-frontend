@@ -44,7 +44,7 @@ export class OperadoraReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new OperadoraReadDataSource(this.operadoraService);
-    this.dataSource.loadOperadoras('id', 'desc', 1, 10, null);
+    this.dataSource.loadOperadoras('id', 'desc', 1, 5, null);
     this.operadoraService.countOperadoras().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

@@ -52,7 +52,8 @@ export class MarcacaoReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new MarcacaoReadDataSource(this.marcacaoService);
-    this.dataSource.loadMarcacoes('id', 'desc', 1, 10, null);
+    // TODO: Tratar via config de paginacao, qtde por pagina
+    this.dataSource.loadMarcacoes('id', 'desc', 1, 5, null);
     this.marcacaoService.countMarcacaoes().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
