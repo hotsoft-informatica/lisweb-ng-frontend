@@ -1,12 +1,12 @@
 <mat-toolbar color="primary"
   class="header mat-elevation-z4 navbar navbar-dark bg-dark">
   <mat-toolbar-row>
-    <div class="btn">
-      <button mat-button class="nav-item" [matMenuTriggerFor]="home" class="nav-item dropdown">
+    <div class="navbar">
+      <button mat-button [matMenuTriggerFor]="home" class="nav-item dropdown">
         <mat-icon>pageview</mat-icon>
         Inicio
       </button>
-      <mat-menu #home="matMenu" class="nav-item dropdown">
+      <mat-menu #home="matMenu" class="nav-item">
         <button mat-menu-item class="nav-item" routerLink="/">
           Página Inicial
         </button>
@@ -14,26 +14,49 @@
           Clta. Amostra
         </button>
       </mat-menu>
+      <button mat-button [matMenuTriggerFor]="requisicao" class="nav-item">
+        <mat-icon>folder</mat-icon>
+        Requisicao
+      </button>
+      <mat-menu #requisicao="matMenu" class="nav-item dropdown">
+        <button mat-menu-item class="nav-item" routerLink="/requisicoes">
+          Requisições
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/pacientes/read">
+          Pacientes
+        </button>
+      </mat-menu>
+      <button mat-button class="nav-item" [matMenuTriggerFor]="versaoexames">
+        <mat-icon>list</mat-icon>
+        Versões Exame
+      </button>
+      <mat-menu #versaoexames="matMenu" class="nav-item dropdown">
+        <button mat-menu-item class="nav-item" routerLink="/versao_exames">
+          Listar Versões
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/marcacoes/read">
+          Tabela Marcação
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/valores_referencia/read">
+          Valor Referência
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/metodos-exames/read">
+          Listar Métodos de Exame
+        </button>
+      </mat-menu>
       <button mat-button class="nav-item" [matMenuTriggerFor]="cadastro">
         <mat-icon>assignment</mat-icon>
         Cadastrar
       </button>
       <mat-menu #cadastro="matMenu" class="nav-item dropdown">
-        <button mat-menu-item [matMenuTriggerFor]="versaoexames">Versão Exames</button>
         <button mat-menu-item class="nav-item" routerLink="/laboratorydomains">
           Lab. Domínio
         </button>
         <button mat-menu-item class="nav-item" routerLink="/laboratorios">
           Laboratório
         </button>
-        <button mat-menu-item class="nav-item" routerLink="/pacientes/read">
-          Pacientes
-        </button>
         <button mat-menu-item class="nav-item" routerLink="/usuarios/read">
           Usuarios
-        </button>
-        <button mat-menu-item class="nav-item" routerLink="/requisicoes">
-          Requisições
         </button>
         <button mat-menu-item class="nav-item" routerLink="/operadoras">
           Operadoras
@@ -41,20 +64,6 @@
         <button mat-menu-item class="nav-item" routerLink="/empresas">
           Empresas
         </button>
-        <mat-menu #versaoexames="matMenu" class="nav-item dropdown">
-          <button mat-menu-item class="nav-item" routerLink="/versao_exames">
-            Listar Versões
-          </button>
-          <button mat-menu-item class="nav-item" routerLink="/marcacoes/read">
-            Tabela Marcação
-          </button>
-          <button mat-menu-item class="nav-item" routerLink="/valores_referencia/read">
-            Valor Referência
-          </button>
-          <button mat-menu-item class="nav-item" routerLink="/metodos-exames/read">
-            Listar Métodos de Exame
-          </button>
-        </mat-menu>
         <button mat-menu-item class="nav-item" routerLink="/localdeatendimento/read">
           Local de Atendimento
         </button>
