@@ -169,7 +169,7 @@ import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-cre
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
 import { TipoExameReadComponent } from './components/tipo-exame/tipo-exame-read/tipo-exame-read.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
-import { TippyModule, tooltipVariation, popperVariation } from '@ngneat/helipopper';
+import { tooltipVariation, popperVariation } from '@ngneat/helipopper';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { UserComponent } from './components/user/user.component';
 import { UserExitGuard } from './guards/user-exit.guard';
@@ -376,13 +376,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
     RouterModule,
-    TippyModule.forRoot({
-      defaultVariation: 'tooltip',
-      variations: {
-        tooltip: tooltipVariation,
-        popper: popperVariation,
-      }
-    }),
     TranslateModule.forRoot({
       defaultLanguage: 'en'
     })

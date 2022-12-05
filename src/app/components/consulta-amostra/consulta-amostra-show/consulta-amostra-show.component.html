@@ -67,9 +67,9 @@
             {{ exameAmostra.exame?.versao_exame?.descricao }}
           </td>
           <td class="mat-cell">{{ exameAmostra.exame?.urgente }}</td>
+          <!-- TODO: [tippy]="consultaStatusAlt(exameAmostra?.exame?.status)" -->
           <td
             class="mat-cell"
-            [tippy]="consultaStatusAlt(exameAmostra?.exame?.status)"
             [ngStyle]="{ color: consultaStatus(exameAmostra?.exame?.status) }"
           >
             {{ exameAmostra?.exame?.status }}
