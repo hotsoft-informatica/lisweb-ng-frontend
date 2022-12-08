@@ -4,12 +4,13 @@ import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable, of, map, pipe } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class LaboratorioService {
   baseUrl = '/laboratorios';
+  storage: Storage = window.localStorage;
 
   query: Query[] = [];
   labDomains = [];
@@ -46,7 +47,12 @@ export class LaboratorioService {
   }
 
   read(): Observable<Laboratorio[]> {
-    return this.http.get<Laboratorio[]>(this.baseUrl);
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders()
+      .set('Authorization', auth);
+    return this.http.get<Laboratorio[]>(this.baseUrl,
+      { headers: headers }
+    );
   }
 
   readById(id: number): Observable<Laboratorio> {
@@ -71,6 +77,11 @@ export class LaboratorioService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<Laboratorio[]> {
+
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders()
+      .set('Authorization', auth);
+
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -84,13 +95,19 @@ export class LaboratorioService {
     });
 
     return this.http.get<Laboratorio[]>(this.baseUrl, {
-      params,
+      params: params,
+      headers: headers
     });
   }
 
   countLaboratorios(): Observable<number> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders()
+      .set('Authorization', auth);
+
     return this.http.get<number>(this.baseUrl, {
       params: new HttpParams().set('totalCount', 'true'),
+      headers: headers
     });
   }
 }
