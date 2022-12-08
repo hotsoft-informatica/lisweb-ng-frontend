@@ -1,5 +1,5 @@
 import { User } from '../model/user.model';
-import { Login } from '../model/login.model';
+import { UserLogin } from '../model/login.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
@@ -34,7 +34,7 @@ export class UserService {
     });
   }
 
-  login(user: Login): Observable<User> {
+  login(user: UserLogin): Observable<User> {
     const url = `${this.authLoginUrl}.json`;
     return this.http.post<User>(url, user);
   }
