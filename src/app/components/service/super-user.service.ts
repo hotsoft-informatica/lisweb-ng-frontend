@@ -1,11 +1,11 @@
 import { SuperUser } from '../model/super-user.model';
-import { Login } from '../model/login.model';
+import { SuperUserLogin } from '../model/login.model';
 import { Query } from './../model/query.model';
 import { Injectable } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
@@ -34,18 +34,20 @@ export class SuperUserService {
     });
   }
 
-  login(super_user: Login): Observable<SuperUser> {
-    const url = `${this.logInUrl}.json`;
-    return this.http.post<SuperUser>(url, super_user);
+  login(superUser: SuperUserLogin): Observable<HttpResponse<SuperUser>> {
+    const url = `${this.logInUrl}`;
+    return this.http.post<SuperUser>(url, superUser, {
+      "observe": 'response'
+    });
   }
 
   logout(): Observable<SuperUser> {
-    const url = `${this.logOutUrl}.json`;
+    const url = `${this.logOutUrl}`;
     return this.http.delete(url);
   }
 
-  create(super_user: SuperUser): Observable<SuperUser> {
-    return this.http.post<SuperUser>(this.baseUrl, super_user);
+  create(superUser: SuperUser): Observable<SuperUser> {
+    return this.http.post<SuperUser>(this.baseUrl, superUser);
   }
 
   read(): Observable<SuperUser[]> {
@@ -57,9 +59,9 @@ export class SuperUserService {
     return this.http.get<SuperUser>(url);
   }
 
-  update(super_user: SuperUser): Observable<SuperUser> {
-    const url = `${this.baseUrl}/${super_user.id}`;
-    return this.http.put<SuperUser>(url, super_user);
+  update(superUser: SuperUser): Observable<SuperUser> {
+    const url = `${this.baseUrl}/${superUser.id}`;
+    return this.http.put<SuperUser>(url, superUser);
   }
 
   delete(id: number): Observable<SuperUser> {
