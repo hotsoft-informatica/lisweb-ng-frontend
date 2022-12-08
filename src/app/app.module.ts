@@ -185,6 +185,7 @@ import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.com
 import { UserComponent } from './components/user/user.component';
 import { UserGuard } from './guards/user.guard';
 import { UserExitGuard } from './guards/user-exit.guard';
+import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -321,6 +322,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     TipoRecursoComponent,
     UserComponent,
     LgUserComponent,
+    LgSuperUserComponent,
   ],
   imports: [
     HttpClientModule,
