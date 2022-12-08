@@ -47,6 +47,7 @@ import { MarcacaoDeleteComponent } from './components/marcacao/marcacao-delete/m
 import { LoteAmostraCreateComponent } from './components/lote-amostra/lote-amostra-create/lote-amostra-create.component';
 import { LoteAmostraUpdateComponent } from './components/lote-amostra/lote-amostra-update/lote-amostra-update.component';
 import { LoteAmostraDeleteComponent } from './components/lote-amostra/lote-amostra-delete/lote-amostra-delete.component';
+import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 import { ExameAmostraCreateComponent } from './components/exame-amostra/exame-amostra-create/exame-amostra-create.component';
 import { ExameAmostraUpdateComponent } from './components/exame-amostra/exame-amostra-update/exame-amostra-update.component';
 import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-amostra-delete/exame-amostra-delete.component';
@@ -99,6 +100,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LgUserComponent,
+  },
+  {
+    path: 'login_super_user',
+    component: LgSuperUserComponent,
   },
   {
     path: 'senha',
