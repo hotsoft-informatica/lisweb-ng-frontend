@@ -1,4 +1,4 @@
-import { Login } from '../../model/login.model';
+import { UserLogin } from '../../model/login.model';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -8,13 +8,13 @@ import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./lg-user.component.css']
 })
 export class LgUserComponent implements OnInit {
-  @Input('login') login: Login;
+  @Input('login') login: UserLogin;
 
   constructor(
     private router: Router,
     private userService: UserService
   ) {
-    this.login = new Login({ "user": {} });
+    this.login = new UserLogin({ "user": {} });
   }
 
   ngOnInit(): void {
