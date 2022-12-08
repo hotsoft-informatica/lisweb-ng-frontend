@@ -1,1 +1,44 @@
-<p>lg-super-user works!</p>
+<mat-card>
+  <mat-card-title>Fazer Login</mat-card-title>
+  <mat-card-content>
+    <form #formSuperUserLogin="ngForm">
+      <p>
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input
+            type="email"
+            id="email"
+            matInput
+            placeholder="exemplo@email.com"
+            name="email"
+            [(ngModel)]="login.super_user.email"
+            #email="ngModel"
+            required
+            autocomplete="on"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input
+            type="password"
+            id="password"
+            matInput
+            name="password"
+            [(ngModel)]="login.super_user.password"
+            minlength="6"
+            maxlength="20"
+            #password="ngModel"
+            required
+            />
+        </mat-form-field>
+      </p>
+
+      <div class="button">
+        <button type="submit" mat-button (click)="SuperUserLogin()">Entrar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
