@@ -1,3 +1,4 @@
+import { SuperUserService } from '../../service/super-user.service';
 import { UserService } from '../../service/user.service';
 import { LogoutService } from './../../service/logout.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(private usuarioService: UsuarioService,
     private router: Router,
     private logoutService: LogoutService,
+    private superUserService: SuperUserService,
     private userService: UserService
   ) { }
 
@@ -32,6 +34,12 @@ export class HeaderComponent implements OnInit {
 
   userLogout(): void {
     this.userService.logout().subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
+
+  superUserLogout(): void {
+    this.superUserService.logout().subscribe(() => {
       this.router.navigate(['/']);
     });
   }
