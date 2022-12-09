@@ -20,7 +20,7 @@ export class LgUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  UserLogin(): void {
+  userLogin(): void {
     // TODO: Tratar deprecation do subscribe
     this.userService.login(this.login).subscribe(
       (user) => {

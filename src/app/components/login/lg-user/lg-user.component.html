@@ -18,7 +18,6 @@
           />
         </mat-form-field>
       </p>
-
       <p>
         <mat-form-field>
           <mat-label>Senha</mat-label>
@@ -30,12 +29,11 @@
             [(ngModel)]="login.user.password"
             #password
             required
-            />
+          />
         </mat-form-field>
       </p>
-
       <div class="button">
-        <button type="submit" mat-button (click)="UserLogin()">Entrar</button>
+        <button type="submit" mat-button (click)="userLogin()">Entrar</button>
       </div>
     </form>
   </mat-card-content>
