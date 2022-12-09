@@ -48,11 +48,9 @@ export class LaboratorioService {
 
   read(): Observable<Laboratorio[]> {
     let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
-    return this.http.get<Laboratorio[]>(this.baseUrl,
-      { headers: headers }
-    );
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    return this.http.get<Laboratorio[]>(this.baseUrl, { headers: headers });
   }
 
   readById(id: number): Observable<Laboratorio> {

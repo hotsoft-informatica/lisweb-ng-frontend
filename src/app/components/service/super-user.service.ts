@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -13,6 +14,8 @@ export class SuperUserService {
   baseUrl = '/super_users'
   logInUrl = '/super_users/sign_in';
   logOutUrl = '/super_users/sign_out';
+
+  storage: Storage = window.localStorage;
 
   query: Query[] = [];
 
@@ -42,8 +45,11 @@ export class SuperUserService {
   }
 
   logout(): Observable<SuperUser> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.logOutUrl}`;
-    return this.http.delete(url);
+    return this.http.delete(url, { headers: headers });
   }
 
   create(superUser: SuperUser): Observable<SuperUser> {
