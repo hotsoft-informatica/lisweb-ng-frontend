@@ -23,11 +23,11 @@ export class LgSuperUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  SuperUserLogin(): void {
+  superUserLogin(): void {
     // TODO: Tratar deprecation do subscribe
     this.superUserService.login(this.login).subscribe(
       (res) => {
-        console.log("Arrow function user");
+        console.log("Arrow function Super User");
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
         localStorage.setItem('Authorization', auth);
