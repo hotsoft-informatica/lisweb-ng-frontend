@@ -5,14 +5,16 @@ import { Injectable } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   baseUrl = '/users'
-  authLoginUrl = '/auth/sign_in';
-  authLogoutUrl = '/auth/sign_out';
+  loginUrl = '/users/sign_in';
+  logoutUrl = '/users/sign_out';
+
+  storage: Storage = window.localStorage;
 
   query: Query[] = [];
 
@@ -22,8 +24,8 @@ export class UserService {
     private backendIpService: BackendIpService
   ) {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
-    this.authLoginUrl = backendIpService.getUrl() + this.authLoginUrl;
-    this.authLogoutUrl = backendIpService.getUrl() + this.authLogoutUrl;
+    this.loginUrl = backendIpService.getUrl() + this.loginUrl;
+    this.logoutUrl = backendIpService.getUrl() + this.logoutUrl;
   }
 
   showMessage(msg: string): void {
@@ -34,14 +36,19 @@ export class UserService {
     });
   }
 
-  login(user: UserLogin): Observable<User> {
-    const url = `${this.authLoginUrl}.json`;
-    return this.http.post<User>(url, user);
+  login(user: UserLogin): Observable<HttpResponse<User>> {
+    const url = `${this.loginUrl}`;
+    return this.http.post<User>(url, user, {
+      "observe": 'response'
+    });
   }
 
   logout(): Observable<User> {
-    const url = `${this.authLogoutUrl}.json`;
-    return this.http.delete(url);
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    const url = `${this.logoutUrl}`;
+    return this.http.delete(url, { headers: headers });
   }
 
   create(user: User): Observable<User> {
