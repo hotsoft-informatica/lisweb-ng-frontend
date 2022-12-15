@@ -1,7 +1,8 @@
 import { UserLogin } from '../../model/login.model';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
-import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
@@ -9,6 +10,7 @@ import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class LgUserComponent implements OnInit {
   @Input('login') login: UserLogin;
+  storage: Storage = window.localStorage;
 
   constructor(
     private router: Router,
@@ -23,9 +25,12 @@ export class LgUserComponent implements OnInit {
   userLogin(): void {
     // TODO: Tratar deprecation do subscribe
     this.userService.login(this.login).subscribe(
-      (user) => {
+      (res) => {
         console.log("Arrow function user");
-        console.table(user);
+        let header: HttpHeaders = res.headers;
+        let auth: string = header.get('Authorization') as string;
+        localStorage.setItem('Authorization', auth);
+        console.table(res);
       },
       (err) => {
         console.log("Arrow function err")
@@ -40,4 +45,5 @@ export class LgUserComponent implements OnInit {
         this.router.navigate(['/']);
       });
   }
+
 }
