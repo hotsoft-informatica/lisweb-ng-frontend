@@ -1,3 +1,4 @@
+import { LogoutService } from '../../service/logout.service';
 import { SuperUserLogin } from '../../model/login.model';
 import { Router } from '@angular/router';
 import { SuperUserService } from '../../service/super-user.service';
@@ -28,9 +29,12 @@ export class LgSuperUserComponent implements OnInit {
     this.superUserService.login(this.login).subscribe(
       (res) => {
         console.log("Arrow function Super User");
+
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
+
         localStorage.setItem('Authorization', auth);
+        localStorage.setItem('userLoginType', 'superUser');
       },
       (err) => {
         console.log("Arrow function err")
