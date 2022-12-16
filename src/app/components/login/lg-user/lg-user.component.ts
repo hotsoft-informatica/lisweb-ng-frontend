@@ -27,10 +27,12 @@ export class LgUserComponent implements OnInit {
     this.userService.login(this.login).subscribe(
       (res) => {
         console.log("Arrow function user");
+
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
+
         localStorage.setItem('Authorization', auth);
-        console.table(res);
+        localStorage.setItem('userLoginType', 'user');
       },
       (err) => {
         console.log("Arrow function err")
