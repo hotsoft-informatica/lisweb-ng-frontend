@@ -28,8 +28,14 @@ export class HeaderComponent implements OnInit {
     return this.routerStr.includes(route);
   }
 
+  // logout(): void {
+  //   this.logoutService.sair();
+  // }
+
   logout(): void {
-    this.logoutService.sair();
+    this.logoutService.logout().subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 
   userLogout(): void {
