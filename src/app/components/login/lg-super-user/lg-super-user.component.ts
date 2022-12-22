@@ -40,12 +40,12 @@ export class LgSuperUserComponent implements OnInit {
         console.log("Arrow function err")
         console.table(err);
         // TODO: Tratar retornos com erro
-        this.superUserService.showMessage('Usuário logado com sucesso!');
+        this.superUserService.showMessage('Erro ao efetuar o login!');
         this.router.navigate(['/']);
       },
       () => {
         console.log("Arrow function Vazio");
-        this.superUserService.showMessage('Usuário logado com sucesso!');
+        this.superUserService.showMessage('Admin logado com sucesso!');
         this.router.navigate(['/']);
       });
   }
