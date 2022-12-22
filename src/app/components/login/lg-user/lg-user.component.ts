@@ -38,7 +38,7 @@ export class LgUserComponent implements OnInit {
         console.log("Arrow function err")
         console.table(err);
         // TODO: Tratar retornos com erro
-        this.userService.showMessage('Usuário logado com sucesso!');
+        this.userService.showMessage('Erro ao efetuar o login!');
         this.router.navigate(['/']);
       },
       () => {
