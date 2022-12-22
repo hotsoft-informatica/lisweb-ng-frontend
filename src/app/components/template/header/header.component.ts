@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     this.logoutService.logout().subscribe(() => {
+      this.logoutService.showMessage('Sessão encerrada com sucesso!');
       this.router.navigate(['/']);
     });
   }
