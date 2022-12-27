@@ -1,6 +1,6 @@
-import { LogoutService } from '../../service/logout.service';
-import { SuperUserLogin } from '../../model/login.model';
 import { Router } from '@angular/router';
+import { SuperUser } from '../../model/super-user.model';
+import { SuperUserLogin } from '../../model/login.model';
 import { SuperUserService } from '../../service/super-user.service';
 import { Input, Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
@@ -32,9 +32,11 @@ export class LgSuperUserComponent implements OnInit {
 
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
+        let superUser: SuperUser = res.body.status.data as SuperUser;
 
         localStorage.setItem('Authorization', auth);
         localStorage.setItem('userLoginType', 'superUser');
+        localStorage.setItem('currentSuperUser', JSON.stringify(superUser));
       },
       (err) => {
         console.log("Arrow function err")
