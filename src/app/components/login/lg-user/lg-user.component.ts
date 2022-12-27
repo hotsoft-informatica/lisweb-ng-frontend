@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { User } from '../../model/user.model';
 @Component({
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
@@ -30,9 +31,11 @@ export class LgUserComponent implements OnInit {
 
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
+        let user: User = res.body.status.data as User;
 
         localStorage.setItem('Authorization', auth);
         localStorage.setItem('userLoginType', 'user');
+        localStorage.setItem('currentUser', JSON.stringify(user));
       },
       (err) => {
         console.log("Arrow function err")
