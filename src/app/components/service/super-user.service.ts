@@ -37,7 +37,7 @@ export class SuperUserService {
     });
   }
 
-  login(superUser: SuperUserLogin): Observable<HttpResponse<SuperUser>> {
+  login(superUser: SuperUserLogin): Observable<HttpResponse<any>> {
     const url = `${this.logInUrl}`;
     return this.http.post<SuperUser>(url, superUser, {
       "observe": 'response'
@@ -46,7 +46,8 @@ export class SuperUserService {
 
   logout(): Observable<SuperUser> {
     let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+    let authJson = JSON.parse(auth);
+    let headers = new HttpHeaders().set('Authorization', authJson);
 
     const url = `${this.logOutUrl}`;
     return this.http.delete(url, { headers: headers });
