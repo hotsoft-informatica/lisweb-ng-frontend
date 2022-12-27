@@ -1,9 +1,9 @@
-import { UserLogin } from '../../model/login.model';
 import { Router } from '@angular/router';
+import { User } from '../../model/user.model';
+import { UserLogin } from '../../model/login.model';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
-import { User } from '../../model/user.model';
 @Component({
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
