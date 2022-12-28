@@ -97,17 +97,17 @@
           Perfil do Usuario
         </a>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item *ngIf="!currentSuperUser">
         <a mat-list-item routerLink="/login_super_user">
           Admin
         </a>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item *ngIf="!currentUser">
         <a mat-list-item routerLink="/login">
           Login
         </a>
       </button>
-      <button mat-menu-item (click)="logout()">
+      <button mat-menu-item *ngIf="isLogedIn()" (click)="logout()">
         <a mat-list-item>
           Sair
         </a>
