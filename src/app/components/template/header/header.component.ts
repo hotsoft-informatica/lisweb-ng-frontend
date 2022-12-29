@@ -53,11 +53,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // logout(): void {
-  //   this.logoutService.sair();
-  // }
-
   logout(): void {
+    if (this.currentUser) {
+      this.storage.removeItem('currentUser');
+    } else if (this.currentSuperUser) {
+      this.storage.removeItem('currentSuperUser');
+    }
+
     this.logoutService.logout().subscribe(() => {
       this.logoutService.showMessage('Sessão encerrada com sucesso!');
       this.router.navigate(['/']);
@@ -75,4 +77,9 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/']);
     });
   }
+
+  // logout(): void {
+  //   this.logoutService.sair();
+  // }
+
 }
