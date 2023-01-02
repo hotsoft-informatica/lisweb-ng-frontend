@@ -14,6 +14,7 @@ import { User } from '../../model/user.model';
 })
 export class HeaderComponent implements OnInit {
   routerStr = '';
+  logged: boolean = false;
   currentUser: User = new User({});
   currentSuperUser: SuperUser = new User({});
 
@@ -47,16 +48,17 @@ export class HeaderComponent implements OnInit {
     ) {
       console.log(this.currentUser && this.currentUser.id as number);
       console.log(this.currentSuperUser && this.currentSuperUser.id as number);
-      return true
+      return true;
     } else {
-      return false
+      return false;
     }
   }
 
   logout(): void {
     if (this.currentUser) {
       this.storage.removeItem('currentUser');
-    } else if (this.currentSuperUser) {
+    }
+    else if (this.currentSuperUser) {
       this.storage.removeItem('currentSuperUser');
     }
 
