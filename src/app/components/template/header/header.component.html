@@ -8,6 +8,7 @@
       Cadastrar
     </button>
     <mat-menu #cadastro="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="tiposusuario">Usuários</button>
       <button mat-menu-item [matMenuTriggerFor]="versaoexames">Versão Exames</button>
       <button mat-menu-item routerLink="/">
         Home
@@ -21,9 +22,14 @@
       <button mat-menu-item routerLink="/pacientes/read">
         Pacientes
       </button>
-      <button mat-menu-item routerLink="/usuarios/read">
-        Usuarios
-      </button>
+      <mat-menu #tiposusuario="matMenu">
+        <button mat-menu-item routerLink="/super_users">
+          Administrador
+        </button>
+        <button mat-menu-item routerLink="/super_users">
+          Usuário
+        </button>
+      </mat-menu>
       <button mat-menu-item routerLink="/requisicoes">
         Requisições
       </button>
