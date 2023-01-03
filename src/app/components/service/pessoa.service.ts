@@ -1,9 +1,10 @@
-import { Query } from '../model/query.model';
 import { BackendIpService } from './backend-ip.service';
-import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 import { Pessoa } from '../model/pessoa.model';
+import { Query } from '../model/query.model';
 
 @Injectable({
   providedIn: 'root',

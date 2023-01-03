@@ -29,7 +29,8 @@ export class OperadoraUpdateComponent implements OnInit {
       .readById(id as unknown as number)
       .subscribe((operadora) => {
         this.operadora = operadora;
-        this.empresaService.readById(this.operadora.empresa_id as number).subscribe((empresa) => {
+        this.empresaService.readById(this.operadora.empresa_id as number)
+                           .subscribe((empresa) => {
           this.empresa ||= empresa;
           console.table(this.empresa);
           this.operadora.empresa = empresa;

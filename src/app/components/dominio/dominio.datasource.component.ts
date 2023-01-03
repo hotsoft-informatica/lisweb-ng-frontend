@@ -1,6 +1,6 @@
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
+import { DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { Query } from '../model/query.model';
@@ -35,12 +35,12 @@ export class DominioDataSource implements DataSource<Dominio> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Dominio[]> {
+  connect(): Observable<Dominio[]> {
     console.log('Conectando ao data source');
     return this.dominioSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.dominioSubject.complete();
     this.loadingSubject.complete();
   }

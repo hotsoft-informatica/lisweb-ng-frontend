@@ -1,6 +1,6 @@
 import { Query } from '../../model/query.model'
 import { AtributoExame } from '../../model/atributo-exame.model'
-import { AtributoExameService } from '../../service/atributo-exame.service'
+import { AtributoExameService } from '../../service/atributo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
 import { ValorReferencia } from '../../model/valor-referencia.model';
@@ -56,8 +56,8 @@ export class ValorReferenciaCreateComponent implements OnInit {
 
     this.subjectAtributoExame.pipe(debounceTime(500)).subscribe(() => {
       this.atributoExameService
-        .findAtributoExame('id', 'asc', 0, 60, this.queries)
-        .subscribe((atributoExame) => {
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((atributoExame: any) => {
           console.table(this.queries);
           this.atributosExame = atributoExame;
         });

@@ -6,12 +6,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
-import { merge, throwError } from 'rxjs';
+import { merge } from 'rxjs';
 
 @Component({
   selector: 'app-paciente-read',
   templateUrl: './paciente-read.component.html',
-  styleUrls: ['./paciente-read.component.css']
 })
 export class PacienteReadComponent implements AfterViewInit, OnInit {
 
@@ -31,7 +30,8 @@ export class PacienteReadComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-  @ViewChild(MatSort) sort: MatSort | any; // Pega o componente do html e disponibiliza pro tps
+  @ViewChild(MatSort) sort: MatSort | any; 
+  // Pega o componente do html e disponibiliza pro tps
 
   queries: Query[] = [];
   msgErro = '';
@@ -58,18 +58,23 @@ export class PacienteReadComponent implements AfterViewInit, OnInit {
     this.loadBack('id', 'desc', 0, 5, this.queries);
   }
 
-  ngAfterViewInit(): void { // executar apos ser desenhado a pagina
+  ngAfterViewInit(): void {
+    // executar apos ser desenhado a pagina
 
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    // reseta o paginador depois de ordenar
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadBack()))
       .subscribe();
   }
 
-  sortData(): void { // ordenação dos dados
-    this.paginator.pageIndex = 0; // adc +1 page
-    this.loadBack(); // chama linha 62
+  sortData(): void {
+    // ordenação dos dados
+    // adc +1 page
+    this.paginator.pageIndex = 0;
+    this.loadBack();
   }
 
   // TODO: #10 Iniciar discussao da padronizacao dos nomes de metodos
@@ -78,7 +83,8 @@ export class PacienteReadComponent implements AfterViewInit, OnInit {
     sortDirection: string = this.sort.direction,
     pageIndex: number = this.paginator.pageIndex,
     pageSize: number =  this.paginator.pageSize,
-    query: Query[] = this.queries): void { // Ponte com service
+    query: Query[] = this.queries): void {
+    // Ponte com service
     this.pacienteService.read(
                               active,
                               sortDirection,
@@ -119,6 +125,3 @@ export class PacienteReadComponent implements AfterViewInit, OnInit {
   }
 
 }
-
-
-

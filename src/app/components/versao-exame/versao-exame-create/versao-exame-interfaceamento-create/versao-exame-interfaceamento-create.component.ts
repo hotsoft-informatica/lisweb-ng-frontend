@@ -1,19 +1,11 @@
-import { TipoInstrumentoService } from './../../../service/tipo-instrumento.service';
-import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
-import { VersaoExame } from './../../../model/versao-exame.model';
-import { Query } from '../../../model/query.model';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
-import {
-  debounceTime,
-} from 'rxjs/operators';
+import { Component, OnInit, Input } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
+import { Query } from '../../../model/query.model';
 import { Subject } from 'rxjs';
 import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
+import { TipoInstrumentoService } from './../../../service/tipo-instrumento.service';
+import { VersaoExame } from './../../../model/versao-exame.model';
 
 @Component({
   selector: 'app-versao-exame-interfaceamento-create',

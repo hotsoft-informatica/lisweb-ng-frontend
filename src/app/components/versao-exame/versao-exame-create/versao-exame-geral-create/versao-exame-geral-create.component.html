@@ -36,6 +36,7 @@
     <mat-form-field appearance="fill" class="col-lg-4 col-md-12 p-2">
       Método
       <input
+        title="Método Exame"
         name="metodo_exame_id" 
         matInput [matAutocomplete]="autoMetodo" 
         [(ngModel)]="versaoExame.metodo_exame_id"
@@ -61,7 +62,7 @@
       <mat-form-field appearance="fill">
         Agrupador Histórico
         <input type="number" matInput min="1" id="agrupamento_historico"
-         name="agrupamento_historico" class="form-control" title="Agrupador Histórico"
+          name="agrupamento_historico" class="form-control" title="Agrupador Histórico"
           [(ngModel)]="versaoExame.agrupamento_historico">
       </mat-form-field>
     </div>
@@ -70,7 +71,7 @@
       <mat-form-field appearance="fill">
         Tempo de Repouso
         <input type="number" class="form-control" title="Minutos" matInput min="1"
-         id="tempo_repouso" name="tempo_repouso" class="form-control" title="Tempo de Repouso"
+          id="tempo_repouso" name="tempo_repouso" class="form-control" title="Tempo de Repouso"
           [(ngModel)]="versaoExame.tempo_repouso">
       </mat-form-field>
     </div>

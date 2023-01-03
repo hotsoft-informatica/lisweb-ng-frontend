@@ -13,8 +13,7 @@ export class CepService {
   constructor(private http: HttpClient) { }
 
   public consultar(cep: string): Observable<Cep>{ // consultar Cep
-    return this.http.get<Cep>(`https://viacep.com.br/ws/${cep}/json/`); // http orientado ao site de consulta
-
+    return this.http.get<Cep>(`https://viacep.com.br/ws/${cep}/json/`);
+    // http orientado ao site de consulta
   }
-
 }

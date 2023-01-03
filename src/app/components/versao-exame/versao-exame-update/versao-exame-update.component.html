@@ -2,17 +2,20 @@
 <div class="row justify-content-around">
   <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
     Nome
-    <!--input matInput maxlength="50" class="form-control" title="Nome completo" name="nome" [(ngModel)]="versaoExame.tipo_exame"-->
+    <input matInput maxlength="50" class="form-control" title="Nome completo"
+     name="nome" [(ngModel)]="versaoExame.tipo_exame">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
     RG
-    <!--input matInput maxlength="12" mask="00.000.000-0" name="rg" [(ngModel)]="paciente.rg"-->
+    <input matInput maxlength="12" mask="00.000.000-0" name="rg"
+     [(ngModel)]="paciente.rg" title="RG">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" id="datanascimentopaciente" class="col-lg-2 col-md-12 p-2">
+  <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
     Data de nascimento
-    <!--input matInput type="date" id="datanascimentopaciente" name="data_nascimento"
-          (input)="calculaIdade()" [(ngModel)]="paciente.data_nascimento"-->
+    <input matInput placeholder="00/00/00" type="date" id="datanascimentopaciente"
+       name="data_nascimento"
+       (input)="calculaIdade()" [(ngModel)]="paciente.data_nascimento">
   </mat-form-field>
 </div>

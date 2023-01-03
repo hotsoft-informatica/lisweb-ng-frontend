@@ -1,11 +1,9 @@
-import { TipoExameService } from '../../service/tipo-exame.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { VersaoExameService } from '../../service/versao-exame.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { debounceTime, Subject } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
+import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
-import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-autocomplete-versao-exame',
@@ -21,9 +19,6 @@ export class AutoCompleteVersaoExameComponent implements OnInit{
   subject: Subject<any> = new Subject();
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private versaoExameService: VersaoExameService,
     private tipoExameService: TipoExameService,
   ) {
     this.tipoExame ||= new TipoExame({});
@@ -65,6 +60,4 @@ export class AutoCompleteVersaoExameComponent implements OnInit{
       return correspondingOption ? correspondingOption.descricao : '';
     };
   }
-
-
 }

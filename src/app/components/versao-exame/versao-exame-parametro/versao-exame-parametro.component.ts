@@ -5,10 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
 import { Query } from 'src/app/components/model/query.model';
-import { Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
 import { VersaoExame } from '../../model/versao-exame.model';
-import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
 
 @Component({
   selector: 'app-versao-exame-parametro',
@@ -38,8 +36,6 @@ export class VersaoExameParametroComponent implements OnChanges {
   constructor(
     public dialog: MatDialog,
     private renderer: Renderer2,
-    private router: Router,
-    private versaoExameService: VersaoExameService,
     private parametroVersaoExameService: ParametroVersaoExameService,
   ) {
     this.currentParametroVersaoExame = new ParametroVersaoExame({});

@@ -96,8 +96,7 @@ import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usua
 import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
 import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
-import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
-import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
+import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 
 // TODO Criar notFoundComponet classe e rota
 
@@ -264,7 +263,7 @@ const routes: Routes = [
   },
   {
     path: 'versao_exames',
-    component: VersaoExameCrudComponent,
+    component: VersaoExameReadComponent,
   },
   {
     path: 'versao_exames/create/:create',
@@ -273,10 +272,6 @@ const routes: Routes = [
   {
     path: 'versao_exames/update/:id/:edit',
     component: VersaoExameCreateComponent,
-  },
-  {
-    path: 'versao_exames/delete/:id',
-    component: VersaoExameDeleteComponent,
   },
   {
     path: 'material-biologicos/create',

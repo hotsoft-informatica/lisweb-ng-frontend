@@ -25,7 +25,7 @@ export class RequisicaoReadDataSource implements DataSource<Requisicao> {
     this.loadingSubject.next(true);
 
     this.requisicaoService
-      .findRequisicoes(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,11 +35,11 @@ export class RequisicaoReadDataSource implements DataSource<Requisicao> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Requisicao[]> {
+  connect(): Observable<Requisicao[]> {
     return this.requisicoesSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.requisicoesSubject.complete();
     this.loadingSubject.complete();
   }

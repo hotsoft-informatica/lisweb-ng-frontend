@@ -1,8 +1,12 @@
-import { Query } from '../../model/query.model';
-import { MatDialog } from '@angular/material/dialog';
-import { MarcacaoService } from '../../service/marcacao.service';
-import { MarcacaoReadDataSource } from './marcacao-read-datasource';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MarcacaoReadDataSource } from './marcacao-read-datasource';
+import { MarcacaoService } from '../../service/marcacao.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import { Query } from '../../model/query.model';
+import { tap } from 'rxjs/operators';
 import {
   AfterViewInit,
   ViewChild,
@@ -10,14 +14,10 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { tap } from 'rxjs/operators';import { merge, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-marcacao-read',
   templateUrl: './marcacao-read.component.html',
-  styleUrls: ['./marcacao-read.component.css']
 })
 export class MarcacaoReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -54,7 +54,7 @@ export class MarcacaoReadComponent implements OnInit, AfterViewInit {
     this.dataSource = new MarcacaoReadDataSource(this.marcacaoService);
     // TODO: Tratar via config de paginacao, qtde por pagina
     this.dataSource.loadMarcacoes('id', 'desc', 1, 5, null);
-    this.marcacaoService.countMarcacaoes().subscribe((totalCount) => {
+    this.marcacaoService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
@@ -92,5 +92,4 @@ export class MarcacaoReadComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
 }

@@ -113,7 +113,7 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     });
   }
   ngOnInit(): void {
-    this.usuarioService.countUsuarios().subscribe((totalCount: number) => {
+    this.usuarioService.count().subscribe((totalCount: number) => {
       this.totalCount = totalCount;
     });
     this.loadBack('id', 'desc', 0, 5, this.queries);

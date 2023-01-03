@@ -8,7 +8,6 @@ import { PacienteService } from 'src/app/components/service/paciente.service';
 @Component({
   selector: 'app-paciente-create-dados-pessoais',
   templateUrl: './paciente-create-dados-pessoais.component.html',
-  styleUrls: ['./paciente-create-dados-pessoais.component.css']
 })
 export class PacienteCreateDadosPessoaisComponent implements OnInit {
   @Input('paciente') paciente: Paciente;

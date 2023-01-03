@@ -1,10 +1,10 @@
-import { Query } from './../model/query.model';
-import { Operadora } from '../model/operadora.model';
 import { BackendIpService } from './backend-ip.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Operadora } from '../model/operadora.model';
+import { Query } from './../model/query.model';
 @Injectable({
   providedIn: 'root',
 })

@@ -1,10 +1,10 @@
 <table
-mat-table
-[dataSource]="dataSource"
-matSort
-matSortActive="id"
-matSortDirection="asc"
-matSortDisableClear
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  matSortActive="id"
+  matSortDirection="asc"
+  matSortDisableClear
 >
 
 <ng-container matColumnDef="tipo_exame">
@@ -33,7 +33,9 @@ matSortDisableClear
 </ng-container>
 >
 <ng-container matColumnDef="usuario_conferencia_guia">
-  <th mat-header-cell *matHeaderCellDef mat-sort-header="usuario_conferencia_guia">Usuario Conferencia Guia</th>
+  <th mat-header-cell *matHeaderCellDef mat-sort-header="usuario_conferencia_guia">
+    Usuario Conferencia Guia
+  </th>
   <td mat-cell *matCellDef="let row">{{row?.usuario_conferencia_guia_id| slice:0:15}}</td>
 
 </ng-container>

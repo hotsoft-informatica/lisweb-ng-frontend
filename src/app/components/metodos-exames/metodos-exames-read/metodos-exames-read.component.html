@@ -12,7 +12,8 @@
     <div class="row">
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" (click)="openDialogCreate()">
+        <button mat-flat-button class="dvm-button" color="primary"
+         (click)="openDialogCreate()">
           <mat-icon>add</mat-icon>
           Adicionar
         </button>
@@ -20,7 +21,8 @@
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button mat-flat-button class="dvm-button" color="primary"
+         data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -39,7 +41,9 @@
       <div class="mb-3 col-5 row">
         <mat-form-field appearance="fill">
           <mat-label>Descrição:</mat-label>
-          <input matInput #descricao maxlength="50" class="form-control" title="Filtre por descrição" (input)="search('descricao',descricao.value)">
+          <input matInput #descricao maxlength="50" class="form-control"
+           title="Filtre por descrição"
+            (input)="search('descricao',descricao.value)">
         </mat-form-field>
       </div>
 
@@ -72,24 +76,25 @@
                   <mat-icon class="edit">edit</mat-icon>
                 </button>
               </a>
-            <div class="modal fade" id="modelShow" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade" id="modelShow" data-bs-backdrop="static"
+             data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <app-usuario-update [pacienteInput]="this.currentMetodosExames"></app-usuario-update>
+                    <app-usuario-update [pacienteInput]="this.currentMetodosExames">
+                    </app-usuario-update>
                   </div>
                   <div class="modal-footer">
-                    <button mat-flat-button color="warn" data-bs-dismiss="modal">Sair</button>
+                    <button mat-flat-button color="warn"
+                     data-bs-dismiss="modal">Sair</button>
                   </div>
                 </div>
               </div>
             </div>
-
-              <button mat-icon-button (click)="delete(element.id)">
-                <mat-icon class="delete">delete</mat-icon>
-              </button>
-
-
+            <button mat-icon-button (click)="delete(element.id)">
+              <mat-icon class="delete">delete</mat-icon>
+            </button>
             <ng-template #deleteDialog>
               <mat-dialog-content class="mat-typography">
                 Deseja apagar esse registro?

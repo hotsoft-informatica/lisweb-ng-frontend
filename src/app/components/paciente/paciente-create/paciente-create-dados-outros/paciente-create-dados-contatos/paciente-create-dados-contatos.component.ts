@@ -6,7 +6,6 @@ import { PacienteService } from 'src/app/components/service/paciente.service';
 @Component({
   selector: 'app-paciente-create-dados-contatos',
   templateUrl: './paciente-create-dados-contatos.component.html',
-  styleUrls: ['./paciente-create-dados-contatos.component.css']
 })
 export class PacienteCreateDadosContatosComponent implements OnInit {
   @Input('paciente') paciente: Paciente;

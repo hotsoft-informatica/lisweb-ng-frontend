@@ -1,19 +1,28 @@
-import { Query } from '../model/query.model';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Recurso } from '../model/recurso.model';
-import { RecursoService } from '../service/recurso.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  TemplateRef,
+  Renderer2,
+  ElementRef,
+  Input 
+} from '@angular/core';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-import { TipoRecurso } from '../model/tipo-recurso.model';
-import { TipoRecursoService } from '../service/tipo-recurso.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, timer } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { merge } from 'rxjs';
+import { Query } from '../model/query.model';
+import { Recurso } from '../model/recurso.model';
+import { RecursoService } from '../service/recurso.service';
+import { Subject, timer } from 'rxjs';
 import { tap, debounceTime } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { TipoRecurso } from '../model/tipo-recurso.model';
+import { TipoRecursoService } from '../service/tipo-recurso.service';
 
 @Component({
   selector: 'app-recurso',

@@ -1,14 +1,15 @@
-import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
-import { MatSnackBar } from '@angular/material/snack-bar';import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
+import { Query } from './../model/query.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DefaultService {
-  baseUrl = '/';
+  baseUrl : string = '/';
 
   query: Query[] = [];
 

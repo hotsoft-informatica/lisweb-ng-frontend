@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-movimento-conta-create',
   templateUrl: './movimento-conta-create.component.html',
-  styleUrls: ['./movimento-conta-create.component.css'],
 })
 export class MovimentoContaCreateComponent implements OnInit {
   // TODO: Variavel local de movimento conta

@@ -1,8 +1,6 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { PessoaService } from '../components/service/pessoa.service';
 import { Pessoa } from '../components/model/pessoa.model';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { PessoaService } from '../components/service/pessoa.service';
+import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'pessoaId'
 })

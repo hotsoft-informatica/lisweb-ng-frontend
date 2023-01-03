@@ -1,16 +1,16 @@
-import { Query } from '../../model/query.model';
-import { VersaoExameParametroComponent } from '../versao-exame-parametro/versao-exame-parametro.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Marcacao } from 'src/app/components/model/marcacao.model';
+import { MarcacaoService } from 'src/app/components/service/marcacao.service';
+import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
+import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
+import { Query } from '../../model/query.model';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
 import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
+import { VersaoExameParametroComponent } from '../versao-exame-parametro/versao-exame-parametro.component';
 import { VersaoExameService } from '../../service/versao-exame.service';
-import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
-import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
-import { Marcacao } from 'src/app/components/model/marcacao.model';
-import { MarcacaoService } from 'src/app/components/service/marcacao.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
   Input,

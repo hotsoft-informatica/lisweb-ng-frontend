@@ -1,17 +1,16 @@
-import { Requisicao } from './../../../model/requisicao.model';
-import { TipoExame } from './../../../model/tipo-exame.model';
-import { Router } from '@angular/router';
-import { ExameService } from './../../../service/exame.service';
-import { RequisicaoService } from './../../../service/requisicao.service';
-import { Exame } from '../../../model/exame.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { Exame } from '../../../model/exame.model';
+import { ExameService } from './../../../service/exame.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Requisicao } from './../../../model/requisicao.model';
+import { RequisicaoService } from './../../../service/requisicao.service';
+import { Router } from '@angular/router';
+import { TipoExame } from './../../../model/tipo-exame.model';
 import { TipoExameService } from 'src/app/components/service/tipo-exame.service';
 
 @Component({
   selector: 'app-requisicao-update-exames',
   templateUrl: './requisicao-update-exames.component.html',
-  styleUrls: ['./requisicao-update-exames.component.css']
 })
 export class RequisicaoUpdateExamesComponent implements OnInit {
   @Input('requisicaoId') requisicaoId!: number;

@@ -1,40 +1,47 @@
-import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatNativeDateModule } from '@angular/material/core';
+
+import { HomeComponent } from './views/home/home.component';
+import { HeaderComponent } from './components/template/header/header.component';
+import { FooterComponent } from './components/template/footer/footer.component';
+
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from "@angular/common/http";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatLegacyPaginatorIntl as MatPaginatorIntl } from '@angular/material/legacy-paginator';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { getPtBrMatPaginatorIntl } from './pt-br-mat-paginator-intl';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 
 import { RecursoComponent } from './components/recurso/recurso.component'
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
@@ -72,7 +79,7 @@ import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-
 import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
 // TODO: Revisar interceptors, problema de dependencia circular
-// import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
+import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
 import { ExameAmostraCreateComponent } from './components/exame-amostra/exame-amostra-create/exame-amostra-create.component';
 import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-amostra-delete/exame-amostra-delete.component';
 import { ExameAmostraReadComponent } from './components/exame-amostra/exame-amostra-read/exame-amostra-read.component';
@@ -81,11 +88,6 @@ import { ExameCreateComponent } from './components/exame/exame-create/exame-crea
 import { ExameDeleteComponent } from './components/exame/exame-delete/exame-delete.component';
 import { ExameReadComponent } from './components/exame/exame-read/exame-read.component';
 import { ExameUpdateComponent } from './components/exame/exame-update/exame-update.component';
-import { FooterComponent } from './components/template/footer/footer.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from './components/template/header/header.component';
-import { HomeComponent } from './views/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
 import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio-create/laboratorio-create.component';
 import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
 import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio-delete/laboratorio-delete.component';
@@ -169,7 +171,6 @@ import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-cre
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
 import { TipoExameReadComponent } from './components/tipo-exame/tipo-exame-read/tipo-exame-read.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
-import { tooltipVariation, popperVariation } from '@ngneat/helipopper';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { UserComponent } from './components/user/user.component';
 import { UserExitGuard } from './guards/user-exit.guard';
@@ -183,7 +184,7 @@ import { ValorReferenciaReadComponent } from './components/valor-referencia/valo
 import { ValorReferenciaSexoPipe } from './pipes/valor-referencia.pipe';
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
 import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
-import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
+import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 import { VersaoExameGeralCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-geral-create/versao-exame-geral-create.component';
 import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component';
 import { VersaoExameParametroComponent } from './components/versao-exame/versao-exame-parametro/versao-exame-parametro.component';
@@ -200,8 +201,6 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     AmostraReadComponent,
     AmostraUpdateComponent,
     AppComponent,
-    AutocompleteTipoInterfaceamentoComponent,
-    AutoCompleteVersaoExameComponent,
     BackendIpComponent,
     BancadaCreateComponent,
     BancadaDeleteComponent,
@@ -220,16 +219,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ColetorReadComponent,
     ColetorUpdateComponent,
     ConfigComponent,
-    ConsultaAmostraShowComponent,
     DialogErroAutenticacaoComponent,
     DialogErroQuinhentosComponent,
-    DominioComponent,
-    EmpresaCreateComponent,
-    EmpresaCrudComponent,
-    EmpresaDeleteComponent,
-    EmpresaReadComponent,
-    EmpresaShowComponent,
-    EmpresaUpdateComponent,
     ExameAmostraCreateComponent,
     ExameAmostraDeleteComponent,
     ExameAmostraReadComponent,
@@ -239,60 +230,30 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     ExameReadComponent,
     ExameUpdateComponent,
     FooterComponent,
-    HeaderComponent,
     HomeComponent,
-    LaboratorioCreateComponent,
     LaboratorioCrudComponent,
-    LaboratorioDeleteComponent,
-    LaboratorioReadComponent,
-    LaboratorioUpdateComponent,
-    LaboratoryDomainCreateComponent,
     LaboratoryDomainCrudComponent,
-    LaboratoryDomainDeleteComponent,
-    LaboratoryDomainReadComponent,
-    LaboratoryDomainUpdateComponent,
-    LaboratoryGetFilterCreateComponent,
-    LaboratoryGetFilterDeleteComponent,
-    LaboratoryGetFilterReadComponent,
-    LaboratoryGetFilterUpdateComponent,
-    LancamentoComponent,
-    LgSenhaComponent,
-    LgUserComponent,
-    LgUsuarioComponent,
-    LocalDeAtendimentoCreateComponent,
     LocalDeAtendimentoDeleteComponent,
     LocalDeAtendimentoEmpresaComponent,
-    LocalDeAtendimentoEnderecoComponent,
     LocalDeAtendimentoHorarioFuncionamentoComponent,
-    LocalDeAtendimentoReadComponent,
     LocalDeAtendimentoUpdateComponent,
     LoginComponent,
     LoteAmostraCreateComponent,
     LoteAmostraDeleteComponent,
     LoteAmostraReadComponent,
     LoteAmostraUpdateComponent,
-    MarcacaoCreateComponent,
     MarcacaoDeleteComponent,
-    MarcacaoReadComponent,
     MarcacaoTipoPipe,
     MaterialBiologicoCreateComponent,
     MaterialBiologicoDeleteComponent,
     MaterialBiologicoReadComponent,
     MaterialBiologicoUpdateComponent,
-    MetodoExameComponent,
     MetodosExamesCreateComponent,
     MetodosExamesDeleteComponent,
-    MetodosExamesReadComponent,
     MetodosExamesUpdateComponent,
     NavComponent,
     NotaComponent,
-    OperadoraCreateComponent,
     OperadoraCrudComponent,
-    OperadoraDeleteComponent,
-    OperadoraReadComponent,
-    OperadoraShowComponent,
-    OperadoraUpdateComponent,
-    PacienteCreateComponent,
     PacienteCreateDadosContatosComponent,
     PacienteCreateDadosConvenioComponent,
     PacienteCreateDadosEnderecoComponent,
@@ -309,14 +270,12 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     RequisicaoReadComponent,
     RequisicaoShowComponent,
     RequisicaoUpdateComponent,
-    RequisicaoUpdateExamesComponent,
     ResponsavelTecnicoCreateComponent,
     ResponsavelTecnicoCrudComponent,
     ResponsavelTecnicoReadComponent,
     ResponsavelTecnicoShowComponent,
     ResponsavelTecnicoUpdateComponent,
     ResponsavelTecnicoUploadComponent,
-    RecursoComponent,
     SafeUrlPipe,
     TipoExameCreateComponent,
     TipoExameDeleteComponent,
@@ -324,27 +283,39 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     TipoExameUpdateComponent,
     UploadFileComponent,
     UserComponent,
-    UsuarioCreateComponent,
     UsuarioDeleteComponent,
-    UsuarioReadComponent,
-    UsuarioUpdateComponent,
-    ValorReferenciaCreateComponent,
-    ValorReferenciaReadComponent,
     ValorReferenciaSexoPipe,
-    VersaoExameCreateComponent,
     VersaoExameCrudComponent,
-    VersaoExameDeleteComponent,
-    VersaoExameGeralCreateComponent,
     VersaoExameInterfaceamentoCreateComponent,
-    VersaoExameParametroComponent,
     VersaoExameStatusPipe,
+    AutocompleteTipoInterfaceamentoComponent,
+    AutoCompleteVersaoExameComponent,
+    VersaoExameReadComponent,
+    VersaoExameParametroComponent,
+    VersaoExameGeralCreateComponent,
+    VersaoExameCreateComponent,
+    UsuarioReadComponent,
+    HeaderComponent,
+    ValorReferenciaReadComponent,
+    RecursoComponent,
+    ValorReferenciaCreateComponent,
+    ConsultaAmostraShowComponent,
+    DominioComponent,
+    EmpresaCreateComponent,
+    EmpresaCrudComponent,
+    EmpresaDeleteComponent,
+    EmpresaReadComponent,
+    EmpresaShowComponent,
+    EmpresaUpdateComponent,
+    UsuarioCreateComponent,
+    UsuarioUpdateComponent
   ],
   imports: [
-    HttpClientModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatIconModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatCardModule,
@@ -354,12 +325,14 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatDialogModule,
     MatFormFieldModule,
     MatGridListModule,
+    MatIconModule,
     MatInputModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
     MatMomentDateModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatProgressSpinnerModule,
     MatRadioModule,
     MatSelectModule,
@@ -367,17 +340,16 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     MatSlideToggleModule,
     MatSnackBarModule,
     MatSortModule,
+    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTreeModule,
-    AppRoutingModule,
-    BrowserModule,
-    FormsModule,
-    NgxMaskModule.forRoot(),
     ReactiveFormsModule,
     RouterModule,
+    ErroInterceptorModule,
+    NgxMaskModule.forRoot(),
     TranslateModule.forRoot({
-      defaultLanguage: 'en'
+      defaultLanguage: 'pt-BR'
     })
   ],
   providers: [

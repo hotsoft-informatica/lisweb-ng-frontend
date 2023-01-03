@@ -1,10 +1,8 @@
-import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { debounceTime, Subject } from 'rxjs';
+import { Query } from '../../model/query.model';
 import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
 import { TipoInstrumentoService } from './../../service/tipo-instrumento.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { debounceTime, Subject } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
-import { Query } from '../../model/query.model';
 import { VersaoExame } from '../../model/versao-exame.model';
 
 @Component({
@@ -21,10 +19,7 @@ export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
   subject: Subject<any> = new Subject();
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
     private tipoInstrumentoService: TipoInstrumentoService,
-    private versaoExameService: VersaoExameService
   ) {
     this.versaoExame ||= new VersaoExame({});
     console.table(this.versaoExame);
@@ -64,5 +59,4 @@ export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
       return correspondingOption ? correspondingOption.descricao : '';
     };
   }
-
 }

@@ -1,8 +1,15 @@
 import { BaseService } from './base.service';
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, Inject, Injector } from '@angular/core';
+
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
-export class DominioService extends BaseService{
-  endpoint = '/dominios';
+export class DominioService extends BaseService {
+    constructor(
+        @Inject(Injector) public injector: Injector,
+        public http: HttpClient) {
+        super(injector, http);
+        this.endpoint = 'dominios'
+    }
 }

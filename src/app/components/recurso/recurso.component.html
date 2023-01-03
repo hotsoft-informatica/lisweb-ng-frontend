@@ -1,10 +1,12 @@
 <div class="d-flex justify-content-between col-sm-12 p-2">
-  <button mat-flat-button color="primary" class="col-sm-2 col-md-2 col-lg-1 float-start" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+  <button mat-flat-button color="primary" class="col-sm-2 col-md-2
+   col-lg-1 float-start" data-bs-toggle="collapse" data-bs-target="#collapseExample"
     aria-expanded="false" aria-controls="collapseExample">
     <mat-icon>search</mat-icon>
     Buscar
   </button>
-  <button mat-flat-button class="btn-success col-sm-1 float-end" color="primary" title="Adicionar parâmetro"
+  <button mat-flat-button class="btn-success col-sm-1 float-end"
+   color="primary" title="Adicionar parâmetro"
   (click)="new();" *ngIf="!onCreate && !onEdit">
     <mat-icon>add</mat-icon>
   </button>
@@ -18,7 +20,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Nome:</mat-label>
             <input matInput #nome maxlength="50"
-            class="form-control" title="Filtre por nome" (input)="search('nome', nome.value)"
+            class="form-control" title="Filtre por nome"
+             (input)="search('nome', nome.value)"
             >
           </mat-form-field>
         </div>
@@ -45,7 +48,8 @@
               O campo é obrigatório!
             </span>
           </mat-error>
-          <mat-autocomplete #autoDominios="matAutocomplete" [displayWith]="displayFnDominio(dominios)">
+          <mat-autocomplete #autoDominios="matAutocomplete"
+           [displayWith]="displayFnDominio(dominios)">
             <mat-option *ngFor="let dominio of dominios" [value]="dominio.id">
               {{dominio.descricao}}
             </mat-option>
@@ -62,13 +66,16 @@
             #tipo_recurso_id="ngModel"
             required
           />
-          <mat-error *ngIf="tipo_recurso_id.invalid && (tipo_recurso_id.dirty || tipo_recurso_id.touched)">
+          <mat-error
+           *ngIf="tipo_recurso_id.invalid && (tipo_recurso_id.dirty || tipo_recurso_id.touched)">
             <span *ngIf="tipo_recurso_id.errors?.['required']">
               O campo é obrigatório!
             </span>
           </mat-error>
-          <mat-autocomplete #autoTipoRecursos="matAutocomplete" [displayWith]="displayFnTipoRecurso(tipos_recurso)">
-            <mat-option *ngFor="let tipo_recurso of tipos_recurso" [value]="tipo_recurso.id">
+          <mat-autocomplete #autoTipoRecursos="matAutocomplete"
+           [displayWith]="displayFnTipoRecurso(tipos_recurso)">
+            <mat-option *ngFor="let tipo_recurso of tipos_recurso"
+             [value]="tipo_recurso.id">
               {{tipo_recurso.descricao}}
             </mat-option>
           </mat-autocomplete>
@@ -109,7 +116,8 @@
             #indice_imagem2="ngModel"
             #indice_imagem
             >
-            <mat-error *ngIf="indice_imagem2.invalid && (indice_imagem2.dirty || indice_imagem2.touched)">
+            <mat-error
+             *ngIf="indice_imagem2.invalid && (indice_imagem2.dirty || indice_imagem2.touched)">
               <span *ngIf="indice_imagem2.errors?.['required']">
                 O campo é obrigatório!
               </span>
@@ -139,7 +147,8 @@
 
         <mat-form-field appearance="fill" class= "col-lg-2 col-md-2 p-2">
           <mat-label>Habilitar editar todos?</mat-label>
-          <mat-select name="habilita_editar_todos" [(ngModel)]="currentRecord.habilita_editar_todos">
+          <mat-select name="habilita_editar_todos"
+           [(ngModel)]="currentRecord.habilita_editar_todos">
             <mat-option value="S">Sim</mat-option>
             <mat-option value="N">Não</mat-option>
           </mat-select>
@@ -208,7 +217,8 @@
 
             <mat-form-field appearance="fill" class= "col-lg-3 p-2">
               <mat-label>Forçar execução após registro modificado?</mat-label>
-              <mat-select name="forcar_execucao_filtro" [(ngModel)]="currentRecord.forcar_execucao_filtro">
+              <mat-select name="forcar_execucao_filtro"
+               [(ngModel)]="currentRecord.forcar_execucao_filtro">
                 <mat-option value="S">Sim</mat-option>
                 <mat-option value="N">Não</mat-option>
               </mat-select>
@@ -221,11 +231,13 @@
           </mat-tab>
         </mat-tab-group>
 
-        <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
+        <div>
           <button mat-button
-          (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateRecurso.invalid">Inserir</button>
+          (click)="addGridData()" *ngIf="onCreate"
+           [disabled]="formCreateRecurso.invalid">Inserir</button>
           <button mat-button
-          (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
+          (click)="updateGridData()"
+           *ngIf="onEdit">Alterar</button>
           <button mat-button color="warn"
           (click)="cancelar()">Cancelar</button>
         </div>
@@ -252,7 +264,8 @@
 
       <!-- Tipo Column -->
       <ng-container matColumnDef="tipo_recurso_id" class="col-2">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header="tipo_recurso_id">Tipo Recurso</th>
+        <th mat-header-cell
+         *matHeaderCellDef mat-sort-header="tipo_recurso_id">Tipo Recurso</th>
         <td mat-cell *matCellDef="let row">{{ row?.tipo_recurso?.descricao }}</td>
       </ng-container>
 
@@ -264,7 +277,8 @@
 
       <!-- Laboratório Column -->
       <ng-container matColumnDef="laboratorio_id" class="col-2">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratorio_id">Laboratório</th>
+        <th mat-header-cell
+         *matHeaderCellDef mat-sort-header="laboratorio_id">Laboratório</th>
         <td mat-cell *matCellDef="let row">{{ row?.laboratorio?.nome }}</td>
       </ng-container>
 
@@ -281,7 +295,8 @@
           </div>
 
           <div class="col-1 me-3">
-              <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
+              <button class="delete"
+               mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
                 <mat-icon class="delete">delete</mat-icon>
               </button>
           </div>

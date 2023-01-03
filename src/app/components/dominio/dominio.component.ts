@@ -1,5 +1,4 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,6 +8,15 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Query } from '../model/query.model';
 import { tap } from 'rxjs/operators';
 import { timer, merge } from 'rxjs';
+import {
+   ViewChild,
+   TemplateRef,
+   Renderer2,
+   AfterViewInit,
+   OnInit,
+   Component,
+   ElementRef
+  } from '@angular/core';
 
 @Component({
   selector: 'app-dominio',
@@ -48,9 +56,6 @@ export class DominioComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log('passou pelo ng on init');
-    // this.dataSource = new DominioDataSource(this.dominioService);
-    // this.dataSource.loadDominios('id', 'desc', 1, 5, null);
     this.recordService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
@@ -85,7 +90,6 @@ export class DominioComponent implements OnInit, AfterViewInit {
   onFocus(): void {
     timer(250).subscribe(() => {
       if (this.descricao !== undefined) {
-        console.log("Entrou no onfocus");
         this.renderer.selectRootElement(this.descricao["nativeElement"]).focus();
       }
     });

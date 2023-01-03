@@ -2,14 +2,18 @@ import { Injectable, Inject, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DefaultService } from './default.service';
 import { Query } from './../model/query.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BaseService {
-  endpoint = '/';
+  baseUrl: string = '/';
+  endpoint : string = '/';
 
-  constructor(@Inject(Injector) private readonly injector: Injector) { }
+  constructor(
+    @Inject(Injector) public injector: Injector,
+    public http: HttpClient) { }
 
   private get defaultService() {
     return this.injector.get(DefaultService);
@@ -19,8 +23,8 @@ export class BaseService {
     this.defaultService.showMessage(msg);
   }
 
-  create(record: any): Observable<any> {
-    return this.defaultService.create(record, this.endpoint);
+  create(record: any, endpoint: string = this.endpoint): Observable<any> {
+    return this.defaultService.create(record, endpoint);
   }
 
   read(
@@ -28,21 +32,24 @@ export class BaseService {
     sortDirection: string = 'desc',
     pageNumber = 1,
     pageSize = 3,
-    queries: Query[]
+    queries: Query[],
+    endpoint: string = this.endpoint
   ): Observable<any[]> {
-    return this.defaultService.read(sortActive, sortDirection, pageNumber, pageSize, queries, this.endpoint);
+    return this.defaultService.read(
+      sortActive, sortDirection, pageNumber, pageSize, queries, endpoint
+    );
   }
 
-  readById(id: number): Observable<any> {
-    return this.defaultService.readById(id, this.endpoint);
+  readById(id: number, endpoint: string = this.endpoint): Observable<any> {
+    return this.defaultService.readById(id, endpoint);
   }
 
-  update(record: any): Observable<any> {
-    return this.defaultService.update(record, this.endpoint);
+  update(record: any, endpoint: string = this.endpoint): Observable<any> {
+    return this.defaultService.update(record, endpoint);
   }
 
-  delete(id: number): Observable<any> {
-    return this.defaultService.delete(id, this.endpoint);
+  delete(id: number, endpoint: string = this.endpoint): Observable<any> {
+    return this.defaultService.delete(id, endpoint);
   }
 
   find(
@@ -50,12 +57,15 @@ export class BaseService {
     sortOrder: string = 'asc',
     pageNumber: number = 1,
     pageSize: number = 3,
-    query: Query[] | null
+    query: Query[] | null,
+    endpoint: string = this.endpoint
   ): Observable<any[]> {
-    return this.defaultService.find(active, sortOrder, pageNumber, pageSize, query, this.endpoint);
+    return this.defaultService.find(
+      active, sortOrder, pageNumber, pageSize, query, endpoint
+    );
   }
 
-  count(): Observable<number> {
-    return this.defaultService.count(this.endpoint);
+  count(endpoint: string = this.endpoint): Observable<number> {
+    return this.defaultService.count(endpoint);
   }
 }

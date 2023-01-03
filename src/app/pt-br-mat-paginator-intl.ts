@@ -15,7 +15,6 @@ const ptBrRangeLabel = (page: number, pageSize: number, length: number) => {
   return `${startIndex + 1} - ${endIndex} de ${length}`;
 }
 
-
 export function getPtBrMatPaginatorIntl() {
   const paginatorIntl = new MatPaginatorIntl();
 

@@ -27,7 +27,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler):
-   Observable<HttpEvent<unknown>> {
+    Observable<HttpEvent<unknown>> {
 
     return next.handle(request).pipe(catchError((error) => {
       /* TODO: Em retornos do backend, como login

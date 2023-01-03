@@ -53,7 +53,7 @@ export class EmpresaReadComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dataSource = new EmpresaReadDataSource(this.empresaService);
     this.dataSource.loadEmpresas('id', 'desc', 1, 5, null);
-    this.empresaService.countEmpresas().subscribe((totalCount) => {
+    this.empresaService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }

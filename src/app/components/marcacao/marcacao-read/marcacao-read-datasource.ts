@@ -25,7 +25,7 @@ export class MarcacaoReadDataSource implements DataSource<Marcacao> {
     this.loadingSubject.next(true);
 
     this.marcacaoService
-      .findMarcacoes(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

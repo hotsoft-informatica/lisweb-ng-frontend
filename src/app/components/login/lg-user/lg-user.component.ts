@@ -5,7 +5,6 @@ import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
-  styleUrls: ['./lg-user.component.css']
 })
 export class LgUserComponent implements OnInit {
   @Input('login') login: Login;

@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-responsavel-tecnico-show',
   templateUrl: './responsavel-tecnico-show.component.html',
-  styleUrls: ['./responsavel-tecnico-show.component.css'],
 })
 export class ResponsavelTecnicoShowComponent implements OnInit {
   responsavelTecnico: ResponsavelTecnico;

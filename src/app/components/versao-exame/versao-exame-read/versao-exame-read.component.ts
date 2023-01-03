@@ -1,9 +1,9 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { VersaoExameReadDataSource } from './versao-exame-read-datasource';
 import { VersaoExameService } from '../../service/versao-exame.service';
@@ -39,7 +39,6 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
     private versaoExameService: VersaoExameService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
   ) { }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
@@ -53,7 +52,7 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dataSource = new VersaoExameReadDataSource(this.versaoExameService);
     this.dataSource.loadVersaoExames('id', 'desc', 1, 5, null);
-    this.versaoExameService.count().subscribe((totalCount) => {
+    this.versaoExameService.count().subscribe((totalCount: any) => {
       this.totalCount = totalCount;
     });
   }

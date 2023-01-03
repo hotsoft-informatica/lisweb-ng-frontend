@@ -4,22 +4,27 @@
 
       <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
         <mat-label>Nome:</mat-label>
-        <input matInput maxlength="50" class="form-control" title="Nome completo" name="nome" [(ngModel)]="paciente.nome">
+        <input matInput maxlength="50" class="form-control"
+         title="Nome completo" name="nome" [(ngModel)]="paciente.nome">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
         <mat-label>RG:</mat-label>
-        <input matInput maxlength="12" mask="00.000.000-0" name="rg" [(ngModel)]="paciente.rg">
+        <input matInput maxlength="12" mask="00.000.000-0"
+         name="rg" [(ngModel)]="paciente.rg">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
         <mat-label>CPF:</mat-label>
-        <input matInput maxlength="14" mask="000.000.000-00" name="cpf" [(ngModel)]="paciente.cpf">
+        <input matInput maxlength="14" mask="000.000.000-00"
+         name="cpf" [(ngModel)]="paciente.cpf">
       </mat-form-field>
 
-      <mat-form-field appearance="fill" id="datanascimentopaciente" class="col-lg-2 col-md-12 p-2">
+      <mat-form-field appearance="fill" id="datanascimentopaciente"
+       class="col-lg-2 col-md-12 p-2">
         <mat-label>Data de nascimento</mat-label>
-        <input matInput type="date" id="datanascimentopaciente" name="data_nascimento"
+        <input matInput type="date" id="datanascimentopaciente"
+         name="data_nascimento"
               (input)="calculaIdade()" [(ngModel)]="paciente.data_nascimento">
       </mat-form-field>
 
@@ -29,7 +34,9 @@
 
       <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
         <mat-label>Nome da Mãe:</mat-label>
-        <input matInput maxlength="50" class="form-control" title="Nome mãe compelto" name="nome_mae" [(ngModel)]="paciente.nome_mae">
+        <input matInput maxlength="50" class="form-control"
+         title="Nome mãe compelto" name="nome_mae"
+          [(ngModel)]="paciente.nome_mae">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class= "col-lg-2 col-md-12 p-2">
@@ -54,7 +61,8 @@
       <div class="col-lg-2 col-md-12 p-2">
         <mat-form-field appearance="fill">
           <mat-label>Idade:</mat-label>
-          <input matInput disabled name="idade_paciente" [(ngModel)]="paciente.idade_paciente">
+          <input matInput disabled name="idade_paciente"
+           [(ngModel)]="paciente.idade_paciente">
         </mat-form-field>
       </div>
 

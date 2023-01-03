@@ -1,4 +1,6 @@
+import { Injectable } from '@angular/core';
 import { LogoutService } from './logout.service';
+import { Observable } from 'rxjs';
 import {
   HttpEvent,
   HttpInterceptor,
@@ -6,8 +8,6 @@ import {
   HttpRequest,
 }
   from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 
 @Injectable()
 

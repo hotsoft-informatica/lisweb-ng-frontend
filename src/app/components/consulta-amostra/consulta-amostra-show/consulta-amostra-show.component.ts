@@ -131,7 +131,7 @@ export class ConsultaAmostraShowComponent implements OnInit {
           this.amostra = amostra;
           // TODO: Revisar verificar se já existe consulta prévia da amostra.
           this.exameAmostraService
-            .read(this.amostra.id, 0)
+            .readByAmostraId(this.amostra.id, 0)
             .subscribe((exameAmostras: ExameAmostra[]) => {
               if (exameAmostras) {
                 this.exameAmostras = exameAmostras;

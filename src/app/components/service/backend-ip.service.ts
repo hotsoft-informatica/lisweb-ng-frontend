@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { BackendIp } from '../model/backend-ip.model';
+import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Injectable({
@@ -42,5 +42,4 @@ export class BackendIpService {
 
     return this.setIp(this.backendIp.ip);
   }
-
 }

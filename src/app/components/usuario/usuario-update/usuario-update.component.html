@@ -25,7 +25,7 @@
         [removable]="removable"
         (removed)="remove(grupo)">
         {{grupo}}
-        <button matChipRemove *ngIf="removable">
+        <button type="button" *ngIf="removable">
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip>

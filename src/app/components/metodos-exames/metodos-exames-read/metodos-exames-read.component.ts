@@ -56,7 +56,8 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
     sortDirection: string = this.sort.direction,
     pageIndex: number = this.paginator.pageIndex,
     pageSize: number =  this.paginator.pageSize,
-    query: Query[] = this.queries): void { // Ponte com service
+    query: Query[] = this.queries): void {
+    // Ponte com service
     this.metodoExameService.read(
                               active,
                               sortDirection,
@@ -64,8 +65,9 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
                               pageSize,
                               query)
         .subscribe((metodosExames) => {
-        this.dataSource = metodosExames; // usar dados do back para apresentar no front
-    });
+          // usar dados do back para apresentar no front
+          this.dataSource = metodosExames;
+        });
   }
 
   delete(id: number): void {
@@ -107,7 +109,7 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.metodoExameService.countMetodoExame().subscribe((totalCount: number) => {
+    this.metodoExameService.count().subscribe((totalCount: number) => {
       this.totalCount = totalCount;
     });
     this.loadBack('id', 'desc', 0, 5, this.queries);
@@ -115,9 +117,11 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit(): void { // executar apos ser desenhado a pagina
 
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadBack()))
       .subscribe();
   }
@@ -127,6 +131,4 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
       this.currentMetodosExames = id;
     }
   }
-
-
 }

@@ -1,12 +1,11 @@
-import { PacienteService } from './../../service/paciente.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from '../../model/paciente.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { PacienteService } from './../../service/paciente.service';
 
 @Component({
   selector: 'app-paciente-create',
   templateUrl: './paciente-create.component.html',
-  styleUrls: ['./paciente-create.component.css']
 })
 export class PacienteCreateComponent implements OnInit {
   paciente: Paciente;

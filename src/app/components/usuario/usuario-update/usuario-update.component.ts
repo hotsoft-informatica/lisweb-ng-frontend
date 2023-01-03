@@ -14,7 +14,6 @@ import { UsuarioService } from './../../service/usuario.service';
   templateUrl: './usuario-update.component.html',
 })
 export class UsuarioUpdateComponent implements OnInit {
-
   hide = true;
   selectable = true;
   removable = true;

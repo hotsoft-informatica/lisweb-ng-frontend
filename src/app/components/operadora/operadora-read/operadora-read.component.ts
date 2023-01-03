@@ -51,9 +51,11 @@ export class OperadoraReadComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadOperadorasPage()))
       .subscribe();
   }

@@ -1,14 +1,15 @@
 import { Amostra } from '../model/amostra.model';
-import { Paciente } from '../model/paciente.model';
-import { Exame } from '../model/exame.model';
-import { MaterialBiologico } from '../model/material-biologico.model';
-import { Usuario } from '../model/usuario.model';
-import { ConsultaAmostra } from '../model/consulta-amostra.model';
-import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
-import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';import { Observable } from 'rxjs';
+import { ConsultaAmostra } from '../model/consulta-amostra.model';
+import { Exame } from '../model/exame.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { MaterialBiologico } from '../model/material-biologico.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
+import { Paciente } from '../model/paciente.model';
+import { Query } from './../model/query.model';
+import { Usuario } from '../model/usuario.model';
 @Injectable({
   providedIn: 'root',
 })

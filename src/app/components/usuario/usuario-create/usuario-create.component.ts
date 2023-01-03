@@ -144,5 +144,3 @@ export class UsuarioCreateComponent implements OnInit {
     );
   }
 }
-
-

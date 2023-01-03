@@ -1,11 +1,10 @@
-import { NavigationStart, Router, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
 import { Component, HostListener } from '@angular/core';
 import { Event } from '@angular/router';
+import { NavigationStart, Router, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
@@ -51,4 +50,3 @@ if (typeof Worker !== 'undefined') {
   // Web Workers are not supported in this environment.
   // You should add a fallback so that your program still executes correctly.
 }
-

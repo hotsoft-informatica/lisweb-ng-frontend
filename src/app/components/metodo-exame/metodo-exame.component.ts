@@ -29,5 +29,4 @@ export class MetodoExameComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

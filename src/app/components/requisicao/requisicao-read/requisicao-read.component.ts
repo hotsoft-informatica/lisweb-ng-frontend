@@ -59,7 +59,7 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dataSource = new RequisicaoReadDataSource(this.requisicaoService);
     this.dataSource.loadRequisicoes('id', 'desc', 1, 5, null);
-    this.requisicaoService.countRequisicoes().subscribe((totalCount) => {
+    this.requisicaoService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }

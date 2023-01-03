@@ -15,7 +15,6 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-responsavel-tecnico-read',
   templateUrl: './responsavel-tecnico-read.component.html',
-  styleUrls: ['./responsavel-tecnico-read.component.css']
 })
 export class ResponsavelTecnicoReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
