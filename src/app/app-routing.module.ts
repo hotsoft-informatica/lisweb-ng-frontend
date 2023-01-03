@@ -71,6 +71,7 @@ import { BandejaDeleteComponent } from './components/bandeja/bandeja-delete/band
 import { BancadaCreateComponent } from './components/bancada/bancada-create/bancada-create.component';
 import { BancadaUpdateComponent } from './components/bancada/bancada-update/bancada-update.component';
 import { BancadaDeleteComponent } from './components/bancada/bancada-delete/bancada-delete.component';
+import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraUpdateComponent } from './components/amostra/amostra-update/amostra-update.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
@@ -90,7 +91,7 @@ import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnic
 import { DominioComponent } from './components/dominio/dominio.component';
 import { RecursoComponent } from './components/recurso/recurso.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
-import { BackendIpComponent } from './components/config/backend-ip/backend-ip.component';
+import { SuperUserComponent } from './components/super-user/super-user.component';
 import { UserComponent } from './components/user/user.component';
 import { UserGuard } from './guards/user.guard';
 import { UserExitGuard } from './guards/user-exit.guard';
@@ -205,6 +206,10 @@ const routes: Routes = [
   {
     path: 'requisicoes/delete/:id',
     component: RequisicaoDeleteComponent,
+  },
+  {
+    path: 'super_users',
+    component: SuperUserComponent,
   },
   {
     path: 'usuarios/create',
