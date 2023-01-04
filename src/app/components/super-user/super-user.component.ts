@@ -20,7 +20,6 @@ export class SuperUserComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
   record!: any;
-
   oldRecord: any;
   currentRecord: any;
   deletedRecords: any[] = [];
@@ -28,7 +27,6 @@ export class SuperUserComponent implements OnInit, AfterViewInit {
   id!: number;
   totalCount!: number;
 
-  displayedColumns = ['id', 'descricao', 'num_ordem', 'action'];
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -36,6 +34,8 @@ export class SuperUserComponent implements OnInit, AfterViewInit {
 
   onEdit = false;
   onCreate = false;
+
+  displayedColumns = ['name', 'email', 'admin', 'action'];
 
   constructor(
     public dialog: MatDialog,
@@ -75,14 +75,18 @@ export class SuperUserComponent implements OnInit, AfterViewInit {
       });
   }
 
+  new(): void {
+    this.onCreate = true;
+  }
+
   addGridData(): void {
     console.table(this.currentRecord);
-    this.onCreate = true;
+    this.onCreate = false;
     this.onEdit = false;
     this.superUserService.create(this.currentRecord).subscribe((record) => {
       this.records.unshift(record);
       this.datasource.data = [...this.records];
-      this.superUserService.showMessage('Domínio criado com sucesso!');
+      this.superUserService.showMessage('Administrador criado com sucesso!');
     });
 
     this.currentRecord = new SuperUser({});
@@ -91,7 +95,7 @@ export class SuperUserComponent implements OnInit, AfterViewInit {
   updateGridData(): void {
     this.onCreate = false;
     this.onEdit = false;
-    this.superUserService.update(this.currentRecord).subscribe((record) => {
+    this.superUserService.update(this.currentRecord).subscribe(() => {
       this.superUserService.showMessage('Administrador atualizado com sucesso!');
     });
 
@@ -117,7 +121,7 @@ export class SuperUserComponent implements OnInit, AfterViewInit {
       if (result) {
         console.log("entrou no if do result");
         this.superUserService.delete(id)
-          .subscribe((record) => {
+          .subscribe(() => {
             this.superUserService.showMessage('Administrador apagado com sucesso!');
 
             // Carrega os dados do backend e faz refresh do datasource
