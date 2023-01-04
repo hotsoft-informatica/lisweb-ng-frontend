@@ -11,6 +11,7 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
   providedIn: 'root',
 })
 export class SuperUserService {
+  createUrl = '/create_super_users'
   baseUrl = '/super_users'
   logInUrl = '/super_users/sign_in';
   logOutUrl = '/super_users/sign_out';
@@ -24,6 +25,7 @@ export class SuperUserService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
+    this.createUrl = backendIpService.getUrl() + this.createUrl;
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
     this.logInUrl = backendIpService.getUrl() + this.logInUrl;
     this.logOutUrl = backendIpService.getUrl() + this.logOutUrl;
@@ -54,7 +56,7 @@ export class SuperUserService {
   }
 
   create(superUser: SuperUser): Observable<SuperUser> {
-    return this.http.post<SuperUser>(this.baseUrl, superUser);
+    return this.http.post<SuperUser>(this.createUrl, superUser);
   }
 
   read(): Observable<SuperUser[]> {
