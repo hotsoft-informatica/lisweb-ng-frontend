@@ -11,7 +11,9 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
   providedIn: 'root',
 })
 export class SuperUserService {
+  indexUrl = '/index_super_users'
   createUrl = '/create_super_users'
+  updateUrl = '/update_super_user'
   baseUrl = '/super_users'
   logInUrl = '/super_users/sign_in';
   logOutUrl = '/super_users/sign_out';
@@ -25,7 +27,9 @@ export class SuperUserService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
+    this.indexUrl = backendIpService.getUrl() + this.indexUrl;
     this.createUrl = backendIpService.getUrl() + this.createUrl;
+    this.updateUrl = backendIpService.getUrl() + this.updateUrl;
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
     this.logInUrl = backendIpService.getUrl() + this.logInUrl;
     this.logOutUrl = backendIpService.getUrl() + this.logOutUrl;
@@ -60,7 +64,7 @@ export class SuperUserService {
   }
 
   read(): Observable<SuperUser[]> {
-    return this.http.get<SuperUser[]>(this.baseUrl);
+    return this.http.get<SuperUser[]>(this.indexUrl);
   }
 
   readById(id: number): Observable<SuperUser> {
@@ -69,7 +73,7 @@ export class SuperUserService {
   }
 
   update(superUser: SuperUser): Observable<SuperUser> {
-    const url = `${this.baseUrl}/${superUser.id}`;
+    const url = `${this.updateUrl}/${superUser.id}`;
     return this.http.put<SuperUser>(url, superUser);
   }
 
