@@ -11,10 +11,10 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
   providedIn: 'root',
 })
 export class SuperUserService {
-  indexUrl = '/index_super_users'
-  createUrl = '/create_super_users'
-  updateUrl = '/update_super_user'
-  baseUrl = '/super_users'
+  indexUrl = '/index_super_users';
+  createUrl = '/create_super_users';
+  updateUrl = '/update_super_user';
+  baseUrl = '/super_users';
   logInUrl = '/super_users/sign_in';
   logOutUrl = '/super_users/sign_out';
 
