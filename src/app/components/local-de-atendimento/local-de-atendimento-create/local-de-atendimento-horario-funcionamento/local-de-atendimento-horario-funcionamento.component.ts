@@ -4,7 +4,6 @@ import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendiment
 @Component({
   selector: 'app-local-de-atendimento-horario-funcionamento',
   templateUrl: './local-de-atendimento-horario-funcionamento.component.html',
-  styleUrls: ['./local-de-atendimento-horario-funcionamento.component.css']
 })
 export class LocalDeAtendimentoHorarioFuncionamentoComponent implements OnInit {
   integral = false;

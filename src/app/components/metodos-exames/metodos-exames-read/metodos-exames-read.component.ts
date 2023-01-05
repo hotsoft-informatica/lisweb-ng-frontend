@@ -30,9 +30,7 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
   page = 1;
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
-
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   constructor(public metodoExameService: MetodoExameService,

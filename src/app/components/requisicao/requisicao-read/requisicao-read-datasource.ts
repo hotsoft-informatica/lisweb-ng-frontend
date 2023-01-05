@@ -1,9 +1,9 @@
+import { catchError, finalize } from 'rxjs/operators';
+import { DataSource } from '@angular/cdk/collections';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Query } from '../../model/query.model';
 import { Requisicao } from '../../model/requisicao.model';
 import { RequisicaoService } from '../../service/requisicao.service';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Observable, BehaviorSubject, of } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
-import { Query } from '../../model/query.model';
 
 export class RequisicaoReadDataSource implements DataSource<Requisicao> {
   private requisicoesSubject = new BehaviorSubject<Requisicao[]>([]);

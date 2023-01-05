@@ -46,15 +46,17 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dataSource = new LaboratorioReadDataSource(this.laboratorioService);
     this.dataSource.loadLaboratorios('id', 'desc', 1, 5, null);
-    this.laboratorioService.countLaboratorios().subscribe((totalCount) => {
+    this.laboratorioService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadLaboratoriosPage()))
       .subscribe();
   }

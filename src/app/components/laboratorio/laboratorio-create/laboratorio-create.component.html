@@ -31,8 +31,10 @@
         [(ngModel)]="laboratorio.laboratory_domain_id"
         (ngModelChange)="search()"
       />
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(laboratoryDomains)">
-        <mat-option *ngFor="let laboratoryDomain of laboratoryDomains" [value]="laboratoryDomain.id">
+      <mat-autocomplete #auto="matAutocomplete"
+       [displayWith]="displayFn(laboratoryDomains)">
+        <mat-option *ngFor="let laboratoryDomain of laboratoryDomains"
+         [value]="laboratoryDomain.id">
           {{laboratoryDomain.name}}
         </mat-option>
       </mat-autocomplete>

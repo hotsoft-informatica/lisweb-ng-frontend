@@ -68,7 +68,9 @@
     <!-- telefone Column -->
     <ng-container matColumnDef="telefone">
       <th mat-header-cell *matHeaderCellDef>Telefone</th>
-      <td mat-cell *matCellDef="let row">{{ row?.telefone | mask:'(00) 00000-0000 || (00) 0000-0000'}}</td>
+      <!-- TODO: Rever amscaras d etelefone -->
+      <!-- | mask:'(00) 00000-0000 || (00) 0000-0000' -->
+      <td mat-cell *matCellDef="let row">{{ row?.telefone }}</td>
     </ng-container>
 
     <!-- nome_contato Column -->

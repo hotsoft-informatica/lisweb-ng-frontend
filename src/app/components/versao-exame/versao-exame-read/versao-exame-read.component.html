@@ -20,7 +20,8 @@
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button color="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button mat-flat-button color="primary" class="dvm-button"
+          data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -46,7 +47,8 @@
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           Descrição
-          <input matInput #descricao maxlength="12" class="form-control" title="Descricao"
+          <input matInput #descricao maxlength="12"
+           class="form-control" title="Descricao"
           (input)="search('descricao', descricao.value)"
           >
         </mat-form-field>
@@ -66,22 +68,29 @@
   >
 
   <ng-container matColumnDef="titulo_laudo">
-    <th mat-header-cell mat-sort-header="titulo_laudo" class="col-5" *matHeaderCellDef> Título laudo </th>
-    <td mat-cell *matCellDef="let row"> {{row.titulo_laudo | slice:0:25}} ...</td>
+    <th mat-header-cell mat-sort-header="titulo_laudo"
+     class="col-5" *matHeaderCellDef> Título laudo
+    </th>
+    <td mat-cell *matCellDef="let row">
+       {{row.titulo_laudo | slice:0:25}} ...
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="descricao">
-    <th mat-header-cell mat-sort-header="descricao" class="col-3" *matHeaderCellDef> Descrição </th>
+    <th mat-header-cell mat-sort-header="descricao"
+     class="col-3" *matHeaderCellDef> Descrição </th>
     <td mat-cell *matCellDef="let row"> {{row.descricao | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="status">
-    <th mat-header-cell mat-sort-header="status" class="col-3" *matHeaderCellDef> Status </th>
+    <th mat-header-cell mat-sort-header="status"
+     class="col-3" *matHeaderCellDef> Status </th>
     <td mat-cell *matCellDef="let row"> {{row.status | versaoexamestatus}}</td>
   </ng-container>
 
   <ng-container matColumnDef="action">
-    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3" *matHeaderCellDef> Operações </th>
+    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3"
+     *matHeaderCellDef> Operações </th>
     <td mat-cell *matCellDef="let row">
       <div class="row">
         <div class="col-1 me-3">
@@ -93,7 +102,8 @@
         </div>
 
         <div class="col-1 me-3">
-          <button class="delete" mat-icon-button (click)="deleteVersaoExame(row.id)">
+          <button class="delete" mat-icon-button
+           (click)="deleteVersaoExame(row.id)">
             <mat-icon class="delete">delete</mat-icon>
           </button>
         </div>
@@ -104,7 +114,9 @@
           </mat-dialog-content>
           <mat-dialog-actions align="end">
             <button mat-button mat-dialog-close>Cancel</button>
-            <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Apagar</button>
+            <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+              Apagar
+            </button>
           </mat-dialog-actions>
         </ng-template>
       </div>

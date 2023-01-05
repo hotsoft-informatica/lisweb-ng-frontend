@@ -1,7 +1,7 @@
-import { PessoaService } from '../service/pessoa.service';
-import { Pessoa } from '../model/pessoa.model';
-import { Query } from '../model/query.model';
 import { LancamentoService } from '../service/lancamento.service';
+import { Pessoa } from '../model/pessoa.model';
+import { PessoaService } from '../service/pessoa.service';
+import { Query } from '../model/query.model';
 import {
   Component,
   OnInit,
@@ -55,7 +55,7 @@ export class LancamentoComponent implements OnInit {
       this.pessoaService.readById(lancamento.pessoa_id as unknown as number)
         .subscribe((pessoa: Pessoa) => {
           lancamento.pessoa = pessoa;
-      });/*
+      });/* TODO: 
       this.UnidadeAtendimentoService.readById(lancamento.unidade_atendimento_id as unknown as number)
         .subscribe((unidade_atendimento: UnidadeAtendimento) => {
           lancamento.unidade_atendimento = unidade_atendimento;

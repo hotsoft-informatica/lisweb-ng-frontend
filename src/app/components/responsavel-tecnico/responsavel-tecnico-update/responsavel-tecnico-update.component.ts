@@ -31,12 +31,18 @@ export class ResponsavelTecnicoUpdateComponent implements OnInit {
   }
 
   updateResponsavelTecnico(): void {
-    this.responsavelTecnicoService.update(this.responsavelTecnico).subscribe(() => {
-      this.responsavelTecnicoService.showMessage('Responsável técnico atualizado com sucesso!');
-    });
-    this.router.navigate(['/responsavel_tecnicos']).then(() => {
-      window.location.reload();
-    });
+    this.responsavelTecnicoService.update(this.responsavelTecnico).subscribe(
+      () => {
+        this.responsavelTecnicoService.showMessage(
+          'Responsável técnico atualizado com sucesso!'
+        );
+      }
+    );
+    this.router.navigate(['/responsavel_tecnicos']).then(
+      () => {
+        window.location.reload();
+      }
+    );
   }
 
   cancel(): void {

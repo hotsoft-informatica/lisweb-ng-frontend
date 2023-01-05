@@ -48,7 +48,8 @@ export class OperadoraDeleteComponent implements OnInit {
           .delete(operadora.empresa_id as number)
           .subscribe(() => { });
       });
-    this.operadoraService.delete(this.operadora.id as number).subscribe(() => {
+    this.operadoraService.delete(this.operadora.id as number).subscribe(
+      () => {
       this.operadoraService.showMessage('Operadora excluída com sucesso!');
       this.router.navigate(['/operadoras']).then(() => {
         window.location.reload();

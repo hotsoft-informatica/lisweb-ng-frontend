@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-requisicao-show',
   templateUrl: './requisicao-show.component.html',
-  styleUrls: ['./requisicao-show.component.css']
 })
 export class RequisicaoShowComponent implements OnInit {
 

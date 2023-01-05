@@ -25,7 +25,7 @@ export class LaboratoryGetFilterReadDataSource implements DataSource<LaboratoryG
     this.loadingSubject.next(true);
 
     this.laboratoryGetFilterService
-      .findLaboratoryGetFilters(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

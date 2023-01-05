@@ -3,11 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../service/usuario.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-lg-usuario',
   templateUrl: './lg-usuario.component.html',
-  styleUrls: ['./lg-usuario.component.css']
 })
 export class LgUsuarioComponent implements OnInit {
   hide = true;

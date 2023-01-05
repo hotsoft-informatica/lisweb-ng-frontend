@@ -32,7 +32,7 @@ export class BaseService {
     sortDirection: string = 'desc',
     pageNumber = 1,
     pageSize = 3,
-    queries: Query[],
+    queries: Query[] = [],
     endpoint: string = this.endpoint
   ): Observable<any[]> {
     return this.defaultService.read(

@@ -1,17 +1,12 @@
+import { ClientServerTable } from '../../model/client-server-table.model';
+import { ClientServerTableService } from '../../service/client-server-table.service';
+import { Component, OnInit } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
+import { LaboratoryGetFilter } from '../../model/laboratory-get-filter.model';
+import { LaboratoryGetFilterService } from '../../service/laboratory-get-filter.service';
 import { Query } from '../../model/query.model';
 import { Router } from '@angular/router';
-import { LaboratoryGetFilterService } from '../../service/laboratory-get-filter.service';
-import { ClientServerTableService } from '../../service/client-server-table.service';
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
-import {
-  debounceTime,
-} from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { LaboratoryGetFilter } from '../../model/laboratory-get-filter.model';
-import { ClientServerTable } from '../../model/client-server-table.model';
 
 @Component({
   selector: 'app-laboratory-get-filter-create',
@@ -35,7 +30,10 @@ export class LaboratoryGetFilterCreateComponent implements OnInit {
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
-      this.clientServerTableService.findClientServerTables('client_name', 'asc', 0, 60, this.queries).subscribe((clientServerTables) => {
+      this.clientServerTableService.find(
+        'client_name', 'asc', 0, 60, this.queries
+        ).subscribe(
+          (clientServerTables) => {
           console.table(this.queries);
           this.clientServerTables = clientServerTables;
         });
@@ -43,13 +41,18 @@ export class LaboratoryGetFilterCreateComponent implements OnInit {
     this.subject.next(null);
   }
 
+  // TODO: rever identacao
   createLaboratoryGetFilter(): void {
-    this.laboratoryGetFilterService.create(this.laboratory_get_filter).subscribe(() => {
-      this.laboratoryGetFilterService.showMessage('Filtro de GET do Híbrido criado com sucesso!');
-      this.router.navigate(['/laboratory_get_filters']).then(() => {
-        window.location.reload();
-      });
-    });
+    this.laboratoryGetFilterService.create(
+      this.laboratory_get_filter).subscribe(
+        () => {
+          this.laboratoryGetFilterService.showMessage(
+            'Filtro de GET do Híbrido criado com sucesso!');
+          this.router.navigate(['/laboratory_get_filters']).then(() => {
+            window.location.reload();
+          });
+        }
+    );
   }
 
   cancel(): void {

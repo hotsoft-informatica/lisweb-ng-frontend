@@ -46,7 +46,8 @@ export class RequisicaoUpdateExamesComponent implements OnInit {
     }
   }
   addExame(): void {
-    this.tipoExameService.readById(this.exame.tipo_exame!.id as number).subscribe((tipoExame) =>{
+    this.tipoExameService.readById(this.exame.tipo_exame!.id as number).subscribe(
+      (tipoExame) =>{
       this.exame.tipo_exame = tipoExame;
       this.exame.tipo_exame_id = tipoExame.id;
         this.exameService.create(this.exame).subscribe((requisicao) => {

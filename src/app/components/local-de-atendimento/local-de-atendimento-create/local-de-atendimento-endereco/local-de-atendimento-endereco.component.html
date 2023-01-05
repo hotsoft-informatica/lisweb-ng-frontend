@@ -5,7 +5,8 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label for="cep">CEP:</mat-label>
-        <input matInput maxlength="9" mask="00000-000" id="cep" name="cep"
+        <input matInput maxlength="9" mask="00000-000"
+               id="cep" name="cep" title="CEP"
                [(ngModel)]="this.empresa.cep"
                (ngModelChange)="consulta()">
       </mat-form-field>
@@ -14,7 +15,8 @@
     <div class="row col-lg-3 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Cidade:</mat-label>
-        <input matInput maxlength="50" id="cidade" name="cidade"
+        <input matInput maxlength="50"
+               id="cidade" name="cidade" title="Cidade"
                [(ngModel)]="this.empresa.cidade">
       </mat-form-field>
     </div>
@@ -22,7 +24,8 @@
     <div class="row col-lg-1 p-2">
       <mat-form-field appearance="fill">
         <mat-label>UF:</mat-label>
-        <input matInput maxlength="50" id="enderecoUf" name="uf"
+        <input matInput maxlength="50"
+              id="enderecoUf" name="uf" title="UF"
               [(ngModel)]="this.empresa.uf">
       </mat-form-field>
     </div>
@@ -30,7 +33,8 @@
     <div class="row col-lg-4 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Logradouro:</mat-label>
-        <input matInput maxlength="50" id="endereco" name="endereco"
+        <input matInput maxlength="50"
+              id="endereco" name="endereco" title="Endereço"
               [(ngModel)]="this.empresa.endereco">
       </mat-form-field>
     </div>
@@ -38,15 +42,18 @@
     <div class="row col-lg-1 p-2">
       <mat-form-field appearance="fill">
         <mat-label>N°:</mat-label>
-        <input matInput maxlength="50" id="numero" name="numero" [(ngModel)]="this.empresa.numero">
+        <input matInput maxlength="50"
+          id="numero" name="numero" title="Número"
+          [(ngModel)]="this.empresa.numero">
       </mat-form-field>
     </div>
 
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Bairro:</mat-label>
-        <input matInput maxlength="50" id="enderecoBairro" name="bairro"
-               [(ngModel)]="this.empresa.bairro">
+        <input matInput maxlength="50"
+           id="enderecoBairro" name="bairro" title="Bairro"
+          [(ngModel)]="this.empresa.bairro"/>
       </mat-form-field>
     </div>
 
@@ -55,25 +62,29 @@
       <mat-form-field appearance="fill" class="col-lg-2 pe-2">
         <mat-label>Telefone:</mat-label>
         <input matInput #telefone maxlength="13" mask="(00)0000-0000"
-        id="telefone" name="telefone" [(ngModel)]="this.empresa.telefone">
+          id="telefone" name="telefone" title="Telefone"
+          [(ngModel)]="this.empresa.telefone">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="col-lg-2 p-2">
         <mat-label>Celular:</mat-label>
-        <input matInput #fax maxlength="14" mask="(00)00000-0000"
-        id="fax" name="fax" [(ngModel)]="this.empresa.fax">
+        <input matInput #fax maxlength="14"
+          mask="(00)00000-0000"
+          id="fax" name="fax" title="Fax"
+          [(ngModel)]="this.empresa.fax"/>
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="col-lg-4 p-2">
         <mat-label>E-mail:</mat-label>
         <input matInput #email maxlength="50"
-        id="email" name="email" [(ngModel)]="this.empresa.email">
+          id="email" name="email" title="Email"
+          [(ngModel)]="this.empresa.email">
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="col-lg-4 ps-2">
         <mat-label>E-mail Secundario:</mat-label>
-        <input matInput #input maxlength="50"
-       >
+        <input matInput #input
+        title="Email secundário" maxlength="50"/>
       </mat-form-field>
     </div>
   </div>

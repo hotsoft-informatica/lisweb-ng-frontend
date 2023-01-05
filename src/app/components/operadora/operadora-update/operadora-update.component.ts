@@ -29,7 +29,8 @@ export class OperadoraUpdateComponent implements OnInit {
       .readById(id as unknown as number)
       .subscribe((operadora) => {
         this.operadora = operadora;
-        this.empresaService.readById(this.operadora.empresa_id as number)
+        this.empresaService.readById(
+          this.operadora.empresa_id as number)
                            .subscribe((empresa) => {
           this.empresa ||= empresa;
           console.table(this.empresa);
@@ -41,10 +42,14 @@ export class OperadoraUpdateComponent implements OnInit {
   updateOperadora(): void {
     this.operadora.empresa_id = this.empresa.id;
     this.operadora.empresa ||= this.empresa;
-    this.empresaService.update(this.empresa).subscribe(() => {
-      this.operadoraService.showMessage('Empresa atualizada com sucesso!');
-      this.operadoraService.update(this.operadora).subscribe(() => {
-        this.operadoraService.showMessage('Operadora atualizada com sucesso!');
+    this.empresaService.update(this.empresa).subscribe(
+      () => {
+      this.operadoraService.showMessage(
+        'Empresa atualizada com sucesso!');
+      this.operadoraService.update(
+        this.operadora).subscribe(() => {
+        this.operadoraService.showMessage(
+          'Operadora atualizada com sucesso!');
         this.router.navigate(['/operadoras']).then(() => {
           window.location.reload();
         });

@@ -27,7 +27,6 @@ import { TipoRecursoService } from '../service/tipo-recurso.service';
 @Component({
   selector: 'app-recurso',
   templateUrl: './recurso.component.html',
-  styleUrls: ['./recurso.component.css']
 })
 export class RecursoComponent implements OnInit, AfterViewInit {
   @Input('dominios') dominios: Dominio[] = [];

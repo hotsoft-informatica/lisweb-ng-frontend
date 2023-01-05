@@ -16,7 +16,8 @@ export class ResponsavelTecnicoCreateComponent implements OnInit {
   ]
   filtered_states: string[] = [];
 
-  constructor(private router: Router, private responsavelTecnicoService: ResponsavelTecnicoService) {
+  constructor(private router: Router,
+     private responsavelTecnicoService: ResponsavelTecnicoService) {
     this.responsavelTecnico = new ResponsavelTecnico({});
   }
 
@@ -27,7 +28,8 @@ export class ResponsavelTecnicoCreateComponent implements OnInit {
   doFilter() {
     if (this.responsavelTecnico.uf_conselho) {
       this.filtered_states = this.states.filter(
-        state => state.toUpperCase().startsWith((this.responsavelTecnico.uf_conselho as string).toUpperCase())
+        state => state.toUpperCase().startsWith(
+          (this.responsavelTecnico.uf_conselho as string).toUpperCase())
       );
       console.table(this.filtered_states);
     } else {
@@ -36,9 +38,12 @@ export class ResponsavelTecnicoCreateComponent implements OnInit {
   }
 
   createResponsavelTecnico(): void {
-    this.responsavelTecnicoService.create(this.responsavelTecnico).subscribe(() => {
-      this.responsavelTecnicoService.showMessage('Responsável Técnico criado com sucesso!');
-      this.router.navigate(['/responsavel_tecnicos']).then(() => {
+    this.responsavelTecnicoService.create(
+      this.responsavelTecnico).subscribe(() => {
+      this.responsavelTecnicoService.showMessage(
+        'Responsável Técnico criado com sucesso!');
+      this.router.navigate(
+        ['/responsavel_tecnicos']).then(() => {
         window.location.reload();
       });
     });

@@ -1,7 +1,8 @@
 <div class="mat-elevation-z4">
   <div class="">
     <div class="gridAddButton">
-      <button mat-flat-button class="btn-success" color="primary" title="Adicionar parâmetro"
+      <button mat-flat-button class="btn-success"
+       color="primary" title="Adicionar parâmetro"
       (click)="new();" *ngIf="!onCreate && !onEdit">
         <mat-icon>add</mat-icon>
       </button>
@@ -53,7 +54,8 @@
         </mat-form-field>
         <div>
           <button mat-button type="button"
-          (click)="addParametroVersaoExame()" *ngIf="onCreate" [disabled]="formCreateParametro.invalid">Inserir</button>
+          (click)="addParametroVersaoExame()" *ngIf="onCreate"
+           [disabled]="formCreateParametro.invalid">Inserir</button>
           <button mat-button type="button"
           (click)="atualizar()" *ngIf="onEdit">Alterar</button>
           <button mat-button color="warn" type="button"
@@ -95,13 +97,15 @@
         <div class="row">
 
           <div class="col-1 me-3">
-            <button mat-icon-button *ngIf="!onEdit" (click)="updateParametroVersaoExame(row)">
+            <button mat-icon-button *ngIf="!onEdit"
+             (click)="updateParametroVersaoExame(row)">
               <mat-icon class="edit">edit</mat-icon>
             </button>
           </div>
   
           <div class="col-1 me-3">
-              <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGrid(position)">
+              <button class="delete" mat-icon-button *ngIf="!onEdit"
+               (click)="deleteGrid(position)">
                 <mat-icon class="delete">delete</mat-icon>
               </button>
           </div>

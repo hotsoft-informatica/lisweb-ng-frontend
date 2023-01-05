@@ -9,7 +9,6 @@ import { Empresa } from 'src/app/components/model/empresa.model';
 @Component({
   selector: 'app-local-de-atendimento-endereco',
   templateUrl: './local-de-atendimento-endereco.component.html',
-  styleUrls: ['./local-de-atendimento-endereco.component.css']
 })
 export class LocalDeAtendimentoEnderecoComponent implements OnInit {
 
@@ -31,9 +30,12 @@ export class LocalDeAtendimentoEnderecoComponent implements OnInit {
   }
 
   consulta(): void{
-    this.cepService // Chama serviço
-    .consultar(this.empresa.cep as unknown as string) // consulta o cep informado na variavel cep
-    .subscribe((cep: any) => {  // subscreve os campos
+    // consulta o cep informado na variavel cep
+    // Chama serviço
+    this.cepService
+    .consultar(this.empresa.cep as unknown as string)
+    .subscribe((cep: any) => {
+      // subscreve os campos
       Object.assign(this.cep, cep);
       this.empresa.cidade = this.cep.localidade;
       this.empresa.uf = this.cep.uf;

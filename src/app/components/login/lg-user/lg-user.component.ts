@@ -1,7 +1,7 @@
 import { Login } from '../../model/login.model';
 import { Router } from '@angular/router';
 import { UserService } from '../../service/user.service';
-import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
@@ -21,6 +21,7 @@ export class LgUserComponent implements OnInit {
 
   UserLogin(): void {
     // TODO: Tratar deprecation do subscribe
+    // TODO: Revisar e merge
     this.userService.login(this.login).subscribe(
       (user) => {
         console.log("Arrow function user");

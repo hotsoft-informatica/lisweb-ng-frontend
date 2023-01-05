@@ -58,17 +58,24 @@
           matSort (matSortChange)="sortData()">
 
       <ng-container matColumnDef="descricao">
-        <th mat-header-cell mat-sort-header="descricao" *matHeaderCellDef> Descrição </th>
-        <td mat-cell *matCellDef="let element"> {{element?.descricao | slice:0:65}} ...</td>
+        <th mat-header-cell mat-sort-header="descricao"
+         *matHeaderCellDef> Descrição </th>
+        <td mat-cell *matCellDef="let element">
+           {{element?.descricao | slice:0:65}} ...
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="bibliografia">
-        <th mat-header-cell mat-sort-header="bibliografia" *matHeaderCellDef> Bibliografia </th>
-        <td mat-cell *matCellDef="let element"> {{element?.bibliografia | slice:0:12}} ...</td>
+        <th mat-header-cell
+         mat-sort-header="bibliografia" *matHeaderCellDef> Bibliografia </th>
+        <td mat-cell *matCellDef="let element">
+           {{element?.bibliografia | slice:0:12}} ...
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="Operacoes">
-        <th mat-header-cell colspan="3" mat-sort-header="" *matHeaderCellDef> Ações</th>
+        <th mat-header-cell colspan="3"
+         mat-sort-header="" *matHeaderCellDef> Ações</th>
         <td mat-cell *matCellDef="let element">
           <div >
               <a (click)="openDialogEdit(element.id)">
@@ -82,7 +89,8 @@
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <app-usuario-update [pacienteInput]="this.currentMetodosExames">
+                    <app-usuario-update
+                     [pacienteInput]="this.currentMetodosExames">
                     </app-usuario-update>
                   </div>
                   <div class="modal-footer">
@@ -101,7 +109,8 @@
               </mat-dialog-content>
               <mat-dialog-actions align="end">
                 <button mat-button mat-dialog-close>Cancel</button>
-                <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Apagar</button>
+                <button mat-button [mat-dialog-close]="true"
+                 cdkFocusInitial>Apagar</button>
               </mat-dialog-actions>
             </ng-template>
 

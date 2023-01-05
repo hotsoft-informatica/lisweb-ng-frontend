@@ -16,12 +16,15 @@
       <input
         #required
         name="client_server_table"
+        title="Client Server Table"
         matInput [matAutocomplete]="auto" 
         [(ngModel)]="laboratory_get_filter.client_server_table_id"
         (ngModelChange)="search()"
       />
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(clientServerTables)">
-        <mat-option *ngFor="let clientServerTable of clientServerTables" [value]="clientServerTable.id">
+      <mat-autocomplete #auto="matAutocomplete"
+       [displayWith]="displayFn(clientServerTables)">
+        <mat-option *ngFor="let clientServerTable of clientServerTables"
+         [value]="clientServerTable.id">
           {{clientServerTable.client_name}}
         </mat-option>
       </mat-autocomplete>
@@ -42,7 +45,10 @@
       </textarea>
     </mat-form-field> 
   </form>
-  <button mat-raised-button (click)="createLaboratoryGetFilter()" color="primary">Salvar</button>
-  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+  <button mat-raised-button (click)="createLaboratoryGetFilter()"
+   color="primary">Salvar</button>
+  <button mat-raised-button (click)="cancel()" color="warn">
+    Cancelar
+  </button>
 </mat-card>
   

@@ -156,9 +156,13 @@
     </mat-form-field>
   </form>
   <div>
-    <button mat-raised-button [disabled]="formUpdateResponsavelTecnico.invalid" (click)="updateResponsavelTecnico()" color="primary">
+    <button mat-raised-button
+     [disabled]="formUpdateResponsavelTecnico.invalid"
+      (click)="updateResponsavelTecnico()" color="primary">
       Salvar
     </button>
-    <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+    <button mat-raised-button (click)="cancel()" color="warn">
+      Cancelar
+    </button>
   </div>
 </mat-card>

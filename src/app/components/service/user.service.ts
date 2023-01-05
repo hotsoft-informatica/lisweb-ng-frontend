@@ -14,6 +14,12 @@ export class UserService extends BaseService {
     this.endpoint = 'users'
   }
 
+  // TODO: Fazer Login e merge
+  login(user: any): Observable<any> {
+    console.table(user);
+    return new Observable;
+  }
+
   // TODO: Fazer merge
   logout(): Observable<any> {
     return new Observable;

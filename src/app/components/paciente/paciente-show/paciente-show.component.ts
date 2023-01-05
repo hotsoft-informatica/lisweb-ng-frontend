@@ -4,13 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import * as moment from 'moment';
-
 
 @Component({
   selector: 'app-paciente-show',
   templateUrl: './paciente-show.component.html',
-  styleUrls: ['./paciente-show.component.css']
 })
 export class PacienteShowComponent implements OnChanges {
   paciente: Paciente;

@@ -11,7 +11,6 @@ import {
 import {
   debounceTime,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 import { Subject } from 'rxjs';
 
 @Component({

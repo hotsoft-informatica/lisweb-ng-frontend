@@ -78,7 +78,9 @@ export class VersaoExameParametroComponent implements OnChanges {
     this.parametrosVersaoExame.unshift(this.currentParametroVersaoExame);
     this.currentParametroVersaoExame = new ParametroVersaoExame({});
     this.datasource.data = this.parametrosVersaoExame;
-    this.parametroVersaoExameService.showMessage('Parâmetro versão de exame adicionado com sucesso!');
+    this.parametroVersaoExameService.showMessage(
+      'Parâmetro versão de exame adicionado com sucesso!'
+    );
     this.onFocus();
   }
 

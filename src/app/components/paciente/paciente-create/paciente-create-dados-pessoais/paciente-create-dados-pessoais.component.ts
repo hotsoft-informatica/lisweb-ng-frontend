@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-// import * as moment from 'moment';
 import { Paciente } from '../../../model/paciente.model';
 import { PacienteService } from 'src/app/components/service/paciente.service';
-
 
 @Component({
   selector: 'app-paciente-create-dados-pessoais',

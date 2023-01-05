@@ -16,14 +16,18 @@
       Conselho UF: {{responsavelTecnico.uf_conselho}}
     </div>
     <div class="col-3">
-      CPF: {{(responsavelTecnico.cpf || '') | mask:'000.000.000-00'}}
+      <!-- TODO: Refazer mascaras -->
+      <!-- | mask:'000.000.000-00' -->
+      CPF: {{ (responsavelTecnico.cpf || '') }}
     </div>
     <div class="col-3">
       Cadastrada em: {{responsavelTecnico.criado_em | date: "dd/MM/yyyy"}}
     </div>
   </div>
   <div class="p-1 col d-flex justify-content-ini">
-    <button (click)="loadSignature(id)" mat-flat-button color="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseSigature"
+    <button (click)="loadSignature(id)"
+     mat-flat-button color="primary" class="dvm-button"
+      data-bs-toggle="collapse" data-bs-target="#collapseSigature"
       aria-expanded="false" aria-controls="collapseSigature">
       <mat-icon>search</mat-icon>
       Visualizar Assinatura
@@ -33,9 +37,13 @@
     <div class="card card-body">
       <div class="row">
         <div class="mb-3 col row">
-          <div style="text-align:center;" appearance="fill">
-            <img *ngIf="this.showSignature.imagem" [src]="this.showSignature.imagem | safeurl"/>
-            <p *ngIf="!this.showSignature.imagem">Imagem não localizada</p>
+          <div appearance="fill">
+            <img *ngIf="this.showSignature.imagem"
+              title="Assinatura"
+              [src]="this.showSignature.imagem | safeurl"/>
+            <p *ngIf="!this.showSignature.imagem">
+              Imagem não localizada
+            </p>
           </div>
         </div>
       </div>
