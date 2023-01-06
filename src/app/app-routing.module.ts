@@ -212,6 +212,10 @@ const routes: Routes = [
     component: SuperUserComponent,
   },
   {
+    path: 'users',
+    component: UserComponent,
+  },
+  {
     path: 'usuarios/create',
     component: UsuarioCreateComponent,
   },
