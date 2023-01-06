@@ -68,7 +68,7 @@ export class SuperUserService {
   }
 
   readById(id: number): Observable<SuperUser> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.updateUrl}/${id}`;
     return this.http.get<SuperUser>(url);
   }
 
@@ -101,7 +101,7 @@ export class SuperUserService {
       }
     });
 
-    return this.http.get<SuperUser[]>(this.baseUrl, {
+    return this.http.get<SuperUser[]>(this.indexUrl, {
       params,
     });
   }
