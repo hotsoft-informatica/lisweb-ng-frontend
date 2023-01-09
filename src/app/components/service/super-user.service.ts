@@ -12,7 +12,7 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
 })
 export class SuperUserService {
   indexUrl = '/index_super_users';
-  createUrl = '/create_super_users';
+  createUrl = '/create_super_user';
   updateUrl = '/update_super_user';
   baseUrl = '/super_users';
   logInUrl = '/super_users/sign_in';
