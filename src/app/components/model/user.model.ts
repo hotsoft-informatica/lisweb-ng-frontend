@@ -2,6 +2,8 @@ export class User {
   public id?: number;
   public email?: string;
   public encrypted_password?: string;
+  public password?: string;
+  public password_confirmation?: string;
   public name?: string;
   public nickname?: string;
   public image?: string;
