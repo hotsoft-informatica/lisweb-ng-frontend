@@ -10,6 +10,11 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
   providedIn: 'root',
 })
 export class UserService {
+  // Rotas customizadas para o crud de user
+  indexUrl = '/index_users';
+  createUrl = '/create_users';
+  updateUrl = '/update_user';
+
   baseUrl = '/users'
   loginUrl = '/users/sign_in';
   logoutUrl = '/users/sign_out';
