@@ -12,7 +12,7 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
 export class UserService {
   // Rotas customizadas para o crud de user
   indexUrl = '/index_users';
-  createUrl = '/create_users';
+  createUrl = '/create_user';
   updateUrl = '/update_user';
 
   baseUrl = '/users'
@@ -28,6 +28,9 @@ export class UserService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
+    this.indexUrl = backendIpService.getUrl() + this.indexUrl;
+    this.createUrl = backendIpService.getUrl() + this.createUrl;
+    this.updateUrl = backendIpService.getUrl() + this.updateUrl;
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
     this.loginUrl = backendIpService.getUrl() + this.loginUrl;
     this.logoutUrl = backendIpService.getUrl() + this.logoutUrl;
@@ -57,20 +60,20 @@ export class UserService {
   }
 
   create(user: User): Observable<User> {
-    return this.http.post<User>(this.baseUrl, user);
+    return this.http.post<User>(this.createUrl, user);
   }
 
   read(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl);
+    return this.http.get<User[]>(this.indexUrl);
   }
 
   readById(id: number): Observable<User> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.updateUrl}/${id}`;
     return this.http.get<User>(url);
   }
 
   update(user: User): Observable<User> {
-    const url = `${this.baseUrl}/${user.id}`;
+    const url = `${this.updateUrl}/${user.id}`;
     return this.http.put<User>(url, user);
   }
 
@@ -98,7 +101,7 @@ export class UserService {
       }
     });
 
-    return this.http.get<User[]>(this.baseUrl, {
+    return this.http.get<User[]>(this.indexUrl, {
       params,
     });
   }
