@@ -64,7 +64,10 @@ export class SuperUserService {
   }
 
   read(): Observable<SuperUser[]> {
-    return this.http.get<SuperUser[]>(this.indexUrl);
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    return this.http.get<SuperUser[]>(this.indexUrl, { headers: headers });
   }
 
   readById(id: number): Observable<SuperUser> {
@@ -73,12 +76,15 @@ export class SuperUserService {
   }
 
   update(superUser: SuperUser): Observable<SuperUser> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.updateUrl}/${superUser.id}`;
-    return this.http.put<SuperUser>(url, superUser);
+    return this.http.put<SuperUser>(url, superUser, { headers: headers });
   }
 
   delete(id: number): Observable<SuperUser> {
-    const url = `${this.baseUrl}/${id}`;
+    const url = `${this.indexUrl}/${id}`;
     return this.http.delete<SuperUser>(url);
   }
 
@@ -89,6 +95,11 @@ export class SuperUserService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<SuperUser[]> {
+
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders()
+      .set('Authorization', auth);
+
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -103,12 +114,18 @@ export class SuperUserService {
 
     return this.http.get<SuperUser[]>(this.indexUrl, {
       params,
+      headers: headers
     });
   }
 
   countRegisters(): Observable<number> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders()
+      .set('Authorization', auth);
+
     return this.http.get<number>(this.baseUrl, {
       params: new HttpParams().set('totalCount', 'true'),
+      headers: headers
     });
   }
 }
