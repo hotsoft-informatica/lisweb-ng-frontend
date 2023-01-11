@@ -84,8 +84,11 @@ export class SuperUserService {
   }
 
   delete(id: number): Observable<SuperUser> {
-    const url = `${this.indexUrl}/${id}`;
-    return this.http.delete<SuperUser>(url);
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<SuperUser>(url, { headers: headers });
   }
 
   find(
