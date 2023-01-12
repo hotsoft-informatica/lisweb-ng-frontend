@@ -93,13 +93,12 @@ export class SuperUserComponent implements OnInit, AfterViewInit {
   }
 
   updateGridData(): void {
-    this.onCreate = false;
-    this.onEdit = false;
     this.superUserService.update(this.currentRecord).subscribe(() => {
       this.superUserService.showMessage('Administrador atualizado com sucesso!');
+      this.onEdit = false;
+      this.currentRecord = new SuperUser({});
     });
 
-    this.currentRecord = new SuperUser({});
   }
 
   atualizar(row: SuperUser): void {
