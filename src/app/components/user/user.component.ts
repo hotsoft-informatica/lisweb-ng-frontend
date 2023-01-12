@@ -94,13 +94,11 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   updateGridData(): void {
-    this.onCreate = false;
-    this.onEdit = false;
     this.userService.update(this.currentRecord).subscribe(() => {
       this.userService.showMessage('Usuário atualizado com sucesso!');
+      this.onEdit = false;
+      this.currentRecord = new User({});
     });
-
-    this.currentRecord = new User({});
   }
 
   atualizar(row: User): void {
