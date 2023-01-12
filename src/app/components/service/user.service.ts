@@ -80,8 +80,11 @@ export class UserService {
   }
 
   update(user: User): Observable<User> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.updateUrl}/${user.id}`;
-    return this.http.put<User>(url, user);
+    return this.http.put<User>(url, user, { headers: headers });
   }
 
   delete(id: number): Observable<User> {
