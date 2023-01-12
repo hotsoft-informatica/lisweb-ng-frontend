@@ -125,7 +125,7 @@
     <!-- Admin Column -->
     <ng-container matColumnDef="admin" class="col-2">
       <th mat-header-cell *matHeaderCellDef>Administrador</th>
-      <td mat-cell *matCellDef="let row">{{ row?.admin?'Sim':'Não'}}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.admin==true?'Sim':'Não'}}</td>
     </ng-container>
 
     <!-- action Column -->
