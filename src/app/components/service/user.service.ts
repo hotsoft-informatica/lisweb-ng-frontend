@@ -53,14 +53,18 @@ export class UserService {
 
   logout(): Observable<User> {
     let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+    let authJson = JSON.parse(auth);
+    let headers = new HttpHeaders().set('Authorization', authJson);
 
     const url = `${this.logoutUrl}`;
     return this.http.delete(url, { headers: headers });
   }
 
   create(user: User): Observable<User> {
-    return this.http.post<User>(this.createUrl, user);
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    return this.http.post<User>(this.createUrl, user, { headers: headers });
   }
 
   read(): Observable<User[]> {

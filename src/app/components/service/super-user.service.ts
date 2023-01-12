@@ -60,7 +60,10 @@ export class SuperUserService {
   }
 
   create(superUser: SuperUser): Observable<SuperUser> {
-    return this.http.post<SuperUser>(this.createUrl, superUser);
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    return this.http.post<SuperUser>(this.createUrl, superUser, { headers: headers });
   }
 
   read(): Observable<SuperUser[]> {
