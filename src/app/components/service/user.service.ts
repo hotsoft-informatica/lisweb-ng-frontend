@@ -64,7 +64,10 @@ export class UserService {
   }
 
   read(): Observable<User[]> {
-    return this.http.get<User[]>(this.indexUrl);
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    return this.http.get<User[]>(this.indexUrl, { headers: headers });
   }
 
   readById(id: number): Observable<User> {
@@ -89,6 +92,11 @@ export class UserService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<User[]> {
+
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders()
+      .set('Authorization', auth);
+
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -103,12 +111,18 @@ export class UserService {
 
     return this.http.get<User[]>(this.indexUrl, {
       params,
+      headers: headers
     });
   }
 
   countRegisters(): Observable<number> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders()
+      .set('Authorization', auth);
+
     return this.http.get<number>(this.baseUrl, {
       params: new HttpParams().set('totalCount', 'true'),
+      headers: headers
     });
   }
 }
