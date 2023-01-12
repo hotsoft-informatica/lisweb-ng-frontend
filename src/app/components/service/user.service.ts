@@ -88,8 +88,11 @@ export class UserService {
   }
 
   delete(id: number): Observable<User> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<User>(url);
+    return this.http.delete<User>(url, { headers: headers });
   }
 
   find(
