@@ -8,7 +8,10 @@
       Cadastrar
     </button>
     <mat-menu #cadastro="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="tiposusuario">Usuários</button>
+      <button *ngIf="currentSuperUser || currentUser"
+        mat-menu-item [matMenuTriggerFor]="tiposusuario">
+        Usuários
+      </button>
       <button mat-menu-item [matMenuTriggerFor]="versaoexames">Versão Exames</button>
       <button mat-menu-item routerLink="/">
         Home
