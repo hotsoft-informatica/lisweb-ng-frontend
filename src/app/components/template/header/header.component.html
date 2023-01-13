@@ -23,10 +23,10 @@
         Pacientes
       </button>
       <mat-menu #tiposusuario="matMenu">
-        <button mat-menu-item routerLink="/super_users">
+        <button *ngIf="currentSuperUser && !currentUser" mat-menu-item routerLink="/super_users">
           Administrador
         </button>
-        <button mat-menu-item routerLink="/users">
+        <button *ngIf="currentSuperUser || currentUser" mat-menu-item routerLink="/users">
           Usuário
         </button>
       </mat-menu>
