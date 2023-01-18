@@ -1832,6 +1832,13 @@
   dependencies:
     nx "15.4.4"
 
+"@nrwl/cli@15.5.2":
+  version "15.5.2"
+  resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-15.5.2.tgz#57bfec1d1dd9235754c38fedfdbdb39ca9b1088c"
+  integrity sha512-T0nN2hYDtkY9SsbtZqFwRSYC8Td2zPqQ7dj6FrwvjFGbHLAxN6rknVPPKN4S7Dt6feXX1Woe8XYwWouk9Cg6nw==
+  dependencies:
+    nx "15.5.2"
+
 "@nrwl/cypress@15.4.4":
   version "15.4.4"
   resolved "https://registry.yarnpkg.com/@nrwl/cypress/-/cypress-15.4.4.tgz#88f05ac2e579c45e26af731bbf643aa89fa45c00"
@@ -1907,6 +1914,13 @@
   integrity sha512-ekPYVpz1y3XlCPu6UkQfcpwyNHQ0SsXMN8omB4MPTSknvEhKmcVOPG3Kr4W9fk1UjmBr58ItAGmtx2sjVMH7XQ==
   dependencies:
     nx "15.4.4"
+
+"@nrwl/tao@15.5.2":
+  version "15.5.2"
+  resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-15.5.2.tgz#b2c0657d5d2afc0b96a434acd319258c7951b1c5"
+  integrity sha512-1thpCNcdpHfTf+o3p+VB6v8TEj6to3YVhA9d+3VhDKN9mq/RVcoMQQRIAgNOKbYWYNo8eC8MvuNqxgRPz2ESyg==
+  dependencies:
+    nx "15.5.2"
 
 "@nrwl/webpack@15.4.4":
   version "15.4.4"
@@ -4843,6 +4857,15 @@ fs-extra@^10.0.0, fs-extra@^10.1.0:
     jsonfile "^6.0.1"
     universalify "^2.0.0"
 
+fs-extra@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.1.0.tgz#5784b102104433bb0e090f48bfc4a30742c357ed"
+  integrity sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==
+  dependencies:
+    graceful-fs "^4.2.0"
+    jsonfile "^6.0.1"
+    universalify "^2.0.0"
+
 fs-extra@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.1.0.tgz#49d43c45a88cd9677668cb7be1b46efdb8d2e1c0"
@@ -6292,6 +6315,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
+lines-and-columns@~2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-2.0.3.tgz#b2f0badedb556b747020ab8ea7f0373e22efac1b"
+  integrity sha512-cNOjgCnLB+FnvWWtyRTzmB3POJ+cXxTA81LoW7u8JdmhfXzriropYwpjShnz1QLLWsQwY7nIxoDmcPTwphDK9w==
+
 loader-runner@^4.2.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-4.3.0.tgz#c1b4a163b99f614830353b16755e7149ac2314e1"
@@ -7048,6 +7076,47 @@ nx@15.4.4:
     ignore "^5.0.4"
     js-yaml "4.1.0"
     jsonc-parser "3.2.0"
+    minimatch "3.0.5"
+    npm-run-path "^4.0.1"
+    open "^8.4.0"
+    semver "7.3.4"
+    string-width "^4.2.3"
+    strong-log-transformer "^2.1.0"
+    tar-stream "~2.2.0"
+    tmp "~0.2.1"
+    tsconfig-paths "^4.1.2"
+    tslib "^2.3.0"
+    v8-compile-cache "2.3.0"
+    yargs "^17.6.2"
+    yargs-parser "21.1.1"
+
+nx@15.5.2:
+  version "15.5.2"
+  resolved "https://registry.yarnpkg.com/nx/-/nx-15.5.2.tgz#c7e45a8d2067c49e69b526770f4c1a0f605f8239"
+  integrity sha512-jo8DG7zt0EorKL6AihkoshaeiFkK25NOeGUEnF05BFCaqsIoS9s3uctrOumh2G9DhaGMEWzakc3kF4/LeLB9pg==
+  dependencies:
+    "@nrwl/cli" "15.5.2"
+    "@nrwl/tao" "15.5.2"
+    "@parcel/watcher" "2.0.4"
+    "@yarnpkg/lockfile" "^1.1.0"
+    "@yarnpkg/parsers" "^3.0.0-rc.18"
+    "@zkochan/js-yaml" "0.0.6"
+    axios "^1.0.0"
+    chalk "^4.1.0"
+    cli-cursor "3.1.0"
+    cli-spinners "2.6.1"
+    cliui "^7.0.2"
+    dotenv "~10.0.0"
+    enquirer "~2.3.6"
+    fast-glob "3.2.7"
+    figures "3.2.0"
+    flat "^5.0.2"
+    fs-extra "^11.1.0"
+    glob "7.1.4"
+    ignore "^5.0.4"
+    js-yaml "4.1.0"
+    jsonc-parser "3.2.0"
+    lines-and-columns "~2.0.3"
     minimatch "3.0.5"
     npm-run-path "^4.0.1"
     open "^8.4.0"
