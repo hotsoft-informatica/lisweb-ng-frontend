@@ -52,7 +52,7 @@ export class LaboratoryDomainService {
     return this.http.delete<LaboratoryDomain>(url);
   }
 
-  findLaboratoryDomains(
+  find(
     active: string = '',
     sortOrder: string = 'asc',
     pageNumber: number = 1,

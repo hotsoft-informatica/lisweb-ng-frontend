@@ -25,7 +25,7 @@ export class LaboratoryDomainReadDataSource implements DataSource<LaboratoryDoma
     this.loadingSubject.next(true);
 
     this.laboratoryDomainService
-      .findLaboratoryDomains(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

@@ -51,7 +51,7 @@ export class LaboratorioCreateComponent implements OnInit {
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.laboratoryDomainService
-        .findLaboratoryDomains('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, this.queries)
         .subscribe((laboratoryDomains) => {
           console.table(this.queries);
           this.laboratoryDomains = laboratoryDomains;
