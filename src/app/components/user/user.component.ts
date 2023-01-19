@@ -1,8 +1,10 @@
 import { Query } from '../model/query.model';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../model/user.model';
 import { UserService } from '../service/user.service';
+import { LaboratoryDomain } from '../model/laboratory-domain.model';
+import { LaboratoryDomainService } from '../service/laboratory-domain.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,6 +19,7 @@ import { merge, fromEvent } from 'rxjs';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit, AfterViewInit {
+  @Input('laboratory_domains') laboratory_domains: LaboratoryDomain[] = [];
 
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
@@ -28,15 +31,18 @@ export class UserComponent implements OnInit, AfterViewInit {
   id!: number;
   totalCount!: number;
 
-
+  @ViewChild('laboratory_domain_id') laboratory_domain_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
+  queries: Query[] = [];
+  subjectLaboratoryDomain: Subject<any> = new Subject();
+
   onEdit = false;
   onCreate = false;
 
-  displayedColumns = ['name', 'email', 'admin', 'action'];
+  displayedColumns = ['name', 'email', 'admin', 'laboratory_domain_id', 'action'];
 
   constructor(
     public dialog: MatDialog,
@@ -44,6 +50,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
+    private laboratoryDomainService: LaboratoryDomainService
   ) {
     this.currentRecord = new User({});
     this.record ||= new User({});
@@ -53,6 +60,19 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.userService.countRegisters().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
+
+    const query = new Query({ key: '', value: '', isNumeric: false });
+
+    this.subjectLaboratoryDomain.pipe(debounceTime(500)).subscribe(() => {
+      this.laboratoryDomainService
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((laboratory_domains) => {
+          console.table(this.queries);
+          this.laboratory_domains = laboratory_domains;
+        });
+    });
+    this.subjectLaboratoryDomain.next(null);
+
   }
 
   ngAfterViewInit() {
@@ -136,6 +156,29 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.query.push(query);
     this.paginator.pageIndex = 0;
     this.loadPage();
+  }
+
+  searchLaboratoryDomain(): void {
+    const query_string = this.currentRecord
+      .laboratory_domain_id as unknown as string;
+    const query = new Query({
+      key: 'name',
+      value: query_string,
+      isNumeric: false,
+    });
+    console.warn(query_string);
+    this.queries = [];
+    this.queries.push(query);
+    this.subjectLaboratoryDomain.next(null);
+  }
+
+  displayFnLaboratoryDomain(options: LaboratoryDomain[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.name : '';
+    };
   }
 
 }
