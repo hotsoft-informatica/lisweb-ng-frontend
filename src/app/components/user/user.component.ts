@@ -31,6 +31,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   id!: number;
   totalCount!: number;
 
+  @ViewChild('nome') nome!: ElementRef;
   @ViewChild('laboratory_domain_id') laboratory_domain_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -42,7 +43,13 @@ export class UserComponent implements OnInit, AfterViewInit {
   onEdit = false;
   onCreate = false;
 
-  displayedColumns = ['name', 'email', 'admin', 'laboratory_domain_id', 'action'];
+  displayedColumns = [
+    'name',
+    'email',
+    'admin',
+    'laboratory_domain_id',
+    'action'
+  ];
 
   constructor(
     public dialog: MatDialog,
@@ -71,6 +78,7 @@ export class UserComponent implements OnInit, AfterViewInit {
           this.laboratory_domains = laboratory_domains;
         });
     });
+
     this.subjectLaboratoryDomain.next(null);
 
   }
@@ -98,6 +106,11 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   new(): void {
     this.onCreate = true;
+    this.onFocus();
+  }
+
+  onFocus(): void {
+    this.loadPage();
   }
 
   addGridData(): void {
@@ -111,13 +124,16 @@ export class UserComponent implements OnInit, AfterViewInit {
     });
 
     this.currentRecord = new User({});
+    this.onFocus();
   }
 
   updateGridData(): void {
+    this.onCreate = false;
     this.userService.update(this.currentRecord).subscribe(() => {
       this.userService.showMessage('Usuário atualizado com sucesso!');
       this.onEdit = false;
       this.currentRecord = new User({});
+      this.onFocus();
     });
   }
 
@@ -125,6 +141,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.currentRecord = row;
     this.onCreate = false;
     this.onEdit = true;
+    this.onFocus();
   }
 
   cancelar(): void {
