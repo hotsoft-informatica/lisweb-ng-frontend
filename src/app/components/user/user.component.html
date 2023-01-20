@@ -87,6 +87,27 @@
           </mat-select>
         </mat-form-field>
 
+        <mat-tab-group>
+          <mat-tab label="Fazer associação">
+            <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
+              <mat-label>Lab. Domínio</mat-label>
+              <input
+                name="laboratory_domain_id"
+                matInput [matAutocomplete]="autoLaboratoryDomains"
+                [(ngModel)]="currentRecord.laboratory_domain_id"
+                (ngModelChange)="searchLaboratoryDomain()"
+                #laboratory_domain_id2="ngModel"
+                #laboratory_domain_id
+              />
+              <mat-autocomplete #autoLaboratoryDomains="matAutocomplete" [displayWith]="displayFnLaboratoryDomain(laboratory_domains)">
+                <mat-option *ngFor="let laboratory_domain of laboratory_domains" [value]="laboratory_domain.id">
+                  {{laboratory_domain.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </mat-tab>
+        </mat-tab-group>
+
         <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
           <button mat-button
           (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateUser.invalid">Inserir</button>
@@ -126,6 +147,12 @@
     <ng-container matColumnDef="admin" class="col-2">
       <th mat-header-cell *matHeaderCellDef>Administrador</th>
       <td mat-cell *matCellDef="let row">{{ row?.admin=='true' ? 'Sim' : 'Não' }}</td>
+    </ng-container>
+
+    <!-- Laboratory Domain Column -->
+    <ng-container matColumnDef="laboratory_domain_id" class="col-2">
+      <th mat-header-cell *matHeaderCellDef>Lab. Domínio</th>
+      <td mat-cell *matCellDef="let row">{{ row?.laboratory_domain?.name }}</td>
     </ng-container>
 
     <!-- action Column -->
