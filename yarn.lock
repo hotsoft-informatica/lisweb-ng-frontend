@@ -2400,7 +2400,7 @@
     "@material/theme" "15.0.0-canary.fd95ca7ef.0"
     tslib "^2.1.0"
 
-"@ngneat/helipopper@^6.2.0":
+"@ngneat/helipopper@^6.5.0":
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/@ngneat/helipopper/-/helipopper-6.5.0.tgz#bad8ea82664a82966e27d1a1d607e2ff36ea7e32"
   integrity sha512-nOpwU96ufpVzAAq7f/+n5DEeMG/eI2o0Lx4mKwnjdEIyrHrTtf6ywOuLyhFSYwzWAzzcbZyBjzigXzOXQEGh6A==

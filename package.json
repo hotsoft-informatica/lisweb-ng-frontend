@@ -30,7 +30,7 @@
     "@angular-material-extensions/input-counter": "^1.0.1",
     "@angular/cli": "^15.1.1",
     "@angular/flex-layout": "^14.0.0-beta.41",
-    "@ngneat/helipopper": "^6.2.0",
+    "@ngneat/helipopper": "^6.5.0",
     "@ngneat/overview": "^3.0.2",
     "@ngx-translate/core": "^14.0.0",
     "@nrwl/angular": "15.4.4",
