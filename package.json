@@ -33,7 +33,7 @@
     "@ngneat/helipopper": "^6.5.0",
     "@ngneat/overview": "^4.0.0",
     "@ngx-translate/core": "^14.0.0",
-    "@nrwl/angular": "15.4.4",
+    "@nrwl/angular": "15.6.0",
     "@popperjs/core": "^2.11.6",
     "angular-hotkeys": "^1.7.0",
     "bootstrap": "^5.2.3",
