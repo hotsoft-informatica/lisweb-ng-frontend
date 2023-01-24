@@ -88,7 +88,7 @@
         </mat-form-field>
 
         <mat-tab-group>
-          <mat-tab label="Fazer associação">
+          <mat-tab label="Associar Domínio">
             <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
               <mat-label>Lab. Domínio</mat-label>
               <input
@@ -96,12 +96,29 @@
                 matInput [matAutocomplete]="autoLaboratoryDomains"
                 [(ngModel)]="currentRecord.laboratory_domain_id"
                 (ngModelChange)="searchLaboratoryDomain()"
-                #laboratory_domain_id2="ngModel"
-                #laboratory_domain_id
+                #laboratory_domain_id="ngModel"
               />
               <mat-autocomplete #autoLaboratoryDomains="matAutocomplete" [displayWith]="displayFnLaboratoryDomain(laboratory_domains)">
                 <mat-option *ngFor="let laboratory_domain of laboratory_domains" [value]="laboratory_domain.id">
                   {{laboratory_domain.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </mat-tab>
+
+          <mat-tab label="Associar Laboratório">
+            <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
+              <mat-label>Laboratório</mat-label>
+              <input
+                name="laboratorio_id"
+                matInput [matAutocomplete]="autoLaboratorios"
+                [(ngModel)]="currentRecord.laboratorio_id"
+                (ngModelChange)="searchLaboratorio()"
+                #laboratorio_id="ngModel"
+              />
+              <mat-autocomplete #autoLaboratorios="matAutocomplete" [displayWith]="displayFnLaboratorio(laboratorios)">
+                <mat-option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">
+                  {{laboratorio.nome}}
                 </mat-option>
               </mat-autocomplete>
             </mat-form-field>
