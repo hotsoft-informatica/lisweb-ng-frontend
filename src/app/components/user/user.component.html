@@ -106,7 +106,7 @@
             </mat-form-field>
           </mat-tab>
 
-          <mat-tab label="Associar Laboratório">
+          <mat-tab *ngIf="currentRecord.laboratory_domain_id" label="Associar Laboratório">
             <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
               <mat-label>Laboratório</mat-label>
               <input
