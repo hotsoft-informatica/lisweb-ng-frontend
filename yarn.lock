@@ -1692,10 +1692,10 @@
     tippy.js "6.3.7"
     tslib "2.3.1"
 
-"@ngneat/overview@^3.0.2":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@ngneat/overview/-/overview-3.0.4.tgz#bd8be61510cb83ca494db0a9c699104540c790f8"
-  integrity sha512-w5cyli3goDBegN1G/v9dCGDOQIecDN78C83nUs1STuarS/ry9kjgAp/W9IJSQhqrcVhvHhOVPIkhZ4Pj3Yw9Xg==
+"@ngneat/overview@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@ngneat/overview/-/overview-4.0.0.tgz#f385f12fb9961d595d84c3e80f77e9f2bddf9ed9"
+  integrity sha512-BMFqyVFrcaIxNavJ7xbTAozAaU8bYbxR6ODGjgKGV/0CGJo73OFwB2SaaDFMx71cnNd91P+RPC8Zch8zLkZs7g==
   dependencies:
     tslib "^2.0.0"
 
