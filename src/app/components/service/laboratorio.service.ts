@@ -68,7 +68,7 @@ export class LaboratorioService {
     return this.http.delete<Laboratorio>(url);
   }
 
-  findLaboratorios(
+  find(
     active: string = '',
     sortOrder: string = 'asc',
     pageNumber: number = 1,
