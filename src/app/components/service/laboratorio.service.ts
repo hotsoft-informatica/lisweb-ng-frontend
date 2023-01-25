@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root',
 })
 export class LaboratorioService {
+  associationUrl = '/laboratorios_dominio';
   baseUrl = '/laboratorios';
   storage: Storage = window.localStorage;
 
@@ -21,6 +22,7 @@ export class LaboratorioService {
     private backendIpService: BackendIpService
   ) {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.associationUrl = backendIpService.getUrl() + this.associationUrl;
   }
 
   getData() {
@@ -56,6 +58,12 @@ export class LaboratorioService {
   readById(id: number): Observable<Laboratorio> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Laboratorio>(url);
+  }
+
+  getAssocLabId(id: number): Observable<Laboratorio[]> {
+    const url = `${this.associationUrl}/${id}`;
+    console.log(url);
+    return this.http.get<Laboratorio[]>(url);
   }
 
   update(laboratorio: Laboratorio): Observable<Laboratorio> {
