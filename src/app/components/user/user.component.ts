@@ -1,5 +1,14 @@
 import { Query } from '../model/query.model';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  TemplateRef,
+  Renderer2,
+  ElementRef,
+  Input,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../model/user.model';
 import { UserService } from '../service/user.service';
@@ -7,13 +16,12 @@ import { LaboratoryDomain } from '../model/laboratory-domain.model';
 import { LaboratoryDomainService } from '../service/laboratory-domain.service';
 import { Laboratorio } from '../model/laboratorio.model';
 import { LaboratorioService } from '../service/laboratorio.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, timer } from 'rxjs';
+import { Subject } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { tap, debounceTime } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { merge } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -32,6 +40,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   deletedRecords: any[] = [];
   query: Query[] = [];
   id!: number;
+  // laboratory_domain_id!: number;
   totalCount!: number;
 
   @ViewChild('nome') nome!: ElementRef;
@@ -54,14 +63,12 @@ export class UserComponent implements OnInit, AfterViewInit {
     'email',
     'admin',
     'laboratory_domain_id',
+    'laboratorio_id',
     'action'
   ];
 
   constructor(
     public dialog: MatDialog,
-    private renderer: Renderer2,
-    private router: Router,
-    private route: ActivatedRoute,
     private userService: UserService,
     private laboratorioService: LaboratorioService,
     private laboratoryDomainService: LaboratoryDomainService
@@ -77,28 +84,24 @@ export class UserComponent implements OnInit, AfterViewInit {
 
     const query = new Query({ key: '', value: '', isNumeric: false });
 
-    this.subjectLaboratorio.pipe(debounceTime(500)).subscribe(() => {
-      this.laboratorioService
-        .find('id', 'asc', 0, 60, this.queries)
-        .subscribe((laboratorios) => {
-          console.table(this.queries);
-          this.laboratorios = laboratorios;
-        });
-    });
-
-    this.subjectLaboratorio.next(null);
-
     this.subjectLaboratoryDomain.pipe(debounceTime(500)).subscribe(() => {
       this.laboratoryDomainService
         .find('id', 'asc', 0, 60, this.queries)
         .subscribe((laboratory_domains) => {
-          console.table(this.queries);
+          // console.table(this.queries);
           this.laboratory_domains = laboratory_domains;
         });
     });
 
     this.subjectLaboratoryDomain.next(null);
+  }
 
+  laboratoryDomainChange(event: any): void {
+    this.laboratorioService
+      .getAssocLabId(event.source.value)
+      .subscribe((laboratorios) => {
+        this.laboratorios = laboratorios;
+      });
   }
 
   ngAfterViewInit() {
@@ -201,7 +204,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       value: query_string,
       isNumeric: false,
     });
-    console.warn(query_string);
+    // console.warn(query_string);
     this.queries = [];
     this.queries.push(query);
     this.subjectLaboratorio.next(null);
@@ -224,7 +227,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       value: query_string,
       isNumeric: false,
     });
-    console.warn(query_string);
+    // console.warn(query_string);
     this.queries = [];
     this.queries.push(query);
     this.subjectLaboratoryDomain.next(null);
