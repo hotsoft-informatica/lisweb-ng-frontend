@@ -99,7 +99,7 @@
                 #laboratory_domain_id="ngModel"
               />
               <mat-autocomplete #autoLaboratoryDomains="matAutocomplete" [displayWith]="displayFnLaboratoryDomain(laboratory_domains)">
-                <mat-option *ngFor="let laboratory_domain of laboratory_domains" [value]="laboratory_domain.id">
+                <mat-option *ngFor="let laboratory_domain of laboratory_domains" [value]="laboratory_domain.id" (onSelectionChange)="laboratoryDomainChange($event)">
                   {{laboratory_domain.name}}
                 </mat-option>
               </mat-autocomplete>
@@ -170,6 +170,12 @@
     <ng-container matColumnDef="laboratory_domain_id" class="col-2">
       <th mat-header-cell *matHeaderCellDef>Lab. Domínio</th>
       <td mat-cell *matCellDef="let row">{{ row?.laboratory_domain?.name }}</td>
+    </ng-container>
+
+    <!-- Laboratory Domain Column -->
+    <ng-container matColumnDef="laboratorio_id" class="col-2">
+      <th mat-header-cell *matHeaderCellDef>Laboratório</th>
+      <td mat-cell *matCellDef="let row">{{ row?.laboratorio?.nome }}</td>
     </ng-container>
 
     <!-- action Column -->
