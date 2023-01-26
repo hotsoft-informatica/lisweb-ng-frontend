@@ -63,7 +63,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     'email',
     'admin',
     'laboratory_domain_id',
-    'laboratorio_id',
+    'laboratorio_principal_id',
     'action'
   ];
 
