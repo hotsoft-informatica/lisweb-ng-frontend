@@ -108,11 +108,11 @@
             <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2" *ngIf="currentRecord.laboratory_domain_id">
               <mat-label>Laboratório</mat-label>
               <input
-                name="laboratorio_id"
+                name="laboratorio_principal_id"
                 matInput [matAutocomplete]="autoLaboratorios"
-                [(ngModel)]="currentRecord.laboratorio_id"
+                [(ngModel)]="currentRecord.laboratorio_principal_id"
                 (ngModelChange)="searchLaboratorio()"
-                #laboratorio_id="ngModel"
+                #laboratorio_principal_id="ngModel"
               />
               <mat-autocomplete #autoLaboratorios="matAutocomplete" [displayWith]="displayFnLaboratorio(laboratorios)">
                 <mat-option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">
@@ -159,7 +159,7 @@
     </ng-container>
     <!-- Admin Column -->
     <ng-container matColumnDef="admin" class="col-2">
-      <th mat-header-cell *matHeaderCellDef>Administrador</th>
+      <th mat-header-cell *matHeaderCellDef>Admin?</th>
       <td mat-cell *matCellDef="let row">{{ row?.admin ? 'Sim' : 'Não' }}</td>
     </ng-container>
 
@@ -169,10 +169,10 @@
       <td mat-cell *matCellDef="let row">{{ row?.laboratory_domain?.name }}</td>
     </ng-container>
 
-    <!-- Laboratory Domain Column -->
-    <ng-container matColumnDef="laboratorio_id" class="col-2">
+    <!-- Laboratorio Principal Column -->
+    <ng-container matColumnDef="laboratorio_principal_id" class="col-2">
       <th mat-header-cell *matHeaderCellDef>Laboratório</th>
-      <td mat-cell *matCellDef="let row">{{ row?.laboratorio?.nome }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.laboratorio_principal?.nome }}</td>
     </ng-container>
 
     <!-- action Column -->
