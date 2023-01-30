@@ -12,6 +12,8 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../model/user.model';
 import { UserService } from '../service/user.service';
+import { Usuario } from '../model/usuario.model';
+import { UsuarioService } from '../service/usuario.service';
 import { LaboratoryDomain } from '../model/laboratory-domain.model';
 import { LaboratoryDomainService } from '../service/laboratory-domain.service';
 import { Laboratorio } from '../model/laboratorio.model';
@@ -31,6 +33,7 @@ import { merge } from 'rxjs';
 export class UserComponent implements OnInit, AfterViewInit {
   @Input('laboratory_domains') laboratory_domains: LaboratoryDomain[] = [];
   @Input('laboratorios') laboratorios: Laboratorio[] = [];
+  @Input('usuarios') usuarios: Usuario[] = [];
 
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
@@ -45,6 +48,7 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   @ViewChild('nome') nome!: ElementRef;
   @ViewChild('laboratorio_id') laboratorio_id!: ElementRef;
+  @ViewChild('usuario_id') usuario_id!: ElementRef;
   @ViewChild('laboratory_domain_id') laboratory_domain_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
