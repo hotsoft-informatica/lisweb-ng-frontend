@@ -88,7 +88,7 @@
         </mat-form-field>
 
         <mat-tab-group>
-          <mat-tab label="Associar" *ngIf="onCreate" >
+          <mat-tab label="Associar Domínio e Laboratório" *ngIf="onCreate" >
             <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
               <mat-label>Lab. Domínio</mat-label>
               <input
@@ -121,6 +121,24 @@
               </mat-autocomplete>
             </mat-form-field>
           </mat-tab>
+          <mat-tab label="Associar User e Usuário LM" *ngIf="onCreate" >
+            <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
+              <mat-label>Lab. Domínio</mat-label>
+              <input
+                name="laboratory_domain_id"
+                matInput [matAutocomplete]="autoLaboratoryDomains"
+                [(ngModel)]="currentRecord.laboratory_domain_id"
+                (ngModelChange)="searchLaboratoryDomain()"
+                #laboratory_domain_id="ngModel"
+              />
+              <mat-autocomplete #autoLaboratoryDomains="matAutocomplete" [displayWith]="displayFnLaboratoryDomain(laboratory_domains)">
+                <mat-option *ngFor="let laboratory_domain of laboratory_domains" [value]="laboratory_domain.id" (onSelectionChange)="laboratoryDomainChange($event)">
+                  {{laboratory_domain.name}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </mat-tab>
+
         </mat-tab-group>
 
         <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
