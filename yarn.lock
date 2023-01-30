@@ -1907,10 +1907,10 @@
     tippy.js "6.3.7"
     tslib "2.3.1"
 
-"@ngneat/overview@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@ngneat/overview/-/overview-4.0.0.tgz#f385f12fb9961d595d84c3e80f77e9f2bddf9ed9"
-  integrity sha512-BMFqyVFrcaIxNavJ7xbTAozAaU8bYbxR6ODGjgKGV/0CGJo73OFwB2SaaDFMx71cnNd91P+RPC8Zch8zLkZs7g==
+"@ngneat/overview@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@ngneat/overview/-/overview-4.0.1.tgz#d2579c85b98728053d818365aed38dcde17da520"
+  integrity sha512-CIoTIyG9WrgDTNtewmTe2XCrgUns0Hbu53qjpahIFN0yrtct0+fTkKjcOkVTKvLYNOpv9Di+iFe6/pMSVINtsA==
   dependencies:
     tslib "^2.0.0"
 
