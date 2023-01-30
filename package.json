@@ -54,7 +54,7 @@
     "@angular-devkit/architect": "^0.1501.3",
     "@angular-devkit/schematics": "^15.1.2",
     "@angular/compiler": "^15.0.2",
-    "@nrwl/workspace": "^15.5.3",
+    "@nrwl/workspace": "^15.6.3",
     "@types/jasmine": "^4.3.1",
     "@types/node": "^18.11.15",
     "core-js": "^3.26.1",

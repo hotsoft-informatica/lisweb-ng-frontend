@@ -2905,7 +2905,7 @@
     yargs "^11.0.0"
     yargs-parser "10.0.0"
 
-"@nrwl/workspace@^15.5.3":
+"@nrwl/workspace@^15.6.3":
   version "15.6.3"
   resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-15.6.3.tgz#a9fd3c5692dfaebb04642e4e86d930d144bc2fed"
   integrity sha512-RkCmDvcMXCVanR0RS8CZ14D7OMojSyvAal+b37P521MpizDkiN+zdRKewKvyOonzDeTAmZODtYccQ/uM5DjRfQ==
