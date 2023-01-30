@@ -1,5 +1,6 @@
 import { Query } from './../model/query.model';
 import { Laboratorio } from '../model/laboratorio.model';
+import { Usuario } from '../model/usuario.model';
 import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -64,6 +65,12 @@ export class LaboratorioService {
     const url = `${this.associationUrl}/${id}`;
     console.log(url);
     return this.http.get<Laboratorio[]>(url);
+  }
+
+  getAssocLmUsuariosId(id: number): Observable<Usuario[]> {
+    const url = `${this.associationUrl}/${id}`;
+    console.log(url);
+    return this.http.get<Usuario[]>(url);
   }
 
   update(laboratorio: Laboratorio): Observable<Laboratorio> {
