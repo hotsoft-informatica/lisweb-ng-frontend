@@ -105,6 +105,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       .getAssocLabId(event.source.value)
       .subscribe((laboratorios) => {
         this.laboratorios = laboratorios;
+        this.currentRecord.laboratorio_principal_id = null;
       });
   }
 
