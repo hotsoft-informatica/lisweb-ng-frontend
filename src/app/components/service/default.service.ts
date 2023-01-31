@@ -72,7 +72,12 @@ export class DefaultService {
     let headers = new HttpHeaders().set('Authorization', auth);
 
     const url = `${this.baseUrl + endpoint}/${id}`;
-    return this.http.get<any>(url, { headers: headers });
+
+    if ( id == null ){
+      return new Observable();
+    } else {
+      return this.http.get<any>(url, { headers: headers });
+    }
   }
 
   update(record: any, endpoint: string): Observable<any> {
