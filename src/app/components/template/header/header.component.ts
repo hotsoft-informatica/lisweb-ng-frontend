@@ -4,7 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
 import { Router } from '@angular/router';
+import { SuperUserService } from '../../service/super-user.service';
 import { UserService } from '../../service/user.service';
+import { SuperUser } from '../../model/super-user.model';
+import { User } from '../../model/user.model';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +15,17 @@ import { UserService } from '../../service/user.service';
 })
 export class HeaderComponent implements OnInit {
   routerStr = '';
+  logged: boolean = false;
+  currentUser: User = new User({});
+  currentSuperUser: SuperUser = new User({});
+
+  storage: Storage = window.localStorage;
 
   constructor(private router: Router,
     private logoutService: LogoutService,
     public dialog: MatDialog,
+    private superUserService: SuperUserService,
+
     private userService: UserService
   ) { }
 
@@ -27,8 +37,35 @@ export class HeaderComponent implements OnInit {
     return this.routerStr.includes(route);
   }
 
+  isLogedIn(): boolean {
+    this.currentUser = JSON.parse(
+      this.storage.getItem('currentUser') as string
+    ) as User;
+    this.currentSuperUser = JSON.parse(
+      this.storage.getItem('currentSuperUser') as string
+    ) as SuperUser;
+    if (
+      (this.currentUser && this.currentUser.id as number > 0) ||
+      (this.currentSuperUser && this.currentSuperUser.id as number > 0)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   logout(): void {
-    this.logoutService.sair();
+    if (this.currentUser) {
+      this.storage.removeItem('currentUser');
+    }
+    else if (this.currentSuperUser) {
+      this.storage.removeItem('currentSuperUser');
+    }
+
+    this.logoutService.logout().subscribe(() => {
+      this.logoutService.showMessage('Sessão encerrada com sucesso!');
+      this.router.navigate(['/']);
+    });
   }
 
   userLogout(): void {
@@ -45,4 +82,11 @@ export class HeaderComponent implements OnInit {
     const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {});
   }
+
+  superUserLogout(): void {
+    this.superUserService.logout().subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
 }
+

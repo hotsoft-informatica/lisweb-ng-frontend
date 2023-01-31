@@ -25,7 +25,7 @@ export class ResponsavelTecnicoReadDataSource implements DataSource<ResponsavelT
     this.loadingSubject.next(true);
 
     this.responsavelTecnicoService
-      .findResponsavelTecnico(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))

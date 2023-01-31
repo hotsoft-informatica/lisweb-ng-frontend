@@ -1,5 +1,5 @@
 import { BackendIpService } from './backend-ip.service';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
@@ -10,8 +10,8 @@ import { Query } from './../model/query.model';
 })
 export class DefaultService {
   baseUrl : string = '/';
-
   query: Query[] = [];
+  storage: Storage = window.localStorage;
 
   constructor(
     private snackbar: MatSnackBar,
@@ -31,7 +31,10 @@ export class DefaultService {
   }
 
   create(record: any, endpoint: string): Observable<any> {
-    return this.http.post<any>(this.baseUrl + endpoint, record);
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    return this.http.post<any>(this.baseUrl + endpoint, record, { headers: headers });
   }
 
   read(
@@ -44,6 +47,8 @@ export class DefaultService {
   ): Observable<any[]> {
     // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
 
     queries.forEach((busca) => {
       params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
@@ -52,7 +57,6 @@ export class DefaultService {
     params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
     params = params.append('pageNumber', pageNumber.toString());
     params = params.append('pageSize', pageSize.toString());
-
     queries?.forEach((queryItem) => {
       if (queryItem) {
         const key = `queryItem[${queryItem.key}]`;
@@ -60,22 +64,31 @@ export class DefaultService {
       }
     });
 
-    return this.http.get<any[]>(this.baseUrl + endpoint, { params }); // Passa qual operação sera realizada pelo backend
+    return this.http.get<any[]>(this.baseUrl + endpoint, { params: params, headers: headers }); // Passa qual operação sera realizada pelo backend
   }
 
   readById(id: number, endpoint: string): Observable<any> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl + endpoint}/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<any>(url, { headers: headers });
   }
 
   update(record: any, endpoint: string): Observable<any> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl + endpoint}/${record.id}`;
-    return this.http.put<any>(url, record);
+    return this.http.put<any>(url, record, { headers: headers });
   }
 
   delete(id: number, endpoint: string): Observable<any> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl + endpoint}/${id}`;
-    return this.http.delete<any>(url);
+    return this.http.delete<any>(url, { headers: headers });
   }
 
   find(
@@ -86,6 +99,9 @@ export class DefaultService {
     query: Query[] | null,
     endpoint: string
   ): Observable<any[]> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -99,13 +115,17 @@ export class DefaultService {
     });
 
     return this.http.get<any[]>(this.baseUrl + endpoint, {
-      params,
+      params: params, headers: headers
     });
   }
 
   count(endpoint: string): Observable<number> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     return this.http.get<number>(this.baseUrl + endpoint, {
       params: new HttpParams().set('totalCount', 'true'),
+      headers: headers
     });
   }
 }

@@ -1,37 +1,49 @@
 import { Login } from '../../model/login.model';
 import { Router } from '@angular/router';
+import { User } from '../../model/user.model';
+import { UserLogin } from '../../model/login.model';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+
 @Component({
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
 })
 export class LgUserComponent implements OnInit {
-  @Input('login') login: Login;
+  @Input('login') login: UserLogin;
+  storage: Storage = window.localStorage;
 
   constructor(
     private router: Router,
     private userService: UserService
   ) {
-    this.login = new Login({ "user": {} });
+    this.login = new UserLogin({ "user": {} });
   }
 
   ngOnInit(): void {
   }
 
-  UserLogin(): void {
+  userLogin(): void {
     // TODO: Tratar deprecation do subscribe
     // TODO: Revisar e merge
     this.userService.login(this.login).subscribe(
-      (user) => {
+      (res) => {
         console.log("Arrow function user");
-        console.table(user);
+
+        let header: HttpHeaders = res.headers;
+        let auth: string = header.get('Authorization') as string;
+        let user: User = res.body.status.data as User;
+
+        localStorage.setItem('Authorization', auth);
+        localStorage.setItem('userLoginType', 'user');
+        localStorage.setItem('currentUser', JSON.stringify(user));
       },
       (err) => {
         console.log("Arrow function err")
         console.table(err);
         // TODO: Tratar retornos com erro
-        this.userService.showMessage('Usuário logado com sucesso!');
+        this.userService.showMessage('Erro ao efetuar o login!');
         this.router.navigate(['/']);
       },
       () => {
@@ -41,3 +53,4 @@ export class LgUserComponent implements OnInit {
       });
   }
 }
+

@@ -64,6 +64,7 @@ import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.com
 import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
 import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
 import { NotaComponent } from './components/nota/nota.component';
+import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
 import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
 import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
@@ -88,6 +89,7 @@ import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-del
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { SuperUserComponent } from './components/super-user/super-user.component';
 import { UserComponent } from './components/user/user.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
@@ -104,6 +106,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LgUserComponent,
+  },
+  {
+    path: 'login_super_user',
+    component: LgSuperUserComponent,
   },
   {
     path: 'senha',
@@ -216,6 +222,14 @@ const routes: Routes = [
   {
     path: 'requisicoes/delete/:id',
     component: RequisicaoDeleteComponent,
+  },
+  {
+    path: 'super_users',
+    component: SuperUserComponent,
+  },
+  {
+    path: 'users',
+    component: UserComponent,
   },
   {
     path: 'usuarios/create',
@@ -535,3 +549,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule { }
+

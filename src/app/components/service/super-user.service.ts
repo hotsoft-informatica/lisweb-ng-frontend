@@ -1,8 +1,7 @@
-import { BaseService } from './base.service';
-import { Injectable, Inject, Injector } from '@angular/core';
-import { User } from '../model/user.model';
-import { UserLogin } from '../model/login.model';
+import { SuperUser } from '../model/super-user.model';
+import { SuperUserLogin } from '../model/login.model';
 import { Query } from './../model/query.model';
+import { Injectable } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
@@ -11,84 +10,88 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
 @Injectable({
   providedIn: 'root',
 })
-export class UserService extends BaseService {
-  // Rotas customizadas para o crud de user
-  indexUrl = '/index_users';
-  createUrl = '/create_user';
-  updateUrl = '/update_user';
-
-  baseUrl = '/users'
-  loginUrl = '/users/sign_in';
-  logoutUrl = '/users/sign_out';
+export class SuperUserService {
+  indexUrl = '/index_super_users';
+  createUrl = '/create_super_user';
+  updateUrl = '/update_super_user';
+  baseUrl = '/super_users';
+  logInUrl = '/super_users/sign_in';
+  logOutUrl = '/super_users/sign_out';
 
   storage: Storage = window.localStorage;
+
   query: Query[] = [];
 
   constructor(
-    @Inject(Injector) public injector: Injector,
-    public http: HttpClient,
     private snackbar: MatSnackBar,
+    private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
-    super(injector, http);
     this.indexUrl = backendIpService.getUrl() + this.indexUrl;
     this.createUrl = backendIpService.getUrl() + this.createUrl;
     this.updateUrl = backendIpService.getUrl() + this.updateUrl;
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
-    this.loginUrl = backendIpService.getUrl() + this.loginUrl;
-    this.logoutUrl = backendIpService.getUrl() + this.logoutUrl;
-    this.endpoint = 'users'
+    this.logInUrl = backendIpService.getUrl() + this.logInUrl;
+    this.logOutUrl = backendIpService.getUrl() + this.logOutUrl;
   }
 
-  login(user: UserLogin): Observable<HttpResponse<any>> {
-    const url = `${this.loginUrl}`;
-    return this.http.post<User>(url, user, {
+  showMessage(msg: string): void {
+    this.snackbar.open(msg, 'X', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+    });
+  }
+
+  login(superUser: SuperUserLogin): Observable<HttpResponse<any>> {
+    const url = `${this.logInUrl}`;
+    return this.http.post<SuperUser>(url, superUser, {
       "observe": 'response'
     });
   }
 
-  logout(): Observable<User> {
+  logout(): Observable<SuperUser> {
     let auth: string = this.storage.getItem('Authorization') as string;
     let authJson = JSON.parse(auth);
     let headers = new HttpHeaders().set('Authorization', authJson);
 
-    const url = `${this.logoutUrl}`;
+    const url = `${this.logOutUrl}`;
     return this.http.delete(url, { headers: headers });
   }
 
-  create(user: User): Observable<User> {
+  create(superUser: SuperUser): Observable<SuperUser> {
     let auth: string = this.storage.getItem('Authorization') as string;
     let headers = new HttpHeaders().set('Authorization', auth);
 
-    return this.http.post<User>(this.createUrl, user, { headers: headers });
+    return this.http.post<SuperUser>(this.createUrl, superUser, { headers: headers });
   }
 
-  read(): Observable<User[]> {
+  read(): Observable<SuperUser[]> {
     let auth: string = this.storage.getItem('Authorization') as string;
     let headers = new HttpHeaders().set('Authorization', auth);
 
-    return this.http.get<User[]>(this.indexUrl, { headers: headers });
+    return this.http.get<SuperUser[]>(this.indexUrl, { headers: headers });
   }
 
-  readById(id: number): Observable<User> {
+  readById(id: number): Observable<SuperUser> {
     const url = `${this.updateUrl}/${id}`;
-    return this.http.get<User>(url);
+    return this.http.get<SuperUser>(url);
   }
 
-  update(user: User): Observable<User> {
+  update(superUser: SuperUser): Observable<SuperUser> {
     let auth: string = this.storage.getItem('Authorization') as string;
     let headers = new HttpHeaders().set('Authorization', auth);
 
-    const url = `${this.updateUrl}/${user.id}`;
-    return this.http.put<User>(url, user, { headers: headers });
+    const url = `${this.updateUrl}/${superUser.id}`;
+    return this.http.put<SuperUser>(url, superUser, { headers: headers });
   }
 
-  delete(id: number): Observable<User> {
+  delete(id: number): Observable<SuperUser> {
     let auth: string = this.storage.getItem('Authorization') as string;
     let headers = new HttpHeaders().set('Authorization', auth);
 
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<User>(url, { headers: headers });
+    return this.http.delete<SuperUser>(url, { headers: headers });
   }
 
   find(
@@ -97,7 +100,7 @@ export class UserService extends BaseService {
     pageNumber: number = 1,
     pageSize: number = 3,
     query: Query[] | null
-  ): Observable<User[]> {
+  ): Observable<SuperUser[]> {
 
     let auth: string = this.storage.getItem('Authorization') as string;
     let headers = new HttpHeaders()
@@ -115,7 +118,7 @@ export class UserService extends BaseService {
       }
     });
 
-    return this.http.get<User[]>(this.indexUrl, {
+    return this.http.get<SuperUser[]>(this.indexUrl, {
       params,
       headers: headers
     });
@@ -132,4 +135,3 @@ export class UserService extends BaseService {
     });
   }
 }
-

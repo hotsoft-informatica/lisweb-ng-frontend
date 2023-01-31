@@ -29,11 +29,11 @@ export class LaboratorioUpdateComponent implements OnInit {
   load(id: number): void {
     this.laboratorioService
       .readById(id as unknown as number)
-      .subscribe((laboratorio) => {
+      .subscribe((laboratorio: any) => {
         this.laboratorio = laboratorio;
       });
 
-    this.laboratoryDomainService.read().subscribe((laboratoryDomains) => {
+    this.laboratoryDomainService.read().subscribe((laboratoryDomains: any) => {
       this.laboratoryDomains = laboratoryDomains;
     });
   }
@@ -53,3 +53,4 @@ export class LaboratorioUpdateComponent implements OnInit {
     this.router.navigate(['/laboratorios']);
   }
 }
+

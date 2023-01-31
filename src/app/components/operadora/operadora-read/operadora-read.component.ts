@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { tap } from 'rxjs/operators';import { merge, fromEvent } from 'rxjs';
 
 @Component({
@@ -45,7 +44,7 @@ export class OperadoraReadComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dataSource = new OperadoraReadDataSource(this.operadoraService);
     this.dataSource.loadOperadoras('id', 'desc', 1, 5, null);
-    this.operadoraService.countOperadoras().subscribe((totalCount) => {
+    this.operadoraService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }

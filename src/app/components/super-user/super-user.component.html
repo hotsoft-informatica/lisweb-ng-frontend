@@ -39,7 +39,7 @@
 
   <div class="">
     <div *ngIf="onCreate || onEdit">
-      <form #formCreateUser="ngForm" class="justify-content-md-center">
+      <form #formCreateSuperUser="ngForm" class="justify-content-md-center">
         <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
           <mat-label>Nome:</mat-label>
           <input
@@ -87,45 +87,9 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-tab-group>
-          <mat-tab label="Associar" *ngIf="onCreate" >
-            <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
-              <mat-label>Lab. Domínio</mat-label>
-              <input
-                name="laboratory_domain_id"
-                matInput [matAutocomplete]="autoLaboratoryDomains"
-                [(ngModel)]="currentRecord.laboratory_domain_id"
-                (ngModelChange)="searchLaboratoryDomain()"
-                #laboratory_domain_id="ngModel"
-              />
-              <mat-autocomplete #autoLaboratoryDomains="matAutocomplete" [displayWith]="displayFnLaboratoryDomain(laboratory_domains)">
-                <mat-option *ngFor="let laboratory_domain of laboratory_domains" [value]="laboratory_domain.id" (onSelectionChange)="laboratoryDomainChange($event)">
-                  {{laboratory_domain.name}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2" *ngIf="currentRecord.laboratory_domain_id">
-              <mat-label>Laboratório</mat-label>
-              <input
-                name="laboratorio_principal_id"
-                matInput [matAutocomplete]="autoLaboratorios"
-                [(ngModel)]="currentRecord.laboratorio_principal_id"
-                (ngModelChange)="searchLaboratorio()"
-                #laboratorio_principal_id="ngModel"
-              />
-              <mat-autocomplete #autoLaboratorios="matAutocomplete" [displayWith]="displayFnLaboratorio(laboratorios)">
-                <mat-option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">
-                  {{laboratorio.nome}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </mat-tab>
-        </mat-tab-group>
-
         <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
           <button mat-button
-          (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateUser.invalid">Inserir</button>
+          (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateSuperUser.invalid">Inserir</button>
           <button mat-button
           (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
           <button mat-button color="warn"
@@ -157,22 +121,11 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header="email">Email</th>
       <td mat-cell *matCellDef="let row">{{ row?.email }}</td>
     </ng-container>
+
     <!-- Admin Column -->
     <ng-container matColumnDef="admin" class="col-2">
-      <th mat-header-cell *matHeaderCellDef>Admin?</th>
-      <td mat-cell *matCellDef="let row">{{ row?.admin ? 'Sim' : 'Não' }}</td>
-    </ng-container>
-
-    <!-- Laboratory Domain Column -->
-    <ng-container matColumnDef="laboratory_domain_id" class="col-2">
-      <th mat-header-cell *matHeaderCellDef>Lab. Domínio</th>
-      <td mat-cell *matCellDef="let row">{{ row?.laboratory_domain?.name }}</td>
-    </ng-container>
-
-    <!-- Laboratorio Principal Column -->
-    <ng-container matColumnDef="laboratorio_principal_id" class="col-2">
-      <th mat-header-cell *matHeaderCellDef>Laboratório</th>
-      <td mat-cell *matCellDef="let row">{{ row?.laboratorio_principal?.nome }}</td>
+      <th mat-header-cell *matHeaderCellDef>Administrador</th>
+      <td mat-cell *matCellDef="let row">{{ row?.admin==true?'Sim':'Não'}}</td>
     </ng-container>
 
     <!-- action Column -->
@@ -212,3 +165,4 @@
     [pageSizeOptions]="[10, 20, 50]">
   </mat-paginator>
 </div>
+

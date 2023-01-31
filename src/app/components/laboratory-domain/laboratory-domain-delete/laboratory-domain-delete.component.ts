@@ -20,7 +20,7 @@ export class LaboratoryDomainDeleteComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.laboratoryDomainService
       .readById(id as unknown as number)
-      .subscribe((laboratoryDomain) => {
+      .subscribe((laboratoryDomain: any) => {
         this.laboratoryDomain = laboratoryDomain;
       });
   }
@@ -42,3 +42,4 @@ export class LaboratoryDomainDeleteComponent implements OnInit {
     this.router.navigate(['/laboratorydomains']);
   }
 }
+

@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>Fazer Login</mat-card-title>
   <mat-card-content>
-    <form #formUserLogin="ngForm">
+    <form #formSuperUserLogin="ngForm">
       <p>
         <mat-form-field>
           <mat-label>E-mail</mat-label>
@@ -9,10 +9,10 @@
             type="email"
             id="email"
             matInput
-            class="form-control" title="exemplo@email.com"
+            placeholder="exemplo@email.com"
             name="email"
-            [(ngModel)]="login.user.email"
-            #email
+            [(ngModel)]="login.super_user.email"
+            #email="ngModel"
             required
             autocomplete="on"
           />
@@ -25,19 +25,17 @@
             type="password"
             id="password"
             matInput
-            title="Senha"
             name="password"
-            [(ngModel)]="login.user.password"
-            #password
+            [(ngModel)]="login.super_user.password"
+            minlength="6"
+            maxlength="20"
+            #password="ngModel"
             required
           />
         </mat-form-field>
       </p>
       <div class="button">
-        <button type="submit" mat-button
-         (click)="userLogin()">
-          Entrar
-        </button>
+        <button type="submit" mat-button (click)="superUserLogin()">Entrar</button>
       </div>
     </form>
   </mat-card-content>

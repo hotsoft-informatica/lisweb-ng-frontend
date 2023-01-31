@@ -190,6 +190,9 @@ import { VersaoExameInterfaceamentoCreateComponent } from './components/versao-e
 import { VersaoExameParametroComponent } from './components/versao-exame/versao-exame-parametro/versao-exame-parametro.component';
 import { VersaoExameStatusPipe } from './pipes/versao-exame-status.pipe';
 import localePt from '@angular/common/locales/pt';
+import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
+import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
+import { SuperUserComponent } from './components/super-user/super-user.component';
 
 registerLocaleData(localePt);
 export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -339,6 +342,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
     VersaoExameParametroComponent,
     VersaoExameReadComponent,
     VersaoExameStatusPipe,
+    TipoRecursoComponent,
+    LgSuperUserComponent,
+    SuperUserComponent,
   ],
   imports: [
     AppRoutingModule,
