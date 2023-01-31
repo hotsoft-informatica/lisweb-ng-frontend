@@ -113,6 +113,7 @@
                 [(ngModel)]="currentRecord.laboratorio_principal_id"
                 (ngModelChange)="searchLaboratorio()"
                 #laboratorio_principal_id="ngModel"
+                required
               />
               <mat-autocomplete #autoLaboratorios="matAutocomplete" [displayWith]="displayFnLaboratorio(laboratorios)">
                 <mat-option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">
@@ -121,7 +122,7 @@
               </mat-autocomplete>
             </mat-form-field>
           </mat-tab>
-          <mat-tab label="Associar User e Usuário LM" *ngIf="onCreate" >
+          <mat-tab label="Associar Usuário LM" *ngIf="onCreate" >
             <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
               <mat-label>Lab. Domínio</mat-label>
               <input
