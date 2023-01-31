@@ -1,27 +1,26 @@
-import { Query } from '../model/query.model';
 import {
   Component,
   OnInit,
   AfterViewInit,
   ViewChild,
   TemplateRef,
-  Renderer2,
   ElementRef,
   Input,
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { User } from '../model/user.model';
-import { UserService } from '../service/user.service';
-import { LaboratoryDomain } from '../model/laboratory-domain.model';
-import { LaboratoryDomainService } from '../service/laboratory-domain.service';
 import { Laboratorio } from '../model/laboratorio.model';
 import { LaboratorioService } from '../service/laboratorio.service';
-import { Subject } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { LaboratoryDomain } from '../model/laboratory-domain.model';
+import { LaboratoryDomainService } from '../service/laboratory-domain.service';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { tap, debounceTime } from 'rxjs/operators';
+import { MatTableDataSource } from '@angular/material/table';
 import { merge } from 'rxjs';
+import { Query } from '../model/query.model';
+import { Subject } from 'rxjs';
+import { tap, debounceTime } from 'rxjs/operators';
+import { User } from '../model/user.model';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user',
@@ -100,6 +99,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       .getAssocLabId(event.source.value)
       .subscribe((laboratorios: any) => {
         this.laboratorios = laboratorios;
+        this.currentRecord.laboratorio_principal_id = null;
       });
   }
 
@@ -241,4 +241,3 @@ export class UserComponent implements OnInit, AfterViewInit {
     };
   }
 }
-

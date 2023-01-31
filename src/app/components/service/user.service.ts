@@ -4,7 +4,6 @@ import { User } from '../model/user.model';
 import { UserLogin } from '../model/login.model';
 import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 
@@ -27,7 +26,6 @@ export class UserService extends BaseService {
   constructor(
     @Inject(Injector) public injector: Injector,
     public http: HttpClient,
-    private snackbar: MatSnackBar,
     private backendIpService: BackendIpService
   ) {
     super(injector, http);
@@ -132,4 +130,3 @@ export class UserService extends BaseService {
     });
   }
 }
-

@@ -30,8 +30,8 @@ export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.tipoInstrumentoService
-        .findTipoInstrumentos('id', 'asc', 0, 60, this.queries)
-        .subscribe((tipoInstrumentos) => {
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((tipoInstrumentos: any) => {
           this.tipoInstrumentos = tipoInstrumentos;
         });
     });

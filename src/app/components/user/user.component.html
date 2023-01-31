@@ -113,6 +113,7 @@
                 [(ngModel)]="currentRecord.laboratorio_principal_id"
                 (ngModelChange)="searchLaboratorio()"
                 #laboratorio_principal_id="ngModel"
+                required
               />
               <mat-autocomplete #autoLaboratorios="matAutocomplete" [displayWith]="displayFnLaboratorio(laboratorios)">
                 <mat-option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">

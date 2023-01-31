@@ -40,8 +40,8 @@ export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.tipoInstrumentoService
-        .findTipoInstrumentos('id', 'asc', 0, 60, this.queries)
-        .subscribe((tipoInstrumento) => {
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((tipoInstrumento: any) => {
           this.tipoInstrumentos = tipoInstrumento;
         });
     });

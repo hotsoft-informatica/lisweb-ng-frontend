@@ -1,15 +1,14 @@
-import { Query } from '../model/query.model';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { SuperUser } from '../model/super-user.model';
-import { SuperUserService } from '../service/super-user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, timer } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { tap, debounceTime } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { MatTableDataSource } from '@angular/material/table';
+import { merge } from 'rxjs';
+import { Query } from '../model/query.model';
+import { SuperUser } from '../model/super-user.model';
+import { SuperUserService } from '../service/super-user.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-super-user',
@@ -138,5 +137,4 @@ export class SuperUserComponent implements OnInit, AfterViewInit {
     this.paginator.pageIndex = 0;
     this.loadPage();
   }
-
 }

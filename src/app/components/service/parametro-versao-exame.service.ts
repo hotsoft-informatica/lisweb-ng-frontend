@@ -1,5 +1,5 @@
 import { BackendIpService } from './backend-ip.service';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { Observable } from 'rxjs';
@@ -10,9 +10,9 @@ import { Query } from './../model/query.model';
 })
 export class ParametroVersaoExameService {
   baseUrl = '/parametros_versao_exame';
-  versaoExameUrl: string = '';
-
   query: Query[] = [];
+  storage: Storage = window.localStorage;
+  versaoExameUrl: string = '';
 
   constructor(
     private snackbar: MatSnackBar,
@@ -44,13 +44,13 @@ export class ParametroVersaoExameService {
     return this.http.get<ParametroVersaoExame>(url);
   }
 
-  updateAll(parametrosVErsaoExame: ParametroVersaoExame[]) {
-    parametrosVErsaoExame?.forEach((parametroVErsaoExame) => {
-      if (parametroVErsaoExame) {
-        this.update(parametroVErsaoExame).subscribe((parametroVErsaoExame) => { })
+  updateAll(parametrosVersaoExame: ParametroVersaoExame[]) {
+    parametrosVersaoExame?.forEach((parametroVersaoExame) => {
+      if (parametroVersaoExame) {
+        this.update(parametroVersaoExame).subscribe((parametroVersaoExame) => { })
       }
     });
-    return parametrosVErsaoExame;
+    return parametrosVersaoExame;
   }
 
   update(parametroVersaoExame: ParametroVersaoExame): Observable<ParametroVersaoExame> {
@@ -64,8 +64,11 @@ export class ParametroVersaoExameService {
   }
 
   getByVersaoExameId(versaoExameId: number): Observable<ParametroVersaoExame[]> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.versaoExameUrl}/${versaoExameId}/parametros`;
-    return this.http.get<ParametroVersaoExame[]>(url);
+    return this.http.get<ParametroVersaoExame[]>(url, { headers: headers });
   }
 
   findParametroVersaoExames(
@@ -75,6 +78,9 @@ export class ParametroVersaoExameService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<ParametroVersaoExame[]> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -88,7 +94,7 @@ export class ParametroVersaoExameService {
     });
 
     return this.http.get<ParametroVersaoExame[]>(this.baseUrl, {
-      params,
+      params: params, headers: headers
     });
   }
 

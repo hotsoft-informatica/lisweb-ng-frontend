@@ -76,7 +76,7 @@ export class RecursoComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.recordService.countRegisters().subscribe((totalCount) => {
+    this.recordService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
 

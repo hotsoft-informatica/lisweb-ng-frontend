@@ -74,7 +74,7 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.tipoExameService
-        .findTipoExames('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, this.queries)
         .subscribe((tipoExames) => {
           this.tipoExames = tipoExames;
         });

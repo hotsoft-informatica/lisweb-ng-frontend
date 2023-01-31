@@ -65,9 +65,12 @@ export class LaboratorioService extends BaseService {
   }
 
   getAssocLabId(id: number): Observable<Laboratorio[]> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.associationUrl}/${id}`;
     console.log(url);
-    return this.http.get<Laboratorio[]>(url);
+    return this.http.get<Laboratorio[]>(url, {headers: headers});
   }
 
   update(laboratorio: Laboratorio): Observable<Laboratorio> {
