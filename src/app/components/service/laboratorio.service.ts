@@ -67,12 +67,6 @@ export class LaboratorioService {
     return this.http.get<Laboratorio[]>(url);
   }
 
-  getAssocLmUsuariosId(id: number): Observable<Usuario[]> {
-    const url = `${this.associationUrl}/${id}`;
-    console.log(url);
-    return this.http.get<Usuario[]>(url);
-  }
-
   update(laboratorio: Laboratorio): Observable<Laboratorio> {
     const url = `${this.baseUrl}/${laboratorio.id}`;
     return this.http.put<Laboratorio>(url, laboratorio);
