@@ -19,7 +19,7 @@
     "@angular-material-extensions/input-counter": "^1.0.1",
     "@angular/animations": "^14.0.2",
     "@angular/cdk": "^14.2.4",
-    "@angular/cli": "^15.1.2",
+    "@angular/cli": "^15.1.4",
     "@angular/common": "^14.0.1",
     "@angular/compiler-cli": "^14.0.1",
     "@angular/core": "^14.0.1",
