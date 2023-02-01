@@ -3,13 +3,15 @@ import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
+  associationUrl = '/usuarios_dominio';
   baseUrl = '/usuarios';
+  storage: Storage = window.localStorage;
 
   query: Query[] = [];
 
@@ -19,6 +21,7 @@ export class UsuarioService {
     private backendIpService: BackendIpService
   ) {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.associationUrl = backendIpService.getUrl() + this.associationUrl;
   }
 
   showMessage(msg: string): void {
@@ -59,6 +62,12 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.baseUrl, { params }); // Passa qual operação sera realizada pelo backend
   }
 
+  getAssocLmUsuariosId(id: number): Observable<Usuario[]> {
+    const url = `${this.associationUrl}/${id}`;
+    console.log(url);
+    return this.http.get<Usuario[]>(url);
+  }
+
   readById(id: number): Observable<Usuario> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Usuario>(url);
@@ -91,6 +100,11 @@ export class UsuarioService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<Usuario[]> {
+
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders()
+      .set('Authorization', auth);
+
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -104,16 +118,20 @@ export class UsuarioService {
     });
 
     return this.http.get<Usuario[]>(this.baseUrl, {
-      params,
+      params: params,
+      headers: headers
     });
 
 
   }
 
   countUsuarios(): Observable<number> {
-    let params = new HttpParams().set('totalCount', 'true');
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     return this.http.get<number>(this.baseUrl, {
-      params
+      params: new HttpParams().set('totalCount', 'true'),
+      headers: headers
     });
   }
 }
