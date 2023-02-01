@@ -122,21 +122,33 @@
               </mat-autocomplete>
             </mat-form-field>
           </mat-tab>
-          <mat-tab label="Associar Usuário LM" *ngIf="onCreate" >
-            <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2">
-              <mat-label>Lab. Domínio</mat-label>
-              <input
-                name="laboratory_domain_id"
-                matInput [matAutocomplete]="autoLaboratoryDomains"
-                [(ngModel)]="currentRecord.laboratory_domain_id"
-                (ngModelChange)="searchLaboratoryDomain()"
-                #laboratory_domain_id="ngModel"
-              />
-              <mat-autocomplete #autoLaboratoryDomains="matAutocomplete" [displayWith]="displayFnLaboratoryDomain(laboratory_domains)">
-                <mat-option *ngFor="let laboratory_domain of laboratory_domains" [value]="laboratory_domain.id" (onSelectionChange)="laboratoryDomainChange($event)">
-                  {{laboratory_domain.name}}
+          <mat-tab label="Associar Usuários LM" *ngIf="onCreate && currentRecord.laboratory_domain_id" >
+
+            <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2" *ngIf="currentRecord.laboratory_domain_id">
+              <mat-label>Usuários Lab Master</mat-label>
+              <mat-select  #select multiple usuarios
+                [(ngModel)]="currentRecord.usuario_ids"
+                [ngModelOptions]="{standalone: true}"
+              >
+                <mat-option (click)="optionClick()" *ngFor="let usuario of usuarios" [value]="usuario.id">
+                  {{usuario.nome}}
                 </mat-option>
-              </mat-autocomplete>
+              </mat-select>
+
+
+              <!-- <input
+                name="usuario_ids"
+                matInput [matAutocomplete]="autoUsuarios"
+                [(ngModel)]="currentRecord.usuario_ids"
+                (ngModelChange)="searchUsuario()"
+                #usuario_ids="ngModel"
+                required
+              />
+              <mat-autocomplete #autoUsuarios="matAutocomplete" [displayWith]="displayFnUsuario(usuarios)">
+                <mat-option *ngFor="let usuario of usuarios" [value]="usuario.id">
+                  {{usuario.nome}}
+                </mat-option>
+              </mat-autocomplete> -->
             </mat-form-field>
           </mat-tab>
 
