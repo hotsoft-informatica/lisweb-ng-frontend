@@ -10,6 +10,8 @@ import {
   Input,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
 import { User } from '../model/user.model';
 import { UserService } from '../service/user.service';
 import { Usuario } from '../model/usuario.model';
@@ -48,15 +50,17 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   @ViewChild('nome') nome!: ElementRef;
   @ViewChild('laboratorio_id') laboratorio_id!: ElementRef;
-  @ViewChild('usuario_id') usuario_id!: ElementRef;
+  @ViewChild('usuario_ids') usuario_ids!: ElementRef;
   @ViewChild('laboratory_domain_id') laboratory_domain_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
+  @ViewChild('select') select: MatSelect | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   queries: Query[] = [];
 
   subjectLaboratorio: Subject<any> = new Subject();
+  subjectUsuario: Subject<any> = new Subject();
   subjectLaboratoryDomain: Subject<any> = new Subject();
 
   onEdit = false;
@@ -74,6 +78,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private userService: UserService,
+    private usuarioService: UsuarioService,
     private laboratorioService: LaboratorioService,
     private laboratoryDomainService: LaboratoryDomainService
   ) {
@@ -100,12 +105,31 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.subjectLaboratoryDomain.next(null);
   }
 
+  allSelected = false;
+
+  optionClick() {
+    let newStatus = true;
+    this.select.options.forEach((item: MatOption) => {
+      if (!item.selected) {
+        newStatus = false;
+      }
+    });
+    this.allSelected = newStatus;
+  }
+
   laboratoryDomainChange(event: any): void {
     this.laboratorioService
       .getAssocLabId(event.source.value)
       .subscribe((laboratorios) => {
         this.laboratorios = laboratorios;
         this.currentRecord.laboratorio_principal_id = null;
+      });
+
+    this.usuarioService
+      .getAssocLmUsuariosId(event.source.value)
+      .subscribe((usuarios) => {
+        this.usuarios = usuarios;
+        this.currentRecord.usuario_ids = null;
       });
   }
 
@@ -201,6 +225,29 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.loadPage();
   }
 
+  searchUsuario(): void {
+    const query_string = this.currentRecord
+      .usuario_ids as unknown as string;
+    const query = new Query({
+      key: 'nome',
+      value: query_string,
+      isNumeric: false,
+    });
+    console.warn(query_string);
+    this.queries = [];
+    this.queries.push(query);
+    this.subjectUsuario.next(null);
+  }
+
+  displayFnUsuario(options: Usuario[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.nome : '';
+    };
+  }
+
   searchLaboratorio(): void {
     const query_string = this.currentRecord
       .laboratorio_id as unknown as string;
@@ -232,7 +279,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       value: query_string,
       isNumeric: false,
     });
-    // console.warn(query_string);
+    console.warn(query_string);
     this.queries = [];
     this.queries.push(query);
     this.subjectLaboratoryDomain.next(null);
