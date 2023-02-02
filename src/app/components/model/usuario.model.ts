@@ -1,3 +1,4 @@
+import { User } from "./user.model";
 export class Usuario {
   public id?: number;
   public laboratorio_id?: number;
@@ -17,6 +18,7 @@ export class Usuario {
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
   public grupos?: string;
+  public user_id?: number;
 
   constructor(values: Usuario) {
     Object.assign(this, values);
