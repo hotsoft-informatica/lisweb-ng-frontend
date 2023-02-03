@@ -25,7 +25,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { tap, debounceTime } from 'rxjs/operators';
-import { merge } from 'rxjs';
+import { merge, forkJoin, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -62,7 +62,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   subjectLaboratorio: Subject<any> = new Subject();
   subjectUsuario: Subject<any> = new Subject();
   subjectLaboratoryDomain: Subject<any> = new Subject();
-
+  requests: Observable<any>[] = [];
   onEdit = false;
   onCreate = false;
 
@@ -124,13 +124,6 @@ export class UserComponent implements OnInit, AfterViewInit {
         this.laboratorios = laboratorios;
         this.currentRecord.laboratorio_principal_id = null;
       });
-
-    this.usuarioService
-      .getAssocLmUsuariosId(event.source.value)
-      .subscribe((usuarios) => {
-        this.usuarios = usuarios;
-        this.currentRecord.usuario_ids = null;
-      });
   }
 
   ngAfterViewInit() {
@@ -164,9 +157,9 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   addGridData(): void {
-    console.table(this.currentRecord);
     this.onCreate = false;
     this.onEdit = false;
+
     this.userService.create(this.currentRecord).subscribe((record) => {
       this.records.unshift(record);
       this.datasource.data = [...this.records];
@@ -174,20 +167,38 @@ export class UserComponent implements OnInit, AfterViewInit {
     });
 
     this.currentRecord = new User({});
-    this.onFocus();
+
   }
 
   updateGridData(): void {
+    console.table(this.currentRecord);
     this.onCreate = false;
-    this.userService.update(this.currentRecord).subscribe(() => {
-      this.userService.showMessage('Usuário atualizado com sucesso!');
+    this.onEdit = true;
+
+    this.userService.update(this.currentRecord).subscribe((user) => {
       this.onEdit = false;
-      this.currentRecord = new User({});
-      this.onFocus();
+      this.records.unshift(user);
+      this.datasource.data = [...this.records];
+      this.userService.showMessage('Usuário atualizado com sucesso!');
+
+      // Associacao dos usuarios
+      this.userService.createUpdateAssocUsuarioLm(
+        this.currentRecord, this.records[0].id as number
+      ).subscribe((usuario_ids) => {
+        this.currentRecord = new User({});
+        this.records[0].usuario_ids = usuario_ids
+        this.userService.showMessage('Associações atualizadas com sucesso!');
+      })
     });
   }
 
   atualizar(row: User): void {
+    this.usuarioService
+      .getAssocLmUsuariosId(row.laboratory_domain_id as number)
+      .subscribe((usuarios) => {
+        this.usuarios = usuarios;
+      });
+
     this.currentRecord = row;
     this.onCreate = false;
     this.onEdit = true;
