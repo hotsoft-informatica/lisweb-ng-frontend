@@ -1,7 +1,9 @@
 import { User } from '../model/user.model';
 import { UserLogin } from '../model/login.model';
+import { Usuario } from '../model/usuario.model';
+import { UsuarioService } from './usuario.service';
 import { Query } from './../model/query.model';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
@@ -10,9 +12,13 @@ import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/comm
   providedIn: 'root',
 })
 export class UserService {
+  @Input('usuarios') usuarios: Usuario[] = [];
+  id!: number;
+
   // Rotas customizadas para o crud de user
   indexUrl = '/index_users';
   createUrl = '/create_user';
+  createAssocUsuarioLmUrl = '/usuarios_user';
   updateUrl = '/update_user';
 
   baseUrl = '/users'
@@ -26,6 +32,7 @@ export class UserService {
   constructor(
     private snackbar: MatSnackBar,
     private http: HttpClient,
+    private usuarioService: UsuarioService,
     private backendIpService: BackendIpService
   ) {
     this.indexUrl = backendIpService.getUrl() + this.indexUrl;
@@ -34,6 +41,7 @@ export class UserService {
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
     this.loginUrl = backendIpService.getUrl() + this.loginUrl;
     this.logoutUrl = backendIpService.getUrl() + this.logoutUrl;
+    this.createAssocUsuarioLmUrl = backendIpService.getUrl() + this.createAssocUsuarioLmUrl;
   }
 
   showMessage(msg: string): void {
@@ -63,8 +71,17 @@ export class UserService {
   create(user: User): Observable<User> {
     let auth: string = this.storage.getItem('Authorization') as string;
     let headers = new HttpHeaders().set('Authorization', auth);
+    console.table(user)
+    return this.http.post<User>(this.createUrl, user, { headers: headers })
+  }
 
-    return this.http.post<User>(this.createUrl, user, { headers: headers });
+  createUpdateAssocUsuarioLm(user: User, id: number): Observable<Usuario> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
+    return this.http.post<Usuario>(
+      this.createAssocUsuarioLmUrl + '/' + id,
+      user, { headers: headers });
   }
 
   read(): Observable<User[]> {
