@@ -122,7 +122,7 @@
               </mat-autocomplete>
             </mat-form-field>
           </mat-tab>
-          <mat-tab label="Associar Usuários LM" *ngIf="onCreate && currentRecord.laboratory_domain_id" >
+          <mat-tab label="Associar Usuários LM" *ngIf="onEdit && currentRecord.laboratory_domain_id" >
 
             <mat-form-field appearance="fill" class="col-lg-6 col-md-12 p-2" *ngIf="currentRecord.laboratory_domain_id">
               <mat-label>Usuários Lab Master</mat-label>
@@ -134,21 +134,6 @@
                   {{usuario.nome}}
                 </mat-option>
               </mat-select>
-
-
-              <!-- <input
-                name="usuario_ids"
-                matInput [matAutocomplete]="autoUsuarios"
-                [(ngModel)]="currentRecord.usuario_ids"
-                (ngModelChange)="searchUsuario()"
-                #usuario_ids="ngModel"
-                required
-              />
-              <mat-autocomplete #autoUsuarios="matAutocomplete" [displayWith]="displayFnUsuario(usuarios)">
-                <mat-option *ngFor="let usuario of usuarios" [value]="usuario.id">
-                  {{usuario.nome}}
-                </mat-option>
-              </mat-autocomplete> -->
             </mat-form-field>
           </mat-tab>
 
