@@ -67,34 +67,52 @@ export class UsuarioService extends BaseService {
   }
 
   getAssocLmUsuariosId(id: number): Observable<Usuario[]> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.associationUrl}/${id}`;
     console.log(url);
-    return this.http.get<Usuario[]>(url);
+    return this.http.get<Usuario[]>(url, { headers: headers });
   }
 
   readById(id: number): Observable<Usuario> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<Usuario>(url);
+    return this.http.get<Usuario>(url, { headers: headers });
   }
 
   update(usuario: Usuario): Observable<Usuario> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl}/${usuario.id}`;
-    return this.http.put<Usuario>(url, usuario);
+    return this.http.put<Usuario>(url, usuario, { headers: headers });
   }
 
   delete(id: number): Observable<Usuario> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<Usuario>(url);
+    return this.http.delete<Usuario>(url, { headers: headers });
   }
 
   readByEmail(email: String): Observable<Usuario> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl}/email/${email}`;
-    return this.http.get<Usuario>(url);
+    return this.http.get<Usuario>(url, { headers: headers });
   }
 
   readByUsuario(usuario: String): Observable<Usuario> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.baseUrl}/usuario/${usuario}`;
-    return this.http.get<Usuario>(url);
+    return this.http.get<Usuario>(url, { headers: headers });
   }
 
   findUsuarios(
