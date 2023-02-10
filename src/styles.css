@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import 'tippy.js/dist/tippy.css';
+@import 'tippy.js/themes/light.css';
+@import 'tippy.js/animations/scale.css';
+
 html,
 body {
   height: 100%;
@@ -34,21 +39,14 @@ body {
   color: #fff;
 }
 
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
-@import 'tippy.js/dist/tippy.css';
-@import 'tippy.js/themes/light.css';
-@import 'tippy.js/animations/scale.css';
-
-// https://stackoverflow.com/questions/44950374/angular-material-2-0-autocomplete-suggestions-panel-appears-behind-bootstrap-m/50599696#50599696
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
   z-index: 999 !important;
 }
 
 .cdk-overlay-backdrop
- {
-   z-index:998 !important;
- }
+{
+  z-index:998 !important;
+}
 
 @page {
   margin: 0.5cm;
@@ -229,7 +227,7 @@ form {
   margin-top: 20px;
 }
 
-// TODO: Revisar customizacoes css
+/* TODO: Revisar customizacoes css */
 /* button {
   margin: 20px 15px 0px 0px;
 }
