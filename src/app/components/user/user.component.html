@@ -40,52 +40,54 @@
   <div class="">
     <div *ngIf="onCreate || onEdit">
       <form #formCreateUser="ngForm" class="justify-content-md-center">
-        <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
-          <mat-label>Nome:</mat-label>
-          <input
-            type="text"
-            id="name"
-            required
-            matInput
-            maxlength="50"
-            name="name"
-            [(ngModel)]="currentRecord.name"
-            #name="ngModel"
-          >
-          <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
-            <span *ngIf="name.errors?.['required']">
-              O campo é obrigatório!
-            </span>
-          </mat-error>
-        </mat-form-field>
+        <div>
+          <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+            <mat-label>Nome:</mat-label>
+            <input
+              type="text"
+              id="name"
+              required
+              matInput
+              maxlength="50"
+              name="name"
+              [(ngModel)]="currentRecord.name"
+              #name="ngModel"
+            >
+            <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+              <span *ngIf="name.errors?.['required']">
+                O campo é obrigatório!
+              </span>
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
-          <mat-label>Email:</mat-label>
-          <input
-            type="email"
-            min="3"
-            id="email"
-            required
-            matInput
-            maxlength="50"
-            name="email"
-            [(ngModel)]="currentRecord.email"
-            #email="ngModel"
-          >
-          <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
-            <span *ngIf="email.errors?.['required']">
-              O campo é obrigatório!
-            </span>
-          </mat-error>
-        </mat-form-field>
+          <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
+            <mat-label>Email:</mat-label>
+            <input
+              type="email"
+              min="3"
+              id="email"
+              required
+              matInput
+              maxlength="50"
+              name="email"
+              [(ngModel)]="currentRecord.email"
+              #email="ngModel"
+            >
+            <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+              <span *ngIf="email.errors?.['required']">
+                O campo é obrigatório!
+              </span>
+            </mat-error>
+          </mat-form-field>
 
-        <mat-form-field appearance="fill" class= "col-lg-2 col-md-2 p-2">
-          <mat-label>Administrador?</mat-label>
-          <mat-select name="admin" [(ngModel)]="currentRecord.admin">
-            <mat-option value="true">Sim</mat-option>
-            <mat-option value="false">Não</mat-option>
-          </mat-select>
-        </mat-form-field>
+          <mat-form-field appearance="fill" class= "col-lg-2 col-md-2 p-2">
+            <mat-label>Administrador?</mat-label>
+            <mat-select name="admin" [(ngModel)]="currentRecord.admin">
+              <mat-option value="true">Sim</mat-option>
+              <mat-option value="false">Não</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
         <mat-tab-group>
           <mat-tab label="Associar Domínio e Laboratório" *ngIf="onCreate" >
@@ -97,6 +99,7 @@
                 [(ngModel)]="currentRecord.laboratory_domain_id"
                 (ngModelChange)="searchLaboratoryDomain()"
                 #laboratory_domain_id="ngModel"
+                required
               />
               <mat-autocomplete #autoLaboratoryDomains="matAutocomplete" [displayWith]="displayFnLaboratoryDomain(laboratory_domains)">
                 <mat-option *ngFor="let laboratory_domain of laboratory_domains" [value]="laboratory_domain.id" (onSelectionChange)="laboratoryDomainChange($event)">
@@ -138,19 +141,19 @@
           </mat-tab>
 
         </mat-tab-group>
-
-        <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
-          <button mat-button
-          (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateUser.invalid">Inserir</button>
-          <button mat-button
-          (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
-          <button mat-button color="warn"
-          (click)="cancelar()">Cancelar</button>
-        </div>
       </form>
+      <div class="col-md-12 d-flex justify-content-end p-4">
+        <button mat-button
+        (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateUser.invalid">Inserir</button>
+        <button mat-button
+        (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
+        <button mat-button color="warn"
+        (click)="cancelar()">Cancelar</button>
+      </div>
     </div>
   </div>
 </div>
+
 
 <div class="mat-elevation-z4">
   <table
