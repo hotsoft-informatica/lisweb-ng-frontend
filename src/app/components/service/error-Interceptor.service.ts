@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { MatLegacyDialogState as MatDialogState } from '@angular/material/legacy-dialog';
+import { MatDialogState } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog'
 
 export const maxRetries = 2;
