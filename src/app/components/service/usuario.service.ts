@@ -1,14 +1,15 @@
+import { BaseService } from './base.service';
+import { Injectable, Inject, Injector } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Usuario } from './../model/usuario.model';
 import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
-import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class UsuarioService {
+export class UsuarioService extends BaseService {
   associationUrl = '/usuarios_dominio';
   baseUrl = '/usuarios';
   storage: Storage = window.localStorage;
@@ -16,10 +17,13 @@ export class UsuarioService {
   query: Query[] = [];
 
   constructor(
+    @Inject(Injector) public injector: Injector,
     private snackbar: MatSnackBar,
-    private http: HttpClient,
+    public http: HttpClient,
     private backendIpService: BackendIpService
   ) {
+    super(injector, http);
+    this.endpoint = 'usuarios'
     this.baseUrl = backendIpService.getUrl() + this.baseUrl;
     this.associationUrl = backendIpService.getUrl() + this.associationUrl;
   }
@@ -121,8 +125,6 @@ export class UsuarioService {
       params: params,
       headers: headers
     });
-
-
   }
 
   countUsuarios(): Observable<number> {

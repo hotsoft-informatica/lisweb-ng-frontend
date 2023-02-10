@@ -2,13 +2,14 @@
   <mat-card-title *ngIf="!fromOperadora">Nova Empresa</mat-card-title>
   <form #formCreateEmpresa="ngForm">
     <mat-form-field appearance="fill">
+      Razão Social
       <input
         type="text"
         id="razao_social"
         required
         minlength="4"
         matInput
-        placeholder="Razão Social"
+        class="form-control" title="Razão Social"
         [(ngModel)]="empresa.razao_social"
         #razao_social="ngModel"
         name="razao_social"
@@ -28,13 +29,14 @@
       </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Nome Fantasia
       <input
         type="text"
         id="nome_fantasia"
         required
         minlength="4"
         matInput
-        placeholder="Nome Fantasia"
+        class="form-control" title="Nome Fantasia"
         [(ngModel)]="empresa.nome_fantasia"
         #nome_fantasia="ngModel"
         name="nome_fantasia"
@@ -55,6 +57,7 @@
       </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
+      CNPJ
       <input
         type="text"
         mask="00.000.000/0000-00"
@@ -63,7 +66,7 @@
         required
         minlength="14"
         matInput
-        placeholder="CNPJ"
+        class="form-control" title="CNPJ"
         [(ngModel)]="empresa.cnpj"
         #cnpj="ngModel"
         name="cnpj"
@@ -76,6 +79,7 @@
       </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Incrição Estadual
       <input
         type="text"
         mask="000.000.000.000"
@@ -84,7 +88,7 @@
         required
         minlength="12"
         matInput
-        placeholder="Isc. Estadual"
+        class="form-control" title="Isc. Estadual"
         [(ngModel)]="empresa.inscricao_estadual"
         #inscricao_estadual="ngModel"
         name="inscricao_estadual"
@@ -105,28 +109,33 @@
       </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Endereço
       <input
         matInput
-        placeholder="Endereço"
+        class="form-control" title="Endereço"
         [(ngModel)]="empresa.endereco"
         name="endereco"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Bairro
       <input
         matInput
-        placeholder="Bairro"
+        class="form-control" title="Bairro"
         [(ngModel)]="empresa.bairro"
         name="Bairro"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input matInput placeholder="CEP" [(ngModel)]="empresa.cep" name="cep" />
+      CEP
+      <input matInput class="form-control" title="CEP" 
+        [(ngModel)]="empresa.cep" name="cep" />
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Cidade
       <input
         type="text"
-        placeholder="Cidade"
+        class="form-control" title="Cidade"
         name="cidade"
         required
         matInput [formControl]="formControl2"
@@ -140,9 +149,10 @@
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="fill">
+      UF
       <input
         type="text"
-        placeholder="UF"
+        class="form-control" title="UF"
         name="uf"
         required
         matInput [formControl]="formControl1"
@@ -156,38 +166,42 @@
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Telefone
       <input
         mask="(00) 00000-0000 || (00) 0000-0000"
         matInput
-        placeholder="Telefone"
+        class="form-control" title="Telefone"
         [(ngModel)]="empresa.telefone"
         name="telefone"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Fax
       <input
         mask="(00) 0000-0000"
         matInput
-        placeholder="Fax"
+        class="form-control" title="Fax"
         [(ngModel)]="empresa.fax"
         name="fax"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Nome Contato
       <input
         matInput
-        placeholder="Contato"
+        class="form-control" title="Contato"
         [(ngModel)]="empresa.nome_contato"
         name="nome_contato"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Email
       <input
         type="text"
         id="email"
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         matInput
-        placeholder="Email"
+        class="form-control" title="Email"
         [(ngModel)]="empresa.email"
         #email="ngModel"
         name="email"
@@ -200,33 +214,37 @@
       </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Cod. Município
       <input
         matInput
-        placeholder="Cod Município"
+        class="form-control" title="Cod Município"
         [(ngModel)]="empresa.cod_ibge_municipio"
         name="cod_ibge_municipio"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Número
       <input
         matInput
-        placeholder="Número"
+        class="form-control" title="Número"
         [(ngModel)]="empresa.numero"
         name="numero"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Alvará
       <input
         matInput
-        placeholder="Alvara"
+        class="form-control" title="Alvara"
         [(ngModel)]="empresa.alvara"
         name="alvara"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
+      Alvará UF
       <input
         matInput
-        placeholder="Alvara UF"
+        class="form-control" title="Alvara UF"
         [(ngModel)]="empresa.alvara_uf"
         name="alvara_uf"
       />

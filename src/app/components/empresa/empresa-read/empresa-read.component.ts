@@ -1,30 +1,20 @@
 import { Query } from '../../model/query.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { EmpresaReadDataSource } from './empresa-read-datasource';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-empresa-read',
   templateUrl: './empresa-read.component.html',
-  styleUrls: ['./empresa-read.component.css'],
 })
 export class EmpresaReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -46,7 +36,6 @@ export class EmpresaReadComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
 
   query: Query[] = [];
@@ -63,8 +52,8 @@ export class EmpresaReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new EmpresaReadDataSource(this.empresaService);
-    this.dataSource.loadEmpresas('id', 'desc', 1, 10, null);
-    this.empresaService.countEmpresas().subscribe((totalCount) => {
+    this.dataSource.loadEmpresas('id', 'desc', 1, 5, null);
+    this.empresaService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }

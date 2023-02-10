@@ -4,7 +4,8 @@
     <div class="row col-lg-5 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Nome:</mat-label>
-        <input type="text" matInput  id="nome" name="nome"
+        <input type="text" matInput 
+          title="Nome" id="nome" name="nome"
           [(ngModel)]="marcacao.nome">
       </mat-form-field>
     </div>
@@ -13,15 +14,17 @@
       <mat-label>Tipo:</mat-label>
       <mat-select name="tipo" [(ngModel)]="marcacao.tipo">
         <mat-option value="D">Dias</mat-option>
+        <mat-option value="M">Meses</mat-option>
       </mat-select>
     </mat-form-field>
 
   </div>
   <div>
-    <button mat-flat-button color="primary" class="fixed-bottom index"
+    <button mat-flat-button color="primary"
+      type="button" class="fixed-bottom index"
       (click)="createMarcacao()">Salvar</button>
-    <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
+    <button type="button" mat-flat-button color="warn"
+      class="fixed-bottom index ms-2"
       (click)="cancel()">Cancelar</button>
   </div>
 </form>
-

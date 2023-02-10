@@ -1,0 +1,40 @@
+<h1>Notas</h1>
+<div class="mat-elevation-z4">
+  <table class="table table-striped table-bordered"
+   mat-table [dataSource]="dataSource" matSort
+    matSortActive="indeterminate_check_box" matSortDirection="asc" matSortDisableClear>
+    <ng-container matColumnDef="numero">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="numero">Numero</th>
+      <td mat-cell class="text-center" *matCellDef="let row">{{ row?.numero }}</td>
+    </ng-container>
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="nome">Nome</th>
+      <td mat-cell class="text-left" *matCellDef="let row">{{ row?.nome }}</td>
+    </ng-container>
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="descricao">Descricao</th>
+      <td mat-cell class="text-left" *matCellDef="let row">{{ row?.descricao }}</td>
+    </ng-container>
+    <ng-container matColumnDef="valor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="valor">Valor</th>
+      <td mat-cell class="text-center"
+       *matCellDef="let row">R$ {{ row?.valor | number : '1.2-2' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="enviado_em">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="enviado_em">Enviado Em</th>
+      <td mat-cell class="text-center"
+       *matCellDef="let row">{{ row?.enviado_em | date: 'dd/MM/yy' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="created_at">Criado Em</th>
+      <td mat-cell class="text-center"
+       *matCellDef="let row">{{ row?.created_at | date: 'dd/MM/yy' }}</td>
+    </ng-container>
+    <ng-container  matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="status">Status</th>
+      <td mat-cell class="text-center" *matCellDef="let row">{{ row?.status }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

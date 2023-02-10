@@ -1,0 +1,18 @@
+<mat-form-field class="col-6 row">
+  Tipo Instrumento
+  <input
+    class="form-control" title="Tipo Instrumento"
+    name="tipo_instrumento_id"
+    matInput [matAutocomplete]="autoTipoInstrumento"
+    [(ngModel)]="versaoExame.tipo_instrumento_id"
+    (ngModelChange)="search()"
+  />
+</mat-form-field>
+
+<mat-autocomplete #autoTipoInstrumento="matAutocomplete"
+  [displayWith]="displayFn(tipoInstrumentos)">
+  <mat-option
+    *ngFor="let tipoInstrumento of tipoInstrumentos" [value]="tipoInstrumento.id">
+    {{ tipoInstrumento.descricao}}
+  </mat-option>
+</mat-autocomplete>

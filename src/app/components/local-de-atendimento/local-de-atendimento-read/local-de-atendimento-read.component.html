@@ -10,7 +10,7 @@
 
   <div class="col-2 col-md-4 col-xs-6">
     <div class="row">
-      
+
       <div class="p-1 col d-flex justify-content-end">
         <button mat-flat-button class="dvm-button" color="primary" routerLink="/localdeatendimento/create">
             <mat-icon>add</mat-icon>
@@ -37,14 +37,14 @@
         <div class="mb-3 col row">
           <mat-form-field appearance="fill">
             <mat-label>Nome:</mat-label>
-            <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome',nome.value)">
+            <input matInput #nome maxlength="50" class="form-control" title="Filtre por nome" (input)="search('nome',nome.value)">
           </mat-form-field>
         </div>
 
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>CNES:</mat-label>
-            <input matInput #cnes maxlength="12" placeholder="Filtre por CNES" (input)="search('cnes',cnes.value,true)"
+            <input matInput #cnes maxlength="12" class="form-control" title="Filtre por CNES" (input)="search('cnes',cnes.value,true)"
             >
           </mat-form-field>
         </div>
@@ -52,7 +52,7 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>Chave Publicação:</mat-label>
-            <input matInput #chave_internet maxlength="14" placeholder="Filtre por CPF" (input)="search('chave_internet',chave_internet.value,true)"
+            <input matInput #chave_internet maxlength="14" class="form-control" title="Filtre por CPF" (input)="search('chave_internet',chave_internet.value,true)"
             >
           </mat-form-field>
         </div>
@@ -119,6 +119,6 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [length]="this.totalCount" [pageSize]="10"
-      [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+  <mat-paginator [length]="this.totalCount" [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
 </div>

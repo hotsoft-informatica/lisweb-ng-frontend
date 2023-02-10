@@ -1,19 +1,16 @@
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Input, OnChanges, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog'
 import { MatSort, Sort } from '@angular/material/sort';
-import { Query } from 'src/app/components/model/query.model';
-import { VersaoExame } from '../../model/versao-exame.model';
-import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
+import { MatTableDataSource } from '@angular/material/table';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
-import { Component, Input, OnChanges, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Query } from 'src/app/components/model/query.model';
 import { Subject, timer } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { VersaoExame } from '../../model/versao-exame.model';
 
 @Component({
   selector: 'app-versao-exame-parametro',
   templateUrl: './versao-exame-parametro.component.html',
-  styleUrls: ['./versao-exame-parametro.component.css']
 })
 export class VersaoExameParametroComponent implements OnChanges {
   @Input('versaoExame') versaoExame!: VersaoExame;
@@ -39,8 +36,6 @@ export class VersaoExameParametroComponent implements OnChanges {
   constructor(
     public dialog: MatDialog,
     private renderer: Renderer2,
-    private router: Router,
-    private versaoExameService: VersaoExameService,
     private parametroVersaoExameService: ParametroVersaoExameService,
   ) {
     this.currentParametroVersaoExame = new ParametroVersaoExame({});
@@ -83,7 +78,9 @@ export class VersaoExameParametroComponent implements OnChanges {
     this.parametrosVersaoExame.unshift(this.currentParametroVersaoExame);
     this.currentParametroVersaoExame = new ParametroVersaoExame({});
     this.datasource.data = this.parametrosVersaoExame;
-    this.parametroVersaoExameService.showMessage('Parâmetro versão de exame adicionado com sucesso!');
+    this.parametroVersaoExameService.showMessage(
+      'Parâmetro versão de exame adicionado com sucesso!'
+    );
     this.onFocus();
   }
 

@@ -35,12 +35,11 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Laboratorio[]> {
-    console.log('Conectando ao data source');
+  connect(): Observable<Laboratorio[]> {
     return this.laboratoriosSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.laboratoriosSubject.complete();
     this.loadingSubject.complete();
   }

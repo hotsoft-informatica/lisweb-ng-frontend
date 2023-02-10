@@ -1,23 +1,19 @@
-import { UsuarioService } from './../../service/usuario.service';
-import { Usuario } from './../../model/usuario.model';
-import { Component, OnInit } from '@angular/core';
-import {MatChipInputEvent} from '@angular/material/chips';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ElementRef, ViewChild} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Component, OnInit } from '@angular/core';
+import { ElementRef, ViewChild } from '@angular/core';
+import { map, startWith } from 'rxjs/operators';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { Observable } from 'rxjs';
+import { UntypedFormControl} from '@angular/forms';
+import { Usuario } from './../../model/usuario.model';
+import { UsuarioService } from './../../service/usuario.service';
 
 @Component({
   selector: 'app-usuario-update',
   templateUrl: './usuario-update.component.html',
-  styleUrls: ['./usuario-update.component.css']
 })
 export class UsuarioUpdateComponent implements OnInit {
-
   hide = true;
   selectable = true;
   removable = true;
@@ -74,7 +70,7 @@ export class UsuarioUpdateComponent implements OnInit {
     }
   }
 
-  selected(event: MatAutocompleteSelectedEvent): void {
+  selected(event: any): void {
     if (this.grupos.indexOf(event.option.viewValue) < 0) {
       this.grupos.push(event.option.viewValue);
     }

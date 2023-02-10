@@ -5,7 +5,6 @@ import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { Query } from '../../model/query.model';
-import { Exame } from '../../model/exame.model';
 
 export class ConsultaAmostraShowDataSource implements DataSource<ConsultaAmostra> {
   private consultaAmostraSubject = new BehaviorSubject<ConsultaAmostra[]>([]);
@@ -14,7 +13,7 @@ export class ConsultaAmostraShowDataSource implements DataSource<ConsultaAmostra
   query: Query[] = [];
 
   public loading$ = this.loadingSubject.asObservable();
-  public first!: ExameAmostra;
+  public first: ExameAmostra = new ExameAmostra({});
 
   constructor(private consultaAmostraService: ConsultaAmostraService) { }
 
@@ -30,13 +29,14 @@ export class ConsultaAmostraShowDataSource implements DataSource<ConsultaAmostra
         finalize(() => this.loadingSubject.next(false))
       )
       .subscribe((consultaAmostra: ConsultaAmostra[]) => {
-        this.first = consultaAmostra[0];
+        if (consultaAmostra){
+          this.first = consultaAmostra[0];
+        };
         this.consultaAmostraSubject.next(consultaAmostra)
       });
   }
 
   connect(collectionViewer: CollectionViewer): Observable<ConsultaAmostra[]> {
-    console.log('Conectando ao data source');
     return this.consultaAmostraSubject.asObservable();
   }
 

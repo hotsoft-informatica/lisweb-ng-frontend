@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-versao-exame-crud',
   templateUrl: './versao-exame-crud.component.html',
-  styleUrls: ['./versao-exame-crud.component.css']
 })
 export class VersaoExameCrudComponent implements OnInit {
 

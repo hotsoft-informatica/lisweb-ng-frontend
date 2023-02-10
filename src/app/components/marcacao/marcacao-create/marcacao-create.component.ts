@@ -6,15 +6,11 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import {
-  debounceTime,
-} from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-marcacao-create',
   templateUrl: './marcacao-create.component.html',
-  styleUrls: ['./marcacao-create.component.css']
 })
 export class MarcacaoCreateComponent implements OnInit {
   marcacao: Marcacao;

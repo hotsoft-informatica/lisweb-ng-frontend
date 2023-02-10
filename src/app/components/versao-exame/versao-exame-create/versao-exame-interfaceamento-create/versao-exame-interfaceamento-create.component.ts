@@ -1,24 +1,15 @@
-import { TipoInstrumentoService } from './../../../service/tipo-instrumento.service';
-import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
-import { VersaoExame } from './../../../model/versao-exame.model';
-import { Query } from '../../../model/query.model';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
-import {
-  debounceTime,
-} from 'rxjs/operators';
+import { Component, OnInit, Input } from '@angular/core';
+import { debounceTime } from 'rxjs/operators';
+import { Query } from '../../../model/query.model';
 import { Subject } from 'rxjs';
 import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
+import { TipoInstrumentoService } from './../../../service/tipo-instrumento.service';
+import { VersaoExame } from './../../../model/versao-exame.model';
 
 @Component({
   selector: 'app-versao-exame-interfaceamento-create',
   templateUrl: './versao-exame-interfaceamento-create.component.html',
-  styleUrls: ['./versao-exame-interfaceamento-create.component.css']
 })
 export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
   @Input('versaoExame') versaoExame!: VersaoExame;
@@ -27,18 +18,30 @@ export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
   queries: Query[] = [];
   subject: Subject<any> = new Subject();
 
+  isEditInst: boolean = false;
+  onEdit!: boolean;
+  onCreate!: boolean;
+
+  id: number;
 
   constructor(
     private tipoInstrumentoService: TipoInstrumentoService,
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {
+    this.onEdit = this.route.snapshot.paramMap.get('edit') as unknown as boolean;
+    this.onCreate = this.route.snapshot.paramMap.get('create') as unknown as boolean;
+
+    this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
+  }
 
   ngOnInit(){
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.tipoInstrumentoService
-        .findTipoInstrumentos('id', 'asc', 0, 60, this.queries)
-        .subscribe((tipoInstrumento) => {
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((tipoInstrumento: any) => {
           this.tipoInstrumentos = tipoInstrumento;
         });
     });

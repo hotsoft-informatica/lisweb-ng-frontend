@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-laboratory-domain-delete',
   templateUrl: './laboratory-domain-delete.component.html',
-  styleUrls: ['./laboratory-domain-delete.component.css'],
 })
 export class LaboratoryDomainDeleteComponent implements OnInit {
   laboratoryDomain!: LaboratoryDomain;
@@ -21,7 +20,7 @@ export class LaboratoryDomainDeleteComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.laboratoryDomainService
       .readById(id as unknown as number)
-      .subscribe((laboratoryDomain) => {
+      .subscribe((laboratoryDomain: any) => {
         this.laboratoryDomain = laboratoryDomain;
       });
   }
@@ -43,3 +42,4 @@ export class LaboratoryDomainDeleteComponent implements OnInit {
     this.router.navigate(['/laboratorydomains']);
   }
 }
+

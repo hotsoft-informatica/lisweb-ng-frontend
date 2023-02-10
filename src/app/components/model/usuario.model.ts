@@ -1,4 +1,5 @@
-import { User } from "./user.model";
+import { Base } from './base.model';
+import { User } from './user.model';
 export class Usuario {
   public id?: number;
   public laboratorio_id?: number;

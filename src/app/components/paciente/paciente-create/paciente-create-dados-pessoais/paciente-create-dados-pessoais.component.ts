@@ -1,14 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-// import * as moment from 'moment';
 import { Paciente } from '../../../model/paciente.model';
 import { PacienteService } from 'src/app/components/service/paciente.service';
-
 
 @Component({
   selector: 'app-paciente-create-dados-pessoais',
   templateUrl: './paciente-create-dados-pessoais.component.html',
-  styleUrls: ['./paciente-create-dados-pessoais.component.css']
 })
 export class PacienteCreateDadosPessoaisComponent implements OnInit {
   @Input('paciente') paciente: Paciente;
@@ -17,11 +14,10 @@ export class PacienteCreateDadosPessoaisComponent implements OnInit {
     private router: Router,
     private pacienteService: PacienteService,
   ) {
-    this.paciente = new Paciente({});
+    this.paciente = new Paciente();
   }
 
   ngOnInit(): void {
-    console.log('passou pelo paciente dados pessoas');
   }
   public calculaIdade(): void{
 // TO-DO: REVER, TA DANDO RUIM

@@ -1,3 +1,5 @@
+import { Base } from './base.model';
+
 export class UsuarioToken{
   public id?: number;
   public nome?: string;

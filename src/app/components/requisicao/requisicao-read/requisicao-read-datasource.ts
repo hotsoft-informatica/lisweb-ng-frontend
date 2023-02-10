@@ -1,9 +1,9 @@
+import { catchError, finalize } from 'rxjs/operators';
+import { DataSource } from '@angular/cdk/collections';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Query } from '../../model/query.model';
 import { Requisicao } from '../../model/requisicao.model';
 import { RequisicaoService } from '../../service/requisicao.service';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Observable, BehaviorSubject, of } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
-import { Query } from '../../model/query.model';
 
 export class RequisicaoReadDataSource implements DataSource<Requisicao> {
   private requisicoesSubject = new BehaviorSubject<Requisicao[]>([]);
@@ -25,7 +25,7 @@ export class RequisicaoReadDataSource implements DataSource<Requisicao> {
     this.loadingSubject.next(true);
 
     this.requisicaoService
-      .findRequisicoes(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,12 +35,11 @@ export class RequisicaoReadDataSource implements DataSource<Requisicao> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Requisicao[]> {
-    console.log('Conectando ao data source');
+  connect(): Observable<Requisicao[]> {
     return this.requisicoesSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.requisicoesSubject.complete();
     this.loadingSubject.complete();
   }

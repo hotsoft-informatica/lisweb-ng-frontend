@@ -1,10 +1,9 @@
-import { UsuarioToken } from './../model/usuario-token.model';
 import { BackendIpService } from './backend-ip.service';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
+import { UsuarioToken } from './../model/usuario-token.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +16,7 @@ export class LoginService {
     private http: HttpClient,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
   }
 
   showMessage(msg: string): void {
@@ -34,5 +33,4 @@ export class LoginService {
     console.table(usuarioToken);
     return this.http.post<any>(url, usuarioToken);
   }
-
 }

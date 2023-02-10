@@ -51,3 +51,8 @@ Thumbs.db
 .angular/cache/*
 .angular/cache/angular-webpack/*
 
+megalinter-reports/
+
+# yarn
+/.yarn/*
+.yarn/*

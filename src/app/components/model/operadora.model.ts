@@ -1,4 +1,6 @@
+import { Base } from './base.model';
 import { Empresa } from './empresa.model';
+
 export class Operadora {
   public id?: number;
   public laboratorio_id?: number;

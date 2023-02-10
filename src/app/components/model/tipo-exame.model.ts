@@ -1,33 +1,30 @@
-export class TipoExame {
-  public id?: number;
-  public laboratorio_id?: number;
+import { Base } from './base.model';
+import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
+
+export class TipoExame extends Base{
   public cod_exame?: string;
-  public descricao?: string;
-  public tipo_resultado?: string;
-  public texto_mapa?: string;
-  public sexo?: string;
-  public ordem_laudo?: number;
-  public publica_resultado?: string;
-  public imprime_historico?: string;
-  public resultado_controlado?: string;
-  public multi_amostra?: string;
-  public resultado_parcial?: string;
-  public historico_grafico?: string;
-  public resultado_grafico?: string;
   public coletor_mesmo_sexo?: string;
+  public descricao?: string;
+  public historico_grafico?: string;
+  public imprime_historico?: string;
+  public multi_amostra?: string;
+  public publica_resultado?: string;
   public regua_referencial?: string;
-  public original_id?: number;
-  public created_at?: Date = new Date();
-  public updated_at?: Date = new Date();
-  public bancada_id?: number;
-  public version_id?: number;
+  public resultado_controlado?: string;
+  public resultado_grafico?: string;
+  public resultado_parcial?: string;
+  public sexo?: string;
+  public texto_mapa?: string;
   public tipo_historico?: string;
-  public laboratory_domain_id?: number;
-  public deleted?: boolean;
-  public criado_em?: Date = new Date();
-  public changed_by_lab_id?: number
+  public tipo_resultado?: string;
+
+  public bancada_id?: number;
+  public ordem_laudo?: number;
+
+  public tipoInstrumento?: TipoInstrumento;
 
   constructor(values: TipoExame) {
+    super(values);
     Object.assign(this, values);
   }
 }

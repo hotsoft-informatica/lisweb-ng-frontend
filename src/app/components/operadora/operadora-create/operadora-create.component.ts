@@ -1,15 +1,13 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { Operadora } from './../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
-// import { TNODE } from '@angular/core/src/render3/interfaces/injector';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-operadora-create',
   templateUrl: './operadora-create.component.html',
-  styleUrls: ['./operadora-create.component.css'],
 })
 export class OperadoraCreateComponent implements OnInit {
   operadora: Operadora;
@@ -32,7 +30,8 @@ export class OperadoraCreateComponent implements OnInit {
 
     const empresa_id = this.operadora.empresa_id || 0
     if (empresa_id > 0) {
-      this.empresaService.readById(this.operadora.empresa_id as number).subscribe((empresa) => {
+      this.empresaService.readById(this.operadora.empresa_id as number).subscribe(
+        (empresa) => {
         this.empresa = empresa;
         this.operadora.empresa = empresa;
       });

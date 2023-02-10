@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-paciente-create-dados-convenio',
   templateUrl: './paciente-create-dados-convenio.component.html',
-  styleUrls: ['./paciente-create-dados-convenio.component.css']
 })
 export class PacienteCreateDadosConvenioComponent implements OnInit {
 
@@ -16,7 +15,7 @@ export class PacienteCreateDadosConvenioComponent implements OnInit {
     private router: Router,
     private pacienteService: PacienteService,
   ) {
-    this.paciente = new Paciente({});
+    this.paciente = new Paciente();
   }
 
   convenios: string[] = [

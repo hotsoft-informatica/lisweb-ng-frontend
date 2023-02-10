@@ -1,7 +1,7 @@
+import { Base } from './base.model'
 import { Operadora } from "./operadora.model";
 
-export class Empresa {
-
+export class Empresa extends Base{
   public alvara_uf?: string;
   public alvara?: string;
   public bairro?: string;
@@ -10,13 +10,9 @@ export class Empresa {
   public cidade?: string;
   public cnpj?: string;
   public cod_ibge_municipio?: string;
-  public created_at?: Date = new Date();
-  public criado_em?: Date = new Date();
-  public deleted?: boolean;
   public email?: string;
   public endereco?: string;
   public fax?: string;
-  public id?: number;
   public inscricao_estadual?: string;
   public laboratorio_id?: number;
   public laboratory_domain_id?: number;
@@ -28,10 +24,9 @@ export class Empresa {
   public telefone?: string;
   public tipo_logradouro?: string;
   public uf?: string;
-  public updated_at?: Date = new Date();
-  public version_id?: number;
 
   constructor(values: Empresa) {
+    super(values);
     Object.assign(this, values);
   }
 }

@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-responsavel-tecnico-show',
   templateUrl: './responsavel-tecnico-show.component.html',
-  styleUrls: ['./responsavel-tecnico-show.component.css'],
 })
 export class ResponsavelTecnicoShowComponent implements OnInit {
   responsavelTecnico: ResponsavelTecnico;
@@ -41,7 +40,7 @@ export class ResponsavelTecnicoShowComponent implements OnInit {
       .subscribe({
         next: (signature) => this.showSignature = signature,
         error: (err) => {
-          console.log(err)
+          console.warn(err)
           this.showSignature.imagem = undefined;
         }
       });

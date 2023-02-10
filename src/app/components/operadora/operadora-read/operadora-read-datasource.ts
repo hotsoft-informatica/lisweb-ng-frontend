@@ -1,6 +1,6 @@
 import { Operadora } from '../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
+import { DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { Query } from '../../model/query.model';
@@ -25,7 +25,7 @@ export class OperadoraReadDataSource implements DataSource<Operadora> {
     this.loadingSubject.next(true);
 
     this.operadoraService
-      .findOperadoras(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,12 +35,11 @@ export class OperadoraReadDataSource implements DataSource<Operadora> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Operadora[]> {
-    console.log('Conectando ao data source');
+  connect(): Observable<Operadora[]> {
     return this.operadorasSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.operadorasSubject.complete();
     this.loadingSubject.complete();
   }

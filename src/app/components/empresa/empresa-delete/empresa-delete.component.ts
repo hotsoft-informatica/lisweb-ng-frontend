@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-empresa-delete',
   templateUrl: './empresa-delete.component.html',
-  styleUrls: ['./empresa-delete.component.css'],
 })
 export class EmpresaDeleteComponent implements OnInit {
   @Input('empresa') empresa: Empresa;

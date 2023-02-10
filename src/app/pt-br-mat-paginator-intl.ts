@@ -1,4 +1,4 @@
-import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatLegacyPaginatorIntl as MatPaginatorIntl } from '@angular/material/legacy-paginator';
 
 const ptBrRangeLabel = (page: number, pageSize: number, length: number) => {
   if (length == 0 || pageSize == 0) { return `0 van ${length}`; }
@@ -14,7 +14,6 @@ const ptBrRangeLabel = (page: number, pageSize: number, length: number) => {
 
   return `${startIndex + 1} - ${endIndex} de ${length}`;
 }
-
 
 export function getPtBrMatPaginatorIntl() {
   const paginatorIntl = new MatPaginatorIntl();

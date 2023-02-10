@@ -10,12 +10,12 @@
           "strict": true
         }
       },
-      "root": "",
+      "root": "src/app/components",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
             "outputPath": "dist/lisweb-ng-frontend",
             "index": "src/index.html",
@@ -27,18 +27,16 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/styles.css"
             ],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true,
+            "vendorChunk": true,
             "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
@@ -75,7 +73,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "lisweb-ng-frontend:build"
+            "browserTarget": "lisweb-ng-frontend:build",
+            "host": "0.0.0.0"
           },
           "configurations": {
             "production": {
@@ -134,5 +133,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f303fcb5-6dc9-4447-9ee4-6d9fb263100e"
   }
 }

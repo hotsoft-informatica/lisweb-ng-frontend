@@ -1,40 +1,44 @@
-<div class="row justify-content-around">
-  <div>
-    Cadastrar versão de exame
-  </div>
-
-  <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-    <mat-label>Tipo exame:</mat-label>
-    <input
-      name="tipo_exame"
-      matInput [matAutocomplete]="auto" 
-      [(ngModel)]="versaoExame.tipo_exame_id"
-      (ngModelChange)="search()"
-    />
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(tipoExames)">
-      <mat-option *ngFor="let tipoExame of tipoExames" [value]="tipoExame.id">
-        {{ tipoExame.descricao }}
-      </mat-option>
-    </mat-autocomplete>
+<div>
+  Cadastrar versão de exame
+</div>
+<div class ="row, justify-content-around">
+  <mat-form-field appearance="fill" *ngIf="onEdit && !isEdit" class="col-5">
+    Tipo exame
+    <input matInput disabled matInput class="form-control" title="Tipo Exame"
+      [value]="versaoExame.tipoExame!.descricao">
   </mat-form-field>
 
-  <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-    <mat-label>Descrição:</mat-label>
-    <input matInput maxlength="50" name="descricao" [(ngModel)]="versaoExame.descricao">
+  <app-autocomplete-versao-exame 
+    *ngIf="onCreate || isEdit" [tipoExame]='this.versaoExame.tipoExame'>
+  </app-autocomplete-versao-exame>
+
+  <mat-slide-toggle *ngIf="onEdit" [(ngModel)]="isEdit" color="primary">
+    Editar
+  </mat-slide-toggle>
+
+  <mat-form-field appearance="fill" class="col-5 p-2">
+    Descrição
+    <input matInput maxlength="50" name="descricao" 
+      class="form-control" title="Descrição"
+      [(ngModel)]="versaoExame.descricao">
   </mat-form-field>
 </div>
 
 <mat-tab-group>
   <mat-tab label="Geral">
-    <app-versao-exame-geral-create [versaoExame]="this.versaoExame"></app-versao-exame-geral-create>
+    <app-versao-exame-geral-create [versaoExame]="this.versaoExame">
+    </app-versao-exame-geral-create>
   </mat-tab>
 
   <mat-tab label="Interfaceamento">
-    <app-versao-exame-interfaceamento-create [versaoExame]="this.versaoExame"></app-versao-exame-interfaceamento-create>
+    <app-versao-exame-interfaceamento-create [versaoExame]="this.versaoExame">
+    </app-versao-exame-interfaceamento-create>
   </mat-tab>
 
   <mat-tab label="Parâmetro">
-    <app-versao-exame-parametro [versaoExame]="this.versaoExame" [parametrosVersaoExame]="this.parametrosVersaoExame"></app-versao-exame-parametro>
+    <app-versao-exame-parametro [versaoExame]="this.versaoExame" 
+      [parametrosVersaoExame]="this.parametrosVersaoExame">
+    </app-versao-exame-parametro>
   </mat-tab>
 </mat-tab-group>
 

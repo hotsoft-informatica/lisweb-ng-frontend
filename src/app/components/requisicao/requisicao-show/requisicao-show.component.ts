@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Requisicao } from '../../model/requisicao.model';
 import { RequisicaoService } from '../../service/requisicao.service';
-import { Input } from '@angular/core';
-import { OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-requisicao-show',
   templateUrl: './requisicao-show.component.html',
-  styleUrls: ['./requisicao-show.component.css']
 })
 export class RequisicaoShowComponent implements OnInit {
 

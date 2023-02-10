@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-laboratorio-crud',
   templateUrl: './laboratorio-crud.component.html',
-  styleUrls: ['./laboratorio-crud.component.css'],
 })
 export class LaboratorioCrudComponent implements OnInit {
   constructor(private router: Router) { }

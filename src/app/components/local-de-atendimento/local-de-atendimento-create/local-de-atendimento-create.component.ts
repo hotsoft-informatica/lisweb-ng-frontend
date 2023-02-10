@@ -1,15 +1,13 @@
-import { Empresa } from './../../model/empresa.model';
-import { LocalDeAtendimentoService } from './../../service/local-de-atendimento.service';
-import { Component, OnInit, Input } from '@angular/core';
-import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendimento.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
-import { typeCheckFilePath } from '@angular/compiler-cli/src/ngtsc/typecheck';
+import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendimento.model';
+import { LocalDeAtendimentoService } from './../../service/local-de-atendimento.service';
 
 @Component({
   selector: 'app-local-de-atendimento-create',
   templateUrl: './local-de-atendimento-create.component.html',
-  styleUrls: ['./local-de-atendimento-create.component.css']
 })
 export class LocalDeAtendimentoCreateComponent implements OnInit {
   localAtendimento: LocalDeAtendimento;
@@ -100,7 +98,8 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/localdeatendimento/read']); // retorna /localdeatendimento
+    // retorna /localdeatendimento
+    this.router.navigate(['/localdeatendimento/read']);
    }
 
 }

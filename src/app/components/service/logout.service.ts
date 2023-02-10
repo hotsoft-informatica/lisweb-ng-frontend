@@ -1,8 +1,7 @@
-import { Router } from '@angular/router';
-import { UsuarioToken } from './../model/usuario-token.model';
 import { BackendIpService } from './backend-ip.service';
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { Router } from '@angular/router';
 import { Injectable, Input } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { combineLatest } from 'rxjs';
@@ -11,7 +10,6 @@ import { combineLatest } from 'rxjs';
   providedIn: 'root',
 })
 export class LogoutService {
-
   baseUrl = '/logout';
   userLogoutUrl = '/users/sign_out';
   superUserLogoutUrl = '/super_users/sign_out';
@@ -24,7 +22,7 @@ export class LogoutService {
     private router: Router,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
     this.userLogoutUrl = backendIpService.getUrl() + this.userLogoutUrl;
     this.superUserLogoutUrl = backendIpService.getUrl() + this.superUserLogoutUrl;
   }
@@ -66,3 +64,4 @@ export class LogoutService {
       })
   }
 }
+

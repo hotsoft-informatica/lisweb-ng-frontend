@@ -1,9 +1,9 @@
+import { catchError, finalize } from 'rxjs/operators';
+import { DataSource } from '@angular/cdk/collections';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Query } from '../../model/query.model';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Observable, BehaviorSubject, of } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
-import { Query } from '../../model/query.model';
 
 export class VersaoExameReadDataSource implements DataSource<VersaoExame> {
   private versaoExamesSubject = new BehaviorSubject<VersaoExame[]>([]);
@@ -12,7 +12,6 @@ export class VersaoExameReadDataSource implements DataSource<VersaoExame> {
   query: Query[] = [];
 
   public loading$ = this.loadingSubject.asObservable();
-
   constructor(private versaoExameService: VersaoExameService) { }
 
   loadVersaoExames(
@@ -25,7 +24,7 @@ export class VersaoExameReadDataSource implements DataSource<VersaoExame> {
     this.loadingSubject.next(true);
 
     this.versaoExameService
-      .findVersaoExames(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,12 +34,11 @@ export class VersaoExameReadDataSource implements DataSource<VersaoExame> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<VersaoExame[]> {
-    console.log('Conectando ao data source');
+  connect(): Observable<VersaoExame[]> {
     return this.versaoExamesSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.versaoExamesSubject.complete();
     this.loadingSubject.complete();
   }

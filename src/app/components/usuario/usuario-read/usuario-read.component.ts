@@ -1,20 +1,18 @@
-import { UsuarioUpdateComponent } from './../usuario-update/usuario-update.component';
-import { MatPaginator } from '@angular/material/paginator';
-import { UsuarioCreateComponent } from './../usuario-create/usuario-create.component';
 import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import { Usuario } from '../../model/usuario.model';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { UsuarioService } from '../../service/usuario.service';
-import { merge, throwError } from 'rxjs';
+import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Usuario } from '../../model/usuario.model';
+import { UsuarioCreateComponent } from './../usuario-create/usuario-create.component';
+import { UsuarioService } from '../../service/usuario.service';
+import { UsuarioUpdateComponent } from './../usuario-update/usuario-update.component';
 
 @Component({
   selector: 'app-usuario-read',
   templateUrl: './usuario-read.component.html',
-  styleUrls: ['./usuario-read.component.css']
 })
 export class UsuarioReadComponent implements AfterViewInit, OnInit {
 
@@ -48,7 +46,6 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
   openDialogUpdate(id: string): void {
@@ -60,7 +57,6 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   }
   // TODO: ATUALIZAR PAGINAÇÃO APOS BUSCA.
@@ -117,10 +113,10 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     });
   }
   ngOnInit(): void {
-    this.usuarioService.countUsuarios().subscribe((totalCount: number) => {
+    this.usuarioService.count().subscribe((totalCount: number) => {
       this.totalCount = totalCount;
     });
-    this.loadBack('id', 'desc', 0, 10, this.queries);
+    this.loadBack('id', 'desc', 0, 5, this.queries);
   }
 
   ngAfterViewInit(): void { // executar apos ser desenhado a pagina

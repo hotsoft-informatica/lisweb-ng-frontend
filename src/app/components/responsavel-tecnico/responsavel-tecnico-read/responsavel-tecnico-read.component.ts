@@ -1,30 +1,20 @@
+import { merge } from 'rxjs';
 import { Query } from "../../model/query.model";
 import { ResponsavelTecnicoService } from "../../service/responsavel-tecnico.service";
 import { ResponsavelTecnicoReadDataSource } from "./responsavel-tecnico-read.datasource";
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-responsavel-tecnico-read',
   templateUrl: './responsavel-tecnico-read.component.html',
-  styleUrls: ['./responsavel-tecnico-read.component.css']
 })
 export class ResponsavelTecnicoReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -42,7 +32,6 @@ export class ResponsavelTecnicoReadComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
 
   query: Query[] = [];
@@ -59,16 +48,18 @@ export class ResponsavelTecnicoReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new ResponsavelTecnicoReadDataSource(this.responsavelTecnicoService);
-    this.dataSource.loadResponsavelTecnico('id', 'desc', 1, 10, null);
-    this.responsavelTecnicoService.countResponsavelTecnico().subscribe((totalCount) => {
+    this.dataSource.loadResponsavelTecnico('id', 'desc', 1, 5, null);
+    this.responsavelTecnicoService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadResponsavelTecnicoPage()))
       .subscribe();
   }
@@ -82,5 +73,4 @@ export class ResponsavelTecnicoReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
-
 }

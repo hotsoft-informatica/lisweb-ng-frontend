@@ -1,4 +1,5 @@
 import { UsuarioToken } from "./usuario-token.model";
+import { Base } from './base.model';
 
 export class Token{
   public token?: string;

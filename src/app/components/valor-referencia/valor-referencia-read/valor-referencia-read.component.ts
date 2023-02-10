@@ -1,8 +1,12 @@
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
 import { Query } from 'src/app/components/model/query.model';
-import { ValorReferenciaService } from 'src/app/components/service/valor-referencia.service';
+import { tap } from 'rxjs/operators';
 import { ValorReferenciaReadDataSource } from './valor-referencia-read-datasource';
+import { ValorReferenciaService } from 'src/app/components/service/valor-referencia.service';
 import {
   AfterViewInit,
   ViewChild,
@@ -10,19 +14,14 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { tap } from 'rxjs/operators';
-import { merge } from 'rxjs';
 @Component({
   selector: 'app-valor-referencia-read',
   templateUrl: './valor-referencia-read.component.html',
-  styleUrls: ['./valor-referencia-read.component.css']
 })
 export class ValorReferenciaReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
   dataSource!: ValorReferenciaReadDataSource;
-
+  
   displayedColumns = [
     'sexo',
     'val_minimo',
@@ -59,16 +58,18 @@ export class ValorReferenciaReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new ValorReferenciaReadDataSource(this.valorReferenciaService);
-    this.dataSource.loadValoresReferencia('id', 'desc', 1, 10, null);
-    this.valorReferenciaService.countValoresReferencia().subscribe((totalCount) => {
+    this.dataSource.loadValoresReferencia('id', 'desc', 1, 5, null);
+    this.valorReferenciaService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadValoresReferenciaPage()))
       .subscribe();
   }
@@ -98,5 +99,4 @@ export class ValorReferenciaReadComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
 }

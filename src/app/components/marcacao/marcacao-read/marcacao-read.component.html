@@ -1,5 +1,4 @@
 <div class="p-3 col-12 row">
-
   <div class="row col-10 col-md-8 col-xs-6">
       <h3>
         <a routerLink="/">Inicio</a>
@@ -10,9 +9,10 @@
 
   <div class="col-2 col-md-4 col-xs-6">
     <div class="row">
-      
+
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" routerLink="/marcacoes/create">
+        <button mat-flat-button class="dvm-button" color="primary"
+         routerLink="/marcacoes/create">
             <mat-icon>add</mat-icon>
           Adicionar
         </button>
@@ -20,7 +20,8 @@
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button color="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button mat-flat-button color="primary" class="dvm-button"
+         data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -37,7 +38,8 @@
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           <mat-label>Nome:</mat-label>
-          <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome', nome.value)"
+          <input matInput #nome maxlength="50" class="form-control"
+           title="Filtre por nome" (input)="search('nome', nome.value)"
           >
         </mat-form-field>
       </div>
@@ -45,7 +47,8 @@
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           <mat-label>Tipo:</mat-label>
-          <input matInput #tipo maxlength="12" placeholder="Filtre por tipo" (input)="search('tipo', tipo.value)"
+          <input matInput #tipo maxlength="12" class="form-control"
+           title="Filtre por tipo" (input)="search('tipo', tipo.value)"
           >
         </mat-form-field>
       </div>
@@ -64,17 +67,20 @@
   >
 
   <ng-container matColumnDef="nome">
-    <th mat-header-cell mat-sort-header="nome" class="col-5" *matHeaderCellDef> Nome </th>
+    <th mat-header-cell mat-sort-header="nome" class="col-5"
+     *matHeaderCellDef> Nome </th>
     <td mat-cell *matCellDef="let row"> {{row.nome | slice:0:25}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="tipo">
-    <th mat-header-cell mat-sort-header="tipo" class="col-3" *matHeaderCellDef> Tipo </th>
-    <td mat-cell *matCellDef="let row"> {{row.tipo | slice:0:20}} ...</td>
+    <th mat-header-cell mat-sort-header="tipo" class="col-3"
+     *matHeaderCellDef> Tipo </th>
+    <td mat-cell *matCellDef="let row"> {{row.tipo | marcacaotipo}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="action">
-    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3" *matHeaderCellDef> Operações </th>
+    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3"
+     *matHeaderCellDef> Operações </th>
     <td mat-cell *matCellDef="let row">
       <div class="row">
 
@@ -87,7 +93,8 @@
         </div>
 
         <div class="col-1 me-3">
-            <button class="delete" mat-icon-button (click)="deleteMarcacao(row.id)">
+            <button class="delete" mat-icon-button
+             (click)="deleteMarcacao(row.id)">
               <mat-icon class="delete">delete</mat-icon>
             </button>
         </div>
@@ -98,7 +105,8 @@
           </mat-dialog-content>
           <mat-dialog-actions align="end">
             <button mat-button mat-dialog-close>Cancel</button>
-            <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Apagar</button>
+            <button mat-button [mat-dialog-close]="true"
+             cdkFocusInitial>Apagar</button>
           </mat-dialog-actions>
         </ng-template>
       </div>
@@ -109,6 +117,6 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [length]="this.totalCount" [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+  <mat-paginator [length]="this.totalCount" [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
 </div>

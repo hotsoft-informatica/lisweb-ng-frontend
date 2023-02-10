@@ -1,10 +1,13 @@
 <div class="d-flex justify-content-between col-sm-12 p-2">
-    <button mat-flat-button color="primary" class="col-sm-1 col-lg-1 float-start" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    <button mat-flat-button color="primary"
+      class="col-sm-1 col-lg-1 float-start" data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
       aria-expanded="false" aria-controls="collapseExample">
       <mat-icon>search</mat-icon>
       Buscar
     </button>
-    <button mat-flat-button class="btn-success col-sm-1 float-end" color="primary" title="Adicionar parâmetro"
+    <button mat-flat-button class="btn-success col-sm-1 float-end"
+      color="primary" title="Adicionar parâmetro"
     (click)="new();" *ngIf="!onCreate && !onEdit">
       <mat-icon>add</mat-icon>
     </button>
@@ -16,16 +19,20 @@
       <div class="row">
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
-            <mat-label>Descrição:</mat-label>
-            <input matInput #descricao maxlength="50" placeholder="Filtre por descrição" (input)="search('descricao', descricao.value)"
+            Descrição
+            <input matInput #descricao maxlength="50"
+              class="form-control" title="Descrição"
+              (input)="search('descricao', descricao.value)"
             >
           </mat-form-field>
         </div>
 
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
-            <mat-label>Num. Ordem:</mat-label>
-            <input matInput #num_ordem maxlength="12" placeholder="Filtre por Descrição" (input)="search('num_ordem', num_ordem.value)"
+            Num. Ordem
+            <input matInput #num_ordem maxlength="12"
+              class="form-control" title="Num. Ordem"
+              (input)="search('num_ordem', num_ordem.value)"
             >
           </mat-form-field>
         </div>
@@ -37,7 +44,7 @@
     <div *ngIf="onCreate || onEdit">
       <form #formCreateDominio="ngForm">
         <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-          <mat-label>Descrição:</mat-label>
+          Descrição
           <input
             type="text"
             id="descricao"
@@ -49,6 +56,8 @@
             #descricao2="ngModel"
             #descricao
             autofocus
+            title="descricao"
+            class="form-control"
           >
           <mat-error *ngIf="descricao2.invalid && (descricao2.dirty || descricao2.touched)">
             <span *ngIf="descricao2.errors?.['required']">
@@ -58,7 +67,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-          <mat-label>Num. Ordem:</mat-label>
+          Num. Ordem
           <input
             type="text"
             id="num_ordem"
@@ -68,6 +77,8 @@
             name="num_ordem"
             [(ngModel)]="currentRecord.num_ordem"
             #num_ordem="ngModel"
+            title="Ordem"
+            class="form-control"
           >
           <mat-error *ngIf="num_ordem.invalid && (num_ordem.dirty || num_ordem.touched)">
             <span *ngIf="num_ordem.errors?.['required']">
@@ -75,12 +86,13 @@
             </span>
           </mat-error>
         </mat-form-field>
-        <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
-          <button mat-button
-          (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateDominio.invalid">Inserir</button>
-          <button mat-button
+        <div id="buttons">
+          <button mat-button type="button"
+          (click)="addGridData()" *ngIf="onCreate"
+            [disabled]="formCreateDominio.invalid">Inserir</button>
+          <button mat-button type="button"
           (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
-          <button mat-button color="warn"
+          <button mat-button color="warn" type="button"
           (click)="cancelar()">Cancelar</button>
         </div>
       </form>
@@ -133,7 +145,7 @@
                 <mat-icon class="delete">delete</mat-icon>
               </button>
           </div>
-  
+
           <ng-template #deleteDialog>
             <mat-dialog-content class="mat-typography">
               Deseja apagar esse registro?
@@ -150,7 +162,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator [length]="this.totalCount" [pageSize]="10"
-  [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+  <mat-paginator [length]="this.totalCount" [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20, 50]"></mat-paginator>
 </div>
-

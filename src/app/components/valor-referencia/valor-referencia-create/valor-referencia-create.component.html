@@ -2,7 +2,7 @@
   <div class="row justify-content-around">
 
     <mat-form-field appearance="fill" class= "col-lg-1 col-md-12 p-2">
-      <mat-label>Sexo:</mat-label>
+      Sexo
       <mat-select name="sexo" [(ngModel)]="valorReferencia.sexo">
         <mat-option value="A">Ambos</mat-option>
         <mat-option value="F">Feminino</mat-option>
@@ -12,8 +12,10 @@
 
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
-        <mat-label>Val. Mínimo:</mat-label>
-        <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo" name="val_minimo"
+        Val. Mínimo:
+        <input type="number" matInput min="1" 
+          matInput maxlength="9" id="val_minimo"
+          title="Val. Mínimo:" name="val_minimo"
           [(ngModel)]="valorReferencia.val_minimo">
       </mat-form-field>
     </div>
@@ -21,7 +23,9 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Máximo:</mat-label>
-        <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo" name="val_maximo"
+        <input type="number" matInput min="1"
+          matInput maxlength="9" id="val_maximo"
+          title="Val. Máximo" name="val_maximo"
           [(ngModel)]="valorReferencia.val_maximo">
       </mat-form-field>
     </div>
@@ -29,7 +33,9 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Min. Absurdo:</mat-label>
-        <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo_absurdo" name="val_minimo_absurdo"
+        <input type="number" matInput min="1"
+          matInput maxlength="9" id="val_minimo_absurdo"
+          title="Val. Min. Absurdo" name="val_minimo_absurdo"
           [(ngModel)]="valorReferencia.val_minimo_absurdo">
       </mat-form-field>
     </div>
@@ -37,7 +43,9 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Máx. Absurdo:</mat-label>
-        <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo_absurdo" name="val_maximo_absurdo"
+        <input type="number" matInput min="1"
+          matInput maxlength="9" id="val_maximo_absurdo"
+          title="Val. Máx. Absurdo" name="val_maximo_absurdo"
           [(ngModel)]="valorReferencia.val_maximo_absurdo">
       </mat-form-field>
     </div>
@@ -45,7 +53,9 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Idade Mínima:</mat-label>
-        <input type="number" matInput min="1" matInput maxlength="3" id="idade_minima" name="idade_minima"
+        <input type="number" matInput min="1"
+          matInput maxlength="3" id="idade_minima"
+          title="Idade Mínima" name="idade_minima"
           [(ngModel)]="valorReferencia.idade_minima">
       </mat-form-field>
     </div>
@@ -53,7 +63,9 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Idade Máxima:</mat-label>
-        <input type="number" matInput min="1" matInput maxlength="3" id="idade_maxima" name="idade_maxima"
+        <input type="number" matInput min="1" matInput
+          maxlength="3" id="idade_maxima"
+          title="Idade Máxima" name="idade_maxima"
           [(ngModel)]="valorReferencia.idade_maxima">
       </mat-form-field>
     </div>
@@ -61,7 +73,9 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Min. Crítico:</mat-label>
-        <input type="number" matInput min="1" matInput maxlength="9" id="val_minimo_critico" name="val_minimo_critico"
+        <input type="number" matInput min="1"
+          matInput maxlength="9" id="val_minimo_critico"
+          title="Val. Min. Crítico" name="val_minimo_critico"
           [(ngModel)]="valorReferencia.val_minimo_critico">
       </mat-form-field>
     </div>
@@ -69,20 +83,24 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Val. Máx. Crítico:</mat-label>
-        <input type="number" matInput min="1" matInput maxlength="9" id="val_maximo_critico" name="val_maximo_critico"
+        <input type="number" matInput min="1" matInput
+          maxlength="9" id="val_maximo_critico"
+          title="Val. Máx. Crítico" name="val_maximo_critico"
           [(ngModel)]="valorReferencia.val_maximo_critico">
       </mat-form-field>
     </div>
 
     <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
-      <mat-label>Versão Exame:</mat-label>
+      Versão Exame
       <input
         name="versao_exame_id"
+        title="Versão Exame"
         matInput [matAutocomplete]="autoVersaoExame"
         [(ngModel)]="valorReferencia.versao_exame_id"
         (ngModelChange)="searchVersaoExame()"
       />
-      <mat-autocomplete #autoVersaoExame="matAutocomplete" [displayWith]="displayFnVersaoExame(versoesExame)">
+      <mat-autocomplete #autoVersaoExame="matAutocomplete"
+        [displayWith]="displayFnVersaoExame(versoesExame)">
         <mat-option *ngFor="let versaoExame of versoesExame" [value]=" versaoExame.id">
           {{ versaoExame.descricao }}
         </mat-option>
@@ -90,14 +108,16 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="col-lg-3 col-md-8 p-2">
-      <mat-label>Atributo Exame:</mat-label>
+      Atributo Exame
       <input
         name="atributo_exame_id"
+        title="Atributo Exame"
         matInput [matAutocomplete]="autoAtributoExame"
         [(ngModel)]="valorReferencia.atributo_exame_id"
         (ngModelChange)="searchAtributoExame()"
       />
-      <mat-autocomplete #autoAtributoExame="matAutocomplete" [displayWith]="displayFnAtributoExame(this.atributosExame)">
+      <mat-autocomplete #autoAtributoExame="matAutocomplete"
+        [displayWith]="displayFnAtributoExame(this.atributosExame)">
         <mat-option *ngFor="let atributoExame of atributosExame" [value]=" atributoExame.id">
           {{ atributoExame.rotulo }}
         </mat-option>
@@ -105,7 +125,7 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class= "col-lg-1 col-md-12 p-2">
-      <mat-label>Deletado:</mat-label>
+      Deletado
       <mat-select name="deleted" [(ngModel)]="valorReferencia.deleted">
         <mat-option value="false">Não</mat-option>
         <mat-option value="true">Sim</mat-option>
@@ -114,8 +134,8 @@
 
     <div class="row col-lg-8 p-2">
       <mat-form-field appearance="outline">
-        <mat-label>Texto:</mat-label>
-        <textarea matInput id="texto" name="texto"
+        Texto
+        <textarea matInput id="texto" name="texto" title="texto"
           [(ngModel)]="valorReferencia.texto">
       </textarea>
       </mat-form-field>

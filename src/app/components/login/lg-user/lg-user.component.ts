@@ -1,13 +1,14 @@
+import { Login } from '../../model/login.model';
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 import { UserLogin } from '../../model/login.model';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+
 @Component({
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
-  styleUrls: ['./lg-user.component.css']
 })
 export class LgUserComponent implements OnInit {
   @Input('login') login: UserLogin;
@@ -25,6 +26,7 @@ export class LgUserComponent implements OnInit {
 
   userLogin(): void {
     // TODO: Tratar deprecation do subscribe
+    // TODO: Revisar e merge
     this.userService.login(this.login).subscribe(
       (res) => {
         console.log("Arrow function user");
@@ -50,5 +52,5 @@ export class LgUserComponent implements OnInit {
         this.router.navigate(['/']);
       });
   }
-
 }
+

@@ -1,5 +1,4 @@
 <div class="p-3 col-12 row">
-
   <div class="row col-10 col-md-8 col-xs-6">
       <h3>
         <a routerLink="/">Inicio</a>
@@ -10,9 +9,10 @@
 
   <div class="col-2 col-md-4 col-xs-6">
     <div class="row">
-      
+
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" routerLink="/versao_exames/create">
+        <button mat-flat-button class="dvm-button"
+                color="primary" routerLink="/versao_exames/create/true">
             <mat-icon>add</mat-icon>
           Adicionar
         </button>
@@ -20,7 +20,8 @@
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button color="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button mat-flat-button color="primary" class="dvm-button"
+          data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -36,16 +37,19 @@
     <div class="row">
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
-          <mat-label>Título laudo:</mat-label>
-          <input matInput #titulo_laudo maxlength="50" placeholder="Filtre por título laudo" (input)="search('titulo_laudo', titulo_laudo.value)"
+          Título laudo
+          <input matInput #titulo_laudo maxlength="50" title="Titulo do Laudo"
+          (input)="search('titulo_laudo', titulo_laudo.value)" class="form-control"
           >
         </mat-form-field>
       </div>
 
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
-          <mat-label>Descrição:</mat-label>
-          <input matInput #descricao maxlength="12" placeholder="Filtre por Descrição" (input)="search('descricao', descricao.value)"
+          Descrição
+          <input matInput #descricao maxlength="12"
+           class="form-control" title="Descricao"
+          (input)="search('descricao', descricao.value)"
           >
         </mat-form-field>
       </div>
@@ -64,27 +68,33 @@
   >
 
   <ng-container matColumnDef="titulo_laudo">
-    <th mat-header-cell mat-sort-header="titulo_laudo" class="col-5" *matHeaderCellDef> Título laudo </th>
-    <td mat-cell *matCellDef="let row"> {{row.titulo_laudo | slice:0:25}} ...</td>
+    <th mat-header-cell mat-sort-header="titulo_laudo"
+     class="col-5" *matHeaderCellDef> Título laudo
+    </th>
+    <td mat-cell *matCellDef="let row">
+       {{row.titulo_laudo | slice:0:25}} ...
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="descricao">
-    <th mat-header-cell mat-sort-header="descricao" class="col-3" *matHeaderCellDef> Descrição </th>
+    <th mat-header-cell mat-sort-header="descricao"
+     class="col-3" *matHeaderCellDef> Descrição </th>
     <td mat-cell *matCellDef="let row"> {{row.descricao | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="status">
-    <th mat-header-cell mat-sort-header="status" class="col-3" *matHeaderCellDef> Status </th>
+    <th mat-header-cell mat-sort-header="status"
+     class="col-3" *matHeaderCellDef> Status </th>
     <td mat-cell *matCellDef="let row"> {{row.status | versaoexamestatus}}</td>
   </ng-container>
 
   <ng-container matColumnDef="action">
-    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3" *matHeaderCellDef> Operações </th>
+    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3"
+     *matHeaderCellDef> Operações </th>
     <td mat-cell *matCellDef="let row">
       <div class="row">
-
         <div class="col-1 me-3">
-          <a routerLink="/versao_exames/update/{{row.id}}">
+          <a routerLink="/versao_exames/update/{{row.id}}/true">
             <button mat-icon-button>
               <mat-icon class="edit">edit</mat-icon>
             </button>
@@ -92,7 +102,8 @@
         </div>
 
         <div class="col-1 me-3">
-          <button class="delete" mat-icon-button (click)="deleteVersaoExame(row.id)">
+          <button class="delete" mat-icon-button
+           (click)="deleteVersaoExame(row.id)">
             <mat-icon class="delete">delete</mat-icon>
           </button>
         </div>
@@ -103,7 +114,9 @@
           </mat-dialog-content>
           <mat-dialog-actions align="end">
             <button mat-button mat-dialog-close>Cancel</button>
-            <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Apagar</button>
+            <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+              Apagar
+            </button>
           </mat-dialog-actions>
         </ng-template>
       </div>
@@ -114,6 +127,6 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [length]="this.totalCount" [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+  <mat-paginator [length]="this.totalCount" [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
 </div>

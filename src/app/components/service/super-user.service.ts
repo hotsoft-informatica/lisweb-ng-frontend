@@ -1,11 +1,11 @@
-import { SuperUser } from '../model/super-user.model';
-import { SuperUserLogin } from '../model/login.model';
-import { Query } from './../model/query.model';
-import { Injectable } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
+import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { Query } from './../model/query.model';
+import { SuperUser } from '../model/super-user.model';
+import { SuperUserLogin } from '../model/login.model';
 
 @Injectable({
   providedIn: 'root',

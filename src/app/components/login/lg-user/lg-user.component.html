@@ -9,7 +9,7 @@
             type="email"
             id="email"
             matInput
-            placeholder="exemplo@email.com"
+            class="form-control" title="exemplo@email.com"
             name="email"
             [(ngModel)]="login.user.email"
             #email
@@ -25,6 +25,7 @@
             type="password"
             id="password"
             matInput
+            title="Senha"
             name="password"
             [(ngModel)]="login.user.password"
             #password
@@ -33,8 +34,12 @@
         </mat-form-field>
       </p>
       <div class="button">
-        <button type="submit" mat-button (click)="userLogin()">Entrar</button>
+        <button type="submit" mat-button
+         (click)="userLogin()">
+          Entrar
+        </button>
       </div>
     </form>
   </mat-card-content>
 </mat-card>
+

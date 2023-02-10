@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-operadora-delete',
   templateUrl: './operadora-delete.component.html',
-  styleUrls: ['./operadora-delete.component.css'],
 })
 export class OperadoraDeleteComponent implements OnInit {
   operadora: Operadora;
@@ -49,7 +48,8 @@ export class OperadoraDeleteComponent implements OnInit {
           .delete(operadora.empresa_id as number)
           .subscribe(() => { });
       });
-    this.operadoraService.delete(this.operadora.id as number).subscribe(() => {
+    this.operadoraService.delete(this.operadora.id as number).subscribe(
+      () => {
       this.operadoraService.showMessage('Operadora excluída com sucesso!');
       this.router.navigate(['/operadoras']).then(() => {
         window.location.reload();

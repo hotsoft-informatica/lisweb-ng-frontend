@@ -5,9 +5,8 @@ import {
   AfterViewInit,
   ViewChild,
   TemplateRef,
-  Renderer2,
   ElementRef,
-  Input,
+  Input
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSelect } from '@angular/material/select';
@@ -30,7 +29,6 @@ import { merge, forkJoin, Observable } from 'rxjs';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit, AfterViewInit {
   @Input('laboratory_domains') laboratory_domains: LaboratoryDomain[] = [];
@@ -96,7 +94,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     this.subjectLaboratoryDomain.pipe(debounceTime(500)).subscribe(() => {
       this.laboratoryDomainService
         .find('id', 'asc', 0, 60, this.queries)
-        .subscribe((laboratory_domains) => {
+        .subscribe((laboratory_domains: any) => {
           // console.table(this.queries);
           this.laboratory_domains = laboratory_domains;
         });
@@ -120,7 +118,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   laboratoryDomainChange(event: any): void {
     this.laboratorioService
       .getAssocLabId(event.source.value)
-      .subscribe((laboratorios) => {
+      .subscribe((laboratorios: any) => {
         this.laboratorios = laboratorios;
         this.currentRecord.laboratorio_principal_id = null;
       });

@@ -1,17 +1,21 @@
+import { BaseService } from './base.service';
+import { Injectable, Inject, Injector, Input } from '@angular/core';
 import { User } from '../model/user.model';
 import { UserLogin } from '../model/login.model';
 import { Usuario } from '../model/usuario.model';
 import { UsuarioService } from './usuario.service';
 import { Query } from './../model/query.model';
-import { Injectable, Input } from '@angular/core';
 import { BackendIpService } from './backend-ip.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+
+export class UserService extends BaseService {
+
   @Input('usuarios') usuarios: Usuario[] = [];
   id!: number;
 
@@ -20,21 +24,21 @@ export class UserService {
   createUrl = '/create_user';
   createAssocUsuarioLmUrl = '/usuarios_user';
   updateUrl = '/update_user';
-
-  baseUrl = '/users'
+  baseUrl = '/users';
   loginUrl = '/users/sign_in';
   logoutUrl = '/users/sign_out';
 
   storage: Storage = window.localStorage;
-
   query: Query[] = [];
 
   constructor(
+    @Inject(Injector) public injector: Injector,
     private snackbar: MatSnackBar,
-    private http: HttpClient,
     private usuarioService: UsuarioService,
+    public http: HttpClient,
     private backendIpService: BackendIpService
   ) {
+    super(injector, http);
     this.indexUrl = backendIpService.getUrl() + this.indexUrl;
     this.createUrl = backendIpService.getUrl() + this.createUrl;
     this.updateUrl = backendIpService.getUrl() + this.updateUrl;
@@ -50,6 +54,8 @@ export class UserService {
       horizontalPosition: 'right',
       verticalPosition: 'top',
     });
+
+    this.endpoint = 'users'
   }
 
   login(user: UserLogin): Observable<HttpResponse<any>> {

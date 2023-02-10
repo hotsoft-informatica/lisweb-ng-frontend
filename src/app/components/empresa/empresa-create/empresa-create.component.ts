@@ -5,11 +5,9 @@ import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { end } from '@popperjs/core';
 @Component({
   selector: 'app-empresa-create',
   templateUrl: './empresa-create.component.html',
-  styleUrls: ['./empresa-create.component.css'],
 })
 
 export class EmpresaCreateComponent implements OnInit {
@@ -893,13 +891,11 @@ export class EmpresaCreateComponent implements OnInit {
 
   private state_filter(value: string): string[] {
     const filterValue = value.toUpperCase();
-    console.log(filterValue);
     return this.states.filter(option => option.toUpperCase().indexOf(filterValue) === 0);
   }
 
   private city_filter(value: string): string[] {
     const filterValue = value.toUpperCase();
-    console.log(filterValue);
     return this.cities.filter(option => option.toUpperCase().indexOf(filterValue) === 0);
   }
 

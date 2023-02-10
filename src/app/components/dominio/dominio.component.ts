@@ -1,19 +1,26 @@
-import { Query } from '../model/query.model';
-import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, timer } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Query } from '../model/query.model';
 import { tap } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { timer, merge } from 'rxjs';
+import {
+   ViewChild,
+   TemplateRef,
+   Renderer2,
+   AfterViewInit,
+   OnInit,
+   Component,
+   ElementRef
+  } from '@angular/core';
+
 @Component({
   selector: 'app-dominio',
   templateUrl: './dominio.component.html',
-  styleUrls: ['./dominio.component.css']
 })
 export class DominioComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);
@@ -49,7 +56,7 @@ export class DominioComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.recordService.countDominios().subscribe((totalCount) => {
+    this.recordService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
@@ -83,7 +90,6 @@ export class DominioComponent implements OnInit, AfterViewInit {
   onFocus(): void {
     timer(250).subscribe(() => {
       if (this.descricao !== undefined) {
-        console.log("Entrou no onfocus");
         this.renderer.selectRootElement(this.descricao["nativeElement"]).focus();
       }
     });

@@ -1,30 +1,34 @@
+import { BaseService } from './base.service';
+import { Injectable, Inject, Injector } from '@angular/core';
 import { Query } from './../model/query.model';
 import { Laboratorio } from '../model/laboratorio.model';
 import { Usuario } from '../model/usuario.model';
 import { BackendIpService } from './backend-ip.service';
-import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EMPTY, Observable, of, map, pipe } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
-export class LaboratorioService {
+
+export class LaboratorioService extends BaseService {
   associationUrl = '/laboratorios_dominio';
   baseUrl = '/laboratorios';
   storage: Storage = window.localStorage;
-
   query: Query[] = [];
   labDomains = [];
 
   constructor(
     private snackbar: MatSnackBar,
-    private http: HttpClient,
-    private backendIpService: BackendIpService
-  ) {
-    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
-    this.associationUrl = backendIpService.getUrl() + this.associationUrl;
-  }
+    @Inject(Injector) public injector: Injector,
+    public http: HttpClient,
+    private backendIpService: BackendIpService) {
+      super(injector, http);
+      this.endpoint = 'laboratorios'
+      this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+      this.associationUrl = backendIpService.getUrl() + this.associationUrl;
+    }
 
   getData() {
     return this.labDomains.length ? of(this.labDomains)
@@ -62,9 +66,12 @@ export class LaboratorioService {
   }
 
   getAssocLabId(id: number): Observable<Laboratorio[]> {
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let headers = new HttpHeaders().set('Authorization', auth);
+
     const url = `${this.associationUrl}/${id}`;
     console.log(url);
-    return this.http.get<Laboratorio[]>(url);
+    return this.http.get<Laboratorio[]>(url, {headers: headers});
   }
 
   update(laboratorio: Laboratorio): Observable<Laboratorio> {
@@ -118,3 +125,4 @@ export class LaboratorioService {
     });
   }
 }
+

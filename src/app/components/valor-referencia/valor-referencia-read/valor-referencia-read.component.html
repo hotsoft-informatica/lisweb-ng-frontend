@@ -1,26 +1,27 @@
 <div class="p-3 col-12 row">
-
   <div class="row col-10 col-md-8 col-xs-6">
       <h3>
         <a routerLink="/">Inicio</a>
         <a> > </a>
-        <a routerLink="/valores_referencia/read">Valor Referência</a>
+        <a routerLink="/valores_referencia/read">
+          Valor Referência
+        </a>
       </h3>
   </div>
 
   <div class="col-2 col-md-4 col-xs-6">
     <div class="row">
-      
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" routerLink="/valores_referencia/create">
-            <mat-icon>add</mat-icon>
+        <button mat-flat-button class="dvm-button" color="primary"
+          routerLink="/valores_referencia/create">
+          <mat-icon>add</mat-icon>
           Adicionar
         </button>
         <mat-label class="ms-1 fs-6"></mat-label>
       </div>
-
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button color="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button mat-flat-button color="primary" class="dvm-button"
+          data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -36,17 +37,19 @@
     <div class="row">
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
-          <mat-label>Valor Máximo:</mat-label>
-          <input matInput #val_maximo maxlength="10" placeholder="Filtre por valor máximo" (input)="search('val_maximo', val_maximo.value)"
+          Valor Máximo
+          <input matInput #val_maximo maxlength="10"
+           class="form-control" title="Valor Máximo"
+           (input)="search('val_maximo', val_maximo.value)"
           >
         </mat-form-field>
       </div>
 
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
-          <mat-label>Valor Mínimo:</mat-label>
-          <input matInput #val_minimo maxlength="10" placeholder="Filtre por valor mínimo" (input)="search('val_minimo', val_minimo.value)"
-          >
+          Valor Mínimo
+          <input matInput #val_minimo maxlength="10" class="form-control"
+            title=" Valor Mínimo" (input)="search('val_minimo', val_minimo.value)">
         </mat-form-field>
       </div>
     </div>
@@ -64,55 +67,64 @@
   >
 
   <ng-container matColumnDef="sexo">
-    <th mat-header-cell mat-sort-header="sexo" class="col-2" *matHeaderCellDef>Sexo</th>
+    <th mat-header-cell mat-sort-header="sexo"
+      class="col-2" *matHeaderCellDef>Sexo</th>
     <td mat-cell *matCellDef="let row"> {{row.sexo | valorreferenciasexo}} </td>
   </ng-container>
 
   <ng-container matColumnDef="val_minimo">
-    <th mat-header-cell mat-sort-header="val_minimo" class="col-2" *matHeaderCellDef>Val. Mínimo</th>
+    <th mat-header-cell mat-sort-header="val_minimo"
+      class="col-2" *matHeaderCellDef>Val. Mínimo</th>
     <td mat-cell *matCellDef="let row"> {{row.val_minimo | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="val_maximo">
-    <th mat-header-cell mat-sort-header="val_maximo" class="col-2" *matHeaderCellDef>Val. Máximo</th>
+    <th mat-header-cell mat-sort-header="val_maximo"
+      class="col-2" *matHeaderCellDef>Val. Máximo</th>
     <td mat-cell *matCellDef="let row"> {{row.val_maximo | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="val_maximo_absurdo">
-    <th mat-header-cell mat-sort-header="val_maximo_absurdo" class="col-2" *matHeaderCellDef>Val. Mín. Absurdo</th>
+    <th mat-header-cell mat-sort-header="val_maximo_absurdo"
+      class="col-2" *matHeaderCellDef>Val. Mín. Absurdo</th>
     <td mat-cell *matCellDef="let row"> {{row.val_maximo_absurdo | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="val_minimo_absurdo">
-    <th mat-header-cell mat-sort-header="val_minimo_absurdo" class="col-2" *matHeaderCellDef>Val. Máx. Absurdo</th>
+    <th mat-header-cell mat-sort-header="val_minimo_absurdo"
+      class="col-2" *matHeaderCellDef>Val. Máx. Absurdo</th>
     <td mat-cell *matCellDef="let row"> {{row.val_minimo_absurdo | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="idade_minima">
-    <th mat-header-cell mat-sort-header="idade_minima" class="col-2" *matHeaderCellDef>Idade Mínima</th>
+    <th mat-header-cell mat-sort-header="idade_minima"
+      class="col-2" *matHeaderCellDef>Idade Mínima</th>
     <td mat-cell *matCellDef="let row"> {{row.idade_minima | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="idade_maxima">
-    <th mat-header-cell mat-sort-header="idade_maxima" class="col-2" *matHeaderCellDef>Idade Máxima</th>
+    <th mat-header-cell mat-sort-header="idade_maxima"
+      class="col-2" *matHeaderCellDef>Idade Máxima</th>
     <td mat-cell *matCellDef="let row"> {{row.idade_maxima | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="val_minimo_critico">
-    <th mat-header-cell mat-sort-header="val_minimo_critico" class="col-2" *matHeaderCellDef>Val. Min. Crítico</th>
+    <th mat-header-cell mat-sort-header="val_minimo_critico"
+      class="col-2" *matHeaderCellDef>Val. Min. Crítico</th>
     <td mat-cell *matCellDef="let row"> {{row.val_minimo_critico | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="val_maximo_critico">
-    <th mat-header-cell mat-sort-header="val_maximo_critico" class="col-2" *matHeaderCellDef>Val. Max. Crítico</th>
+    <th mat-header-cell mat-sort-header="val_maximo_critico"
+      class="col-2" *matHeaderCellDef>Val. Max. Crítico</th>
     <td mat-cell *matCellDef="let row"> {{row.val_maximo_critico | slice:0:20}} ...</td>
   </ng-container>
 
   <ng-container matColumnDef="action">
-    <th mat-header-cell colspan="3" mat-sort-header="" class="col-3" *matHeaderCellDef>Operações</th>
+    <th mat-header-cell colspan="3" mat-sort-header=""
+      class="col-3" *matHeaderCellDef>Operações</th>
     <td mat-cell *matCellDef="let row">
       <div class="row">
-
         <div class="col-1 me-3">
           <a routerLink="/valores_referencia/update/{{row.id}}">
             <button mat-icon-button>
@@ -120,13 +132,11 @@
             </button>
           </a>
         </div>
-
         <div class="col-1 me-3">
             <button class="delete" mat-icon-button (click)="deleteValorReferencia(row.id)">
               <mat-icon class="delete">delete</mat-icon>
             </button>
         </div>
-
         <ng-template #deleteDialog>
           <mat-dialog-content class="mat-typography">
             Deseja apagar esse registro?
@@ -139,12 +149,10 @@
       </div>
     </td>
   </ng-container>
-
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-
-  <mat-paginator [length]="this.totalCount" [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+  <mat-paginator [length]="this.totalCount" [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
 </div>
 

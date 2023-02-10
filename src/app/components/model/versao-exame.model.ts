@@ -1,35 +1,36 @@
-import { TipoExame } from './tipo-exame.model';
-import { MetodoExame } from './metodo-exame.model';
+import { Base } from './base.model';
 import { Marcacao } from './marcacao.model';
+import { MetodoExame } from './metodo-exame.model';
 import { ParametroVersaoExame } from './parametro-versao-exame.model';
-export class VersaoExame {
-  public id?: number;
+import { TipoExame } from './tipo-exame.model';
+import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
+
+export class VersaoExame extends Base{
   public laboratorio_id?: number;
   public versao?: number;
   public agrupamento?: number;
-  public descricao?: string;
-  public descritivo?: string;
   public volume?: number;
   public diluicao?: number;
-  public analito?: string;
-  public escala?: string;
-  public status?: string;
-  public aprovado?: string;
-  public original_id?: number;
-  public version?: number;
-  public created_at?: Date = new Date();
-  public updated_at?: Date = new Date();
   public metodo_exame_id?: number;
   public tipo_exame_id?: number;
   public tipo_instrumento_id?: number;
   public material_biologico_id?: number;
   public laboratorio_apoio_id?: number;
   public marcacao_id?: number;
-  public tipo_propriedade?: string;
-  public aspecto_temporal?: string;
-  public cod_exame_laboratorio?: string;
   public custo_laboratorio?: number;
   public dias_entrega_laboratorio?: number;
+  public versao_exame_original_id?: number;
+  public agrupamento_historico?: number;
+
+  public tipo_propriedade?: string;
+  public descricao?: string;
+  public descritivo?: string;
+  public analito?: string;
+  public escala?: string;
+  public status?: string;
+  public aprovado?: string;
+  public aspecto_temporal?: string;
+  public cod_exame_laboratorio?: string;
   public recebe_material?: string;
   public amostra_exclusiva?: string;
   public permite_caracteres?: string;
@@ -42,27 +43,23 @@ export class VersaoExame {
   public titulo_laudo?: string;
   public valor_referencia_texto?: string;
   public valor_referencia_apoio?: string;
-  public versao_exame_original_id?: number;
-  public data_hora_criacao?: Date = new Date();
   public usar_valor_referencia_texto?: string;
-  public agrupamento_historico?: number;
+
+  public tipoInstrumento?: TipoInstrumento = new TipoInstrumento({});
+  public data_hora_criacao?: Date = new Date();
   public laudagem_externa?: string;
   public laudagem_externa_coleta?: string;
   public agrupamento_amostra?: string;
   public laudo_banda_imagem?: BinaryType;
-  public version_id?: number;
-  public laboratory_domain_id?: number;
-  public deleted?: boolean;
   public formula?: string;
-  public criado_em?: Date = new Date();
-  public changed_by_lab_id?: number;
   public tempo_repouso?: number;
-  public tipoExame?: TipoExame;
+  public tipoExame?: TipoExame = new TipoExame({});
   public metodoExame?: MetodoExame;
   public marcacao?: Marcacao;
   public parametrosVersaoExame?: ParametroVersaoExame[];
 
   constructor(values: VersaoExame) {
+    super(values);
     Object.assign(this, values);
   }
 }

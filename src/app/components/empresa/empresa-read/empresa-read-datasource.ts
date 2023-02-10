@@ -25,7 +25,7 @@ export class EmpresaReadDataSource implements DataSource<Empresa> {
     this.loadingSubject.next(true);
 
     this.empresaService
-      .findEmpresas(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,12 +35,11 @@ export class EmpresaReadDataSource implements DataSource<Empresa> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Empresa[]> {
-    console.log('Conectando ao data source');
+  connect(): Observable<Empresa[]> {
     return this.empresasSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.empresasSubject.complete();
     this.loadingSubject.complete();
   }

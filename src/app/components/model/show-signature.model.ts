@@ -1,3 +1,4 @@
+import { Base } from './base.model'; 
 import { Mime } from './mime.model';
 
 export class ShowSignature {

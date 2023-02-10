@@ -1,8 +1,8 @@
 <mat-form-field class="search-field">
-  <mat-label>Buscar Amostra</mat-label>
+  Buscar Amostra
   <input
-    matInput
-    type="text"
+    matInput class="form-control"
+    type="text" title="Buscar Amostra"
     autocomplete="off"
     (keyup.enter)="search('id', inputId.value)"
     #inputId
@@ -30,11 +30,11 @@
     </thead>
     <tbody>
       <tr class="mat-row">
-        <td class="mat-cell">{{ pacienteAmostra?.nome }}</td>
-        <td class="mat-cell">{{ pacienteExame?.num_protocolo }}</td>
-        <td class="mat-cell">{{ materialBiologico?.nome }}</td>
-        <td class="mat-cell">{{ coletor?.nome }}</td>
-        <td class="mat-cell">{{ amostra?.created_at | date: "dd/MM/yyyy" }}</td>
+        <td class="mat-cell">{{ pacienteAmostra.nome }}</td>
+        <td class="mat-cell">{{ pacienteExame.num_protocolo }}</td>
+        <td class="mat-cell">{{ materialBiologico.nome }}</td>
+        <td class="mat-cell">{{ coletor.nome }}</td>
+        <td class="mat-cell">{{ amostra.created_at | date: "dd/MM/yyyy" }}</td>
       </tr>
     </tbody>
   </table>
@@ -67,9 +67,9 @@
             {{ exameAmostra.exame?.versao_exame?.descricao }}
           </td>
           <td class="mat-cell">{{ exameAmostra.exame?.urgente }}</td>
+          <!-- TODO: [tippy]="consultaStatusAlt(exameAmostra?.exame?.status)" -->
           <td
             class="mat-cell"
-            [tippy]="consultaStatusAlt(exameAmostra?.exame?.status)"
             [ngStyle]="{ color: consultaStatus(exameAmostra?.exame?.status) }"
           >
             {{ exameAmostra?.exame?.status }}

@@ -1,0 +1,66 @@
+<mat-form-field class="search-field">
+  <mat-input-container>
+    <input matInput type="text" class="form-control"
+     title="Buscar Nome"
+      (keyup.enter)="search('name', inputNome.value)" #inputNome />
+  </mat-input-container>
+</mat-form-field>
+
+<div class="mat-elevation-z4">
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    matSortActive="nome"
+    matSortDirection="asc"
+    matSortDisableClear
+  >
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="id">Id</th>
+      <td mat-cell *matCellDef="let row">{{ row?.id }}</td>
+    </ng-container>
+
+    <!-- nome Column -->
+    <ng-container matColumnDef="custom_where">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="custom_where">Where</th>
+      <td mat-cell *matCellDef="let row">{{ row?.custom_where }}</td>
+    </ng-container>
+
+    <!-- nome Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="name">Nome</th>
+      <td mat-cell *matCellDef="let row">{{ row?.name }}</td>
+    </ng-container>
+
+    <!-- nome Column -->
+    <ng-container matColumnDef="client_server_table_id">
+      <th mat-header-cell *matHeaderCellDef>Tabela</th>
+      <td mat-cell *matCellDef="let row">{{ row?.client_server_table_id }}</td>
+    </ng-container>
+
+    <!-- action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let row">
+        <a routerLink="/laboratory_get_filters/update/{{ row.id }}" class="edit">
+          <i class="material-icons"> edit </i>
+        </a>
+        <a routerLink="/laboratory_get_filters/delete/{{ row.id }}" class="delete">
+          <i class="material-icons"> delete </i>
+        </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [length]="this.totalCount" [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 20, 50]"></mat-paginator>
+
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

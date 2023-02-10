@@ -1,18 +1,19 @@
-import { Query } from '../../model/query.model';
-import { VersaoExameParametroComponent } from '../versao-exame-parametro/versao-exame-parametro.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Marcacao } from 'src/app/components/model/marcacao.model';
+import { MarcacaoService } from 'src/app/components/service/marcacao.service';
+import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
+import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
+import { Query } from '../../model/query.model';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
 import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
+import { VersaoExameParametroComponent } from '../versao-exame-parametro/versao-exame-parametro.component';
 import { VersaoExameService } from '../../service/versao-exame.service';
-import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
-import { MetodoExameService } from 'src/app/components/service/metodo-exame.service';
-import { Marcacao } from 'src/app/components/model/marcacao.model';
-import { MarcacaoService } from 'src/app/components/service/marcacao.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
+  Input,
   OnInit,
   ViewChild,
   AfterViewInit,
@@ -20,12 +21,11 @@ import {
 import {
   debounceTime,
 } from 'rxjs/operators';
-import { Subject, forkJoin, Observable, from, map } from 'rxjs';
+import { Subject, forkJoin, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-versao-exame-create',
   templateUrl: './versao-exame-create.component.html',
-  styleUrls: ['./versao-exame-create.component.css']
 })
 export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   versaoExame!: VersaoExame;
@@ -37,6 +37,9 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   subject: Subject<any> = new Subject();
   id: number;
 
+  isEdit: boolean = false;
+  onEdit!: boolean;
+  onCreate!: boolean;
   requests: Observable<any>[] = [];
 
   @ViewChild(VersaoExameParametroComponent)
@@ -52,11 +55,17 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
     private parametroVersaoExameService: ParametroVersaoExameService
 
   ) {
+    this.onEdit = this.route.snapshot.paramMap.get('edit') as unknown as boolean;
+    this.onCreate = this.route.snapshot.paramMap.get('create') as unknown as boolean;
+
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
     if (this.id > 0) {
       this.loadVersaoExame(this.id);
+      this.onEdit = true;
+    } else {
+      this.onCreate = true;
     }
-    this.versaoExame ||= new VersaoExame({});
+    this.versaoExame ||= new VersaoExame({tipoExame: new TipoExame({})});
   }
 
   ngOnInit(): void {
@@ -65,7 +74,7 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.tipoExameService
-        .findTipoExames('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, this.queries)
         .subscribe((tipoExames) => {
           this.tipoExames = tipoExames;
         });
@@ -163,19 +172,30 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   }
 
   createVersaoExame(): void {
-    if (this.id > 0) {
-      this.updateVersaoExame();
-    } else {
-      this.versaoExameService.create(this.versaoExame).subscribe(() => {
-        this.versaoExameService.showMessage('Versão de exame criada com sucesso!');
-        this.router.navigate(['/versao_exames']).then(() => {
-          window.location.reload();
+    console.table(this.versaoExame.tipoExame);
+    this.tipoExameService.readById(this.versaoExame.tipoExame!.id as number).subscribe((tipoExame) =>{
+      this.versaoExame.tipoExame = tipoExame;
+      this.versaoExame.tipo_exame_id = tipoExame.id;
+      if (this.id > 0) {
+        this.updateVersaoExame();
+        this.onEdit = false;
+        this.onCreate = false;
+      } else {
+        this.versaoExameService.create(this.versaoExame).subscribe(() => {
+          this.versaoExameService.showMessage('Versão de exame criada com sucesso!');
+          this.onEdit = false;
+          this.onCreate = false;
+          this.router.navigate(['/versao_exames']).then(() => {
+            window.location.reload();
+          });
         });
-      });
-    }
+      }
+    })
   }
 
   cancel(): void {
+    this.onEdit = false;
+    this.onCreate = false;
     this.router.navigate(['/versao_exames']);
   }
 

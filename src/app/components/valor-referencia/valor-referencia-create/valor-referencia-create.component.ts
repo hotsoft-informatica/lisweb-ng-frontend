@@ -1,6 +1,6 @@
 import { Query } from '../../model/query.model'
 import { AtributoExame } from '../../model/atributo-exame.model'
-import { AtributoExameService } from '../../service/atributo-exame.service'
+import { AtributoExameService } from '../../service/atributo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
 import { ValorReferencia } from '../../model/valor-referencia.model';
@@ -13,7 +13,6 @@ import { debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'app-valor-referencia-create',
   templateUrl: './valor-referencia-create.component.html',
-  styleUrls: ['./valor-referencia-create.component.css']
 })
 export class ValorReferenciaCreateComponent implements OnInit {
   valorReferencia!: ValorReferencia;
@@ -47,7 +46,7 @@ export class ValorReferenciaCreateComponent implements OnInit {
 
     this.subjectVersaoExame.pipe(debounceTime(500)).subscribe(() => {
       this.versaoExameService
-        .findVersaoExames('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, this.queries)
         .subscribe((versaoExame) => {
           console.table(this.queries);
           this.versoesExame = versaoExame;
@@ -57,8 +56,8 @@ export class ValorReferenciaCreateComponent implements OnInit {
 
     this.subjectAtributoExame.pipe(debounceTime(500)).subscribe(() => {
       this.atributoExameService
-        .findAtributoExame('id', 'asc', 0, 60, this.queries)
-        .subscribe((atributoExame) => {
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((atributoExame: any) => {
           console.table(this.queries);
           this.atributosExame = atributoExame;
         });

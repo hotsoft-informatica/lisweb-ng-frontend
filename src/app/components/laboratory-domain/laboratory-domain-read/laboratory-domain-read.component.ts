@@ -1,29 +1,18 @@
 import { Query } from '../../model/query.model';
 import { LaboratoryDomainReadDataSource } from './laboratory-domain-read-datasource';
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
-import {
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import { tap } from 'rxjs/operators';import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-laboratory-domain-read',
   templateUrl: './laboratory-domain-read.component.html',
-  styleUrls: ['./laboratory-domain-read.component.css'],
 })
 export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -61,18 +50,20 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
     this.dataSource = new LaboratoryDomainReadDataSource(
       this.laboratoryDomainService
     );
-    this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 10, null);
+    this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 5, null);
     this.laboratoryDomainService
-      .countLaboratoryDomains()
+      .count()
       .subscribe((totalCount) => {
         this.totalCount = totalCount;
       });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) //Na ordenação ou paginação, carrega uma nova página
+    //Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadLaboratoryDomainsPage()))
       .subscribe();
   }

@@ -1,3 +1,4 @@
+import { Base } from './base.model';
 export class Paciente {
   public id?: number;
   public laboratorio_id?: number;
@@ -52,7 +53,7 @@ export class Paciente {
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
 
-  constructor(values: Paciente) {
+  Conveniosconstructor(values: Paciente) {
     Object.assign(this, values);
   }
 }

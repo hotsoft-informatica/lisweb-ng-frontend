@@ -6,7 +6,6 @@ import { LaboratoryDomainService } from '../../service/laboratory-domain.service
 @Component({
   selector: 'app-laboratory-domain-update',
   templateUrl: './laboratory-domain-update.component.html',
-  styleUrls: ['./laboratory-domain-update.component.css'],
 })
 export class LaboratoryDomainUpdateComponent implements OnInit {
   laboratoryDomain!: LaboratoryDomain;
@@ -21,7 +20,7 @@ export class LaboratoryDomainUpdateComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.laboratoryDomainService
       .readById(id as unknown as number)
-      .subscribe((laboratoryDomain) => {
+      .subscribe((laboratoryDomain: any) => {
         this.laboratoryDomain = laboratoryDomain;
       });
   }
@@ -41,3 +40,4 @@ export class LaboratoryDomainUpdateComponent implements OnInit {
     this.router.navigate(['/laboratorydomains']);
   }
 }
+

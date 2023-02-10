@@ -4,33 +4,18 @@ import { LaboratoryDomainService } from '../../service/laboratory-domain.service
 import { Laboratorio } from '../../model/laboratorio.model';
 import { Router } from '@angular/router';
 import { LaboratorioService } from '../../service/laboratorio.service';
-import { STRING_TYPE } from '@angular/compiler';
-import { pipe, map } from 'rxjs';
 import {
-  AfterViewInit,
-  ElementRef,
-  ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import {
   debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-laboratorio-create',
   templateUrl: './laboratorio-create.component.html',
-  styleUrls: ['./laboratorio-create.component.css'],
 })
 export class LaboratorioCreateComponent implements OnInit {
   laboratorio: Laboratorio;
@@ -52,7 +37,7 @@ export class LaboratorioCreateComponent implements OnInit {
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.laboratoryDomainService
         .find('id', 'asc', 0, 60, this.queries)
-        .subscribe((laboratoryDomains) => {
+        .subscribe((laboratoryDomains: any) => {
           console.table(this.queries);
           this.laboratoryDomains = laboratoryDomains;
         });
@@ -95,3 +80,4 @@ export class LaboratorioCreateComponent implements OnInit {
     };
   }
 }
+

@@ -1,13 +1,11 @@
 import { DialogErroQuinhentosComponent } from './../DiaLog/dialog-erro-quinhentos/dialog-erro-quinhentos.component';
 import { DialogErroAutenticacaoComponent } from './../DiaLog/dialog-erro-autenticacao/dialog-erro-autenticacao.component';
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { EmptyError, Observable, of, throwError, EMPTY } from 'rxjs';
-import { mergeMap, delay, retryWhen } from 'rxjs/operators';
-import { catchError, retry, tap } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
-
-// import { ToastrService } from 'ngx-toastr';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { MatLegacyDialogState as MatDialogState } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog'
 
 export const maxRetries = 2;
 export const delayMs = 2000;
@@ -17,7 +15,19 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   constructor(public dialog: MatDialog) { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  erroDesconhecidoDialg() {
+    this.dialog.open(DialogErroQuinhentosComponent);
+  }
+
+  autorizacaoDialog() {
+    const matDialogRef = this.dialog.open(DialogErroAutenticacaoComponent);
+    if (matDialogRef.getState() === MatDialogState.OPEN) {
+      localStorage.setItem('dialogOpened', "true");
+    }
+  }
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler):
+    Observable<HttpEvent<unknown>> {
 
     return next.handle(request).pipe(catchError((error) => {
       /* TODO: Em retornos do backend, como login
@@ -40,11 +50,5 @@ export class ErrorInterceptor implements HttpInterceptor {
       console.table(error);
       return throwError(() => new Error(error));
     }));
-  }
-  erroDesconhecidoDialg() {
-    this.dialog.open(DialogErroQuinhentosComponent);
-  }
-  autorizacaoDialog() {
-    this.dialog.open(DialogErroAutenticacaoComponent);
   }
 }

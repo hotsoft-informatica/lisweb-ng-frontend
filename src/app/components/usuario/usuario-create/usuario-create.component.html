@@ -3,7 +3,7 @@
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Nome:</mat-label>
     <input matInput maxlength="50"
-                    placeholder="Nome completo"
+                    class="form-control" title="Nome completo"
                     name="nome" [(ngModel)]="usuario.nome"
                     formControlName="nome">
   </mat-form-field>
@@ -13,7 +13,7 @@
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Usuario:</mat-label>
     <input matInput maxlength="50"
-                    placeholder="Nome de usuario"
+                    class="form-control" title="Nome de usuario"
                     name="login" [(ngModel)]="usuario.login"
                     formControlName="login">
   </mat-form-field>
@@ -21,17 +21,17 @@
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Cargo:</mat-label>
     <input matInput maxlength="50"
-                    placeholder="Cargo de usuario">
+                    class="form-control" title="Cargo de usuario">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Senha:</mat-label>
-    <input matInput maxlength="50" placeholder="Crie uma senha"
+    <input matInput maxlength="50" class="form-control" title="Crie uma senha"
            [type]="hide ? 'password' : 'text'"
            name="senha"
            [(ngModel)]="usuario.senha"
            formControlName="senha">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
@@ -39,7 +39,7 @@
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Confirmaçao:</mat-label>
     <input matInput maxlength="50"
-           placeholder="Confirme a senha"
+           class="form-control" title="Confirme a senha"
            [type]="hide ? 'password' : 'text'"
            name="confirmaSenha"
            [(ngModel)]="usuario.confirmaSenha"
@@ -61,14 +61,12 @@
         <mat-icon>cancel</mat-icon>
       </button>
     </mat-chip>
+    <!-- TODO: unificar tela de cadastro e edicao -->
     <input
-      placeholder="Digite o grupo de usuario"
+      class="form-control" title="Digite o grupo de usuario"
       #grupoInput
       [formControl]="grupoCtrl"
       [matAutocomplete]="auto"
-      [matChipInputFor]="chipList"
-      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)"
       name="grupos"
       [(ngModel)]="usuario.grupos"
       formControlName="grupos"
