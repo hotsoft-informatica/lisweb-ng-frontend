@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 
-import { MatLegacyPaginatorIntl as MatPaginatorIntl } from '@angular/material/legacy-paginator';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -132,7 +132,7 @@ import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodo
 import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
 import { MetodosExamesUpdateComponent } from './components/metodos-exames/metodos-exames-update/metodos-exames-update.component';
 import { NavComponent } from './components/template/nav/nav.component';
-import { IConfig } from 'ngx-mask';
+// import { IConfig } from 'ngx-mask';
 import { NotaComponent } from './components/nota/nota.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
 import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
@@ -173,8 +173,8 @@ import { TipoExameReadComponent } from './components/tipo-exame/tipo-exame-read/
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { UserComponent } from './components/user/user.component';
-import { UserExitGuard } from './guards/user-exit.guard';
-import { UserGuard } from './guards/user.guard';
+// import { UserExitGuard } from './guards/user-exit.guard';
+// import { UserGuard } from './guards/user.guard';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
@@ -195,7 +195,7 @@ import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-
 import { SuperUserComponent } from './components/super-user/super-user.component';
 
 registerLocaleData(localePt);
-export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
+// export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
 
 @NgModule({
   declarations: [
@@ -396,8 +396,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
       provide: LOCALE_ID,
       useValue: 'pt-BR',
     },
-    UserGuard,
-    UserExitGuard,
+    // UserGuard,
+    // UserExitGuard,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
