@@ -4,11 +4,11 @@ import { Component, OnInit } from '@angular/core';
 import { ElementRef, ViewChild } from '@angular/core';
 import { map, startWith } from 'rxjs/operators';
 import { MatChipInputEvent } from '@angular/material/chips'
-import { MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent } from '@angular/material/legacy-autocomplete';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Usuario } from './../../model/usuario.model';
 import { UsuarioService } from './../../service/usuario.service';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import Validation from '../../../utils/validation';
 
 @Component({
@@ -44,19 +44,19 @@ export class UsuarioCreateComponent implements OnInit {
 
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
     if (this.id > 0) {
-    this.load(this.id); // id > 0 carrega o usuario
+      this.load(this.id); // id > 0 carrega o usuario
     }
     this.filteredGrupos = this.grupoCtrl.valueChanges.pipe(
-    startWith(null),
-    map((grupo: string | null) => (grupo ? this._filter(grupo) : this.allGrupos.slice())),
-  );
+      startWith(null),
+      map((grupo: string | null) => (grupo ? this._filter(grupo) : this.allGrupos.slice())),
+    );
   }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
     // Add
-    if ((this.allGrupos.indexOf(value) >= 0)  && (this.grupos.indexOf(value) < 0)) {
+    if ((this.allGrupos.indexOf(value) >= 0) && (this.grupos.indexOf(value) < 0)) {
       this.grupos.push(value);
     }
     else {
@@ -105,13 +105,13 @@ export class UsuarioCreateComponent implements OnInit {
     this.router.navigate(['/usuarios/read/']);
   }
   createUsuario(): void {
-    if (this.senhasDiferentes()){
+    if (this.senhasDiferentes()) {
       return;
     }
-    if (this.id > 0){
+    if (this.id > 0) {
       this.update();
     }
-    else{
+    else {
       console.table(this.usuario);
       this.usuarioService.create(this.usuario).subscribe(() => {
       });
