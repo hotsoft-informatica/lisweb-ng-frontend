@@ -7,8 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-lg-super-user',
-  templateUrl: './lg-super-user.component.html',
-  styleUrls: ['./lg-super-user.component.css']
+  templateUrl: './lg-super-user.component.html'
 })
 export class LgSuperUserComponent implements OnInit {
   @Input('login') login: SuperUserLogin;
@@ -51,5 +50,4 @@ export class LgSuperUserComponent implements OnInit {
         this.router.navigate(['/']);
       });
   }
-
 }
