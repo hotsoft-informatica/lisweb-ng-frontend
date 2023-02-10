@@ -1,6 +1,6 @@
-import { Base } from './base.model';
 import { User } from './user.model';
-export class Usuario {
+import { Base } from './base.model';
+export class Usuario extends Base {
   public id?: number;
   public laboratorio_id?: number;
   public nome?: string;
@@ -22,6 +22,7 @@ export class Usuario {
   public user_id?: number;
 
   constructor(values: Usuario) {
+    super(values);
     Object.assign(this, values);
   }
 }
