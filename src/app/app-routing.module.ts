@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UserExitGuard } from './guards/user-exit.guard';
+// import { UserExitGuard } from './guards/user-exit.guard';
 import { UserGuard } from './guards/user.guard';
 
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
@@ -47,7 +47,7 @@ import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-
 import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
 import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
 import { LancamentoComponent } from './components/lancamento/lancamento.component';
-import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
+import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component'; import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
 import { LgUserComponent } from './components/login/lg-user/lg-user.component';
 import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
 import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
@@ -509,7 +509,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: UserComponent, canActivate: [UserGuard], canDeactivate: [UserExitGuard]
+    component: UserComponent, canActivate: [UserGuard], canDeactivate: []
   },
   {
     path: 'lancamentos',
