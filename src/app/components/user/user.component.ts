@@ -165,7 +165,7 @@ export class UserComponent implements OnInit, AfterViewInit {
     });
 
     this.currentRecord = new User({});
-
+    this.onFocus();
   }
 
   updateGridData(): void {
@@ -187,7 +187,9 @@ export class UserComponent implements OnInit, AfterViewInit {
         this.records[0].usuario_ids = usuario_ids
         this.userService.showMessage('Associações atualizadas com sucesso!');
       })
+      this.onFocus();
     });
+
   }
 
   atualizar(row: User): void {
