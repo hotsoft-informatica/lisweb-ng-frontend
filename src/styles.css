@@ -281,3 +281,8 @@ table {
   padding-right: 30px;
   padding-top: 20px;
 }
+
+.so_icone {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
