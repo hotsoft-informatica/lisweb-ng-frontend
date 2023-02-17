@@ -1,45 +1,53 @@
-<mat-card>
-  <mat-card-title>Fazer Login</mat-card-title>
-  <mat-card-content>
-    <form #formUserLogin="ngForm">
-      <p>
-        <mat-form-field>
-          <mat-label>E-mail</mat-label>
-          <input
-            type="email"
-            id="email"
-            matInput
-            class="form-control" title="exemplo@email.com"
-            name="email"
-            [(ngModel)]="login.user.email"
-            #email
-            required
-            autocomplete="on"
-          />
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field>
-          <mat-label>Senha</mat-label>
-          <input
-            type="password"
-            id="password"
-            matInput
-            title="Senha"
-            name="password"
-            [(ngModel)]="login.user.password"
-            #password
-            required
-          />
-        </mat-form-field>
-      </p>
-      <div class="button">
-        <button type="submit" mat-button
-          (click)="userLogin()">
-          Entrar
-        </button>
+<body class="main-bg">
+  <!-- Login Form -->
+  <div class="container">
+    <div class="row justify-content-center mt-3">
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="card shadow">
+          <div class="card-title text-center border-bottom">
+            <h2 class="p-3">Fazer Login</h2>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-4">
+                <label for="email" class="form-label">Email</label>
+                <input type="email"
+                  id="email"
+                  matInput
+                  class="form-control" title="exemplo@email.com"
+                  name="email"
+                  [(ngModel)]="login.user.email"
+                  #email
+                  required
+                  autocomplete="on"
+                />
+              </div>
+              <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password"
+                  id="password"
+                  matInput
+                  class="form-control"
+                  title="Senha"
+                  name="password"
+                  [(ngModel)]="login.user.password"
+                  #password
+                  required 
+                />
+              </div>
+              <div class="d-grid">
+                <button 
+                  type="submit"
+                  class="btn btn-success"
+                  (click)="userLogin()"
+                >
+                Entrar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </form>
-  </mat-card-content>
-</mat-card>
-
+    </div>
+  </div>
+</body>
