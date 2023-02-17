@@ -254,10 +254,6 @@ table {
   color: #e35e6b;
 }
 
-.btn {
-  margin-right: 10px
-}
-
 .gridAddButton {
   display: flex;
   justify-content: flex-end;
