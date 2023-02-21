@@ -8,7 +8,7 @@
         required
         minlength="4"
         matInput
-        class="form-control" title="Razão Social"
+        title="Razão Social"
         [(ngModel)]="empresa.razao_social"
         #razao_social="ngModel"
         name="razao_social"
@@ -34,7 +34,7 @@
         required
         minlength="4"
         matInput
-        class="form-control" title="Nome Fantasia"
+        title="Nome Fantasia"
         [(ngModel)]="empresa.nome_fantasia"
         #nome_fantasia="ngModel"
         name="nome_fantasia"
@@ -63,7 +63,7 @@
         required
         minlength="14"
         matInput
-        class="form-control" title="CNPJ"
+        title="CNPJ"
         [(ngModel)]="empresa.cnpj"
         #cnpj="ngModel"
         name="cnpj"
@@ -84,7 +84,7 @@
         required
         minlength="12"
         matInput
-        class="form-control" title="Isc. Estadual"
+        title="Isc. Estadual"
         [(ngModel)]="empresa.inscricao_estadual"
         #inscricao_estadual="ngModel"
         name="inscricao_estadual"
@@ -107,7 +107,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Endereço"
+        title="Endereço"
         [(ngModel)]="empresa.endereco"
         name="endereco"
       />
@@ -115,30 +115,30 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Bairro"
+        title="Bairro"
         [(ngModel)]="empresa.bairro"
         name="Bairro"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input matInput class="form-control" title="CEP" [(ngModel)]="empresa.cep" name="cep" />
+      <input matInput title="CEP" [(ngModel)]="empresa.cep" name="cep" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Cidade"
+        title="Cidade"
         [(ngModel)]="empresa.cidade"
         name="cidade"
       />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <input matInput class="form-control" title="UF" [(ngModel)]="empresa.uf" name="uf" />
+      <input matInput title="UF" [(ngModel)]="empresa.uf" name="uf" />
     </mat-form-field>
     <mat-form-field appearance="fill">
       <input
         mask="(00) 00000-0000 || (00) 0000-0000"
         matInput
-        class="form-control" title="Telefone"
+        title="Telefone"
         [(ngModel)]="empresa.telefone"
         name="telefone"
       />
@@ -147,7 +147,7 @@
       <input
         mask="(00) 0000-0000"
         matInput
-        class="form-control" title="Fax"
+        title="Fax"
         [(ngModel)]="empresa.fax"
         name="fax"
       />
@@ -155,7 +155,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Contato"
+        title="Contato"
         [(ngModel)]="empresa.nome_contato"
         name="nome_contato"
       />
@@ -166,7 +166,7 @@
         id="email"
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
         matInput
-        class="form-control" title="Email"
+        title="Email"
         [(ngModel)]="empresa.email"
         #email="ngModel"
         name="email"
@@ -181,7 +181,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Cod Município"
+        title="Cod Município"
         [(ngModel)]="empresa.cod_ibge_municipio"
         name="cod_ibge_municipio"
       />
@@ -189,7 +189,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Número"
+        title="Número"
         [(ngModel)]="empresa.numero"
         name="numero"
       />
@@ -197,7 +197,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Alvara"
+        title="Alvara"
         [(ngModel)]="empresa.alvara"
         name="alvara"
       />
@@ -205,7 +205,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Alvara UF"
+        title="Alvara UF"
         [(ngModel)]="empresa.alvara_uf"
         name="alvara_uf"
       />

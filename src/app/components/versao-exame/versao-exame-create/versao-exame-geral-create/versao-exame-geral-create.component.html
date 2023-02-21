@@ -4,7 +4,7 @@
       <mat-form-field appearance="fill">
         Versão
         <input type="number" matInput min="1" matInput maxlength="9" 
-          id="versao" name="versao" class="form-control" title="Versão"
+          id="versao" name="versao" title="Versão"
           [(ngModel)]="versaoExame.versao">
       </mat-form-field>
     </div>
@@ -12,7 +12,7 @@
     <mat-form-field appearance="fill" class="col-lg-2 col-md-12 p-2">
       Tabela Marcação
       <input
-        name="marcacao" class="form-control" title="Tabela de Marcação"
+        name="marcacao" title="Tabela de Marcação"
         matInput [matAutocomplete]="autoMarcacao" 
         [(ngModel)]="versaoExame.marcacao_id"
         (ngModelChange)="searchMarcacao()"
@@ -54,7 +54,7 @@
       <mat-form-field appearance="fill">
         Título Laudo
         <input matInput maxlength="25" id="titulo_laudo" name="titulo_laudo"
-          [(ngModel)]="versaoExame.titulo_laudo" class="form-control" title="Título Laudo">
+          [(ngModel)]="versaoExame.titulo_laudo" title="Título Laudo">
       </mat-form-field>
     </div>
 
@@ -62,7 +62,7 @@
       <mat-form-field appearance="fill">
         Agrupador Histórico
         <input type="number" matInput min="1" id="agrupamento_historico"
-          name="agrupamento_historico" class="form-control" title="Agrupador Histórico"
+          name="agrupamento_historico" title="Agrupador Histórico"
           [(ngModel)]="versaoExame.agrupamento_historico">
       </mat-form-field>
     </div>
@@ -70,9 +70,9 @@
     <div class="row col-lg-2 p-2">
       <mat-form-field appearance="fill">
         Tempo de Repouso
-        <input type="number" class="form-control" title="Minutos" matInput min="1"
+        <input type="number" title="Minutos" matInput min="1"
           id="tempo_repouso" name="tempo_repouso"
-           class="form-control" title="Tempo de Repouso"
+           title="Tempo de Repouso"
           [(ngModel)]="versaoExame.tempo_repouso">
       </mat-form-field>
     </div>
@@ -82,7 +82,7 @@
         Nota do Laudo
         <textarea matInput id="descritivo" name="descritivo"
           [(ngModel)]="versaoExame.descritivo"
-           class="form-control" title="Nota do Laudo">
+           title="Nota do Laudo">
       </textarea>
       </mat-form-field>
     </div>

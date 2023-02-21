@@ -4,7 +4,7 @@
     <mat-form-field appearance="fill">
       <input
         matInput
-        class="form-control" title="Nome"
+        title="Nome"
         [(ngModel)]="laboratoryDomain.name"
         name="name"
       />
@@ -13,7 +13,7 @@
       <input
         matInput
         [matDatepicker]="sync_start_date"
-        class="form-control" title="Início da sincronização"
+        title="Início da sincronização"
         [(ngModel)]="laboratoryDomain.sync_start_date"
         name="sync_start_date"
         required

@@ -2,14 +2,14 @@
   <mat-input-container>
     <mat-placeholder>Buscar Nome</mat-placeholder>
     <input matInput type="text" title="Nome" [(ngModel)]="this.nomeSearch"
-     (keyup.enter)="search('nome', this.nomeSearch)" class="form-control"/>
+     (keyup.enter)="search('nome', this.nomeSearch)"/>
   </mat-input-container>
 </mat-form-field>
 <mat-form-field class="search-field">
   <mat-input-container>
     <mat-placeholder>Buscar Série</mat-placeholder>
     <input matInput type="text" (keyup.enter)="search('serie', this.serieSearch)"
-     [(ngModel)]="this.serieSearch" title="Serie" class="form-control"/>
+     [(ngModel)]="this.serieSearch" title="Serie"/>
   </mat-input-container>
 </mat-form-field>
 <div class="mat-elevation-z4">

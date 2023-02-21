@@ -12,4 +12,5 @@ export class Base extends BaseRaw{
     // this.original_id = 0;
     Object.assign(this, values);
   }
+
 }

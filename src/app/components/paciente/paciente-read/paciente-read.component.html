@@ -14,7 +14,7 @@
     <div class="p-1 col d-flex justify-content-end">
       <button mat-flat-button class="dvm-button" color="primary"
        routerLink="/pacientes/create">
-          <mat-icon>add</mat-icon>
+          <mat-icon class="mx-0">add</mat-icon>
         Adicionar
       </button>
       <mat-label class="ms-1 fs-6"></mat-label>
@@ -47,7 +47,7 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>RG:</mat-label>
-            <input matInput #rg maxlength="12" class="form-control"
+            <input matInput #rg maxlength="12"
              title="Filtre por RG" (input)="search('rg',rg.value,true)"
               mask="00.000.000-0">
           </mat-form-field>
@@ -56,7 +56,7 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>CPF:</mat-label>
-            <input matInput #cpf maxlength="14" class="form-control"
+            <input matInput #cpf maxlength="14"
              title="Filtre por CPF" (input)="search('cpf',cpf.value,true)"
               mask="000.000.000-00">
           </mat-form-field>
@@ -109,12 +109,12 @@
             <div>
               <a routerLink="/pacientes/update/{{element.id}}">
                 <button mat-icon-button>
-                  <mat-icon class="edit">edit</mat-icon>
+                  <mat-icon class="edit text-success">edit</mat-icon>
                 </button>
               </a>
 
                 <button mat-icon-button (click)="delete(element.id)">
-                  <mat-icon class="delete">delete</mat-icon>
+                  <mat-icon class="delete text-danger">delete</mat-icon>
                 </button>
 
 

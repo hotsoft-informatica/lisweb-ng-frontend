@@ -4,7 +4,7 @@
       <button mat-flat-button class="btn-success"
        color="primary" title="Adicionar parâmetro"
       (click)="new();" *ngIf="!onCreate && !onEdit">
-        <mat-icon>add</mat-icon>
+        <mat-icon class="mx-0">add</mat-icon>
       </button>
     </div>
 
@@ -43,7 +43,7 @@
             name="valor"
             [(ngModel)]="currentParametroVersaoExame.valor"
             #valor="ngModel"
-            class="form-control"
+           
             title="Valor"
           >
           <mat-error *ngIf="valor.invalid && (valor.dirty || valor.touched)">
@@ -99,14 +99,14 @@
           <div class="col-1 me-3">
             <button mat-icon-button *ngIf="!onEdit"
              (click)="updateParametroVersaoExame(row)">
-              <mat-icon class="edit">edit</mat-icon>
+              <mat-icon class="edit text-success">edit</mat-icon>
             </button>
           </div>
   
           <div class="col-1 me-3">
               <button class="delete" mat-icon-button *ngIf="!onEdit"
                (click)="deleteGrid(position)">
-                <mat-icon class="delete">delete</mat-icon>
+                <mat-icon class="delete text-danger">delete</mat-icon>
               </button>
           </div>
   

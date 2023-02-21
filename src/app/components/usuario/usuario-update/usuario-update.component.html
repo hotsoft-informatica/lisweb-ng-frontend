@@ -1,19 +1,19 @@
 <form class= "example-container row container-fluid" fxShow.gt-xs>
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Nome:</mat-label>
-    <input matInput maxlength="50" class="form-control" title="Nome completo"
+    <input matInput maxlength="50" title="Nome completo"
       name="nome" [(ngModel)]="usuario.nome">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Usuario:</mat-label>
-    <input matInput maxlength="50" class="form-control" title="Nome de usuario"
+    <input matInput maxlength="50" title="Nome de usuario"
       name="login" [(ngModel)]="usuario.login">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     Cargo:
-    <input matInput maxlength="50" class="form-control" title="Cargo">
+    <input matInput maxlength="50" title="Cargo">
   </mat-form-field>
 
   <mat-form-field class="example-chip-list" appearance="fill">
@@ -31,7 +31,7 @@
       </mat-chip>
       <!-- TODO: Refazer este input de tags pro angular atual -->
       <input
-        class="form-control" title="Digite o grupo de usuario"
+        title="Digite o grupo de usuario"
         #grupoInput
         [formControl]="grupoCtrl"
         [matAutocomplete]="auto"

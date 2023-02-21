@@ -12,7 +12,7 @@
 
       <div class="p-1 col d-flex justify-content-end">
         <button mat-flat-button class="dvm-button" color="primary" (click)="openDialogCreate()">
-          <mat-icon>add</mat-icon>
+          <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
         <mat-label class="ms-1 fs-6"></mat-label>
@@ -38,21 +38,21 @@
       <div class="mb-3 col row">
         <mat-form-field appearance="fill">
           <mat-label>Nome:</mat-label>
-          <input matInput #nome maxlength="50" class="form-control" title="Filtre por nome" (input)="search('nome',nome.value)">
+          <input matInput #nome maxlength="50" title="Filtre por nome" (input)="search('nome',nome.value)">
         </mat-form-field>
       </div>
 
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           <mat-label>Login:</mat-label>
-          <input matInput #login maxlength="12" class="form-control" title="Filtre por login" (input)="search('login',login.value)">
+          <input matInput #login maxlength="12" title="Filtre por login" (input)="search('login',login.value)">
         </mat-form-field>
       </div>
 
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           <mat-label>Cargo:</mat-label>
-          <input matInput #cargo maxlength="12" class="form-control" title="Filtre por login" (input)="search('cargo',cargo.value)">
+          <input matInput #cargo maxlength="12" title="Filtre por login" (input)="search('cargo',cargo.value)">
         </mat-form-field>
       </div>
 
@@ -93,7 +93,7 @@
 
               <a routerLink="/usuarios/update/{{element.id}}">
                 <button mat-icon-button>
-                  <mat-icon class="edit">edit</mat-icon>
+                  <mat-icon class="edit text-success">edit</mat-icon>
                 </button>
               </a>
 
@@ -111,7 +111,7 @@
             </div>
 
               <button mat-icon-button (click)="delete(element.id)">
-                <mat-icon class="delete">delete</mat-icon>
+                <mat-icon class="delete text-danger">delete</mat-icon>
               </button>
 
               <button mat-icon-button>

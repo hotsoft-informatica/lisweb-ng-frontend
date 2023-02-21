@@ -4,7 +4,7 @@
 <div class ="row, justify-content-around">
   <mat-form-field appearance="fill" *ngIf="onEdit && !isEdit" class="col-5">
     Tipo exame
-    <input matInput disabled matInput class="form-control" title="Tipo Exame"
+    <input matInput disabled matInput title="Tipo Exame"
       [value]="versaoExame.tipoExame!.descricao">
   </mat-form-field>
 
@@ -19,7 +19,7 @@
   <mat-form-field appearance="fill" class="col-5 p-2">
     Descrição
     <input matInput maxlength="50" name="descricao" 
-      class="form-control" title="Descrição"
+      title="Descrição"
       [(ngModel)]="versaoExame.descricao">
   </mat-form-field>
 </div>

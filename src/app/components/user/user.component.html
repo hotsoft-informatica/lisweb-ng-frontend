@@ -7,7 +7,7 @@
 
   <button mat-flat-button class="btn-success col-sm-1 float-end" color="primary" title="Adicionar parâmetro"
   (click)="new();" *ngIf="!onCreate && !onEdit">
-    <mat-icon class="so_icone">add</mat-icon>
+    <mat-icon class="mx-0">add</mat-icon>
   </button>
 </div>
 
@@ -201,12 +201,12 @@
         <div class="row">
           <div class="col-1 me-3">
             <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
-              <mat-icon class="edit">edit</mat-icon>
+              <mat-icon color="primary" class="edit">edit</mat-icon>
             </button>
           </div>
           <div class="col-1 me-3">
               <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
-                <mat-icon class="delete">delete</mat-icon>
+                <mat-icon color="warn" class="delete">delete</mat-icon>
               </button>
           </div>
           <ng-template #deleteDialog>

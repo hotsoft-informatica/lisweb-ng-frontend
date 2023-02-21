@@ -9,7 +9,7 @@
     <button mat-flat-button class="btn-success col-sm-1 float-end"
       color="primary" title="Adicionar parâmetro"
     (click)="new();" *ngIf="!onCreate && !onEdit">
-      <mat-icon>add</mat-icon>
+      <mat-icon class="mx-0">add</mat-icon>
     </button>
 </div>
 
@@ -21,7 +21,7 @@
           <mat-form-field appearance="fill">
             Descrição
             <input matInput #descricao maxlength="50"
-              class="form-control" title="Descrição"
+              title="Descrição"
               (input)="search('descricao', descricao.value)"
             >
           </mat-form-field>
@@ -31,7 +31,7 @@
           <mat-form-field appearance="fill">
             Num. Ordem
             <input matInput #num_ordem maxlength="12"
-              class="form-control" title="Num. Ordem"
+              title="Num. Ordem"
               (input)="search('num_ordem', num_ordem.value)"
             >
           </mat-form-field>
@@ -57,7 +57,7 @@
             #descricao
             autofocus
             title="descricao"
-            class="form-control"
+           
           >
           <mat-error *ngIf="descricao2.invalid && (descricao2.dirty || descricao2.touched)">
             <span *ngIf="descricao2.errors?.['required']">
@@ -78,7 +78,7 @@
             [(ngModel)]="currentRecord.num_ordem"
             #num_ordem="ngModel"
             title="Ordem"
-            class="form-control"
+           
           >
           <mat-error *ngIf="num_ordem.invalid && (num_ordem.dirty || num_ordem.touched)">
             <span *ngIf="num_ordem.errors?.['required']">
@@ -136,13 +136,13 @@
 
           <div class="col-1 me-3">
             <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
-              <mat-icon class="edit">edit</mat-icon>
+              <mat-icon class="edit text-success">edit</mat-icon>
             </button>
           </div>
 
           <div class="col-1 me-3">
               <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
-                <mat-icon class="delete">delete</mat-icon>
+                <mat-icon class="delete text-danger">delete</mat-icon>
               </button>
           </div>
 

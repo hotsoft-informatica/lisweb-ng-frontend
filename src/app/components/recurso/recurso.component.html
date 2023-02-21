@@ -8,7 +8,7 @@
   <button mat-flat-button class="btn-success col-sm-1 float-end"
    color="primary" title="Adicionar parâmetro"
   (click)="new();" *ngIf="!onCreate && !onEdit">
-    <mat-icon>add</mat-icon>
+    <mat-icon class="mx-0">add</mat-icon>
   </button>
 </div>
 
@@ -20,7 +20,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Nome:</mat-label>
             <input matInput #nome maxlength="50"
-            class="form-control" title="Filtre por nome"
+            title="Filtre por nome"
              (input)="search('nome', nome.value)"
             >
           </mat-form-field>
@@ -290,14 +290,14 @@
 
           <div class="col-1 me-3">
             <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
-              <mat-icon class="edit">edit</mat-icon>
+              <mat-icon class="edit text-success">edit</mat-icon>
             </button>
           </div>
 
           <div class="col-1 me-3">
               <button class="delete"
                mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
-                <mat-icon class="delete">delete</mat-icon>
+                <mat-icon class="delete text-danger">delete</mat-icon>
               </button>
           </div>
 

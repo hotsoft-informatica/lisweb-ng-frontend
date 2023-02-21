@@ -13,7 +13,7 @@
       <div class="p-1 col d-flex justify-content-end">
         <button mat-flat-button class="dvm-button" color="primary"
          routerLink="/marcacoes/create">
-            <mat-icon>add</mat-icon>
+            <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
         <mat-label class="ms-1 fs-6"></mat-label>
@@ -38,7 +38,7 @@
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           <mat-label>Nome:</mat-label>
-          <input matInput #nome maxlength="50" class="form-control"
+          <input matInput #nome maxlength="50"
            title="Filtre por nome" (input)="search('nome', nome.value)"
           >
         </mat-form-field>
@@ -47,7 +47,7 @@
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           <mat-label>Tipo:</mat-label>
-          <input matInput #tipo maxlength="12" class="form-control"
+          <input matInput #tipo maxlength="12"
            title="Filtre por tipo" (input)="search('tipo', tipo.value)"
           >
         </mat-form-field>
@@ -87,7 +87,7 @@
         <div class="col-1 me-3">
           <a routerLink="/marcacoes/update/{{row.id}}">
             <button mat-icon-button>
-              <mat-icon class="edit">edit</mat-icon>
+              <mat-icon class="edit text-success">edit</mat-icon>
             </button>
           </a>
         </div>
@@ -95,7 +95,7 @@
         <div class="col-1 me-3">
             <button class="delete" mat-icon-button
              (click)="deleteMarcacao(row.id)">
-              <mat-icon class="delete">delete</mat-icon>
+              <mat-icon class="delete text-danger">delete</mat-icon>
             </button>
         </div>
 

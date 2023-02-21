@@ -14,7 +14,7 @@
       <div class="p-1 col d-flex justify-content-end">
         <button mat-flat-button class="dvm-button" color="primary"
           routerLink="/valores_referencia/create">
-          <mat-icon>add</mat-icon>
+          <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
         <mat-label class="ms-1 fs-6"></mat-label>
@@ -39,7 +39,7 @@
         <mat-form-field appearance="fill">
           Valor Máximo
           <input matInput #val_maximo maxlength="10"
-           class="form-control" title="Valor Máximo"
+           title="Valor Máximo"
            (input)="search('val_maximo', val_maximo.value)"
           >
         </mat-form-field>
@@ -48,7 +48,7 @@
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           Valor Mínimo
-          <input matInput #val_minimo maxlength="10" class="form-control"
+          <input matInput #val_minimo maxlength="10"
             title=" Valor Mínimo" (input)="search('val_minimo', val_minimo.value)">
         </mat-form-field>
       </div>
@@ -128,13 +128,13 @@
         <div class="col-1 me-3">
           <a routerLink="/valores_referencia/update/{{row.id}}">
             <button mat-icon-button>
-              <mat-icon class="edit">edit</mat-icon>
+              <mat-icon class="edit text-success">edit</mat-icon>
             </button>
           </a>
         </div>
         <div class="col-1 me-3">
             <button class="delete" mat-icon-button (click)="deleteValorReferencia(row.id)">
-              <mat-icon class="delete">delete</mat-icon>
+              <mat-icon class="delete text-danger">delete</mat-icon>
             </button>
         </div>
         <ng-template #deleteDialog>

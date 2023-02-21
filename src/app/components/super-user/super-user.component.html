@@ -7,7 +7,7 @@
 
   <button mat-flat-button class="btn-success col-sm-1 float-end" color="primary" title="Adicionar parâmetro"
   (click)="new();" *ngIf="!onCreate && !onEdit">
-    <mat-icon>add</mat-icon>
+    <mat-icon class="mx-0">add</mat-icon>
   </button>
 </div>
 
@@ -81,10 +81,15 @@
 
         <mat-form-field appearance="fill" class= "col-lg-2 col-md-2 p-2">
           <mat-label>Administrador?</mat-label>
-          <mat-select name="admin" [(ngModel)]="currentRecord.admin">
+          <mat-select name="admin" #admin="ngModel" [(ngModel)]="currentRecord.admin">
             <mat-option value="true">Sim</mat-option>
             <mat-option value="false">Não</mat-option>
           </mat-select>
+          <mat-error *ngIf="admin.invalid && (admin.dirty || admin.touched)">
+            <span *ngIf="admin.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
         </mat-form-field>
 
         <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
@@ -135,12 +140,12 @@
         <div class="row">
           <div class="col-1 me-3">
             <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
-              <mat-icon class="edit">edit</mat-icon>
+              <mat-icon color="primary" class="edit">edit</mat-icon>
             </button>
           </div>
           <div class="col-1 me-3">
               <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
-                <mat-icon class="delete">delete</mat-icon>
+                <mat-icon color="warn" class="delete">delete</mat-icon>
               </button>
           </div>
           <ng-template #deleteDialog>

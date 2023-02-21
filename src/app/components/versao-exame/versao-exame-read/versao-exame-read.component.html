@@ -13,7 +13,7 @@
       <div class="p-1 col d-flex justify-content-end">
         <button mat-flat-button class="dvm-button"
                 color="primary" routerLink="/versao_exames/create/true">
-            <mat-icon>add</mat-icon>
+            <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
         <mat-label class="ms-1 fs-6"></mat-label>
@@ -39,7 +39,7 @@
         <mat-form-field appearance="fill">
           Título laudo
           <input matInput #titulo_laudo maxlength="50" title="Titulo do Laudo"
-          (input)="search('titulo_laudo', titulo_laudo.value)" class="form-control"
+          (input)="search('titulo_laudo', titulo_laudo.value)"
           >
         </mat-form-field>
       </div>
@@ -48,7 +48,7 @@
         <mat-form-field appearance="fill">
           Descrição
           <input matInput #descricao maxlength="12"
-           class="form-control" title="Descricao"
+           title="Descricao"
           (input)="search('descricao', descricao.value)"
           >
         </mat-form-field>
@@ -96,7 +96,7 @@
         <div class="col-1 me-3">
           <a routerLink="/versao_exames/update/{{row.id}}/true">
             <button mat-icon-button>
-              <mat-icon class="edit">edit</mat-icon>
+              <mat-icon class="edit text-success">edit</mat-icon>
             </button>
           </a>
         </div>
@@ -104,7 +104,7 @@
         <div class="col-1 me-3">
           <button class="delete" mat-icon-button
            (click)="deleteVersaoExame(row.id)">
-            <mat-icon class="delete">delete</mat-icon>
+            <mat-icon class="delete text-danger">delete</mat-icon>
           </button>
         </div>
 

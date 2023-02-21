@@ -1,10 +1,8 @@
 <form class= "example-container row container-fluid" fxShow.gt-xs>
-
   <div class="row justify-content-around">
-
       <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
         <mat-label>Nome:</mat-label>
-        <input matInput maxlength="50" class="form-control"
+        <input matInput maxlength="50"
          title="Nome completo" name="nome" [(ngModel)]="paciente.nome">
       </mat-form-field>
 
@@ -34,7 +32,7 @@
 
       <mat-form-field appearance="fill" class="col-lg-3 col-md-12 p-2">
         <mat-label>Nome da Mãe:</mat-label>
-        <input matInput maxlength="50" class="form-control"
+        <input matInput maxlength="50"
          title="Nome mãe compelto" name="nome_mae"
           [(ngModel)]="paciente.nome_mae">
       </mat-form-field>
@@ -65,7 +63,5 @@
            [(ngModel)]="paciente.idade_paciente">
         </mat-form-field>
       </div>
-
     </div>
-
   </form>

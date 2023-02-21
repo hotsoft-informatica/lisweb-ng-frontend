@@ -13,7 +13,7 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-super-user',
   templateUrl: './super-user.component.html',
-  styleUrls: ['./super-user.component.css']
+  styleUrls: []
 })
 export class SuperUserComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);

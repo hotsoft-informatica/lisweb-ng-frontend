@@ -1,30 +1,43 @@
-import { Login } from '../../model/login.model';
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 import { UserLogin } from '../../model/login.model';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
 })
 export class LgUserComponent implements OnInit {
-  @Input('login') login: UserLogin;
+  @Input('login') login: UserLogin = new UserLogin({ "user": {} });;
   storage: Storage = window.localStorage;
+  authForm: FormGroup = new FormGroup({
+    email: new FormControl(this.login.user.email, [
+      Validators.required,
+    ]),
+    password: new FormControl(this.login.user.password, [
+      Validators.required,
+    ]),
+  });
+  isSubmitted = false;
 
   constructor(
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private formBuilder: FormBuilder
   ) {
-    this.login = new UserLogin({ "user": {} });
   }
 
   ngOnInit(): void {
   }
 
   userLogin(): void {
+    this.isSubmitted = true;
+    if (this.authForm.invalid) {
+      return;
+    }
     // TODO: Tratar deprecation do subscribe
     // TODO: Revisar e merge
     this.userService.login(this.login).subscribe(
