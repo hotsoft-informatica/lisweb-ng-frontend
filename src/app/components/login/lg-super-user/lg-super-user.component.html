@@ -8,7 +8,7 @@
             <h2 class="p-3 m-0">Fazer Login</h2>
           </div>
           <div class="card-body">
-            <form>
+            <form [formGroup]="authForm" (ngSubmit)="superUserLogin()">
               <div class="mb-4">
                 <label for="email" class="form-label">Email</label>
                 <input type="email"
@@ -20,6 +20,7 @@
                   #email
                   required
                   autocomplete="on"
+                  formControlName="email"
                 />
               </div>
               <div class="mb-4">
@@ -27,12 +28,12 @@
                 <input type="password"
                   id="password"
                   matInput
-                 
                   title="Senha"
                   name="password"
                   [(ngModel)]="login.super_user.password"
                   #password
                   required
+                  formControlName="password"
                 />
               </div>
               <div class="d-grid">
