@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   templateUrl: './lg-user.component.html',
 })
 export class LgUserComponent implements OnInit {
-  @Input('login') login: UserLogin = new UserLogin({ "user": {} });;
+  @Input('login') login: UserLogin = new UserLogin({ "user": {} });
   storage: Storage = window.localStorage;
   authForm: FormGroup = new FormGroup({
     email: new FormControl(this.login.user.email, [
