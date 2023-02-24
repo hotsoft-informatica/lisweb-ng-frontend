@@ -57,11 +57,10 @@
             #descricao
             autofocus
             title="descricao"
-           
           >
           <mat-error *ngIf="descricao2.invalid && (descricao2.dirty || descricao2.touched)">
             <span *ngIf="descricao2.errors?.['required']">
-                O campo é obrigatório!
+              O campo é obrigatório!
             </span>
           </mat-error>
         </mat-form-field>
@@ -78,22 +77,30 @@
             [(ngModel)]="currentRecord.num_ordem"
             #num_ordem="ngModel"
             title="Ordem"
-           
           >
           <mat-error *ngIf="num_ordem.invalid && (num_ordem.dirty || num_ordem.touched)">
             <span *ngIf="num_ordem.errors?.['required']">
-                O campo é obrigatório!
+              O campo é obrigatório!
             </span>
           </mat-error>
         </mat-form-field>
         <div id="buttons">
           <button mat-button type="button"
-          (click)="addGridData()" *ngIf="onCreate"
-            [disabled]="formCreateDominio.invalid">Inserir</button>
+            (click)="addGridData()" *ngIf="onCreate"
+            [disabled]="formCreateDominio.invalid"
+          >
+          Inserir
+          </button>
           <button mat-button type="button"
-          (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
+            (click)="updateGridData()" *ngIf="onEdit"
+          >
+          Alterar
+          </button>
           <button mat-button color="warn" type="button"
-          (click)="cancelar()">Cancelar</button>
+            (click)="cancelar()"
+          >
+          Cancelar
+          </button>
         </div>
       </form>
     </div>
