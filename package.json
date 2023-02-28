@@ -30,7 +30,7 @@
     "@angular/platform-browser": "^14.0.1",
     "@angular/platform-browser-dynamic": "^14.0.1",
     "@angular/router": "^14.0.1",
-    "@ngneat/helipopper": "^6.5.0",
+    "@ngneat/helipopper": "^6.6.0",
     "@ngneat/overview": "^4.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@nrwl/angular": "15.6.3",
