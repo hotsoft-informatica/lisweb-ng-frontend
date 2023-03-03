@@ -23,7 +23,10 @@
                   formControlName="email"
                 />
               </div>
-              <div *ngIf="authForm.controls['email'].invalid && (authForm.controls['email'].dirty || authForm.controls['email'].touched)" class="alert alert-danger">
+              <div *ngIf="authForm.controls['email'].invalid && 
+                (authForm.controls['email'].dirty || 
+                authForm.controls['email'].touched)" class="alert alert-danger"
+              >
                 <div *ngIf="authForm.controls['email'].errors?.required">
                   O email deve ser informado!
                 </div>
@@ -41,7 +44,10 @@
                   formControlName="password"
                 />
               </div>
-              <div *ngIf="authForm.controls['password'].invalid && (authForm.controls['password'].dirty || authForm.controls['password'].touched)" class="alert alert-danger">
+              <div *ngIf="authForm.controls['password'].invalid &&
+                (authForm.controls['password'].dirty ||
+                authForm.controls['password'].touched)" class="alert alert-danger"
+              >
                 <div *ngIf="authForm.controls['password'].errors?.required">
                   A senha deve ser informada!
                 </div>
