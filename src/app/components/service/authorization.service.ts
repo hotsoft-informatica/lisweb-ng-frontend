@@ -4,7 +4,7 @@ import {
   HttpEvent,
   HttpInterceptor,
   HttpHandler,
-  HttpRequest,
+  HttpRequest
 } from '@angular/common/http';
 
 @Injectable()
@@ -14,12 +14,11 @@ export class Authorization implements HttpInterceptor {
 
   constructor() { }
 
-
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    console.log(request);
-    return next.handle(request);
-
+    let auth: string = this.storage.getItem('Authorization') as string;
+    let authReq = request.clone({
+      headers: request.headers.set('Authorization', auth)
+    });
+    return next.handle(authReq);
   }
 }
-
