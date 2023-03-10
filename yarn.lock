@@ -1858,10 +1858,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@ngneat/helipopper@^6.5.0":
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/@ngneat/helipopper/-/helipopper-6.5.0.tgz#bad8ea82664a82966e27d1a1d607e2ff36ea7e32"
-  integrity sha512-nOpwU96ufpVzAAq7f/+n5DEeMG/eI2o0Lx4mKwnjdEIyrHrTtf6ywOuLyhFSYwzWAzzcbZyBjzigXzOXQEGh6A==
+"@ngneat/helipopper@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@ngneat/helipopper/-/helipopper-7.0.1.tgz#d2d9b767f2ccc82d6bb2c3033c9608fb8cb0eade"
+  integrity sha512-S1nNyn81lP/l6vi1E7wFeuEnwMXmbz7uOZzdQwhBrFYKLSqt4wdIEuvUplDNQLtda+oF0HC0MGlUvoq2ZSAyRw==
   dependencies:
     tippy.js "6.3.7"
     tslib "2.3.1"
