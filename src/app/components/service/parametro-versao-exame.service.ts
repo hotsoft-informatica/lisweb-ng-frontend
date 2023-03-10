@@ -64,11 +64,10 @@ export class ParametroVersaoExameService {
   }
 
   getByVersaoExameId(versaoExameId: number): Observable<ParametroVersaoExame[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.versaoExameUrl}/${versaoExameId}/parametros`;
-    return this.http.get<ParametroVersaoExame[]>(url, { headers: headers });
+    return this.http.get<ParametroVersaoExame[]>(url);
   }
 
   findParametroVersaoExames(
@@ -78,8 +77,7 @@ export class ParametroVersaoExameService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<ParametroVersaoExame[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     let params = new HttpParams()
       .set('active', active)
@@ -94,7 +92,7 @@ export class ParametroVersaoExameService {
     });
 
     return this.http.get<ParametroVersaoExame[]>(this.baseUrl, {
-      params: params, headers: headers
+      params: params,
     });
   }
 

@@ -2,9 +2,8 @@ import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar'
 import { Router } from '@angular/router';
 import { Injectable, Input } from '@angular/core';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -36,20 +35,17 @@ export class LogoutService {
   }
 
   logout(): Observable<any> {
-    let auth: string = this.storage.getItem('Authorization') as string;
     let logedUserType: string = this.storage.getItem('userLoginType') as string;
     console.log(logedUserType);
-    let headers = new HttpHeaders().set('Authorization', auth);
 
     if (logedUserType == 'user') {
       const userUrl = `${this.userLogoutUrl}`;
-      return this.http.delete(userUrl, { headers: headers });
+      return this.http.delete(userUrl);
     }
     else {
       const superUserUrl = `${this.superUserLogoutUrl}`;
-      return this.http.delete(superUserUrl, { headers: headers });
+      return this.http.delete(superUserUrl);
     }
-
   }
 
   sair(redirect: boolean = false): void {

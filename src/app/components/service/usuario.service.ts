@@ -48,8 +48,7 @@ export class UsuarioService extends BaseService {
     queries: Query[]): Observable<Usuario[]> { // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
 
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     queries.forEach(busca => {
       params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
@@ -68,57 +67,50 @@ export class UsuarioService extends BaseService {
 
     return this.http.get<Usuario[]>(this.baseUrl, {
       params: params,
-      headers: headers
     }); // Passa qual operação sera realizada pelo backend
   }
 
   getAssocLmUsuariosId(id: number): Observable<Usuario[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.associationUrl}/${id}`;
     console.log(url);
-    return this.http.get<Usuario[]>(url, { headers: headers });
+    return this.http.get<Usuario[]>(url);
   }
 
   readById(id: number): Observable<Usuario> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<Usuario>(url, { headers: headers });
+    return this.http.get<Usuario>(url);
   }
 
   update(usuario: Usuario): Observable<Usuario> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.baseUrl}/${usuario.id}`;
-    return this.http.put<Usuario>(url, usuario, { headers: headers });
+    return this.http.put<Usuario>(url, usuario);
   }
 
   delete(id: number): Observable<Usuario> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<Usuario>(url, { headers: headers });
+    return this.http.delete<Usuario>(url);
   }
 
   readByEmail(email: String): Observable<Usuario> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.baseUrl}/email/${email}`;
-    return this.http.get<Usuario>(url, { headers: headers });
+    return this.http.get<Usuario>(url);
   }
 
   readByUsuario(usuario: String): Observable<Usuario> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.baseUrl}/usuario/${usuario}`;
-    return this.http.get<Usuario>(url, { headers: headers });
+    return this.http.get<Usuario>(url);
   }
 
   findUsuarios(
@@ -129,9 +121,6 @@ export class UsuarioService extends BaseService {
     query: Query[] | null
   ): Observable<Usuario[]> {
 
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
 
     let params = new HttpParams()
       .set('active', active)
@@ -146,19 +135,13 @@ export class UsuarioService extends BaseService {
     });
 
     return this.http.get<Usuario[]>(this.baseUrl, {
-      params: params,
-      headers: headers
+      params: params
     });
   }
 
   countUsuarios(): Observable<number> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
-
     return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
-      headers: headers
+      params: new HttpParams().set('totalCount', 'true')
     });
   }
 }

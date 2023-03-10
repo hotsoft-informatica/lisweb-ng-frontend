@@ -66,35 +66,24 @@ export class UserService extends BaseService {
   }
 
   logout(): Observable<User> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let authJson = JSON.parse(auth);
-    let headers = new HttpHeaders().set('Authorization', authJson);
-
     const url = `${this.logoutUrl}`;
-    return this.http.delete(url, { headers: headers });
+    return this.http.delete(url);
   }
 
   create(user: User): Observable<User> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
     console.table(user)
-    return this.http.post<User>(this.createUrl, user, { headers: headers })
+    return this.http.post<User>(this.createUrl, user)
   }
 
   createUpdateAssocUsuarioLm(user: User, id: number): Observable<Usuario> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
-
     return this.http.post<Usuario>(
       this.createAssocUsuarioLmUrl + '/' + id,
-      user, { headers: headers });
+      user);
   }
 
   read(): Observable<User[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
 
-    return this.http.get<User[]>(this.indexUrl, { headers: headers });
+    return this.http.get<User[]>(this.indexUrl);
   }
 
   readById(id: number): Observable<User> {
@@ -103,19 +92,15 @@ export class UserService extends BaseService {
   }
 
   update(user: User): Observable<User> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
 
     const url = `${this.updateUrl}/${user.id}`;
-    return this.http.put<User>(url, user, { headers: headers });
+    return this.http.put<User>(url, user);
   }
 
   delete(id: number): Observable<User> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
 
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<User>(url, { headers: headers });
+    return this.http.delete<User>(url);
   }
 
   find(
@@ -126,9 +111,6 @@ export class UserService extends BaseService {
     query: Query[] | null
   ): Observable<User[]> {
 
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
 
     let params = new HttpParams()
       .set('active', active)
@@ -143,19 +125,13 @@ export class UserService extends BaseService {
     });
 
     return this.http.get<User[]>(this.indexUrl, {
-      params: params,
-      headers: headers
+      params: params
     });
   }
 
   countRegisters(): Observable<number> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
-
     return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
-      headers: headers
+      params: new HttpParams().set('totalCount', 'true')
     });
   }
 }

@@ -51,8 +51,7 @@ export class ConsultaAmostraService {
   }
 
   findConsultaAmostra(query: Query[] | null): Observable<ConsultaAmostra[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
     let params = new HttpParams();
 
     query?.forEach((queryItem) => {
@@ -63,22 +62,19 @@ export class ConsultaAmostraService {
     });
 
     return this.http.get<ConsultaAmostra[]>(this.exameAmostrasUrl, {
-      params: params, headers: headers
+      params: params,
     });
   }
 
   findAmostraId(id: string | undefined): Observable<Amostra> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     // TODO: Implementar busca por num_amostra e nao ID!
     const url = `${this.amostraUrl}/${id}`;
-    return this.http.get<Amostra>(url, { headers: headers } );
+    return this.http.get<Amostra>(url);
   }
 
   findAmostra(query: Query[] | null): Observable<Amostra> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
     let params = new HttpParams();
 
     query?.forEach((queryItem) => {
@@ -89,13 +85,12 @@ export class ConsultaAmostraService {
     });
 
     return this.http.get<Amostra>(this.pacienteAmostraUrl, {
-      params: params, headers: headers
+      params: params,
     });
   }
 
   findPaciente(query: Query[] | null): Observable<Paciente> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
     let params = new HttpParams();
 
     query?.forEach((queryItem) => {
@@ -106,14 +101,13 @@ export class ConsultaAmostraService {
     });
 
     return this.http.get<Paciente>(this.pacienteUrl, {
-      params: params, headers: headers
+      params: params,
     });
   }
 
   findExame(query: Query[] | null): Observable<Exame> {
     let params = new HttpParams();
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     query?.forEach((queryItem) => {
       if (queryItem) {
@@ -123,14 +117,13 @@ export class ConsultaAmostraService {
     });
 
     return this.http.get<Exame>(this.exameUrl, {
-      params: params, headers: headers
+      params: params,
     });
   }
 
   findMaterialBiologico(query: Query[] | null): Observable<MaterialBiologico> {
     let params = new HttpParams();
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     query?.forEach((queryItem) => {
       if (queryItem) {
@@ -140,13 +133,12 @@ export class ConsultaAmostraService {
     });
 
     return this.http.get<MaterialBiologico>(this.materialBiologicoUrl, {
-      params: params, headers: headers
+      params: params,
     });
   }
 
   findColetor(query: Query[] | null): Observable<Usuario> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
     let params = new HttpParams();
 
     query?.forEach((queryItem) => {
@@ -157,7 +149,7 @@ export class ConsultaAmostraService {
     });
 
     return this.http.get<Usuario>(this.coletorUrl, {
-      params: params, headers: headers
+      params: params,
     });
   }
 }

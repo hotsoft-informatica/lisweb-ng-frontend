@@ -1,5 +1,5 @@
 import { BackendIpService } from './backend-ip.service';
-import { HttpHeaders, HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
@@ -51,26 +51,16 @@ export class SuperUserService {
   }
 
   logout(): Observable<SuperUser> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let authJson = JSON.parse(auth);
-    let headers = new HttpHeaders().set('Authorization', authJson);
-
     const url = `${this.logOutUrl}`;
-    return this.http.delete(url, { headers: headers });
+    return this.http.delete(url);
   }
 
   create(superUser: SuperUser): Observable<SuperUser> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
-
-    return this.http.post<SuperUser>(this.createUrl, superUser, { headers: headers });
+    return this.http.post<SuperUser>(this.createUrl, superUser);
   }
 
   read(): Observable<SuperUser[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
-
-    return this.http.get<SuperUser[]>(this.indexUrl, { headers: headers });
+    return this.http.get<SuperUser[]>(this.indexUrl);
   }
 
   readById(id: number): Observable<SuperUser> {
@@ -79,19 +69,13 @@ export class SuperUserService {
   }
 
   update(superUser: SuperUser): Observable<SuperUser> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
-
     const url = `${this.updateUrl}/${superUser.id}`;
-    return this.http.put<SuperUser>(url, superUser, { headers: headers });
+    return this.http.put<SuperUser>(url, superUser);
   }
 
   delete(id: number): Observable<SuperUser> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
-
     const url = `${this.baseUrl}/${id}`;
-    return this.http.delete<SuperUser>(url, { headers: headers });
+    return this.http.delete<SuperUser>(url);
   }
 
   find(
@@ -101,10 +85,6 @@ export class SuperUserService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<SuperUser[]> {
-
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
 
     let params = new HttpParams()
       .set('active', active)
@@ -119,19 +99,13 @@ export class SuperUserService {
     });
 
     return this.http.get<SuperUser[]>(this.indexUrl, {
-      params,
-      headers: headers
+      params
     });
   }
 
   countRegisters(): Observable<number> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
-
     return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
-      headers: headers
+      params: new HttpParams().set('totalCount', 'true')
     });
   }
 }
