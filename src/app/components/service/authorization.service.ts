@@ -15,10 +15,17 @@ export class Authorization implements HttpInterceptor {
   constructor() { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const res = 'sign_in';
+
     let auth: string = this.storage.getItem('Authorization') as string;
-    let authReq = request.clone({
-      headers: request.headers.set('Authorization', auth)
-    });
-    return next.handle(authReq);
+
+    if (request.url.search(res) === -1) {
+      let authReq = request.clone({
+        headers: request.headers.set('Authorization', auth)
+      });
+      return next.handle(authReq);
+    } else {
+      return next.handle(request);
+    }
   }
 }
