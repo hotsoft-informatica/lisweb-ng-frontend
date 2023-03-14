@@ -1,6 +1,9 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Authorization } from './components/service/authorization.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -78,8 +81,8 @@ import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empr
 import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-read.component';
 import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
+
 // TODO: Revisar interceptors, problema de dependencia circular
-import { AuthorizationModule } from './authorization.module';
 import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
 import { ExameAmostraCreateComponent } from './components/exame-amostra/exame-amostra-create/exame-amostra-create.component';
 import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-amostra-delete/exame-amostra-delete.component';
@@ -194,6 +197,7 @@ import localePt from '@angular/common/locales/pt';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 import { SuperUserComponent } from './components/super-user/super-user.component';
+import { EspecialidadeComponent } from './components/especialidade/especialidade.component';
 
 registerLocaleData(localePt);
 // export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -346,10 +350,10 @@ registerLocaleData(localePt);
     TipoRecursoComponent,
     LgSuperUserComponent,
     SuperUserComponent,
+    EspecialidadeComponent,
   ],
   imports: [
     AppRoutingModule,
-    AuthorizationModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
@@ -390,9 +394,16 @@ registerLocaleData(localePt);
     })
   ],
   providers: [
+    Authorization,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Authorization,
+      multi: true,
+    },
     {
       provide: MatPaginatorIntl,
       useValue: getPtBrMatPaginatorIntl(),
+
     },
     {
       provide: LOCALE_ID,
