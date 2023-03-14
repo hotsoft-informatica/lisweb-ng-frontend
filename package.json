@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^15.0.0",
-    "@angular-devkit/architect": "^0.1501.3",
+    "@angular-devkit/architect": "^0.1501.6",
     "@angular-devkit/schematics": "^15.1.2",
     "@angular/compiler": "^15.0.2",
     "@nrwl/workspace": "^15.6.3",
@@ -78,7 +78,7 @@
     "webpack-cli": "^5.0.1"
   },
   "volta": {
-    "node": "19.5.0",
+    "node": "19.7.0",
     "yarn": "1.22.19",
     "typescript": "^4.6.4",
     "webpack": "^5.68.0"
