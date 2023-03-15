@@ -2506,10 +2506,10 @@
     "@material/theme" "15.0.0-canary.684e33d25.0"
     tslib "^2.1.0"
 
-"@ngneat/helipopper@^6.5.0":
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/@ngneat/helipopper/-/helipopper-6.6.0.tgz#9ffcf54ccab0bfcfbb8d1901951edbf2a507759b"
-  integrity sha512-x0ca0XiN4pmBF3eDeDmfY3AFIo2Xitl/mFweo0IEDY0UID51hZZCO91irnT0M3x9Nle6D5Czm/ccOO2oytfU1g==
+"@ngneat/helipopper@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@ngneat/helipopper/-/helipopper-7.0.1.tgz#d2d9b767f2ccc82d6bb2c3033c9608fb8cb0eade"
+  integrity sha512-S1nNyn81lP/l6vi1E7wFeuEnwMXmbz7uOZzdQwhBrFYKLSqt4wdIEuvUplDNQLtda+oF0HC0MGlUvoq2ZSAyRw==
   dependencies:
     tippy.js "6.3.7"
     tslib "2.3.1"
