@@ -1,10 +1,147 @@
-import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  TemplateRef,
+  Renderer2
+} from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { merge } from 'rxjs';
+import { Query } from '../model/query.model';
+import { timer } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { Especialidade } from '../model/especialidade.model';
+import { EspecialidadeService } from '../service/especialidade.service';
+
 
 @Component({
   selector: 'app-especialidade',
-  templateUrl: './especialidade.component.html',
-  styleUrls: ['./especialidade.component.css']
+  templateUrl: './especialidade.component.html'
 })
-export class EspecialidadeComponent {
+export class EspecialidadeComponent implements OnInit, AfterViewInit {
+  datasource = new MatTableDataSource<any>([]);
+  records: any[] = [];
+  record!: any;
+  oldRecord: any;
+  currentRecord: any;
+  deletedRecords: any[] = [];
+  query: Query[] = [];
+  id!: number;
+  totalCount!: number;
+
+  @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
+  @ViewChild(MatSort) sort: MatSort | any;
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+
+  onEdit = false;
+  onCreate = false;
+
+  displayedColumns = ['cbos', 'nome', 'action'];
+
+  constructor(
+    public dialog: MatDialog,
+    private renderer: Renderer2,
+    private router: Router,
+    private route: ActivatedRoute,
+    private especialidadeService: EspecialidadeService
+  ) {
+    this.currentRecord = new Especialidade({});
+    this.record ||= new Especialidade({});
+  }
+
+  ngOnInit(): void {
+    this.especialidadeService.count().subscribe((totalCount) => {
+      this.totalCount = totalCount;
+    });
+  }
+
+  ngAfterViewInit() {
+    this.loadPage();
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+
+    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+      .pipe(tap(() => this.loadPage()))
+      .subscribe();
+  }
+
+  loadPage() {
+    this.especialidadeService
+      .find(this.sort.active,
+        this.sort.direction,
+        this.paginator.pageIndex,
+        this.paginator.pageSize, this.query
+      ).subscribe((records: any[]) => {
+        this.records = records;
+        this.datasource.data = [...this.records];
+      });
+  }
+
+  new(): void {
+    this.onCreate = true;
+  }
+
+  addGridData(): void {
+    console.table(this.currentRecord);
+    this.onCreate = false;
+    this.onEdit = false;
+    this.especialidadeService.create(this.currentRecord).subscribe((record) => {
+      this.records.unshift(record);
+      this.datasource.data = [...this.records];
+      this.especialidadeService.showMessage('Especialidade criada com sucesso!');
+    });
+
+    this.currentRecord = new Especialidade({});
+  }
+
+  updateGridData(): void {
+    this.especialidadeService.update(this.currentRecord).subscribe(() => {
+      this.especialidadeService.showMessage('Especialidade atualizada com sucesso!');
+      this.onEdit = false;
+      this.currentRecord = new Especialidade({});
+    });
+  }
+
+  atualizar(row: Especialidade): void {
+    this.currentRecord = row;
+    this.onCreate = false;
+    this.onEdit = true;
+  }
+
+  cancelar(): void {
+    this.onCreate = false;
+    this.onEdit = false;
+    Object.assign(this.currentRecord, this.oldRecord);
+    this.currentRecord = new Especialidade({});
+  }
+
+  deleteGridData(id: number): void {
+    const dialogRef = this.dialog.open(this.deleteDialog);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log("entrou no if do result");
+        this.especialidadeService.delete(id)
+          .subscribe(() => {
+            this.especialidadeService.showMessage('Especialidade apagada com sucesso!');
+
+            // Carrega os dados do backend e faz refresh do datasource
+            this.loadPage();
+            this.datasource.data = [...this.records];
+          });
+      }
+    });
+  }
+
+  search(key: string, value: string, isNumeric: boolean = false): void {
+    const query = new Query({ key, value, isNumeric });
+    this.query = this.query.filter((q) => q.key !== key);
+    this.query.push(query);
+    this.paginator.pageIndex = 0;
+    this.loadPage();
+  }
 
 }
