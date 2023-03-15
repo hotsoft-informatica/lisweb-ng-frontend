@@ -23,10 +23,9 @@ export class ExameAmostraService extends BaseService {
   }
 
   readByAmostraId(amostraId: number | undefined,
-     exameId: number | undefined): Observable<any> {
+    exameId: number | undefined): Observable<any> {
     let params = new HttpParams()
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     if (amostraId as number > 0) {
       params = params.append('queryItem[amostra_id]', amostraId as number);
@@ -36,7 +35,7 @@ export class ExameAmostraService extends BaseService {
     }
 
     return this.http.get<ExameAmostra[]>(this.baseUrl, {
-      params: params, headers: headers
+      params: params,
     });
   }
 }

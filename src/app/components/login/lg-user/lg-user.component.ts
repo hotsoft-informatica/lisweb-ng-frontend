@@ -1,10 +1,11 @@
+
 import { Router } from '@angular/router';
 import { User } from '../../model/user.model';
 import { UserLogin } from '../../model/login.model';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-lg-user',
@@ -12,7 +13,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class LgUserComponent implements OnInit {
   @Input('login') login: UserLogin = new UserLogin({ "user": {} });
-  storage: Storage = window.localStorage;
   authForm: FormGroup = new FormGroup({
     email: new FormControl(this.login.user.email, [
       Validators.required,
@@ -25,8 +25,7 @@ export class LgUserComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private userService: UserService,
-    private formBuilder: FormBuilder
+    private userService: UserService
   ) {
   }
 
@@ -66,4 +65,3 @@ export class LgUserComponent implements OnInit {
       });
   }
 }
-

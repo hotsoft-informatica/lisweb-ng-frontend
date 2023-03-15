@@ -2,14 +2,13 @@ import { BaseService } from './base.service';
 import { Injectable, Inject, Injector } from '@angular/core';
 import { Query } from './../model/query.model';
 import { Laboratorio } from '../model/laboratorio.model';
-import { Usuario } from '../model/usuario.model';
 import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable, of, map, pipe } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable, of, map } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 
 export class LaboratorioService extends BaseService {
@@ -24,11 +23,11 @@ export class LaboratorioService extends BaseService {
     @Inject(Injector) public injector: Injector,
     public http: HttpClient,
     private backendIpService: BackendIpService) {
-      super(injector, http);
-      this.endpoint = 'laboratorios'
-      this.baseUrl = backendIpService.getUrl() + this.baseUrl;
-      this.associationUrl = backendIpService.getUrl() + this.associationUrl;
-    }
+    super(injector, http);
+    this.endpoint = 'laboratorios'
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.associationUrl = backendIpService.getUrl() + this.associationUrl;
+  }
 
   getData() {
     return this.labDomains.length ? of(this.labDomains)
@@ -54,10 +53,7 @@ export class LaboratorioService extends BaseService {
   }
 
   read(): Observable<Laboratorio[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
-
-    return this.http.get<Laboratorio[]>(this.baseUrl, { headers: headers });
+    return this.http.get<Laboratorio[]>(this.baseUrl);
   }
 
   readById(id: number): Observable<Laboratorio> {
@@ -66,12 +62,9 @@ export class LaboratorioService extends BaseService {
   }
 
   getAssocLabId(id: number): Observable<Laboratorio[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
-
     const url = `${this.associationUrl}/${id}`;
     console.log(url);
-    return this.http.get<Laboratorio[]>(url, {headers: headers});
+    return this.http.get<Laboratorio[]>(url);
   }
 
   update(laboratorio: Laboratorio): Observable<Laboratorio> {
@@ -92,10 +85,6 @@ export class LaboratorioService extends BaseService {
     query: Query[] | null
   ): Observable<Laboratorio[]> {
 
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
-
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -109,19 +98,13 @@ export class LaboratorioService extends BaseService {
     });
 
     return this.http.get<Laboratorio[]>(this.baseUrl, {
-      params: params,
-      headers: headers
+      params: params
     });
   }
 
   countLaboratorios(): Observable<number> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders()
-      .set('Authorization', auth);
-
     return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
-      headers: headers
+      params: new HttpParams().set('totalCount', 'true')
     });
   }
 }

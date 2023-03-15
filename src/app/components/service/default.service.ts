@@ -9,7 +9,7 @@ import { Query } from './../model/query.model';
   providedIn: 'root',
 })
 export class DefaultService {
-  baseUrl : string = '/';
+  baseUrl: string = '/';
   query: Query[] = [];
   storage: Storage = window.localStorage;
 
@@ -31,10 +31,9 @@ export class DefaultService {
   }
 
   create(record: any, endpoint: string): Observable<any> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
 
-    return this.http.post<any>(this.baseUrl + endpoint, record, { headers: headers });
+
+    return this.http.post<any>(this.baseUrl + endpoint, record);
   }
 
   read(
@@ -47,8 +46,7 @@ export class DefaultService {
   ): Observable<any[]> {
     // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     queries.forEach((busca) => {
       params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
@@ -64,36 +62,33 @@ export class DefaultService {
       }
     });
 
-    return this.http.get<any[]>(this.baseUrl + endpoint, { params: params, headers: headers }); // Passa qual operação sera realizada pelo backend
+    return this.http.get<any[]>(this.baseUrl + endpoint, { params: params, }); // Passa qual operação sera realizada pelo backend
   }
 
   readById(id: number, endpoint: string): Observable<any> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.baseUrl + endpoint}/${id}`;
 
-    if ( id == null ){
+    if (id == null) {
       return new Observable();
     } else {
-      return this.http.get<any>(url, { headers: headers });
+      return this.http.get<any>(url);
     }
   }
 
   update(record: any, endpoint: string): Observable<any> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.baseUrl + endpoint}/${record.id}`;
-    return this.http.put<any>(url, record, { headers: headers });
+    return this.http.put<any>(url, record);
   }
 
   delete(id: number, endpoint: string): Observable<any> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     const url = `${this.baseUrl + endpoint}/${id}`;
-    return this.http.delete<any>(url, { headers: headers });
+    return this.http.delete<any>(url);
   }
 
   find(
@@ -104,8 +99,7 @@ export class DefaultService {
     query: Query[] | null,
     endpoint: string
   ): Observable<any[]> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     let params = new HttpParams()
       .set('active', active)
@@ -120,17 +114,15 @@ export class DefaultService {
     });
 
     return this.http.get<any[]>(this.baseUrl + endpoint, {
-      params: params, headers: headers
+      params: params,
     });
   }
 
   count(endpoint: string): Observable<number> {
-    let auth: string = this.storage.getItem('Authorization') as string;
-    let headers = new HttpHeaders().set('Authorization', auth);
+
 
     return this.http.get<number>(this.baseUrl + endpoint, {
-      params: new HttpParams().set('totalCount', 'true'),
-      headers: headers
+      params: new HttpParams().set('totalCount', 'true')
     });
   }
 }

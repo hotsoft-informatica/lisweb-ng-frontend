@@ -79,6 +79,7 @@ import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-
 import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
 // TODO: Revisar interceptors, problema de dependencia circular
+import { AuthorizationModule } from './authorization.module';
 import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
 import { ExameAmostraCreateComponent } from './components/exame-amostra/exame-amostra-create/exame-amostra-create.component';
 import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-amostra-delete/exame-amostra-delete.component';
@@ -355,6 +356,7 @@ registerLocaleData(localePt);
   ],
   imports: [
     AppRoutingModule,
+    AuthorizationModule,
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
