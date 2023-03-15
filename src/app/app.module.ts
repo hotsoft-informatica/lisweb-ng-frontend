@@ -193,6 +193,9 @@ import localePt from '@angular/common/locales/pt';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 import { SuperUserComponent } from './components/super-user/super-user.component';
+import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
+import { LaboratoryStatementRuleComponent } from './components/laboratory-statement-rule/laboratory-statement-rule.component';
+import { LaboratoryPostRuleComponent } from './components/laboratory-post-rule/laboratory-post-rule.component';
 
 registerLocaleData(localePt);
 // export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -345,6 +348,10 @@ registerLocaleData(localePt);
     TipoRecursoComponent,
     LgSuperUserComponent,
     SuperUserComponent,
+    DominioComponent,
+    LaboratoryGetRuleComponent,
+    LaboratoryStatementRuleComponent,
+    LaboratoryPostRuleComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -403,3 +410,4 @@ registerLocaleData(localePt);
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
+
