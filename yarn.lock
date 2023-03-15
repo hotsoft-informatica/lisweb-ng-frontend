@@ -209,7 +209,7 @@
   optionalDependencies:
     parse5 "^7.1.2"
 
-"@angular/cli@^15.1.6":
+"@angular/cli@^15.2.2":
   version "15.2.2"
   resolved "https://registry.yarnpkg.com/@angular/cli/-/cli-15.2.2.tgz#66d7736cff38894737fe240c80c118336983f4be"
   integrity sha512-r0VrQ+3CHp/y6GHzWDD8CPRqtAuV2iUZ1pbl4AiCnjAlUpPBXJMkJ2kzFn6rTlMoqPeFBnjyhTWyL/azi7GEcw==
