@@ -4,26 +4,39 @@ import { SuperUserLogin } from '../../model/login.model';
 import { SuperUserService } from '../../service/super-user.service';
 import { Input, Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-lg-super-user',
   templateUrl: './lg-super-user.component.html'
 })
 export class LgSuperUserComponent implements OnInit {
-  @Input('login') login: SuperUserLogin;
+  @Input('login') login: SuperUserLogin = new SuperUserLogin({ "super_user": {} });
   storage: Storage = window.localStorage;
+
+  authForm: FormGroup = new FormGroup({
+    email: new FormControl(this.login.super_user.email, [
+      Validators.required,
+    ]),
+    password: new FormControl(this.login.super_user.password, [
+      Validators.required,
+    ]),
+  });
+  isSubmitted = false;
 
   constructor(
     private router: Router,
     private superUserService: SuperUserService
-  ) {
-    this.login = new SuperUserLogin({ "super_user": {} });
-  }
+  ) { }
 
   ngOnInit(): void {
   }
 
   superUserLogin(): void {
+    this.isSubmitted = true;
+    if (this.authForm.invalid) {
+      return;
+    }
     // TODO: Tratar deprecation do subscribe
     this.superUserService.login(this.login).subscribe(
       (res) => {

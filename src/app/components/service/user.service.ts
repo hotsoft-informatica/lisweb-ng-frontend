@@ -143,7 +143,7 @@ export class UserService extends BaseService {
     });
 
     return this.http.get<User[]>(this.indexUrl, {
-      params,
+      params: params,
       headers: headers
     });
   }

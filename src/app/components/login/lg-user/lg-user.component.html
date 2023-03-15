@@ -8,13 +8,12 @@
             <h2 class="p-3 m-0">Fazer Login</h2>
           </div>
           <div class="card-body">
-            <form [formGroup]="authForm" (ngSubmit)="userLogin()">
+            <form [formGroup]="authForm" (ngSubmit)="userLogin()" novalidate>
               <div class="mb-4">
                 <label for="email" class="form-label">Email</label>
                 <input type="email"
                   id="email"
                   matInput
-                 
                   title="exemplo@email.com"
                   name="email"
                   [(ngModel)]="login.user.email"
@@ -24,12 +23,19 @@
                   formControlName="email"
                 />
               </div>
+              <div *ngIf="authForm.controls['email'].invalid && 
+                (authForm.controls['email'].dirty || 
+                authForm.controls['email'].touched)" class="alert alert-danger"
+              >
+                <div *ngIf="authForm.controls['email'].errors?.required">
+                  O email deve ser informado!
+                </div>
+              </div>
               <div class="mb-4">
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label">Senha</label>
                 <input type="password"
                   id="password"
                   matInput
-                 
                   title="Senha"
                   name="password"
                   [(ngModel)]="login.user.password"
@@ -37,6 +43,14 @@
                   required
                   formControlName="password"
                 />
+              </div>
+              <div *ngIf="authForm.controls['password'].invalid &&
+                (authForm.controls['password'].dirty ||
+                authForm.controls['password'].touched)" class="alert alert-danger"
+              >
+                <div *ngIf="authForm.controls['password'].errors?.required">
+                  A senha deve ser informada!
+                </div>
               </div>
               <div class="d-grid">
                 <button 
