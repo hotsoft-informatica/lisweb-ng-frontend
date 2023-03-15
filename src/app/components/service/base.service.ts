@@ -2,7 +2,7 @@ import { Injectable, Inject, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DefaultService } from './default.service';
 import { Query } from './../model/query.model';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',

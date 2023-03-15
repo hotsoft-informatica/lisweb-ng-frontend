@@ -1,7 +1,7 @@
 <div class="col-2 col-md-4 col-xs-6">
     <div class="table">
       <div class="p-1 col d-flex justify-content-start">
-        <button mat-flat-button color="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button appDebounceClick mat-flat-buttoncolor="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -24,7 +24,7 @@
   
       <div class="">
         <div class="gridAddButton">
-          <button mat-flat-button class="btn-success" color="primary" title="Adicionar Statement"
+          <button appDebounceClick mat-flat-buttonclass="btn-success" color="primary" title="Adicionar Statement"
           (click)="new();" *ngIf="!onCreate && !onEdit">
             <mat-icon>add</mat-icon>
           </button>

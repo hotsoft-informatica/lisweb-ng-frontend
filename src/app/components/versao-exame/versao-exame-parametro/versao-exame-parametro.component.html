@@ -1,7 +1,7 @@
 <div class="mat-elevation-z4">
   <div class="">
     <div class="gridAddButton">
-      <button mat-flat-button class="btn-success"
+      <button appDebounceClick mat-flat-buttonclass="btn-success"
        color="primary" title="Adicionar parâmetro"
       (click)="new();" *ngIf="!onCreate && !onEdit">
         <mat-icon class="mx-0">add</mat-icon>

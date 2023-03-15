@@ -1,6 +1,9 @@
 import { Pessoa } from '../components/model/pessoa.model';
 import { PessoaService } from '../components/service/pessoa.service';
 import { Pipe, PipeTransform } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+@UntilDestroy({ checkProperties: true })
 @Pipe({
   name: 'pessoaId'
 })
@@ -11,7 +14,9 @@ export class PessoaIdPipe implements PipeTransform {
     let status: string = "";
     if (value) {
       // TODO: Implementar cache
-      this.pessoaService.readById(value as unknown as number).subscribe((pessoa: Pessoa) => {
+      this.pessoaService.readById(value as unknown as number)
+      .pipe(untilDestroyed(this))
+      .subscribe((pessoa: Pessoa) => {
         status = pessoa.nome as string;
       });
       return status;

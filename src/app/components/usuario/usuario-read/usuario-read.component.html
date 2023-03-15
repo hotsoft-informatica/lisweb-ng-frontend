@@ -11,7 +11,7 @@
     <div class="row">
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" (click)="openDialogCreate()">
+        <button appDebounceClick mat-flat-buttonclass="dvm-button" color="primary" (click)="openDialogCreate()">
           <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
@@ -19,7 +19,7 @@
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button appDebounceClick mat-flat-buttonclass="dvm-button" color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -104,7 +104,7 @@
                     <app-usuario-update [pacienteInput]="this.currentPaciente"></app-usuario-update>
                   </div>
                   <div class="modal-footer">
-                    <button mat-flat-button color="warn" data-bs-dismiss="modal">Sair</button>
+                    <button appDebounceClick mat-flat-buttoncolor="warn" data-bs-dismiss="modal">Sair</button>
                   </div>
                 </div>
               </div>

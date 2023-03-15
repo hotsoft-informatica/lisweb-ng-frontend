@@ -1,8 +1,9 @@
-import { Inject, Injector } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
-import { Query } from '../model/query.model';
 import { BaseService } from 'src/app/components/service/base.service';
+import { Inject, Injector, Component, OnInit } from '@angular/core';
+import { Query } from '../model/query.model';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-base',
   templateUrl: './base.component.html',
@@ -28,7 +29,9 @@ export class BaseComponent implements OnInit {
       500,
       this.query,
       this.model
-    ).subscribe((records: any) => {
+    )
+    .pipe(untilDestroyed(this))
+    .subscribe((records: any) => {
       this.dataSource = records;
     });
   }
