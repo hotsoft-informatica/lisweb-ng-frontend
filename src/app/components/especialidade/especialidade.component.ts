@@ -13,7 +13,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { merge } from 'rxjs';
 import { Query } from '../model/query.model';
-import { timer } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Especialidade } from '../model/especialidade.model';
 import { EspecialidadeService } from '../service/especialidade.service';

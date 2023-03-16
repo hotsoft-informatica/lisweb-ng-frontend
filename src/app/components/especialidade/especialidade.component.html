@@ -5,13 +5,87 @@
     <mat-icon>search</mat-icon>
     Buscar
   </button>
-  <button mat-flat-button class="btn-success col-sm-1 float-end"
-    color="primary" title="Adicionar especialidade"
-  (click)="new();" *ngIf="!onCreate && !onEdit">
+
+  <button mat-flat-button 
+    class="btn-success col-sm-1 float-end"
+    color="primary"
+    title="Adicionar especialidade"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    data-bs-whatever="@getbootstrap"
+    (click)="new();">
     <mat-icon class="mx-0">add</mat-icon>
   </button>
+
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar especialidade</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #formCreateEspecialidade="ngForm">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">CBOS:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cbos"
+              matInput
+              maxlength="50"
+              name="cbos"
+              [(ngModel)]="currentRecord.cbos"
+              #cbos="ngModel"
+              required
+            >
+            <mat-error *ngIf="cbos?.invalid && (cbos?.dirty ||cbos?.touched)">
+              <span *ngIf="cbos?.errors?.['required']">
+                O campo é obrigatório!
+              </span>
+            </mat-error>
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nome:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nome"
+              matInput
+              maxlength="50"
+              name="nome"
+              [(ngModel)]="currentRecord.nome"
+              #nome="ngModel"
+              required
+            >
+            <mat-error *ngIf="nome?.invalid && (nome?.dirty ||nome?.touched)">
+              <span *ngIf="nome?.errors?.['required']">
+                O campo é obrigatório!
+              </span>
+            </mat-error>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger"
+          (click)="formCreateEspecialidade.resetForm();"
+          data-bs-dismiss="modal"
+        >
+        Cancelar
+        </button>
+        <button type="button" class="btn btn-primary"
+          (click)="addGridData(); formCreateEspecialidade.resetForm();"
+          [disabled]="formCreateEspecialidade.invalid"
+          data-bs-dismiss="modal"
+        >
+        Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="mat-elevation-z4">
   <table
