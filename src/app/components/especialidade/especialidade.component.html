@@ -1,7 +1,12 @@
 <div class="d-flex justify-content-between col-sm-12 p-2">
-  <button mat-flat-button color="primary" class="col-sm-2 col-md-2
-    col-lg-1 float-start" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-    aria-expanded="false" aria-controls="collapseExample">
+  <button mat-flat-button
+    color="primary"
+    class="col-sm-2 col-md-2
+    col-lg-1 float-start"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample">
     <mat-icon>search</mat-icon>
     Buscar
   </button>
@@ -16,7 +21,6 @@
     (click)="new();">
     <mat-icon class="mx-0">add</mat-icon>
   </button>
-
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -31,7 +35,7 @@
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">CBOS:</label>
             <input
-              type="text"
+              type="number"
               class="form-control"
               id="cbos"
               matInput
