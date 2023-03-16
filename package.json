@@ -57,7 +57,7 @@
   "devDependencies": {
     "@angular-builders/custom-webpack": "^15.0.0",
     "@angular-devkit/architect": "^0.1502.2",
-    "@angular-devkit/schematics": "^15.2.2",
+    "@angular-devkit/schematics": "^15.2.3",
     "@angular/compiler": "^15.0.2",
     "@nrwl/workspace": "^15.8.6",
     "@types/jasmine": "^4.3.1",
