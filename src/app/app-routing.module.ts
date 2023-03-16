@@ -33,6 +33,7 @@ import { ExameAmostraUpdateComponent } from './components/exame-amostra/exame-am
 import { ExameCreateComponent } from './components/exame/exame-create/exame-create.component';
 import { ExameDeleteComponent } from './components/exame/exame-delete/exame-delete.component';
 import { ExameUpdateComponent } from './components/exame/exame-update/exame-update.component';
+import { EspecialidadeComponent } from './components/especialidade/especialidade.component';
 import { HomeComponent } from './views/home/home.component';
 import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio-create/laboratorio-create.component';
 import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
@@ -355,8 +356,8 @@ const routes: Routes = [
     component: ExameDeleteComponent,
   },
   {
-    path: 'coletores/create',
-    component: ColetorCreateComponent,
+    path: 'especialidades',
+    component: EspecialidadeComponent,
   },
   {
     path: 'coletores/update/:id',

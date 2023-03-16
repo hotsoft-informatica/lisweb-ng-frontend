@@ -44,6 +44,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           localStorage.setItem('mensagemErro500', error.message);
           localStorage.setItem('statusTextErro500', error.statusText);
           localStorage.setItem('nameErro500', error.name);
+          // TODO: Ignorar totalCount
           this.erroDesconhecidoDialg();
           break;
       };
