@@ -82,6 +82,7 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
 
   new(): void {
     this.onCreate = true;
+    this.currentRecord = new Especialidade({});
   }
 
   addGridData(): void {
@@ -101,7 +102,6 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
     this.especialidadeService.update(this.currentRecord).subscribe(() => {
       this.especialidadeService.showMessage('Especialidade atualizada com sucesso!');
       this.onEdit = false;
-      this.currentRecord = new Especialidade({});
     });
   }
 
@@ -109,12 +109,10 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
     this.currentRecord = row;
     this.onCreate = false;
     this.onEdit = true;
+
   }
 
   cancelar(): void {
-    this.onCreate = false;
-    this.onEdit = false;
-    Object.assign(this.currentRecord, this.oldRecord);
     this.currentRecord = new Especialidade({});
   }
 
