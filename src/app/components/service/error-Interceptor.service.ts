@@ -10,9 +10,10 @@ import { MatDialog } from '@angular/material/dialog'
 export const maxRetries = 2;
 export const delayMs = 2000;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ErrorInterceptor implements HttpInterceptor {
-
   constructor(public dialog: MatDialog) { }
 
   erroDesconhecidoDialg() {
@@ -28,28 +29,31 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler):
     Observable<HttpEvent<unknown>> {
-
-    return next.handle(request).pipe(catchError((error) => {
-      /* TODO: Em retornos do backend, como login
-      responder com os codigos de erro apropriados.
-      Especialmente ser redirecionar a pagina no backend.
-      */
-      switch (error.status) {
-        case 200:
-          break;
-        case 401:
-          this.autorizacaoDialog();
-          break;
-        case 500:
-          localStorage.setItem('mensagemErro500', error.message);
-          localStorage.setItem('statusTextErro500', error.statusText);
-          localStorage.setItem('nameErro500', error.name);
-          // TODO: Ignorar totalCount
-          this.erroDesconhecidoDialg();
-          break;
-      };
-      console.table(error);
-      return throwError(() => new Error(error));
-    }));
+    
+    if (request.params.get('totalCount')) {
+      return next.handle(request).pipe(catchError((error) => {
+        /* TODO: Em retornos do backend, como login
+        responder com os codigos de erro apropriados.
+        Especialmente ser redirecionar a pagina no backend.
+        */
+        let status = error.status || 0;
+        switch (status) {
+          case 200:
+            break;
+          case 401:
+            this.autorizacaoDialog();
+            break;
+          default:
+            localStorage.setItem('mensagemErro500', error.message);
+            localStorage.setItem('statusTextErro500', error.statusText);
+            localStorage.setItem('nameErro500', error.name);
+            this.erroDesconhecidoDialg();
+            break;
+        };
+        return throwError(() => new Error(error));
+      }));
+    } else {
+      return next.handle(request);
+    }
   }
 }

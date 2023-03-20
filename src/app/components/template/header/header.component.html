@@ -185,17 +185,19 @@
             Perfil do Usuario
           </a>
         </button>
-        <button mat-menu-item *ngIf="!currentSuperUser && !currentUser">
-          <a mat-list-item routerLink="/login_super_user">
-            Admin
-          </a>
-        </button>
-        <button mat-menu-item *ngIf="!currentUser && !currentSuperUser">
-          <a mat-list-item routerLink="/login">
-            Login
-          </a>
-        </button>
-        <button mat-menu-item *ngIf="isLogedIn()" (click)="logout()">
+        <div *ngIf="!isLogedIn();">
+          <button mat-menu-item *ngIf="!currentSuperUser && !currentUser">
+            <a mat-list-item routerLink="/login_super_user">
+              Admin
+            </a>
+          </button>
+          <button mat-menu-item *ngIf="!currentUser && !currentSuperUser">
+            <a mat-list-item routerLink="/login">
+              Login
+            </a>
+          </button>
+        </div>
+        <button mat-menu-item *ngIf="isLogedIn();" (click)="logout()">
           <a mat-list-item>
             Sair
           </a>

@@ -2,7 +2,10 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Authorization } from './components/service/authorization.service';
+// TODO: Mover pasta service para fora da pasta components
+import { AuthorizationInterceptor } from './components/service/authorization-interceptor.service';
+import { ErrorInterceptor } from './components/service/error-Interceptor.service';
+import { LaboratorioInterceptor } from './components/service/laboratorio-interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -81,9 +84,6 @@ import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empr
 import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-read.component';
 import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
-
-// TODO: Revisar interceptors, problema de dependencia circular
-import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
 import { ExameAmostraCreateComponent } from './components/exame-amostra/exame-amostra-create/exame-amostra-create.component';
 import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-amostra-delete/exame-amostra-delete.component';
 import { ExameAmostraReadComponent } from './components/exame-amostra/exame-amostra-read/exame-amostra-read.component';
@@ -395,16 +395,27 @@ registerLocaleData(localePt);
     MatTreeModule,
     ReactiveFormsModule,
     RouterModule,
-    ErroInterceptorModule,
     TranslateModule.forRoot({
       defaultLanguage: 'pt-BR'
     })
   ],
   providers: [
-    Authorization,
+    AuthorizationInterceptor,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: Authorization,
+      useClass: AuthorizationInterceptor,
+      multi: true,
+    },
+    LaboratorioInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LaboratorioInterceptor,
+      multi: true,
+    },
+    ErrorInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
     {
@@ -422,4 +433,3 @@ registerLocaleData(localePt);
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
-

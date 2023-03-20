@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   logged: boolean = false;
   currentUser: User = new User({});
   currentSuperUser: SuperUser = new User({});
-
   storage: Storage = window.localStorage;
 
   constructor(private router: Router,
@@ -38,20 +37,28 @@ export class HeaderComponent implements OnInit {
   }
 
   isLogedIn(): boolean {
-    this.currentUser = JSON.parse(
-      this.storage.getItem('currentUser') as string
-    ) as User;
-    this.currentSuperUser = JSON.parse(
-      this.storage.getItem('currentSuperUser') as string
-    ) as SuperUser;
-    if (
-      (this.currentUser && this.currentUser.id as number > 0) ||
-      (this.currentSuperUser && this.currentSuperUser.id as number > 0)
-    ) {
-      return true;
-    } else {
-      return false;
+    try {
+      this.currentUser = JSON.parse(
+        this.storage.getItem('currentUser') as string
+      ) as User;
+      this.currentSuperUser = JSON.parse(
+        this.storage.getItem('currentSuperUser') as string
+      ) as SuperUser;
+
+      if (
+        (this.currentUser && this.currentUser.id as number > 0) ||
+        (this.currentSuperUser && this.currentSuperUser.id as number > 0)
+      ) {
+        this.logged = true;
+      } else {
+        this.logged = false;
+      }
+    } catch (e) {
+      this.logged = false;
+      console.error('Problema com os dados do usuario');
+      console.error(e);
     }
+    return this.logged;
   }
 
   logout(): void {

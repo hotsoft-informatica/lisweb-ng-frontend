@@ -30,9 +30,11 @@ export class DefaultService {
     });
   }
 
+  getBaseUrl(): string {
+    return this.baseUrl;
+  }
+
   create(record: any, endpoint: string): Observable<any> {
-
-
     return this.http.post<any>(this.baseUrl + endpoint, record);
   }
 
@@ -66,8 +68,6 @@ export class DefaultService {
   }
 
   readById(id: number, endpoint: string): Observable<any> {
-
-
     const url = `${this.baseUrl + endpoint}/${id}`;
 
     if (id == null) {
@@ -78,15 +78,11 @@ export class DefaultService {
   }
 
   update(record: any, endpoint: string): Observable<any> {
-
-
     const url = `${this.baseUrl + endpoint}/${record.id}`;
     return this.http.put<any>(url, record);
   }
 
   delete(id: number, endpoint: string): Observable<any> {
-
-
     const url = `${this.baseUrl + endpoint}/${id}`;
     return this.http.delete<any>(url);
   }
@@ -99,8 +95,6 @@ export class DefaultService {
     query: Query[] | null,
     endpoint: string
   ): Observable<any[]> {
-
-
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -119,8 +113,6 @@ export class DefaultService {
   }
 
   count(endpoint: string): Observable<number> {
-
-
     return this.http.get<number>(this.baseUrl + endpoint, {
       params: new HttpParams().set('totalCount', 'true')
     });

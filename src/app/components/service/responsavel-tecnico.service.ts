@@ -27,7 +27,7 @@ export class ResponsavelTecnicoService extends BaseService {
   }
 
   upload(selectedFile: FormData, responsavel_tecnico: ResponsavelTecnico): Observable<any> {
-    const url = this.baseUrl + '/' + responsavel_tecnico.id + '/upload'
+    const url = this.getBaseUrl() + 'responsaveis_tecnico/' + responsavel_tecnico.id + '/upload'
     return this.http.post<FormData>(url, selectedFile);
   }
 }

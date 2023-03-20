@@ -44,7 +44,7 @@ export class LgSuperUserComponent implements OnInit {
 
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
-        let superUser: SuperUser = res.body.status.data as SuperUser;
+        let superUser: SuperUser = res.body as SuperUser;
 
         localStorage.setItem('Authorization', auth);
         localStorage.setItem('userLoginType', 'superUser');

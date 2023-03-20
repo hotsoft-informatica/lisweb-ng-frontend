@@ -43,7 +43,7 @@ export class UsuarioService extends BaseService {
   read(
     sortActive: string = 'id',
     sortDirection: string = 'desc',
-    pageNumber = 0,
+    pageNumber = 1,
     pageSize = 3,
     queries: Query[]): Observable<Usuario[]> { // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend

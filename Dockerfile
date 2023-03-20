@@ -1,5 +1,5 @@
 ###### Install dependencies only when needed ######
-FROM node:16-alpine AS builder
+FROM node:19.7.0-alpine3.16 AS builder
 ARG CONFIGURATION='dev'
 
 # Make /app as working directory
@@ -9,14 +9,19 @@ WORKDIR /app
 COPY package.json .
 
 # Install dependencies
-RUN npm install --legacy-peer-deps
+# RUN npm install --legacy-peer-deps
+RUN yarn install
+RUN yarn g add @angular/cli
+
+# Expose
+EXPOSE 4200
 
 # Copy the source code to the /app directory
 COPY . .
 
 # Build the application
-RUN npm run build --  --output-path=dist --configuration=$CONFIGURATION --output-hashing=all
-
+# RUN npm run build --  --output-path=dist --configuration=$CONFIGURATION --output-hashing=all
+RUN yarn run build --  --output-path=dist --configuration=$CONFIGURATION --output-hashing=all
 
 ######  Use NgInx alpine image  ###### 
 FROM nginx:stable-alpine

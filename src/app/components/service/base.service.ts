@@ -23,6 +23,10 @@ export class BaseService {
     this.defaultService.showMessage(msg);
   }
 
+  getBaseUrl(): string {
+    return this.defaultService.getBaseUrl();
+  }
+
   create(record: any, endpoint: string = this.endpoint): Observable<any> {
     return this.defaultService.create(record, endpoint);
   }

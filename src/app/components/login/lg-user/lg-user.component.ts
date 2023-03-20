@@ -45,7 +45,7 @@ export class LgUserComponent implements OnInit {
 
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
-        let user: User = res.body.status.data as User;
+        let user: User = res.body as User;
 
         localStorage.setItem('Authorization', auth);
         localStorage.setItem('userLoginType', 'user');

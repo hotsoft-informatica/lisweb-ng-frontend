@@ -48,10 +48,10 @@ export class ResponsavelTecnicoUploadComponent implements OnInit {
       .upload(this.formData, this.responsavel_tecnico)
       .subscribe((retorno: any) => {
         console.table(retorno);
+        this.router.navigate(['/responsavel_tecnicos']).then(() => {
+          window.location.reload();
+        });
       });
-    this.router.navigate(['/responsavel_tecnicos']).then(() => {
-      window.location.reload();
-    });
   }
 
   cancel(): void {
