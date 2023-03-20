@@ -8,6 +8,7 @@ import { Query } from './../model/query.model';
 @Injectable({
   providedIn: 'root',
 })
+
 export class ParametroVersaoExameService {
   baseUrl = '/parametros_versao_exame';
   query: Query[] = [];
@@ -64,8 +65,6 @@ export class ParametroVersaoExameService {
   }
 
   getByVersaoExameId(versaoExameId: number): Observable<ParametroVersaoExame[]> {
-
-
     const url = `${this.versaoExameUrl}/${versaoExameId}/parametros`;
     return this.http.get<ParametroVersaoExame[]>(url);
   }
@@ -77,8 +76,6 @@ export class ParametroVersaoExameService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<ParametroVersaoExame[]> {
-
-
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -90,7 +87,6 @@ export class ParametroVersaoExameService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<ParametroVersaoExame[]>(this.baseUrl, {
       params: params,
     });

@@ -63,7 +63,6 @@ export class LaboratorioService extends BaseService {
 
   getAssocLabId(id: number): Observable<Laboratorio[]> {
     const url = `${this.associationUrl}/${id}`;
-    console.log(url);
     return this.http.get<Laboratorio[]>(url);
   }
 
@@ -84,7 +83,6 @@ export class LaboratorioService extends BaseService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<Laboratorio[]> {
-
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -96,7 +94,6 @@ export class LaboratorioService extends BaseService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<Laboratorio[]>(this.baseUrl, {
       params: params
     });
@@ -108,4 +105,3 @@ export class LaboratorioService extends BaseService {
     });
   }
 }
-

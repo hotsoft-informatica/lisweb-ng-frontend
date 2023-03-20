@@ -14,6 +14,7 @@ import { Usuario } from '../model/usuario.model';
 @Injectable({
   providedIn: 'root',
 })
+
 export class ConsultaAmostraService {
   amostraUrl = '/amostras';
   baseUrl = '';
@@ -51,7 +52,6 @@ export class ConsultaAmostraService {
   }
 
   findConsultaAmostra(query: Query[] | null): Observable<ConsultaAmostra[]> {
-
     let params = new HttpParams();
 
     query?.forEach((queryItem) => {
@@ -60,15 +60,12 @@ export class ConsultaAmostraService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<ConsultaAmostra[]>(this.exameAmostrasUrl, {
       params: params,
     });
   }
 
   findAmostraId(id: string | undefined): Observable<Amostra> {
-
-
     // TODO: Implementar busca por num_amostra e nao ID!
     const url = `${this.amostraUrl}/${id}`;
     return this.http.get<Amostra>(url);
@@ -83,14 +80,12 @@ export class ConsultaAmostraService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<Amostra>(this.pacienteAmostraUrl, {
       params: params,
     });
   }
 
   findPaciente(query: Query[] | null): Observable<Paciente> {
-
     let params = new HttpParams();
 
     query?.forEach((queryItem) => {
@@ -99,7 +94,6 @@ export class ConsultaAmostraService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<Paciente>(this.pacienteUrl, {
       params: params,
     });
@@ -108,14 +102,12 @@ export class ConsultaAmostraService {
   findExame(query: Query[] | null): Observable<Exame> {
     let params = new HttpParams();
 
-
     query?.forEach((queryItem) => {
       if (queryItem) {
         const key = `queryItem[${queryItem.key}]`;
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<Exame>(this.exameUrl, {
       params: params,
     });
@@ -124,21 +116,18 @@ export class ConsultaAmostraService {
   findMaterialBiologico(query: Query[] | null): Observable<MaterialBiologico> {
     let params = new HttpParams();
 
-
     query?.forEach((queryItem) => {
       if (queryItem) {
         const key = `queryItem[${queryItem.key}]`;
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<MaterialBiologico>(this.materialBiologicoUrl, {
       params: params,
     });
   }
 
   findColetor(query: Query[] | null): Observable<Usuario> {
-
     let params = new HttpParams();
 
     query?.forEach((queryItem) => {
@@ -147,7 +136,6 @@ export class ConsultaAmostraService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<Usuario>(this.coletorUrl, {
       params: params,
     });

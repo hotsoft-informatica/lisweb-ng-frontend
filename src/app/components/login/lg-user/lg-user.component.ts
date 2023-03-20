@@ -11,6 +11,7 @@ import { HttpHeaders } from '@angular/common/http';
   selector: 'app-lg-user',
   templateUrl: './lg-user.component.html',
 })
+
 export class LgUserComponent implements OnInit {
   @Input('login') login: UserLogin = new UserLogin({ "user": {} });
   authForm: FormGroup = new FormGroup({
@@ -26,8 +27,7 @@ export class LgUserComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
   }
@@ -41,8 +41,6 @@ export class LgUserComponent implements OnInit {
     // TODO: Revisar e merge
     this.userService.login(this.login).subscribe(
       (res) => {
-        console.log("Arrow function user");
-
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
         let user: User = res.body.status.data as User;

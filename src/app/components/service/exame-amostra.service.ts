@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
 export class ExameAmostraService extends BaseService {
   storage: Storage = window.localStorage;
   baseUrl = '/amostras_paciente';
@@ -25,7 +26,6 @@ export class ExameAmostraService extends BaseService {
   readByAmostraId(amostraId: number | undefined,
     exameId: number | undefined): Observable<any> {
     let params = new HttpParams()
-
 
     if (amostraId as number > 0) {
       params = params.append('queryItem[amostra_id]', amostraId as number);

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
+
 export class LogoutService {
   baseUrl = '/logout';
   userLogoutUrl = '/users/sign_out';
@@ -60,4 +61,3 @@ export class LogoutService {
       })
   }
 }
-

@@ -9,6 +9,7 @@ import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
+
 export class UsuarioService extends BaseService {
   associationUrl = '/usuarios_dominio';
   baseUrl = '/usuarios';
@@ -48,8 +49,6 @@ export class UsuarioService extends BaseService {
     queries: Query[]): Observable<Usuario[]> { // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
 
-
-
     queries.forEach(busca => {
       params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
     });
@@ -71,44 +70,32 @@ export class UsuarioService extends BaseService {
   }
 
   getAssocLmUsuariosId(id: number): Observable<Usuario[]> {
-
-
     const url = `${this.associationUrl}/${id}`;
     console.log(url);
     return this.http.get<Usuario[]>(url);
   }
 
   readById(id: number): Observable<Usuario> {
-
-
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<Usuario>(url);
   }
 
   update(usuario: Usuario): Observable<Usuario> {
-
-
     const url = `${this.baseUrl}/${usuario.id}`;
     return this.http.put<Usuario>(url, usuario);
   }
 
   delete(id: number): Observable<Usuario> {
-
-
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<Usuario>(url);
   }
 
   readByEmail(email: String): Observable<Usuario> {
-
-
     const url = `${this.baseUrl}/email/${email}`;
     return this.http.get<Usuario>(url);
   }
 
   readByUsuario(usuario: String): Observable<Usuario> {
-
-
     const url = `${this.baseUrl}/usuario/${usuario}`;
     return this.http.get<Usuario>(url);
   }
@@ -120,8 +107,6 @@ export class UsuarioService extends BaseService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<Usuario[]> {
-
-
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)

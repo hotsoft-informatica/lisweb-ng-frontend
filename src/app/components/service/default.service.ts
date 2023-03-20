@@ -8,6 +8,7 @@ import { Query } from './../model/query.model';
 @Injectable({
   providedIn: 'root',
 })
+
 export class DefaultService {
   baseUrl: string = '/';
   query: Query[] = [];
@@ -31,8 +32,6 @@ export class DefaultService {
   }
 
   create(record: any, endpoint: string): Observable<any> {
-
-
     return this.http.post<any>(this.baseUrl + endpoint, record);
   }
 
@@ -47,7 +46,6 @@ export class DefaultService {
     // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
 
-
     queries.forEach((busca) => {
       params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
     });
@@ -61,13 +59,10 @@ export class DefaultService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<any[]>(this.baseUrl + endpoint, { params: params, }); // Passa qual operação sera realizada pelo backend
   }
 
   readById(id: number, endpoint: string): Observable<any> {
-
-
     const url = `${this.baseUrl + endpoint}/${id}`;
 
     if (id == null) {
@@ -78,15 +73,11 @@ export class DefaultService {
   }
 
   update(record: any, endpoint: string): Observable<any> {
-
-
     const url = `${this.baseUrl + endpoint}/${record.id}`;
     return this.http.put<any>(url, record);
   }
 
   delete(id: number, endpoint: string): Observable<any> {
-
-
     const url = `${this.baseUrl + endpoint}/${id}`;
     return this.http.delete<any>(url);
   }
@@ -99,8 +90,6 @@ export class DefaultService {
     query: Query[] | null,
     endpoint: string
   ): Observable<any[]> {
-
-
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -112,15 +101,12 @@ export class DefaultService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<any[]>(this.baseUrl + endpoint, {
       params: params,
     });
   }
 
   count(endpoint: string): Observable<number> {
-
-
     return this.http.get<number>(this.baseUrl + endpoint, {
       params: new HttpParams().set('totalCount', 'true')
     });

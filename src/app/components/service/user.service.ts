@@ -15,7 +15,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class UserService extends BaseService {
-
   @Input('usuarios') usuarios: Usuario[] = [];
   id!: number;
 
@@ -77,12 +76,11 @@ export class UserService extends BaseService {
 
   createUpdateAssocUsuarioLm(user: User, id: number): Observable<Usuario> {
     return this.http.post<Usuario>(
-      this.createAssocUsuarioLmUrl + '/' + id,
-      user);
+      this.createAssocUsuarioLmUrl + '/' + id, user
+    );
   }
 
   read(): Observable<User[]> {
-
     return this.http.get<User[]>(this.indexUrl);
   }
 
@@ -92,13 +90,11 @@ export class UserService extends BaseService {
   }
 
   update(user: User): Observable<User> {
-
     const url = `${this.updateUrl}/${user.id}`;
     return this.http.put<User>(url, user);
   }
 
   delete(id: number): Observable<User> {
-
     const url = `${this.baseUrl}/${id}`;
     return this.http.delete<User>(url);
   }
@@ -110,8 +106,6 @@ export class UserService extends BaseService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<User[]> {
-
-
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -123,7 +117,6 @@ export class UserService extends BaseService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<User[]>(this.indexUrl, {
       params: params
     });

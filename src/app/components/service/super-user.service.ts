@@ -10,6 +10,7 @@ import { SuperUserLogin } from '../model/login.model';
 @Injectable({
   providedIn: 'root',
 })
+
 export class SuperUserService {
   indexUrl = '/index_super_users';
   createUrl = '/create_super_user';
@@ -85,7 +86,6 @@ export class SuperUserService {
     pageSize: number = 3,
     query: Query[] | null
   ): Observable<SuperUser[]> {
-
     let params = new HttpParams()
       .set('active', active)
       .set('sortOrder', sortOrder)
@@ -97,7 +97,6 @@ export class SuperUserService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<SuperUser[]>(this.indexUrl, {
       params
     });
