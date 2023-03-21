@@ -17,8 +17,6 @@
   </button>
 </div>
 
-
-
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -35,11 +33,12 @@
               class="form-control"
               id="cbos"
               matInput
-              maxlength="50"
+              maxlength="6"
               name="cbos"
               [(ngModel)]="currentRecord.cbos"
               #cbos="ngModel"
               required
+              oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
             >
             <mat-error *ngIf="cbos?.invalid && (cbos?.dirty ||cbos?.touched)">
               <span *ngIf="cbos?.errors?.['required']">
@@ -152,11 +151,6 @@
       <td mat-cell *matCellDef="let row; index as position">
         <div class="row">
           <div class="col-1 me-3">
-            <!--button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
-              <mat-icon color="primary" class="edit">edit</mat-icon>
-            </button-->
-
-
             <button mat-icon-button
               title="Alterar especialidade"
               data-bs-toggle="modal"
@@ -165,7 +159,6 @@
               (click)="atualizar(row)">
               <mat-icon color="primary" class="edit">edit</mat-icon>
             </button>
-
           </div>
           <div class="col-1 me-3">
               <button class="delete" mat-icon-button (click)="deleteGridData(row.id)">
