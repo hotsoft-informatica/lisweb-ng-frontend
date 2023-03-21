@@ -198,6 +198,7 @@ import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.com
 import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 import { SuperUserComponent } from './components/super-user/super-user.component';
 import { EspecialidadeComponent } from './components/especialidade/especialidade.component';
+import { HibridoClientErrorComponent } from './components/hibrido-client-error/hibrido-client-error.component';
 
 registerLocaleData(localePt);
 // export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
@@ -351,6 +352,7 @@ registerLocaleData(localePt);
     LgSuperUserComponent,
     SuperUserComponent,
     EspecialidadeComponent,
+    HibridoClientErrorComponent,
   ],
   imports: [
     AppRoutingModule,
