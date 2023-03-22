@@ -35,6 +35,7 @@ import { ExameDeleteComponent } from './components/exame/exame-delete/exame-dele
 import { ExameUpdateComponent } from './components/exame/exame-update/exame-update.component';
 import { EspecialidadeComponent } from './components/especialidade/especialidade.component';
 import { HomeComponent } from './views/home/home.component';
+import { HibridoClientErrorComponent } from './components/hibrido-client-error/hibrido-client-error.component';
 import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio-create/laboratorio-create.component';
 import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
 import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio-delete/laboratorio-delete.component';
@@ -131,6 +132,14 @@ const routes: Routes = [
   {
     path: 'tipos_recurso',
     component: TipoRecursoComponent,
+  },
+  {
+    path: 'hibrido_client_errors',
+    component: HibridoClientErrorComponent,
+  },
+  {
+    path: 'hibrido_client_errors/show/:id',
+    component: HibridoClientErrorComponent,
   },
   {
     path: 'laboratorydomains',
