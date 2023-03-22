@@ -6,7 +6,7 @@ import { Injectable, Inject, Injector } from '@angular/core';
   providedIn: 'root',
 })
 
-export class HibridoClientError extends BaseService {
+export class HibridoClientErrorService extends BaseService {
   constructor(
     @Inject(Injector) public injector: Injector,
     public http: HttpClient) {
