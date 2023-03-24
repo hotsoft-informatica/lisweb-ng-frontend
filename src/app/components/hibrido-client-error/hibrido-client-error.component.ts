@@ -46,12 +46,11 @@ export class HibridoClientErrorComponent implements OnInit, AfterViewInit {
 
   displayedColumns = [
     'version_id',
+    'data_hora',
     'http_action',
     'tabela',
     'exception_class',
-    'mensagem',
-    'data_hora',
-    'action'
+    'mensagem'
   ];
 
   constructor(
