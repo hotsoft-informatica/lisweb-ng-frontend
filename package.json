@@ -55,7 +55,7 @@
     "@angular/compiler": "^14.0.1",
     "@nrwl/workspace": "^15.8.9",
     "@types/jasmine": "^4.3.1",
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.15.10",
     "core-js": "^3.29.1",
     "jasmine-core": "^4.6.0",
     "jasmine-spec-reporter": "^7.0.0",
