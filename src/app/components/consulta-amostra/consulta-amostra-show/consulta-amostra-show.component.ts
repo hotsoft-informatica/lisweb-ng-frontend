@@ -14,10 +14,17 @@ import { Query } from '../../model/query.model';
 import { Usuario } from '../../model/usuario.model';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf, NgFor, NgStyle, DatePipe } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-consulta-amostra-show',
-  templateUrl: './consulta-amostra-show.component.html',
+    selector: 'app-consulta-amostra-show',
+    templateUrl: './consulta-amostra-show.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, NgIf, MatButtonModule, MatIconModule, NgFor, NgStyle, DatePipe]
 })
 export class ConsultaAmostraShowComponent implements OnInit {
   private loadingSubject = new BehaviorSubject<boolean>(false);

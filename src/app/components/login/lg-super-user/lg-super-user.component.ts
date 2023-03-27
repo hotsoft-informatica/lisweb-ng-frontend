@@ -4,11 +4,15 @@ import { SuperUserLogin } from '../../model/login.model';
 import { SuperUserService } from '../../service/super-user.service';
 import { Input, Component, OnInit } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-lg-super-user',
-  templateUrl: './lg-super-user.component.html'
+    selector: 'app-lg-super-user',
+    templateUrl: './lg-super-user.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, MatInputModule, NgIf]
 })
 export class LgSuperUserComponent implements OnInit {
   @Input('login') login: SuperUserLogin = new SuperUserLogin({ "super_user": {} });

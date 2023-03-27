@@ -8,8 +8,8 @@ describe('ColetorReadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ColetorReadComponent ]
-    })
+    imports: [ColetorReadComponent]
+})
     .compileComponents();
   });
 

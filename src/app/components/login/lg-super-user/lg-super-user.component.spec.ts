@@ -8,8 +8,8 @@ describe('LgSuperUserComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LgSuperUserComponent ]
-    })
+    imports: [LgSuperUserComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(LgSuperUserComponent);

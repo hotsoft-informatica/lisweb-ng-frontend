@@ -1,9 +1,9 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MarcacaoReadDataSource } from './marcacao-read-datasource';
 import { MarcacaoService } from '../../service/marcacao.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
@@ -14,10 +14,19 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
+import { MarcacaoTipoPipe } from '../../../pipes/marcacao-tipo.pipe';
+import { SlicePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-marcacao-read',
-  templateUrl: './marcacao-read.component.html',
+    selector: 'app-marcacao-read',
+    templateUrl: './marcacao-read.component.html',
+    standalone: true,
+    imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe, MarcacaoTipoPipe]
 })
 export class MarcacaoReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -53,7 +62,7 @@ export class MarcacaoReadComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.dataSource = new MarcacaoReadDataSource(this.marcacaoService);
     // TODO: Tratar via config de paginacao, qtde por pagina
-    this.dataSource.loadMarcacoes('id', 'desc', 1, 5, null);
+    this.dataSource.loadMarcacoes('id', 'desc', 0, 5, null);
     this.marcacaoService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

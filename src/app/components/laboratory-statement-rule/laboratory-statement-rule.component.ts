@@ -1,21 +1,29 @@
 import { Query } from '../model/query.model';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Laboratorio } from '../model/laboratorio.model';
 import { LaboratoryStatementRule } from '../model/laboratory-statement-rule.model';
 import { LaboratoryStatementRuleService } from '../service/laboratory-statement-rule.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, timer } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { tap } from 'rxjs/operators';
 import { merge, fromEvent } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-laboratory-statement-rule',
-  templateUrl: './laboratory-statement-rule.component.html',
-  styleUrls: ['./laboratory-statement-rule.component.css']
+    selector: 'app-laboratory-statement-rule',
+    templateUrl: './laboratory-statement-rule.component.html',
+    styleUrls: ['./laboratory-statement-rule.component.css'],
+    standalone: true,
+    imports: [MatIconModule, MatFormFieldModule, NgIf, FormsModule, MatInputModule, MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
 })
 
 export class LaboratoryStatementRuleComponent implements OnInit {

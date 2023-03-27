@@ -48,10 +48,27 @@
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
+
+<!--
+
+  src/app/components/usuario/usuario-create/usuario-create.component.html:60:3 - error NG8001: 'mat-chip-listbox' is not a known element:
+1. If 'mat-chip-listbox' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'mat-chip-listbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+
+60   <mat-chip-listbox #chipList aria-label="grupo selection">
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  src/app/components/usuario/usuario-create/usuario-create.component.ts:24:18
+    24     templateUrl: './usuario-create.component.html',
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component UsuarioCreateComponent.
+
+-->
+
   <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>Grupos</mat-label>
-  <mat-chip-list #chipList aria-label="grupo selection">
-    <mat-chip
+  <mat-chip-listbox #chipList aria-label="grupo selection">
+    <mat-chip-option
       *ngFor="let grupo of grupos"
       [selectable]="selectable"
       [removable]="removable"
@@ -60,7 +77,7 @@
       <button matChipRemove *ngIf="removable">
         <mat-icon>cancel</mat-icon>
       </button>
-    </mat-chip>
+    </mat-chip-option>
     <!-- TODO: unificar tela de cadastro e edicao -->
     <input
       title="Digite o grupo de usuario"
@@ -71,7 +88,7 @@
       [(ngModel)]="usuario.grupos"
       formControlName="grupos"
       >
-  </mat-chip-list>
+  </mat-chip-listbox>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
     <mat-option *ngFor="let grupo of filteredGrupos | async" [value]="grupo">
       {{grupo}}

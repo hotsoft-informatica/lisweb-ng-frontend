@@ -8,8 +8,8 @@ describe('LaboratoryStatementRuleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LaboratoryStatementRuleComponent ]
-    })
+    imports: [LaboratoryStatementRuleComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(LaboratoryStatementRuleComponent);

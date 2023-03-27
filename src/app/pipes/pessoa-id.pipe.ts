@@ -5,7 +5,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy({ checkProperties: true })
 @Pipe({
-  name: 'pessoaId'
+    name: 'pessoaId',
+    standalone: true
 })
 export class PessoaIdPipe implements PipeTransform {
   constructor(private pessoaService: PessoaService) {}

@@ -25,7 +25,6 @@ export class LaboratorioInterceptor implements HttpInterceptor {
 
     if (user || superUser) {
       let serie = user?.serie || superUser?.serie;
-      console.log(serie);
 
       let serieReq = request.clone({
         params: request.params.set('serie', serie as unknown as string)

@@ -101,7 +101,26 @@
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <app-usuario-update [pacienteInput]="this.currentPaciente"></app-usuario-update>
+                    <!--
+
+                      ERROR
+
+src/app/components/usuario/usuario-read/usuario-read.component.html:109:41 - error NG8002: Can't bind to 'pacienteInput' since it isn't a known property of 'app-usuario-update'.
+1. If 'app-usuario-update' is an Angular component and it has 'pacienteInput' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-usuario-update' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.
+
+109                     <app-usuario-update [pacienteInput]="this.currentPaciente"></app-usuario-update>
+                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  src/app/components/usuario/usuario-read/usuario-read.component.ts:23:18
+    23     templateUrl: './usuario-read.component.html',
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component UsuarioReadComponent.
+
+
+                    -->
+                    <!-- <app-usuario-update [pacienteInput]="this.currentPaciente"></app-usuario-update> -->
                   </div>
                   <div class="modal-footer">
                     <button appDebounceClick mat-flat-buttoncolor="warn" data-bs-dismiss="modal">Sair</button>

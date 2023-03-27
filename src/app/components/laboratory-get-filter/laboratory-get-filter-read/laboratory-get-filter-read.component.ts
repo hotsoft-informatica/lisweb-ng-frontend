@@ -7,12 +7,20 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { tap } from 'rxjs/operators';import { merge } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @Component({
-  selector: 'app-laboratory-get-filter-read',
-  templateUrl: './laboratory-get-filter-read.component.html',
+    selector: 'app-laboratory-get-filter-read',
+    templateUrl: './laboratory-get-filter-read.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, RouterLink, MatPaginatorModule, NgIf, MatProgressSpinnerModule, AsyncPipe]
 })
 export class LaboratoryGetFilterReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -43,7 +51,7 @@ export class LaboratoryGetFilterReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new LaboratoryGetFilterReadDataSource(this.laboratoryGetFilterService);
-    this.dataSource.loadLaboratoryGetFilters('id', 'desc', 1, 5, null);
+    this.dataSource.loadLaboratoryGetFilters('id', 'desc', 0, 5, null);
     this.laboratoryGetFilterService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

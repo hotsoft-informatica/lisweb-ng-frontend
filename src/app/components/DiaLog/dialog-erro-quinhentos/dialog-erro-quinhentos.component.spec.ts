@@ -8,8 +8,8 @@ describe('DialogErroQuinhentosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogErroQuinhentosComponent ]
-    })
+    imports: [DialogErroQuinhentosComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(DialogErroQuinhentosComponent);

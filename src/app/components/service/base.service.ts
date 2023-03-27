@@ -34,8 +34,8 @@ export class BaseService {
   read(
     sortActive: string = 'id',
     sortDirection: string = 'desc',
-    pageNumber = 1,
-    pageSize = 3,
+    pageNumber = 0,
+    pageSize = 5,
     queries: Query[] = [],
     endpoint: string = this.endpoint
   ): Observable<any[]> {
@@ -56,11 +56,12 @@ export class BaseService {
     return this.defaultService.delete(id, endpoint);
   }
 
+  // TODO: Unificar com o read
   find(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null,
     endpoint: string = this.endpoint
   ): Observable<any[]> {

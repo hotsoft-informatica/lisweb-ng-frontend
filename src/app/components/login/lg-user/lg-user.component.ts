@@ -4,12 +4,16 @@ import { User } from '../../model/user.model';
 import { UserLogin } from '../../model/login.model';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import { NgIf } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-lg-user',
-  templateUrl: './lg-user.component.html',
+    selector: 'app-lg-user',
+    templateUrl: './lg-user.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, MatInputModule, NgIf]
 })
 export class LgUserComponent implements OnInit {
   @Input('login') login: UserLogin = new UserLogin({ "user": {} });

@@ -4,10 +4,15 @@ import { EmpresaService } from '../../service/empresa.service';
 import { Operadora } from './../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { EmpresaUpdateComponent } from '../../empresa/empresa-update/empresa-update.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-operadora-update',
-  templateUrl: './operadora-update.component.html',
+    selector: 'app-operadora-update',
+    templateUrl: './operadora-update.component.html',
+    standalone: true,
+    imports: [MatCardModule, EmpresaUpdateComponent, MatButtonModule]
 })
 export class OperadoraUpdateComponent implements OnInit {
   operadora: Operadora;

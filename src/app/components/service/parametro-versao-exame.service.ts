@@ -2,7 +2,7 @@ import { BackendIpService } from './backend-ip.service';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar'
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { ParametroVersaoExame } from '../model/parametro-versao-exame.model';
 import { Query } from './../model/query.model';
 @Injectable({
@@ -64,17 +64,23 @@ export class ParametroVersaoExameService {
   }
 
   getByVersaoExameId(versaoExameId: number): Observable<ParametroVersaoExame[]> {
-
-
-    const url = `${this.versaoExameUrl}/${versaoExameId}/parametros`;
-    return this.http.get<ParametroVersaoExame[]>(url);
+    // TODO: Revisar service por inteiro
+    // TODO: USar heranca
+    let empty: Observable<ParametroVersaoExame[]> = of();
+    if (versaoExameId) {
+      const url = `${this.versaoExameUrl}/${versaoExameId}/parametros`;
+      return this.http.get<ParametroVersaoExame[]>(url);
+    } else {
+      return empty;
+    }
   }
 
+  // TODO: Implementar herança
   findParametroVersaoExames(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null
   ): Observable<ParametroVersaoExame[]> {
 

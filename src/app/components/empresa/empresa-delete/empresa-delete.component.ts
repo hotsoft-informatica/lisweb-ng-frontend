@@ -2,10 +2,18 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-empresa-delete',
-  templateUrl: './empresa-delete.component.html',
+    selector: 'app-empresa-delete',
+    templateUrl: './empresa-delete.component.html',
+    standalone: true,
+    imports: [MatCardModule, NgIf, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule]
 })
 export class EmpresaDeleteComponent implements OnInit {
   @Input('empresa') empresa: Empresa;

@@ -3,9 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { ResponsavelTecnico } from '../../model/responsavel-tecnico.model';
 import { ResponsavelTecnicoService } from '../../service/responsavel-tecnico.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SafeUrlPipe } from '../../../pipes/safe-url.pipe';
+import { NgIf, DatePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
 @Component({
-  selector: 'app-responsavel-tecnico-show',
-  templateUrl: './responsavel-tecnico-show.component.html',
+    selector: 'app-responsavel-tecnico-show',
+    templateUrl: './responsavel-tecnico-show.component.html',
+    standalone: true,
+    imports: [MatCardModule, MatDividerModule, MatButtonModule, MatIconModule, NgIf, DatePipe, SafeUrlPipe]
 })
 export class ResponsavelTecnicoShowComponent implements OnInit {
   responsavelTecnico: ResponsavelTecnico;

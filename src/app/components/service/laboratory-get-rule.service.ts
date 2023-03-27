@@ -52,11 +52,12 @@ export class LaboratoryGetRuleService {
     return this.http.delete<LaboratoryGetRule>(url);
   }
 
+  // TODO: Implementar herança
   find(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null
   ): Observable<LaboratoryGetRule[]> {
     let params = new HttpParams()

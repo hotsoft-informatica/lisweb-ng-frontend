@@ -93,11 +93,22 @@
         </div>
       </div>
 
-      <mat-tab-group>
+      <!--
+
+src/app/components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component.html:104:125 - error NG8002: Can't bind to 'empresa' since it isn't a known property of 'app-local-de-atendimento-endereco'.
+1. If 'app-local-de-atendimento-endereco' is an Angular component and it has 'empresa' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-local-de-atendimento-endereco' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.
+
+104         <mat-tab label="Endereço/ Contato"> <app-local-de-atendimento-endereco [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-endereco> </mat-tab>
+
+      -->
+
+      <!-- <mat-tab-group>
         <mat-tab label="Empresa"> <app-local-de-atendimento-empresa [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-empresa> </mat-tab>
         <mat-tab label="Endereço/ Contato"> <app-local-de-atendimento-endereco [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-endereco> </mat-tab>
         <mat-tab label="Horario de Funcionamento/ Urgência"> <app-local-de-atendimento-horario-funcionamento [localdeatendimento]='this.localAtendimento'></app-local-de-atendimento-horario-funcionamento> </mat-tab>
-      </mat-tab-group>
+      </mat-tab-group> -->
 
   </div>
   <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index m-2 col-xs-2 col-sm-2"

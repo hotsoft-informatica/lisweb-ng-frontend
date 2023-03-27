@@ -25,7 +25,7 @@ export class BaseComponent implements OnInit {
     this.baseService.read(
       'id',
       'desc',
-      1,
+      0,
       500,
       this.query,
       this.model

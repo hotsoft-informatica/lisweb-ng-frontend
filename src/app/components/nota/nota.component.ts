@@ -4,9 +4,14 @@ import { Inject, Injector } from '@angular/core';
 import {
   Component,
 } from '@angular/core';
+import { DecimalPipe, DatePipe } from '@angular/common';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 @Component({
-  selector: 'app-nota',
-  templateUrl: './nota.component.html'
+    selector: 'app-nota',
+    templateUrl: './nota.component.html',
+    standalone: true,
+    imports: [MatTableModule, MatSortModule, DecimalPipe, DatePipe]
 })
 export class NotaComponent extends BaseComponent {
   displayedColumns = [

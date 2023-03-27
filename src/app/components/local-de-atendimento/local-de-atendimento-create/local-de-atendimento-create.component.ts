@@ -2,12 +2,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
+import { FormsModule } from '@angular/forms';
 import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendimento.model';
+import { LocalDeAtendimentoEmpresaComponent } from './local-de-atendimento-empresa/local-de-atendimento-empresa.component';
+import { LocalDeAtendimentoEnderecoComponent } from './local-de-atendimento-endereco/local-de-atendimento-endereco.component';
+import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
 import { LocalDeAtendimentoService } from './../../service/local-de-atendimento.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
-  selector: 'app-local-de-atendimento-create',
-  templateUrl: './local-de-atendimento-create.component.html',
+    selector: 'app-local-de-atendimento-create',
+    templateUrl: './local-de-atendimento-create.component.html',
+    standalone: true,
+    imports: [FormsModule, MatFormFieldModule, MatInputModule,
+      MatRadioModule, MatCheckboxModule, MatTabsModule,
+      LocalDeAtendimentoEmpresaComponent, LocalDeAtendimentoEnderecoComponent,
+      LocalDeAtendimentoHorarioFuncionamentoComponent]
 })
 export class LocalDeAtendimentoCreateComponent implements OnInit {
   localAtendimento: LocalDeAtendimento;
