@@ -2,17 +2,26 @@ import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendiment
 import { RequisicaoService } from './../../service/requisicao.service';
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Requisicao } from './../../model/requisicao.model';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Paciente } from '../../model/paciente.model';
 import { Convenios } from '../../model/convenios.model';
 import { Medicos } from '../../model/medicos.model';
+import { DatePipe } from '@angular/common';
+import { RequisicaoUpdateExamesComponent } from './requisicao-update-exames/requisicao-update-exames.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 export interface DialogData{
   requisicao: Requisicao;
 }
 @Component({
-  selector: 'app-requisicao-update',
-  templateUrl: './requisicao-update.component.html',
+    selector: 'app-requisicao-update',
+    templateUrl: './requisicao-update.component.html',
+    standalone: true,
+    imports: [FormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatTabsModule, RequisicaoUpdateExamesComponent, MatDialogModule, DatePipe]
 })
 export class RequisicaoUpdateComponent implements OnInit {
 

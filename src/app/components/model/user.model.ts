@@ -16,6 +16,7 @@ export class User extends Base {
   public admin?: boolean;
   public usuarios_ids?: number;
   public password?: string = randomString(8);
+  public serie?: number;
 
   constructor(values: User) {
     super(values);

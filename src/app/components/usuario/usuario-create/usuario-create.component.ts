@@ -3,17 +3,27 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
 import { ElementRef, ViewChild } from '@angular/core';
 import { map, startWith } from 'rxjs/operators';
-import { MatChipInputEvent } from '@angular/material/chips'
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips'
+import { MatAutocompleteSelectedEvent, MatAutocompleteModule } from '@angular/material/autocomplete';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Usuario } from './../../model/usuario.model';
 import { UsuarioService } from './../../service/usuario.service';
 import { Observable } from 'rxjs';
 import Validation from '../../../utils/validation';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatOptionModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-usuario-create',
-  templateUrl: './usuario-create.component.html',
+    selector: 'app-usuario-create',
+    templateUrl: './usuario-create.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, NgIf, MatButtonModule, MatIconModule, NgFor, MatChipsModule, MatAutocompleteModule, MatOptionModule, MatCardModule, MatDialogModule, AsyncPipe]
 })
 
 export class UsuarioCreateComponent implements OnInit {

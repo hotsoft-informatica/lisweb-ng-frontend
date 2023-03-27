@@ -8,7 +8,12 @@ import { Exame } from './../../model/exame.model';
 import { ExameAmostra } from './../../model/exame-amostra.model';
 import { ExameAmostraService } from './../../service/exame-amostra.service';
 import { ExameService } from '../../service/exame.service';
+import { MatButtonModule } from '@angular/material/button';
 import { MaterialBiologico } from '../../model/material-biologico.model';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { NgIf, NgFor, NgStyle, DatePipe } from '@angular/common';
 import { Paciente } from '../../model/paciente.model';
 import { Query } from '../../model/query.model';
 import { Usuario } from '../../model/usuario.model';
@@ -16,8 +21,11 @@ import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
 
 @Component({
-  selector: 'app-consulta-amostra-show',
-  templateUrl: './consulta-amostra-show.component.html',
+    selector: 'app-consulta-amostra-show',
+    templateUrl: './consulta-amostra-show.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, NgIf, MatButtonModule,
+       MatIconModule, NgFor, NgStyle, DatePipe]
 })
 export class ConsultaAmostraShowComponent implements OnInit {
   private loadingSubject = new BehaviorSubject<boolean>(false);

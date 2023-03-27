@@ -49,7 +49,7 @@
 </table>
 
 <div class="p-1 col d-flex justify-content-end">
-  <button mat-flat-button color="primary" class="dvm-button"
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="dvm-button"
           data-bs-toggle="collapse" data-bs-target="#collapseAddExames"
           aria-expanded="false" aria-controls="collapseAddExames">
           <mat-icon class="mx-0">add</mat-icon>
@@ -58,10 +58,10 @@
 <div class="collapse" id="collapseAddExames">
   <app-autocomplete-versao-exame></app-autocomplete-versao-exame>
 
-  <button mat-flat-button color="primary" class="fixed-bottom index m-2"
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index m-2"
           (onClick)="addExame()">
           Adicionar</button>
-  <button mat-flat-button color="warn" class="dvm-button fixed-bottom index"
+  <button appDebounceClick mat-flat-buttoncolor="warn" class="dvm-button fixed-bottom index"
           data-bs-toggle="collapse" data-bs-target="#collapseAddExames">
           Fechar</button>
 </div>

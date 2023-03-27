@@ -45,7 +45,7 @@ export class UsuarioService extends BaseService {
     sortActive: string = 'id',
     sortDirection: string = 'desc',
     pageNumber = 0,
-    pageSize = 3,
+    pageSize = 5,
     queries: Query[]): Observable<Usuario[]> { // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
 
@@ -100,11 +100,12 @@ export class UsuarioService extends BaseService {
     return this.http.get<Usuario>(url);
   }
 
+  // TODO: Implementar heranca
   findUsuarios(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null
   ): Observable<Usuario[]> {
     let params = new HttpParams()

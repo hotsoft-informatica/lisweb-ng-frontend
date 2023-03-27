@@ -1,4 +1,20 @@
 import { ActivatedRoute, Router } from '@angular/router';
+import { Especialidade } from '../model/especialidade.model';
+import { EspecialidadeService } from '../service/especialidade.service';
+import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort'
+import { MatInputModule } from '@angular/material/input';;
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { merge } from 'rxjs';
+import { Query } from '../model/query.model';
+import { tap } from 'rxjs/operators';
+import { NgIf, NgFor, NgStyle, DatePipe } from '@angular/common';
 import {
   Component,
   OnInit,
@@ -7,20 +23,15 @@ import {
   TemplateRef,
   Renderer2
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { merge } from 'rxjs';
-import { Query } from '../model/query.model';
-import { tap } from 'rxjs/operators';
-import { Especialidade } from '../model/especialidade.model';
-import { EspecialidadeService } from '../service/especialidade.service';
-
 
 @Component({
   selector: 'app-especialidade',
-  templateUrl: './especialidade.component.html'
+  templateUrl: './especialidade.component.html',
+  standalone: true,
+  imports: [FormsModule, MatPaginatorModule,
+    MatSortModule, MatTableModule, MatButtonModule, MatDialogModule,
+    MatIconModule, MatFormFieldModule, MatInputModule,
+    NgIf, NgFor, NgStyle, DatePipe]
 })
 export class EspecialidadeComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);
@@ -140,5 +151,4 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
     this.paginator.pageIndex = 0;
     this.loadPage();
   }
-
 }

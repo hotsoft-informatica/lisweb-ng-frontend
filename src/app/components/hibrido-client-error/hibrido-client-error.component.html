@@ -14,7 +14,7 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>Version Id:</mat-label>
-            <input matInput #version_id maxlength="10"
+            <input matInput #version_id maxlength="10" formControlName="version_id"
             title="Filtre pelo id da versão"
               (input)="search('version_id', version_id.value)"
             >
@@ -23,7 +23,7 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>Tabela:</mat-label>
-            <input matInput #tabela maxlength="50"
+            <input matInput #tabela maxlength="50" formControlName="tabela"
             title="Filtre pela tabela"
               (input)="search('tabela', tabela.value)"
             >
@@ -32,7 +32,7 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>Mensagem:</mat-label>
-            <input matInput #mensagem maxlength="50"
+            <input matInput #mensagem maxlength="50" formControlName="mensagem"
             title="Filtre pela mensagem"
               (input)="search('mensagem', mensagem.value)"
             >

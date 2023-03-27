@@ -1,12 +1,12 @@
 <div class="d-flex justify-content-between col-sm-12 p-2">
-    <button mat-flat-button color="primary"
+    <button appDebounceClick mat-flat-buttoncolor="primary"
       class="col-sm-1 col-lg-1 float-start" data-bs-toggle="collapse"
         data-bs-target="#collapseExample"
       aria-expanded="false" aria-controls="collapseExample">
       <mat-icon>search</mat-icon>
       Buscar
     </button>
-    <button mat-flat-button class="btn-success col-sm-1 float-end"
+    <button appDebounceClick mat-flat-buttonclass="btn-success col-sm-1 float-end"
       color="primary" title="Adicionar parâmetro"
     (click)="new();" *ngIf="!onCreate && !onEdit">
       <mat-icon class="mx-0">add</mat-icon>

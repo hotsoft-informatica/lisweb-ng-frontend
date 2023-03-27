@@ -6,10 +6,18 @@ import { Subject } from 'rxjs';
 import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
 import { TipoInstrumentoService } from './../../../service/tipo-instrumento.service';
 import { VersaoExame } from './../../../model/versao-exame.model';
+import { FormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AutocompleteTipoInterfaceamentoComponent } from '../../../auto-complete/autocomplete-tipo-interfaceamento/autocomplete-tipo-interfaceamento.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-versao-exame-interfaceamento-create',
-  templateUrl: './versao-exame-interfaceamento-create.component.html',
+    selector: 'app-versao-exame-interfaceamento-create',
+    templateUrl: './versao-exame-interfaceamento-create.component.html',
+    standalone: true,
+    imports: [NgIf, MatFormFieldModule, MatInputModule, AutocompleteTipoInterfaceamentoComponent, MatSlideToggleModule, FormsModule]
 })
 export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
   @Input('versaoExame') versaoExame!: VersaoExame;

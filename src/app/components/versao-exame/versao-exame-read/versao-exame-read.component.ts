@@ -1,9 +1,9 @@
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { VersaoExameReadDataSource } from './versao-exame-read-datasource';
 import { VersaoExameService } from '../../service/versao-exame.service';
@@ -14,9 +14,18 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
+import { VersaoExameStatusPipe } from '../../../pipes/versao-exame-status.pipe';
+import { SlicePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
-  selector: 'app-versao-exame-read',
-  templateUrl: './versao-exame-read.component.html',
+    selector: 'app-versao-exame-read',
+    templateUrl: './versao-exame-read.component.html',
+    standalone: true,
+    imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe, VersaoExameStatusPipe]
 })
 export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -50,8 +59,9 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    // TODO: Trocar dataSources pela heranca
     this.dataSource = new VersaoExameReadDataSource(this.versaoExameService);
-    this.dataSource.loadVersaoExames('id', 'desc', 1, 5, null);
+    this.dataSource.loadVersaoExames('id', 'desc', 0, 5, null);
     this.versaoExameService.count().subscribe((totalCount: any) => {
       this.totalCount = totalCount;
     });

@@ -1,10 +1,16 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { NgIf } from '@angular/common';
 import { Query } from '../model/query.model';
 import { tap } from 'rxjs/operators';
 import { timer, merge } from 'rxjs';
@@ -19,8 +25,10 @@ import {
   } from '@angular/core';
 
 @Component({
-  selector: 'app-dominio',
-  templateUrl: './dominio.component.html',
+    selector: 'app-dominio',
+    templateUrl: './dominio.component.html',
+    standalone: true,
+    imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
 })
 export class DominioComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);

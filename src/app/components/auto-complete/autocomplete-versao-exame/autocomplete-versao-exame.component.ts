@@ -4,10 +4,18 @@ import { Query } from '../../model/query.model';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
 import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-autocomplete-versao-exame',
-  templateUrl: './autocomplete-versao-exame.component.html',
+    selector: 'app-autocomplete-versao-exame',
+    templateUrl: './autocomplete-versao-exame.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, FormsModule, NgFor, MatOptionModule]
 })
 export class AutoCompleteVersaoExameComponent implements OnInit{
   @Input('tipoExame') tipoExame:TipoExame | undefined;

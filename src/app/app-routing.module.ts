@@ -103,6 +103,9 @@ import { VersaoExameCreateComponent } from './components/versao-exame/versao-exa
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
 
 // TODO Criar notFoundComponet classe e rota
+import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
+import { LaboratoryStatementRuleComponent } from './components/laboratory-statement-rule/laboratory-statement-rule.component';
+import { LaboratoryPostRuleComponent } from './components/laboratory-post-rule/laboratory-post-rule.component';
 
 const routes: Routes = [
   {
@@ -358,6 +361,10 @@ const routes: Routes = [
     component: ExameUpdateComponent,
   },
   {
+    path: 'exames/delete/:id',
+    component: ExameDeleteComponent,
+  },
+  {
     path: 'especialidades',
     component: EspecialidadeComponent,
   },
@@ -544,6 +551,18 @@ const routes: Routes = [
   {
     path: '**',
     component: HomeComponent,
+  },
+  {
+    path: 'laboratory_get_rules',
+    component: LaboratoryGetRuleComponent,
+  },
+  {
+    path: 'laboratory_statement_rules',
+    component: LaboratoryStatementRuleComponent,
+  },
+  {
+    path: 'laboratory_post_rules',
+    component: LaboratoryPostRuleComponent,
   },
 ];
 

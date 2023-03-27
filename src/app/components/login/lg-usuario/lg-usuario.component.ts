@@ -2,10 +2,19 @@ import { combineLatest } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../service/usuario.service';
 import { Router } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgIf } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-lg-usuario',
-  templateUrl: './lg-usuario.component.html',
+    selector: 'app-lg-usuario',
+    templateUrl: './lg-usuario.component.html',
+    standalone: true,
+    imports: [MatCardModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, NgIf, MatProgressSpinnerModule]
 })
 export class LgUsuarioComponent implements OnInit {
   hide = true;

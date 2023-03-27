@@ -8,8 +8,8 @@ describe('BackendIpComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BackendIpComponent ]
-    })
+    imports: [BackendIpComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(BackendIpComponent);

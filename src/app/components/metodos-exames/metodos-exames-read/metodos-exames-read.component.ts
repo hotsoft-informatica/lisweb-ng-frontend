@@ -1,18 +1,27 @@
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { merge } from 'rxjs';
 import { MetodoExame } from '../../model/metodo-exame.model';
 import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
 import { MetodoExameService } from './../../service/metodo-exame.service';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
+import { SlicePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-metodos-exames-read',
-  templateUrl: './metodos-exames-read.component.html',
+    selector: 'app-metodos-exames-read',
+    templateUrl: './metodos-exames-read.component.html',
+    standalone: true,
+    imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe]
 })
 export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
 
@@ -27,7 +36,7 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
 
   queries: Query[] = [];
   msgErro = '';
-  page = 1;
+  page = 0;
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -76,7 +85,7 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
         this.metodoExameService
         .delete(id)
         .subscribe(() => {
-          this.page = 1;
+          this.page = 0;
           this.loadBack();
         });
       }

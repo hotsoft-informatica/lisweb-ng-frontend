@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'marcacaotipo'
+    name: 'marcacaotipo',
+    standalone: true
 })
 export class MarcacaoTipoPipe implements PipeTransform {
   transform(value: string): string {

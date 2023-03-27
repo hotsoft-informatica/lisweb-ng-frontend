@@ -18,10 +18,9 @@
 
   <mat-form-field class="example-chip-list" appearance="fill">
     Grupos
-    <mat-chip-list #chipList aria-label="grupo selection">
+    <mat-chip-listbox #chipList aria-label="grupo selection">
       <mat-chip
         *ngFor="let grupo of grupos"
-        [selectable]="selectable"
         [removable]="removable"
         (removed)="remove(grupo)">
         {{grupo}}
@@ -37,7 +36,7 @@
         [matAutocomplete]="auto"
         name="grupos"
         [(ngModel)]="usuario.grupos">
-    </mat-chip-list>
+    </mat-chip-listbox>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
     <mat-option *ngFor="let grupo of filteredGrupos | async" [value]="grupo">
       {{grupo}}
@@ -47,9 +46,9 @@
 
 </form>
 <div>
-  <button mat-flat-button color="primary" class="fixed-bottom index"
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index"
   (click)="createUsuario()">Salvar</button>
-  <button mat-flat-button mat-dialog-close color="warn" class="fixed-bottom index ms-2"
+  <button appDebounceClick mat-flat-buttonmat-dialog-close color="warn" class="fixed-bottom index ms-2"
     routerLink="/usuarios/read">
     Cancelar</button>
 </div>

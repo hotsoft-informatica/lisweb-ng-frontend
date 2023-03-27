@@ -8,9 +8,9 @@ import {
   ElementRef,
   Input
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSelect } from '@angular/material/select';
-import { MatOption } from '@angular/material/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatOption, MatOptionModule } from '@angular/material/core';
 import { User } from '../model/user.model';
 import { UserService } from '../service/user.service';
 import { Usuario } from '../model/usuario.model';
@@ -20,15 +20,25 @@ import { LaboratoryDomainService } from '../service/laboratory-domain.service';
 import { Laboratorio } from '../model/laboratorio.model';
 import { LaboratorioService } from '../service/laboratorio.service';
 import { Subject } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { tap, debounceTime } from 'rxjs/operators';
 import { merge, forkJoin, Observable } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf, NgFor } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
+    selector: 'app-user',
+    templateUrl: './user.component.html',
+    standalone: true,
+    imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule, MatOptionModule, MatTabsModule, MatAutocompleteModule, NgFor, MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
 })
 export class UserComponent implements OnInit, AfterViewInit {
   @Input('laboratory_domains') laboratory_domains: LaboratoryDomain[] = [];

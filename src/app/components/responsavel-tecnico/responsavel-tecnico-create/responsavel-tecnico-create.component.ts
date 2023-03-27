@@ -2,9 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ResponsavelTecnico } from '../../model/responsavel-tecnico.model';
 import { ResponsavelTecnicoService } from '../../service/responsavel-tecnico.service';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { NgIf, NgFor } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 @Component({
-  selector: 'app-responsavel-tecnico-create',
-  templateUrl: './responsavel-tecnico-create.component.html',
+    selector: 'app-responsavel-tecnico-create',
+    templateUrl: './responsavel-tecnico-create.component.html',
+    standalone: true,
+    imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, NgIf, MatAutocompleteModule, NgFor, MatOptionModule, MatButtonModule]
 })
 export class ResponsavelTecnicoCreateComponent implements OnInit {
   responsavelTecnico: ResponsavelTecnico;
