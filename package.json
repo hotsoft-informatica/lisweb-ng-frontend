@@ -34,7 +34,7 @@
     "@ngneat/overview": "^4.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@nrwl/angular": "15.6.3",
-    "@popperjs/core": "^2.11.6",
+    "@popperjs/core": "^2.11.7",
     "angular-hotkeys": "^1.7.0",
     "bootstrap": "^5.2.3",
     "core-util-is": "^1.0.3",
