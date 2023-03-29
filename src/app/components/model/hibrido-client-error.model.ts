@@ -2,6 +2,8 @@ import { Base } from './base.model';
 
 export class HibridoClientError extends Base {
   public data_hora?: Date = new Date();
+  public data_hora_lt?: Date = new Date();
+  public data_hora_gt?: Date = new Date();
   public http_action?: string;
   public tabela?: string;
   public exception_class?: string;
