@@ -26,66 +26,59 @@
       <div class="modal-body">
         <form #formSearchDateTimeRange="ngForm">
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Valor Inicial</label>
+            <label for="data_hora_inicial" class="col-form-label">Valor Inicial</label>
             <input
               type="datetime-local"
               class="form-control"
               id="data_hora_inicial"
               matInput
-              name="data_hora_inicial"
-              [(ngModel)]="currentRecord.data_hora"
-              #data_hora_inicial="ngModel"
+              name="data_hora_gt"
+              [(ngModel)]="currentRecord.data_hora_gt"
+              #data_hora_gt="ngModel"
               required
             >
-            <mat-error *ngIf="data_hora_inicial?.invalid && (data_hora_inicial?.dirty ||data_hora_inicial?.touched)">
-              <span *ngIf="data_hora_inicial?.errors?.['required']">
+            <mat-error *ngIf="data_hora_gt?.invalid && (data_hora_gt?.dirty ||data_hora_gt?.touched)">
+              <span *ngIf="data_hora_gt?.errors?.['required']">
                 O campo é obrigatório!
               </span>
             </mat-error>
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Valor Final</label>
+            <label for="data_hora_final" class="col-form-label">Valor Final</label>
             <input
               type="datetime-local"
               class="form-control"
               id="data_hora_final"
               matInput
-              name="data_hora_final"
-              [(ngModel)]="currentRecord.data_hora"
-              #data_hora_final="ngModel"
+              name="data_hora_lt"
+              [(ngModel)]="currentRecord.data_hora_lt"
+              #data_hora_lt="ngModel"
               required
             >
-            <mat-error *ngIf="data_hora_final?.invalid && (data_hora_final?.dirty ||data_hora_final?.touched)">
-              <span *ngIf="data_hora_final?.errors?.['required']">
+            <mat-error *ngIf="data_hora_lt?.invalid && (data_hora_lt?.dirty ||data_hora_lt?.touched)">
+              <span *ngIf="data_hora_lt?.errors?.['required']">
                 O campo é obrigatório!
               </span>
             </mat-error>
           </div>
         </form>
       </div>
-      <!--div class="modal-footer">
+      <div class="modal-footer">
         <button type="button" class="btn btn-danger"
-          (click)="cancelar(); formCreateEspecialidade.resetForm()"
+          (click)="cancelar(); formSearchDateTimeRange.resetForm()"
 
           data-bs-dismiss="modal"
         >
           Cancelar
         </button>
-        <button type="button" class="btn btn-primary" *ngIf="this.currentRecord.id"
-          (click)="updateGridData()"
-          [disabled]="formCreateEspecialidade.invalid"
+        <button type="button" class="btn btn-primary" *ngIf="this.currentRecord"
+          (click)="dateTimeRangeFilter()"
+          [disabled]="formSearchDateTimeRange.invalid"
           data-bs-dismiss="modal"
         >
-          Salvar
+          Filtrar
         </button>
-        <button type="button" class="btn btn-primary" *ngIf="!this.currentRecord.id"
-        (click)="addGridData(); formCreateEspecialidade.resetForm();"
-        [disabled]="formCreateEspecialidade.invalid"
-        data-bs-dismiss="modal"
-        >
-          Salvar
-      </button>
-      </div-->
+      </div>
     </div>
   </div>
 </div>
