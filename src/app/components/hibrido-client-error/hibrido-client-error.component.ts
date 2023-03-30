@@ -99,4 +99,13 @@ export class HibridoClientErrorComponent implements OnInit, AfterViewInit {
     this.loadPage();
   }
 
+  dateTimeRangeFilter(): void {
+    this.search('data_hora_gt', this.currentRecord.data_hora_gt, false);
+    this.search('data_hora_lt', this.currentRecord.data_hora_lt, false);
+  }
+
+  cancelar(): void {
+    this.currentRecord = new HibridoClientError({});
+  }
+
 }
