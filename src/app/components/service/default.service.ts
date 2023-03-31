@@ -98,9 +98,9 @@ export class DefaultService {
     query?.forEach((queryItem) => {
       if (queryItem) {
         // Se o final nao tiver _gt ou _lt
-        const regexDate = /.*_['lt''gt']+/g
+        const regexDate = /.*_['lt''gt''eq']+/g
         let isDateKey = regexDate.test(queryItem.key)
-        let key = isDateKey ? `${queryItem.key}` : `${queryItem.key}_cont`
+        let key = isDateKey ? `${queryItem.key}` : `${queryItem.key}_cont_any`
         key = `queryItem[${key}]`
         params = params.append(key, queryItem.value);
       }
