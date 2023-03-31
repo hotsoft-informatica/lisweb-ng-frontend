@@ -97,7 +97,11 @@ export class DefaultService {
       .set('pageSize', pageSize.toString());
     query?.forEach((queryItem) => {
       if (queryItem) {
-        const key = `queryItem[${queryItem.key}]`;
+        // Se o final nao tiver _gt ou _lt
+        const regexDate = /.*_['lt''gt']+/g
+        let isDateKey = regexDate.test(queryItem.key)
+        let key = isDateKey ? `${queryItem.key}` : `${queryItem.key}_cont`
+        key = `queryItem[${key}]`
         params = params.append(key, queryItem.value);
       }
     });
