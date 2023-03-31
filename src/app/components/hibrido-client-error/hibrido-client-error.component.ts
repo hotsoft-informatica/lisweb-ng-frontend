@@ -91,17 +91,19 @@ export class HibridoClientErrorComponent implements OnInit, AfterViewInit {
       });
   }
 
-  search(key: string, value: string, isNumeric: boolean = false): void {
+  search(key: string, value: string, isNumeric: boolean = false, load = true): void {
     const query = new Query({ key, value, isNumeric });
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
     this.paginator.pageIndex = 0;
-    this.loadPage();
+    if (load) {
+      this.loadPage();
+    }
   }
 
   dateTimeRangeFilter(): void {
-    this.search('data_hora_gt', this.currentRecord.data_hora_gt, false);
-    this.search('data_hora_lt', this.currentRecord.data_hora_lt, false);
+    this.search('data_hora_gt', this.currentRecord.data_hora_gt, false, false);
+    this.search('data_hora_lt', this.currentRecord.data_hora_lt, false, true);
   }
 
   cancelar(): void {
