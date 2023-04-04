@@ -11,17 +11,30 @@ import {
 } from '@angular/core';
 import { HibridoClientError } from '../model/hibrido-client-error.model';
 import { HibridoClientErrorService } from '../service/hibrido-client-error.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { merge } from 'rxjs';
 import { Query } from '../model/query.model';
 import { Subject, timer } from 'rxjs';
 import { tap, debounceTime } from 'rxjs/operators';
+
+// imports referentes ao standalone:
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
+
 @Component({
   selector: 'app-hibrido-client-error',
-  templateUrl: './hibrido-client-error.component.html'
+  templateUrl: './hibrido-client-error.component.html',
+  standalone: true,
+  imports: [NgIf, MatIconModule, FormsModule, MatInputModule, MatFormFieldModule,
+    MatTableModule, MatDialogModule, MatPaginatorModule, DatePipe
+  ]
 })
 
 export class HibridoClientErrorComponent implements OnInit, AfterViewInit {
@@ -109,5 +122,4 @@ export class HibridoClientErrorComponent implements OnInit, AfterViewInit {
   cancelar(): void {
     this.currentRecord = new HibridoClientError({});
   }
-
 }
