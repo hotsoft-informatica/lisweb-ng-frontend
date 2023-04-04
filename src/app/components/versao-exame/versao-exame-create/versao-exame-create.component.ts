@@ -22,10 +22,22 @@ import {
   debounceTime,
 } from 'rxjs/operators';
 import { Subject, forkJoin, Observable } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { VersaoExameInterfaceamentoCreateComponent } from './versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component';
+import { VersaoExameGeralCreateComponent } from './versao-exame-geral-create/versao-exame-geral-create.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AutoCompleteVersaoExameComponent } from '../../auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-versao-exame-create',
-  templateUrl: './versao-exame-create.component.html',
+    selector: 'app-versao-exame-create',
+    templateUrl: './versao-exame-create.component.html',
+    standalone: true,
+    imports: [NgIf, MatFormFieldModule, MatInputModule, AutoCompleteVersaoExameComponent, MatSlideToggleModule, FormsModule, MatTabsModule, VersaoExameGeralCreateComponent, VersaoExameInterfaceamentoCreateComponent, VersaoExameParametroComponent, MatButtonModule]
 })
 export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   versaoExame!: VersaoExame;

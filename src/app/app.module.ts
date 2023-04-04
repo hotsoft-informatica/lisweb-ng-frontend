@@ -2,7 +2,10 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Authorization } from './components/service/authorization.service';
+// TODO: Mover pasta service para fora da pasta components
+import { AuthorizationInterceptor } from './components/service/authorization-interceptor.service';
+import { ErrorInterceptor } from './components/service/error-Interceptor.service';
+import { LaboratorioInterceptor } from './components/service/laboratorio-interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -81,9 +84,6 @@ import { EmpresaDeleteComponent } from './components/empresa/empresa-delete/empr
 import { EmpresaReadComponent } from './components/empresa/empresa-read/empresa-read.component';
 import { EmpresaShowComponent } from './components/empresa/empresa-show/empresa-show.component';
 import { EmpresaUpdateComponent } from './components/empresa/empresa-update/empresa-update.component';
-
-// TODO: Revisar interceptors, problema de dependencia circular
-import { ErroInterceptorModule } from './components/model/erro-interceptor.module';
 import { ExameAmostraCreateComponent } from './components/exame-amostra/exame-amostra-create/exame-amostra-create.component';
 import { ExameAmostraDeleteComponent } from './components/exame-amostra/exame-amostra-delete/exame-amostra-delete.component';
 import { ExameAmostraReadComponent } from './components/exame-amostra/exame-amostra-read/exame-amostra-read.component';
@@ -197,6 +197,9 @@ import localePt from '@angular/common/locales/pt';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 import { SuperUserComponent } from './components/super-user/super-user.component';
+import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
+import { LaboratoryStatementRuleComponent } from './components/laboratory-statement-rule/laboratory-statement-rule.component';
+import { LaboratoryPostRuleComponent } from './components/laboratory-post-rule/laboratory-post-rule.component';
 import { EspecialidadeComponent } from './components/especialidade/especialidade.component';
 import { HibridoClientErrorComponent } from './components/hibrido-client-error/hibrido-client-error.component';
 
@@ -204,12 +207,50 @@ registerLocaleData(localePt);
 // export const options: Partial<IConfig> | (() => Partial<IConfig>) | null = null;
 
 @NgModule({
-  declarations: [
+  declarations: [AppComponent],
+  imports: [
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatMomentDateModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTreeModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'pt-BR'
+    }),
     AmostraCreateComponent,
     AmostraDeleteComponent,
     AmostraReadComponent,
     AmostraUpdateComponent,
-    AppComponent,
     AutocompleteTipoInterfaceamentoComponent,
     AutoCompleteVersaoExameComponent,
     BackendIpComponent,
@@ -351,61 +392,34 @@ registerLocaleData(localePt);
     TipoRecursoComponent,
     LgSuperUserComponent,
     SuperUserComponent,
-    EspecialidadeComponent,
-    HibridoClientErrorComponent,
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatMomentDateModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTreeModule,
-    ReactiveFormsModule,
-    RouterModule,
-    ErroInterceptorModule,
-    TranslateModule.forRoot({
-      defaultLanguage: 'pt-BR'
-    })
+    DominioComponent,
+    LaboratoryGetRuleComponent,
+    LaboratoryStatementRuleComponent,
+    LaboratoryPostRuleComponent,
+    EspecialidadeComponent
   ],
   providers: [
-    Authorization,
+    AuthorizationInterceptor,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: Authorization,
+      useClass: AuthorizationInterceptor,
+      multi: true,
+    },
+    LaboratorioInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LaboratorioInterceptor,
+      multi: true,
+    },
+    ErrorInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true,
     },
     {
       provide: MatPaginatorIntl,
       useValue: getPtBrMatPaginatorIntl(),
-
     },
     {
       provide: LOCALE_ID,
@@ -415,6 +429,6 @@ registerLocaleData(localePt);
     // UserExitGuard,
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

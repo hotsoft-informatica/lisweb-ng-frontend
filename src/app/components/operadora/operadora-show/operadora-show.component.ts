@@ -4,10 +4,16 @@ import { EmpresaService } from '../../service/empresa.service';
 import { Operadora } from '../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-operadora-show',
-  templateUrl: './operadora-show.component.html',
+    selector: 'app-operadora-show',
+    templateUrl: './operadora-show.component.html',
+    standalone: true,
+    imports: [MatCardModule, MatDividerModule, MatButtonModule, DatePipe]
 })
 export class OperadoraShowComponent implements OnInit {
   operadora: Operadora;

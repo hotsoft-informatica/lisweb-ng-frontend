@@ -5,10 +5,15 @@ import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendiment
 import { Router } from '@angular/router';
 import { Cep } from '../../../model/cep.model';
 import { Empresa } from 'src/app/components/model/empresa.model';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-local-de-atendimento-endereco',
-  templateUrl: './local-de-atendimento-endereco.component.html',
+    selector: 'app-local-de-atendimento-endereco',
+    templateUrl: './local-de-atendimento-endereco.component.html',
+    standalone: true,
+    imports: [FormsModule, MatFormFieldModule, MatInputModule]
 })
 export class LocalDeAtendimentoEnderecoComponent implements OnInit {
 

@@ -1,20 +1,30 @@
-import { Query } from '../../model/query.model';
-import { EmpresaService } from '../../service/empresa.service';
 import { EmpresaReadDataSource } from './empresa-read-datasource';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { EmpresaService } from '../../service/empresa.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { merge } from 'rxjs';
+import { NgIf, AsyncPipe, DatePipe } from '@angular/common';
+import { Query } from '../../model/query.model';
+import { RouterLink } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import {
   AfterViewInit,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-empresa-read',
-  templateUrl: './empresa-read.component.html',
+    selector: 'app-empresa-read',
+    templateUrl: './empresa-read.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatTableModule,
+       MatSortModule, RouterLink, MatPaginatorModule, NgIf,
+       MatProgressSpinnerModule, AsyncPipe, DatePipe]
 })
 export class EmpresaReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -52,7 +62,7 @@ export class EmpresaReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new EmpresaReadDataSource(this.empresaService);
-    this.dataSource.loadEmpresas('id', 'desc', 1, 5, null);
+    this.dataSource.loadEmpresas('id', 'desc', 0, 5, null);
     this.empresaService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

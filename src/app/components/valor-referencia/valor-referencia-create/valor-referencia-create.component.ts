@@ -9,10 +9,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { NgFor } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-valor-referencia-create',
-  templateUrl: './valor-referencia-create.component.html',
+    selector: 'app-valor-referencia-create',
+    templateUrl: './valor-referencia-create.component.html',
+    standalone: true,
+    imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatInputModule, MatAutocompleteModule, NgFor]
 })
 export class ValorReferenciaCreateComponent implements OnInit {
   valorReferencia!: ValorReferencia;

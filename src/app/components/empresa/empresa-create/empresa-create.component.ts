@@ -1,13 +1,22 @@
-import { UntypedFormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormControl, FormGroup, FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 @Component({
-  selector: 'app-empresa-create',
-  templateUrl: './empresa-create.component.html',
+    selector: 'app-empresa-create',
+    templateUrl: './empresa-create.component.html',
+    standalone: true,
+    imports: [MatCardModule, NgIf, FormsModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, ReactiveFormsModule, NgFor, MatOptionModule, MatButtonModule, AsyncPipe]
 })
 
 export class EmpresaCreateComponent implements OnInit {

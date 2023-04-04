@@ -57,8 +57,8 @@
 
     </mat-tab>
   </mat-tab-group>
-  <button mat-flat-button color="primary" class="fixed-bottom index"
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index"
           (click)="updateRequisicao()">Salvar</button>
-          <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
+          <button appDebounceClick mat-flat-buttoncolor="warn" class="fixed-bottom index ms-2"
           mat-dialog-close>Cancelar</button>
 </form>

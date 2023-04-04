@@ -4,10 +4,14 @@ import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-paciente-show',
-  templateUrl: './paciente-show.component.html',
+    selector: 'app-paciente-show',
+    templateUrl: './paciente-show.component.html',
+    standalone: true,
+    imports: [MatCardModule, MatDividerModule]
 })
 export class PacienteShowComponent implements OnChanges {
   paciente: Paciente;

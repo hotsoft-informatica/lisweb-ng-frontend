@@ -2,7 +2,7 @@ import { Injectable, Inject, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DefaultService } from './default.service';
 import { Query } from './../model/query.model';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +23,10 @@ export class BaseService {
     this.defaultService.showMessage(msg);
   }
 
+  getBaseUrl(): string {
+    return this.defaultService.getBaseUrl();
+  }
+
   create(record: any, endpoint: string = this.endpoint): Observable<any> {
     return this.defaultService.create(record, endpoint);
   }
@@ -30,8 +34,8 @@ export class BaseService {
   read(
     sortActive: string = 'id',
     sortDirection: string = 'desc',
-    pageNumber = 1,
-    pageSize = 3,
+    pageNumber = 0,
+    pageSize = 5,
     queries: Query[] = [],
     endpoint: string = this.endpoint
   ): Observable<any[]> {
@@ -52,11 +56,12 @@ export class BaseService {
     return this.defaultService.delete(id, endpoint);
   }
 
+  // TODO: Unificar com o read
   find(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null,
     endpoint: string = this.endpoint
   ): Observable<any[]> {

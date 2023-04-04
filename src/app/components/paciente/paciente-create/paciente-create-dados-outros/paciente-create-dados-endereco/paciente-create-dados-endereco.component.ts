@@ -4,11 +4,16 @@ import { CepService } from 'src/app/components/service/cep.service';
 import { Paciente } from 'src/app/components/model/paciente.model';
 import { Router } from '@angular/router';
 import { Cep } from '../../../../model/cep.model';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-paciente-create-dados-endereco',
-  templateUrl: './paciente-create-dados-endereco.component.html',
+    selector: 'app-paciente-create-dados-endereco',
+    templateUrl: './paciente-create-dados-endereco.component.html',
+    standalone: true,
+    imports: [FormsModule, MatFormFieldModule, MatInputModule]
 })
 export class PacienteCreateDadosEnderecoComponent implements OnInit {
 

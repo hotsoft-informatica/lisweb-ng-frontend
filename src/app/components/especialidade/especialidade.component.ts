@@ -20,7 +20,8 @@ import { EspecialidadeService } from '../service/especialidade.service';
 
 @Component({
   selector: 'app-especialidade',
-  templateUrl: './especialidade.component.html'
+  templateUrl: './especialidade.component.html',
+  standalone: true
 })
 export class EspecialidadeComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);

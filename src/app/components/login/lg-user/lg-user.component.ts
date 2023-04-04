@@ -4,12 +4,16 @@ import { User } from '../../model/user.model';
 import { UserLogin } from '../../model/login.model';
 import { UserService } from '../../service/user.service';
 import { Input, Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import { NgIf } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-lg-user',
-  templateUrl: './lg-user.component.html',
+    selector: 'app-lg-user',
+    templateUrl: './lg-user.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, MatInputModule, NgIf]
 })
 
 export class LgUserComponent implements OnInit {
@@ -43,7 +47,7 @@ export class LgUserComponent implements OnInit {
       (res) => {
         let header: HttpHeaders = res.headers;
         let auth: string = header.get('Authorization') as string;
-        let user: User = res.body.status.data as User;
+        let user: User = res.body as User;
 
         localStorage.setItem('Authorization', auth);
         localStorage.setItem('userLoginType', 'user');

@@ -8,10 +8,29 @@
        [value]="versaoExame.tipoInstrumento!.descricao">
     </mat-form-field>
 
-    <app-autocomplete-tipo-interfaceamento class="col-5" 
+    <!--
+
+ERROR
+
+src/app/components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component.html:13:8 - error NG8002: Can't bind to 'tipoInstrumento' since it isn't a known property of 'app-autocomplete-tipo-interfaceamento'.
+1. If 'app-autocomplete-tipo-interfaceamento' is an Angular component and it has 'tipoInstrumento' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-autocomplete-tipo-interfaceamento' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.
+
+13        [tipoInstrumento]='this.versaoExame.tipoInstrumento'>
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  src/app/components/versao-exame/versao-exame-create/versao-exame-interfaceamento-create/versao-exame-interfaceamento-create.component.ts:18:18
+    18     templateUrl: './versao-exame-interfaceamento-create.component.html',
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component VersaoExameInterfaceamentoCreateComponent.
+
+
+    -->
+    <!-- <app-autocomplete-tipo-interfaceamento class="col-5" 
       *ngIf="onCreate || isEditInst"
        [tipoInstrumento]='this.versaoExame.tipoInstrumento'>
-    </app-autocomplete-tipo-interfaceamento>
+    </app-autocomplete-tipo-interfaceamento> -->
 
     <mat-slide-toggle *ngIf="onEdit" class="col-2"
      [(ngModel)]="isEditInst" color="primary">

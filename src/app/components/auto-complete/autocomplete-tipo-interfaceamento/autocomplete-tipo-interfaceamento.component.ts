@@ -4,10 +4,18 @@ import { Query } from '../../model/query.model';
 import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
 import { TipoInstrumentoService } from './../../service/tipo-instrumento.service';
 import { VersaoExame } from '../../model/versao-exame.model';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-autocomplete-tipo-interfaceamento',
-  templateUrl: './autocomplete-tipo-interfaceamento.component.html',
+    selector: 'app-autocomplete-tipo-interfaceamento',
+    templateUrl: './autocomplete-tipo-interfaceamento.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, FormsModule, NgFor, MatOptionModule]
 })
 export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
   @Input('versaoExame') versaoExame:VersaoExame;

@@ -1,7 +1,9 @@
 import { Component, HostListener } from '@angular/core';
 import { Event } from '@angular/router';
 import { NavigationStart, Router, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +15,9 @@ export class AppComponent {
   loading = false;
 
   constructor(private router: Router) {
-    this.router.events.subscribe((event: Event) => {
+    this.router.events
+    .pipe(untilDestroyed(this))
+    .subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
           this.loading = true;

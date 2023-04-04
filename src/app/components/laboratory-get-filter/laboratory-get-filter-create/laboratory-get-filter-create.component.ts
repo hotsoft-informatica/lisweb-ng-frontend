@@ -7,10 +7,21 @@ import { LaboratoryGetFilterService } from '../../service/laboratory-get-filter.
 import { Query } from '../../model/query.model';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-laboratory-get-filter-create',
-  templateUrl: './laboratory-get-filter-create.component.html',
+    selector: 'app-laboratory-get-filter-create',
+    templateUrl: './laboratory-get-filter-create.component.html',
+    standalone: true,
+    imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, NgFor, MatOptionModule, TextFieldModule, MatButtonModule]
 })
 export class LaboratoryGetFilterCreateComponent implements OnInit {
   laboratory_get_filter: LaboratoryGetFilter;

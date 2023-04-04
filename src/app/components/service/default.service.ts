@@ -31,6 +31,10 @@ export class DefaultService {
     });
   }
 
+  getBaseUrl(): string {
+    return this.baseUrl;
+  }
+
   create(record: any, endpoint: string): Observable<any> {
     return this.http.post<any>(this.baseUrl + endpoint, record);
   }
@@ -38,8 +42,8 @@ export class DefaultService {
   read(
     sortActive: string = 'id',
     sortDirection: string = 'desc',
-    pageNumber = 1,
-    pageSize = 3,
+    pageNumber = 0,
+    pageSize = 5,
     queries: Query[],
     endpoint: string
   ): Observable<any[]> {
@@ -85,8 +89,8 @@ export class DefaultService {
   find(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null,
     endpoint: string
   ): Observable<any[]> {

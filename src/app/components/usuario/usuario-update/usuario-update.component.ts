@@ -1,17 +1,25 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, OnInit } from '@angular/core';
 import { ElementRef, ViewChild } from '@angular/core';
 import { map, startWith } from 'rxjs/operators';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { Observable } from 'rxjs';
-import { UntypedFormControl} from '@angular/forms';
+import { UntypedFormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Usuario } from './../../model/usuario.model';
 import { UsuarioService } from './../../service/usuario.service';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
+import { NgFor, NgIf, AsyncPipe } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-usuario-update',
-  templateUrl: './usuario-update.component.html',
+    selector: 'app-usuario-update',
+    templateUrl: './usuario-update.component.html',
+    standalone: true,
+    imports: [FormsModule, MatFormFieldModule, MatInputModule, NgFor, MatChipsModule, NgIf, MatIconModule, MatAutocompleteModule, ReactiveFormsModule, MatOptionModule, RouterLink, AsyncPipe]
 })
 export class UsuarioUpdateComponent implements OnInit {
   hide = true;
