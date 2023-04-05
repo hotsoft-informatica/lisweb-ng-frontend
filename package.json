@@ -41,7 +41,6 @@
     "angular-hotkeys": "^1.7.0",
     "bootstrap": "^5.2.3",
     "core-util-is": "^1.0.3",
-    "fibers": "^5.0.3",
     "got": "^12.5.3",
     "moment": "^2.29.1",
     "ng-auto-complete": "^5.0.3",
@@ -92,7 +91,7 @@
     "webpack-cli": "^5.0.1"
   },
   "volta": {
-    "node": "19.7.0",
+    "node": "19.8.1",
     "yarn": "1.22.19",
     "typescript": "^4.6.4",
     "webpack": "^5.68.0"
