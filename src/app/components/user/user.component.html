@@ -1,11 +1,11 @@
 <div class="d-flex justify-content-between col-sm-12 p-2">
-  <button appDebounceClick mat-flat-buttoncolor="primary" class="col-sm-2 col-md-2 col-lg-2 float-start" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="btn-primary col-sm-2 col-md-2 col-lg-2 float-start btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
     aria-expanded="false" aria-controls="collapseExample">
     <mat-icon>search</mat-icon>
     Buscar
   </button>
 
-  <button appDebounceClick mat-flat-buttonclass="btn-success col-sm-1 float-end" color="primary" title="Adicionar parâmetro"
+  <button appDebounceClick mat-flat-buttonclass="btn-success col-sm-1 float-end btn-primary" color="primary" title="Adicionar parâmetro"
   (click)="new();" *ngIf="!onCreate && !onEdit">
     <mat-icon class="mx-0">add</mat-icon>
   </button>
