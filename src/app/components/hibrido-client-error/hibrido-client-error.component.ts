@@ -1,16 +1,4 @@
-import { HibridoClientError } from '../model/hibrido-client-error.model';
-import { HibridoClientErrorService } from '../service/hibrido-client-error.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { merge } from 'rxjs';
-import { NgIf, NgFor, NgStyle, DatePipe } from '@angular/common';
-import { Query } from '../model/query.model';
-import { tap } from 'rxjs/operators';
-import { MatSort, MatSortModule } from '@angular/material/sort';
+
 import {
   Component,
   OnInit,
