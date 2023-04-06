@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
 import { Query } from '../../model/query.model';
 import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
 import { TipoInstrumentoService } from './../../service/tipo-instrumento.service';
 import { VersaoExame } from '../../model/versao-exame.model';
-import { MatOptionModule } from '@angular/material/core';
-import { NgFor } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
     selector: 'app-autocomplete-tipo-interfaceamento',

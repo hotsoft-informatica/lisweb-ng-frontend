@@ -1,13 +1,22 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { HibridoClientError } from '../model/hibrido-client-error.model';
+import { HibridoClientErrorService } from '../service/hibrido-client-error.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { merge } from 'rxjs';
+import { NgIf, NgFor, NgStyle, DatePipe } from '@angular/common';
+import { Query } from '../model/query.model';
+import { tap } from 'rxjs/operators';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import {
   Component,
   OnInit,
   AfterViewInit,
   ViewChild,
   TemplateRef,
-  Renderer2,
-  ElementRef,
-  Input
 } from '@angular/core';
 import { HibridoClientError } from '../model/hibrido-client-error.model';
 import { HibridoClientErrorService } from '../service/hibrido-client-error.service';
@@ -68,9 +77,6 @@ export class HibridoClientErrorComponent implements OnInit, AfterViewInit {
 
   constructor(
     public dialog: MatDialog,
-    private renderer: Renderer2,
-    private router: Router,
-    private route: ActivatedRoute,
     private recordService: HibridoClientErrorService
   ) {
     this.currentRecord = new HibridoClientError({});
@@ -85,9 +91,10 @@ export class HibridoClientErrorComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.loadPage();
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
-
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadPage()))
       .subscribe();
   }
