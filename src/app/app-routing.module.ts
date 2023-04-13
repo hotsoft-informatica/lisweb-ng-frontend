@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+// import { ReactiveFormsModule } from '@angular/forms';
+
+import { LOCALE_ID } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
 
 // import { UserExitGuard } from './guards/user-exit.guard';
 import { UserGuard } from './guards/user.guard';
@@ -566,12 +571,20 @@ const routes: Routes = [
   },
 ];
 
+registerLocaleData(localePt, 'pt');
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
       onSameUrlNavigation: 'reload'
     })],
   exports: [RouterModule],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+    }
+  ]
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {
+}
