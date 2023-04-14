@@ -22,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-hibrido-client-error',
@@ -29,7 +30,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
   standalone: true,
   imports: [NgIf, MatIconModule, ReactiveFormsModule, FormsModule,
     MatInputModule, MatFormFieldModule, MatTableModule, MatDialogModule,
-    MatPaginatorModule, DatePipe, MatSortModule
+    MatPaginatorModule, DatePipe, MatSortModule, MatButtonModule
   ]
 })
 
