@@ -19,11 +19,14 @@ import { NgIf } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-    selector: 'app-super-user',
-    templateUrl: './super-user.component.html',
-    styleUrls: [],
-    standalone: true,
-    imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule, MatOptionModule, MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
+  selector: 'app-super-user',
+  templateUrl: './super-user.component.html',
+  styleUrls: [],
+  standalone: true,
+  imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
+    MatSelectModule, MatOptionModule, MatButtonModule, MatTableModule, MatSortModule,
+    MatDialogModule, MatPaginatorModule
+  ]
 })
 export class SuperUserComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);
