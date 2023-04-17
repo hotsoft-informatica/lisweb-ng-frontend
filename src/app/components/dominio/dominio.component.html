@@ -1,16 +1,14 @@
 <div class="d-flex justify-content-between col-sm-12 p-2">
-    <button appDebounceClick mat-flat-buttoncolor="primary"
-      class="col-sm-1 col-lg-1 float-start btn-primary" data-bs-toggle="collapse"
-        data-bs-target="#collapseExample"
-      aria-expanded="false" aria-controls="collapseExample">
-      <mat-icon>search</mat-icon>
-      Buscar
-    </button>
-    <button appDebounceClick mat-flat-buttonclass="btn-success col-sm-1 float-end"
-      color="primary" title="Adicionar parâmetro"
-    (click)="new();" *ngIf="!onCreate && !onEdit">
-      <mat-icon class="mx-0">add</mat-icon>
-    </button>
+  <button mat-flat-button color="primary" class="col-sm-2 col-md-2 col-lg-2 float-start btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    aria-expanded="false" aria-controls="collapseExample">
+    <mat-icon>search</mat-icon>
+    Buscar
+  </button>
+  <button mat-flat-button color="primary" class="col-sm-1 col-md-1 col-lg-1 float-start btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    aria-expanded="false" aria-controls="collapseExample" (click)="new();" *ngIf="!onCreate && !onEdit">
+    <mat-icon>add</mat-icon>
+    Novo
+  </button>
 </div>
 
 <div class="mat-elevation-z4">
@@ -84,7 +82,7 @@
             </span>
           </mat-error>
         </mat-form-field>
-        <div id="buttons">
+        <div id="buttons" style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
           <button mat-button type="button"
             (click)="addGridData()" *ngIf="onCreate"
             [disabled]="formCreateDominio.invalid"

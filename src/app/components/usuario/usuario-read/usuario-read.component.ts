@@ -19,20 +19,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-usuario-read',
-    templateUrl: './usuario-read.component.html',
-    standalone: true,
-    imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, UsuarioUpdateComponent_1, MatDialogModule, MatPaginatorModule, SlicePipe]
+  selector: 'app-usuario-read',
+  templateUrl: './usuario-read.component.html',
+  standalone: true,
+  imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule,
+    MatSortModule, MatButtonModule, UsuarioUpdateComponent_1, MatDialogModule,
+    MatPaginatorModule, SlicePipe, MatButtonModule
+  ]
 })
 export class UsuarioReadComponent implements AfterViewInit, OnInit {
 
   currentPaciente = 0;
   displayedColumns =
-  [ 'nome',
-    'login',
-    'Cargo',
-    'Grupos',
-    'Operacoes'];
+    ['nome',
+      'login',
+      'Cargo',
+      'Grupos',
+      'Operacoes'];
   dataSource: Usuario[] = [];
   totalCount!: number;
   currentUsuario = 0;
@@ -48,7 +51,7 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort: MatSort | any; // Pega o componente do html e disponibiliza pro tps
 
   constructor(private usuarioService: UsuarioService,
-              public dialog: MatDialog) { }
+    public dialog: MatDialog) { }
 
   openDialogCreate(): void {
     const dialogRef = this.dialog.open(UsuarioCreateComponent, {
@@ -62,7 +65,7 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     const dialogRef = this.dialog.open(UsuarioUpdateComponent, {
       width: '450px',
       data: {
-        id: {id}
+        id: { id }
       }
     });
 
@@ -70,7 +73,7 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     });
   }
   // TODO: ATUALIZAR PAGINAÇÃO APOS BUSCA.
-  search(key: string, value: string, isNumeric: boolean= false): void {
+  search(key: string, value: string, isNumeric: boolean = false): void {
     const query = new Query({ key, value, isNumeric });
     this.queries = this.queries.filter((q) => q.key !== key);
     this.queries.push(query);
@@ -88,37 +91,37 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
     active: string = this.sort.active,
     sortDirection: string = this.sort.direction,
     pageIndex: number = this.paginator.pageIndex,
-    pageSize: number =  this.paginator.pageSize,
+    pageSize: number = this.paginator.pageSize,
     query: Query[] = this.queries): void { // Ponte com service
     this.usuarioService.read(
-                              active,
-                              sortDirection,
-                              pageIndex,
-                              pageSize,
-                              query)
-        .subscribe((usuarios) => {
+      active,
+      sortDirection,
+      pageIndex,
+      pageSize,
+      query)
+      .subscribe((usuarios) => {
         this.dataSource = usuarios; // usar dados do back para apresentar no front
-    });
+      });
   }
 
   delete(id: number): void {
     const dialogRef = this.dialog.open(this.deleteDialog);
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
+      if (result) {
         this.usuarioService
-        .delete(id)
-        // .pipe(
-        //   catchError(err => {
-        //     console.table(err);
-        //     alert('Não foi possivel excluir');
-        //     return throwError(err);
-        //   })
-        // )
-        .subscribe(() => {
-          this.page = 0;
-          this.loadBack();
-        });
+          .delete(id)
+          // .pipe(
+          //   catchError(err => {
+          //     console.table(err);
+          //     alert('Não foi possivel excluir');
+          //     return throwError(err);
+          //   })
+          // )
+          .subscribe(() => {
+            this.page = 0;
+            this.loadBack();
+          });
       }
     });
   }
@@ -138,8 +141,8 @@ export class UsuarioReadComponent implements AfterViewInit, OnInit {
       .subscribe();
   }
 
-  show(id: number): void{
-    if (id > 0){
+  show(id: number): void {
+    if (id > 0) {
       this.currentPaciente = id;
     }
   }

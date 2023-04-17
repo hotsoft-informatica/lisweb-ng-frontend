@@ -10,9 +10,8 @@
 
   <div class="col-2 col-md-4 col-xs-6">
     <div class="row">
-
       <div class="p-1 col d-flex justify-content-end">
-        <button appDebounceClick mat-flat-buttonclass="dvm-button btn-primary" class="btn-primary" color="primary" routerLink="/localdeatendimento/create">
+        <button appDebounceClick mat-flat-button class="dvm-button btn-primary" class="btn-primary" color="primary" routerLink="/localdeatendimento/create">
             <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
@@ -20,13 +19,12 @@
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button appDebounceClick mat-flat-buttoncolor="primary" class="dvm-button btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button appDebounceClick mat-flat-button class="dvm-button btn-primary" color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
         </button>
       </div>
-
     </div>
   </div>
 </div>
@@ -120,5 +118,6 @@
   </table>
 
   <mat-paginator [length]="this.totalCount" [pageSize]="5"
-      [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
+    [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]">
+  </mat-paginator>
 </div>

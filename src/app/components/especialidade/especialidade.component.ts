@@ -25,10 +25,10 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   selector: 'app-especialidade',
   templateUrl: './especialidade.component.html',
   standalone: true,
-  imports: [FormsModule, MatPaginatorModule,
-    MatSortModule, MatTableModule, MatButtonModule, MatDialogModule,
-    MatIconModule, MatFormFieldModule, MatInputModule,
-    NgIf, NgFor, NgStyle, DatePipe]
+  imports: [FormsModule, MatPaginatorModule, MatSortModule, MatTableModule,
+    MatButtonModule, MatDialogModule, MatIconModule, MatFormFieldModule,
+    MatInputModule, NgIf, NgFor, NgStyle, DatePipe
+  ]
 })
 
 export class EspecialidadeComponent implements OnInit, AfterViewInit {

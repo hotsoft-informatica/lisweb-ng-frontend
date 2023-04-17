@@ -35,10 +35,14 @@ import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-    selector: 'app-user',
-    templateUrl: './user.component.html',
-    standalone: true,
-    imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule, MatSelectModule, MatOptionModule, MatTabsModule, MatAutocompleteModule, NgFor, MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  standalone: true,
+  imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule,
+    FormsModule, MatSelectModule, MatOptionModule, MatTabsModule,
+    MatAutocompleteModule, NgFor, MatButtonModule, MatTableModule,
+    MatSortModule, MatDialogModule, MatPaginatorModule, MatButtonModule
+  ]
 })
 export class UserComponent implements OnInit, AfterViewInit {
   @Input('laboratory_domains') laboratory_domains: LaboratoryDomain[] = [];

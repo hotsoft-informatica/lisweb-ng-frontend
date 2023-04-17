@@ -1,14 +1,14 @@
 <div class="d-flex justify-content-between col-sm-12 p-2">
-  <button appDebounceClick mat-flat-buttoncolor="primary" class="btn-primary col-sm-2 col-md-2
-   col-lg-1 float-start" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+  <button mat-flat-button color="primary" class="col-sm-2 col-md-2 col-lg-2 float-start btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
     aria-expanded="false" aria-controls="collapseExample">
     <mat-icon>search</mat-icon>
     Buscar
   </button>
-  <button appDebounceClick mat-flat-buttonclass="btn-success col-sm-1 float-end"
-   color="primary" title="Adicionar parâmetro"
-  (click)="new();" *ngIf="!onCreate && !onEdit">
-    <mat-icon class="mx-0">add</mat-icon>
+
+  <button appDebounceClick mat-flat-button color="primary" class="col-sm-1 col-md-1 col-lg-1 float-end btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+    aria-expanded="false" aria-controls="collapseExample" (click)="new();" *ngIf="!onCreate && !onEdit">
+    <mat-icon>add</mat-icon>
+    Novo
   </button>
 </div>
 
@@ -21,7 +21,7 @@
             <mat-label>Nome:</mat-label>
             <input matInput #nome maxlength="50"
             title="Filtre por nome"
-             (input)="search('nome', nome.value)"
+              (input)="search('nome', nome.value)"
             >
           </mat-form-field>
         </div>
@@ -49,7 +49,7 @@
             </span>
           </mat-error>
           <mat-autocomplete #autoDominios="matAutocomplete"
-           [displayWith]="displayFnDominio(dominios)">
+            [displayWith]="displayFnDominio(dominios)">
             <mat-option *ngFor="let dominio of dominios" [value]="dominio.id">
               {{dominio.descricao}}
             </mat-option>
@@ -73,9 +73,9 @@
             </span>
           </mat-error>
           <mat-autocomplete #autoTipoRecursos="matAutocomplete"
-           [displayWith]="displayFnTipoRecurso(tipos_recurso)">
+            [displayWith]="displayFnTipoRecurso(tipos_recurso)">
             <mat-option *ngFor="let tipo_recurso of tipos_recurso"
-             [value]="tipo_recurso.id">
+              [value]="tipo_recurso.id">
               {{tipo_recurso.descricao}}
             </mat-option>
           </mat-autocomplete>
@@ -145,23 +145,21 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class= "col-lg-2 col-md-2 p-2">
+        <mat-form-field appearance="fill" class= "col-lg-4 col-md-4 p-2">
           <mat-label>Habilitar editar todos?</mat-label>
           <mat-select name="habilita_editar_todos"
-           [(ngModel)]="currentRecord.habilita_editar_todos">
+            [(ngModel)]="currentRecord.habilita_editar_todos">
             <mat-option value="S">Sim</mat-option>
             <mat-option value="N">Não</mat-option>
           </mat-select>
         </mat-form-field>
 
-        <div class="row col-lg-6 p-2">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="outline" class="col-lg-6 p-2">
             <mat-label>Descrição:</mat-label>
             <textarea matInput id="descricao" name="descricao"
               [(ngModel)]="currentRecord.descricao">
-          </textarea>
+            </textarea>
           </mat-form-field>
-        </div>
 
         <mat-tab-group>
           <mat-tab label="Classe">
@@ -218,7 +216,7 @@
             <mat-form-field appearance="fill" class= "col-lg-3 p-2">
               <mat-label>Forçar execução após registro modificado?</mat-label>
               <mat-select name="forcar_execucao_filtro"
-               [(ngModel)]="currentRecord.forcar_execucao_filtro">
+                [(ngModel)]="currentRecord.forcar_execucao_filtro">
                 <mat-option value="S">Sim</mat-option>
                 <mat-option value="N">Não</mat-option>
               </mat-select>
@@ -231,10 +229,10 @@
           </mat-tab>
         </mat-tab-group>
 
-        <div>
+        <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
           <button mat-button
           (click)="addGridData()" *ngIf="onCreate"
-           [disabled]="formCreateRecurso.invalid">Inserir</button>
+            [disabled]="formCreateRecurso.invalid">Inserir</button>
           <button mat-button
           (click)="updateGridData()"
            *ngIf="onEdit">Alterar</button>
