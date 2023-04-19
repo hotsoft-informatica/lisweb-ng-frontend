@@ -7,7 +7,7 @@ import {
   TemplateRef,
   Renderer2,
   ElementRef,
-  Input 
+  Input
 } from '@angular/core';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
@@ -35,10 +35,13 @@ import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-    selector: 'app-recurso',
-    templateUrl: './recurso.component.html',
-    standalone: true,
-    imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule, MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule, MatTabsModule, MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
+  selector: 'app-recurso',
+  templateUrl: './recurso.component.html',
+  standalone: true,
+  imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
+    MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
+    MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule
+  ]
 })
 export class RecursoComponent implements OnInit, AfterViewInit {
   @Input('dominios') dominios: Dominio[] = [];
