@@ -10,6 +10,6 @@ export class TipoRecursoService extends BaseService {
         @Inject(Injector) public injector: Injector,
         public http: HttpClient) {
         super(injector, http);
-        this.endpoint = 'tipos_recursos'
+        this.endpoint = 'tipos_recurso'
     }
 }
