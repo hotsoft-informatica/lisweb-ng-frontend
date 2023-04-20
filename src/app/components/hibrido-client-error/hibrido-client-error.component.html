@@ -66,8 +66,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger"
-          (click)="cancelar(); formSearchDateTimeRange.resetForm()"
-          data-bs-dismiss="modal"
+          (click)="cancelar(); formSearchDateTimeRange.resetForm()" data-bs-dismiss="modal"
         >
           Cancelar
         </button>
@@ -167,6 +166,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+
     <mat-paginator [length]="this.totalCount" [pageSize]="5"
     [pageSizeOptions]="[5, 10, 20, 50]"></mat-paginator>
   </div>
