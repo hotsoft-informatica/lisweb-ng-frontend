@@ -22,11 +22,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 @Component({
-    selector: 'app-versao-exame-read',
-    templateUrl: './versao-exame-read.component.html',
-    standalone: true,
-    imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe, VersaoExameStatusPipe]
+  selector: 'app-versao-exame-read',
+  templateUrl: './versao-exame-read.component.html',
+  standalone: true,
+  imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule,
+    MatTableModule, MatSortModule, MatButtonModule, MatDialogModule,
+    MatPaginatorModule, SlicePipe, VersaoExameStatusPipe
+  ]
 })
+
 export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
   dataSource!: VersaoExameReadDataSource;
@@ -39,7 +43,6 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
-
 
   query: Query[] = [];
   edit = false;
