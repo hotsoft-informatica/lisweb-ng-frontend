@@ -12,24 +12,25 @@ import { AutocompleteTipoInterfaceamentoComponent } from '../../../auto-complete
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf } from '@angular/common';
-
 @Component({
-    selector: 'app-versao-exame-interfaceamento-create',
-    templateUrl: './versao-exame-interfaceamento-create.component.html',
-    standalone: true,
-    imports: [NgIf, MatFormFieldModule, MatInputModule, AutocompleteTipoInterfaceamentoComponent, MatSlideToggleModule, FormsModule]
+  selector: 'app-versao-exame-interfaceamento-create',
+  templateUrl: './versao-exame-interfaceamento-create.component.html',
+  standalone: true,
+  imports: [
+    NgIf, MatFormFieldModule, MatInputModule,
+    AutocompleteTipoInterfaceamentoComponent,
+    MatSlideToggleModule, FormsModule
+  ]
 })
+
 export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
   @Input('versaoExame') versaoExame!: VersaoExame;
-
   tipoInstrumentos: TipoInstrumento[] = [];
   queries: Query[] = [];
   subject: Subject<any> = new Subject();
-
   isEditInst: boolean = false;
   onEdit!: boolean;
   onCreate!: boolean;
-
   id: number;
 
   constructor(
@@ -39,11 +40,10 @@ export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
   ) {
     this.onEdit = this.route.snapshot.paramMap.get('edit') as unknown as boolean;
     this.onCreate = this.route.snapshot.paramMap.get('create') as unknown as boolean;
-
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
   }
 
-  ngOnInit(){
+  ngOnInit() {
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
@@ -57,13 +57,14 @@ export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
   }
 
   search(): void {
-    const query_string = this.versaoExame
-      .tipo_instrumento_id as unknown as string;
+    const query_string = this.versaoExame.tipo_instrumento_id as unknown as string;
+
     const query = new Query({
       key: 'descricao',
       value: query_string,
       isNumeric: false,
     });
+
     this.queries = [];
     this.queries.push(query);
     this.subject.next(null);
@@ -77,5 +78,4 @@ export class VersaoExameInterfaceamentoCreateComponent implements OnInit {
       return correspondingOption ? correspondingOption.descricao : '';
     };
   }
-
 }
