@@ -34,11 +34,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-versao-exame-create',
-    templateUrl: './versao-exame-create.component.html',
-    standalone: true,
-    imports: [NgIf, MatFormFieldModule, MatInputModule, AutoCompleteVersaoExameComponent, MatSlideToggleModule, FormsModule, MatTabsModule, VersaoExameGeralCreateComponent, VersaoExameInterfaceamentoCreateComponent, VersaoExameParametroComponent, MatButtonModule]
+  selector: 'app-versao-exame-create',
+  templateUrl: './versao-exame-create.component.html',
+  standalone: true,
+  imports: [
+    NgIf, MatFormFieldModule, MatInputModule, AutoCompleteVersaoExameComponent,
+    MatSlideToggleModule, FormsModule, MatTabsModule, VersaoExameGeralCreateComponent,
+    VersaoExameInterfaceamentoCreateComponent, VersaoExameParametroComponent, MatButtonModule
+  ]
 })
+
 export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   versaoExame!: VersaoExame;
   parametrosVersaoExame: ParametroVersaoExame[] = [];
@@ -48,7 +53,6 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   queries: Query[] = [];
   subject: Subject<any> = new Subject();
   id: number;
-
   isEdit: boolean = false;
   onEdit!: boolean;
   onCreate!: boolean;
@@ -69,19 +73,19 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   ) {
     this.onEdit = this.route.snapshot.paramMap.get('edit') as unknown as boolean;
     this.onCreate = this.route.snapshot.paramMap.get('create') as unknown as boolean;
-
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
+
     if (this.id > 0) {
       this.loadVersaoExame(this.id);
       this.onEdit = true;
     } else {
       this.onCreate = true;
     }
-    this.versaoExame ||= new VersaoExame({tipoExame: new TipoExame({})});
+
+    this.versaoExame ||= new VersaoExame({ tipoExame: new TipoExame({}) });
   }
 
   ngOnInit(): void {
-
     const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
@@ -149,18 +153,21 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
           this.versaoExame.parametrosVersaoExame = parametrosVersaoExame;
           this.parametrosVersaoExame = parametrosVersaoExame;
         });
+
       this.tipoExameService
         .readById(this.versaoExame?.tipo_exame_id as number)
         .subscribe((tipoExame) => {
           this.versaoExame.tipoExame = tipoExame;
           this.tipoExames.push(tipoExame);
         });
+
       this.marcacaoService
         .readById(this.versaoExame?.marcacao_id as number)
         .subscribe((marcacao) => {
           this.versaoExame.marcacao = marcacao;
           this.marcacoes.push(marcacao);
         });
+
       this.metodoExameService
         .readById(this.versaoExame?.metodo_exame_id as number)
         .subscribe((metodoExame) => {
@@ -185,9 +192,10 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
 
   createVersaoExame(): void {
     console.table(this.versaoExame.tipoExame);
-    this.tipoExameService.readById(this.versaoExame.tipoExame!.id as number).subscribe((tipoExame) =>{
+    this.tipoExameService.readById(this.versaoExame.tipoExame!.id as number).subscribe((tipoExame) => {
       this.versaoExame.tipoExame = tipoExame;
       this.versaoExame.tipo_exame_id = tipoExame.id;
+
       if (this.id > 0) {
         this.updateVersaoExame();
         this.onEdit = false;
