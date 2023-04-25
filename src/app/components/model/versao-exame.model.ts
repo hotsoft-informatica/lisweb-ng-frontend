@@ -5,7 +5,7 @@ import { ParametroVersaoExame } from './parametro-versao-exame.model';
 import { TipoExame } from './tipo-exame.model';
 import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
 
-export class VersaoExame extends Base{
+export class VersaoExame extends Base {
   public laboratorio_id?: number;
   public versao?: number;
   public agrupamento?: number;
@@ -53,7 +53,7 @@ export class VersaoExame extends Base{
   public laudo_banda_imagem?: BinaryType;
   public formula?: string;
   public tempo_repouso?: number;
-  public tipoExame?: TipoExame = new TipoExame({});
+  public tipoExame?: TipoExame;
   public metodoExame?: MetodoExame;
   public marcacao?: Marcacao;
   public parametrosVersaoExame?: ParametroVersaoExame[];
