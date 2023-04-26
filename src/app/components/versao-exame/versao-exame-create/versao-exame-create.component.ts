@@ -1,5 +1,4 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material/table';
 import { Marcacao } from 'src/app/components/model/marcacao.model';
 import { MarcacaoService } from 'src/app/components/service/marcacao.service';
 import { MetodoExame } from 'src/app/components/model/metodo-exame.model';
@@ -35,6 +34,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { merge } from 'rxjs';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-versao-exame-create',
@@ -44,7 +44,7 @@ import { merge } from 'rxjs';
     NgIf, NgForOf, MatFormFieldModule, MatInputModule, AutoCompleteVersaoExameComponent,
     MatSlideToggleModule, FormsModule, MatTabsModule, VersaoExameGeralCreateComponent,
     VersaoExameInterfaceamentoCreateComponent, VersaoExameParametroComponent, MatButtonModule,
-    MatAutocompleteModule, MatPaginatorModule, MatSortModule
+    MatAutocompleteModule, MatPaginatorModule, MatSortModule, MatTableModule
   ]
 })
 
