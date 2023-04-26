@@ -45,7 +45,6 @@ export class VersaoExame extends Base {
   public valor_referencia_apoio?: string;
   public usar_valor_referencia_texto?: string;
 
-  public tipoInstrumento?: TipoInstrumento = new TipoInstrumento({});
   public data_hora_criacao?: Date = new Date();
   public laudagem_externa?: string;
   public laudagem_externa_coleta?: string;
@@ -53,6 +52,7 @@ export class VersaoExame extends Base {
   public laudo_banda_imagem?: BinaryType;
   public formula?: string;
   public tempo_repouso?: number;
+  public tipoInstrumento?: TipoInstrumento;
   public tipoExame?: TipoExame;
   public metodoExame?: MetodoExame;
   public marcacao?: Marcacao;
