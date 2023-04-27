@@ -51,7 +51,7 @@
             </span>
           </mat-error>
         </mat-form-field>
-        <div>
+        <div class="col-md-12 d-flex justify-content-end p-4">
           <button mat-button type="button" (click)="addParametroVersaoExame()" *ngIf="onCreate"
             [disabled]="formCreateParametro.invalid">Inserir</button>
           <button mat-button type="button" (click)="atualizar()" *ngIf="onEdit">
