@@ -11,8 +11,8 @@
     <div class="row">
 
       <div class="p-1 col d-flex justify-content-end">
-        <button appDebounceClick mat-flat-buttonclass="dvm-button btn-primary" class="btn-primary" color="primary"
-         routerLink="/marcacoes/create">
+        <button appDebounceClick mat-flat-button class="dvm-button btn-primary" class="btn-primary" color="primary"
+          routerLink="/marcacoes/create">
             <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
@@ -20,8 +20,8 @@
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button appDebounceClick mat-flat-buttoncolor="primary" class="dvm-button btn-primary"
-         data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button appDebounceClick mat-flat-button color="primary" class="dvm-button btn-primary"
+          data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -35,20 +35,20 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
     <div class="row">
-      <div class="mb-3 col-md-3 row">
+      <div class="mb-6 col-md-6 row">
         <mat-form-field appearance="fill">
           <mat-label>Nome:</mat-label>
           <input matInput #nome maxlength="50"
-           title="Filtre por nome" (input)="search('nome', nome.value)"
+            title="Filtre por nome" (input)="search('nome', nome.value)"
           >
         </mat-form-field>
       </div>
 
-      <div class="mb-3 col-md-3 row">
+      <div class="mb-6 col-md-6 row">
         <mat-form-field appearance="fill">
           <mat-label>Tipo:</mat-label>
           <input matInput #tipo maxlength="12"
-           title="Filtre por tipo" (input)="search('tipo', tipo.value)"
+            title="Filtre por tipo" (input)="search('tipo', tipo.value)"
           >
         </mat-form-field>
       </div>
