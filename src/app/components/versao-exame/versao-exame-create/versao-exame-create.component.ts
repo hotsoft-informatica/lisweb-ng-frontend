@@ -52,10 +52,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   @Input('tipos_exame') tipos_exame: TipoExame[] = [];
-  @Input('tipos_instrumento') tipos_instrumento: TipoInstrumento[] = [];
   versaoExame: VersaoExame;
   tipoExames: TipoExame[] = [];
-  tipoInstrumentos: TipoInstrumento[] = [];
   versao_exames: any[] = [];
   parametrosVersaoExame: ParametroVersaoExame[] = [];
   metodoExames: MetodoExame[] = [];
@@ -71,7 +69,6 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   queries: Query[] = [];
   datasource = new MatTableDataSource<any>([]);
   subjectTipoExame: Subject<any> = new Subject();
-  subjectTipoInstrumento: Subject<any> = new Subject();
 
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -84,7 +81,6 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private versaoExameService: VersaoExameService,
     private tipoExameService: TipoExameService,
-    private tipoInstrumentoService: TipoInstrumentoService,
     private marcacaoService: MarcacaoService,
     private metodoExameService: MetodoExameService,
     private parametroVersaoExameService: ParametroVersaoExameService
@@ -120,15 +116,6 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
         });
     });
     this.subjectTipoExame.next(null);
-
-    this.subjectTipoInstrumento.pipe(debounceTime(500)).subscribe(() => {
-      this.tipoInstrumentoService
-        .find('id', 'asc', 0, 60, this.queries)
-        .subscribe((tipos_instrumento) => {
-          this.tipos_instrumento = tipos_instrumento;
-        });
-    });
-    this.subjectTipoInstrumento.next(null);
   }
 
   ngAfterViewInit(): void {
@@ -211,29 +198,6 @@ export class VersaoExameCreateComponent implements OnInit, AfterViewInit {
   }
 
   displayFnTipoExame(options: TipoExame[]): (id: any) => any {
-    return (id: any) => {
-      const correspondingOption = Array.isArray(options)
-        ? options.find((option) => option.id === id)
-        : null;
-      return correspondingOption ? correspondingOption.descricao : '';
-    };
-  }
-
-  searchTipoInstrumento(): void {
-    const query_string = this.versaoExame
-      .tipo_instrumento_id as unknown as string;
-    const query = new Query({
-      key: 'descricao',
-      value: query_string,
-      isNumeric: false,
-    });
-    console.warn(query_string);
-    this.queries = [];
-    this.queries.push(query);
-    this.subjectTipoInstrumento.next(null);
-  }
-
-  displayFnTipoInstrumento(options: TipoInstrumento[]): (id: any) => any {
     return (id: any) => {
       const correspondingOption = Array.isArray(options)
         ? options.find((option) => option.id === id)
