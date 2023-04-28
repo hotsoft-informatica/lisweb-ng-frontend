@@ -12,8 +12,8 @@
     <div class="row">
 
       <div class="p-1 col d-flex justify-content-end">
-        <button appDebounceClick mat-flat-buttonclass="dvm-button btn-primary" class="btn-primary" color="primary"
-         (click)="openDialogCreate()">
+        <button appDebounceClick mat-flat-button class="dvm-button btn-primary" class="btn-primary" color="primary"
+          (click)="openDialogCreate()">
           <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
@@ -21,8 +21,8 @@
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button appDebounceClick mat-flat-buttonclass="dvm-button btn-primary" class="btn-primary" color="primary"
-         data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button appDebounceClick mat-flat-button class="dvm-button btn-primary" class="btn-primary" color="primary"
+          data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -36,17 +36,15 @@
 
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
-
     <div class="row">
       <div class="mb-3 col-5 row">
         <mat-form-field appearance="fill">
           <mat-label>Descrição:</mat-label>
           <input matInput #descricao maxlength="50"
-           title="Filtre por descrição"
+            title="Filtre por descrição"
             (input)="search('descricao',descricao.value)">
         </mat-form-field>
       </div>
-
     </div>
   </div>
 </div>
@@ -61,7 +59,7 @@
         <th mat-header-cell mat-sort-header="descricao"
          *matHeaderCellDef> Descrição </th>
         <td mat-cell *matCellDef="let element">
-           {{element?.descricao | slice:0:65}} ...
+          {{element?.descricao | slice:0:65}} ...
         </td>
       </ng-container>
 
@@ -69,7 +67,7 @@
         <th mat-header-cell
          mat-sort-header="bibliografia" *matHeaderCellDef> Bibliografia </th>
         <td mat-cell *matCellDef="let element">
-           {{element?.bibliografia | slice:0:12}} ...
+          {{element?.bibliografia | slice:0:12}} ...
         </td>
       </ng-container>
 
@@ -84,18 +82,19 @@
                 </button>
               </a>
             <div class="modal fade" id="modelShow" data-bs-backdrop="static"
-             data-bs-keyboard="false" tabindex="-1"
-              aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true"
+            >
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-body">
                     <!-- <app-usuario-update
-                     [pacienteInput]="this.currentMetodosExames">
+                      [pacienteInput]="this.currentMetodosExames">
                     </app-usuario-update> -->
                   </div>
                   <div class="modal-footer">
                     <button appDebounceClick mat-flat-buttoncolor="warn"
-                     data-bs-dismiss="modal">Sair</button>
+                      data-bs-dismiss="modal">Sair</button>
                   </div>
                 </div>
               </div>
@@ -109,11 +108,11 @@
               </mat-dialog-content>
               <mat-dialog-actions align="end">
                 <button mat-button mat-dialog-close>Cancel</button>
-                <button mat-button [mat-dialog-close]="true"
-                 cdkFocusInitial>Apagar</button>
+                <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+                  Apagar
+                </button>
               </mat-dialog-actions>
             </ng-template>
-
           </div>
         </td>
       </ng-container>
