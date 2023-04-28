@@ -1,22 +1,21 @@
-<form class= "example-container row container-fluid" fxShow.gt-xs>
-  <div class="row ">
-    <mat-form-field appearance="fill" class="col-lg-8 col-md-12 p-2">
-      <mat-label>Descrição:</mat-label>
-      <input matInput maxlength="50" title="Descrição Método"
-       name="descricao" [(ngModel)]="metodoExame.descricao">
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field class="example-full-width col-12" appearance="fill">
-      <mat-label>Bibliografia</mat-label>
-      <textarea matInput title="Texto descritivo do método"
-       name="bibliografia" [(ngModel)]="metodoExame.bibliografia"></textarea>
-    </mat-form-field>
-  </div>
-  <button appDebounceClick mat-flat-buttonmat-dialog-close
-    type="button" color="primary" class="col-2 fixed-bottom index"
-          (click)="createMetodoExame()">Salvar</button>
-  <button appDebounceClick mat-flat-buttonmat-dialog-close color="warn"
-    type="button" class="col-2 fixed-bottom index ms-2"
-          >Cancelar</button>
+<form #formCreateMetodoExame="ngForm" class="justify-content-md-center mt-4">
+  <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
+    <mat-label>Descrição:</mat-label>
+    <input matInput maxlength="50" title="Descrição Método"
+      name="descricao" [(ngModel)]="metodoExame.descricao">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="col-lg-12 col-md-12 p-2">
+    <mat-label>Bibliografia</mat-label>
+    <textarea matInput title="Texto descritivo do método"
+      name="bibliografia" [(ngModel)]="metodoExame.bibliografia">
+    </textarea>
+  </mat-form-field>
 </form>
+
+<div class="gridAddButton">
+  <button appDebounceClick mat-flat-button mat-dialog-close color="primary" class="m-2"
+    (click)="createMetodoExame()">Salvar</button>
+  <button appDebounceClick mat-flat-button mat-dialog-close color="warn" class="m-2"
+    (click)="cancel()">Cancelar</button>
+</div>
