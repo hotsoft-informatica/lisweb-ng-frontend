@@ -12,7 +12,7 @@
   <div class="col-2 col-md-4 col-xs-6">
     <div class="row">
       <div class="p-1 col d-flex justify-content-end">
-        <button appDebounceClick mat-flat-buttonclass="dvm-button btn-primary" class="btn-primary" color="primary"
+        <button appDebounceClick mat-flat-button class="dvm-button btn-primary" class="btn-primary" color="primary"
           routerLink="/valores_referencia/create">
           <mat-icon class="mx-0">add</mat-icon>
           Adicionar
@@ -20,7 +20,7 @@
         <mat-label class="ms-1 fs-6"></mat-label>
       </div>
       <div class="p-1 col d-flex justify-content-end">
-        <button appDebounceClick mat-flat-buttoncolor="primary" class="dvm-button btn-primary"
+        <button appDebounceClick mat-flat-button color="primary" class="dvm-button btn-primary"
           data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
@@ -35,19 +35,19 @@
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
     <div class="row">
-      <div class="mb-3 col-md-3 row">
+      <div class="mb-3 col-md-3">
         <mat-form-field appearance="fill">
-          Valor Máximo
+          <mat-label>Valor Máximo</mat-label>
           <input matInput #val_maximo maxlength="10"
-           title="Valor Máximo"
-           (input)="search('val_maximo', val_maximo.value)"
+            title="Valor Máximo"
+            (input)="search('val_maximo', val_maximo.value)"
           >
         </mat-form-field>
       </div>
 
-      <div class="mb-3 col-md-3 row">
+      <div class="mb-3 col-md-3">
         <mat-form-field appearance="fill">
-          Valor Mínimo
+          <mat-label>Valor Mínimo</mat-label>
           <input matInput #val_minimo maxlength="10"
             title=" Valor Mínimo" (input)="search('val_minimo', val_minimo.value)">
         </mat-form-field>
