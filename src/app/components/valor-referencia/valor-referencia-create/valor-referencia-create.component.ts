@@ -16,12 +16,15 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-    selector: 'app-valor-referencia-create',
-    templateUrl: './valor-referencia-create.component.html',
-    standalone: true,
-    imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatInputModule, MatAutocompleteModule, NgFor]
+  selector: 'app-valor-referencia-create',
+  templateUrl: './valor-referencia-create.component.html',
+  standalone: true,
+  imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatInputModule,
+    MatAutocompleteModule, NgFor, MatButtonModule
+  ]
 })
 export class ValorReferenciaCreateComponent implements OnInit {
   valorReferencia!: ValorReferencia;
