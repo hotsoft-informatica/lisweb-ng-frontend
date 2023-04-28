@@ -18,18 +18,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-metodos-exames-read',
-    templateUrl: './metodos-exames-read.component.html',
-    standalone: true,
-    imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe]
+  selector: 'app-metodos-exames-read',
+  templateUrl: './metodos-exames-read.component.html',
+  standalone: true,
+  imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe]
 })
 export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
 
   currentMetodosExames = 0;
   displayedColumns =
-  [ 'descricao',
-    'bibliografia',
-    'Operacoes'];
+    ['descricao',
+      'bibliografia',
+      'Operacoes'];
   dataSource: MetodoExame[] = [];
   totalCount!: number;
   currentUsuario = 0;
@@ -43,10 +43,10 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   constructor(public metodoExameService: MetodoExameService,
-              public dialog: MatDialog,
-             ){  }
+    public dialog: MatDialog,
+  ) { }
 
-  search(key: string, value: string, isNumeric: boolean= false): void {
+  search(key: string, value: string, isNumeric: boolean = false): void {
     const query = new Query({ key, value, isNumeric });
     this.queries = this.queries.filter((q) => q.key !== key);
     this.queries.push(query);
@@ -62,48 +62,47 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
     active: string = this.sort.active,
     sortDirection: string = this.sort.direction,
     pageIndex: number = this.paginator.pageIndex,
-    pageSize: number =  this.paginator.pageSize,
+    pageSize: number = this.paginator.pageSize,
     query: Query[] = this.queries): void {
     // Ponte com service
     this.metodoExameService.read(
-                              active,
-                              sortDirection,
-                              pageIndex,
-                              pageSize,
-                              query)
-        .subscribe((metodosExames) => {
-          // usar dados do back para apresentar no front
-          this.dataSource = metodosExames;
-        });
+      active,
+      sortDirection,
+      pageIndex,
+      pageSize,
+      query)
+      .subscribe((metodosExames) => {
+        // usar dados do back para apresentar no front
+        this.dataSource = metodosExames;
+      });
   }
 
   delete(id: number): void {
     const dialogRef = this.dialog.open(this.deleteDialog);
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result){
+      if (result) {
         this.metodoExameService
-        .delete(id)
-        .subscribe(() => {
-          this.page = 0;
-          this.loadBack();
-        });
+          .delete(id)
+          .subscribe(() => {
+            this.page = 0;
+            this.loadBack();
+          });
       }
     });
   }
 
   openDialogCreate(): void {
     const dialogConfig = new MatDialogConfig();
-      dialogConfig.data = {
-        width: '750px',
-      }
-      const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
-      dialogRef.afterClosed().subscribe(result => {
-      });
+    dialogConfig.data = {
+      width: '750px',
     }
+    const dialogRef = this.dialog.open(MetodoExameComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => { });
+  }
 
   openDialogEdit(id: number): void {
-    this.metodoExameService.readById(id).subscribe((metodoExame) =>{
+    this.metodoExameService.readById(id).subscribe((metodoExame) => {
       const dialogConfig = new MatDialogConfig();
       dialogConfig.data = {
         metodoExame: metodoExame,
@@ -133,8 +132,8 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
       .subscribe();
   }
 
-  show(id: number): void{
-    if (id > 0){
+  show(id: number): void {
+    if (id > 0) {
       this.currentMetodosExames = id;
     }
   }
