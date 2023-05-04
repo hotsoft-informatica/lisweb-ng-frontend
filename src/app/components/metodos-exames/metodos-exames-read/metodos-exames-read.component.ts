@@ -9,42 +9,52 @@ import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.componen
 import { MetodoExameService } from './../../service/metodo-exame.service';
 import { Query } from '../../model/query.model';
 import { tap } from 'rxjs/operators';
-import { SlicePipe } from '@angular/common';
+import { SlicePipe, NgIf, NgFor, NgStyle } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-metodos-exames-read',
   templateUrl: './metodos-exames-read.component.html',
   standalone: true,
-  imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe]
+  imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule,
+    MatTableModule, MatSortModule, MatButtonModule, MatDialogModule,
+    MatPaginatorModule, SlicePipe, FormsModule, NgIf, NgFor, NgStyle,
+  ]
 })
-export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
 
-  currentMetodosExames = 0;
-  displayedColumns =
-    ['descricao',
-      'bibliografia',
-      'Operacoes'];
+export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
   dataSource: MetodoExame[] = [];
+  metodo_exame: MetodoExame;
   totalCount!: number;
   currentUsuario = 0;
 
   queries: Query[] = [];
   msgErro = '';
   page = 0;
+  currentMetodosExames = 0;
+
+  onEdit = false;
+  onCreate = false;
+  currentRecord: any;
+
+  displayedColumns = ['descricao', 'bibliografia', 'Operacoes'];
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
-  constructor(public metodoExameService: MetodoExameService,
+  constructor(
+    public metodoExameService: MetodoExameService,
     public dialog: MatDialog,
-  ) { }
+  ) {
+    this.metodo_exame = new MetodoExame({});
+  }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
     const query = new Query({ key, value, isNumeric });
@@ -54,10 +64,12 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
     this.paginator.pageIndex = 0;
     this.loadBack();
   }
+
   sortData(): void { // ordenação dos dados
     this.paginator.pageIndex = 0; // adc +1 page
     this.loadBack(); // chama linha 62
   }
+
   loadBack(
     active: string = this.sort.active,
     sortDirection: string = this.sort.direction,
@@ -136,5 +148,41 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
     if (id > 0) {
       this.currentMetodosExames = id;
     }
+  }
+
+  metodoExame(metodoExame: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  atualizar(row: MetodoExame): void {
+    this.currentRecord = row;
+    this.onCreate = false;
+    this.onEdit = true;
+  }
+
+  new(): void {
+    this.onCreate = true;
+    this.metodo_exame = new MetodoExame({});
+  }
+
+  createMetodoExame(): void {
+    console.table(this.metodo_exame);
+    this.onCreate = false;
+    this.onEdit = false;
+    this.metodoExameService.create(this.metodo_exame).subscribe(() => {
+      this.metodoExameService.showMessage('Método exame criado com sucesso!');
+    });
+    this.metodo_exame = new MetodoExame({});
+  }
+
+  updateMetodoExame(): void {
+    this.metodoExameService.update(this.currentRecord).subscribe(() => {
+      this.onEdit = false;
+      this.metodoExameService.showMessage('Método exame atualizado com sucesso!');
+    });
+  }
+
+  cancelar(): void {
+    this.metodo_exame = new MetodoExame({});
   }
 }
