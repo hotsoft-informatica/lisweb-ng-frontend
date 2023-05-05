@@ -39,6 +39,7 @@ export class DefaultService {
     return this.http.post<any>(this.baseUrl + endpoint, record);
   }
 
+  // TODO: Unificar com o metodo find
   read(
     sortActive: string = 'id',
     sortDirection: string = 'desc',
@@ -53,8 +54,8 @@ export class DefaultService {
     queries.forEach((busca) => {
       params = params.append(busca.key, busca.value); // comunicação com backend key=busca value=valor do item
     });
-    params = params.append('sortActive', sortActive); // Qual coluna sera ordenada
-    params = params.append('sortDirection', sortDirection); // Ordem desc ou asc
+    params = params.append('active', sortActive); // Qual coluna sera ordenada
+    params = params.append('sortOrder', sortDirection); // Ordem desc ou asc
     params = params.append('pageNumber', pageNumber.toString());
     params = params.append('pageSize', pageSize.toString());
     queries?.forEach((queryItem) => {
@@ -86,6 +87,7 @@ export class DefaultService {
     return this.http.delete<any>(url);
   }
 
+  // TODO: Unificar com o metodo read
   find(
     active: string = '',
     sortOrder: string = 'asc',
