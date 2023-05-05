@@ -3,7 +3,6 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
-import { merge } from 'rxjs';
 import { MetodoExame } from '../../model/metodo-exame.model';
 import { MetodoExameComponent } from './../../metodo-exame/metodo-exame.component';
 import { MetodoExameService } from './../../service/metodo-exame.service';
@@ -17,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { timer, merge } from 'rxjs';
 
 @Component({
   selector: 'app-metodos-exames-read',
@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule,
     MatTableModule, MatSortModule, MatButtonModule, MatDialogModule,
-    MatPaginatorModule, SlicePipe, FormsModule, NgIf, NgFor, NgStyle,
+    MatPaginatorModule, SlicePipe, FormsModule, NgIf, NgFor, NgStyle
   ]
 })
 
@@ -155,34 +155,35 @@ export class MetodosExamesReadComponent implements AfterViewInit, OnInit {
   }
 
   atualizar(row: MetodoExame): void {
-    this.currentRecord = row;
-    this.onCreate = false;
-    this.onEdit = true;
+    this.metodo_exame = row;
   }
 
   new(): void {
-    this.onCreate = true;
     this.metodo_exame = new MetodoExame({});
   }
 
   createMetodoExame(): void {
-    console.table(this.metodo_exame);
-    this.onCreate = false;
-    this.onEdit = false;
     this.metodoExameService.create(this.metodo_exame).subscribe(() => {
       this.metodoExameService.showMessage('Método exame criado com sucesso!');
     });
-    this.metodo_exame = new MetodoExame({});
+    this.refresh();
   }
 
   updateMetodoExame(): void {
-    this.metodoExameService.update(this.currentRecord).subscribe(() => {
-      this.onEdit = false;
+    console.table(this.metodo_exame);
+    this.metodoExameService.update(this.metodo_exame).subscribe(() => {
       this.metodoExameService.showMessage('Método exame atualizado com sucesso!');
     });
+    this.refresh();
   }
 
   cancelar(): void {
     this.metodo_exame = new MetodoExame({});
+  }
+
+  refresh(): void {
+    timer(300).subscribe(() => {
+      window.location.reload();
+    });
   }
 }
