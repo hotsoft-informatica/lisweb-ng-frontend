@@ -4,7 +4,7 @@ import { Exame } from '../model/exame.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject, Injector } from '@angular/core';
 import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendimento.model';
-import { Medicos } from './../model/medicos.model';
+import { Medico } from '../model/medico.model';
 import { Observable } from 'rxjs';
 import { Paciente } from '../model/paciente.model';
 
@@ -14,8 +14,7 @@ import { Paciente } from '../model/paciente.model';
 export class RequisicaoService extends BaseService {
   constructor(
     @Inject(Injector) public injector: Injector,
-    public http: HttpClient)
-  {
+    public http: HttpClient) {
     super(injector, http);
     this.endpoint = 'requisicoes'
   }
@@ -32,8 +31,8 @@ export class RequisicaoService extends BaseService {
     return this.http.get<LocalDeAtendimento>(this.baseUrl + requisicaoId + '/locais_atendimento');
   }
 
-  searchMedico(requisicaoId: number): Observable<Medicos> {
-    return this.http.get<Medicos>(this.baseUrl + requisicaoId + '/medico');
+  searchMedico(requisicaoId: number): Observable<Medico> {
+    return this.http.get<Medico>(this.baseUrl + requisicaoId + '/medico');
   }
 
   searchConvenio(requisicaoId: number): Observable<Convenios> {
