@@ -14,6 +14,8 @@ import { Medico } from '../model/medico.model';
 import { MedicoService } from '../service/medico.service';
 import { Especialidade } from '../model/especialidade.model';
 import { EspecialidadeService } from '../service/especialidade.service';
+import { OperadoraTelefonia } from '../model/operadora-telefonia.model';
+import { OperadoraTelefoniaService } from '../service/operadora-telefonia.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -32,6 +34,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-medico',
@@ -40,11 +43,13 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
-    MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule
+    MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
+    MatDatepickerModule
   ]
 })
 export class MedicoComponent implements OnInit, AfterViewInit {
   @Input('especialidades') especialidades: Especialidade[] = [];
+  @Input('operadoras_telefonia') operadoras_telefonia: OperadoraTelefonia[] = [];
 
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
@@ -57,12 +62,14 @@ export class MedicoComponent implements OnInit, AfterViewInit {
   totalCount!: number;
 
   @ViewChild('especialidade_id') especialidade_id!: ElementRef;
+  @ViewChild('operadora_telefonia_id') operadora_telefonia_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 
   queries: Query[] = [];
   subjectEspecialidade: Subject<any> = new Subject();
+  subjectOperadoraTelefonia: Subject<any> = new Subject();
 
   onEdit = false;
   onCreate = false;
@@ -114,7 +121,8 @@ export class MedicoComponent implements OnInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private recordService: MedicoService,
-    private especialidadeService: EspecialidadeService
+    private especialidadeService: EspecialidadeService,
+    private operadoraTelefoniaService: OperadoraTelefoniaService
   ) {
     this.currentRecord = new Medico({});
     this.record ||= new Medico({});
@@ -136,6 +144,16 @@ export class MedicoComponent implements OnInit, AfterViewInit {
         });
     });
     this.subjectEspecialidade.next(null);
+
+    this.subjectOperadoraTelefonia.pipe(debounceTime(500)).subscribe(() => {
+      this.operadoraTelefoniaService
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((operadoras_telefonia) => {
+          console.table(this.queries);
+          this.operadoras_telefonia = operadoras_telefonia;
+        });
+    });
+    this.subjectOperadoraTelefonia.next(null);
   }
 
   ngAfterViewInit() {
@@ -255,6 +273,29 @@ export class MedicoComponent implements OnInit, AfterViewInit {
         ? options.find((option) => option.id === id)
         : null;
       return correspondingOption ? correspondingOption.nome : '';
+    };
+  }
+
+  searchOperadoraTelefonia(): void {
+    const query_string = this.currentRecord
+      .operadora_telefonia_id as unknown as string;
+    const query = new Query({
+      key: 'descricao',
+      value: query_string,
+      isNumeric: false,
+    });
+    console.warn(query_string);
+    this.queries = [];
+    this.queries.push(query);
+    this.subjectOperadoraTelefonia.next(null);
+  }
+
+  displayFnOperadoraTelefonia(options: OperadoraTelefonia[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.descricao : '';
     };
   }
 }
