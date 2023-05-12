@@ -33,7 +33,7 @@
     <div *ngIf="onCreate || onEdit">
       <form #formCreateMedico="ngForm" class="justify-content-md-center">
 
-        <mat-form-field appearance="fill" class="col-lg-5 col-md-5 p-2">
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Nome:</mat-label>
           <input
             type="text"
@@ -52,7 +52,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Especialidade</mat-label>
           <input
             name="especialidade_id"
@@ -117,7 +117,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Nome Sombra:</mat-label>
           <input matInput id="nome_sombra" name="nome_sombra"
             [(ngModel)]="currentRecord.nome_sombra"
@@ -162,42 +162,49 @@
           <mat-datepicker #data_nascimento></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
+        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Email:</mat-label>
           <input matInput id="email" name="email"
             [(ngModel)]="currentRecord.email"
           >
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
+        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Celular:</mat-label>
           <input matInput id="celular" name="celular"
             [(ngModel)]="currentRecord.celular"
           >
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Endereço:</mat-label>
           <input matInput id="endereco" name="endereco"
             [(ngModel)]="currentRecord.endereco"
           >
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
+        <mat-form-field appearance="fill" class="col-lg-1 col-md-1 p-2">
+          <mat-label>Número:</mat-label>
+          <input matInput id="numero" name="numero"
+            [(ngModel)]="currentRecord.numero"
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Bairro:</mat-label>
           <input matInput id="bairro" name="bairro"
             [(ngModel)]="currentRecord.bairro"
           >
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
+        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>CEP:</mat-label>
           <input matInput id="cep" name="cep"
             [(ngModel)]="currentRecord.cep"
           >
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Cidade:</mat-label>
           <input matInput id="cidade" name="cidade"
             [(ngModel)]="currentRecord.cidade"
@@ -225,15 +232,6 @@
           >
         </mat-form-field>
 
-        
-
-        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
-          <mat-label>Senha:</mat-label>
-          <input matInput id="senha" name="senha"
-            [(ngModel)]="currentRecord.senha"
-          >
-        </mat-form-field>
-
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Iniciais:</mat-label>
           <input matInput id="iniciais" name="iniciais"
@@ -255,13 +253,6 @@
           >
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-1 col-md-1 p-2">
-          <mat-label>Número:</mat-label>
-          <input matInput id="numero" name="numero"
-            [(ngModel)]="currentRecord.numero"
-          >
-        </mat-form-field>
-
         <mat-form-field appearance="fill" class= "col-lg-2 col-md-2 p-2">
           <mat-label>Enviar Stockfin?</mat-label>
           <mat-select name="enviar_stokfin"
@@ -278,7 +269,7 @@
           >
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-1 col-md-1 p-2">
+        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Op. telefonia</mat-label>
           <input
             title="Operadora telefonia"
@@ -328,6 +319,13 @@
             <mat-option value="S">Sim</mat-option>
             <mat-option value="N">Não</mat-option>
           </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
+          <mat-label>Senha:</mat-label>
+          <input matInput id="senha" name="senha"
+            [(ngModel)]="currentRecord.senha"
+          >
         </mat-form-field>
 
         <div class="col-md-12 d-flex justify-content-end p-2">
