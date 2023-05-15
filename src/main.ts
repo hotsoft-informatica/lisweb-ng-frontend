@@ -44,7 +44,7 @@ import { HTTP_INTERCEPTORS, withInterceptorsFromDi, provideHttpClient } from '@a
 import { AuthorizationInterceptor } from './app/components/service/authorization-interceptor.service';
 
 if (environment.production) {
-  enableProdMode();
+    enableProdMode();
 }
 
 bootstrapApplication(AppComponent, {
@@ -67,7 +67,7 @@ bootstrapApplication(AppComponent, {
         ErrorInterceptor,
         {
             provide: HTTP_INTERCEPTORS,
-            useClass: ErrorInterceptor,
+            useClass: ErrorInterceptor, // TODO: Revisar 401 combo especialidade medico
             multi: true,
         },
         {
@@ -82,4 +82,4 @@ bootstrapApplication(AppComponent, {
         provideHttpClient(withInterceptorsFromDi())
     ]
 })
-  .catch(err => console.error(err));
+    .catch(err => console.error(err));

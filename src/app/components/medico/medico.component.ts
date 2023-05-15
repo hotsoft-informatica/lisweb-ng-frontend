@@ -1,12 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
 import {
   Component,
   OnInit,
   AfterViewInit,
   ViewChild,
   TemplateRef,
-  Renderer2,
   ElementRef,
   Input
 } from '@angular/core';
@@ -84,9 +82,6 @@ export class MedicoComponent implements OnInit, AfterViewInit {
 
   constructor(
     public dialog: MatDialog,
-    private renderer: Renderer2,
-    private router: Router,
-    private route: ActivatedRoute,
     private recordService: MedicoService,
     private especialidadeService: EspecialidadeService,
     private operadoraTelefoniaService: OperadoraTelefoniaService
@@ -104,7 +99,7 @@ export class MedicoComponent implements OnInit, AfterViewInit {
 
     this.subjectEspecialidade.pipe(debounceTime(500)).subscribe(() => {
       this.especialidadeService
-        .find('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, [])
         .subscribe((especialidades) => {
           console.table(this.queries);
           this.especialidades = especialidades;
@@ -114,7 +109,7 @@ export class MedicoComponent implements OnInit, AfterViewInit {
 
     this.subjectOperadoraTelefonia.pipe(debounceTime(500)).subscribe(() => {
       this.operadoraTelefoniaService
-        .find('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, [])
         .subscribe((operadoras_telefonia) => {
           console.table(this.queries);
           this.operadoras_telefonia = operadoras_telefonia;
@@ -146,29 +141,19 @@ export class MedicoComponent implements OnInit, AfterViewInit {
 
   new(): void {
     this.onCreate = true;
-    this.onFocus();
-  }
-
-  onFocus(): void {
-    timer(250).subscribe(() => {
-      if (this.especialidade_id !== undefined) {
-        console.log("Entrou no onfocus");
-        this.renderer.selectRootElement(this.especialidade_id["nativeElement"]).focus();
-      }
-    });
   }
 
   addGridData(): void {
     this.onCreate = false;
     this.onEdit = false;
     this.recordService.create(this.currentRecord).subscribe((record) => {
-      this.records.unshift(record);
-      this.datasource.data = [...this.records];
+      // this.records.unshift(record);
+      // this.datasource.data = [...this.records];
       this.recordService.showMessage('Médico cadastrado com sucesso!');
+      this.loadPage();
     });
 
     this.currentRecord = new Medico({});
-    this.loadPage();
   }
 
   updateGridData(): void {
@@ -182,10 +167,11 @@ export class MedicoComponent implements OnInit, AfterViewInit {
   }
 
   atualizar(row: Medico): void {
+    console.warn('Passou no atualizar!!!!!!!')
+    console.table(row);
     this.currentRecord = row;
     this.onCreate = false;
     this.onEdit = true;
-    this.loadPage();
   }
 
   cancelar(): void {
