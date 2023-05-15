@@ -19,9 +19,19 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>Nome:</mat-label>
-            <input matInput #nome maxlength="50"
+            <input matInput #nome maxlength="100"
             title="Filtre por nome"
               (input)="search('nome', nome.value)"
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3 col-md-3 row">
+          <mat-form-field appearance="fill">
+            <mat-label>CRM:</mat-label>
+            <input matInput #crm maxlength="15"
+            title="Filtre por CRM"
+              (input)="search('crm', crm.value)"
             >
           </mat-form-field>
         </div>
