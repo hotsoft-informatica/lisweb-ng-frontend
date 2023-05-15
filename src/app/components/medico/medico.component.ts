@@ -168,7 +168,7 @@ export class MedicoComponent implements OnInit, AfterViewInit {
     });
 
     this.currentRecord = new Medico({});
-    this.onFocus();
+    this.loadPage();
   }
 
   updateGridData(): void {
@@ -176,9 +176,8 @@ export class MedicoComponent implements OnInit, AfterViewInit {
     this.onEdit = false;
     this.recordService.update(this.currentRecord).subscribe((recurso) => {
       this.recordService.showMessage('Cadastro médico atualizado com sucesso!');
-      this.onFocus();
+      this.loadPage();
     });
-
     this.currentRecord = new Medico({});
   }
 
@@ -186,7 +185,7 @@ export class MedicoComponent implements OnInit, AfterViewInit {
     this.currentRecord = row;
     this.onCreate = false;
     this.onEdit = true;
-    this.onFocus();
+    this.loadPage();
   }
 
   cancelar(): void {
