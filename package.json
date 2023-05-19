@@ -19,7 +19,6 @@
     "@angular-material-extensions/input-counter": "^1.0.1",
     "@angular/animations": "^15.0.2",
     "@angular/cdk": "^15.0.1",
-    "@angular/cli": "^15.2.4",
     "@angular/common": "^15.0.2",
     "@angular/compiler-cli": "^15.0.2",
     "@angular/core": "^15.0.2",
@@ -95,5 +94,7 @@
     "yarn": "1.22.19",
     "typescript": "^4.6.4",
     "webpack": "^5.68.0"
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:hotsoft-informatica/lisweb-ng-frontend.git"
 }
