@@ -7,10 +7,18 @@ import {
   OnInit,
 } from '@angular/core';
 import { Subject } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-marcacao-create',
-  templateUrl: './marcacao-create.component.html',
+    selector: 'app-marcacao-create',
+    templateUrl: './marcacao-create.component.html',
+    standalone: true,
+    imports: [FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule, MatButtonModule]
 })
 export class MarcacaoCreateComponent implements OnInit {
   marcacao: Marcacao;

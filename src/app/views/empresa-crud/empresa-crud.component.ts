@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
-  selector: 'app-empresa-crud',
-  templateUrl: './empresa-crud.component.html',
+    selector: 'app-empresa-crud',
+    templateUrl: './empresa-crud.component.html',
+    standalone: true,
+    imports: [RouterLink, MatButtonModule]
 })
 export class EmpresaCrudComponent implements OnInit {
   constructor(private router: Router) { }

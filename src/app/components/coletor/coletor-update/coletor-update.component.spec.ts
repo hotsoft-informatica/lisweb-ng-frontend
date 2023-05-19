@@ -8,8 +8,8 @@ describe('ColetorUpdateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ColetorUpdateComponent ]
-    })
+    imports: [ColetorUpdateComponent]
+})
     .compileComponents();
   });
 

@@ -1,7 +1,14 @@
-import { Component, Input, OnChanges, ViewChild, TemplateRef, Renderer2, ElementRef } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog'
+import { Component, Input, OnChanges, ViewChild,
+   TemplateRef, Renderer2, ElementRef } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { NgIf } from '@angular/common';
 import { ParametroVersaoExame } from '../../model/parametro-versao-exame.model';
 import { ParametroVersaoExameService } from '../../service/parametro-versao-exame.service';
 import { Query } from 'src/app/components/model/query.model';
@@ -9,8 +16,11 @@ import { Subject, timer } from 'rxjs';
 import { VersaoExame } from '../../model/versao-exame.model';
 
 @Component({
-  selector: 'app-versao-exame-parametro',
-  templateUrl: './versao-exame-parametro.component.html',
+    selector: 'app-versao-exame-parametro',
+    templateUrl: './versao-exame-parametro.component.html',
+    standalone: true,
+    imports: [NgIf, MatIconModule, FormsModule, MatFormFieldModule,
+       MatInputModule, MatButtonModule, MatTableModule, MatDialogModule]
 })
 export class VersaoExameParametroComponent implements OnChanges {
   @Input('versaoExame') versaoExame!: VersaoExame;

@@ -5,21 +5,31 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatDialogConfig } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { RequisicaoReadDataSource } from './requisicao-read-datasource';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { RequisicaoUpdateComponent } from './../requisicao-update/requisicao-update.component';
 import { tap } from 'rxjs/operators';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgIf, AsyncPipe, DecimalPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @Component({
-  selector: 'app-requisicao-read',
-  templateUrl: './requisicao-read.component.html',
+    selector: 'app-requisicao-read',
+    templateUrl: './requisicao-read.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatDialogModule, RouterLink, MatPaginatorModule, NgIf, MatProgressSpinnerModule, AsyncPipe, DecimalPipe, DatePipe]
 })
 export class RequisicaoReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -57,7 +67,7 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new RequisicaoReadDataSource(this.requisicaoService);
-    this.dataSource.loadRequisicoes('id', 'desc', 1, 5, null);
+    this.dataSource.loadRequisicoes('id', 'desc', 0, 5, null);
     this.requisicaoService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
@@ -91,7 +101,7 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
         this.requisicaoService
         .delete(id)
         .subscribe(() => {
-          // this.page = 1;
+          // this.page = 0;
           // this.loadBack();
         });
       }

@@ -11,10 +11,10 @@ import {
 } from '@angular/core';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { merge } from 'rxjs';
 import { Query } from '../model/query.model';
 import { Recurso } from '../model/recurso.model';
@@ -23,10 +23,22 @@ import { Subject, timer } from 'rxjs';
 import { tap, debounceTime } from 'rxjs/operators';
 import { TipoRecurso } from '../model/tipo-recurso.model';
 import { TipoRecursoService } from '../service/tipo-recurso.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf, NgFor } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-recurso',
-  templateUrl: './recurso.component.html',
+    selector: 'app-recurso',
+    templateUrl: './recurso.component.html',
+    standalone: true,
+    imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule, MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule, MatTabsModule, MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
 })
 export class RecursoComponent implements OnInit, AfterViewInit {
   @Input('dominios') dominios: Dominio[] = [];

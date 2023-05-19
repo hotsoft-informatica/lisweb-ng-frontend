@@ -23,7 +23,11 @@
 }
 
 @media print {
-  .no-print, header, footer, aside, form, mat-toolbar, .mat-toolbar, .footer, .header, mat-paginator, .mat-paginator, mat-form-field, .mat-form-field, input, button, .mat-button-base, app-footer, app-header, .cdk-column-action, .mat-column-action, .cdk-column-Opercaoes {
+  .no-print, header, footer, aside, form, mat-toolbar,
+  .mat-toolbar, .footer, .header, mat-paginator,
+  .mat-paginator, mat-form-field, .mat-form-field, input,
+  button, .mat-button-base, app-footer, app-header,
+  .cdk-column-action, .mat-column-action, .cdk-column-Opercaoes {
     display: none !important;
   }
 }

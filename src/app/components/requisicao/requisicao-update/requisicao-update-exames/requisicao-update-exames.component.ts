@@ -7,10 +7,18 @@ import { RequisicaoService } from './../../../service/requisicao.service';
 import { Router } from '@angular/router';
 import { TipoExame } from './../../../model/tipo-exame.model';
 import { TipoExameService } from 'src/app/components/service/tipo-exame.service';
+import { SlicePipe } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { AutoCompleteVersaoExameComponent } from '../../../auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
-  selector: 'app-requisicao-update-exames',
-  templateUrl: './requisicao-update-exames.component.html',
+    selector: 'app-requisicao-update-exames',
+    templateUrl: './requisicao-update-exames.component.html',
+    standalone: true,
+    imports: [MatTableModule, MatSortModule, MatIconModule, AutoCompleteVersaoExameComponent, MatPaginatorModule, SlicePipe]
 })
 export class RequisicaoUpdateExamesComponent implements OnInit {
   @Input('requisicaoId') requisicaoId!: number;

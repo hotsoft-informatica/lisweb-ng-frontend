@@ -1,27 +1,29 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  TemplateRef,
-  Renderer2,
-  ElementRef,
-  Input
-} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild,
+   TemplateRef, Renderer2 } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { HibridoClientError } from '../model/hibrido-client-error.model';
 import { HibridoClientErrorService } from '../service/hibrido-client-error.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { merge } from 'rxjs';
 import { Query } from '../model/query.model';
-import { Subject, timer } from 'rxjs';
-import { tap, debounceTime } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import { MatInputModule } from '@angular/material/input';
+import { NgIf } from '@angular/common';
+
 @Component({
   selector: 'app-hibrido-client-error',
-  templateUrl: './hibrido-client-error.component.html'
+  templateUrl: './hibrido-client-error.component.html',
+  standalone: true,
+  imports: [MatPaginatorModule, DatePipe, MatTableModule, NgIf,
+    MatFormFieldModule, MatIconModule, MatInputModule, FormsModule]
 })
 
 export class HibridoClientErrorComponent implements OnInit, AfterViewInit {

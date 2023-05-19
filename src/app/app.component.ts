@@ -1,10 +1,19 @@
 import { Component, HostListener } from '@angular/core';
 import { Event } from '@angular/router';
 import { NavigationStart, Router, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { NgIf, DatePipe } from '@angular/common';
+import { FooterComponent } from 'src/app/components/template/footer/footer.component';
+import { NavComponent } from 'src/app/components/template/nav/nav.component';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from 'src/app/components/template/header/header.component';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  standalone: true,
+  imports: [NgIf, FooterComponent, NavComponent, DatePipe, RouterOutlet, HeaderComponent]
 })
 
 export class AppComponent {
@@ -13,7 +22,9 @@ export class AppComponent {
   loading = false;
 
   constructor(private router: Router) {
-    this.router.events.subscribe((event: Event) => {
+    this.router.events
+    .pipe(untilDestroyed(this))
+    .subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
           this.loading = true;

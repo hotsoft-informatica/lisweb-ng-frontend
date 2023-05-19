@@ -2,10 +2,17 @@ import { Component, OnInit, AfterViewInit, } from '@angular/core';
 import { BackendIp } from '../../model/backend-ip.model';
 import { BackendIpService } from '../../service/backend-ip.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-backend-ip',
-  templateUrl: './backend-ip.component.html',
+    selector: 'app-backend-ip',
+    templateUrl: './backend-ip.component.html',
+    standalone: true,
+    imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatButtonModule]
 })
 export class BackendIpComponent implements OnInit {
   backendIp!: BackendIp;

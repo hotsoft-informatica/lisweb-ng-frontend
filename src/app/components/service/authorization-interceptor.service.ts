@@ -7,9 +7,10 @@ import {
   HttpRequest
 } from '@angular/common/http';
 
-@Injectable()
-
-export class Authorization implements HttpInterceptor {
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthorizationInterceptor implements HttpInterceptor {
   storage: Storage = window.localStorage;
 
   constructor() { }

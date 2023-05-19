@@ -4,10 +4,15 @@ import { Empresa } from './../../model/empresa.model';
 import { EmpresaService } from '../../service/empresa.service';
 import { Operadora } from './../../model/operadora.model';
 import { OperadoraService } from '../../service/operadora.service';
+import { MatButtonModule } from '@angular/material/button';
+import { EmpresaCreateComponent } from '../../empresa/empresa-create/empresa-create.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-operadora-create',
-  templateUrl: './operadora-create.component.html',
+    selector: 'app-operadora-create',
+    templateUrl: './operadora-create.component.html',
+    standalone: true,
+    imports: [MatCardModule, EmpresaCreateComponent, MatButtonModule]
 })
 export class OperadoraCreateComponent implements OnInit {
   operadora: Operadora;

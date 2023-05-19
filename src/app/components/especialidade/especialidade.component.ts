@@ -1,26 +1,26 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  TemplateRef,
-  Renderer2
-} from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { merge } from 'rxjs';
-import { Query } from '../model/query.model';
-import { tap } from 'rxjs/operators';
 import { Especialidade } from '../model/especialidade.model';
 import { EspecialidadeService } from '../service/especialidade.service';
-
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { merge } from 'rxjs';
+import { NgIf } from '@angular/common';
+import { Query } from '../model/query.model';
+import { tap } from 'rxjs/operators';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'app-especialidade',
-  templateUrl: './especialidade.component.html'
+    selector: 'app-especialidade',
+    templateUrl: './especialidade.component.html',
+    standalone: true,
+    imports: [MatDialogModule, NgIf, MatIconModule, MatPaginatorModule,
+      FormsModule, MatInputModule, MatFormFieldModule, MatTableModule]
 })
 export class EspecialidadeComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);
@@ -142,3 +142,4 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
   }
 
 }
+

@@ -5,7 +5,6 @@ import { Query } from '../../model/query.model';
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
@@ -16,6 +15,7 @@ import { tap } from 'rxjs/operators';import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-laboratory-domain-read',
   templateUrl: './movimento-conta-read.component.html',
+  standalone: true
 })
 export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -54,7 +54,7 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
     // this.dataSource = new LaboratoryDomainReadDataSource(
     //   this.laboratoryDomainService
     // );
-    // this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 5, null);
+    // this.dataSource.loadLaboratoryDomains('id', 'desc', 0, 5, null);
     // this.laboratoryDomainService
     //   .countLaboratoryDomains()
     //   .subscribe((totalCount) => {

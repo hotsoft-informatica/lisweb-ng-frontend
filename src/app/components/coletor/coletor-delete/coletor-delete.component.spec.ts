@@ -8,8 +8,8 @@ describe('ColetorDeleteComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ColetorDeleteComponent ]
-    })
+    imports: [ColetorDeleteComponent]
+})
     .compileComponents();
   });
 

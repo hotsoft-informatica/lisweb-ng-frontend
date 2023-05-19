@@ -13,10 +13,10 @@
        name="bibliografia" [(ngModel)]="metodoExame.bibliografia"></textarea>
     </mat-form-field>
   </div>
-  <button mat-flat-button mat-dialog-close
+  <button appDebounceClick mat-flat-buttonmat-dialog-close
     type="button" color="primary" class="col-2 fixed-bottom index"
           (click)="createMetodoExame()">Salvar</button>
-  <button mat-flat-button mat-dialog-close color="warn"
+  <button appDebounceClick mat-flat-buttonmat-dialog-close color="warn"
     type="button" class="col-2 fixed-bottom index ms-2"
           >Cancelar</button>
 </form>

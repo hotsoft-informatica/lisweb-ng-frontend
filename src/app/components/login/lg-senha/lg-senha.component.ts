@@ -1,11 +1,20 @@
 import { LoginService } from './../../service/login.service';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../service/usuario.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-lg-senha',
-  templateUrl: './lg-senha.component.html',
+    selector: 'app-lg-senha',
+    templateUrl: './lg-senha.component.html',
+    standalone: true,
+    imports: [MatCardModule, MatFormFieldModule, MatInputModule, FormsModule, MatButtonModule, MatIconModule, RouterLink, NgIf]
 })
 export class LgSenhaComponent implements OnInit {
   hide = true;

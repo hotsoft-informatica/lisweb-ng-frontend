@@ -76,11 +76,12 @@ export class LaboratorioService extends BaseService {
     return this.http.delete<Laboratorio>(url);
   }
 
+  // TODO: Implementar herança
   find(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null
   ): Observable<Laboratorio[]> {
     let params = new HttpParams()

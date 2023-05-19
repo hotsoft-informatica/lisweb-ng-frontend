@@ -2,10 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Requisicao } from '../../model/requisicao.model';
 import { RequisicaoService } from '../../service/requisicao.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-requisicao-show',
-  templateUrl: './requisicao-show.component.html',
+    selector: 'app-requisicao-show',
+    templateUrl: './requisicao-show.component.html',
+    standalone: true,
+    imports: [MatCardModule, MatDividerModule, DatePipe]
 })
 export class RequisicaoShowComponent implements OnInit {
 
