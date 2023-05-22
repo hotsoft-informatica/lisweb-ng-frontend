@@ -1,25 +1,27 @@
-import { MatSort, MatSortModule } from '@angular/material/sort';
-import { PacienteService } from 'src/app/components/service/paciente.service';
 import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef} from '@angular/core';
-import { Paciente } from '../../model/paciente.model';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { Query } from '../../model/query.model';
-import { tap } from 'rxjs/operators';
-import { merge } from 'rxjs';
-import { SlicePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { merge } from 'rxjs';
+import { Paciente } from '../../model/paciente.model';
+import { PacienteService } from 'src/app/components/service/paciente.service';
+import { Query } from '../../model/query.model';
 import { RouterLink } from '@angular/router';
+import { SlicePipe } from '@angular/common';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-paciente-read',
     templateUrl: './paciente-read.component.html',
     standalone: true,
-    imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe]
+    imports: [RouterLink, MatIconModule, MatFormFieldModule,
+       MatInputModule, MatTableModule, MatSortModule,
+       MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe]
 })
 export class PacienteReadComponent implements AfterViewInit, OnInit {
 

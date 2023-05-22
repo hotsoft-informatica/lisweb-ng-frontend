@@ -1,37 +1,28 @@
-
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  TemplateRef,
-} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild,
+   TemplateRef } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { HibridoClientError } from '../model/hibrido-client-error.model';
 import { HibridoClientErrorService } from '../service/hibrido-client-error.service';
-import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule, FormControl, FormGroup } from '@angular/forms';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { merge } from 'rxjs';
 import { Query } from '../model/query.model';
 import { tap } from 'rxjs/operators';
-
-// imports referentes ao standalone:
-import { DatePipe, NgIf } from '@angular/common';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-hibrido-client-error',
   templateUrl: './hibrido-client-error.component.html',
   standalone: true,
-  imports: [NgIf, MatIconModule, ReactiveFormsModule, FormsModule,
-    MatInputModule, MatFormFieldModule, MatTableModule, MatDialogModule,
-    MatPaginatorModule, DatePipe, MatSortModule, MatButtonModule
-  ]
+  imports: [MatPaginatorModule, DatePipe, MatTableModule, NgIf,
+    MatFormFieldModule, MatIconModule, MatInputModule, FormsModule]
 })
 
 export class HibridoClientErrorComponent implements OnInit, AfterViewInit {
