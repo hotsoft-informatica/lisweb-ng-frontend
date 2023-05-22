@@ -1,15 +1,16 @@
 <form class="example-container row container-fluid mt-4">
   <div class="row justify-content-around">
 
-    <div class="row col-lg-5 p-2">
+    <div class="row col-lg-6 col-md-6 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Nome:</mat-label>
-        <input type="text" matInput  id="nome" name="nome"
+        <input type="text" matInput 
+          title="Nome" id="nome" name="nome"
           [(ngModel)]="marcacao.nome">
       </mat-form-field>
     </div>
 
-    <mat-form-field appearance="fill" class= "col-lg-2 col-md-12 p-2">
+    <mat-form-field appearance="fill" class= "col-lg-3 col-md-3 p-2">
       <mat-label>Tipo:</mat-label>
       <mat-select name="tipo" [(ngModel)]="marcacao.tipo">
         <mat-option value="D">Dias</mat-option>
@@ -19,10 +20,13 @@
 
   </div>
   <div>
-    <button mat-flat-button color="primary" class="fixed-bottom index"
-      (click)="createMarcacao()">Salvar</button>
-    <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
-      (click)="cancel()">Cancelar</button>
+    <button appDebounceClick mat-flat-button color="primary"
+      type="button" class="fixed-bottom index"
+      (click)="createMarcacao()">Salvar
+    </button>
+    <button type="button" mat-flat-button color="warn"
+      class="fixed-bottom index ms-2"
+      (click)="cancel()">Cancelar
+    </button>
   </div>
 </form>
-

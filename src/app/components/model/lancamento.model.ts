@@ -1,8 +1,7 @@
-import { PessoaService } from '../service/pessoa.service';
 import { Pessoa } from './pessoa.model';
+import { Base } from './base.model'
 
-export class Lancamento {
-  public id?: number;
+export class Lancamento extends Base{
   public tipo?: string;
   public valor?: number;
   public data_vencimento?: string;
@@ -16,21 +15,15 @@ export class Lancamento {
   public pessoa_id?: string;
   public unidade_atendimento_id?: string;
   public conta_contabil_id?: string;
-  public laboratorio_id?: string;
   public conta_id?: number;
-
-  public id_original?: string;
-  public laboratory_domain_id?: string;
-  public created_at?: Date;
-  public updated_at?: Date;
-  public version_id?: number;
-  public deleted?: boolean;
-  public sync_start_date?: Date;
-  public sync_deadline?: Date;
-  public criado_em?: Date;
   public pessoa?: Pessoa;
 
+  // TODO: Revisar Nao aparenta serem atributos deste model
+  public sync_start_date?: Date;
+  public sync_deadline?: Date;
+
   constructor(values: Lancamento) {
+    super(values);
     Object.assign(this, values);
   }
 }

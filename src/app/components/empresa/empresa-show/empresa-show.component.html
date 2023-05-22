@@ -13,13 +13,19 @@
       Fantasia: {{empresa.nome_fantasia}}
     </div>
     <div class="col-3">
-      CNPJ: {{(empresa.cnpj || '') | mask:'00.000.000/0000-00'}}
+      <!-- TODO: Refazer essas telas como cruds -->
+      <!-- TODO:  | mask:'00.000.000/0000-00' -->
+      CNPJ: {{ (empresa.cnpj || '') }}
     </div>
     <div class="col-3">
-      Insc. Estadual: {{(empresa.inscricao_estadual || '') | mask: '000.000.000.000'}}
+      <!-- TODO: NG8004: No pipe found with name 'mask'. -->
+      <!-- TODO: | mask: '000.000.000.000' -->
+      Insc. Estadual: {{ (empresa.inscricao_estadual || '') }}
     </div>
     <div class="col-2">
-      Faz: {{(empresa.fax || '') | mask:'(00) 0000-0000'}}
+      <!-- TODO: Rever pipe de mascaras -->
+      <!-- | mask:'(00) 0000-0000' -->
+      Faz: {{ (empresa.fax || '') }}
     </div>
     <div class="col-2">
       Laboratório: {{empresa.laboratorio_id}}
@@ -58,7 +64,9 @@
       Email: {{empresa.email}}
     </div>
     <div class="col-2">
-      Telefone: {{(empresa.telefone || '') | mask:'(00) 00000-0000 || (00) 0000-0000'}}
+      <!-- TODO: Rever mascaras -->
+      <!-- | mask:'(00) 00000-0000 || (00) 0000-0000' -->
+      Telefone: {{ (empresa.telefone || '') }}
     </div>
   </div>
 </mat-card>

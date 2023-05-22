@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'versaoexamestatus'
+    name: 'versaoexamestatus',
+    standalone: true
 })
 export class VersaoExameStatusPipe implements PipeTransform {
   transform(value: string): string {

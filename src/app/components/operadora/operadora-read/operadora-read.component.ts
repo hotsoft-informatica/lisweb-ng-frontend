@@ -7,17 +7,21 @@ import {
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import {
-  tap,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { tap } from 'rxjs/operators';import { merge, fromEvent } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgIf, AsyncPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-operadora-read',
-  templateUrl: './operadora-read.component.html',
+    selector: 'app-operadora-read',
+    templateUrl: './operadora-read.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, RouterLink, MatPaginatorModule, NgIf, MatProgressSpinnerModule, AsyncPipe, DatePipe]
 })
 export class OperadoraReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -47,16 +51,18 @@ export class OperadoraReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new OperadoraReadDataSource(this.operadoraService);
-    this.dataSource.loadOperadoras('id', 'desc', 1, 10, null);
-    this.operadoraService.countOperadoras().subscribe((totalCount) => {
+    this.dataSource.loadOperadoras('id', 'desc', 0, 5, null);
+    this.operadoraService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadOperadorasPage()))
       .subscribe();
   }

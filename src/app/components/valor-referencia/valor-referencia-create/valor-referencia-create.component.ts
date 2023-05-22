@@ -1,6 +1,6 @@
 import { Query } from '../../model/query.model'
 import { AtributoExame } from '../../model/atributo-exame.model'
-import { AtributoExameService } from '../../service/atributo-exame.service'
+import { AtributoExameService } from '../../service/atributo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
 import { VersaoExameService } from '../../service/versao-exame.service';
 import { ValorReferencia } from '../../model/valor-referencia.model';
@@ -9,10 +9,22 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { NgFor } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-valor-referencia-create',
   templateUrl: './valor-referencia-create.component.html',
+  standalone: true,
+  imports: [FormsModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatInputModule,
+    MatAutocompleteModule, NgFor, MatButtonModule
+  ]
 })
 export class ValorReferenciaCreateComponent implements OnInit {
   valorReferencia!: ValorReferencia;
@@ -56,8 +68,8 @@ export class ValorReferenciaCreateComponent implements OnInit {
 
     this.subjectAtributoExame.pipe(debounceTime(500)).subscribe(() => {
       this.atributoExameService
-        .findAtributoExame('id', 'asc', 0, 60, this.queries)
-        .subscribe((atributoExame) => {
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((atributoExame: any) => {
           console.table(this.queries);
           this.atributosExame = atributoExame;
         });

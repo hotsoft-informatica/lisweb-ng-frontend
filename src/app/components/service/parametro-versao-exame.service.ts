@@ -1,19 +1,19 @@
+import { BackendIpService } from './backend-ip.service';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar'
+import { Observable, of } from 'rxjs';
 import { ParametroVersaoExame } from '../model/parametro-versao-exame.model';
 import { Query } from './../model/query.model';
-import { BackendIpService } from './backend-ip.service';
-import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { VersaoExame } from '../model/versao-exame.model';
 @Injectable({
   providedIn: 'root',
 })
+
 export class ParametroVersaoExameService {
   baseUrl = '/parametros_versao_exame';
-  versaoExameUrl: string = '';
-
   query: Query[] = [];
+  storage: Storage = window.localStorage;
+  versaoExameUrl: string = '';
 
   constructor(
     private snackbar: MatSnackBar,
@@ -45,13 +45,13 @@ export class ParametroVersaoExameService {
     return this.http.get<ParametroVersaoExame>(url);
   }
 
-  updateAll(parametrosVErsaoExame: ParametroVersaoExame[]) {
-    parametrosVErsaoExame?.forEach((parametroVErsaoExame) => {
-      if (parametroVErsaoExame) {
-        this.update(parametroVErsaoExame).subscribe((parametroVErsaoExame) => { })
+  updateAll(parametrosVersaoExame: ParametroVersaoExame[]) {
+    parametrosVersaoExame?.forEach((parametroVersaoExame) => {
+      if (parametroVersaoExame) {
+        this.update(parametroVersaoExame).subscribe((parametroVersaoExame) => { })
       }
     });
-    return parametrosVErsaoExame;
+    return parametrosVersaoExame;
   }
 
   update(parametroVersaoExame: ParametroVersaoExame): Observable<ParametroVersaoExame> {
@@ -65,15 +65,23 @@ export class ParametroVersaoExameService {
   }
 
   getByVersaoExameId(versaoExameId: number): Observable<ParametroVersaoExame[]> {
-    const url = `${this.versaoExameUrl}/${versaoExameId}/parametros`;
-    return this.http.get<ParametroVersaoExame[]>(url);
+    // TODO: Revisar service por inteiro
+    // TODO: USar heranca
+    let empty: Observable<ParametroVersaoExame[]> = of();
+    if (versaoExameId) {
+      const url = `${this.versaoExameUrl}/${versaoExameId}/parametros`;
+      return this.http.get<ParametroVersaoExame[]>(url);
+    } else {
+      return empty;
+    }
   }
 
+  // TODO: Implementar herança
   findParametroVersaoExames(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null
   ): Observable<ParametroVersaoExame[]> {
     let params = new HttpParams()
@@ -87,9 +95,8 @@ export class ParametroVersaoExameService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<ParametroVersaoExame[]>(this.baseUrl, {
-      params,
+      params: params,
     });
   }
 
@@ -99,3 +106,4 @@ export class ParametroVersaoExameService {
     });
   }
 }
+

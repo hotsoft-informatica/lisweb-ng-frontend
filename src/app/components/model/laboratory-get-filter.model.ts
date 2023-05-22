@@ -1,5 +1,5 @@
-import { Laboratorio } from './laboratorio.model';
-export class LaboratoryGetFilter {
+import { Base } from './base.model'
+export class LaboratoryGetFilter extends Base{
   public id?: number;
   public name?: string;
   public custom_where?: string;
@@ -8,6 +8,7 @@ export class LaboratoryGetFilter {
   public criado_em?: Date = new Date();
   
   constructor(values: LaboratoryGetFilter) {
+    super(values);
     Object.assign(this, values);
   }
 }

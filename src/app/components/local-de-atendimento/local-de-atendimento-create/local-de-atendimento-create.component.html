@@ -63,7 +63,7 @@
           </div>
 
           <div class="p-2 col-lg-2 col-xl-1 col-md-2 col-xs-5">
-            <button mat-flat-button color="primary"
+            <button appDebounceClick mat-flat-buttoncolor="primary"
                     data-bs-toggle="modal" data-bs-target="#permissoes">
               Permissões
             </button>
@@ -87,21 +87,32 @@
               <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="dadoAdicionalTriagem" name="dadoAdicionalTriagem" [(ngModel)]="dadoAdicionalTriagem">Avisar dado adicional obrigatorio na triagem</mat-checkbox>
             </div>
               <div class="modal-footer">
-              <button mat-flat-button color="warn" data-bs-dismiss="modal" class="ms-2">Voltar</button>
+              <button appDebounceClick mat-flat-buttoncolor="warn" data-bs-dismiss="modal" class="ms-2">Voltar</button>
             </div>
           </div>
         </div>
       </div>
 
-      <mat-tab-group>
+      <!--
+
+src/app/components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component.html:104:125 - error NG8002: Can't bind to 'empresa' since it isn't a known property of 'app-local-de-atendimento-endereco'.
+1. If 'app-local-de-atendimento-endereco' is an Angular component and it has 'empresa' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-local-de-atendimento-endereco' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.
+
+104         <mat-tab label="Endereço/ Contato"> <app-local-de-atendimento-endereco [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-endereco> </mat-tab>
+
+      -->
+
+      <!-- <mat-tab-group>
         <mat-tab label="Empresa"> <app-local-de-atendimento-empresa [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-empresa> </mat-tab>
         <mat-tab label="Endereço/ Contato"> <app-local-de-atendimento-endereco [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-endereco> </mat-tab>
         <mat-tab label="Horario de Funcionamento/ Urgência"> <app-local-de-atendimento-horario-funcionamento [localdeatendimento]='this.localAtendimento'></app-local-de-atendimento-horario-funcionamento> </mat-tab>
-      </mat-tab-group>
+      </mat-tab-group> -->
 
   </div>
-  <button mat-flat-button color="primary" class="fixed-bottom index m-2 col-xs-2 col-sm-2"
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index m-2 col-xs-2 col-sm-2"
   (click)="createLocalAtendimento()">Salvar</button>
-  <button mat-flat-button color="warn" class="fixed-bottom index m-2 col-xs-2 col-sm-2"
+  <button appDebounceClick mat-flat-buttoncolor="warn" class="fixed-bottom index m-2 col-xs-2 col-sm-2"
   (click)="cancel()">Cancelar</button>
 </form>

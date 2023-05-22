@@ -1,15 +1,22 @@
-import { VersaoExameService } from 'src/app/components/service/versao-exame.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { debounceTime, Subject } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { Query } from '../../model/query.model';
 import { TipoInstrumento } from 'src/app/components/model/tipo-instrumento.model';
 import { TipoInstrumentoService } from './../../service/tipo-instrumento.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { debounceTime, Subject } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
-import { Query } from '../../model/query.model';
 import { VersaoExame } from '../../model/versao-exame.model';
 
 @Component({
-  selector: 'app-autocomplete-tipo-interfaceamento',
-  templateUrl: './autocomplete-tipo-interfaceamento.component.html',
+    selector: 'app-autocomplete-tipo-interfaceamento',
+    templateUrl: './autocomplete-tipo-interfaceamento.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule,
+       FormsModule, NgFor, MatOptionModule]
 })
 export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
   @Input('versaoExame') versaoExame:VersaoExame;
@@ -21,10 +28,7 @@ export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
   subject: Subject<any> = new Subject();
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
     private tipoInstrumentoService: TipoInstrumentoService,
-    private versaoExameService: VersaoExameService
   ) {
     this.versaoExame ||= new VersaoExame({});
     console.table(this.versaoExame);
@@ -35,8 +39,8 @@ export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.tipoInstrumentoService
-        .findTipoInstrumentos('id', 'asc', 0, 60, this.queries)
-        .subscribe((tipoInstrumentos) => {
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((tipoInstrumentos: any) => {
           this.tipoInstrumentos = tipoInstrumentos;
         });
     });
@@ -64,5 +68,4 @@ export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
       return correspondingOption ? correspondingOption.descricao : '';
     };
   }
-
 }

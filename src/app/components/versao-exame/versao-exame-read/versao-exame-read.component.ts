@@ -1,8 +1,12 @@
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
-import { ActivatedRoute, Router } from '@angular/router';
-import { VersaoExameService } from '../../service/versao-exame.service';
+import { Router, RouterLink } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { VersaoExameReadDataSource } from './versao-exame-read-datasource';
+import { VersaoExameService } from '../../service/versao-exame.service';
 import {
   AfterViewInit,
   ViewChild,
@@ -10,14 +14,23 @@ import {
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { tap } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { VersaoExameStatusPipe } from '../../../pipes/versao-exame-status.pipe';
+import { SlicePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-versao-exame-read',
   templateUrl: './versao-exame-read.component.html',
+  standalone: true,
+  imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule,
+    MatTableModule, MatSortModule, MatButtonModule, MatDialogModule,
+    MatPaginatorModule, SlicePipe, VersaoExameStatusPipe
+  ]
 })
+
 export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
   dataSource!: VersaoExameReadDataSource;
@@ -31,7 +44,6 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
 
-
   query: Query[] = [];
   edit = false;
 
@@ -39,7 +51,6 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
     private versaoExameService: VersaoExameService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
   ) { }
 
   search(key: string, value: string, isNumeric: boolean = false): void {
@@ -51,17 +62,20 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    // TODO: Trocar dataSources pela heranca
     this.dataSource = new VersaoExameReadDataSource(this.versaoExameService);
-    this.dataSource.loadVersaoExames('id', 'desc', 1, 10, null);
-    this.versaoExameService.count().subscribe((totalCount) => {
+    this.dataSource.loadVersaoExames('id', 'desc', 0, 5, null);
+    this.versaoExameService.count().subscribe((totalCount: any) => {
       this.totalCount = totalCount;
     });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadVersaoExamesPage()))
       .subscribe();
   }
@@ -91,5 +105,4 @@ export class VersaoExameReadComponent implements OnInit, AfterViewInit {
       this.query
     );
   }
-
 }

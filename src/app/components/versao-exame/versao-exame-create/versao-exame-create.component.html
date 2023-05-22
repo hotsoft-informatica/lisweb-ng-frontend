@@ -1,35 +1,58 @@
-  <div>
-    Cadastrar versão de exame
-  </div>
+<div>
+  Cadastrar versão de exame
+</div>
+
 <div class ="row, justify-content-around">
+  <form #formCreateVersaoExame="ngForm" class="justify-content-md-center">
+    <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-label>Tipo exame</mat-label>
+      <input
+        name="tipo_exame_id"
+        matInput [matAutocomplete]="autoTipoExames"
+        [(ngModel)]="versaoExame.tipo_exame_id"
+        (ngModelChange)="searchTipoExame()"
+        #tipo_exame_id="ngModel"
+        required
+      />
+      <mat-error *ngIf="tipo_exame_id.invalid && (tipo_exame_id.dirty || tipo_exame_id.touched)">
+        <span *ngIf="tipo_exame_id.errors?.['required']">
+          O campo é obrigatório!
+        </span>
+      </mat-error>
+      <mat-autocomplete #autoTipoExames="matAutocomplete"
+        [displayWith]="displayFnTipoExame(tipos_exame)">
+        <mat-option *ngFor="let tipo_exame of tipos_exame"
+          [value]="tipo_exame.id">
+          {{tipo_exame.descricao}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" *ngIf="onEdit && !isEdit" class="col-5">
-    <mat-label>Tipo exame:</mat-label>
-    <input matInput disabled matInput [value]="versaoExame.tipoExame!.descricao">
-  </mat-form-field>
-
-  <app-autocomplete-versao-exame *ngIf="onCreate || isEdit" [tipoExame]='this.versaoExame.tipoExame'></app-autocomplete-versao-exame>
-
-  <mat-slide-toggle *ngIf="onEdit" [(ngModel)]="isEdit" color="primary">Editar</mat-slide-toggle>
-
-  <mat-form-field appearance="fill" class="col-5 p-2">
-    <mat-label>Descrição:</mat-label>
-    <input matInput maxlength="50" name="descricao" [(ngModel)]="versaoExame.descricao">
-  </mat-form-field>
-
+    <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-label>Descrição</mat-label>
+      <input matInput maxlength="50" name="descricao"
+        title="Descrição"
+        [(ngModel)]="versaoExame.descricao"
+      >
+    </mat-form-field>
+  </form>
 </div>
 
 <mat-tab-group>
   <mat-tab label="Geral">
-    <app-versao-exame-geral-create [versaoExame]="this.versaoExame"></app-versao-exame-geral-create>
+    <app-versao-exame-geral-create [versaoExame]="this.versaoExame">
+    </app-versao-exame-geral-create>
   </mat-tab>
 
   <mat-tab label="Interfaceamento">
-    <app-versao-exame-interfaceamento-create [versaoExame]="this.versaoExame"></app-versao-exame-interfaceamento-create>
+    <app-versao-exame-interfaceamento-create [versaoExame]="this.versaoExame">
+    </app-versao-exame-interfaceamento-create>
   </mat-tab>
 
   <mat-tab label="Parâmetro">
-    <app-versao-exame-parametro [versaoExame]="this.versaoExame" [parametrosVersaoExame]="this.parametrosVersaoExame"></app-versao-exame-parametro>
+    <app-versao-exame-parametro [versaoExame]="this.versaoExame" 
+      [parametrosVersaoExame]="this.parametrosVersaoExame">
+    </app-versao-exame-parametro>
   </mat-tab>
 </mat-tab-group>
 

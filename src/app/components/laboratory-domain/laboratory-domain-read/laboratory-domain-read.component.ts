@@ -1,21 +1,26 @@
 import { Query } from '../../model/query.model';
 import { LaboratoryDomainReadDataSource } from './laboratory-domain-read-datasource';
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
-import {
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import { tap } from 'rxjs/operators';import {
   AfterViewInit,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import {
-  tap,
-} from 'rxjs/operators';
-import { merge } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgIf, AsyncPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @Component({
-  selector: 'app-laboratory-domain-read',
-  templateUrl: './laboratory-domain-read.component.html',
+    selector: 'app-laboratory-domain-read',
+    templateUrl: './laboratory-domain-read.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, RouterLink, MatPaginatorModule, NgIf, MatProgressSpinnerModule, AsyncPipe, DatePipe]
 })
 export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -53,18 +58,20 @@ export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
     this.dataSource = new LaboratoryDomainReadDataSource(
       this.laboratoryDomainService
     );
-    this.dataSource.loadLaboratoryDomains('id', 'desc', 1, 10, null);
+    this.dataSource.loadLaboratoryDomains('id', 'desc', 0, 5, null);
     this.laboratoryDomainService
-      .countLaboratoryDomains()
+      .count()
       .subscribe((totalCount) => {
         this.totalCount = totalCount;
       });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) //Na ordenação ou paginação, carrega uma nova página
+    //Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadLaboratoryDomainsPage()))
       .subscribe();
   }

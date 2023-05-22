@@ -1,34 +1,35 @@
-import { MatDialogConfig } from '@angular/material/dialog';
-import { RequisicaoUpdateComponent } from './../requisicao-update/requisicao-update.component';
-import { Query } from '../../model/query.model';
-import { RequisicaoReadDataSource } from './requisicao-read-datasource';
-import { RequisicaoService } from '../../service/requisicao.service';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
   TemplateRef,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  startWith,
-  tap,
-  delay,
-  filter,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogConfig } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import { Query } from '../../model/query.model';
+import { RequisicaoReadDataSource } from './requisicao-read-datasource';
+import { RequisicaoService } from '../../service/requisicao.service';
+import { RequisicaoUpdateComponent } from './../requisicao-update/requisicao-update.component';
+import { tap } from 'rxjs/operators';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgIf, AsyncPipe, DecimalPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 @Component({
-  selector: 'app-requisicao-read',
-  templateUrl: './requisicao-read.component.html',
-  styleUrls: ['./requisicao-read.component.css'],
+    selector: 'app-requisicao-read',
+    templateUrl: './requisicao-read.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatIconModule, MatDialogModule, RouterLink, MatPaginatorModule, NgIf, MatProgressSpinnerModule, AsyncPipe, DecimalPipe, DatePipe]
 })
 export class RequisicaoReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -66,16 +67,18 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new RequisicaoReadDataSource(this.requisicaoService);
-    this.dataSource.loadRequisicoes('id', 'desc', 1, 10, null);
-    this.requisicaoService.countRequisicoes().subscribe((totalCount) => {
+    this.dataSource.loadRequisicoes('id', 'desc', 0, 5, null);
+    this.requisicaoService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadRequisicoesPage()))
       .subscribe();
   }
@@ -98,7 +101,7 @@ export class RequisicaoReadComponent implements OnInit, AfterViewInit {
         this.requisicaoService
         .delete(id)
         .subscribe(() => {
-          // this.page = 1;
+          // this.page = 0;
           // this.loadBack();
         });
       }

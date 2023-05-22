@@ -1,9 +1,9 @@
+import { catchError, finalize } from 'rxjs/operators';
+import { DataSource } from '@angular/cdk/collections';
+import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Query } from 'src/app/components/model/query.model';
 import { ValorReferencia } from 'src/app/components/model/valor-referencia.model';
 import { ValorReferenciaService } from 'src/app/components/service/valor-referencia.service';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
-import { Observable, BehaviorSubject, of } from 'rxjs';
-import { catchError, finalize } from 'rxjs/operators';
-import { Query } from 'src/app/components/model/query.model';
 
 export class ValorReferenciaReadDataSource implements DataSource<ValorReferencia> {
   private valoresReferenciaSubject = new BehaviorSubject<ValorReferencia[]>([]);
@@ -25,7 +25,7 @@ export class ValorReferenciaReadDataSource implements DataSource<ValorReferencia
     this.loadingSubject.next(true);
 
     this.valorReferenciaService
-      .findValorReferencia(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,11 +35,11 @@ export class ValorReferenciaReadDataSource implements DataSource<ValorReferencia
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<ValorReferencia[]> {
+  connect(): Observable<ValorReferencia[]> {
     return this.valoresReferenciaSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.valoresReferenciaSubject.complete();
     this.loadingSubject.complete();
   }

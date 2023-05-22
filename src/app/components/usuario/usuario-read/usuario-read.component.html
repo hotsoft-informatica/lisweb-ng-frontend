@@ -1,5 +1,4 @@
 <div class="p-3 col-12 row">
-
   <div class="row col-10 col-md-8 col-xs-6">
     <h3>
       <a routerLink="/">Inicio</a>
@@ -12,15 +11,15 @@
     <div class="row">
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" (click)="openDialogCreate()">
-          <mat-icon>add</mat-icon>
+        <button appDebounceClick mat-flat-button class="dvm-button btn-primary" class="btn-primary" color="primary" (click)="openDialogCreate()">
+          <mat-icon class="mx-0">add</mat-icon>
           Adicionar
         </button>
         <mat-label class="ms-1 fs-6"></mat-label>
       </div>
 
       <div class="p-1 col d-flex justify-content-end">
-        <button mat-flat-button class="dvm-button" color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        <button appDebounceClick mat-flat-button class="dvm-button btn-primary" class="btn-primary" color="primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           <mat-icon>search</mat-icon>
           Buscar
@@ -39,21 +38,21 @@
       <div class="mb-3 col row">
         <mat-form-field appearance="fill">
           <mat-label>Nome:</mat-label>
-          <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome',nome.value)">
+          <input matInput #nome maxlength="50" title="Filtre por nome" (input)="search('nome',nome.value)">
         </mat-form-field>
       </div>
 
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           <mat-label>Login:</mat-label>
-          <input matInput #login maxlength="12" placeholder="Filtre por login" (input)="search('login',login.value)">
+          <input matInput #login maxlength="12" title="Filtre por login" (input)="search('login',login.value)">
         </mat-form-field>
       </div>
 
       <div class="mb-3 col-md-3 row">
         <mat-form-field appearance="fill">
           <mat-label>Cargo:</mat-label>
-          <input matInput #cargo maxlength="12" placeholder="Filtre por login" (input)="search('cargo',cargo.value)">
+          <input matInput #cargo maxlength="12" title="Filtre por login" (input)="search('cargo',cargo.value)">
         </mat-form-field>
       </div>
 
@@ -94,7 +93,7 @@
 
               <a routerLink="/usuarios/update/{{element.id}}">
                 <button mat-icon-button>
-                  <mat-icon class="edit">edit</mat-icon>
+                  <mat-icon class="edit text-success">edit</mat-icon>
                 </button>
               </a>
 
@@ -102,17 +101,36 @@
               <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                   <div class="modal-body">
-                    <app-usuario-update [pacienteInput]="this.currentPaciente"></app-usuario-update>
+                    <!--
+
+                      ERROR
+
+src/app/components/usuario/usuario-read/usuario-read.component.html:109:41 - error NG8002: Can't bind to 'pacienteInput' since it isn't a known property of 'app-usuario-update'.
+1. If 'app-usuario-update' is an Angular component and it has 'pacienteInput' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-usuario-update' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.
+
+109                     <app-usuario-update [pacienteInput]="this.currentPaciente"></app-usuario-update>
+                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  src/app/components/usuario/usuario-read/usuario-read.component.ts:23:18
+    23     templateUrl: './usuario-read.component.html',
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component UsuarioReadComponent.
+
+
+                    -->
+                    <!-- <app-usuario-update [pacienteInput]="this.currentPaciente"></app-usuario-update> -->
                   </div>
                   <div class="modal-footer">
-                    <button mat-flat-button color="warn" data-bs-dismiss="modal">Sair</button>
+                    <button appDebounceClick mat-flat-buttoncolor="warn" data-bs-dismiss="modal">Sair</button>
                   </div>
                 </div>
               </div>
             </div>
 
               <button mat-icon-button (click)="delete(element.id)">
-                <mat-icon class="delete">delete</mat-icon>
+                <mat-icon class="delete text-danger">delete</mat-icon>
               </button>
 
               <button mat-icon-button>
@@ -137,7 +155,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
     </table>
-    <mat-paginator [length]="this.totalCount" [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 60, 240, 1200]"></mat-paginator>
+    <mat-paginator [length]="this.totalCount" [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
 </div>
 

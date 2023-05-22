@@ -15,28 +15,36 @@
     <div class="row col-lg-6 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Titular:</mat-label>
-        <input matInput #input maxlength="50" name="nome_titular" [(ngModel)]="paciente.nome_titular">
+        <input matInput #input maxlength="50"
+         name="nome_titular" title="Nome Titular"
+         [(ngModel)]="paciente.nome_titular">
       </mat-form-field>
     </div>
 
     <div class="row col-lg-3 p-2">
       <mat-form-field appearance="fill">
         <mat-label>Carteirinha:</mat-label>
-        <input matInput #input maxlength="50" name="numero_carteirinha" [(ngModel)]="paciente.numero_carteirinha">
+        <input matInput #input maxlength="50"
+         name="numero_carteirinha" title="Número Carteirinha"
+         [(ngModel)]="paciente.numero_carteirinha">
       </mat-form-field>
     </div>
 
     <div class="row col-lg-3 p-2">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Validade</mat-label>
-        <input matInput type="date" name="validade_carteirinha" [(ngModel)]="paciente.validade_carteirinha">
+        <input matInput type="date"
+         name="validade_carteirinha" title="Validade Carteirinha"
+         [(ngModel)]="paciente.validade_carteirinha">
       </mat-form-field>
     </div>
 
     <div class="row col-lg-3 p-2">
       <mat-form-field appearance="fill">
         <mat-label>CNS:</mat-label>
-        <input matInput #input maxlength="15" name="cns" [(ngModel)]="paciente.ncns">
+        <input matInput #input maxlength="15"
+          name="cns" title="CNS"
+          [(ngModel)]="paciente.ncns">
       </mat-form-field>
     </div>
   </div>

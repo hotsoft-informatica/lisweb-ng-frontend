@@ -1,0 +1,147 @@
+<div class="col-2 col-md-4 col-xs-6">
+    <div class="table">
+       <div class="p-1 col d-flex justify-content-start">
+          <button appDebounceClick mat-flat-buttoncolor="primary" class="dvm-button btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+             aria-expanded="false" aria-controls="collapseExample">
+             <mat-icon>search</mat-icon>
+             Buscar
+          </button>
+       </div>
+    </div>
+    <div class="mat-elevation-z4">
+       <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+             <div class="row">
+                <div class="mb-3 col-md-3 row">
+                   <mat-form-field appearance="fill">
+                      <mat-label>Descrição:</mat-label>
+                   </mat-form-field>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="">
+          <div class="gridAddButton">
+             <button appDebounceClick mat-flat-buttonclass="btn-success" color="primary" title="Adicionar Regra de Post"
+             (click)="new();" *ngIf="!onCreate && !onEdit">
+             <mat-icon>add</mat-icon>
+             </button>
+          </div>
+          <div *ngIf="onCreate || onEdit">
+             <form #formCreateLaboratoryPostRule="ngForm">
+                <mat-form-field appearance="fill">
+                   <mat-label>Laboratório:</mat-label>
+                   <input
+                   name="laboratorio_id"
+                   matInput [matAutocomplete]="auto"
+                   [(ngModel)]="currentRecord.laboratorio_id"
+                   (ngModelChange)="searchLaboratorio()"
+                   >
+                   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(laboratorios)">
+                   <mat-option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">
+                   {{laboratorio.nome}}
+                   </mat-option>
+                   </mat-autocomplete>
+                </mat-form-field>
+                <mat-checkbox appearance="fill" class="col-lg-5 col-md-12 p-2">
+                   <mat-label>Pode Fazer POST:</mat-label>
+                   <input
+                   type="text"
+                   id="post"
+                   matInput
+                   maxlength="50"
+                   name="post"
+                   [(ngModel)]="currentRecord.post"
+                   >
+                </mat-checkbox>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Statement:</mat-label>
+                    <input
+                    name="laboratory_statement_rule_id"
+                    matInput [matAutocomplete]="auto"
+                    [(ngModel)]="currentRecord.laboratory_statement_rule_id"
+                    (ngModelChange)="searchStatement()"
+                    >
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnStatement(statements)">
+                    <mat-option *ngFor="let statement of statements" [value]="statement.id">
+                    {{statement.name}}
+                    </mat-option>
+                    </mat-autocomplete>
+                 </mat-form-field>
+
+                <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
+                   <button mat-button
+                   (click)="addGridData()" *ngIf="onCreate" [disabled]="formCreateLaboratoryPostRule.invalid">Inserir</button>
+                   <button mat-button
+                   (click)="updateGridData()" *ngIf="onEdit">Alterar</button>
+                   <button mat-button color="warn"
+                      (click)="cancelar()">Cancelar</button>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+    <div class="mat-elevation-z4">
+       <table
+          mat-table
+          [dataSource]="datasource"
+          matSort
+          matSortActive="id"
+          matSortDirection="desc"
+          matSortDisableClear
+          >
+          <!-- Id Column -->
+          <ng-container matColumnDef="id" class="col-1">
+             <th mat-header-cell *matHeaderCellDef mat-sort-header="id">Id</th>
+             <td mat-cell *matCellDef="let row">{{ row?.id }}</td>
+          </ng-container>
+          <!-- Tabela Column -->
+          <ng-container matColumnDef="laboratory_statement_rule_id" class="col-2">
+             <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratory_statement_rule_id">Tabela</th>
+             <td mat-cell *matCellDef="let row">{{ row?.laboratory_statement_rule_id }}</td>
+          </ng-container>
+          <!-- Laboratorio Column -->
+          <ng-container matColumnDef="laboratorio_id" class="col-3">
+             <th mat-header-cell *matHeaderCellDef mat-sort-header="laboratorio_id">Laboratório</th>
+             <td mat-cell *matCellDef="let row">{{ row?.laboratorio_id }}</td>
+          </ng-container>
+          <!-- POST Column (CheckBox) -->
+          <ng-container matColumnDef="post" class="col-4">
+             <th mat-header-cell *matHeaderCellDef mat-sort-header="post">Laboratório</th>
+             <td mat-cell *matCellDef="let row">{{ row?.post }}</td>
+          </ng-container>
+          <!-- action Column -->
+          <ng-container matColumnDef="action" class="col-2">
+             <th mat-header-cell *matHeaderCellDef> Ações </th>
+             <td mat-cell *matCellDef="let row; index as position">
+                <div class="row">
+                   <div class="col-1 me-3">
+                      <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
+                      <mat-icon class="edit">edit</mat-icon>
+                      </button>
+                   </div>
+                   <div class="col-1 me-3">
+                      <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
+                      <mat-icon class="delete">delete</mat-icon>
+                      </button>
+                   </div>
+                   <ng-template #deleteDialog>
+                      <mat-dialog-content class="mat-typography">
+                         Deseja apagar esse registro?
+                      </mat-dialog-content>
+                      <mat-dialog-actions align="end">
+                         <button mat-button mat-dialog-close>Cancel</button>
+                         <button mat-button [mat-dialog-close]="true">Apagar</button>
+                      </mat-dialog-actions>
+                   </ng-template>
+                </div>
+             </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+       </table>
+       <mat-paginator [length]="this.totalCount" [pageSize]="10"
+       [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+    </div>
+ </div>

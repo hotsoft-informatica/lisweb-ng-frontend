@@ -1,17 +1,25 @@
 import { LocalDeAtendimentoService } from './../../service/local-de-atendimento.service';
 import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
 import { LocalDeAtendimento } from '../../model/local-de-atendimento.model';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Query } from '../../model/query.model';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import { tap } from 'rxjs/operators';
 import { merge } from 'rxjs';
+import { SlicePipe } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-local-de-atendimento-read',
-  templateUrl: './local-de-atendimento-read.component.html',
-  styleUrls: ['./local-de-atendimento-read.component.css']
+    selector: 'app-local-de-atendimento-read',
+    templateUrl: './local-de-atendimento-read.component.html',
+    standalone: true,
+    imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatButtonModule, MatDialogModule, MatPaginatorModule, SlicePipe]
 })
 export class LocalDeAtendimentoReadComponent implements AfterViewInit, OnInit {
 
@@ -26,14 +34,13 @@ export class LocalDeAtendimentoReadComponent implements AfterViewInit, OnInit {
   currentPaciente = 0;
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
-
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
-  @ViewChild(MatSort) sort: MatSort | any; // Pega o componente do html e disponibiliza pro tps
+  // Pega o componente do html e disponibiliza pro tps
+  @ViewChild(MatSort) sort: MatSort | any;
 
   queries: Query[] = [];
   msgErro = '';
-  page = 1;
+  page = 0;
 
   noMorePages = false;
 
@@ -50,17 +57,21 @@ export class LocalDeAtendimentoReadComponent implements AfterViewInit, OnInit {
     }
 
     ngOnInit(): void {
-      this.localdeatendimentoService.countLocaisdeAtendimentos().subscribe((totalCount: number) => {
+      this.localdeatendimentoService.count().subscribe(
+        (totalCount: number) => {
         this.totalCount = totalCount;
       });
-      this.loadBack('id', 'desc', 0, 10, this.queries);
+      // TODO: Revisar junto a paginacao via config
+      this.loadBack('id', 'desc', 0, 5, this.queries);
     }
 
-    ngAfterViewInit(): void { // executar apos ser desenhado a pagina
+    // executar apos ser desenhado a pagina
+    ngAfterViewInit(): void {
+      // reseta o paginador depois de ordenar
+      this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-      this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
-
-      merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+      // Na ordenação ou paginação, carrega uma nova página
+      merge(this.sort.sortChange, this.paginator.page)
         .pipe(tap(() => this.loadBack()))
         .subscribe();
     }
@@ -78,14 +89,18 @@ export class LocalDeAtendimentoReadComponent implements AfterViewInit, OnInit {
                               pageSize,
                               query)
         .subscribe((locaisdeatendimentos) => {
-        this.dataSource = locaisdeatendimentos; // usar dados do back para apresentar no front
+        // usar dados do back para apresentar no front
+        this.dataSource = locaisdeatendimentos;
         console.table(this.dataSource);
       });
   }
 
-  sortData(): void { // ordenação dos dados
-    this.paginator.pageIndex = 0; // adc +1 page
-    this.loadBack(); // chama linha 62
+  // ordenação dos dados
+  sortData(): void {
+    // adc +1 page
+    this.paginator.pageIndex = 0;
+    // chama linha 62
+    this.loadBack();
   }
   delete(id: number): void {
     const dialogRef = this.dialog.open(this.deleteDialog);
@@ -94,7 +109,7 @@ export class LocalDeAtendimentoReadComponent implements AfterViewInit, OnInit {
       if (result){
         this.localdeatendimentoService
         .delete(id)
-        // .pipe(
+        // TODO: .pipe(
         //   catchError(err => {
         //     console.table(err);
         //     alert('Não foi possivel excluir');
@@ -102,7 +117,7 @@ export class LocalDeAtendimentoReadComponent implements AfterViewInit, OnInit {
         //   })
         // )
         .subscribe(() => {
-          this.page = 1;
+          this.page = 0;
           this.loadBack();
         });
       }

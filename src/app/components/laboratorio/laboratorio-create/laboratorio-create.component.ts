@@ -11,12 +11,22 @@ import {
 import {
   debounceTime,
 } from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
 import { Subject } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-laboratorio-create',
-  templateUrl: './laboratorio-create.component.html',
+    selector: 'app-laboratorio-create',
+    templateUrl: './laboratorio-create.component.html',
+    standalone: true,
+    imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, NgFor, MatOptionModule, MatDatepickerModule, MatButtonModule]
 })
 export class LaboratorioCreateComponent implements OnInit {
   laboratorio: Laboratorio;
@@ -37,8 +47,8 @@ export class LaboratorioCreateComponent implements OnInit {
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.laboratoryDomainService
-        .findLaboratoryDomains('id', 'asc', 0, 60, this.queries)
-        .subscribe((laboratoryDomains) => {
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((laboratoryDomains: any) => {
           console.table(this.queries);
           this.laboratoryDomains = laboratoryDomains;
         });
@@ -81,3 +91,4 @@ export class LaboratorioCreateComponent implements OnInit {
     };
   }
 }
+

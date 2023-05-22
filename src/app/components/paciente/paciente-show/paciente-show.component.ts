@@ -4,13 +4,14 @@ import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
 import { OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-// import * as moment from 'moment';
-
+import { MatDividerModule } from '@angular/material/divider';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-paciente-show',
-  templateUrl: './paciente-show.component.html',
-  styleUrls: ['./paciente-show.component.css']
+    selector: 'app-paciente-show',
+    templateUrl: './paciente-show.component.html',
+    standalone: true,
+    imports: [MatCardModule, MatDividerModule]
 })
 export class PacienteShowComponent implements OnChanges {
   paciente: Paciente;
@@ -22,11 +23,14 @@ export class PacienteShowComponent implements OnChanges {
     private pacienteService: PacienteService,
     private route: ActivatedRoute,
     ){
-      this.paciente = new Paciente(); // alternativa memory leak //Dont repeat yourself DRY
+      this.paciente = new Paciente();
+      // alternativa memory leak //Dont repeat yourself DRY
 
-      this.id = this.route.snapshot.paramMap.get('id') as unknown as number; // abertura por id
+      this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
+      // abertura por id
       if (this.id > 0) {
-        this.load(this.id); // id > 0 carrega o paciente
+        this.load(this.id);
+        // id > 0 carrega o paciente
       }
     }
 
@@ -38,7 +42,8 @@ export class PacienteShowComponent implements OnChanges {
     }
   }
 
-  load(id: number): void { // Dont repeat yourself DRY //abertura por id
+  load(id: number): void {
+    // Dont repeat yourself DRY //abertura por id
     this.pacienteService
       .readById(id)
 
@@ -50,7 +55,8 @@ export class PacienteShowComponent implements OnChanges {
   public calculaIdade(): void{
     // TO-DO REVER
   //   const tempo = moment(this.paciente.data_nascimento); // converte data
-  //   const diff = moment.duration(moment().diff(tempo)); // calcula diferença da data nascimento para data atual
+  //   const diff = moment.duration(moment().diff(tempo));
+  // calcula diferença da data nascimento para data atual
   //   this.paciente.idade_paciente = diff.years() + ' anos, '
   //                                + diff.months() + ' meses, '
   //                                + diff.days() + ' dias.'; // apresenta valor por diff

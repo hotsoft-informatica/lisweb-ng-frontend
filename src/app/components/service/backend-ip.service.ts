@@ -1,9 +1,6 @@
-import { Injectable } from '@angular/core';
 import { BackendIp } from '../model/backend-ip.model';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { combineLatest } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Injectable({
   providedIn: 'root',
@@ -45,5 +42,4 @@ export class BackendIpService {
 
     return this.setIp(this.backendIp.ip);
   }
-
 }

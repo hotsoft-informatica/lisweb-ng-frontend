@@ -12,15 +12,17 @@
     <div class="row">
 
     <div class="p-1 col d-flex justify-content-end">
-      <button mat-flat-button class="dvm-button" color="primary" routerLink="/pacientes/create">
-          <mat-icon>add</mat-icon>
+      <button appDebounceClick mat-flat-buttonclass="dvm-button btn-primary" class="btn-primary" color="primary"
+       routerLink="/pacientes/create">
+          <mat-icon class="mx-0">add</mat-icon>
         Adicionar
       </button>
       <mat-label class="ms-1 fs-6"></mat-label>
     </div>
 
     <div class="p-1 col d-flex justify-content-end">
-      <button mat-flat-button color="primary" class="dvm-button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+      <button appDebounceClick mat-flat-buttoncolor="primary" class="dvm-button btn-primary"
+       data-bs-toggle="collapse" data-bs-target="#collapseExample"
         aria-expanded="false" aria-controls="collapseExample">
         <mat-icon>search</mat-icon>
         Buscar
@@ -36,15 +38,17 @@
       <div class="row">
         <div class="mb-3 col row">
           <mat-form-field appearance="fill">
-            <mat-label>Nome:</mat-label>
-            <input matInput #nome maxlength="50" placeholder="Filtre por nome" (input)="search('nome',nome.value)">
+            Nome
+            <input matInput #nome maxlength="50" title="Nome"
+             (input)="search('nome',nome.value)">
           </mat-form-field>
         </div>
 
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>RG:</mat-label>
-            <input matInput #rg maxlength="12" placeholder="Filtre por RG" (input)="search('rg',rg.value,true)"
+            <input matInput #rg maxlength="12"
+             title="Filtre por RG" (input)="search('rg',rg.value,true)"
               mask="00.000.000-0">
           </mat-form-field>
         </div>
@@ -52,7 +56,8 @@
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
             <mat-label>CPF:</mat-label>
-            <input matInput #cpf maxlength="14" placeholder="Filtre por CPF" (input)="search('cpf',cpf.value,true)"
+            <input matInput #cpf maxlength="14"
+             title="Filtre por CPF" (input)="search('cpf',cpf.value,true)"
               mask="000.000.000-00">
           </mat-form-field>
         </div>
@@ -104,12 +109,12 @@
             <div>
               <a routerLink="/pacientes/update/{{element.id}}">
                 <button mat-icon-button>
-                  <mat-icon class="edit">edit</mat-icon>
+                  <mat-icon class="edit text-success">edit</mat-icon>
                 </button>
               </a>
 
                 <button mat-icon-button (click)="delete(element.id)">
-                  <mat-icon class="delete">delete</mat-icon>
+                  <mat-icon class="delete text-danger">delete</mat-icon>
                 </button>
 
 
@@ -137,8 +142,8 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 
-    <mat-paginator [length]="this.totalCount" [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 60, 240, 1200]"></mat-paginator>
+    <mat-paginator [length]="this.totalCount" [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20, 60, 240, 1200]"></mat-paginator>
 
     <span>{{msgErro}}</span>
 

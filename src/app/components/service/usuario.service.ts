@@ -1,24 +1,32 @@
+import { BaseService } from './base.service';
+import { Injectable, Inject, Injector } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Usuario } from './../model/usuario.model';
 import { Query } from './../model/query.model';
 import { BackendIpService } from './backend-ip.service';
-import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class UsuarioService {
+
+export class UsuarioService extends BaseService {
+  associationUrl = '/usuarios_dominio';
   baseUrl = '/usuarios';
+  storage: Storage = window.localStorage;
 
   query: Query[] = [];
 
   constructor(
+    @Inject(Injector) public injector: Injector,
     private snackbar: MatSnackBar,
-    private http: HttpClient,
+    public http: HttpClient,
     private backendIpService: BackendIpService
   ) {
-    this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
+    super(injector, http);
+    this.endpoint = 'usuarios'
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.associationUrl = backendIpService.getUrl() + this.associationUrl;
   }
 
   showMessage(msg: string): void {
@@ -37,7 +45,7 @@ export class UsuarioService {
     sortActive: string = 'id',
     sortDirection: string = 'desc',
     pageNumber = 0,
-    pageSize = 3,
+    pageSize = 5,
     queries: Query[]): Observable<Usuario[]> { // criando parametros e puxando dados do backend
     let params = new HttpParams(); // cria paramaetros para leitura do backend
 
@@ -56,7 +64,15 @@ export class UsuarioService {
       }
     });
 
-    return this.http.get<Usuario[]>(this.baseUrl, { params }); // Passa qual operação sera realizada pelo backend
+    return this.http.get<Usuario[]>(this.baseUrl, {
+      params: params,
+    }); // Passa qual operação sera realizada pelo backend
+  }
+
+  getAssocLmUsuariosId(id: number): Observable<Usuario[]> {
+    const url = `${this.associationUrl}/${id}`;
+    console.log(url);
+    return this.http.get<Usuario[]>(url);
   }
 
   readById(id: number): Observable<Usuario> {
@@ -84,11 +100,12 @@ export class UsuarioService {
     return this.http.get<Usuario>(url);
   }
 
+  // TODO: Implementar heranca
   findUsuarios(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null
   ): Observable<Usuario[]> {
     let params = new HttpParams()
@@ -104,16 +121,13 @@ export class UsuarioService {
     });
 
     return this.http.get<Usuario[]>(this.baseUrl, {
-      params,
+      params: params
     });
-
-
   }
 
   countUsuarios(): Observable<number> {
-    let params = new HttpParams().set('totalCount', 'true');
     return this.http.get<number>(this.baseUrl, {
-      params
+      params: new HttpParams().set('totalCount', 'true')
     });
   }
 }

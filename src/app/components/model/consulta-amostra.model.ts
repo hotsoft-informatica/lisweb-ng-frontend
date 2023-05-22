@@ -1,8 +1,6 @@
+import { Base } from './base.model'
 import { VersaoExame } from './versao-exame.model';
-export class ConsultaAmostra {
-  public id?: number;
-  public original_id?: number;
-  public laboratorio_id?: number;
+export class ConsultaAmostra extends Base{
   public num_protocolo?: number;
   public cod_exame?: string;
   public cod_seguro?: string;
@@ -63,8 +61,6 @@ export class ConsultaAmostra {
   public usuario_liberacao_tecnica_id?: number;
   public exame_apoiado_id?: number;
   public instrumento_id?: number;
-  public created_at?: Date = new Date();
-  public updated_at?: Date = new Date();
   public validade_carteirinha?: Date = new Date();
   public guia_principal?: string;
   public senha_autorizacao?: string;
@@ -75,17 +71,13 @@ export class ConsultaAmostra {
   public cid10?: string;
   public medico_id?: number;
   public usuario_conferencia_guia_id?: number;
-  public version_id?: number;
-  public laboratory_domain_id?: number;
-  public deleted?: boolean;
-  public criado_em?: Date = new Date();
-  public changed_by_lab_id?: number;
   public val_maximo_critico?: number;
   public val_minimo_critico?: number;
   public dado_auxiliar?: string;
   public versao_exame?: VersaoExame;
 
   constructor(values: ConsultaAmostra) {
+    super(values);
     Object.assign(this, values);
   }
 }

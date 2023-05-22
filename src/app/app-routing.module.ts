@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+// import { ReactiveFormsModule } from '@angular/forms';
 
+import { LOCALE_ID } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+// import { UserExitGuard } from './guards/user-exit.guard';
+import { UserGuard } from './guards/user.guard';
 
 import { AmostraCreateComponent } from './components/amostra/amostra-create/amostra-create.component';
 import { AmostraDeleteComponent } from './components/amostra/amostra-delete/amostra-delete.component';
@@ -31,7 +38,9 @@ import { ExameAmostraUpdateComponent } from './components/exame-amostra/exame-am
 import { ExameCreateComponent } from './components/exame/exame-create/exame-create.component';
 import { ExameDeleteComponent } from './components/exame/exame-delete/exame-delete.component';
 import { ExameUpdateComponent } from './components/exame/exame-update/exame-update.component';
+import { EspecialidadeComponent } from './components/especialidade/especialidade.component';
 import { HomeComponent } from './views/home/home.component';
+import { HibridoClientErrorComponent } from './components/hibrido-client-error/hibrido-client-error.component';
 import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio-create/laboratorio-create.component';
 import { LaboratorioCrudComponent } from './views/laboratorio-crud/laboratorio-crud.component';
 import { LaboratorioDeleteComponent } from './components/laboratorio/laboratorio-delete/laboratorio-delete.component';
@@ -45,10 +54,10 @@ import { LaboratoryGetFilterDeleteComponent } from './components/laboratory-get-
 import { LaboratoryGetFilterReadComponent } from './components/laboratory-get-filter/laboratory-get-filter-read/laboratory-get-filter-read.component';
 import { LaboratoryGetFilterUpdateComponent } from './components/laboratory-get-filter/laboratory-get-filter-update/laboratory-get-filter-update.component';
 import { LancamentoComponent } from './components/lancamento/lancamento.component';
-import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component';
+import { LgSenhaComponent } from './components/login/lg-senha/lg-senha.component'; import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
+import { LgUserComponent } from './components/login/lg-user/lg-user.component';
 import { LocalDeAtendimentoCreateComponent } from './components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component';
 import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimento/local-de-atendimento-read/local-de-atendimento-read.component';
-import { LoginComponent } from './components/login/login.component';
 import { LoteAmostraCreateComponent } from './components/lote-amostra/lote-amostra-create/lote-amostra-create.component';
 import { LoteAmostraDeleteComponent } from './components/lote-amostra/lote-amostra-delete/lote-amostra-delete.component';
 import { LoteAmostraUpdateComponent } from './components/lote-amostra/lote-amostra-update/lote-amostra-update.component';
@@ -61,6 +70,9 @@ import { MaterialBiologicoUpdateComponent } from './components/material-biologic
 import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
 import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
 import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
+import { MedicoComponent } from './components/medico/medico.component';
+import { NotaComponent } from './components/nota/nota.component';
+import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
 import { OperadoraCrudComponent } from './views/operadora-crud/operadora-crud.component';
 import { OperadoraDeleteComponent } from './components/operadora/operadora-delete/operadora-delete.component';
@@ -69,8 +81,7 @@ import { OperadoraUpdateComponent } from './components/operadora/operadora-updat
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
-import { PacienteShowComponent } from './components/paciente/paciente-show/paciente-show.component';
-import { PacienteUpdateComponent } from './components/paciente/paciente-update/paciente-update.component';
+import { RecursoComponent } from './components/recurso/recurso.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
 import { RequisicaoDeleteComponent } from './components/requisicao/requisicao-delete/requisicao-delete.component';
@@ -84,7 +95,10 @@ import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecn
 import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-create/tipo-exame-create.component';
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
+import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
+import { SuperUserComponent } from './components/super-user/super-user.component';
+import { UserComponent } from './components/user/user.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
 import { UsuarioReadComponent } from './components/usuario/usuario-read/usuario-read.component';
@@ -92,15 +106,21 @@ import { UsuarioUpdateComponent } from './components/usuario/usuario-update/usua
 import { ValorReferenciaCreateComponent } from './components/valor-referencia/valor-referencia-create/valor-referencia-create.component';
 import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
-import { VersaoExameCrudComponent } from './views/versao-exame-crud/versao-exame-crud.component';
-import { VersaoExameDeleteComponent } from './components/versao-exame/versao-exame-delete/versao-exame-delete.component';
-import { VersaoExameUpdateComponent } from './components/versao-exame/versao-exame-update/versao-exame-update.component';
-import { NotaComponent } from './components/nota/nota.component';
+import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
+
+// TODO Criar notFoundComponet classe e rota
+import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
+import { LaboratoryStatementRuleComponent } from './components/laboratory-statement-rule/laboratory-statement-rule.component';
+import { LaboratoryPostRuleComponent } from './components/laboratory-post-rule/laboratory-post-rule.component';
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    component: LgUserComponent,
+  },
+  {
+    path: 'login_super_user',
+    component: LgSuperUserComponent,
   },
   {
     path: 'senha',
@@ -113,6 +133,22 @@ const routes: Routes = [
   {
     path: 'dominios',
     component: DominioComponent,
+  },
+  {
+    path: 'recursos',
+    component: RecursoComponent,
+  },
+  {
+    path: 'tipos_recurso',
+    component: TipoRecursoComponent,
+  },
+  {
+    path: 'hibrido_client_errors',
+    component: HibridoClientErrorComponent,
+  },
+  {
+    path: 'hibrido_client_errors/show/:id',
+    component: HibridoClientErrorComponent,
   },
   {
     path: 'laboratorydomains',
@@ -163,6 +199,10 @@ const routes: Routes = [
     component: MetodosExamesDeleteComponent,
   },
   {
+    path: 'medicos',
+    component: MedicoComponent,
+  },
+  {
     path: 'pacientes/read',
     component: PacienteReadComponent,
   },
@@ -205,6 +245,14 @@ const routes: Routes = [
   {
     path: 'requisicoes/delete/:id',
     component: RequisicaoDeleteComponent,
+  },
+  {
+    path: 'super_users',
+    component: SuperUserComponent,
+  },
+  {
+    path: 'users',
+    component: UserComponent,
   },
   {
     path: 'usuarios/create',
@@ -252,7 +300,7 @@ const routes: Routes = [
   },
   {
     path: 'versao_exames',
-    component: VersaoExameCrudComponent,
+    component: VersaoExameReadComponent,
   },
   {
     path: 'versao_exames/create/:create',
@@ -261,10 +309,6 @@ const routes: Routes = [
   {
     path: 'versao_exames/update/:id/:edit',
     component: VersaoExameCreateComponent,
-  },
-  {
-    path: 'versao_exames/delete/:id',
-    component: VersaoExameDeleteComponent,
   },
   {
     path: 'material-biologicos/create',
@@ -331,8 +375,8 @@ const routes: Routes = [
     component: ExameDeleteComponent,
   },
   {
-    path: 'coletores/create',
-    component: ColetorCreateComponent,
+    path: 'especialidades',
+    component: EspecialidadeComponent,
   },
   {
     path: 'coletores/update/:id',
@@ -487,6 +531,10 @@ const routes: Routes = [
     component: BackendIpComponent,
   },
   {
+    path: 'user',
+    component: UserComponent, canActivate: [UserGuard], canDeactivate: []
+  },
+  {
     path: 'lancamentos',
     component: LancamentoComponent,
   },
@@ -510,7 +558,25 @@ const routes: Routes = [
     path: 'notas',
     component: NotaComponent,
   },
+  {
+    path: '**',
+    component: HomeComponent,
+  },
+  {
+    path: 'laboratory_get_rules',
+    component: LaboratoryGetRuleComponent,
+  },
+  {
+    path: 'laboratory_statement_rules',
+    component: LaboratoryStatementRuleComponent,
+  },
+  {
+    path: 'laboratory_post_rules',
+    component: LaboratoryPostRuleComponent,
+  },
 ];
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   imports: [
@@ -518,6 +584,12 @@ const routes: Routes = [
       onSameUrlNavigation: 'reload'
     })],
   exports: [RouterModule],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+    }
+  ]
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {
+}

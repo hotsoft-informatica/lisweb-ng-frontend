@@ -1,11 +1,18 @@
-import { NavigationStart, Router, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
 import { Component, HostListener } from '@angular/core';
-import { Event } from '@angular/router';
+import { Event, RouterOutlet } from '@angular/router';
+import { NavigationStart, Router, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
+import { NgIf, DatePipe } from '@angular/common';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FooterComponent } from 'src/app/components/template/footer/footer.component';
+import { NavComponent } from 'src/app/components/template/nav/nav.component';
+import { HeaderComponent } from 'src/app/components/template/header/header.component';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  standalone: true,
+  imports: [NgIf, FooterComponent, NavComponent, DatePipe, RouterOutlet, HeaderComponent]
 })
 
 export class AppComponent {
@@ -14,7 +21,9 @@ export class AppComponent {
   loading = false;
 
   constructor(private router: Router) {
-    this.router.events.subscribe((event: Event) => {
+    this.router.events
+    .pipe(untilDestroyed(this))
+    .subscribe((event: Event) => {
       switch (true) {
         case event instanceof NavigationStart: {
           this.loading = true;
@@ -51,4 +60,3 @@ if (typeof Worker !== 'undefined') {
   // Web Workers are not supported in this environment.
   // You should add a fallback so that your program still executes correctly.
 }
-

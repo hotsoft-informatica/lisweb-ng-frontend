@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tipo-exame-update',
-  templateUrl: './tipo-exame-update.component.html',
-  styleUrls: ['./tipo-exame-update.component.css']
+    selector: 'app-tipo-exame-update',
+    templateUrl: './tipo-exame-update.component.html',
+    standalone: true
 })
 export class TipoExameUpdateComponent implements OnInit {
 

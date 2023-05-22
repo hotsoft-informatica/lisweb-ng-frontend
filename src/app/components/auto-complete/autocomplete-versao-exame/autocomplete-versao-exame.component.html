@@ -1,8 +1,8 @@
 <mat-form-field class="col-5">
- <mat-label>Tipo exame:</mat-label>
+  Tipo exame
   <input
     name="tipo_exame"
-    matInput [matAutocomplete]="auto"
+    matInput [matAutocomplete]="auto" title="Tipo exame"
     [(ngModel)]="this.tipoExame!.id"
     (ngModelChange)="search()"
   />
@@ -12,4 +12,3 @@
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
-

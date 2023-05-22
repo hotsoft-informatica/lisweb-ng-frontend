@@ -1,44 +1,42 @@
 <form class= "example-container row container-fluid" fxShow.gt-xs>
-
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Nome:</mat-label>
-    <input matInput maxlength="50" placeholder="Nome completo" name="nome" [(ngModel)]="usuario.nome">
+    <input matInput maxlength="50" title="Nome completo"
+      name="nome" [(ngModel)]="usuario.nome">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Usuario:</mat-label>
-    <input matInput maxlength="50" placeholder="Nome de usuario" name="login" [(ngModel)]="usuario.login">
+    <input matInput maxlength="50" title="Nome de usuario"
+      name="login" [(ngModel)]="usuario.login">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
-    <mat-label>Cargo:</mat-label>
-    <input matInput maxlength="50" placeholder="Cargo de usuario" >
+    Cargo:
+    <input matInput maxlength="50" title="Cargo">
   </mat-form-field>
 
   <mat-form-field class="example-chip-list" appearance="fill">
-    <mat-label>Grupos</mat-label>
-    <mat-chip-list #chipList aria-label="grupo selection">
+    Grupos
+    <mat-chip-listbox #chipList aria-label="grupo selection">
       <mat-chip
         *ngFor="let grupo of grupos"
-        [selectable]="selectable"
         [removable]="removable"
         (removed)="remove(grupo)">
         {{grupo}}
-        <button matChipRemove *ngIf="removable">
+        <button type="button" *ngIf="removable">
           <mat-icon>cancel</mat-icon>
         </button>
       </mat-chip>
+      <!-- TODO: Refazer este input de tags pro angular atual -->
       <input
-        placeholder="Digite o grupo de usuario"
+        title="Digite o grupo de usuario"
         #grupoInput
         [formControl]="grupoCtrl"
         [matAutocomplete]="auto"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)"
         name="grupos"
         [(ngModel)]="usuario.grupos">
-    </mat-chip-list>
+    </mat-chip-listbox>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
     <mat-option *ngFor="let grupo of filteredGrupos | async" [value]="grupo">
       {{grupo}}
@@ -48,9 +46,9 @@
 
 </form>
 <div>
-  <button mat-flat-button color="primary" class="fixed-bottom index"
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index"
   (click)="createUsuario()">Salvar</button>
-  <button mat-flat-button mat-dialog-close color="warn" class="fixed-bottom index ms-2"
+  <button appDebounceClick mat-flat-buttonmat-dialog-close color="warn" class="fixed-bottom index ms-2"
     routerLink="/usuarios/read">
     Cancelar</button>
 </div>

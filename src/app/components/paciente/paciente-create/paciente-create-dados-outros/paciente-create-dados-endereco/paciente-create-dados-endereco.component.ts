@@ -4,12 +4,16 @@ import { CepService } from 'src/app/components/service/cep.service';
 import { Paciente } from 'src/app/components/model/paciente.model';
 import { Router } from '@angular/router';
 import { Cep } from '../../../../model/cep.model';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-paciente-create-dados-endereco',
-  templateUrl: './paciente-create-dados-endereco.component.html',
-  styleUrls: ['./paciente-create-dados-endereco.component.css']
+    selector: 'app-paciente-create-dados-endereco',
+    templateUrl: './paciente-create-dados-endereco.component.html',
+    standalone: true,
+    imports: [FormsModule, MatFormFieldModule, MatInputModule]
 })
 export class PacienteCreateDadosEnderecoComponent implements OnInit {
 
@@ -30,9 +34,11 @@ export class PacienteCreateDadosEnderecoComponent implements OnInit {
   }
 
   consulta(): void{
+    // consulta o cep informado na variavel cep
     this.cepService // Chama serviço
-    .consultar(this.paciente.cep as unknown as string) // consulta o cep informado na variavel cep
-    .subscribe((cep: any) => {  // subscreve os campos
+    .consultar(this.paciente.cep as unknown as string)
+    .subscribe((cep: any) => {
+      // subscreve os campos
       Object.assign(this.cep, cep);
       this.paciente.cidade = this.cep.localidade;
       this.paciente.uf = this.cep.uf;

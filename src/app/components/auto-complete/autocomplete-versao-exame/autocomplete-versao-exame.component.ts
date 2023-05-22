@@ -1,15 +1,21 @@
-import { TipoExameService } from '../../service/tipo-exame.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { VersaoExameService } from '../../service/versao-exame.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { debounceTime, Subject } from 'rxjs';
 import { Query } from '../../model/query.model';
 import { TipoExame } from 'src/app/components/model/tipo-exame.model';
+import { TipoExameService } from '../../service/tipo-exame.service';
 import { VersaoExame } from '../../model/versao-exame.model';
-import { debounceTime, Subject } from 'rxjs';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-autocomplete-versao-exame',
-  templateUrl: './autocomplete-versao-exame.component.html',
+    selector: 'app-autocomplete-versao-exame',
+    templateUrl: './autocomplete-versao-exame.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, FormsModule, NgFor, MatOptionModule]
 })
 export class AutoCompleteVersaoExameComponent implements OnInit{
   @Input('tipoExame') tipoExame:TipoExame | undefined;
@@ -21,9 +27,6 @@ export class AutoCompleteVersaoExameComponent implements OnInit{
   subject: Subject<any> = new Subject();
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-    private versaoExameService: VersaoExameService,
     private tipoExameService: TipoExameService,
   ) {
     this.tipoExame ||= new TipoExame({});
@@ -35,7 +38,7 @@ export class AutoCompleteVersaoExameComponent implements OnInit{
 
     this.subject.pipe(debounceTime(500)).subscribe(() => {
       this.tipoExameService
-        .findTipoExames('id', 'asc', 0, 60, this.queries)
+        .find('id', 'asc', 0, 60, this.queries)
         .subscribe((tipoExames) => {
           this.tipoExames = tipoExames;
         });
@@ -65,6 +68,4 @@ export class AutoCompleteVersaoExameComponent implements OnInit{
       return correspondingOption ? correspondingOption.descricao : '';
     };
   }
-
-
 }

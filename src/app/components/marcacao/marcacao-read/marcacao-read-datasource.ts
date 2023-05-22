@@ -1,6 +1,6 @@
 import { Marcacao } from '../../model/marcacao.model';
 import { MarcacaoService } from '../../service/marcacao.service';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
+import { DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { Query } from '../../model/query.model';
@@ -25,7 +25,7 @@ export class MarcacaoReadDataSource implements DataSource<Marcacao> {
     this.loadingSubject.next(true);
 
     this.marcacaoService
-      .findMarcacoes(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,11 +35,11 @@ export class MarcacaoReadDataSource implements DataSource<Marcacao> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Marcacao[]> {
+  connect(): Observable<Marcacao[]> {
     return this.marcacoesSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.marcacoesSubject.complete();
     this.loadingSubject.complete();
   }

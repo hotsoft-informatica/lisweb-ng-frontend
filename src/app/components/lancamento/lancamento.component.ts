@@ -1,19 +1,26 @@
-import { PessoaService } from '../service/pessoa.service';
-import { Pessoa } from '../model/pessoa.model';
-import { Query } from '../model/query.model';
 import { LancamentoService } from '../service/lancamento.service';
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Pessoa } from '../model/pessoa.model';
+import { PessoaService } from '../service/pessoa.service';
+import { Query } from '../model/query.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Lancamento } from '../model/lancamento.model';
+import { MatPaginator } from '@angular/material/paginator';
+import { NgIf } from '@angular/common';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+
 @Component({
-  selector: 'app-lancamento',
-  templateUrl: './lancamento.component.html',
+    selector: 'app-lancamento',
+    templateUrl: './lancamento.component.html',
+    standalone: true,
+    imports: [MatTableModule, MatSortModule, NgIf]
 })
 export class LancamentoComponent implements OnInit {
   totalCount!: number;
   dataSource: Lancamento[] = [];
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+
+
   displayedColumns = [
     'descricao',
     'numero_documento',
@@ -41,7 +48,7 @@ export class LancamentoComponent implements OnInit {
     this.lancamentoService.read(
       'id',
       'desc',
-      1,
+      0,
       500,
       this.query
     ).subscribe((records) => {
@@ -55,7 +62,7 @@ export class LancamentoComponent implements OnInit {
       this.pessoaService.readById(lancamento.pessoa_id as unknown as number)
         .subscribe((pessoa: Pessoa) => {
           lancamento.pessoa = pessoa;
-      });/*
+      });/* TODO: 
       this.UnidadeAtendimentoService.readById(lancamento.unidade_atendimento_id as unknown as number)
         .subscribe((unidade_atendimento: UnidadeAtendimento) => {
           lancamento.unidade_atendimento = unidade_atendimento;
@@ -75,6 +82,7 @@ export class LancamentoComponent implements OnInit {
     const query = new Query({ key, value, isNumeric });
     this.query = this.query.filter((q) => q.key !== key);
     this.query.push(query);
+    this.paginator.pageIndex = 0;
     this.load();
   }
 

@@ -1,18 +1,20 @@
 <div class="mat-elevation-z4">
   <div class="">
     <div class="gridAddButton">
-      <button mat-flat-button class="btn-success" color="primary" title="Adicionar parâmetro"
+      <button appDebounceClick mat-flat-button class="btn-success"
+        color="primary" title="Adicionar parâmetro"
       (click)="new();" *ngIf="!onCreate && !onEdit">
-        <mat-icon>add</mat-icon>
+        <mat-icon class="mx-0">add</mat-icon>
       </button>
     </div>
 
     <div *ngIf="onCreate || onEdit">
       <form #formCreateParametro="ngForm">
-        <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
+        <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
           <mat-label>Chave:</mat-label>
           <input
             type="text"
+            title="Chave"
             id="chave"
             required
             matInput
@@ -25,13 +27,13 @@
           >
           <mat-error *ngIf="chave2.invalid && (chave2.dirty || chave2.touched)">
             <span *ngIf="chave2.errors?.['required']">
-                O campo é obrigatório!
+              O campo é obrigatório!
             </span>
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-5 col-md-12 p-2">
-          <mat-label>Valor:</mat-label>
+          <mat-label>Valor</mat-label>
           <input
             type="text"
             id="valor"
@@ -41,20 +43,23 @@
             name="valor"
             [(ngModel)]="currentParametroVersaoExame.valor"
             #valor="ngModel"
+            title="Valor"
           >
           <mat-error *ngIf="valor.invalid && (valor.dirty || valor.touched)">
             <span *ngIf="valor.errors?.['required']">
-                O campo é obrigatório!
+              O campo é obrigatório!
             </span>
           </mat-error>
         </mat-form-field>
-        <div style=" position: relative; float: right; position: relative; padding-right: 30px; padding-top: 20px;">
-          <button mat-button
-          (click)="addParametroVersaoExame()" *ngIf="onCreate" [disabled]="formCreateParametro.invalid">Inserir</button>
-          <button mat-button
-          (click)="atualizar()" *ngIf="onEdit">Alterar</button>
-          <button mat-button color="warn"
-          (click)="cancelar()">Cancelar</button>
+        <div class="col-md-12 d-flex justify-content-end p-4">
+          <button mat-button type="button" (click)="addParametroVersaoExame()" *ngIf="onCreate"
+            [disabled]="formCreateParametro.invalid">Inserir</button>
+          <button mat-button type="button" (click)="atualizar()" *ngIf="onEdit">
+            Alterar
+          </button>
+          <button mat-button color="warn" type="button" (click)="cancelar()">
+            Cancelar
+          </button>
         </div>
       </form>
     </div>
@@ -62,11 +67,7 @@
 </div>
 
 <div class="mat-elevation-z4">
-  <table
-    mat-table
-    [dataSource]="this.datasource"
-    appearance="fill"
-  >
+  <table mat-table [dataSource]="this.datasource" appearance="fill">
   <!-- Id Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef class="col-2">Id</th>
@@ -92,14 +93,16 @@
         <div class="row">
 
           <div class="col-1 me-3">
-            <button mat-icon-button *ngIf="!onEdit" (click)="updateParametroVersaoExame(row)">
-              <mat-icon class="edit">edit</mat-icon>
+            <button mat-icon-button *ngIf="!onEdit"
+              (click)="updateParametroVersaoExame(row)">
+              <mat-icon class="edit text-success">edit</mat-icon>
             </button>
           </div>
   
           <div class="col-1 me-3">
-              <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGrid(position)">
-                <mat-icon class="delete">delete</mat-icon>
+              <button class="delete" mat-icon-button *ngIf="!onEdit"
+                (click)="deleteGrid(position)">
+                <mat-icon class="delete text-danger">delete</mat-icon>
               </button>
           </div>
   

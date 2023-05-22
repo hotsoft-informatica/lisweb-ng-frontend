@@ -1,6 +1,6 @@
 import { ResponsavelTecnicoService } from './../../service/responsavel-tecnico.service';
 import { ResponsavelTecnico } from '../../model/responsavel-tecnico.model';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
+import { DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { Query } from '../../model/query.model';
@@ -25,7 +25,7 @@ export class ResponsavelTecnicoReadDataSource implements DataSource<ResponsavelT
     this.loadingSubject.next(true);
 
     this.responsavelTecnicoService
-      .findResponsavelTecnico(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,11 +35,11 @@ export class ResponsavelTecnicoReadDataSource implements DataSource<ResponsavelT
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<ResponsavelTecnico[]> {
+  connect(): Observable<ResponsavelTecnico[]> {
     return this.responsavelTecnicoSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.responsavelTecnicoSubject.complete();
     this.loadingSubject.complete();
   }

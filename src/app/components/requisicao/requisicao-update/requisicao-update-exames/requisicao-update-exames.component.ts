@@ -1,17 +1,24 @@
-import { Requisicao } from './../../../model/requisicao.model';
-import { TipoExame } from './../../../model/tipo-exame.model';
-import { Router } from '@angular/router';
-import { ExameService } from './../../../service/exame.service';
-import { RequisicaoService } from './../../../service/requisicao.service';
-import { Exame } from '../../../model/exame.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { Exame } from '../../../model/exame.model';
+import { ExameService } from './../../../service/exame.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Requisicao } from './../../../model/requisicao.model';
+import { RequisicaoService } from './../../../service/requisicao.service';
+import { Router } from '@angular/router';
+import { TipoExame } from './../../../model/tipo-exame.model';
 import { TipoExameService } from 'src/app/components/service/tipo-exame.service';
+import { SlicePipe } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { AutoCompleteVersaoExameComponent } from '../../../auto-complete/autocomplete-versao-exame/autocomplete-versao-exame.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
-  selector: 'app-requisicao-update-exames',
-  templateUrl: './requisicao-update-exames.component.html',
-  styleUrls: ['./requisicao-update-exames.component.css']
+    selector: 'app-requisicao-update-exames',
+    templateUrl: './requisicao-update-exames.component.html',
+    standalone: true,
+    imports: [MatTableModule, MatSortModule, MatIconModule, AutoCompleteVersaoExameComponent, MatPaginatorModule, SlicePipe]
 })
 export class RequisicaoUpdateExamesComponent implements OnInit {
   @Input('requisicaoId') requisicaoId!: number;
@@ -47,7 +54,8 @@ export class RequisicaoUpdateExamesComponent implements OnInit {
     }
   }
   addExame(): void {
-    this.tipoExameService.readById(this.exame.tipo_exame!.id as number).subscribe((tipoExame) =>{
+    this.tipoExameService.readById(this.exame.tipo_exame!.id as number).subscribe(
+      (tipoExame) =>{
       this.exame.tipo_exame = tipoExame;
       this.exame.tipo_exame_id = tipoExame.id;
         this.exameService.create(this.exame).subscribe((requisicao) => {

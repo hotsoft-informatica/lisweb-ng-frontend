@@ -1,12 +1,15 @@
-import { PacienteService } from './../../service/paciente.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from '../../model/paciente.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { PacienteService } from './../../service/paciente.service';
+import { PacienteCreateDadosOutrosComponent } from './paciente-create-dados-outros/paciente-create-dados-outros.component';
+import { PacienteCreateDadosPessoaisComponent } from './paciente-create-dados-pessoais/paciente-create-dados-pessoais.component';
 
 @Component({
-  selector: 'app-paciente-create',
-  templateUrl: './paciente-create.component.html',
-  styleUrls: ['./paciente-create.component.css']
+    selector: 'app-paciente-create',
+    templateUrl: './paciente-create.component.html',
+    standalone: true,
+    imports: [PacienteCreateDadosPessoaisComponent, PacienteCreateDadosOutrosComponent]
 })
 export class PacienteCreateComponent implements OnInit {
   paciente: Paciente;

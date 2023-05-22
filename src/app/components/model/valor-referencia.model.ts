@@ -1,30 +1,27 @@
 import { AtributoExame } from "./atributo-exame.model";
+import { Base } from './base.model';
 import { VersaoExame } from "./versao-exame.model";
-export class ValorReferencia {
-  public id?: number;
-  public laboratorio_id?: number;
-  public original_id?: number;
-  public sexo?: string;
-  public val_minimo?: number;
-  public val_maximo?: number;
-  public texto?: string;
-  public val_minimo_absurdo?: number;
-  public val_maximo_absurdo?: number;
-  public idade_minima?: string;
+
+export class ValorReferencia extends Base{
   public idade_maxima?: string;
-  public versao_exame_id?: number;
+  public idade_minima?: string;
+  public sexo?: string;
+  public texto?: string;
+
   public atributo_exame_id?: number;
-  public version_id?: number;
-  public laboratory_domain_id?: number;
-  public deleted?: boolean;
-  public criado_em?: Date = new Date();
-  public changed_by_lab_id?: number;
+  public val_maximo_absurdo?: number;
   public val_maximo_critico?: number;
+  public val_maximo?: number;
+  public val_minimo_absurdo?: number;
   public val_minimo_critico?: number;
-  public versaoExame?: VersaoExame;
+  public val_minimo?: number;
+  public versao_exame_id?: number;
+
   public atributoExame?: AtributoExame;
+  public versaoExame?: VersaoExame;
 
   constructor(values: ValorReferencia) {
+    super(values);
     Object.assign(this, values);
   }
 }

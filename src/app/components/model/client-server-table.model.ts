@@ -1,3 +1,5 @@
+import { Base } from './base.model';
+
 export class ClientServerTable {
     public id?: number;
     public server_name?: string;

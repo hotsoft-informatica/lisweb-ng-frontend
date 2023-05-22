@@ -3,7 +3,7 @@
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Nome:</mat-label>
     <input matInput maxlength="50"
-                    placeholder="Nome completo"
+                    title="Nome completo"
                     name="nome" [(ngModel)]="usuario.nome"
                     formControlName="nome">
   </mat-form-field>
@@ -13,7 +13,7 @@
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Usuario:</mat-label>
     <input matInput maxlength="50"
-                    placeholder="Nome de usuario"
+                    title="Nome de usuario"
                     name="login" [(ngModel)]="usuario.login"
                     formControlName="login">
   </mat-form-field>
@@ -21,17 +21,17 @@
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Cargo:</mat-label>
     <input matInput maxlength="50"
-                    placeholder="Cargo de usuario">
+                    title="Cargo de usuario">
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Senha:</mat-label>
-    <input matInput maxlength="50" placeholder="Crie uma senha"
+    <input matInput maxlength="50" title="Crie uma senha"
            [type]="hide ? 'password' : 'text'"
            name="senha"
            [(ngModel)]="usuario.senha"
            formControlName="senha">
-    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
@@ -39,7 +39,7 @@
   <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
     <mat-label>Confirmaçao:</mat-label>
     <input matInput maxlength="50"
-           placeholder="Confirme a senha"
+           title="Confirme a senha"
            [type]="hide ? 'password' : 'text'"
            name="confirmaSenha"
            [(ngModel)]="usuario.confirmaSenha"
@@ -48,10 +48,27 @@
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
     </button>
   </mat-form-field>
+
+<!--
+
+  src/app/components/usuario/usuario-create/usuario-create.component.html:60:3 - error NG8001: 'mat-chip-listbox' is not a known element:
+1. If 'mat-chip-listbox' is an Angular component, then verify that it is included in the '@Component.imports' of this component.
+2. If 'mat-chip-listbox' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+
+60   <mat-chip-listbox #chipList aria-label="grupo selection">
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  src/app/components/usuario/usuario-create/usuario-create.component.ts:24:18
+    24     templateUrl: './usuario-create.component.html',
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component UsuarioCreateComponent.
+
+-->
+
   <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>Grupos</mat-label>
-  <mat-chip-list #chipList aria-label="grupo selection">
-    <mat-chip
+  <mat-chip-listbox #chipList aria-label="grupo selection">
+    <mat-chip-option
       *ngFor="let grupo of grupos"
       [selectable]="selectable"
       [removable]="removable"
@@ -60,20 +77,18 @@
       <button matChipRemove *ngIf="removable">
         <mat-icon>cancel</mat-icon>
       </button>
-    </mat-chip>
+    </mat-chip-option>
+    <!-- TODO: unificar tela de cadastro e edicao -->
     <input
-      placeholder="Digite o grupo de usuario"
+      title="Digite o grupo de usuario"
       #grupoInput
       [formControl]="grupoCtrl"
       [matAutocomplete]="auto"
-      [matChipInputFor]="chipList"
-      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)"
       name="grupos"
       [(ngModel)]="usuario.grupos"
       formControlName="grupos"
       >
-  </mat-chip-list>
+  </mat-chip-listbox>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
     <mat-option *ngFor="let grupo of filteredGrupos | async" [value]="grupo">
       {{grupo}}
@@ -89,8 +104,8 @@
 
 </form>
 <div class="p-2">
-  <button mat-flat-button color="primary" class="fixed-bottom index"
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index"
   mat-dialog-close [disabled]="userForm.invalid" (click)="createUsuario()">Salvar</button>
-  <button mat-flat-button color="warn" class="fixed-bottom index ms-2"
+  <button appDebounceClick mat-flat-buttoncolor="warn" class="fixed-bottom index ms-2"
   mat-dialog-close >Cancelar</button>
 </div>

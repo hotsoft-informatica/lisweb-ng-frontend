@@ -1,4 +1,6 @@
-export class Usuario {
+import { User } from './user.model';
+import { Base } from './base.model';
+export class Usuario extends Base {
   public id?: number;
   public laboratorio_id?: number;
   public nome?: string;
@@ -17,8 +19,10 @@ export class Usuario {
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
   public grupos?: string;
+  public user_id?: number;
 
   constructor(values: Usuario) {
+    super(values);
     Object.assign(this, values);
   }
 }

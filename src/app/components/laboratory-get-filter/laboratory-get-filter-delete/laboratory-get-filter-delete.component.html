@@ -5,7 +5,7 @@
         <input
           matInput
           required
-          placeholder="Nome"
+          title="Nome"
           [(ngModel)]="laboratoryGetFilter.name"
           name="name"
         />
@@ -16,12 +16,15 @@
         <input
           #required
           name="clientServerTable"
+          title="Client Server Table"
           matInput [matAutocomplete]="auto" 
           [(ngModel)]="laboratoryGetFilter.client_server_table_id"
           (ngModelChange)="search()"
         />
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(clientServerTables)">
-          <mat-option *ngFor="let clientServerTable of clientServerTables" [value]="clientServerTable.id">
+        <mat-autocomplete #auto="matAutocomplete"
+         [displayWith]="displayFn(clientServerTables)">
+          <mat-option *ngFor="let clientServerTable of clientServerTables"
+           [value]="clientServerTable.id">
             {{clientServerTable.client_name}}
           </mat-option>
         </mat-autocomplete>
@@ -36,12 +39,14 @@
           #autosize="cdkTextareaAutosize"
           cdkAutosizeMinRows="10"
           cdkAutosizeMaxRows="50"
-          placeholder="Where" 
+          title="Where" 
           name="custom_where" 
           [(ngModel)]="laboratoryGetFilter.custom_where">
         </textarea>
       </mat-form-field> 
     </form>  
-    <button mat-raised-button (click)="deleteLaboratoryGetFilter()" color="warn">Excluir</button>
-    <button mat-raised-button (click)="cancel()" color="accent">Cancelar</button>
+    <button mat-raised-button (click)="deleteLaboratoryGetFilter()"
+     color="warn">Excluir</button>
+    <button mat-raised-button (click)="cancel()"
+     color="accent">Cancelar</button>
   </mat-card>

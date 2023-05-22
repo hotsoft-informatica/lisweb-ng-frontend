@@ -1,21 +1,28 @@
-import { Query } from '../../model/query.model';
 import { LaboratorioReadDataSource } from './laboratorio-read-datasource';
 import { LaboratorioService } from '../../service/laboratorio.service';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { merge } from 'rxjs';
+import { Query } from '../../model/query.model';
 import {
   AfterViewInit,
   ViewChild,
   Component,
   OnInit,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import {
-  tap,
-} from 'rxjs/operators';
-import { merge, fromEvent } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgIf, AsyncPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @Component({
-  selector: 'app-laboratorio-read',
-  templateUrl: './laboratorio-read.component.html',
+    selector: 'app-laboratorio-read',
+    templateUrl: './laboratorio-read.component.html',
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule, FormsModule, MatTableModule, MatSortModule, RouterLink, MatPaginatorModule, NgIf, MatProgressSpinnerModule, AsyncPipe, DatePipe]
 })
 export class LaboratorioReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
@@ -30,10 +37,10 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-
   @ViewChild(MatSort) sort: MatSort | any;
-
   query: Query[] = [];
+  serieSearch: string = '';
+  nomeSearch: string = '';
 
   constructor(private laboratorioService: LaboratorioService) { }
 
@@ -47,16 +54,18 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new LaboratorioReadDataSource(this.laboratorioService);
-    this.dataSource.loadLaboratorios('id', 'desc', 1, 10, null);
-    this.laboratorioService.countLaboratorios().subscribe((totalCount) => {
+    this.dataSource.loadLaboratorios('id', 'desc', 0, 5, null);
+    this.laboratorioService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
   }
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0)); // reseta o paginador depois de ordenar
+    // reseta o paginador depois de ordenar
+    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
 
-    merge(this.sort.sortChange, this.paginator.page) // Na ordenação ou paginação, carrega uma nova página
+    // Na ordenação ou paginação, carrega uma nova página
+    merge(this.sort.sortChange, this.paginator.page)
       .pipe(tap(() => this.loadLaboratoriosPage()))
       .subscribe();
   }
