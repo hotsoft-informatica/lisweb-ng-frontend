@@ -164,13 +164,6 @@
     "@angular-devkit/core" "8.3.23"
     rxjs "6.4.0"
 
-"@angular-material-extensions/input-counter@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@angular-material-extensions/input-counter/-/input-counter-1.0.1.tgz#c3f2c985c0335e7ba50b44c60e64772d733dcba1"
-  integrity sha512-vXOn/R4Tb1SGWwH1kpwTs9MpJidNoNqohZXDLQLM2R+/FBCUxehtOUXYnmQOGEvLqjui/IWdZ3Vb3IM0REl1lg==
-  dependencies:
-    tslib "^2.0.0"
-
 "@angular/animations@^15.0.2":
   version "15.2.9"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-15.2.9.tgz#f0773d2071a5a17c03478d5838029b03bbab9a03"
