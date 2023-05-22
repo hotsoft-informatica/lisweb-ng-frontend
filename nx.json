@@ -35,6 +35,6 @@
     "appsDir": "projects",
     "libsDir": "projects"
   },
-  "cli": {},
-  "defaultProject": "lisweb-ng-frontend"
+  "defaultProject": "lisweb-ng-frontend",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }
