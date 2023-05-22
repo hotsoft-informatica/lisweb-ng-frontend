@@ -2,18 +2,20 @@
   <mat-card-title>Editar Laboratório</mat-card-title>
   <form *ngIf="laboratorio" >
     <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
       <input
         matInput
-        placeholder="Nome"
+        title="Nome"
         [(ngModel)]="laboratorio.nome"
         name="nome"
       />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
+      <mat-label>2000</mat-label>
       <input
         matInput
-        placeholder="2000"
+        title="Serie"
         [(ngModel)]="laboratorio.serie"
         name="serie"
       />
@@ -38,7 +40,7 @@
       <input
         matInput
         [matDatepicker]="criado_em"
-        placeholder="Criado em"
+        title="Criado em"
         [(ngModel)]="laboratorio.criado_em" name="criado_em" 
         required
       />

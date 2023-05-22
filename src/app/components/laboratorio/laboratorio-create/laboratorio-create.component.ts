@@ -1,18 +1,38 @@
+import { Query } from '../../model/query.model';
 import { LaboratoryDomain } from './../../model/laboratory-domain.model';
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 import { Laboratorio } from '../../model/laboratorio.model';
-import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LaboratorioService } from '../../service/laboratorio.service';
-import { STRING_TYPE } from '@angular/compiler';
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
+import {
+  debounceTime,
+} from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatOptionModule } from '@angular/material/core';
+import { NgFor } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+
 @Component({
-  selector: 'app-laboratorio-create',
-  templateUrl: './laboratorio-create.component.html',
-  styleUrls: ['./laboratorio-create.component.css'],
+    selector: 'app-laboratorio-create',
+    templateUrl: './laboratorio-create.component.html',
+    standalone: true,
+    imports: [MatCardModule, FormsModule, MatFormFieldModule, MatInputModule, MatAutocompleteModule, NgFor, MatOptionModule, MatDatepickerModule, MatButtonModule]
 })
 export class LaboratorioCreateComponent implements OnInit {
   laboratorio: Laboratorio;
   laboratoryDomains: LaboratoryDomain[] = [];
+  subject: Subject<any> = new Subject();
+  queries: Query[] = [];
 
   constructor(
     private router: Router,
@@ -23,9 +43,30 @@ export class LaboratorioCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.laboratoryDomainService.read().subscribe((laboratoryDomains) => {
-      this.laboratoryDomains = laboratoryDomains;
+    const query = new Query({ key: '', value: '', isNumeric: false });
+
+    this.subject.pipe(debounceTime(500)).subscribe(() => {
+      this.laboratoryDomainService
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((laboratoryDomains: any) => {
+          console.table(this.queries);
+          this.laboratoryDomains = laboratoryDomains;
+        });
     });
+    this.subject.next(null);
+  }
+
+  search(): void {
+    const query_string = this.laboratorio
+      .laboratory_domain_id as unknown as string;
+    const query = new Query({
+      key: 'name',
+      value: query_string,
+      isNumeric: false,
+    });
+    this.queries = [];
+    this.queries.push(query);
+    this.subject.next(null);
   }
 
   createLaboratorio(): void {
@@ -40,4 +81,14 @@ export class LaboratorioCreateComponent implements OnInit {
   cancel(): void {
     this.router.navigate(['/laboratorios']);
   }
+
+  displayFn(options: LaboratoryDomain[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.name : '';
+    };
+  }
 }
+

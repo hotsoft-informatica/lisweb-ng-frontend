@@ -1,0 +1,64 @@
+<div>
+  Cadastrar versão de exame
+</div>
+
+<div class ="row, justify-content-around">
+  <form #formCreateVersaoExame="ngForm" class="justify-content-md-center">
+    <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-label>Tipo exame</mat-label>
+      <input
+        name="tipo_exame_id"
+        matInput [matAutocomplete]="autoTipoExames"
+        [(ngModel)]="versaoExame.tipo_exame_id"
+        (ngModelChange)="searchTipoExame()"
+        #tipo_exame_id="ngModel"
+        required
+      />
+      <mat-error *ngIf="tipo_exame_id.invalid && (tipo_exame_id.dirty || tipo_exame_id.touched)">
+        <span *ngIf="tipo_exame_id.errors?.['required']">
+          O campo é obrigatório!
+        </span>
+      </mat-error>
+      <mat-autocomplete #autoTipoExames="matAutocomplete"
+        [displayWith]="displayFnTipoExame(tipos_exame)">
+        <mat-option *ngFor="let tipo_exame of tipos_exame"
+          [value]="tipo_exame.id">
+          {{tipo_exame.descricao}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-label>Descrição</mat-label>
+      <input matInput maxlength="50" name="descricao"
+        title="Descrição"
+        [(ngModel)]="versaoExame.descricao"
+      >
+    </mat-form-field>
+  </form>
+</div>
+
+<mat-tab-group>
+  <mat-tab label="Geral">
+    <app-versao-exame-geral-create [versaoExame]="this.versaoExame">
+    </app-versao-exame-geral-create>
+  </mat-tab>
+
+  <mat-tab label="Interfaceamento">
+    <app-versao-exame-interfaceamento-create [versaoExame]="this.versaoExame">
+    </app-versao-exame-interfaceamento-create>
+  </mat-tab>
+
+  <mat-tab label="Parâmetro">
+    <app-versao-exame-parametro [versaoExame]="this.versaoExame" 
+      [parametrosVersaoExame]="this.parametrosVersaoExame">
+    </app-versao-exame-parametro>
+  </mat-tab>
+</mat-tab-group>
+
+<div class="gridAddButton">
+  <button appDebounceClick mat-flat-button color="primary" class="m-2"
+    (click)="createVersaoExame()">Salvar</button>
+  <button appDebounceClick mat-flat-button color="warn" class="m-2"
+    (click)="cancel()">Cancelar</button>
+</div>

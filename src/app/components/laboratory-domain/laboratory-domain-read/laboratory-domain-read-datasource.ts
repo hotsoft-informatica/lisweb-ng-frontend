@@ -25,7 +25,7 @@ export class LaboratoryDomainReadDataSource implements DataSource<LaboratoryDoma
     this.loadingSubject.next(true);
 
     this.laboratoryDomainService
-      .findLaboratoryDomains(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -36,7 +36,6 @@ export class LaboratoryDomainReadDataSource implements DataSource<LaboratoryDoma
   }
 
   connect(collectionViewer: CollectionViewer): Observable<LaboratoryDomain[]> {
-    console.log('Conectando ao data source');
     return this.laboratoryDomainsSubject.asObservable();
   }
 

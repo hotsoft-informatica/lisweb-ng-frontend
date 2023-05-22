@@ -1,18 +1,44 @@
+import { BaseService } from './base.service';
+import { Injectable, Inject, Injector } from '@angular/core';
 import { Query } from './../model/query.model';
 import { Laboratorio } from '../model/laboratorio.model';
-import { Injectable } from '@angular/core';
+import { BackendIpService } from './backend-ip.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EMPTY, Observable } from 'rxjs';
+import { Observable, of, map } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root',
 })
-export class LaboratorioService {
-  baseUrl = 'http://127.0.0.1:3010/laboratorios';
 
+export class LaboratorioService extends BaseService {
+  associationUrl = '/laboratorios_dominio';
+  baseUrl = '/laboratorios';
+  storage: Storage = window.localStorage;
   query: Query[] = [];
+  labDomains = [];
 
-  constructor(private snackbar: MatSnackBar, private http: HttpClient) { }
+  constructor(
+    private snackbar: MatSnackBar,
+    @Inject(Injector) public injector: Injector,
+    public http: HttpClient,
+    private backendIpService: BackendIpService) {
+    super(injector, http);
+    this.endpoint = 'laboratorios'
+    this.baseUrl = backendIpService.getUrl() + this.baseUrl;
+    this.associationUrl = backendIpService.getUrl() + this.associationUrl;
+  }
+
+  getData() {
+    return this.labDomains.length ? of(this.labDomains)
+      : this.http.get<any>('baseUrl')
+        .pipe(
+          map((data) => {
+            this.labDomains = data.values;
+            return this.labDomains;
+          })
+        )
+  }
 
   showMessage(msg: string): void {
     this.snackbar.open(msg, 'X', {
@@ -35,6 +61,11 @@ export class LaboratorioService {
     return this.http.get<Laboratorio>(url);
   }
 
+  getAssocLabId(id: number): Observable<Laboratorio[]> {
+    const url = `${this.associationUrl}/${id}`;
+    return this.http.get<Laboratorio[]>(url);
+  }
+
   update(laboratorio: Laboratorio): Observable<Laboratorio> {
     const url = `${this.baseUrl}/${laboratorio.id}`;
     return this.http.put<Laboratorio>(url, laboratorio);
@@ -45,11 +76,12 @@ export class LaboratorioService {
     return this.http.delete<Laboratorio>(url);
   }
 
-  findLaboratorios(
+  // TODO: Implementar herança
+  find(
     active: string = '',
     sortOrder: string = 'asc',
-    pageNumber: number = 1,
-    pageSize: number = 3,
+    pageNumber: number = 0,
+    pageSize: number = 5,
     query: Query[] | null
   ): Observable<Laboratorio[]> {
     let params = new HttpParams()
@@ -63,15 +95,14 @@ export class LaboratorioService {
         params = params.append(key, queryItem.value);
       }
     });
-
     return this.http.get<Laboratorio[]>(this.baseUrl, {
-      params,
+      params: params
     });
   }
 
   countLaboratorios(): Observable<number> {
     return this.http.get<number>(this.baseUrl, {
-      params: new HttpParams().set('totalCount', 'true'),
+      params: new HttpParams().set('totalCount', 'true')
     });
   }
 }

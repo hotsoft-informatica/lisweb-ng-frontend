@@ -1,0 +1,54 @@
+<form class= "example-container row container-fluid" fxShow.gt-xs>
+  <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
+    <mat-label>Nome:</mat-label>
+    <input matInput maxlength="50" title="Nome completo"
+      name="nome" [(ngModel)]="usuario.nome">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
+    <mat-label>Usuario:</mat-label>
+    <input matInput maxlength="50" title="Nome de usuario"
+      name="login" [(ngModel)]="usuario.login">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="col-lg-12 col-md-12 p-2">
+    Cargo:
+    <input matInput maxlength="50" title="Cargo">
+  </mat-form-field>
+
+  <mat-form-field class="example-chip-list" appearance="fill">
+    Grupos
+    <mat-chip-listbox #chipList aria-label="grupo selection">
+      <mat-chip
+        *ngFor="let grupo of grupos"
+        [removable]="removable"
+        (removed)="remove(grupo)">
+        {{grupo}}
+        <button type="button" *ngIf="removable">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <!-- TODO: Refazer este input de tags pro angular atual -->
+      <input
+        title="Digite o grupo de usuario"
+        #grupoInput
+        [formControl]="grupoCtrl"
+        [matAutocomplete]="auto"
+        name="grupos"
+        [(ngModel)]="usuario.grupos">
+    </mat-chip-listbox>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let grupo of filteredGrupos | async" [value]="grupo">
+      {{grupo}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
+</form>
+<div>
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index"
+  (click)="createUsuario()">Salvar</button>
+  <button appDebounceClick mat-flat-buttonmat-dialog-close color="warn" class="fixed-bottom index ms-2"
+    routerLink="/usuarios/read">
+    Cancelar</button>
+</div>

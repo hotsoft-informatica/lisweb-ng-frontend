@@ -1,0 +1,152 @@
+// Importando o Bootstrap e o Material
+@use "../node_modules/bootstrap/scss/bootstrap.scss";
+@use "../node_modules/@angular/material/theming";
+
+@use 'tippy.js/dist/tippy.css';
+@use 'tippy.js/themes/light.css';
+@use 'tippy.js/animations/scale.css';
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+// Herdando classes do Bootstrap para os componentes do Material
+button,
+.mat-raised-button,
+.mat-icon-button,
+.mat-button-base,
+.mat-button-toggle-label,
+.mat-button.mat-flat-button,
+.mat-button.mat-stroked-button,
+.mat-button.mat-raised-button {
+  @extend .btn;
+}
+
+.mat-toolbar,
+.mat-menu-panel {
+  @extend .navbar;
+}
+
+.mat-checkbox-label,
+.mat-radio-label,
+.mat-tab-label {
+  @extend .form-check-label;
+}
+
+.mat-menu-item {
+  @extend .dropdown-item;
+}
+
+.mat-table {
+  @extend .table;
+}
+
+// Botões
+.material-button {
+  @extend .btn;
+}
+
+// Inputs
+.material-input {
+  @extend .form-control;
+}
+
+
+.material-select {
+  @extend .form-select;
+}
+
+// Labels
+.material-label {
+  @extend .form-label;
+}
+
+// Checkboxes e Radiobuttons
+.material-checkbox {
+  @extend .form-check-input;
+}
+
+.material-checkbox-label {
+  @extend .form-check-label;
+}
+
+.material-radio {
+  @extend .form-check-input;
+}
+
+.material-radio-label {
+  @extend .form-check-label;
+}
+
+// Alerts
+.material-alert {
+  @extend .alert;
+}
+
+.material-alert-link {
+  @extend .alert-link;
+}
+
+// Cards
+.material-card {
+  @extend .card;
+}
+
+.material-card-header {
+  @extend .card-header;
+}
+
+.material-card-footer {
+  @extend .card-footer;
+}
+
+.material-card-title {
+  @extend .card-title;
+}
+
+.material-card-subtitle {
+  @extend .card-subtitle;
+}
+
+.material-card-body {
+  @extend .card-body;
+}
+
+.material-card-text {
+  @extend .card-text;
+}
+
+.material-card-link {
+  @extend .card-link;
+}
+
+// Tables
+.material-table {
+  @extend .table;
+}
+
+// Badges
+.material-badge {
+  @extend .badge;
+}
+
+// Invalid 
+.form-control:focus, .material-input:focus, input:focus, textarea:focus, .mat-select-trigger:focus, .mat-slide-toggle:focus, .mat-checkbox:focus, .mat-radio:focus, .mat-checkbox-inner-container:focus, .mat-radio-button:focus, .mat-form-field-infix:focus{
+  @extend .bg-transparent;
+  @extend .shadow-none;
+}
+
+input,
+textarea,
+.mat-select-trigger,
+.mat-slide-toggle,
+.mat-checkbox,
+.mat-radio,
+.mat-checkbox-inner-container,
+.mat-radio-button,
+.mat-form-field-infix {
+  @extend .form-control;
+}
+
+.ng-touched.ng-invalid {
+  @extend .is-invalid;
+}

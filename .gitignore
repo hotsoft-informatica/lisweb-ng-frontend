@@ -32,6 +32,7 @@ speed-measure-plugin*.json
 .history/*
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -44,3 +45,16 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Cache
+.angular/*
+.angular/cache/*
+.angular/cache/angular-webpack/*
+
+megalinter-reports/
+
+# yarn
+/.yarn/*
+.yarn/*
+
+.angular

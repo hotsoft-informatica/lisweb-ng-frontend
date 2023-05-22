@@ -1,0 +1,80 @@
+<form class= "example-container row container-fluid mt-4">
+  <div>
+    <mat-form-field appearance="fill" class="col-lg-5 p-2">
+      <mat-label>Razão Social:</mat-label>
+      <input matInput #razao_social
+            id="razao_social"
+            name="razao_social"
+            [(ngModel)]="this.empresa.razao_social"
+            >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-5 p-2">
+      <mat-label>Nome Fantasia:</mat-label>
+      <input matInput #nome_fantasia
+            id="nome_fantasia"
+            name="nome_fantasia"
+            [(ngModel)]="this.empresa.nome_fantasia">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>CNPJ:</mat-label>
+      <input matInput #input maxlength="18" mask="00.000.000/0000-00"
+            id="CNPJ"
+            name="CNPJ"
+            [(ngModel)]="this.empresa.cnpj">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill" class="col-lg-4 p-2">
+      <mat-label>Inscrição Estadual:</mat-label>
+      <input matInput #input
+            id="inscricao_estadual"
+            name="inscricao_estadual"
+            [(ngModel)]="this.empresa.inscricao_estadual">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-4 p-2">
+      <mat-label>Alvará:</mat-label>
+      <input matInput #input
+            id="alvara"
+            name="alvara"
+            [(ngModel)]="this.empresa.alvara">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-4 p-2">
+      <mat-label>Alvará UF:</mat-label>
+      <input matInput #input
+            id="alvara_uf"
+            name="alvara_uf"
+            [(ngModel)]="this.empresa.alvara_uf">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <span class="fs-7">CONSELHO ESTABELECIMENTO:</span>
+    <mat-form-field appearance="fill" class="col-lg-3 p-2">
+      <mat-label>Numero:</mat-label>
+      <input matInput #input
+            id="inscricao_estadual"
+            name="inscricao_estadual"
+            [(ngModel)]="localdeatendimento.cod_conselho">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-xl-3 p-2 ms-1">
+      <mat-label>Conselho:</mat-label>
+      <input matInput #input
+            id="alvara"
+            name="alvara"
+            [(ngModel)]="localdeatendimento.sigla_conselho">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-2 col-xl-2 p-2 ms-1">
+      <mat-label>UF:</mat-label>
+      <input matInput #input
+            id="alvara_uf"
+            name="alvara_uf"
+            [(ngModel)]="localdeatendimento.uf_conselho">
+    </mat-form-field>
+  </div>
+</form>

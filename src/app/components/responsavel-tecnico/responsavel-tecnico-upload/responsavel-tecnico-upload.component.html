@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-title >Upload de Arquivo</mat-card-title>
+  <form #formUpload="ngForm">
+    <input type="file"  class="file-input"
+    title="Upload" (change)="onFileSelected($event)" #fileUpload/>
+  </form>
+</mat-card>
+<button type="button" mat-raised-button (click)="onUpload()" color="primary">
+  <mat-icon>attach_file</mat-icon>
+</button>
+<button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>

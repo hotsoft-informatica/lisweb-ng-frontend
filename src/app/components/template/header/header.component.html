@@ -1,36 +1,217 @@
-<mat-toolbar class="header mat-elevation-z4">
-  <div class="text">
-    <a routerLink="/">
-      LISWEB
-    </a>
-  </div>
-  <!-- <span class="title-group">
-    <a routerLink="{{ routeUrl }}">
-      <i class="material-icons">
-        {{ icon }}
-      </i>
-      {{ title }}
-    </a>
-  </span> -->
-  <div class="btn">
-    <mat-menu #appMenu="matMenu">
-      <ng-template matMenuContent>
-        <button mat-menu-item>
-          <a mat-list-item routerLink="/">Home</a>
+<mat-toolbar color="primary"
+  class="header mat-elevation-z4 navbar navbar-dark bg-primary justify-content-center">
+  <mat-toolbar-row class="justify-content-center">
+    <div class="navbar">
+      <button mat-button [matMenuTriggerFor]="home" class="nav-item dropdown">
+        <mat-icon>pageview</mat-icon>
+        Inicio
+      </button>
+      <mat-menu #home="matMenu" class="nav-item">
+        <button mat-menu-item class="nav-item" routerLink="/">
+          Página Inicial
         </button>
-        <button mat-menu-item>
-          <a mat-list-item routerLink="/laboratorydomains">Lab Domínio</a>
+        <button mat-menu-item class="nav-item" routerLink="/consulta_amostra_show">
+          Clta. Amostra
         </button>
-        <button mat-menu-item>
-          <a mat-list-item routerLink="/laboratorios">Laboratório</a>
+        <button mat-menu-item class="nav-item"
+          routerLink="/hibrido_client_errors"
+          *ngIf="currentSuperUser && !currentUser"
+          >
+          Hibrido Client Errors
         </button>
-      </ng-template>
-    </mat-menu>
-    <span [matMenuTriggerFor]="appMenu">
-      <i class="material-icons medium v-middle">
-        assignment
-      </i>
-      Cadastrar
-    </span>
-  </div>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="requisicao" class="nav-item">
+        <mat-icon>folder</mat-icon>
+        Requisicao
+      </button>
+      <mat-menu #requisicao="matMenu" class="nav-item dropdown">
+        <button mat-menu-item class="nav-item" routerLink="/requisicoes">
+          Requisições
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/pacientes/read">
+          Pacientes
+        </button>
+      </mat-menu>
+      <button mat-button class="nav-item" [matMenuTriggerFor]="versaoexames">
+        <mat-icon>list</mat-icon>
+        Versões Exame
+      </button>
+      <mat-menu #versaoexames="matMenu" class="nav-item dropdown">
+        <button mat-menu-item class="nav-item" routerLink="/versao_exames">
+          Listar Versões
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/marcacoes/read">
+          Tabela Marcação
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/valores_referencia/read">
+          Valor Referência
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/metodos-exames/read">
+          Listar Métodos de Exame
+        </button>
+      </mat-menu>
+      <button mat-button class="nav-item" [matMenuTriggerFor]="cadastro">
+        <mat-icon>assignment</mat-icon>
+        Cadastrar
+      </button>
+      <mat-menu #cadastro="matMenu" class="nav-item dropdown">
+        <button *ngIf="currentSuperUser || currentUser" mat-menu-item [matMenuTriggerFor]="tiposusuario">
+          Usuários
+        </button>
+        <mat-menu #tiposusuario="matMenu">
+          <button *ngIf="currentSuperUser && !currentUser" mat-menu-item routerLink="/super_users">
+            Administrador
+          </button>
+          <button *ngIf="currentSuperUser || currentUser" mat-menu-item routerLink="/users">
+            Usuário
+          </button>
+        </mat-menu>
+        <button mat-menu-item class="nav-item" routerLink="/laboratorios">
+          Laboratório
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/usuarios/read">
+          Usuarios
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/operadoras">
+          Operadoras
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/empresas">
+          Empresas
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/especialidades">
+          Especialidade
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/localdeatendimento/read">
+          Local de Atendimento
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/medicos">
+          Médicos
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/responsavel_tecnicos">
+          Resp. Técnico
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/dominios">
+          Domínio
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/recursos">
+          Recursos
+        </button>
+      </mat-menu>
+
+      <button mat-button class="nav-item" [matMenuTriggerFor]="stockfin">
+        <mat-icon>timer</mat-icon>
+        Stockfin
+      </button>
+      <mat-menu #stockfin="matMenu" class="nav-item dropdown">
+        <button mat-menu-item [matMenuTriggerFor]="tipos">Categorias e Tipos</button>
+        <mat-menu #tipos="matMenu" class="nav-item dropdown">
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Categorias de Produto
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Tipos de Produto
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Unidades de Entrada/Saída
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Tipos de pessoa
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Grupos de Centros de Custo
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Marcas
+          </button>
+        </mat-menu>
+        <button mat-menu-item [matMenuTriggerFor]="cadastros">Cadastros</button>
+        <mat-menu #cadastros="matMenu" class="nav-item dropdown">
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Pessoas
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Centros de Custo
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Produtos
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Contas
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Plano de Contas
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+            Unidades de Atendimento
+          </button>
+        </mat-menu>
+        <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+          Lancamentos
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/notas">
+          Notas
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+          Pedidos
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+          Lista de Compras
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+          Orçamentos
+        </button>
+        <button mat-menu-item class="nav-item" routerLink="/lancamentos">
+          Pedidos
+        </button>
+      </mat-menu>
+
+      <button mat-button class="nav-item" [matMenuTriggerFor]="configurar">
+        <mat-icon>settings</mat-icon>
+        Configurar
+      </button>
+      <mat-menu #configurar="matMenu" class="nav-item dropdown">
+        <button mat-menu-item class="nav-item" routerLink="backend_ip/create">
+          Backend IP
+        </button>
+      </mat-menu>
+
+      <button mat-button class="nav-item" [matMenuTriggerFor]="perfil">
+        <mat-icon>account_circle</mat-icon>
+        Perfil
+      </button>
+
+      <mat-menu #consultar="matMenu" class="nav-item dropdown">
+        <button mat-menu-item>
+          <a mat-list-item routerLink="/consulta_amostra_show">
+            Clta. Amostra
+          </a>
+        </button>
+      </mat-menu>
+
+      <mat-menu #perfil="matMenu">
+        <button mat-menu-item>
+          <a mat-list-item routerLink="/">
+            Perfil do Usuario
+          </a>
+        </button>
+        <div *ngIf="!isLogedIn();">
+          <button mat-menu-item *ngIf="!currentSuperUser && !currentUser">
+            <a mat-list-item routerLink="/login_super_user">
+              Admin
+            </a>
+          </button>
+          <button mat-menu-item *ngIf="!currentUser && !currentSuperUser">
+            <a mat-list-item routerLink="/login">
+              Login
+            </a>
+          </button>
+        </div>
+        <button mat-menu-item *ngIf="isLogedIn();" (click)="logout()">
+          <a mat-list-item>
+            Sair
+          </a>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>

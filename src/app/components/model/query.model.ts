@@ -1,8 +1,12 @@
-export class Query {
-  public key: string = '';
-  public value: string = '';
+import { Base } from './base.model';
+export class Query extends Base{
+  public key = '';
+  public value = '';
+  public isNumeric = false;
 
   constructor(values: Query) {
+    super(values);
     Object.assign(this, values);
   }
 }
+

@@ -1,3 +1,13 @@
 <app-header></app-header>
+<mat-progress-bar
+  *ngIf="loading" color="accent" mode="indeterminate">
+</mat-progress-bar>
 <app-nav></app-nav>
+<div class="container-fluid">
+  <span class="print">
+    Visitado em: {{loadedDateTime | date: 'medium'}}
+  </span>
+  <router-outlet></router-outlet>
+</div>
 <app-footer></app-footer>
+<!-- <app-requisicao-update-exames-add></app-requisicao-update-exames-add> -->

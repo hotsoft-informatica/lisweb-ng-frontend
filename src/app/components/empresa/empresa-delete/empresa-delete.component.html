@@ -1,0 +1,149 @@
+<mat-card>
+  <mat-card-title>Excluir Empresa</mat-card-title>
+  <form  *ngIf="empresa">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Razão Social"
+        [(ngModel)]="empresa.razao_social"
+        name="razao_social"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Nome Fantasia "
+        [(ngModel)]="empresa.nome_fantasia"
+        name="nome_fantasia"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="CNPJ"
+        [(ngModel)]="empresa.cnpj"
+        name="cnpj"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Isc. Estatual"
+        [(ngModel)]="empresa.inscricao_estadual"
+        name="inscricao_estadual"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Endereço"
+        [(ngModel)]="empresa.endereco"
+        name="endereco"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Bairro"
+        [(ngModel)]="empresa.bairro"
+        name="Bairro"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="CEP"
+        [(ngModel)]="empresa.cep"
+        name="cep"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Cidade"
+        [(ngModel)]="empresa.cidade"
+        name="cidade"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="UF"
+        [(ngModel)]="empresa.uf"
+        name="uf"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Telefone"
+        [(ngModel)]="empresa.telefone"
+        name="telefone"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Fax"
+        [(ngModel)]="empresa.fax"
+        name="fax"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Contato"
+        [(ngModel)]="empresa.nome_contato"
+        name="nome_contato"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Email"
+        [(ngModel)]="empresa.email"
+        name="email"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Cod Município"
+        [(ngModel)]="empresa.cod_ibge_municipio"
+        name="cod_ibge_municipio"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Número"
+        [(ngModel)]="empresa.numero"
+        name="numero"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Alvara"
+        [(ngModel)]="empresa.alvara"
+        name="alvara"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        title="Alvara UF"
+        [(ngModel)]="empresa.alvara_uf"
+        name="alvara_uf"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="deleteEmpresa()" color="warn">
+    Excluir
+  </button>
+  <button mat-raised-button (click)="cancel()" color="accent">
+    Cancelar
+  </button>
+</mat-card>
+
+

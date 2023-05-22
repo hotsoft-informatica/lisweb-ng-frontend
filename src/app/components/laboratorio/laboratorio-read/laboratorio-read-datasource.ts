@@ -25,7 +25,7 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
     this.loadingSubject.next(true);
 
     this.laboratorioService
-      .findLaboratorios(active, sortDirection, pageIndex, pageSize, query)
+      .find(active, sortDirection, pageIndex, pageSize, query)
       .pipe(
         catchError(() => of([])),
         finalize(() => this.loadingSubject.next(false))
@@ -35,12 +35,11 @@ export class LaboratorioReadDataSource implements DataSource<Laboratorio> {
       );
   }
 
-  connect(collectionViewer: CollectionViewer): Observable<Laboratorio[]> {
-    console.log('Conectando ao data source');
+  connect(): Observable<Laboratorio[]> {
     return this.laboratoriosSubject.asObservable();
   }
 
-  disconnect(collectionViewer: CollectionViewer): void {
+  disconnect(): void {
     this.laboratoriosSubject.complete();
     this.loadingSubject.complete();
   }

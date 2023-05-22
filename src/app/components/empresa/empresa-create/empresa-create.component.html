@@ -1,0 +1,259 @@
+<mat-card>
+  <mat-card-title *ngIf="!fromOperadora">Nova Empresa</mat-card-title>
+  <form #formCreateEmpresa="ngForm">
+    <mat-form-field appearance="fill">
+      Razão Social
+      <input
+        type="text"
+        id="razao_social"
+        required
+        minlength="4"
+        matInput
+        title="Razão Social"
+        [(ngModel)]="empresa.razao_social"
+        #razao_social="ngModel"
+        name="razao_social"
+      />
+      <div
+        *ngIf="
+          razao_social.invalid && (razao_social.dirty || razao_social.touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="razao_social.errors?.['required']">
+          O campo é obrigatório!
+        </div>
+        <div *ngIf="razao_social.errors?.['minlength']">
+          O nome dever conter no mínimo 4 caracteres!
+        </div>
+      </div>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Nome Fantasia
+      <input
+        type="text"
+        id="nome_fantasia"
+        required
+        minlength="4"
+        matInput
+        title="Nome Fantasia"
+        [(ngModel)]="empresa.nome_fantasia"
+        #nome_fantasia="ngModel"
+        name="nome_fantasia"
+      />
+      <div
+        *ngIf="
+          nome_fantasia.invalid &&
+          (nome_fantasia.dirty || nome_fantasia.touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="nome_fantasia.errors?.['required']">
+          O campo é obrigatório!
+        </div>
+        <div *ngIf="nome_fantasia.errors?.['minlength']">
+          O nome dever conter no mínimo 4 caracteres!
+        </div>
+      </div>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      CNPJ
+      <input
+        type="text"
+        mask="00.000.000/0000-00"
+        pattern="\d*"
+        id="cnpj"
+        required
+        minlength="14"
+        matInput
+        title="CNPJ"
+        [(ngModel)]="empresa.cnpj"
+        #cnpj="ngModel"
+        name="cnpj"
+      />
+      <div *ngIf="cnpj.invalid && (cnpj.dirty || cnpj.touched)" class="alert">
+        <div *ngIf="cnpj.errors?.['required']">O campo é obrigatório!</div>
+        <div *ngIf="cnpj.errors?.['minlength']">
+          O cnpj dever conter 14 caracteres!
+        </div>
+      </div>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Incrição Estadual
+      <input
+        type="text"
+        mask="000.000.000.000"
+        pattern="\d*"
+        id="inscricao_estadual"
+        required
+        minlength="12"
+        matInput
+        title="Isc. Estadual"
+        [(ngModel)]="empresa.inscricao_estadual"
+        #inscricao_estadual="ngModel"
+        name="inscricao_estadual"
+      />
+      <div
+        *ngIf="
+          inscricao_estadual.invalid &&
+          (inscricao_estadual.dirty || inscricao_estadual.touched)
+        "
+        class="alert"
+      >
+        <div *ngIf="inscricao_estadual.errors?.['required']">
+          O campo é obrigatório!
+        </div>
+        <div *ngIf="inscricao_estadual.errors?.['minlength']">
+          A Inscrição Estadual dever conter 12 caracteres!
+        </div>
+      </div>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Endereço
+      <input
+        matInput
+        title="Endereço"
+        [(ngModel)]="empresa.endereco"
+        name="endereco"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Bairro
+      <input
+        matInput
+        title="Bairro"
+        [(ngModel)]="empresa.bairro"
+        name="Bairro"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      CEP
+      <input matInput title="CEP" 
+        [(ngModel)]="empresa.cep" name="cep" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Cidade
+      <input
+        type="text"
+        title="Cidade"
+        name="cidade"
+        required
+        matInput [formControl]="formControl2"
+        [matAutocomplete]="autoCity"
+        [(ngModel)]="this.empresa.cidade"
+      />
+      <mat-autocomplete [displayWith]="displayFn" autoActiveFirstOption #autoCity="matAutocomplete">
+        <mat-option *ngFor="let city of cityFilter | async" [value]="city">
+          {{city}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      UF
+      <input
+        type="text"
+        title="UF"
+        name="uf"
+        required
+        matInput [formControl]="formControl1"
+        [matAutocomplete]="autoState"
+        [(ngModel)]="this.empresa.uf"
+      />
+      <mat-autocomplete autoActiveFirstOption #autoState="matAutocomplete">
+        <mat-option *ngFor="let state of stateFilter | async" [value]="state">
+          {{state}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Telefone
+      <input
+        mask="(00) 00000-0000 || (00) 0000-0000"
+        matInput
+        title="Telefone"
+        [(ngModel)]="empresa.telefone"
+        name="telefone"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Fax
+      <input
+        mask="(00) 0000-0000"
+        matInput
+        title="Fax"
+        [(ngModel)]="empresa.fax"
+        name="fax"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Nome Contato
+      <input
+        matInput
+        title="Contato"
+        [(ngModel)]="empresa.nome_contato"
+        name="nome_contato"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Email
+      <input
+        type="text"
+        id="email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+        matInput
+        title="Email"
+        [(ngModel)]="empresa.email"
+        #email="ngModel"
+        name="email"
+      />
+      <div
+        *ngIf="email.invalid && (email.dirty || email.touched)"
+        class="alert"
+      >
+        <div [hidden]="!email.errors?.pattern">Padrão inválido para email!</div>
+      </div>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Cod. Município
+      <input
+        matInput
+        title="Cod Município"
+        [(ngModel)]="empresa.cod_ibge_municipio"
+        name="cod_ibge_municipio"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Número
+      <input
+        matInput
+        title="Número"
+        [(ngModel)]="empresa.numero"
+        name="numero"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Alvará
+      <input
+        matInput
+        title="Alvara"
+        [(ngModel)]="empresa.alvara"
+        name="alvara"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      Alvará UF
+      <input
+        matInput
+        title="Alvara UF"
+        [(ngModel)]="empresa.alvara_uf"
+        name="alvara_uf"
+      />
+    </mat-form-field>
+  </form>
+  <div *ngIf="!fromOperadora">
+    <button mat-raised-button [disabled]="formCreateEmpresa.invalid" (click)="createEmpresa()" color="primary">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+  </div>
+</mat-card>

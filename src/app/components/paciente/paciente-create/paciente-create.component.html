@@ -1,0 +1,30 @@
+<!--
+
+  src/app/components/paciente/paciente-create/paciente-create.component.html:6:2 - error NG8002: Can't bind to 'paciente' since it isn't a known property of 'app-paciente-create-dados-outros'.
+1. If 'app-paciente-create-dados-outros' is an Angular component and it has 'paciente' input, then verify that it is included in the '@Component.imports' of this component.
+2. If 'app-paciente-create-dados-outros' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
+3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.
+
+6  [paciente]='this.paciente'>
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  src/app/components/paciente/paciente-create/paciente-create.component.ts:10:18
+    10     templateUrl: './paciente-create.component.html',
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Error occurs in the template of component PacienteCreateComponent.
+
+-->
+
+<div>
+<!-- <app-paciente-create-dados-pessoais
+ [paciente]='this.paciente'>
+</app-paciente-create-dados-pessoais>
+<app-paciente-create-dados-outros
+ [paciente]='this.paciente'>
+</app-paciente-create-dados-outros> -->
+  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index"
+          (click)="createPaciente()">Salvar</button>
+          <button appDebounceClick mat-flat-buttoncolor="warn" class="fixed-bottom index ms-2"
+          (click)="cancel()">Cancelar</button>
+</div>
+

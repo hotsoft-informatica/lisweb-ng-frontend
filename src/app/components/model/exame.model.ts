@@ -1,0 +1,86 @@
+import { Base } from './base.model'
+import { TipoExame } from "./tipo-exame.model";
+import { VersaoExame } from "./versao-exame.model";
+
+export class Exame extends Base{
+  public amostra_exclusiva?: string;
+  public aprovacao_automatica?: string;
+  public bancada_id?: number;
+  public cid10?: string;
+  public cod_exame?: string;
+  public cod_original?: string;
+  public cod_seguro?: string;
+  public coletor_mesmo_sexo?: string;
+  public contrato_convenio_id?: number;
+  public convenio_id?: number;
+  public dado_auxiliar?: string;
+  public data_autorizacao_guia?: Date = new Date();
+  public data_entrega?: Date = new Date();
+  public data_guia?: Date = new Date();
+  public data_hora_aprovacao?: Date = new Date();
+  public data_hora_liberacao?: Date = new Date();
+  public data_hora_resultado?: Date = new Date();
+  public exame_apoiado_id?: number;
+  public guia_principal?: string;
+  public guia?: string;
+  public imprime_historico?: string;
+  public instrumento_id?: number;
+  public laboratorio_apoio_id?: number;
+  public liberacao_automatica?: string;
+  public material_biologico_id?: number;
+  public medico_id?: number;
+  public multi_amostra?: string;
+  public nao_aprovar_automatico?: string;
+  public nao_coletar?: string;
+  public nivel_urgencia?: string;
+  public num_guia_operadora?: string;
+  public num_pontos?: number;
+  public num_protocolo?: number;
+  public observacao_instrumento?: string;
+  public observacao?: string;
+  public omitir_laudo?: string;
+  public preco?: number;
+  public previsao_critica_aprovacao?: Date = new Date();
+  public previsao_critica_resultado?: Date = new Date();
+  public previsao_normal_aprovacao?: Date = new Date();
+  public previsao_normal_resultado?: Date = new Date();
+  public publica_resultado?: string;
+  public publicresultado_controlado?: string;
+  public requisicao_id?: number;
+  public resultado_normal?: string;
+  public resultado_numerico?: string;
+  public resultado_texto?: string;
+  public senha_autorizacao?: string;
+  public sequencial_laudo?: number;
+  public status_autorizacao?: string;
+  public status_publicacao?: string;
+  public status?: string;
+  public texto_valor_referencia?: string;
+  public tipo_exame_id?: number;
+  public tipo_exame?: TipoExame;
+  public tipo_instrumento_id?: number;
+  public tipo_resultado?: string;
+  public unidade_resultado?: string;
+  public urgente?: string;
+  public usar_valor_referencia_texto?: string;
+  public usuario_aprovacao_id?: number;
+  public usuario_conferencia_guia_id?: number;
+  public usuario_liberacao_tecnica_id?: number;
+  public usuario_resultado_id?: number;
+  public val_maximo_absurdo?: number;
+  public val_maximo_critico?: number;
+  public val_maximo?: number;
+  public val_minimo_absurdo?: number;
+  public val_minimo_critico?: number;
+  public val_minimo?: number;
+  public validade_carteirinha?: Date = new Date();
+  public validade_senha_autorizacao?: Date = new Date();
+  public valor_cobertura?: number;
+  public versao_exame_id?: number;
+  public versao_exame?: VersaoExame;
+
+  constructor(values: Exame) {
+    super(values);
+    Object.assign(this, values);
+  }
+}

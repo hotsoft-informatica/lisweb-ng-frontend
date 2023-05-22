@@ -1,0 +1,43 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Paciente } from '../../../model/paciente.model';
+import { PacienteService } from 'src/app/components/service/paciente.service';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+    selector: 'app-paciente-create-dados-pessoais',
+    templateUrl: './paciente-create-dados-pessoais.component.html',
+    standalone: true,
+    imports: [FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatOptionModule]
+})
+export class PacienteCreateDadosPessoaisComponent implements OnInit {
+  @Input('paciente') paciente: Paciente;
+
+  constructor(
+    private router: Router,
+    private pacienteService: PacienteService,
+  ) {
+    this.paciente = new Paciente();
+  }
+
+  ngOnInit(): void {
+  }
+  public calculaIdade(): void{
+// TO-DO: REVER, TA DANDO RUIM
+    // const tempo = moment(this.paciente.data_nascimento);
+    // const diff = moment.duration(moment().diff(tempo));
+    // this.paciente.idade_paciente = diff.years() + ' anos, ' + diff.months() + ' meses, ' + diff.days() + ' dias.';
+    }
+
+  createPaciente(): void {
+    this.pacienteService.create(this.paciente).subscribe(() => {
+       this.router.navigate(['/pacientes/read']);
+    });
+  }
+
+}
+

@@ -1,0 +1,35 @@
+<mat-card class="col-xs-12 col-sm-9 col-md-6 col-lg-4 col-lg-card card mx-auto">
+  <div class="example-container row">
+    <img title="Lisweb logo" src="../../../assets/lisweb.png" class="img mx-auto">
+    <h3 class="text-center">Termine de fazer seu login</h3>
+
+    <div class="mt-3 mb-3">
+      <h3 class="text-center">Seja bem-vindo!</h3>
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Informe sua senha</mat-label>
+      <input title="Senha"
+       matInput [type]="hide ? 'password' : 'text'"
+       [(ngModel)]="senha">
+      <button mat-icon-button matSuffix
+       (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <a href="/" class="text-primary col-5 mb-5">Esqueci minha senha.</a>
+    </div>
+    <div class="row justify-content-between mt-4">
+      <a href="/" class="text-primary col-5"
+       routerLink="/login">Retornar ao login</a>
+      <button mat-raised-button color="primary" class="col-3"
+       (click)="salveSenha()">Avançar</button>
+    </div>
+    <div *ngIf="this.senhaIncorreta">
+      <mat-card class="mt-2 card-error text-danger">
+      {{this.mensagemErro}}
+      </mat-card>
+    </div>
+  </mat-card>

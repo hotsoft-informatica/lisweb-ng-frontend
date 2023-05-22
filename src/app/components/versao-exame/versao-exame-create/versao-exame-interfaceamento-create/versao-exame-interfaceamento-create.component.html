@@ -1,0 +1,37 @@
+<div class="example-container row container-fluid mt-4">
+  <form #formCreateInterfaceamento="ngForm" class="justify-content-md-center">
+    <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-label>Tipo Instrumento</mat-label>
+      <input
+        name="tipo_instrumento_id"
+        matInput [matAutocomplete]="autoTipoInstrumento"
+        [(ngModel)]="versaoExame.tipo_instrumento_id"
+        (ngModelChange)="searchTipoInstrumento()"
+        #tipo_instrumento_id="ngModel"
+        required
+      />
+      <mat-error *ngIf="tipo_instrumento_id.invalid && (tipo_instrumento_id.dirty || tipo_instrumento_id.touched)">
+        <span *ngIf="tipo_instrumento_id.errors?.['required']">
+          O campo é obrigatório!
+        </span>
+      </mat-error>
+      <mat-autocomplete #autoTipoInstrumento="matAutocomplete"
+        [displayWith]="displayFnTipoInstrumento(tipoInstrumentos)">
+        <mat-option *ngFor="let tipoInstrumento of tipoInstrumentos"
+          [value]="tipoInstrumento.id">
+          {{tipoInstrumento.descricao}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+      <mat-label>Agrupamento</mat-label>
+      <input matInput name="agrupamento"
+        title="Agrupamento"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+      <mat-label>Diluição</mat-label>
+      <input matInput name="diluição"
+        title="Diluição"/>
+    </mat-form-field>
+  </form>
+</div>

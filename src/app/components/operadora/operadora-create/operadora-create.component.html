@@ -1,0 +1,8 @@
+<mat-card>
+  <mat-card-title>Nova Operadora</mat-card-title>
+  <app-empresa-create [fromOperadora]=true [empresa]="this.empresa"></app-empresa-create>
+  <button mat-raised-button (click)="createOperadora()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+</mat-card>

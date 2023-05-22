@@ -1,0 +1,14 @@
+<mat-form-field class="col-5">
+  Tipo exame
+  <input
+    name="tipo_exame"
+    matInput [matAutocomplete]="auto" title="Tipo exame"
+    [(ngModel)]="this.tipoExame!.id"
+    (ngModelChange)="search()"
+  />
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn(tipoExames)">
+    <mat-option *ngFor="let tipoExame of tipoExames" [value]="tipoExame.id">
+      {{ tipoExame.descricao }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

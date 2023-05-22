@@ -1,0 +1,10 @@
+<mat-card>
+  <mat-card-title>Alterar Operadora</mat-card-title>
+</mat-card>
+<app-empresa-update [fromOperadora]=true [empresa]="this.empresa"></app-empresa-update>
+<mat-card>
+  <button mat-raised-button (click)="updateOperadora()" color="primary">
+    Salvar
+  </button>
+  <button mat-raised-button (click)="cancel()" color="warn">Cancelar</button>
+</mat-card>
