@@ -99,7 +99,7 @@ export class MedicoComponent implements OnInit, AfterViewInit {
 
     this.subjectEspecialidade.pipe(debounceTime(500)).subscribe(() => {
       this.especialidadeService
-        .find('id', 'asc', 0, 60, [])
+        .find('id', 'asc', 0, 99999, [])
         .subscribe((especialidades) => {
           console.table(this.queries);
           this.especialidades = especialidades;
