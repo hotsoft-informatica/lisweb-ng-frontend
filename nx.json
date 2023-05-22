@@ -38,6 +38,7 @@
   },
   "cli": {},
   "defaultProject": "lisweb-ng-frontend",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "generators": {
     "@nrwl/angular:application": {
       "style": "css",
