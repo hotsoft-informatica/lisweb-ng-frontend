@@ -1,0 +1,35 @@
+<form class="example-container row container-fluid mt-4">
+  <div class="row justify-content-around">
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>Emergencia:</mat-label>
+      <input matInput #input maxlength="5" mask="00:00"
+      name="tempo_emergencia" id="tempo_emergencia"
+      [(ngModel)]="localdeatendimento.tempo_emergencia"
+      >
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>Muito Urgente:</mat-label>
+      <input matInput #input maxlength="5" mask="00:00"
+      name="tempo_muito_urgente" id="tempo_muito_urgente"
+      [(ngModel)]="localdeatendimento.tempo_muito_urgente">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>Urgente:</mat-label>
+      <input matInput #input maxlength="5" mask="00:00"
+      name="tempo_urgente" id="tempo_urgente"
+      [(ngModel)]="localdeatendimento.tempo_urgente">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-2 p-2">
+      <mat-label>Pouco Urgente:</mat-label>
+      <input matInput #input maxlength="5" mask="00:00"
+      name="tempo_pouco_urgente" id="tempo_pouco_urgente"
+      [(ngModel)]="localdeatendimento.tempo_pouco_urgente">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="col-lg-4 p-2">
+      <mat-label>Padrão:</mat-label>
+      <input matInput #input
+      name="tempo_normal" id="tempo_normal"
+      [(ngModel)]="localdeatendimento.tempo_normal">
+    </mat-form-field>
+  </div>
+</form>
