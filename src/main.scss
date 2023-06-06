@@ -129,7 +129,7 @@ button,
   @extend .badge;
 }
 
-// Invalid 
+// Invalid
 .form-control:focus, .material-input:focus, input:focus, textarea:focus, .mat-select-trigger:focus, .mat-slide-toggle:focus, .mat-checkbox:focus, .mat-radio:focus, .mat-checkbox-inner-container:focus, .mat-radio-button:focus, .mat-form-field-infix:focus{
   @extend .bg-transparent;
   @extend .shadow-none;
@@ -149,4 +149,9 @@ textarea,
 
 .ng-touched.ng-invalid {
   @extend .is-invalid;
+}
+
+// Centraliza horizontamente inputs do tipo time
+input[type=time] {
+  text-align: center;
 }
