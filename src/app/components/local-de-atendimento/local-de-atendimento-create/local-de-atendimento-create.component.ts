@@ -7,21 +7,26 @@ import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendiment
 import { LocalDeAtendimentoEmpresaComponent } from './local-de-atendimento-empresa/local-de-atendimento-empresa.component';
 import { LocalDeAtendimentoEnderecoComponent } from './local-de-atendimento-endereco/local-de-atendimento-endereco.component';
 import { LocalDeAtendimentoHorarioFuncionamentoComponent } from './local-de-atendimento-horario-funcionamento/local-de-atendimento-horario-funcionamento.component';
+import { LocalDeAtendimentoContatoComponent } from "./local-de-atendimento-contato/local-de-atendimento-contato.component";
+import { LocalDeAtendimentoUrgenciaComponent } from './local-de-atendimento-urgencia/local-de-atendimento-urgencia.component';
 import { LocalDeAtendimentoService } from './../../service/local-de-atendimento.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-local-de-atendimento-create',
     templateUrl: './local-de-atendimento-create.component.html',
     standalone: true,
-    imports: [FormsModule, MatFormFieldModule, MatInputModule,
-      MatRadioModule, MatCheckboxModule, MatTabsModule,
+    imports: [FormsModule, MatFormFieldModule, MatInputModule, LocalDeAtendimentoContatoComponent,
+      MatRadioModule, MatCheckboxModule, MatTabsModule, MatIconModule, LocalDeAtendimentoContatoComponent,
       LocalDeAtendimentoEmpresaComponent, LocalDeAtendimentoEnderecoComponent,
-      LocalDeAtendimentoHorarioFuncionamentoComponent]
+      LocalDeAtendimentoHorarioFuncionamentoComponent, MatButtonModule, LocalDeAtendimentoUrgenciaComponent
+    ]
 })
 export class LocalDeAtendimentoCreateComponent implements OnInit {
   localAtendimento: LocalDeAtendimento;
