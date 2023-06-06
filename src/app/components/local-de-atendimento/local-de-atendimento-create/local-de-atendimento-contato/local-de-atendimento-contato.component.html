@@ -1,1 +1,33 @@
-<p>local-de-atendimento-contato works!</p>
+<form class="example-container row container-fluid mt-4">
+  <div class="row justify-content-around">
+    <div>
+      <mat-form-field appearance="fill" class="col-lg-2 pe-2">
+        <mat-label>Telefone</mat-label>
+        <input matInput #telefone maxlength="13" mask="(00)0000-0000"
+          id="telefone" name="telefone" title="Telefone"
+          [(ngModel)]="this.empresa.telefone">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-2 p-2">
+        <mat-label>Celular</mat-label>
+        <input matInput #fax maxlength="14"
+          mask="(00)00000-0000"
+          id="fax" name="fax" title="Fax"
+          [(ngModel)]="this.empresa.fax"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-4 p-2">
+        <mat-label>E-mail</mat-label>
+        <input matInput #email maxlength="50"
+          id="email" name="email" title="Email"
+          [(ngModel)]="this.empresa.email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-4 ps-2">
+        <mat-label>E-mail Secundario</mat-label>
+        <input matInput #input
+        title="Email secundário" maxlength="50"/>
+      </mat-form-field>
+    </div>
+  </div>
+</form>
