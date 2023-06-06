@@ -38,6 +38,8 @@ export class LocalDeAtendimento extends Base{
   public tempo_urgente?: string;
   public tempo_muito_urgente?: string;
   public tempo_emergencia?: string;
+  public agrupar_exames?: string;
+  public modo_trabalho_padrao?: string;
   public empresa?: Empresa;
 
   constructor(values: LocalDeAtendimento) {
