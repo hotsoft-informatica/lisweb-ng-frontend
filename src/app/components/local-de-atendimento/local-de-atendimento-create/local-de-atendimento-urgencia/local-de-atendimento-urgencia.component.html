@@ -1,35 +1,112 @@
 <form class="example-container row container-fluid mt-4">
-  <div class="row justify-content-around">
-    <mat-form-field appearance="fill" class="col-lg-2 p-2">
-      <mat-label>Emergencia:</mat-label>
-      <input matInput #input maxlength="5" mask="00:00"
-      name="tempo_emergencia" id="tempo_emergencia"
-      [(ngModel)]="localdeatendimento.tempo_emergencia"
-      >
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="col-lg-2 p-2">
-      <mat-label>Muito Urgente:</mat-label>
-      <input matInput #input maxlength="5" mask="00:00"
-      name="tempo_muito_urgente" id="tempo_muito_urgente"
-      [(ngModel)]="localdeatendimento.tempo_muito_urgente">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="col-lg-2 p-2">
-      <mat-label>Urgente:</mat-label>
-      <input matInput #input maxlength="5" mask="00:00"
-      name="tempo_urgente" id="tempo_urgente"
-      [(ngModel)]="localdeatendimento.tempo_urgente">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="col-lg-2 p-2">
-      <mat-label>Pouco Urgente:</mat-label>
-      <input matInput #input maxlength="5" mask="00:00"
-      name="tempo_pouco_urgente" id="tempo_pouco_urgente"
-      [(ngModel)]="localdeatendimento.tempo_pouco_urgente">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="col-lg-4 p-2">
-      <mat-label>Padrão:</mat-label>
-      <input matInput #input
-      name="tempo_normal" id="tempo_normal"
-      [(ngModel)]="localdeatendimento.tempo_normal">
-    </mat-form-field>
+  <h3 class="ms-3">Nível de Urgência:</h3>
+  <div class="row col-lg-12">
+    <div class="col-lg-3">
+      <mat-form-field appearance="fill" class="col-lg-8">
+        <mat-label>Emergência</mat-label>
+        <mat-select name="utiliza_emergencia"
+          [(ngModel)]="localdeatendimento.utiliza_emergencia">
+          <mat-option value="S">Sim</mat-option>
+          <mat-option value="N">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-lg-4">
+        <mat-label>Tempo</mat-label>
+        <input matInput #input type="time" maxlength="5"
+          name="tempo_emergencia" id="tempo_emergencia" aria-label="tempo_emergencia"
+          [disabled]="localdeatendimento.utiliza_emergencia != 'S'"
+          [(ngModel)]="localdeatendimento.tempo_emergencia">
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-3">
+      <mat-form-field appearance="fill" class="col-lg-8">
+        <mat-label>Muito Urgente</mat-label>
+        <mat-select name="utiliza_muito_urgente"
+          [(ngModel)]="localdeatendimento.utiliza_muito_urgente">
+          <mat-option value="S">Sim</mat-option>
+          <mat-option value="N">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-lg-4">
+        <mat-label>Tempo</mat-label>
+        <input matInput #input type="time" maxlength="5"
+          name="tempo_muito_urgente" id="tempo_muito_urgente" aria-label="tempo_muito_urgente"
+          [disabled]="localdeatendimento.utiliza_muito_urgente != 'S'"
+          [(ngModel)]="localdeatendimento.tempo_muito_urgente">
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-3">
+      <mat-form-field appearance="fill" class="col-lg-8">
+        <mat-label>Urgente</mat-label>
+        <mat-select name="utiliza_urgente"
+          [(ngModel)]="localdeatendimento.utiliza_urgente">
+          <mat-option value="S">Sim</mat-option>
+          <mat-option value="N">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-lg-4">
+        <mat-label>Tempo</mat-label>
+        <input matInput #input type="time" maxlength="5"
+          name="tempo_urgente" id="tempo_urgente" aria-label="tempo_urgente"
+          [disabled]="localdeatendimento.utiliza_urgente != 'S'"
+          [(ngModel)]="localdeatendimento.tempo_urgente">
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-3">
+      <mat-form-field appearance="fill" class="col-lg-8">
+        <mat-label>Pouco Urgente</mat-label>
+        <mat-select name="utiliza_pouco_urgente"
+          [(ngModel)]="localdeatendimento.utiliza_pouco_urgente">
+          <mat-option value="S">Sim</mat-option>
+          <mat-option value="N">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-lg-4">
+        <mat-label>Tempo</mat-label>
+        <input matInput #input type="time" maxlength="5"
+          name="tempo_pouco_urgente" id="tempo_pouco_urgente" aria-label="tempo_pouco_urgente"
+          [disabled]="localdeatendimento.utiliza_pouco_urgente != 'S'"
+          [(ngModel)]="localdeatendimento.tempo_pouco_urgente">
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-3">
+      <mat-form-field appearance="fill" class="col-lg-12">
+        <mat-label>Normal</mat-label>
+        <mat-select name="utiliza_normal"
+          [(ngModel)]="localdeatendimento.utiliza_normal">
+          <mat-option value="S">Sim</mat-option>
+          <mat-option value="N">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-3">
+      <mat-form-field appearance="fill" class="col-lg-12">
+        <mat-label>Padrão</mat-label>
+        <mat-select name="modo_trabalho_padrao"
+          [(ngModel)]="localdeatendimento.modo_trabalho_padrao">
+          <mat-option value="E">Emergência</mat-option>
+          <mat-option value="M">Muito Urgente</mat-option>
+          <mat-option value="U">Urgente</mat-option>
+          <mat-option value="P">Pouco Urgente</mat-option>
+          <mat-option value="N">Normal</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-lg-3">
+      <mat-form-field appearance="fill" class="col-lg-12">
+        <mat-label>Agrupar Exames Pelo Maior Tempo</mat-label>
+        <mat-select name="agrupar_exames"
+          [(ngModel)]="localdeatendimento.agrupar_exames">
+          <mat-option value="S">Sim</mat-option>
+          <mat-option value="N">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
 </form>
