@@ -18,10 +18,10 @@ import { FormsModule } from '@angular/forms';
 export class LocalDeAtendimentoEnderecoComponent implements OnInit {
 
   cep: Cep;
-  empresa: Empresa;
+  // empresa: Empresa;
 
   @Input('localdeatendimento') localdeatendimento: LocalDeAtendimento;
-
+  @Input('empresa') empresa: Empresa;
 
   constructor(
     private router: Router,
@@ -29,8 +29,8 @@ export class LocalDeAtendimentoEnderecoComponent implements OnInit {
     private cepService: CepService
   ) {
     this.localdeatendimento = new LocalDeAtendimento({});
-    this.empresa = new Empresa({});
-    this.localdeatendimento.empresa = this.empresa;
+    this.empresa ||= new Empresa({});
+    // this.localdeatendimento.empresa = this.empresa;
     this.cep = new Cep();
   }
 
