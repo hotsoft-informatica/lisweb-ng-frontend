@@ -55,7 +55,7 @@
     "@angular-devkit/core": "^15.0.2",
     "@angular-devkit/schematics": "^15.2.4",
     "@angular/compiler": "^15.0.2",
-    "@angular/language-service": "^15.0.2",
+    "@angular/language-service": "^16.0.5",
     "@nrwl/cypress": "15.8.7",
     "@nrwl/jest": "15.8.7",
     "@nrwl/js": "15.8.7",
