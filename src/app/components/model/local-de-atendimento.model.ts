@@ -1,5 +1,6 @@
 import { Base } from './base.model'
 import { Empresa } from '../model/empresa.model';
+import { GrupoLocalAtendimento } from './grupo-local-atendimento.model';
 
 export class LocalDeAtendimento extends Base{
   public nome?: string;
@@ -40,7 +41,8 @@ export class LocalDeAtendimento extends Base{
   public tempo_emergencia?: string;
   public agrupar_exames?: string;
   public modo_trabalho_padrao?: string;
-  public empresa?: Empresa;
+  public empresa?: Empresa = new Empresa({});
+  public grupo_local_atendimento?: GrupoLocalAtendimento;
 
   constructor(values: LocalDeAtendimento) {
     super(values);
