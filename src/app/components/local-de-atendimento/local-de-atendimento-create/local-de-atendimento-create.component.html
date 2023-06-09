@@ -6,10 +6,10 @@
         <mat-label>Local de Atendimento</mat-label>
         <input
           type="text"
-          aria-label="localAtendimento"
+          aria-label="nome"
           matInput #input
-          id="localAtendimento"
-          name="localAtendimento"
+          id="nome"
+          name="nome"
           [(ngModel)]="localAtendimento.nome">
       </mat-form-field>
 
@@ -27,12 +27,25 @@
       <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
         <mat-label>Grupo</mat-label>
         <input
-          type="text"
-          aria-label="grupo_local_id"
-          matInput #input
-          id="grupo_local_id"
-          name="grupo_local_id"
-          [(ngModel)]="localAtendimento.grupo_local_id">
+            aria-label="grupo_local_id"
+            name="grupo_local_id"
+            matInput [matAutocomplete]="autoGrupoLocais"
+            [(ngModel)]="localAtendimento.grupo_local_id"
+            (ngModelChange)="searchGrupoLocalAtendimento()"
+            #grupo_local_id="ngModel"
+            required
+          />
+          <mat-error *ngIf="grupo_local_id.invalid && (grupo_local_id.dirty || grupo_local_id.touched)">
+            <span *ngIf="grupo_local_id.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+          <mat-autocomplete #autoGrupoLocais="matAutocomplete"
+            [displayWith]="displayFnGrupoLocalAtendimento(grupo_locais_atendimento)">
+            <mat-option *ngFor="let grupo_local_atendimento of grupo_locais_atendimento" [value]="grupo_local_atendimento.id">
+              {{grupo_local_atendimento.nome}}
+            </mat-option>
+          </mat-autocomplete>
       </mat-form-field>
     </div>
 
@@ -114,19 +127,20 @@
 
 <mat-tab-group>
   <mat-tab label="Empresa">
-    <app-local-de-atendimento-empresa >
+    {{this.localAtendimento.empresa?.razao_social}}
+    <app-local-de-atendimento-empresa [empresa]="$any(localAtendimento.empresa)">
     </app-local-de-atendimento-empresa>
   </mat-tab>
   <mat-tab label="Endereço">
-    <app-local-de-atendimento-endereco>
+    <app-local-de-atendimento-endereco [empresa]="$any(localAtendimento.empresa)">
     </app-local-de-atendimento-endereco>
   </mat-tab>
   <mat-tab label="Contato">
-    <app-local-de-atendimento-contato>
+    <app-local-de-atendimento-contato [empresa]="$any(localAtendimento.empresa)">
     </app-local-de-atendimento-contato>
   </mat-tab>
   <mat-tab label="Horário de Funcionamento">
-    <app-local-de-atendimento-horario-funcionamento>
+    <app-local-de-atendimento-horario-funcionamento [localdeatendimento]="this.localAtendimento">
     </app-local-de-atendimento-horario-funcionamento>
   </mat-tab>
   <mat-tab label="Configuração Urgência">
@@ -137,7 +151,7 @@
 
 <div class="gridAddButton">
   <button appDebounceClick mat-flat-button color="primary" class="m-2"
-  (click)="createLocalAtendimento()">Salvar</button>
+    (click)="createLocalAtendimento()">Salvar</button>
   <button appDebounceClick mat-flat-button color="warn" class="m-2"
-  (click)="cancel()">Cancelar</button>
+    (click)="cancel()">Cancelar</button>
 </div>
