@@ -127,7 +127,6 @@
 
 <mat-tab-group>
   <mat-tab label="Empresa">
-    {{this.localAtendimento.empresa?.razao_social}}
     <app-local-de-atendimento-empresa [empresa]="$any(localAtendimento.empresa)">
     </app-local-de-atendimento-empresa>
   </mat-tab>
