@@ -30,7 +30,6 @@
       [(ngModel)]="localdeatendimento.horario_sabado_fim">
     </mat-form-field>
 
-
     DOMINGOS:
     <mat-form-field appearance="fill" class="col-lg-1 ms-1 p-2">
       <mat-label>Inicio:</mat-label>
@@ -46,6 +45,13 @@
       [(ngModel)]="localdeatendimento.horario_domingo_fim">
     </mat-form-field>
 
-    <mat-slide-toggle color="primary" class="ms-5">Posto 24HRS</mat-slide-toggle>
+    <mat-slide-toggle
+      color="primary"
+      class="ms-5"
+      [(ngModel)]="this.trabalha_24_horas"
+      [ngModelOptions]="{standalone: true}"
+      (change)="toggleChanges($event)">
+      Posto 24HRS
+    </mat-slide-toggle>
   </div>
 </form>
