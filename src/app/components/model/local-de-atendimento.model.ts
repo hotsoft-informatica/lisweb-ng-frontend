@@ -21,6 +21,7 @@ export class LocalDeAtendimento extends Base{
   public sigla_conselho?: string;
   public uf_conselho?: string;
   public trabalha_24_horas?: string;
+  public trabalha_semana?: string;
   public trabalha_sabado?: string;
   public trabalha_domingo?: string;
   public horario_semana_inicio?: string;
