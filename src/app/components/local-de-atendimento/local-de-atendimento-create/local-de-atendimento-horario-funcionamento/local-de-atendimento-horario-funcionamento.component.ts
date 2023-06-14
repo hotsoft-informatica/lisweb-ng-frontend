@@ -3,13 +3,16 @@ import { LocalDeAtendimento } from 'src/app/components/model/local-de-atendiment
 import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
     selector: 'app-local-de-atendimento-horario-funcionamento',
     templateUrl: './local-de-atendimento-horario-funcionamento.component.html',
     standalone: true,
-    imports: [FormsModule, MatFormFieldModule, MatInputModule, MatSlideToggleModule]
+    imports: [FormsModule, MatFormFieldModule, MatInputModule,
+      MatSlideToggleModule, MatSelectModule
+    ]
 })
 export class LocalDeAtendimentoHorarioFuncionamentoComponent implements OnChanges {
   @Input('localdeatendimento') localdeatendimento: LocalDeAtendimento;
