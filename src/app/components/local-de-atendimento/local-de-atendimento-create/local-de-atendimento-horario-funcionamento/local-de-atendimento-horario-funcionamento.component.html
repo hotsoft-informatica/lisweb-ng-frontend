@@ -1,57 +1,91 @@
 <form class="example-container row container-fluid mt-4">
   <div class="ms-2">
-    SEGUNDA A SEXTA:
-    <mat-form-field appearance="fill" class="col-lg-1 ms-3 p-2">
-      <mat-label>Inicio:</mat-label>
-      <input matInput #input type="time" aria-label="horario_semana_inicio"
-      name="horario_semana_inicio" id="horario_semana_inicio"
-      [(ngModel)]="localdeatendimento.horario_semana_inicio">
-    </mat-form-field>
+    <div class="row col-lg-12">
+      <div class="col-lg-3">
+        <mat-form-field appearance="fill" class="col-lg-6">
+          <mat-label>Segunda a Sexta:</mat-label>
+          <mat-select name="trabalha_semana"
+            [(ngModel)]="localdeatendimento.trabalha_semana">
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-lg-3">
+          <mat-label>Inicio:</mat-label>
+          <input matInput #input type="time" aria-label="horario_semana_inicio"
+          name="horario_semana_inicio" id="horario_semana_inicio"
+          [disabled]="localdeatendimento.trabalha_semana != 'S'"
+          [(ngModel)]="localdeatendimento.horario_semana_inicio">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-lg-3">
+          <mat-label>Fim:</mat-label>
+          <input matInput #input type="time" aria-label="horario_semana_fim"
+          name="horario_semana_fim" id="horario_semana_fim"
+          [disabled]="localdeatendimento.trabalha_semana != 'S'"
+          [(ngModel)]="localdeatendimento.horario_semana_fim">
+        </mat-form-field>
+      </div>
 
-    <mat-form-field appearance="fill" class="col-lg-1 p-2">
-      <mat-label>Fim:</mat-label>
-      <input matInput #input type="time" aria-label="horario_semana_fim"
-      name="horario_semana_fim" id="horario_semana_fim"
-      [(ngModel)]="localdeatendimento.horario_semana_fim">
-    </mat-form-field>
+      <div class="col-lg-3">
+        <mat-form-field appearance="fill" class="col-lg-6">
+          <mat-label>Sabados:</mat-label>
+          <mat-select name="trabalha_sabado"
+            [(ngModel)]="localdeatendimento.trabalha_sabado">
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-lg-3">
+          <mat-label>Inicio:</mat-label>
+          <input matInput #input type="time" aria-label="horario_sabado_inicio"
+          name="horario_sabado_inicio" id="horario_sabado_inicio"
+          [disabled]="localdeatendimento.trabalha_sabado != 'S'"
+          [(ngModel)]="localdeatendimento.horario_sabado_inicio">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-lg-3">
+          <mat-label>Fim:</mat-label>
+          <input matInput #input type="time" aria-label="horario_sabado_fim"
+          name="horario_sabado_fim" id="horario_sabado_fim"
+          [disabled]="localdeatendimento.trabalha_sabado != 'S'"
+          [(ngModel)]="localdeatendimento.horario_sabado_fim">
+        </mat-form-field>
+      </div>
 
-    SABADOS:
-    <mat-form-field appearance="fill" class="col-lg-1 ms-3 p-2">
-      <mat-label>Inicio:</mat-label>
-      <input matInput #input type="time" aria-label="horario_sabado_inicio"
-      name="horario_sabado_inicio" id="horario_sabado_inicio"
-      [(ngModel)]="localdeatendimento.horario_sabado_inicio">
-    </mat-form-field>
+      <div class="col-lg-3">
+        <mat-form-field appearance="fill" class="col-lg-6">
+          <mat-label>Domingos:</mat-label>
+          <mat-select name="trabalha_domingo"
+            [(ngModel)]="localdeatendimento.trabalha_domingo">
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-lg-3">
+          <mat-label>Inicio:</mat-label>
+          <input matInput #input type="time" aria-label="horario_domingo_inicio"
+          name="horario_domingo_inicio" id="horario_domingo_inicio"
+          [disabled]="localdeatendimento.trabalha_domingo != 'S'"
+          [(ngModel)]="localdeatendimento.horario_domingo_inicio">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-lg-3">
+          <mat-label>Fim:</mat-label>
+          <input matInput #input type="time" aria-label="horario_domingo_fim"
+          name="horario_domingo_fim" id="horario_domingo_fim"
+          [disabled]="localdeatendimento.trabalha_domingo != 'S'"
+          [(ngModel)]="localdeatendimento.horario_domingo_fim">
+        </mat-form-field>
+      </div>
 
-    <mat-form-field appearance="fill" class="col-lg-1 p-2">
-      <mat-label>Fim:</mat-label>
-      <input matInput #input type="time" aria-label="horario_sabado_fim"
-      name="horario_sabado_fim" id="horario_sabado_fim"
-      [(ngModel)]="localdeatendimento.horario_sabado_fim">
-    </mat-form-field>
-
-    DOMINGOS:
-    <mat-form-field appearance="fill" class="col-lg-1 ms-1 p-2">
-      <mat-label>Inicio:</mat-label>
-      <input matInput #input type="time" aria-label="horario_domingo_inicio"
-      name="horario_domingo_inicio" id="horario_domingo_inicio"
-      [(ngModel)]="localdeatendimento.horario_domingo_inicio">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="col-lg-1 p-2">
-      <mat-label>Fim:</mat-label>
-      <input matInput #input type="time" aria-label="horario_domingo_fim"
-      name="horario_domingo_fim" id="horario_domingo_fim"
-      [(ngModel)]="localdeatendimento.horario_domingo_fim">
-    </mat-form-field>
-
-    <mat-slide-toggle
-      color="primary"
-      class="ms-5"
-      [(ngModel)]="this.trabalha_24_horas"
-      [ngModelOptions]="{standalone: true}"
-      (change)="toggleChanges($event)">
-      Posto 24HRS
-    </mat-slide-toggle>
+      <div class="col-lg-3">
+        <mat-slide-toggle appearance="fill" class="col-lg-2"
+          color="primary"
+          class="ms-2"
+          [(ngModel)]="this.trabalha_24_horas"
+          [ngModelOptions]="{standalone: true}"
+          (change)="toggleChanges($event)">
+          Posto 24HRS
+        </mat-slide-toggle>
+      </div>
+    </div>
   </div>
 </form>
