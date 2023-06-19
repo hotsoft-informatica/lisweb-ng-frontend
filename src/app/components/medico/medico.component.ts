@@ -167,8 +167,6 @@ export class MedicoComponent implements OnInit, AfterViewInit {
   }
 
   atualizar(row: Medico): void {
-    console.warn('Passou no atualizar!!!!!!!')
-    console.table(row);
     this.currentRecord = row;
     this.onCreate = false;
     this.onEdit = true;

@@ -19,7 +19,7 @@ export class LocalDeAtendimentoEmpresaComponent implements OnInit {
   constructor() {
     this.localdeatendimento = new LocalDeAtendimento({});
     this.empresa ||= new Empresa({});
-    console.table(this.empresa);
+    // console.table(this.empresa);
     this.localdeatendimento.empresa = this.empresa;
   }
   ngOnInit(): void {
