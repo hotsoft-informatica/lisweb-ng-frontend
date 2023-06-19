@@ -1,10 +1,11 @@
-<mat-form-field class="custom-autocomplete">
-  <mat-label>{{ autocompleteLabel }}</mat-label>
-  <input matInput #inputField type="text" [placeholder]="autocompletePlaceholder" [(ngModel)]="selectedOptionName" (input)="searchOptions()" [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let option of options" [value]="option.name">
-      {{ option.name }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+<div class="custom-autocomplete">
+  <mat-form-field>
+    <mat-label>{{ autocompleteLabel }}</mat-label>
+    <input matInput #inputField type="text" [placeholder]="autocompletePlaceholder" [(ngModel)]="selectedOptionName" (input)="searchOptions()">
+    <input type="hidden" [value]="selectedOptionName">
+    <datalist>
+      <option *ngFor="let option of options" [value]="option.name"></option>
+    </datalist>
+  </mat-form-field>
+</div>
 

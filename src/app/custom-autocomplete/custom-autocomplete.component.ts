@@ -1,11 +1,13 @@
-import { Component, Input, Output, EventEmitter, HostListener, HostBinding, ViewChild, ElementRef, OnInit, ChangeDetectionStrategy } from '@angular/core';
+// custom-autocomplete.component.ts
+import { Component, Input, Output, EventEmitter, HostListener, HostBinding, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-custom-autocomplete',
   templateUrl: './custom-autocomplete.component.html',
   styleUrls: ['./custom-autocomplete.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  standalone: true,
+  imports: [MatAutocompleteModule, CommonModule]
 })
 export class CustomAutocompleteComponent implements OnInit {
   @Input() autocompleteLabel: string;
@@ -13,8 +15,8 @@ export class CustomAutocompleteComponent implements OnInit {
   @Input() searchMethod: (text: string) => Observable<any>;
   @Output() selectedOptionIdChange = new EventEmitter<number>();
 
-  @ViewChild('input', { static: true }) input: ElementRef<HTMLInputElement>;
-  @ViewChild('datalist', { static: true }) datalist: ElementRef<HTMLDataListElement>;
+  @ViewChild('input') input: ElementRef<HTMLInputElement>;
+  @ViewChild('datalist') datalist: ElementRef<HTMLDataListElement>;
 
   @HostBinding('attr.id') optionsListId = 'custom-autocomplete-options';
   @HostBinding('class.active') isActive = false;
@@ -44,16 +46,15 @@ export class CustomAutocompleteComponent implements OnInit {
     this.input.nativeElement.focus();
   }
 
-  @HostListener('keydown', ['$event'])
-  handleKeydown(event: KeyboardEvent) {
+  onInputKeydown(event: KeyboardEvent) {
     if (event.key === 'ArrowUp') {
-      this.activeIndex = (this.activeIndex - 1 + this.datalist.nativeElement.length) % this.datalist.nativeElement.length;
+      this.activeIndex = (this.activeIndex - 1 + this.options.length) % this.options.length;
       event.preventDefault();
     } else if (event.key === 'ArrowDown') {
-      this.activeIndex = (this.activeIndex + 1) % this.datalist.nativeElement.length;
+      this.activeIndex = (this.activeIndex + 1) % this.options.length;
       event.preventDefault();
     } else if (event.key === 'Enter') {
-      const activeOption = this.datalist.nativeElement.item(this.activeIndex);
+      const activeOption = this.datalist.nativeElement.options[this.activeIndex];
       if (activeOption) {
         this.selectedOptionName = activeOption.value;
         this.updateSelectedOptionId();
@@ -62,12 +63,10 @@ export class CustomAutocompleteComponent implements OnInit {
     }
   }
 
-  @HostListener('focus')
   handleFocus() {
     this.isActive = true;
   }
 
-  @HostListener('blur')
   handleBlur() {
     this.isActive = false;
   }
