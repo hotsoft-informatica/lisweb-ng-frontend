@@ -35,7 +35,7 @@ import { NgIf, NgFor } from '@angular/common';
   ]
 })
 export class LocalDeAtendimentoCreateComponent implements OnInit {
-  @Input('grupo_locais_atendimento') grupo_locais_atendimento: GrupoLocalAtendimento[] = [];
+  @Input('grupos_locais_atendimento') grupos_locais_atendimento: GrupoLocalAtendimento[] = [];
   localAtendimento: LocalDeAtendimento;
   id: number;
   registroDeColeta = false;
@@ -58,8 +58,9 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
     private localAtendimentoService: LocalDeAtendimentoService,
     private empresaService: EmpresaService,
   ) {
-    this.localAtendimento||= new LocalDeAtendimento({});
+    this.localAtendimento ||= new LocalDeAtendimento({});
     this.localAtendimento.empresa ||= new Empresa({});
+    this.localAtendimento.grupo_local ||= new GrupoLocalAtendimento({});
 
     this.id = this.route.snapshot.paramMap.get('id') as unknown as number;
     if (this.id > 0) {
@@ -81,11 +82,19 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
           // TODO: Revisar
           this.localAtendimento.empresa = empresa;
         });
+
+        this.grupoLocalAtendimentoService
+        .readById(this.localAtendimento.grupo_local_id as number) // relacao grupo local
+        .subscribe ((grupo_local) => {
+          // TODO: Revisar
+          this.localAtendimento.grupo_local = grupo_local;
+        });
     });
   }
 
   ngOnInit(): void {
     this.localAtendimento ||= new LocalDeAtendimento({});
+
     const query = new Query({ key: '', value: '', isNumeric: false });
     const empresa_id = this.localAtendimento.empresa_id || 0
 
@@ -94,22 +103,26 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
         (empresa) => {
           this.localAtendimento.empresa = empresa;
       });
+
+      this.grupoLocalAtendimentoService.readById(this.localAtendimento.grupo_local_id as number).subscribe(
+        (grupo_local) => {
+          this.localAtendimento.grupo_local = grupo_local;
+      });
     }
 
-    this.subjectGrupoLocaisAtendimento.pipe(debounceTime(500)).subscribe(() => {
+    this.subjectGrupoLocaisAtendimento.subscribe(() => {
       this.grupoLocalAtendimentoService
         .find('id', 'asc', 0, 60, this.queries)
-        .subscribe((grupo_locais_atendimento) => {
+        .subscribe((grupo_local) => {
           console.table(this.queries);
-          this.grupo_locais_atendimento = grupo_locais_atendimento;
+          this.grupos_locais_atendimento = grupo_local;
         });
     });
     this.subjectGrupoLocaisAtendimento.next(null);
   }
 
   searchGrupoLocalAtendimento(): void {
-    const query_string = this.localAtendimento
-      .grupo_local_id as unknown as string;
+    const query_string = this.localAtendimento.grupo_local_id as unknown as string;
     const query = new Query({
       key: 'nome',
       value: query_string,
@@ -123,9 +136,7 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
 
   displayFnGrupoLocalAtendimento(options: GrupoLocalAtendimento[]): (id: any) => any {
     return (id: any) => {
-      const correspondingOption = Array.isArray(options)
-        ? options.find((option) => option.id === id)
-        : null;
+      const correspondingOption = Array.isArray(options) ? options.find((option) => option.id == id) : null;
       return correspondingOption ? correspondingOption.nome : '';
     };
   }
@@ -141,27 +152,24 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
 
   update(): void {
     this.updateCheckBox();
-    this.empresaService.update(this.localAtendimento.empresa).subscribe((empresa) => {
-      this.localAtendimento.empresa_id = empresa.id;
-      // TODO: Revisar
-      this.localAtendimento.empresa = empresa;
-    });
-    this.localAtendimentoService.update(this.localAtendimento).subscribe(() => {
-      this.localAtendimentoService.showMessage('Local Atendimento atualizado com sucesso!');
-      this.router.navigate(['/localdeatendimento/read']).then(() => {
-        window.location.reload();
+    this.empresaService.update(this.localAtendimento.empresa).subscribe(() => {
+
+      this.localAtendimentoService.update(this.localAtendimento).subscribe(() => {
+        this.localAtendimentoService.showMessage('Local Atendimento atualizado com sucesso!');
+        this.router.navigate(['/localdeatendimento/read']).then(() => {
+          window.location.reload();
+        });
       });
     });
   }
 
   createLocalAtendimento(): void {
-    console.warn(this.id);
     if (this.id > 0){
       this.update();
     }else{
       this.updateCheckBox();
-      this.empresaService.create(this.localAtendimento.empresa).subscribe((empresa) => {
-        this.localAtendimento.empresa_id = empresa.id;
+      this.empresaService.create(this.localAtendimento.empresa).subscribe(() => {
+
         this.localAtendimentoService.create(this.localAtendimento).subscribe(() => {
           this.localAtendimentoService.showMessage('Local Atendimento criado com sucesso!');
           this.router.navigate(['/localdeatendimento/read']).then(() => {
