@@ -41,9 +41,9 @@
             </span>
           </mat-error>
           <mat-autocomplete #autoGrupoLocais="matAutocomplete"
-            [displayWith]="displayFnGrupoLocalAtendimento(grupo_locais_atendimento)">
-            <mat-option *ngFor="let grupo_local_atendimento of grupo_locais_atendimento" [value]="grupo_local_atendimento.id">
-              {{grupo_local_atendimento.nome}}
+            [displayWith]="displayFnGrupoLocalAtendimento(grupos_locais_atendimento)">
+            <mat-option *ngFor="let grupo_local of grupos_locais_atendimento" [value]="grupo_local.id">
+              {{grupo_local.nome}}
             </mat-option>
           </mat-autocomplete>
       </mat-form-field>
