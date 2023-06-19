@@ -43,7 +43,7 @@ export class LocalDeAtendimento extends Base{
   public agrupar_exames?: string;
   public modo_trabalho_padrao?: string;
   public empresa?: Empresa = new Empresa({});
-  public grupo_local_atendimento?: GrupoLocalAtendimento;
+  public grupo_local?: GrupoLocalAtendimento;
 
   constructor(values: LocalDeAtendimento) {
     super(values);
