@@ -23,22 +23,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { Subject, debounceTime } from 'rxjs';
 import { NgIf, NgFor } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-local-de-atendimento-create',
   templateUrl: './local-de-atendimento-create.component.html',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, LocalDeAtendimentoContatoComponent, NgIf,
-    MatRadioModule, MatCheckboxModule, MatTabsModule, MatIconModule, LocalDeAtendimentoContatoComponent,
-    LocalDeAtendimentoEmpresaComponent, LocalDeAtendimentoEnderecoComponent, MatAutocompleteModule, NgFor,
-    LocalDeAtendimentoHorarioFuncionamentoComponent, MatButtonModule, LocalDeAtendimentoUrgenciaComponent
+  imports: [FormsModule, MatFormFieldModule, MatInputModule,  NgIf, MatAutocompleteModule, NgFor,
+    MatRadioModule, MatCheckboxModule, MatTabsModule, MatIconModule, LocalDeAtendimentoUrgenciaComponent,
+    LocalDeAtendimentoEmpresaComponent, LocalDeAtendimentoEnderecoComponent, MatSelectModule,
+    LocalDeAtendimentoHorarioFuncionamentoComponent, MatButtonModule, LocalDeAtendimentoContatoComponent,
+    LocalDeAtendimentoContatoComponent
   ]
 })
 export class LocalDeAtendimentoCreateComponent implements OnInit {
   @Input('grupos_locais_atendimento') grupos_locais_atendimento: GrupoLocalAtendimento[] = [];
   localAtendimento: LocalDeAtendimento;
   id: number;
-  registroDeColeta = false;
   biometria = false;
   painelMonitoramento = false;
   resultadosCRM = false;
@@ -71,7 +72,6 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
   load(id: number): void {
     this.localAtendimentoService.readById(id).subscribe((localAtendimento) => {
       this.localAtendimento = localAtendimento;
-      this.registroDeColeta = (this.localAtendimento.utiliza_coleta === 'S') ? true : false;
       this.biometria = (this.localAtendimento.usa_biometria === 'S') ? true : false;
       this.painelMonitoramento = (this.localAtendimento.painel_monitoramento === 'S') ? true : false;
       this.resultadosCRM = (this.localAtendimento.utiliza_crm === 'S') ? true : false;
@@ -95,7 +95,6 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
   ngOnInit(): void {
     this.localAtendimento ||= new LocalDeAtendimento({});
 
-    const query = new Query({ key: '', value: '', isNumeric: false });
     const empresa_id = this.localAtendimento.empresa_id || 0
 
     if (empresa_id > 0) {
@@ -114,7 +113,6 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
       this.grupoLocalAtendimentoService
         .find('id', 'asc', 0, 60, this.queries)
         .subscribe((grupo_local) => {
-          console.table(this.queries);
           this.grupos_locais_atendimento = grupo_local;
         });
     });
@@ -128,7 +126,7 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
       value: query_string,
       isNumeric: false,
     });
-    console.warn(query_string);
+
     this.queries = [];
     this.queries.push(query);
     this.subjectGrupoLocaisAtendimento.next(null);
@@ -142,7 +140,6 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
   }
 
   updateCheckBox(): void {
-    this.localAtendimento.utiliza_coleta = this.registroDeColeta ? 'S' : 'N';
     this.localAtendimento.usa_biometria = this.biometria ? 'S' : 'N';
     this.localAtendimento.painel_monitoramento = this.painelMonitoramento ? 'S' : 'N';
     this.localAtendimento.utiliza_crm = this.resultadosCRM ? 'S' : 'N';
@@ -153,7 +150,6 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
   update(): void {
     this.updateCheckBox();
     this.empresaService.update(this.localAtendimento.empresa).subscribe(() => {
-
       this.localAtendimentoService.update(this.localAtendimento).subscribe(() => {
         this.localAtendimentoService.showMessage('Local Atendimento atualizado com sucesso!');
         this.router.navigate(['/localdeatendimento/read']).then(() => {
@@ -169,7 +165,6 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
     }else{
       this.updateCheckBox();
       this.empresaService.create(this.localAtendimento.empresa).subscribe(() => {
-
         this.localAtendimentoService.create(this.localAtendimento).subscribe(() => {
           this.localAtendimentoService.showMessage('Local Atendimento criado com sucesso!');
           this.router.navigate(['/localdeatendimento/read']).then(() => {
