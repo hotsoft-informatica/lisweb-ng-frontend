@@ -139,11 +139,15 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
     };
   }
 
+  onRadioButtonChange(event: { value: any; }) {
+    let tipoColeta = event.value;
+    this.localAtendimento.coleta_externa = tipoColeta;
+  }
+
   updateCheckBox(): void {
     this.localAtendimento.usa_biometria = this.biometria ? 'S' : 'N';
     this.localAtendimento.painel_monitoramento = this.painelMonitoramento ? 'S' : 'N';
     this.localAtendimento.utiliza_crm = this.resultadosCRM ? 'S' : 'N';
-    this.localAtendimento.coleta_externa = this.coletaExterna ? 'S' : 'N';
     //this.localAtendimento.dadoAdicionalTriagem = this.dadoAdicionalTriagem ? 'S' : 'N';
   }
 
