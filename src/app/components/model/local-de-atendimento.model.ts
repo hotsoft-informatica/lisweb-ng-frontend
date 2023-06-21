@@ -42,6 +42,7 @@ export class LocalDeAtendimento extends Base{
   public tempo_emergencia?: string;
   public agrupar_exames?: string;
   public modo_trabalho_padrao?: string;
+  public local_impressao_etiqueta_amostra?: string;
   public empresa?: Empresa = new Empresa({});
   public grupo_local?: GrupoLocalAtendimento;
 
