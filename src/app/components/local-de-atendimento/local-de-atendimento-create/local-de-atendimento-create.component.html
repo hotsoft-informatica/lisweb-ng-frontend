@@ -2,7 +2,7 @@
   <h3 class="ms-3">Cadastro de Local de Atendimento:</h3>
   <div class="row justify-content-around">
     <div class="row">
-      <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-form-field appearance="fill" class="col-lg-4 col-md-4 p-2">
         <mat-label>Local de Atendimento</mat-label>
         <input
           type="text"
@@ -13,7 +13,7 @@
           [(ngModel)]="localAtendimento.nome">
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+      <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
         <mat-label>CNES</mat-label>
         <input
           type="text"
@@ -47,9 +47,7 @@
             </mat-option>
           </mat-autocomplete>
       </mat-form-field>
-    </div>
 
-    <div class="row">
       <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
         <mat-label>Grupo Histórico no Laudo</mat-label>
         <input
@@ -61,6 +59,9 @@
           [(ngModel)]="localAtendimento.grupo_historico">
       </mat-form-field>
 
+    </div>
+
+    <div class="row">
       <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
         <mat-label>Chave de Publicação</mat-label>
         <input
@@ -72,15 +73,24 @@
           [(ngModel)]="localAtendimento.chave_internet">
       </mat-form-field>
 
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-label>Utiliza Registro de Coleta:</mat-label>
+        <mat-select name="utiliza_coleta"
+          [(ngModel)]="localAtendimento.utiliza_coleta">
+          <mat-option value="S">Sim</mat-option>
+          <mat-option value="N">Não</mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
-        <mat-label>Local de Impressão</mat-label>
-        <input
-          type="text"
-          aria-label="local_impressao"
-          matInput #input
-          id="local_impressao"
-          name="local_impressao"
-          [(ngModel)]="localAtendimento.grupo_local_id">
+        <mat-label>Local de Impressão:</mat-label>
+        <mat-select name="local_impressao_etiqueta_amostra"
+          [disabled]="localAtendimento.utiliza_coleta != 'S'"
+          [(ngModel)]="localAtendimento.local_impressao_etiqueta_amostra">
+          <mat-option value="R">Recepção</mat-option>
+          <mat-option value="C">Coleta</mat-option>
+          <mat-option value="">Nenhum</mat-option>
+        </mat-select>
       </mat-form-field>
 
       <div class="row col-sm-4 col-xs-12">
@@ -109,7 +119,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="p-2">
-            <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="registroDeColeta" name="registroDeColeta" [(ngModel)]="registroDeColeta">Registro de coleta</mat-checkbox>
             <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="biometria" name="biometria" [(ngModel)]="biometria">Biometria</mat-checkbox>
             <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="painelMonitoramento" name="painelMonitoramento" [(ngModel)]="painelMonitoramento">Painel Monitoramento</mat-checkbox>
             <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="resultadosCRM" name="resultadosCRM" [(ngModel)]="resultadosCRM">Enviar resultados CRM</mat-checkbox>
