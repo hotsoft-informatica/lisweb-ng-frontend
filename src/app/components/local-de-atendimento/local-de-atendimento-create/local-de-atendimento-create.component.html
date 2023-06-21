@@ -95,7 +95,13 @@
 
       <div class="row col-sm-4 col-xs-12">
         <div class="col-sm-6 col-md-6 col-lg-6 col-xs-7">
-          <mat-radio-group aria-label="Select an option" color="primary" class="p-2 me-4" id="coletaExterna" name="coletaExterna" [(ngModel)]="localAtendimento.coleta_externa">
+          <mat-radio-group
+            aria-label="Select an option"
+            color="primary" class="p-2 me-4"
+            id="coletaExterna" name="coletaExterna"
+            [(ngModel)]="localAtendimento.coleta_externa"
+            (change)="onRadioButtonChange($event)"
+          >
             <mat-radio-button value="N">Coleta Interna</mat-radio-button>
             <mat-radio-button value="S" class="ms-2">Coleta Externa</mat-radio-button>
           </mat-radio-group>
