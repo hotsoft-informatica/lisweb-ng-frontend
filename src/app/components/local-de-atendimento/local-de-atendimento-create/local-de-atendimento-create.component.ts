@@ -45,7 +45,6 @@ export class LocalDeAtendimentoCreateComponent implements OnInit {
   resultadosCRM = false;
   etiquetaApoioRec = false;
   dadoAdicionalTriagem = false;
-  coletaExterna = null;
   queries: Query[] = [];
 
   @ViewChild('grupo_local_id') grupo_local_id!: ElementRef;
