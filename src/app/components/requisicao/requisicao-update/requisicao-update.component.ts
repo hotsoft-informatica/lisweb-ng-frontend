@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Requisicao } from './../../model/requisicao.model';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Paciente } from '../../model/paciente.model';
-import { Convenios } from '../../model/convenios.model';
+import { Convenios } from '../../model/convenio.model';
 import { Medico } from '../../model/medico.model';
 import { DatePipe } from '@angular/common';
 import { RequisicaoUpdateExamesComponent } from './requisicao-update-exames/requisicao-update-exames.component';

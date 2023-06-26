@@ -1,9 +1,13 @@
 import { Base } from './base.model'
+import { Operadora } from './operadora.model';
 
 export class Convenios extends Base{
+  public id?: number;
+  public laboratorio_id?: number;
   public nome?: string;
   public mascara_guia?: string;
   public mascara_codigo?: string;
+  public original_id?: number;
   public vias_relatorio?: number;
   public idrelatorioguia?: number;
   public idrelatoriofatura?: number;
@@ -26,9 +30,20 @@ export class Convenios extends Base{
   public versao_nominal?: string;
   public email?: string;
   public chave_web?: string;
+  public logo?: boolean;
+  public created_at?: Date = new Date();
+  public updated_at?: Date = new Date();
   public x_filter_defs_id?: number;
   public dllintegracao?: string;
   public pastaintegracao?: string;
+  public version_id?: number;
+  public laboratory_domain_id?: number;
+  public deleted?: boolean;
+  public criado_em?: Date = new Date();
+  public changed_by_lab_id?: number;
+  public uuid?: string;
+  public operadora?: Operadora;
+
 
   constructor(values: Convenios) {
     super(values);

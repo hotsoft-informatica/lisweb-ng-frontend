@@ -1,5 +1,5 @@
 import { BaseService } from './base.service';
-import { Convenios } from '../model/convenios.model';
+import { Convenios } from '../model/convenio.model';
 import { Exame } from '../model/exame.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject, Injector } from '@angular/core';
