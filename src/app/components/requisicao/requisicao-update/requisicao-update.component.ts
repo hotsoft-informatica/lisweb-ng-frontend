@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Requisicao } from './../../model/requisicao.model';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { Paciente } from '../../model/paciente.model';
-import { Convenios } from '../../model/convenio.model';
+import { Convenio } from '../../model/convenio.model';
 import { Medico } from '../../model/medico.model';
 import { DatePipe } from '@angular/common';
 import { RequisicaoUpdateExamesComponent } from './requisicao-update-exames/requisicao-update-exames.component';
@@ -29,7 +29,7 @@ export class RequisicaoUpdateComponent implements OnInit {
   @Input('paciente') paciente: Paciente;
   @Input('localDeAtendimento') localDeAtendimento: LocalDeAtendimento;
   @Input('medicos') medico: Medico;
-  @Input('convenios') convenio: Convenios;
+  @Input('convenios') convenio: Convenio;
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -42,7 +42,7 @@ export class RequisicaoUpdateComponent implements OnInit {
     this.paciente ||= new Paciente();
     this.localDeAtendimento ||= new LocalDeAtendimento({});
     this.medico ||= new Medico({});
-    this.convenio ||= new Convenios({});
+    this.convenio ||= new Convenio({});
     dialogRef.disableClose = true;
   }
 

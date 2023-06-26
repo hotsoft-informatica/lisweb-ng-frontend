@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-convenio',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './convenio.component.html',
-  styleUrls: ['./convenio.component.css']
+  templateUrl: './convenio.component.html'
 })
 export class ConvenioComponent {
 

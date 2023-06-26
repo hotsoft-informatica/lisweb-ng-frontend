@@ -1,5 +1,5 @@
 import { BaseService } from './base.service';
-import { Convenios } from '../model/convenio.model';
+import { Convenio } from '../model/convenio.model';
 import { Exame } from '../model/exame.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject, Injector } from '@angular/core';
@@ -35,7 +35,7 @@ export class RequisicaoService extends BaseService {
     return this.http.get<Medico>(this.baseUrl + requisicaoId + '/medico');
   }
 
-  searchConvenio(requisicaoId: number): Observable<Convenios> {
-    return this.http.get<Convenios>(this.baseUrl + requisicaoId + '/convenio');
+  searchConvenio(requisicaoId: number): Observable<Convenio> {
+    return this.http.get<Convenio>(this.baseUrl + requisicaoId + '/convenio');
   }
 }
