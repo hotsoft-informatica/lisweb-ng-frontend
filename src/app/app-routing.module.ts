@@ -25,6 +25,7 @@ import { BandejaUpdateComponent } from './components/bandeja/bandeja-update/band
 import { ColetorCreateComponent } from './components/coletor/coletor-create/coletor-create.component';
 import { ColetorDeleteComponent } from './components/coletor/coletor-delete/coletor-delete.component';
 import { ColetorUpdateComponent } from './components/coletor/coletor-update/coletor-update.component';
+import { ConvenioComponent } from './components/convenio/convenio.component';
 import { ConsultaAmostraShowComponent } from './components/consulta-amostra/consulta-amostra-show/consulta-amostra-show.component';
 import { DominioComponent } from './components/dominio/dominio.component';
 import { EmpresaCreateComponent } from './components/empresa/empresa-create/empresa-create.component';
@@ -142,6 +143,10 @@ const routes: Routes = [
   {
     path: 'tipos_recurso',
     component: TipoRecursoComponent,
+  },
+  {
+    path: 'convenios',
+    component: ConvenioComponent,
   },
   {
     path: 'grupos_locais',
