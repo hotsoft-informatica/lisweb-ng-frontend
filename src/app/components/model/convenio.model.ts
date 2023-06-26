@@ -1,7 +1,7 @@
 import { Base } from './base.model'
 import { Operadora } from './operadora.model';
 
-export class Convenios extends Base{
+export class Convenio extends Base{
   public id?: number;
   public laboratorio_id?: number;
   public nome?: string;
@@ -44,10 +44,8 @@ export class Convenios extends Base{
   public uuid?: string;
   public operadora?: Operadora;
 
-
-  constructor(values: Convenios) {
+  constructor(values: Convenio) {
     super(values);
     Object.assign(this, values);
   }
 }
-
