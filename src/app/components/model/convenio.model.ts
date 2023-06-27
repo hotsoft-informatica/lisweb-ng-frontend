@@ -1,5 +1,6 @@
 import { Base } from './base.model'
 import { Operadora } from './operadora.model';
+import { Empresa } from './empresa.model';
 
 export class Convenio extends Base{
   public id?: number;
@@ -43,6 +44,7 @@ export class Convenio extends Base{
   public changed_by_lab_id?: number;
   public uuid?: string;
   public operadora?: Operadora;
+  public empresa?: Empresa;
 
   constructor(values: Convenio) {
     super(values);
