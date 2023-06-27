@@ -12,6 +12,8 @@ import { Convenio } from '../model/convenio.model';
 import { ConvenioService } from '../service/convenio.service';
 import { Operadora } from '../model/operadora.model';
 import { OperadoraService } from '../service/operadora.service';
+import { Empresa } from '../model/empresa.model';
+import { EmpresaService } from '../service/empresa.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -45,6 +47,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 })
 export class ConvenioComponent implements OnInit, AfterViewInit {
   @Input('operadoras') operadoras: Operadora[] = [];
+  operadora: Operadora;
+  @Input('empresas') empresas: Empresa[] = [];
+  empresa: Empresa;
 
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
@@ -57,6 +62,7 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   totalCount!: number;
 
   @ViewChild('operadora_id') operadora_id!: ElementRef;
+  @ViewChild('empresa_id') empresa_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
@@ -77,10 +83,14 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private recordService: ConvenioService,
-    private operadoraService: OperadoraService
+    private operadoraService: OperadoraService,
+    private empresaService: EmpresaService
   ) {
     this.currentRecord = new Convenio({});
     this.record ||= new Convenio({});
+    this.operadora ||= new Operadora({});
+    this.empresa ||= new Empresa({});
+    this.operadora.empresa = this.empresa;
   }
 
   ngOnInit(): void {
@@ -89,13 +99,22 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
     });
 
     const query = new Query({ key: '', value: '', isNumeric: false });
+    let empresa_id = this.operadora.empresa_id || 0
 
-    this.subjectOperadora.pipe(debounceTime(500)).subscribe(() => {
+    this.subjectOperadora.subscribe(() => {
       this.operadoraService
         .find('id', 'asc', 0, 99999, [])
         .subscribe((operadoras) => {
           console.table(this.queries);
           this.operadoras = operadoras;
+
+          if (empresa_id > 0) {
+            this.empresaService.readById(this.operadora.empresa_id as number).subscribe(
+              (empresa) => {
+              this.empresa = empresa;
+              this.operadora.empresa = empresa;
+            });
+          }
         });
     });
     this.subjectOperadora.next(null);
@@ -163,16 +182,15 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
 
   deleteGridData(id: number): void {
     const dialogRef = this.dialog.open(this.deleteDialog);
+
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.recordService.delete(id)
-          .subscribe((record) => {
-            this.recordService.showMessage('Convênio apagado com sucesso!');
-
-            // Carrega os dados do backend e faz refresh do datasource
-            this.loadPage();
-            this.datasource.data = [...this.records];
-          });
+        this.recordService.delete(id).subscribe((record) => {
+          this.recordService.showMessage('Convênio apagado com sucesso!');
+          // Carrega os dados do backend e faz refresh do datasource
+          this.loadPage();
+          this.datasource.data = [...this.records];
+        });
       }
     });
   }
@@ -189,7 +207,7 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
     const query_string = this.currentRecord
       .operadora_id as unknown as string;
     const query = new Query({
-      key: 'id',
+      key: 'empresa.nome_fantasia',
       value: query_string,
       isNumeric: false,
     });
@@ -204,7 +222,7 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
       const correspondingOption = Array.isArray(options)
         ? options.find((option) => option.id === id)
         : null;
-      return correspondingOption ? correspondingOption.id : '';
+      return correspondingOption ? correspondingOption.empresa?.nome_fantasia : '';
     };
   }
 }
