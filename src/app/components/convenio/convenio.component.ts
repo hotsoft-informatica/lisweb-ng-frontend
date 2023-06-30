@@ -1,19 +1,11 @@
+import { Component, OnInit, AfterViewInit,
+  ViewChild, TemplateRef, ElementRef, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  OnInit,
-  AfterViewInit,
-  ViewChild,
-  TemplateRef,
-  ElementRef,
-  Input
-} from '@angular/core';
 import { Convenio } from '../model/convenio.model';
 import { ConvenioService } from '../service/convenio.service';
 import { Operadora } from '../model/operadora.model';
 import { OperadoraService } from '../service/operadora.service';
 import { Empresa } from '../model/empresa.model';
-import { EmpresaService } from '../service/empresa.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
@@ -48,7 +40,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 export class ConvenioComponent implements OnInit, AfterViewInit {
   @Input('operadoras') operadoras: Operadora[] = [];
   operadora: Operadora;
-  @Input('empresas') empresas: Empresa[] = [];
   empresa: Empresa;
 
   datasource = new MatTableDataSource<any>([]);
@@ -76,6 +67,7 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   displayedColumns = [
     'nome',
     'email',
+    'chave_web',
     'operadora_id',
     'action'
   ];
@@ -83,14 +75,12 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private recordService: ConvenioService,
-    private operadoraService: OperadoraService,
-    private empresaService: EmpresaService
+    private operadoraService: OperadoraService
   ) {
     this.currentRecord = new Convenio({});
     this.record ||= new Convenio({});
     this.operadora ||= new Operadora({});
     this.empresa ||= new Empresa({});
-    this.operadora.empresa = this.empresa;
   }
 
   ngOnInit(): void {
@@ -99,22 +89,13 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
     });
 
     const query = new Query({ key: '', value: '', isNumeric: false });
-    let empresa_id = this.operadora.empresa_id || 0
 
     this.subjectOperadora.subscribe(() => {
       this.operadoraService
-        .find('id', 'asc', 0, 99999, [])
+        .find('id', 'asc', 0, 90, [])
         .subscribe((operadoras) => {
           console.table(this.queries);
           this.operadoras = operadoras;
-
-          if (empresa_id > 0) {
-            this.empresaService.readById(this.operadora.empresa_id as number).subscribe(
-              (empresa) => {
-              this.empresa = empresa;
-              this.operadora.empresa = empresa;
-            });
-          }
         });
     });
     this.subjectOperadora.next(null);

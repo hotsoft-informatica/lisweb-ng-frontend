@@ -63,7 +63,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Email:</mat-label>
           <input
             type="email"
@@ -83,7 +83,27 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Chave Publicação:</mat-label>
+          <input
+            type="text"
+            aria-label="chave_web"
+            id="chave_web"
+            required
+            matInput
+            maxlength="50"
+            name="chave_web"
+            [(ngModel)]="currentRecord.chave_web"
+            #chave_web="ngModel"
+          >
+          <mat-error *ngIf="chave_web.invalid && (chave_web.dirty || chave_web.touched)">
+            <span *ngIf="chave_web.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Operadora</mat-label>
           <input
             type="search"
@@ -144,6 +164,13 @@
       <th mat-header-cell
         *matHeaderCellDef mat-sort-header="email">Email</th>
       <td mat-cell *matCellDef="let row">{{ row?.email }}</td>
+    </ng-container>
+
+    <!-- Chave Publicação Column -->
+    <ng-container matColumnDef="chave_web" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="chave_web">Chave Publicação</th>
+      <td mat-cell *matCellDef="let row">{{ row?.chave_web }}</td>
     </ng-container>
 
     <!-- Operadora Column -->
