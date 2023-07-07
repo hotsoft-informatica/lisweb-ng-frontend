@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ConvenioDetalheComponent } from './convenio-detalhe/convenio-detalhe.component';
 
 @Component({
   selector: 'app-convenio',
@@ -34,7 +35,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    MatDatepickerModule
+    MatDatepickerModule, ConvenioDetalheComponent
   ]
 })
 export class ConvenioComponent implements OnInit, AfterViewInit {
