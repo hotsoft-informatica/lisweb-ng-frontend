@@ -128,6 +128,13 @@
           </mat-autocomplete>
         </mat-form-field>
 
+        <mat-tab-group>
+          <mat-tab label="Detalhes">
+            <app-convenio-detalhe [ngModel]="this.formCreateConvenio">
+            </app-convenio-detalhe>
+          </mat-tab>
+        </mat-tab-group>
+
         <div class="col-md-12 d-flex justify-content-end p-2">
           <button mat-button type="submit"
           (click)="addGridData()" *ngIf="onCreate"
