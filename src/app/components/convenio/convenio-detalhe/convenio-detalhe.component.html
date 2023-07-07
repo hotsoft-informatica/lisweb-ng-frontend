@@ -1,1 +1,107 @@
-<p>convenio-detalhe works!</p>
+<form #formConvenioDetalhe="ngForm" class="justify-content-md-center">
+  <div class="">
+    <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+      <mat-label>Mascara de Carteirinha</mat-label>
+      <input type="text" matInput min="1" matInput maxlength="50"
+        id="versao" name="versao" title="Versão"
+        [(ngModel)]="convenio.mascara_codigo">
+    </mat-form-field>
+    <div>
+      <h3 class="ms-2">Guia:</h3>
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-label>Mascara da Guia</mat-label>
+        <input type="text" matInput min="1" matInput maxlength="50"
+          id="versao" name="versao" title="Versão"
+          [(ngModel)]="convenio.mascara_guia">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+        <mat-label>Relatório de Guia</mat-label>
+        <input
+           type="search" name="idrelatorioguia" title="Relatório de Guia"
+          matInput [matAutocomplete]="autoRelatorio"
+          [(ngModel)]="convenio.idrelatorioguia"
+          (ngModelChange)="searchRelatorio()"
+        />
+        <mat-autocomplete #autoRelatorio="matAutocomplete"
+          [displayWith]="displayFnRelatorio(relatorios)">
+          <mat-option *ngFor="let relatorio of relatorios" [value]=" relatorio.id">
+            {{ relatorio.titulo }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+
+
+    <!-- <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
+      <mat-label>Tabela Marcação</mat-label>
+      <input
+        name="marcacao" title="Tabela de Marcação"
+        matInput [matAutocomplete]="autoMarcacao"
+        [(ngModel)]="convenio.marcacao_id"
+        (ngModelChange)="searchMarcacao()"
+      />
+      <mat-autocomplete #autoMarcacao="matAutocomplete"
+        [displayWith]="displayFnMarcacao(marcacao)">
+        <mat-option *ngFor="let marcacao of marcacao" [value]=" marcacao.id">
+          {{ marcacao.nome }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class= "col-lg-2 col-md-2 p-2">
+      <mat-label>Situação</mat-label>
+      <mat-select name="status" [(ngModel)]="versaoExame.status">
+        <mat-option value="A">Ativo</mat-option>
+        <mat-option value="I">Inativo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-label>Método</mat-label>
+      <input
+        title="Método Exame"
+        name="metodo_exame_id"
+        matInput [matAutocomplete]="autoMetodo"
+        [(ngModel)]="versaoExame.metodo_exame_id"
+        (ngModelChange)="searchMetodo()"
+      />
+      <mat-autocomplete #autoMetodo="matAutocomplete"
+        [displayWith]="displayFnMetodo(this.metodoExame)">
+        <mat-option *ngFor="let metodoExame of metodoExame" [value]=" metodoExame.id">
+          {{ metodoExame.descricao }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-label>Título Laudo</mat-label>
+      <input matInput maxlength="25" id="titulo_laudo" name="titulo_laudo"
+        [(ngModel)]="versaoExame.titulo_laudo" title="Título Laudo">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+      <mat-label>Agrupador Histórico</mat-label>
+      <input type="number" matInput min="1" id="agrupamento_historico"
+        name="agrupamento_historico" title="Agrupador Histórico"
+        [(ngModel)]="versaoExame.agrupamento_historico">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+      <mat-label>Tempo de Repouso</mat-label>
+      <input type="number" title="Minutos" matInput min="1"
+        id="tempo_repouso" name="tempo_repouso"
+        title="Tempo de Repouso"
+        [(ngModel)]="versaoExame.tempo_repouso">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="col-lg-6 col-md-6 p-2">
+      <mat-label>Nota do Laudo</mat-label>
+      <textarea matInput id="descritivo" name="descritivo"
+        [(ngModel)]="versaoExame.descritivo"
+        title="Nota do Laudo">
+      </textarea>
+    </mat-form-field> -->
+
+  </div>
+</form>
