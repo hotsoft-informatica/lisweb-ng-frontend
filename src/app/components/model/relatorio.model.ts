@@ -1,4 +1,5 @@
 import { Base } from './base.model';
+import { TipoRelatorio } from './tipo-relatorio.model';
 
 export class Relatorio extends Base{
   public id?: number;
@@ -32,6 +33,7 @@ export class Relatorio extends Base{
   public changed_by_lab_id?: number;
   public itemid?: number;
   public uuid?: string;
+  public tipoRelatorio?: TipoRelatorio;
 
   constructor(values: Relatorio) {
     super(values);
