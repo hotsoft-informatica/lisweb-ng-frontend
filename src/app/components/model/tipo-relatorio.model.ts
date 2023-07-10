@@ -13,7 +13,7 @@ export class TipoRelatorio extends Base{
   public deleted?: boolean;
   public criado_em?: Date = new Date();
   public changed_by_lab_id?: number;
-  public uuid?: string
+  public uuid?: string;
 
   constructor(values: TipoRelatorio) {
     super(values);
