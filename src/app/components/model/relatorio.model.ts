@@ -33,7 +33,7 @@ export class Relatorio extends Base{
   public changed_by_lab_id?: number;
   public itemid?: number;
   public uuid?: string;
-  public tipoRelatorio?: TipoRelatorio;
+  public tipo_relatorio?: TipoRelatorio;
 
   constructor(values: Relatorio) {
     super(values);
