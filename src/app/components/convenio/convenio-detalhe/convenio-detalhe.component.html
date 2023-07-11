@@ -14,20 +14,47 @@
           id="versao" name="versao" title="Versão"
           [(ngModel)]="convenio.mascara_guia">
       </mat-form-field>
-      <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+      <mat-form-field appearance="fill" class="col-lg-5 col-md-5 p-2">
         <mat-label>Relatório de Guia</mat-label>
         <input
-           type="search" name="idrelatorioguia" title="Relatório de Guia"
-          matInput [matAutocomplete]="autoRelatorio"
+          type="search" name="idrelatorioguia" title="Relatório de Guia"
+          matInput [matAutocomplete]="autoRelatorioGuia"
           [(ngModel)]="convenio.idrelatorioguia"
-          (ngModelChange)="searchRelatorio()"
+          (ngModelChange)="searchRelatorioGuia()"
+          #idrelatorioguia="ngModel"
         />
-        <mat-autocomplete #autoRelatorio="matAutocomplete"
-          [displayWith]="displayFnRelatorio(relatorios)">
-          <mat-option *ngFor="let relatorio of relatorios" [value]=" relatorio.id">
-            {{ relatorio.titulo }}
+        <mat-autocomplete #autoRelatorioGuia="matAutocomplete"
+          [displayWith]="displayFnRelatorioGuia(relatoriosGuia)">
+          <mat-option *ngFor="let relatorioGuia of relatoriosGuia" [value]=" relatorioGuia.id">
+            {{ relatorioGuia.titulo }}
           </mat-option>
         </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <h3 class="ms-2">Fatura:</h3>
+      <mat-form-field appearance="fill" class="col-lg-5 col-md-5 p-2">
+        <mat-label>Nome do Relatório</mat-label>
+        <input
+          type="search" name="idrelatoriofatura" title="Relatório de Fatura"
+          matInput [matAutocomplete]="autoRelatorioFatura"
+          [(ngModel)]="convenio.idrelatoriofatura"
+          (ngModelChange)="searchRelatorioFatura()"
+          #idrelatoriofatura="ngModel"
+        />
+        <mat-autocomplete #autoRelatorioFatura="matAutocomplete"
+          [displayWith]="displayFnRelatorioFatura(relatoriosFatura)">
+          <mat-option *ngFor="let relatorioFatura of relatoriosFatura" [value]=" relatorioFatura.id">
+            {{ relatorioFatura.titulo }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-label>Qtde. de Vias da Fatura</mat-label>
+        <input type="text" matInput min="1" matInput maxlength="50"
+          id="versao" name="versao" title="Versão"
+          [(ngModel)]="convenio.mascara_guia">
       </mat-form-field>
     </div>
 
