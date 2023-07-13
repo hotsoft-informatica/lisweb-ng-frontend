@@ -4,6 +4,7 @@ import { Relatorio } from '../../model/relatorio.model';
 import { TipoRelatorio } from '../../model/tipo-relatorio.model';
 import { RelatorioGuiaService } from '../../service/relatorio-guia.service';
 import { RelatorioFaturaService } from '../../service/relatorio-fatura.service';
+import { RelatorioExportacaoService } from '../../service/relatorio-exportacao.service';
 import { Query } from 'src/app/components/model/query.model';
 import { Subject, debounceTime } from 'rxjs';
 import { MatSelectModule } from '@angular/material/select';
@@ -23,21 +24,23 @@ import { FormsModule } from '@angular/forms';
   ]
 })
 export class ConvenioDetalheComponent implements OnInit {
-  convenio: Convenio;
-  tipo_relatorio: TipoRelatorio;
-  relatorio: Relatorio[] = [];
-
+  @Input('convenio') convenio: Convenio;
   @Input('relatoriosGuia') relatoriosGuia: Relatorio[] = [];
   @Input('relatoriosFatura') relatoriosFatura: Relatorio[] = [];
+  @Input('relatoriosExportacao') relatoriosExportacao: Relatorio[] = [];
 
+  tipo_relatorio: TipoRelatorio;
+  relatorio: Relatorio[] = [];
   queries: Query[] = [];
 
   subjectRelatorioGuia: Subject<any> = new Subject();
   subjectRelatorioFatura: Subject<any> = new Subject();
+  subjectRelatorioExportacao: Subject<any> = new Subject();
 
   constructor(
     private relatorioFaturaService: RelatorioFaturaService,
-    private relatorioGuiaService: RelatorioGuiaService
+    private relatorioGuiaService: RelatorioGuiaService,
+    private relatorioExportacaoService: RelatorioExportacaoService
   ) {
     this.convenio ||= new Convenio({});
     this.tipo_relatorio ||= new TipoRelatorio({});
@@ -46,7 +49,7 @@ export class ConvenioDetalheComponent implements OnInit {
   ngOnInit(): void {
     const query = new Query({ key: '', value: '', isNumeric: false });
 
-    this.subjectRelatorioGuia.pipe(debounceTime(500)).subscribe(() => {
+    this.subjectRelatorioGuia.subscribe(() => {
       this.relatorioGuiaService
         .find('id', 'asc', 0, 60, this.queries)
         .subscribe((relatoriosGuia: any) => {
@@ -56,7 +59,7 @@ export class ConvenioDetalheComponent implements OnInit {
     });
     this.subjectRelatorioGuia.next(null);
 
-    this.subjectRelatorioFatura.pipe(debounceTime(500)).subscribe(() => {
+    this.subjectRelatorioFatura.subscribe(() => {
       this.relatorioFaturaService
         .find('id', 'asc', 0, 60, this.queries)
         .subscribe((relatoriosFatura: any) => {
@@ -65,6 +68,16 @@ export class ConvenioDetalheComponent implements OnInit {
         });
     });
     this.subjectRelatorioFatura.next(null);
+
+    this.subjectRelatorioExportacao.subscribe(() => {
+      this.relatorioExportacaoService
+        .find('id', 'asc', 0, 60, this.queries)
+        .subscribe((relatoriosExportacao: any) => {
+          console.table(this.queries);
+          this.relatoriosExportacao = relatoriosExportacao;
+        });
+    });
+    this.subjectRelatorioExportacao.next(null);
   }
 
   searchRelatorioGuia(): void {
@@ -101,6 +114,27 @@ export class ConvenioDetalheComponent implements OnInit {
   }
 
   displayFnRelatorioFatura(options: Relatorio[]): (id: any) => any {
+    return (id: any) => {
+      const correspondingOption = Array.isArray(options)
+        ? options.find((option) => option.id === id)
+        : null;
+      return correspondingOption ? correspondingOption.titulo : '';
+    };
+  }
+
+  searchRelatorioExportacao(): void {
+    const query_string = this.convenio.idrelatorioexportacao as unknown as string;
+    const query = new Query({
+      key: 'titulo',
+      value: query_string,
+      isNumeric: false,
+    });
+    this.queries = [];
+    this.queries.push(query);
+    this.subjectRelatorioExportacao.next(null);
+  }
+
+  displayFnRelatorioExportacao(options: Relatorio[]): (id: any) => any {
     return (id: any) => {
       const correspondingOption = Array.isArray(options)
         ? options.find((option) => option.id === id)
