@@ -130,7 +130,10 @@
 
         <mat-tab-group>
           <mat-tab label="Detalhes">
-            <app-convenio-detalhe [convenio]="this.currentRecord">
+            <app-convenio-detalhe [convenio]="this.currentRecord"
+            [relatoriosExportacao]="this.relatoriosExportacao"
+            [relatoriosFatura]="this.relatoriosFatura"
+            [relatoriosGuia]="this.relatoriosGuia">
             </app-convenio-detalhe>
           </mat-tab>
         </mat-tab-group>
