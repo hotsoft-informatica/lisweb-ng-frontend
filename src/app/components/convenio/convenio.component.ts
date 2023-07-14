@@ -12,8 +12,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { merge } from 'rxjs';
 import { Query } from '../model/query.model';
-import { Subject, timer } from 'rxjs';
-import { tap, debounceTime } from 'rxjs/operators';
+import { Subject, forkJoin } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
@@ -26,6 +26,10 @@ import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ConvenioDetalheComponent } from './convenio-detalhe/convenio-detalhe.component';
+import { RelatorioGuiaService } from '../service/relatorio-guia.service';
+import { RelatorioFaturaService } from '../service/relatorio-fatura.service';
+import { RelatorioExportacaoService } from '../service/relatorio-exportacao.service';
+import { Relatorio } from '../model/relatorio.model';
 
 @Component({
   selector: 'app-convenio',
@@ -33,13 +37,17 @@ import { ConvenioDetalheComponent } from './convenio-detalhe/convenio-detalhe.co
   templateUrl: './convenio.component.html',
   imports: [
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
-    MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
+    MatAutocompleteModule, NgIf, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
     MatDatepickerModule, ConvenioDetalheComponent
   ]
 })
 export class ConvenioComponent implements OnInit, AfterViewInit {
   @Input('operadoras') operadoras: Operadora[] = [];
+  @Input('relatoriosGuia') relatoriosGuia: Relatorio[] = [];
+  @Input('relatoriosFatura') relatoriosFatura: Relatorio[] = [];
+  @Input('relatoriosExportacao') relatoriosExportacao: Relatorio[] = [];
+
   operadora: Operadora;
   empresa: Empresa;
 
@@ -76,7 +84,10 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private recordService: ConvenioService,
-    private operadoraService: OperadoraService
+    private operadoraService: OperadoraService,
+    private relatorioFaturaService: RelatorioFaturaService,
+    private relatorioGuiaService: RelatorioGuiaService,
+    private relatorioExportacaoService: RelatorioExportacaoService,
   ) {
     this.currentRecord = new Convenio({});
     this.record ||= new Convenio({});
@@ -112,15 +123,22 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   }
 
   loadPage() {
-    this.recordService
+    forkJoin({
+      guias: this.relatorioGuiaService.find('id', 'asc', 0, 60, this.queries),
+      faturas: this.relatorioFaturaService.find('id', 'asc', 0, 60, this.queries),
+      exportacoes: this.relatorioExportacaoService.find('id', 'asc', 0, 60, this.queries),
+      convenios: this.recordService
       .find(this.sort.active,
         this.sort.direction,
         this.paginator.pageIndex,
-        this.paginator.pageSize, this.query
-      ).subscribe((records: any[]) => {
-        this.records = records;
-        this.datasource.data = [...this.records];
-      });
+        this.paginator.pageSize, this.query)
+    }).subscribe( resultado => {
+      this.relatoriosFatura = resultado.faturas;
+      this.relatoriosExportacao = resultado.exportacoes;
+      this.relatoriosGuia = resultado.guias;
+      this.records = resultado.convenios;
+      this.datasource.data = [...this.records];
+    })
   }
 
   new(): void {
