@@ -6,10 +6,10 @@ import { RelatorioGuiaService } from '../../service/relatorio-guia.service';
 import { RelatorioFaturaService } from '../../service/relatorio-fatura.service';
 import { RelatorioExportacaoService } from '../../service/relatorio-exportacao.service';
 import { Query } from 'src/app/components/model/query.model';
-import { Subject, debounceTime } from 'rxjs';
+import { Subject } from 'rxjs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { NgFor } from '@angular/common';
+import { NgFor, JsonPipe } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,8 +19,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-convenio-detalhe',
   standalone: true,
   templateUrl: './convenio-detalhe.component.html',
-  imports: [ FormsModule, MatFormFieldModule, MatInputModule,
-    MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule
+  imports: [ FormsModule, MatFormFieldModule, MatInputModule, JsonPipe,
+    MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule,
   ]
 })
 export class ConvenioDetalheComponent implements OnInit {
@@ -30,7 +30,7 @@ export class ConvenioDetalheComponent implements OnInit {
   @Input('relatoriosExportacao') relatoriosExportacao: Relatorio[] = [];
 
   tipo_relatorio: TipoRelatorio;
-  relatorio: Relatorio[] = [];
+  relatorio: Relatorio;
   queries: Query[] = [];
 
   subjectRelatorioGuia: Subject<any> = new Subject();
@@ -40,9 +40,10 @@ export class ConvenioDetalheComponent implements OnInit {
   constructor(
     private relatorioFaturaService: RelatorioFaturaService,
     private relatorioGuiaService: RelatorioGuiaService,
-    private relatorioExportacaoService: RelatorioExportacaoService
+    private relatorioExportacaoService: RelatorioExportacaoService,
   ) {
     this.convenio ||= new Convenio({});
+    this.relatorio ||= new Relatorio({});
     this.tipo_relatorio ||= new TipoRelatorio({});
   }
 
@@ -53,7 +54,6 @@ export class ConvenioDetalheComponent implements OnInit {
       this.relatorioGuiaService
         .find('id', 'asc', 0, 60, this.queries)
         .subscribe((relatoriosGuia: any) => {
-          console.table(this.queries);
           this.relatoriosGuia = relatoriosGuia;
         });
     });
@@ -63,7 +63,6 @@ export class ConvenioDetalheComponent implements OnInit {
       this.relatorioFaturaService
         .find('id', 'asc', 0, 60, this.queries)
         .subscribe((relatoriosFatura: any) => {
-          console.table(this.queries);
           this.relatoriosFatura = relatoriosFatura;
         });
     });
@@ -73,7 +72,6 @@ export class ConvenioDetalheComponent implements OnInit {
       this.relatorioExportacaoService
         .find('id', 'asc', 0, 60, this.queries)
         .subscribe((relatoriosExportacao: any) => {
-          console.table(this.queries);
           this.relatoriosExportacao = relatoriosExportacao;
         });
     });
