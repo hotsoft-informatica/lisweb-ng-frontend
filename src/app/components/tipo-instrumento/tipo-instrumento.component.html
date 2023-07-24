@@ -1,1 +1,393 @@
-<p>tipo-instrumento works!</p>
+<div class="d-flex justify-content-between col-sm-12 p-2">
+  <button mat-flat-button color="primary" class="col-sm-2 col-md-2 col-lg-2 float-start btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseSearch"
+    aria-expanded="false" aria-controls="collapseSearch">
+    <mat-icon>search</mat-icon>
+    Buscar
+  </button>
+
+  <button appDebounceClick mat-flat-button color="primary" class="col-sm-1 col-md-1 col-lg-1 float-end btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseForm"
+    aria-expanded="false" aria-controls="collapseForm" (click)="new();" *ngIf="!onCreate && !onEdit">
+    <mat-icon>add</mat-icon>
+    Novo
+  </button>
+</div>
+
+<div class="mat-elevation-z4">
+  <div class="collapse" id="collapseSearch">
+    <div class="card card-body">
+      <div class="row">
+        <div class="mb-3 col-md-3 row">
+          <mat-form-field appearance="fill">
+            <mat-label>Modalidade:</mat-label>
+            <input matInput #modalidade maxlength="100"
+            title="Filtre por modalidade"
+              (input)="search('modalidade', modalidade.value)"
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3 col-md-3 row">
+          <mat-form-field appearance="fill">
+            <mat-label>Email:</mat-label>
+            <input matInput #email maxlength="100"
+            title="Filtre por Email"
+              (input)="search('email', email.value)"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <div *ngIf="onCreate || onEdit">
+      <form #formCreateTipoInstrumento="ngForm" class="justify-content-md-center">
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Modalidade:</mat-label>
+          <input
+            type="text"
+            aria-label="modalidade"
+            id="modalidade"
+            required
+            matInput
+            maxlength="50"
+            name="modalidade"
+            [(ngModel)]="currentRecord.modalidade"
+            #modalidade="ngModel"
+          >
+          <mat-error *ngIf="modalidade.invalid && (modalidade.dirty || modalidade.touched)">
+            <span *ngIf="modalidade.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Descrição:</mat-label>
+          <input
+            type="descricao"
+            aria-label="descricao"
+            id="descricao"
+            required
+            matInput
+            maxlength="50"
+            name="descricao"
+            [(ngModel)]="currentRecord.descricao"
+            #descricao="ngModel"
+          >
+          <mat-error *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
+            <span *ngIf="descricao.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Código Instrumento:</mat-label>
+          <input
+            type="text"
+            aria-label="cod_instrumento"
+            id="cod_instrumento"
+            required
+            matInput
+            maxlength="50"
+            name="cod_instrumento"
+            [(ngModel)]="currentRecord.cod_instrumento"
+            #cod_instrumento="ngModel"
+          >
+          <mat-error *ngIf="cod_instrumento.invalid && (cod_instrumento.dirty || cod_instrumento.touched)">
+            <span *ngIf="cod_instrumento.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Padão Código de Barras:</mat-label>
+          <input
+            type="text"
+            aria-label="padrao_cod_barras"
+            id="padrao_cod_barras"
+            required
+            matInput
+            maxlength="50"
+            name="padrao_cod_barras"
+            [(ngModel)]="currentRecord.padrao_cod_barras"
+            #padrao_cod_barras="ngModel"
+          >
+          <mat-error *ngIf="padrao_cod_barras.invalid && (padrao_cod_barras.dirty || padrao_cod_barras.touched)">
+            <span *ngIf="padrao_cod_barras.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Mapa de Lote</mat-label>
+          <input
+            type="search"
+            aria-label="relatorio_id"
+            name="relatorio_id"
+            matInput [matAutocomplete]="autoRelatorioMapaLote"
+            [(ngModel)]="currentRecord.relatorio_id"
+            (ngModelChange)="searchRelatorioMapaLote()"
+            #relatorio_id="ngModel"
+            required
+          />
+          <mat-error *ngIf="relatorio_id.invalid && (relatorio_id.dirty || relatorio_id.touched)">
+            <span *ngIf="relatorio_id.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+          <mat-autocomplete #autoRelatorioMapaLote="matAutocomplete"
+            [displayWith]="displayFnRelatorioMapaLote(relatoriosMapaLote)">
+            <mat-option *ngFor="let relatorioMapaLote of relatoriosMapaLote" [value]="relatorioMapaLote.id">
+              {{relatorioMapaLote?.titulo}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Interfaceamento</mat-label>
+          <input
+            type="text"
+            aria-label="interfaceamento"
+            id="interfaceamento"
+            required
+            matInput
+            maxlength="50"
+            name="interfaceamento"
+            [(ngModel)]="currentRecord.interfaceamento"
+            #interfaceamento="ngModel"
+          >
+          <mat-error *ngIf="interfaceamento.invalid && (interfaceamento.dirty || interfaceamento.touched)">
+            <span *ngIf="interfaceamento.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Diretório Transf. Dados</mat-label>
+          <input
+            type="text"
+            aria-label="diretorio_transf_dados"
+            id="diretorio_transf_dados"
+            required
+            matInput
+            maxlength="50"
+            name="diretorio_transf_dados"
+            [(ngModel)]="currentRecord.diretorio_transf_dados"
+            #diretorio_transf_dados="ngModel"
+          >
+          <mat-error *ngIf="diretorio_transf_dados.invalid && (diretorio_transf_dados.dirty || diretorio_transf_dados.touched)">
+            <span *ngIf="diretorio_transf_dados.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Aprovação do Exame na Bancada</mat-label>
+          <mat-select name="utiliza_coleta"
+            [(ngModel)]="currentRecord.aprova_exame_bancada">
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Triagem Rápida</mat-label>
+          <mat-select name="utiliza_coleta"
+            [(ngModel)]="currentRecord.habilita_triagem_rapida">
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Permite Sobrescrever Resultado</mat-label>
+          <mat-select name="utiliza_coleta"
+            [(ngModel)]="currentRecord.sobrescreve_resultado">
+            <mat-option value="S">Sim</mat-option>
+            <mat-option value="N">Não</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+          <mat-label>Driver</mat-label>
+          <input
+            type="search"
+            aria-label="driver_id"
+            name="driver_id"
+            matInput [matAutocomplete]="autoDrivers"
+            [(ngModel)]="currentRecord.driver_id"
+            (ngModelChange)="searchDriver()"
+            #driver_id="ngModel"
+            required
+          />
+          <mat-error *ngIf="driver_id.invalid && (driver_id.dirty || driver_id.touched)">
+            <span *ngIf="driver_id.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+          <mat-autocomplete #autoDrivers="matAutocomplete"
+            [displayWith]="displayFnDriver(drivers)">
+            <mat-option *ngFor="let driver of drivers" [value]="driver.id">
+              {{driver?.nome}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <!--mat-tab-group>
+          <mat-tab label="Detalhes">
+            <app-convenio-detalhe [convenio]="this.currentRecord"
+            [relatoriosExportacao]="this.relatoriosExportacao"
+            [relatoriosFatura]="this.relatoriosFatura"
+            [relatoriosGuia]="this.relatoriosGuia">
+            </app-convenio-detalhe>
+          </mat-tab>
+        </mat-tab-group-->
+
+        <div class="col-md-12 d-flex justify-content-end p-2">
+          <button mat-button type="submit"
+          (click)="addGridData()" *ngIf="onCreate"
+            [disabled]="formCreateTipoInstrumento.invalid">Inserir</button>
+          <button mat-button type="submit"
+          (click)="updateGridData()"
+           *ngIf="onEdit">Alterar</button>
+          <button mat-button color="warn" type="button"
+          (click)="cancelar()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="mat-elevation-z4">
+  <table
+    mat-table
+    [dataSource]="datasource"
+    matSort
+    matSortActive="id"
+    matSortDirection="desc"
+    matSortDisableClear
+  >
+
+    <!-- Modalidade Column -->
+    <ng-container matColumnDef="modalidade" class="col-2">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="modalidade">Modalidade</th>
+      <td mat-cell *matCellDef="let row">{{ row?.modalidade }}</td>
+    </ng-container>
+
+     <!-- Descricao Column -->
+     <ng-container matColumnDef="descricao" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="descricao">Descrição</th>
+      <td mat-cell *matCellDef="let row">{{ row?.descricao }}</td>
+    </ng-container>
+
+    <!-- Código Column -->
+    <ng-container matColumnDef="cod_instrumento" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="cod_instrumento">Código</th>
+      <td mat-cell *matCellDef="let row">{{ row?.cod_instrumento }}</td>
+    </ng-container>
+
+    <!-- Código de Barras Column -->
+    <ng-container matColumnDef="padrao_cod_barras" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="padrao_cod_barras">Padrão Cod. Barras</th>
+      <td mat-cell *matCellDef="let row">{{ row?.padrao_cod_barras }}</td>
+    </ng-container>
+
+    <!-- Mapa de Lote Column -->
+    <ng-container matColumnDef="relatorio_id" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="relatorio_id">Mapa de Lote</th>
+      <td mat-cell *matCellDef="let row">{{ row?.relatorioMapaLote?.titulo }}</td>
+    </ng-container>
+
+    <!-- Interfaceamento Column -->
+    <ng-container matColumnDef="interfaceamento" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="interfaceamento">Interfaceamento</th>
+      <td mat-cell *matCellDef="let row">{{ row?.interfaceamento }}</td>
+    </ng-container>
+
+    <!-- Diretório de Recebimento Resultados Column -->
+    <ng-container matColumnDef="diretorio_transf_dados" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="diretorio_transf_dados">Diretório do Exame na Bancada</th>
+      <td mat-cell *matCellDef="let row">{{ row?.diretorio_transf_dados }}</td>
+    </ng-container>
+
+    <!-- Aprovação do Exame Column -->
+    <ng-container matColumnDef="aprova_exame_bancada" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="aprova_exame_bancada">Aprovação do Exame na Bancada</th>
+      <td mat-cell *matCellDef="let row">{{ row?.aprova_exame_bancada }}</td>
+    </ng-container>
+
+    <!-- Triagem Rápida Column -->
+    <ng-container matColumnDef="habilita_triagem_rapida" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="habilita_triagem_rapida">Triagem Rápida</th>
+      <td mat-cell *matCellDef="let row">{{ row?.habilita_triagem_rapida }}</td>
+    </ng-container>
+
+    <!-- Permite Sobrescrever Resultados Column -->
+    <ng-container matColumnDef="sobrescreve_resultado" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="sobrescreve_resultado">Permite Sobrescrever Resultado</th>
+      <td mat-cell *matCellDef="let row">{{ row?.sobrescreve_resultado }}</td>
+    </ng-container>
+
+    <!-- Driver Column -->
+    <ng-container matColumnDef="driver_id" class="col-2">
+      <th mat-header-cell
+        *matHeaderCellDef mat-sort-header="driver_id">Driver</th>
+      <td mat-cell *matCellDef="let row">{{ row?.driver?.nome }}</td>
+    </ng-container>
+
+    <!-- action Column -->
+    <ng-container matColumnDef="action" class="col-1">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let row; index as position">
+        <div class="row">
+
+          <div class="col-1 me-3">
+            <button mat-icon-button *ngIf="!onEdit" (click)="atualizar(row)">
+              <mat-icon class="edit text-success">edit</mat-icon>
+            </button>
+          </div>
+
+          <div class="col-1 me-3">
+            <button class="delete" mat-icon-button *ngIf="!onEdit" (click)="deleteGridData(row.id)">
+              <mat-icon class="delete text-danger">delete</mat-icon>
+            </button>
+          </div>
+
+          <ng-template #deleteDialog>
+            <mat-dialog-content class="mat-typography">
+              Deseja apagar esse registro?
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+              <button mat-button mat-dialog-close>Cancel</button>
+              <button mat-button [mat-dialog-close]="true">Apagar</button>
+            </mat-dialog-actions>
+          </ng-template>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [length]="this.totalCount"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 20, 50]">
+  </mat-paginator>
+</div>
