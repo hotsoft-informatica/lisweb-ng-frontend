@@ -98,6 +98,7 @@ import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-cre
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
+import { TipoInstrumentoComponent } from './components/tipo-instrumento/tipo-instrumento.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { SuperUserComponent } from './components/super-user/super-user.component';
 import { UserComponent } from './components/user/user.component';
@@ -143,6 +144,10 @@ const routes: Routes = [
   {
     path: 'tipos_recurso',
     component: TipoRecursoComponent,
+  },
+  {
+    path: 'tipo_instrumentos',
+    component: TipoInstrumentoComponent,
   },
   {
     path: 'convenios',
