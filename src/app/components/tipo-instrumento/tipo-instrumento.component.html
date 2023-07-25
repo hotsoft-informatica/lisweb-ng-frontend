@@ -44,23 +44,13 @@
       <form #formCreateTipoInstrumento="ngForm" class="justify-content-md-center">
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
-          <mat-label>Modalidade:</mat-label>
-          <input
-            type="text"
-            aria-label="modalidade"
-            id="modalidade"
-            required
-            matInput
-            maxlength="50"
-            name="modalidade"
-            [(ngModel)]="currentRecord.modalidade"
-            #modalidade="ngModel"
-          >
-          <mat-error *ngIf="modalidade.invalid && (modalidade.dirty || modalidade.touched)">
-            <span *ngIf="modalidade.errors?.['required']">
-              O campo é obrigatório!
-            </span>
-          </mat-error>
+          <mat-label>Modalidade</mat-label>
+          <mat-select name="modalidade"
+            [(ngModel)]="currentRecord.modalidade">
+            <mat-option value="A">Análise</mat-option>
+            <mat-option value="E">Etiquetagem</mat-option>
+            <mat-option value="S">Sorter</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
@@ -278,9 +268,8 @@
     <!-- Modalidade Column -->
     <ng-container matColumnDef="modalidade" class="col-2">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="modalidade">Modalidade</th>
-      <td mat-cell *matCellDef="let row">{{ row?.modalidade }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.modalidade | valormodalidade}}</td>
     </ng-container>
-
      <!-- Descricao Column -->
      <ng-container matColumnDef="descricao" class="col-2">
       <th mat-header-cell
