@@ -26,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ValorModalidadePipe } from 'src/app/pipes/modalidade.pipe';
 
 @Component({
   selector: 'app-tipo-instrumento',
@@ -35,7 +36,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgIf, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    MatDatepickerModule
+    MatDatepickerModule, ValorModalidadePipe
   ]
 
 })
@@ -100,7 +101,7 @@ export class TipoInstrumentoComponent implements OnInit, AfterViewInit {
 
     this.subjectDriver.subscribe(() => {
       this.driverService
-        .find('id', 'asc', 0, 90, [])
+        .find('id', 'asc', 0, 90, this.queries)
         .subscribe((drivers) => {
           console.table(this.queries);
           this.drivers = drivers;
@@ -110,7 +111,7 @@ export class TipoInstrumentoComponent implements OnInit, AfterViewInit {
 
     this.subjectRelatorioMapaLote.subscribe(() => {
       this.relatorioMapaLoteService
-        .find('id', 'asc', 0, 90, [])
+        .find('id', 'asc', 0, 90, this.queries)
         .subscribe((relatoriosMapaLote) => {
           console.table(this.queries);
           this.relatoriosMapaLote = relatoriosMapaLote;
