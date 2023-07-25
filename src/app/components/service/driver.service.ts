@@ -6,11 +6,10 @@ import { Injectable, Inject, Injector } from '@angular/core';
   providedIn: 'root',
 })
 export class DriverService extends BaseService {
-  baseUrl = '/drivers';
-
   constructor(
     @Inject(Injector) public injector: Injector,
-    public http: HttpClient) {
+    public http: HttpClient,
+  ) {
     super(injector, http);
     this.endpoint = 'drivers'
   }
