@@ -94,23 +94,21 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
-          <mat-label>Padão Código de Barras:</mat-label>
-          <input
-            type="text"
-            aria-label="padrao_cod_barras"
-            id="padrao_cod_barras"
-            required
-            matInput
-            maxlength="50"
-            name="padrao_cod_barras"
-            [(ngModel)]="currentRecord.padrao_cod_barras"
-            #padrao_cod_barras="ngModel"
-          >
-          <mat-error *ngIf="padrao_cod_barras.invalid && (padrao_cod_barras.dirty || padrao_cod_barras.touched)">
-            <span *ngIf="padrao_cod_barras.errors?.['required']">
-              O campo é obrigatório!
-            </span>
-          </mat-error>
+          <mat-label>Padão Código de Barras</mat-label>
+          <mat-select name="padrao_cod_barras"
+            [(ngModel)]="currentRecord.padrao_cod_barras">
+            <mat-option value="9">Codabar</mat-option>
+            <mat-option value="5">Code128</mat-option>
+            <mat-option value="6">Code39</mat-option>
+            <mat-option value="2">EAN_13</mat-option>
+            <mat-option value="3">EAN_8</mat-option>
+            <mat-option value="8">FIM</mat-option>
+            <mat-option value="4">Int2of5</mat-option>
+            <mat-option value="10">MSI</mat-option>
+            <mat-option value="7">Postnet</mat-option>
+            <mat-option value="0">UPC_A</mat-option>
+            <mat-option value="1">UPC_E</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
@@ -257,7 +255,7 @@
     <!-- Modalidade Column -->
     <ng-container matColumnDef="modalidade" class="col-2">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="modalidade">Modalidade</th>
-      <td mat-cell *matCellDef="let row">{{ row?.modalidade | valormodalidade}}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.modalidade | valormodalidade }}</td>
     </ng-container>
      <!-- Descricao Column -->
      <ng-container matColumnDef="descricao" class="col-2">
@@ -277,7 +275,7 @@
     <ng-container matColumnDef="padrao_cod_barras" class="col-2">
       <th mat-header-cell
         *matHeaderCellDef mat-sort-header="padrao_cod_barras">Padrão Cod. Barras</th>
-      <td mat-cell *matCellDef="let row">{{ row?.padrao_cod_barras }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.padrao_cod_barras | valorpadraocodigobarra }}</td>
     </ng-container>
 
     <!-- Mapa de Lote Column -->
@@ -291,7 +289,7 @@
     <ng-container matColumnDef="interfaceamento" class="col-2">
       <th mat-header-cell
         *matHeaderCellDef mat-sort-header="interfaceamento">Interfaceamento</th>
-      <td mat-cell *matCellDef="let row">{{ row?.interfaceamento | valorinterfaceamento}}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.interfaceamento | valorinterfaceamento }}</td>
     </ng-container>
 
     <!-- Diretório de Recebimento Resultados Column -->
