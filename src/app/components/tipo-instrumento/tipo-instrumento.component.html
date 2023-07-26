@@ -140,22 +140,11 @@
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Interfaceamento</mat-label>
-          <input
-            type="text"
-            aria-label="interfaceamento"
-            id="interfaceamento"
-            required
-            matInput
-            maxlength="50"
-            name="interfaceamento"
-            [(ngModel)]="currentRecord.interfaceamento"
-            #interfaceamento="ngModel"
-          >
-          <mat-error *ngIf="interfaceamento.invalid && (interfaceamento.dirty || interfaceamento.touched)">
-            <span *ngIf="interfaceamento.errors?.['required']">
-              O campo é obrigatório!
-            </span>
-          </mat-error>
+          <mat-select name="interfaceamento"
+            [(ngModel)]="currentRecord.interfaceamento">
+            <mat-option value="H">Hotsoft</mat-option>
+            <mat-option value="M">Matrix</mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
@@ -302,7 +291,7 @@
     <ng-container matColumnDef="interfaceamento" class="col-2">
       <th mat-header-cell
         *matHeaderCellDef mat-sort-header="interfaceamento">Interfaceamento</th>
-      <td mat-cell *matCellDef="let row">{{ row?.interfaceamento }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.interfaceamento | valorinterfaceamento}}</td>
     </ng-container>
 
     <!-- Diretório de Recebimento Resultados Column -->
