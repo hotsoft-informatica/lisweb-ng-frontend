@@ -27,6 +27,7 @@ import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ValorModalidadePipe } from 'src/app/pipes/modalidade.pipe';
+import { ValorInterfaceamentoPipe } from 'src/app/pipes/interfaceamento.pipe';
 
 @Component({
   selector: 'app-tipo-instrumento',
@@ -36,7 +37,7 @@ import { ValorModalidadePipe } from 'src/app/pipes/modalidade.pipe';
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgIf, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    MatDatepickerModule, ValorModalidadePipe
+    MatDatepickerModule, ValorModalidadePipe, ValorInterfaceamentoPipe
   ]
 
 })
