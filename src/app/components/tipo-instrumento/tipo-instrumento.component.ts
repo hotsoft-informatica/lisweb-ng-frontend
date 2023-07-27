@@ -29,6 +29,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ValorModalidadePipe } from 'src/app/pipes/modalidade.pipe';
 import { ValorInterfaceamentoPipe } from 'src/app/pipes/interfaceamento.pipe';
 import { ValorPadraoCodigoBarraPipe } from 'src/app/pipes/padrao-codigo-barra.pipe';
+import { ValorSimNaoStatusPipe } from 'src/app/pipes/sim-nao-status.pipe';
 
 @Component({
   selector: 'app-tipo-instrumento',
@@ -38,7 +39,8 @@ import { ValorPadraoCodigoBarraPipe } from 'src/app/pipes/padrao-codigo-barra.pi
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgIf, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    MatDatepickerModule, ValorModalidadePipe, ValorInterfaceamentoPipe, ValorPadraoCodigoBarraPipe
+    MatDatepickerModule, ValorModalidadePipe, ValorInterfaceamentoPipe,
+    ValorPadraoCodigoBarraPipe, ValorSimNaoStatusPipe
   ]
 
 })
