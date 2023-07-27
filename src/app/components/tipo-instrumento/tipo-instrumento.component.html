@@ -217,7 +217,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <!--mat-tab-group>
+        <!--mat-tab-group> #TODO Exemplo
           <mat-tab label="Detalhes">
             <app-convenio-detalhe [convenio]="this.currentRecord"
             [relatoriosExportacao]="this.relatoriosExportacao"
@@ -303,21 +303,21 @@
     <ng-container matColumnDef="aprova_exame_bancada" class="col-2">
       <th mat-header-cell
         *matHeaderCellDef mat-sort-header="aprova_exame_bancada">Aprovação do Exame na Bancada</th>
-      <td mat-cell *matCellDef="let row">{{ row?.aprova_exame_bancada=="S"?'Sim':'Não' }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.aprova_exame_bancada | simnaostatus }}</td>
     </ng-container>
 
     <!-- Triagem Rápida Column -->
     <ng-container matColumnDef="habilita_triagem_rapida" class="col-2">
       <th mat-header-cell
         *matHeaderCellDef mat-sort-header="habilita_triagem_rapida">Triagem Rápida</th>
-      <td mat-cell *matCellDef="let row">{{ row?.habilita_triagem_rapida=="S"?'Sim':'Não' }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.habilita_triagem_rapida | simnaostatus }}</td>
     </ng-container>
 
     <!-- Permite Sobrescrever Resultados Column -->
     <ng-container matColumnDef="sobrescreve_resultado" class="col-2">
       <th mat-header-cell
         *matHeaderCellDef mat-sort-header="sobrescreve_resultado">Permite Sobrescrever Resultado</th>
-      <td mat-cell *matCellDef="let row">{{ row?.sobrescreve_resultado=="S"?'Sim':'Não' }}</td>
+      <td mat-cell *matCellDef="let row">{{ row?.sobrescreve_resultado | simnaostatus }}</td>
     </ng-container>
 
     <!-- Driver Column -->
