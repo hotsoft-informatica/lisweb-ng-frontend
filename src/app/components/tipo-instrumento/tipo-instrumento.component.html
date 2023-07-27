@@ -28,10 +28,20 @@
 
         <div class="mb-3 col-md-3 row">
           <mat-form-field appearance="fill">
-            <mat-label>Email:</mat-label>
-            <input matInput #email maxlength="100"
-            title="Filtre por Email"
-              (input)="search('email', email.value)"
+            <mat-label>Descrição:</mat-label>
+            <input matInput #descricao maxlength="100"
+            title="Filtre por Descrição"
+              (input)="search('descricao', descricao.value)"
+            >
+          </mat-form-field>
+        </div>
+
+        <div class="mb-3 col-md-3 row">
+          <mat-form-field appearance="fill">
+            <mat-label>Interfaceamento:</mat-label>
+            <input matInput #interfaceamento maxlength="100"
+            title="Filtre por Interfaceamento"
+              (input)="search('interfaceamento', interfaceamento.value)"
             >
           </mat-form-field>
         </div>
