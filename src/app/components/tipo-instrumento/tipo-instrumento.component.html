@@ -41,7 +41,7 @@
             <mat-label>Interfaceamento:</mat-label>
             <input matInput #interfaceamento maxlength="100"
             title="Filtre por Interfaceamento"
-              (input)="search('interfaceamento', interfaceamento.value)"
+              (input)="search('interfaceamento ', interfaceamento.value)"
             >
           </mat-form-field>
         </div>
@@ -102,22 +102,21 @@
             </span>
           </mat-error>
         </mat-form-field>
-
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Padão Código de Barras</mat-label>
           <mat-select name="padrao_cod_barras"
             [(ngModel)]="currentRecord.padrao_cod_barras">
-            <mat-option value="9">Codabar</mat-option>
-            <mat-option value="5">Code128</mat-option>
-            <mat-option value="6">Code39</mat-option>
-            <mat-option value="2">EAN_13</mat-option>
-            <mat-option value="3">EAN_8</mat-option>
-            <mat-option value="8">FIM</mat-option>
-            <mat-option value="4">Int2of5</mat-option>
-            <mat-option value="10">MSI</mat-option>
-            <mat-option value="7">Postnet</mat-option>
-            <mat-option value="0">UPC_A</mat-option>
-            <mat-option value="1">UPC_E</mat-option>
+            <mat-option [value]="9">Codabar</mat-option>
+            <mat-option [value]="5">Code128</mat-option>
+            <mat-option [value]="6">Code39</mat-option>
+            <mat-option [value]="2">EAN_13</mat-option>
+            <mat-option [value]="3">EAN_8</mat-option>
+            <mat-option [value]="8">FIM</mat-option>
+            <mat-option [value]="4">Int2of5</mat-option>
+            <mat-option [value]="10">MSI</mat-option>
+            <mat-option [value]="7">Postnet</mat-option>
+            <mat-option [value]="0">UPC_A</mat-option>
+            <mat-option [value]="1">UPC_E</mat-option>
           </mat-select>
         </mat-form-field>
 
