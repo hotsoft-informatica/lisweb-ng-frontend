@@ -99,8 +99,9 @@ import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-del
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
 import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.component';
 import { TipoInstrumentoComponent } from './components/tipo-instrumento/tipo-instrumento.component';
-import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { SuperUserComponent } from './components/super-user/super-user.component';
+import { UnidadeMedidaComponent } from './components/unidade-medida/unidade-medida.component';
+import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { UserComponent } from './components/user/user.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
 import { UsuarioDeleteComponent } from './components/usuario/usuario-delete/usuario-delete.component';
@@ -264,6 +265,10 @@ const routes: Routes = [
   {
     path: 'super_users',
     component: SuperUserComponent,
+  },
+  {
+    path: 'unidades_medida',
+    component: UnidadeMedidaComponent,
   },
   {
     path: 'users',
