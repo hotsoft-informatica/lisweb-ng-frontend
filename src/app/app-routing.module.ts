@@ -101,6 +101,7 @@ import { TipoRecursoComponent } from './components/tipo-recurso/tipo-recurso.com
 import { TipoInstrumentoComponent } from './components/tipo-instrumento/tipo-instrumento.component';
 import { SuperUserComponent } from './components/super-user/super-user.component';
 import { UnidadeMedidaComponent } from './components/unidade-medida/unidade-medida.component';
+import { UnidadeMedidaLmComponent } from './components/unidade-medida-lm/unidade-medida-lm.component';
 import { UploadFileComponent } from './components/upload-file/upload-file.component';
 import { UserComponent } from './components/user/user.component';
 import { UsuarioCreateComponent } from './components/usuario/usuario-create/usuario-create.component';
@@ -269,6 +270,10 @@ const routes: Routes = [
   {
     path: 'unidades_medida',
     component: UnidadeMedidaComponent,
+  },
+  {
+    path: 'unidades_medidas_lm',
+    component: UnidadeMedidaLmComponent,
   },
   {
     path: 'users',
