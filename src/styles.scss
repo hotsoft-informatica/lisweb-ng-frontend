@@ -1,9 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @use "./main.scss";
 
+// Ajusta exibição do mat-select em modal
 .cdk-global-overlay-wrapper, .cdk-overlay-container {
-  z-index: 999 !important;
+  z-index: 9999 !important;
 }
+
+::ng-deep .cdk-overlay-connected-position-bounding-box { z-index: 10000 !important; }
 
 .cdk-overlay-backdrop
 {
