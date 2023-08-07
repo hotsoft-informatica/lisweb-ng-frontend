@@ -20,6 +20,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-unidade-medida-lm',
@@ -27,7 +30,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   templateUrl: './unidade-medida-lm.component.html',
   imports: [FormsModule, MatPaginatorModule, MatSortModule, MatTableModule,
     MatButtonModule, MatDialogModule, MatIconModule, MatFormFieldModule,
-    MatInputModule, NgIf, NgFor, NgStyle, DatePipe
+    MatInputModule, NgIf, NgFor, NgStyle, DatePipe, MatSelectModule, MatOptionModule
   ]
 })
 export class UnidadeMedidaLmComponent implements OnInit, AfterViewInit {
@@ -48,7 +51,7 @@ export class UnidadeMedidaLmComponent implements OnInit, AfterViewInit {
   onEdit = false;
   onCreate = false;
 
-  displayedColumns = ['cbos', 'nome', 'action'];
+  displayedColumns = ['descricao', 'unidade', 'action'];
 
   constructor(
     public dialog: MatDialog,
