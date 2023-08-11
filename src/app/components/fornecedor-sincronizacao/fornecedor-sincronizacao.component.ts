@@ -27,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FornecedorSincronizacaoEmpresaComponent } from './fornecedor-sincronizacao-empresa/fornecedor-sincronizacao-empresa.component';
 import { FornecedorSincronizacaoEnderecoComponent } from './fornecedor-sincronizacao-endereco/fornecedor-sincronizacao-endereco.component';
+import { FornecedorSincronizacaoContatoComponent } from './fornecedor-sincronizacao-contato/fornecedor-sincronizacao-contato.component';
 
 @Component({
   selector: 'app-fornecedor-sincronizacao',
@@ -36,7 +37,8 @@ import { FornecedorSincronizacaoEnderecoComponent } from './fornecedor-sincroniz
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgIf, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    MatDatepickerModule, FornecedorSincronizacaoEmpresaComponent,FornecedorSincronizacaoEnderecoComponent
+    MatDatepickerModule, FornecedorSincronizacaoEmpresaComponent,
+    FornecedorSincronizacaoEnderecoComponent, FornecedorSincronizacaoContatoComponent
   ]
 })
 export class FornecedorSincronizacaoComponent implements OnInit, AfterViewInit {
