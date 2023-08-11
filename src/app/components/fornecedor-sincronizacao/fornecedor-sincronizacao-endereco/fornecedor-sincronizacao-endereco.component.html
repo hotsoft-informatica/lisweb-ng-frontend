@@ -1,1 +1,80 @@
-<p>fornecedor-sincronizacao-endereco works!</p>
+<form class="example-container row container-fluid mt-4">
+  <div class="row justify-content-around">
+    <div class="row col-lg-2 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label for="cep">CEP:</mat-label>
+        <input matInput maxlength="8" mask="00000000"
+          id="cep" name="cep" title="CEP"
+          [(ngModel)]="this.empresa.cep"
+          (ngModelChange)="consulta()">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Cidade:</mat-label>
+        <input matInput maxlength="50"
+          id="cidade" name="cidade" title="Cidade"
+          [(ngModel)]="this.empresa.cidade">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>UF:</mat-label>
+        <input matInput maxlength="50"
+          id="enderecoUf" name="uf" title="UF"
+          [(ngModel)]="this.empresa.uf">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Logradouro:</mat-label>
+        <input matInput maxlength="50"
+          id="endereco" name="endereco" title="Endereço"
+          [(ngModel)]="this.empresa.endereco">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-1 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>N°:</mat-label>
+        <input matInput maxlength="20"
+          id="numero" name="numero" title="Número"
+          [(ngModel)]="this.empresa.numero">
+      </mat-form-field>
+    </div>
+
+    <div class="row col-lg-3 p-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Bairro:</mat-label>
+        <input matInput maxlength="50"
+          id="enderecoBairro" name="bairro" title="Bairro"
+          [(ngModel)]="this.empresa.bairro"/>
+      </mat-form-field>
+    </div>
+
+    <h3 class="ms-3">Dados para o TISS</h3>
+    <div>
+      <mat-form-field appearance="fill" class="col-lg-3 p-2">
+        <mat-label>Tipo de Logradouro</mat-label>
+        <input matInput #input
+          maxlength="3"
+          aria-label="tipo_logradouro"
+          id="tipo_logradouro"
+          name="tipo_logradouro"
+          [(ngModel)]="empresa.tipo_logradouro">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="col-lg-3 p-2">
+        <mat-label>Cod. IBGE do Município</mat-label>
+        <input matInput #input
+          maxlength="7"
+          aria-label="cod_ibge_municipio"
+          id="cod_ibge_municipio"
+          name="cod_ibge_municipio"
+          [(ngModel)]="empresa.cod_ibge_municipio">
+      </mat-form-field>
+    </div>
+  </div>
+</form>
