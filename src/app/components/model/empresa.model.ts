@@ -19,11 +19,11 @@ export class Empresa extends Base{
   public nome_contato?: string;
   public nome_fantasia?: string;
   public numero?: string;
-  public operadora?: Operadora;
   public razao_social?: string;
   public telefone?: string;
   public tipo_logradouro?: string;
   public uf?: string;
+  public operadora?: Operadora;
 
   constructor(values: Empresa) {
     super(values);
