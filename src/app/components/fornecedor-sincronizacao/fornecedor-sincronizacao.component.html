@@ -61,6 +61,10 @@
           <app-fornecedor-sincronizacao-endereco [empresa]="$any(this.currentRecord.empresa)">
           </app-fornecedor-sincronizacao-endereco>
         </mat-tab>
+        <mat-tab label="Contato">
+          <app-fornecedor-sincronizacao-contato [empresa]="$any(this.currentRecord.empresa)">
+          </app-fornecedor-sincronizacao-contato>
+        </mat-tab>
       </mat-tab-group>
       <div class="col-md-12 d-flex justify-content-end p-2">
         <button mat-button type="submit"
