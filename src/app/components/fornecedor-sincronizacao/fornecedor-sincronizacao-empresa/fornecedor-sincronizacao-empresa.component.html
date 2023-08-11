@@ -20,7 +20,8 @@
   <div>
     <mat-form-field appearance="fill" class="col-lg-3 p-2">
       <mat-label>CNPJ</mat-label>
-      <input matInput #input maxlength="18" mask="00.000.000/0000-00"
+      <input matInput #input
+        maxlength="15"
         aria-label="CNPJ"
         id="CNPJ"
         name="CNPJ"
@@ -29,6 +30,7 @@
     <mat-form-field appearance="fill" class="col-lg-3 p-2">
       <mat-label>Inscrição Estadual</mat-label>
       <input matInput #input
+        maxlength="15"
         aria-label="inscricao_estadual"
         id="inscricao_estadual"
         name="inscricao_estadual"
@@ -37,6 +39,7 @@
     <mat-form-field appearance="fill" class="col-lg-4 p-2">
       <mat-label>Alvará</mat-label>
       <input matInput #input
+        maxlength="15"
         aria-label="alvara"
         id="alvara"
         name="alvara"
@@ -45,6 +48,7 @@
     <mat-form-field appearance="fill" class="col-lg-2 p-2">
       <mat-label>Alvará UF</mat-label>
       <input matInput #input
+        maxlength="2"
         aria-label="alvara_uf"
         id="alvara_uf"
         name="alvara_uf"
