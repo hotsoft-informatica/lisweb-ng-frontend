@@ -168,11 +168,14 @@ export class FornecedorSincronizacaoComponent implements OnInit, AfterViewInit {
   updateGridData(): void {
     this.onCreate = false;
     this.onEdit = false;
-    this.recordService.update(this.currentRecord).subscribe((recurso) => {
-      this.recordService.showMessage('Fornecedor atualizado com sucesso!');
-      this.loadPage();
+
+    this.empresaService.update(this.currentRecord.empresa).subscribe((empresa) => {
+      this.recordService.update(this.currentRecord).subscribe(() => {
+        this.recordService.showMessage('Fornecedor atualizado com sucesso!');
+        this.loadPage();
+      });
     });
-    this.currentRecord = new FornecedorSincronizacao({});
+    this.currentRecord ||= new FornecedorSincronizacao({});
   }
 
   atualizar(row: FornecedorSincronizacao): void {
