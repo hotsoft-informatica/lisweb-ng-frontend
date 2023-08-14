@@ -66,6 +66,19 @@
             Usuário
           </button>
         </mat-menu>
+
+        <button mat-menu-item [matMenuTriggerFor]="convenio">
+          Convênios
+        </button>
+        <mat-menu #convenio="matMenu">
+          <button mat-menu-item routerLink="/grupos_locais">
+            Grupo de Local de Atendimento
+          </button>
+          <button mat-menu-item class="nav-item" routerLink="/localdeatendimento/read">
+            Local de Atendimento
+          </button>
+        </mat-menu>
+
         <button mat-menu-item class="nav-item" routerLink="/laboratorios">
           Laboratório
         </button>
@@ -80,9 +93,6 @@
         </button>
         <button mat-menu-item class="nav-item" routerLink="/especialidades">
           Especialidade
-        </button>
-        <button mat-menu-item class="nav-item" routerLink="/localdeatendimento/read">
-          Local de Atendimento
         </button>
         <button mat-menu-item class="nav-item" routerLink="/medicos">
           Médicos

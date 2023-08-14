@@ -1,118 +1,156 @@
 <form class= "example-container row container-fluid mt-4">
+  <h3 class="ms-3">Cadastro de Local de Atendimento:</h3>
   <div class="row justify-content-around">
+    <div class="row">
+      <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
+        <mat-label>Local de Atendimento</mat-label>
+        <input
+          type="text"
+          aria-label="nome"
+          matInput #input
+          id="nome"
+          name="nome"
+          [(ngModel)]="localAtendimento.nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-label>CNES</mat-label>
+        <input
+          type="text"
+          aria-label="cnes"
+          matInput #input maxlength="13"
+          id="cnes"
+          name="cnes"
+          [(ngModel)]="localAtendimento.cnes">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-label>Grupo</mat-label>
+        <input
+            aria-label="grupo_local_id"
+            name="grupo_local_id"
+            matInput [matAutocomplete]="autoGrupoLocais"
+            [(ngModel)]="localAtendimento.grupo_local_id"
+            (ngModelChange)="searchGrupoLocalAtendimento()"
+            #grupo_local_id="ngModel"
+            required
+          />
+          <mat-error *ngIf="grupo_local_id.invalid && (grupo_local_id.dirty || grupo_local_id.touched)">
+            <span *ngIf="grupo_local_id.errors?.['required']">
+              O campo é obrigatório!
+            </span>
+          </mat-error>
+          <mat-autocomplete #autoGrupoLocais="matAutocomplete"
+            [displayWith]="displayFnGrupoLocalAtendimento(grupo_locais_atendimento)">
+            <mat-option *ngFor="let grupo_local_atendimento of grupo_locais_atendimento" [value]="grupo_local_atendimento.id">
+              {{grupo_local_atendimento.nome}}
+            </mat-option>
+          </mat-autocomplete>
+      </mat-form-field>
+    </div>
 
     <div class="row">
-      <mat-form-field appearance="fill" class="col-lg-6 p-2">
-        <mat-label>Local de Atendimento:</mat-label>
-        <input matInput #input
-              id="localAtendimento"
-              name="localAtendimento"
-              [(ngModel)]="localAtendimento.nome">
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-label>Grupo Histórico no Laudo</mat-label>
+        <input
+          type="text"
+          aria-label="chave_publicacao"
+          matInput #input
+          id="grupo_histlaudo"
+          name="grupo_histlaudo"
+          [(ngModel)]="localAtendimento.grupo_historico">
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="col-lg-3 p-2">
-        <mat-label>CNES:</mat-label>
-        <input matInput #input maxlength="13"
-              id="cnes"
-              name="cnes"
-              [(ngModel)]="localAtendimento.cnes">
+      <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-label>Chave de Publicação</mat-label>
+        <input
+          type="text"
+          aria-label="chave_publicacao"
+          matInput #input
+          id="chave_publicacao"
+          name="chave_publicacao"
+          [(ngModel)]="localAtendimento.chave_internet">
       </mat-form-field>
 
-      <mat-form-field appearance="fill" class="col-lg-3 p-2">
-        <mat-label>Grupo:</mat-label>
-        <input matInput #input
-              id="grupo_local_id"
-              name="grupo_local_id"
-              [(ngModel)]="localAtendimento.grupo_local_id">
+      <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
+        <mat-label>Local de Impressão</mat-label>
+        <input
+          type="text"
+          aria-label="local_impressao"
+          matInput #input
+          id="local_impressao"
+          name="local_impressao"
+          [(ngModel)]="localAtendimento.grupo_local_id">
       </mat-form-field>
-    </div>
 
-      <div class="row">
-        <mat-form-field appearance="fill" class="col-xs-12 col-xl-3 col-lg-2 p-2">
-          <mat-label>Chave de Publicação:</mat-label>
-          <input matInput #input
-                id="chave_publicacao"
-                name="chave_publicacao"
-                [(ngModel)]="localAtendimento.chave_internet">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="col-xs-12 col-xl-2 col-lg-2 p-2">
-          <mat-label>Local de Impressão:</mat-label>
-          <input matInput #input
-                id="local_impressao"
-                name="local_impressao"
-                [(ngModel)]="localAtendimento.grupo_local_id"
-                >
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="col-xs-12 col-xl-2 col-lg-2 p-2">
-          <mat-label>Grupo Histórico no Laudo:</mat-label>
-          <input matInput #input
-                id="grupo_histlaudo"
-                name="grupo_histlaudo"
-                [(ngModel)]="localAtendimento.grupo_historico">
-        </mat-form-field>
-
-        <div class="row col-sm-4 col-xs-12">
-
-          <div class="col-sm-10 col-md-10 col-lg-10 col-xs-7">
-            <mat-radio-group aria-label="Select an option" color="primary" class="p-2 me-4" id="coletaExterna" name="coletaExterna" [(ngModel)]="localAtendimento.coleta_externa">
-              <mat-radio-button value="N">Coleta Interna</mat-radio-button>
-              <mat-radio-button value="S" class="ms-2">Coleta Externa</mat-radio-button>
-            </mat-radio-group>
-          </div>
-
-          <div class="p-2 col-lg-2 col-xl-1 col-md-2 col-xs-5">
-            <button appDebounceClick mat-flat-buttoncolor="primary"
-                    data-bs-toggle="modal" data-bs-target="#permissoes">
-              Permissões
-            </button>
-          </div>
+      <div class="row col-sm-4 col-xs-12">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xs-7">
+          <mat-radio-group aria-label="Select an option" color="primary" class="p-2 me-4" id="coletaExterna" name="coletaExterna" [(ngModel)]="localAtendimento.coleta_externa">
+            <mat-radio-button value="N">Coleta Interna</mat-radio-button>
+            <mat-radio-button value="S" class="ms-2">Coleta Externa</mat-radio-button>
+          </mat-radio-group>
         </div>
+
+        <div class="p-2 col-lg-3 col-xl-3 col-md-3 col-xs-3">
+          <button type="button" mat-button class="btn" appDebounceClick
+            type="button" data-bs-toggle="modal" data-bs-target="#permissoes">
+            <mat-icon>settings</mat-icon>
+            Permissões
+          </button>
+        </div>
+      </div>
     </div>
 
-      <div class="modal fade" id="permissoes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h3 class="modal-title" id="permissoesLabel">Permissões Local de Atendimento</h3>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="p-2">
-              <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="registroDeColeta" name="registroDeColeta" [(ngModel)]="registroDeColeta">Registro de coleta</mat-checkbox>
-              <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="biometria" name="biometria" [(ngModel)]="biometria">Biometria</mat-checkbox>
-              <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="painelMonitoramento" name="painelMonitoramento" [(ngModel)]="painelMonitoramento">Painel Monitoramento</mat-checkbox>
-              <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="resultadosCRM" name="resultadosCRM" [(ngModel)]="resultadosCRM">Enviar resultados CRM</mat-checkbox>
-              <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="etiquetaApoioRec" name="etiquetaApoioRec" [(ngModel)]="localAtendimento.emitir_etiqueta_apoio_recepcao">Etiqueta Apoio Recepção</mat-checkbox>
-              <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="dadoAdicionalTriagem" name="dadoAdicionalTriagem" [(ngModel)]="dadoAdicionalTriagem">Avisar dado adicional obrigatorio na triagem</mat-checkbox>
-            </div>
-              <div class="modal-footer">
-              <button appDebounceClick mat-flat-buttoncolor="warn" data-bs-dismiss="modal" class="ms-2">Voltar</button>
-            </div>
+    <div class="modal fade" id="permissoes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="permissoesLabel">Permissões Local de Atendimento</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="p-2">
+            <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="registroDeColeta" name="registroDeColeta" [(ngModel)]="registroDeColeta">Registro de coleta</mat-checkbox>
+            <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="biometria" name="biometria" [(ngModel)]="biometria">Biometria</mat-checkbox>
+            <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="painelMonitoramento" name="painelMonitoramento" [(ngModel)]="painelMonitoramento">Painel Monitoramento</mat-checkbox>
+            <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="resultadosCRM" name="resultadosCRM" [(ngModel)]="resultadosCRM">Enviar resultados CRM</mat-checkbox>
+            <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="etiquetaApoioRec" name="etiquetaApoioRec" [(ngModel)]="localAtendimento.emitir_etiqueta_apoio_recepcao">Etiqueta Apoio Recepção</mat-checkbox>
+            <mat-checkbox class="example-margin col-12 fs-6" color="primary" id="dadoAdicionalTriagem" name="dadoAdicionalTriagem" [(ngModel)]="dadoAdicionalTriagem">Avisar dado adicional obrigatorio na triagem</mat-checkbox>
+          </div>
+            <div class="modal-footer">
+            <button type="button" appDebounceClick mat-flat-button color="warn" data-bs-dismiss="modal" class="ms-2">Voltar</button>
           </div>
         </div>
       </div>
-
-      <!--
-
-src/app/components/local-de-atendimento/local-de-atendimento-create/local-de-atendimento-create.component.html:104:125 - error NG8002: Can't bind to 'empresa' since it isn't a known property of 'app-local-de-atendimento-endereco'.
-1. If 'app-local-de-atendimento-endereco' is an Angular component and it has 'empresa' input, then verify that it is included in the '@Component.imports' of this component.
-2. If 'app-local-de-atendimento-endereco' is a Web Component then add 'CUSTOM_ELEMENTS_SCHEMA' to the '@Component.schemas' of this component to suppress this message.
-3. To allow any property add 'NO_ERRORS_SCHEMA' to the '@Component.schemas' of this component.
-
-104         <mat-tab label="Endereço/ Contato"> <app-local-de-atendimento-endereco [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-endereco> </mat-tab>
-
-      -->
-
-      <!-- <mat-tab-group>
-        <mat-tab label="Empresa"> <app-local-de-atendimento-empresa [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-empresa> </mat-tab>
-        <mat-tab label="Endereço/ Contato"> <app-local-de-atendimento-endereco [localdeatendimento]='this.localAtendimento' [empresa]='this.empresa'></app-local-de-atendimento-endereco> </mat-tab>
-        <mat-tab label="Horario de Funcionamento/ Urgência"> <app-local-de-atendimento-horario-funcionamento [localdeatendimento]='this.localAtendimento'></app-local-de-atendimento-horario-funcionamento> </mat-tab>
-      </mat-tab-group> -->
-
+    </div>
   </div>
-  <button appDebounceClick mat-flat-buttoncolor="primary" class="fixed-bottom index m-2 col-xs-2 col-sm-2"
-  (click)="createLocalAtendimento()">Salvar</button>
-  <button appDebounceClick mat-flat-buttoncolor="warn" class="fixed-bottom index m-2 col-xs-2 col-sm-2"
-  (click)="cancel()">Cancelar</button>
 </form>
+
+<mat-tab-group>
+  <mat-tab label="Empresa">
+    <app-local-de-atendimento-empresa [empresa]="$any(localAtendimento.empresa)">
+    </app-local-de-atendimento-empresa>
+  </mat-tab>
+  <mat-tab label="Endereço">
+    <app-local-de-atendimento-endereco [empresa]="$any(localAtendimento.empresa)">
+    </app-local-de-atendimento-endereco>
+  </mat-tab>
+  <mat-tab label="Contato">
+    <app-local-de-atendimento-contato [empresa]="$any(localAtendimento.empresa)">
+    </app-local-de-atendimento-contato>
+  </mat-tab>
+  <mat-tab label="Horário de Funcionamento">
+    <app-local-de-atendimento-horario-funcionamento [localdeatendimento]="this.localAtendimento">
+    </app-local-de-atendimento-horario-funcionamento>
+  </mat-tab>
+  <mat-tab label="Configuração Urgência">
+    <app-local-de-atendimento-urgencia>
+    </app-local-de-atendimento-urgencia>
+  </mat-tab>
+</mat-tab-group>
+
+<div class="gridAddButton">
+  <button appDebounceClick mat-flat-button color="primary" class="m-2"
+    (click)="createLocalAtendimento()">Salvar</button>
+  <button appDebounceClick mat-flat-button color="warn" class="m-2"
+    (click)="cancel()">Cancelar</button>
+</div>
