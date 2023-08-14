@@ -3745,13 +3745,6 @@
   dependencies:
     "@nx/devkit" "16.6.0"
 
-"@nrwl/jest@15.8.7":
-  version "15.8.7"
-  resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-15.8.7.tgz#010adedc3e8852c53c1a87afca76eef8aec37792"
-  integrity sha512-olTRYD/m1qu/sAaw/z7XOp0amsTKDa6hJvQDK26/1BkJiuKaYLSW/Ec7f39Ilw/zrde+fNg3YUOGiXxuQ10k4g==
-  dependencies:
-    "@nx/devkit" "16.6.0"
-
 "@nrwl/jest@16.2.1":
   version "16.2.1"
   resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-16.2.1.tgz#2e99cc859f45df327274e9b05c94bbe63113cf58"
@@ -3842,12 +3835,12 @@
   dependencies:
     "@nx/linter" "16.6.0"
 
-"@nrwl/nx-cloud@16.0.5", "@nrwl/nx-cloud@^16.0.5":
-  version "16.0.5"
-  resolved "https://registry.yarnpkg.com/@nrwl/nx-cloud/-/nx-cloud-16.0.5.tgz#c963480a71c4afa964fbbe9e4d6bbf222764e9cd"
-  integrity sha512-1p82ym8WE9ziejwgPslstn19iV/VkHfHfKr/5YOnfCHQS+NxUf92ogcYhHXtqWLblVZ9Zs4W4pkSXK4e04wCmQ==
+"@nrwl/nx-cloud@16.3.0", "@nrwl/nx-cloud@^16.3.0":
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/@nrwl/nx-cloud/-/nx-cloud-16.3.0.tgz#0f1d563200af5bb6ce51a8408d698774d5ccdbbd"
+  integrity sha512-nJrGsVufhY74KcP7kM7BqFOGAoO5OEF6+wfiM295DgmEG9c1yW+x5QiQaC42K9SWYn/eKQa1X7466ZA5lynXoQ==
   dependencies:
-    nx-cloud "16.0.5"
+    nx-cloud "16.3.0"
 
 "@nrwl/nx-darwin-arm64@15.8.7":
   version "15.8.7"
@@ -7112,11 +7105,6 @@ electron-to-chromium@^1.4.477:
   version "1.4.478"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.478.tgz#687198cfcef9b854a79a229feaa6cd8961206290"
   integrity sha512-qjTA8djMXd+ruoODDFGnRCRBpID+AAfYWCyGtYTNhsuwxI19s8q19gbjKTwRS5z/LyVf5wICaIiPQGLekmbJbA==
-
-emittery@^0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/emittery/-/emittery-0.10.2.tgz#902eec8aedb8c41938c46e9385e9db7e03182933"
-  integrity sha512-aITqOwnLanpHLNXZJENbOgjUBeHocD+xsSJmNrjovKBW5HbSpW3d1pEls7GFQPUWXiwG9+0P4GtHfEqC/4M0Iw==
 
 emittery@^0.13.1:
   version "0.13.1"
@@ -10583,12 +10571,12 @@ nwsapi@^2.2.2:
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.4.tgz#fd59d5e904e8e1f03c25a7d5a15cfa16c714a1e5"
   integrity sha512-NHj4rzRo0tQdijE9ZqAx6kYDcoRwYwSYzCA8MY3JzfxlrvEU0jhnhJT9BhqhJs7I/dKcrDm6TyulaRqZPIhN5g==
 
-nx-cloud@16.0.5:
-  version "16.0.5"
-  resolved "https://registry.yarnpkg.com/nx-cloud/-/nx-cloud-16.0.5.tgz#fa0b0185d254405ec47fcbcdbbd8b12ff1add096"
-  integrity sha512-13P7r0aKikjBtmdZrNorwXzVPeVIV4MLEwqGY+DEG6doLBtI5KqEQk/d5B5l2dCF2BEi/LXEmLYCmf9gwbOJ+Q==
+nx-cloud@16.3.0:
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/nx-cloud/-/nx-cloud-16.3.0.tgz#f916c0be1d7eb5d017d542fea349e09893502ee9"
+  integrity sha512-hmNgpeLO4v4WDSWa8YhwX+q+9ohIyY8iqxlWyIKixWzQH2XfRgYFjOLH4IDLGOlKa3hg7MB6+4+75cK9CfSmKw==
   dependencies:
-    "@nrwl/nx-cloud" "16.0.5"
+    "@nrwl/nx-cloud" "16.3.0"
     axios "1.1.3"
     chalk "^4.1.0"
     dotenv "~10.0.0"
