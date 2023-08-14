@@ -39,6 +39,7 @@ import { ExameCreateComponent } from './components/exame/exame-create/exame-crea
 import { ExameDeleteComponent } from './components/exame/exame-delete/exame-delete.component';
 import { ExameUpdateComponent } from './components/exame/exame-update/exame-update.component';
 import { EspecialidadeComponent } from './components/especialidade/especialidade.component';
+import { GrupoLocalAtendimentoComponent } from './components/grupo-local-atendimento/grupo-local-atendimento.component';
 import { HomeComponent } from './views/home/home.component';
 import { HibridoClientErrorComponent } from './components/hibrido-client-error/hibrido-client-error.component';
 import { LaboratorioCreateComponent } from './components/laboratorio/laboratorio-create/laboratorio-create.component';
@@ -141,6 +142,10 @@ const routes: Routes = [
   {
     path: 'tipos_recurso',
     component: TipoRecursoComponent,
+  },
+  {
+    path: 'grupos_locais',
+    component: GrupoLocalAtendimentoComponent,
   },
   {
     path: 'hibrido_client_errors',

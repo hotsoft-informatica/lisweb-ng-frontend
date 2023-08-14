@@ -47,6 +47,7 @@
           <mat-label>Nome:</mat-label>
           <input
             type="text"
+            aria-label="nome"
             id="nome"
             required
             matInput
@@ -65,6 +66,8 @@
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Especialidade</mat-label>
           <input
+            type="search"
+            aria-label="especialidade_id"
             name="especialidade_id"
             matInput [matAutocomplete]="autoEspecialidades"
             [(ngModel)]="currentRecord.especialidade_id"
@@ -89,6 +92,7 @@
           <mat-label>CRM:</mat-label>
           <input
             type="number"
+            aria-label="crm"
             min="1"
             maxlength="9"
             id="crm"
@@ -110,6 +114,7 @@
           <mat-label>Código Médico:</mat-label>
           <input
             type="number"
+            aria-label="cod_medico"
             min="1"
             maxlength="10"
             id="cod_medico"
@@ -129,28 +134,49 @@
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Nome Sombra:</mat-label>
-          <input matInput id="nome_sombra" name="nome_sombra"
+          <input
+            type="text"
+            aria-label="nome_sombra"
+            matInput
+            id="nome_sombra"
+            name="nome_sombra"
             [(ngModel)]="currentRecord.nome_sombra"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>CNES:</mat-label>
-          <input matInput id="cnes" name="cnes"
+          <input
+            type="text"
+            aria-label="cnes"
+            matInput
+            id="cnes"
+            name="cnes"
             [(ngModel)]="currentRecord.cnes"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>CNS:</mat-label>
-          <input matInput id="cns" name="cns"
+          <input
+            type="text"
+            aria-label="cns"
+            matInput
+            id="cns"
+            name="cns"
             [(ngModel)]="currentRecord.cns"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>CPF:</mat-label>
-          <input type="text" matInput id="cpf" name="cpf" pattern="\d{3}.\d{3}.\d{3}-\d{2}"
+          <input
+            type="text"
+            aria-label="cpf"
+            matInput
+            id="cpf"
+            name="cpf"
+             pattern="\d{3}.\d{3}.\d{3}-\d{2}"
             [(ngModel)]="currentRecord.cpf"
           >
         </mat-form-field>
@@ -159,6 +185,7 @@
           <mat-label>Data nascimento:</mat-label>
           <input
             matInput
+            aria-label="data_nascimento"
             [matDatepicker]="data_nascimento"
             title="Data nascimento"
             [(ngModel)]="currentRecord.data_nascimento"
@@ -174,91 +201,155 @@
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Email:</mat-label>
-          <input matInput id="email" name="email"
+          <input
+             type="text"
+             aria-label="email"
+             matInput
+             id="email" name="email"
             [(ngModel)]="currentRecord.email"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Celular:</mat-label>
-          <input matInput id="celular" name="celular"
+          <input
+            type="text"
+            aria-label="celular"
+            matInput
+            id="celular"
+            name="celular"
             [(ngModel)]="currentRecord.celular"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Endereço:</mat-label>
-          <input matInput id="endereco" name="endereco"
+          <input
+            type="text"
+            aria-label="endereco"
+            matInput
+            id="endereco"
+            name="endereco"
             [(ngModel)]="currentRecord.endereco"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-1 col-md-1 p-2">
           <mat-label>Número:</mat-label>
-          <input matInput id="numero" name="numero"
+          <input
+            type="text"
+            aria-label="numero"
+            matInput
+            id="numero"
+            name="numero"
             [(ngModel)]="currentRecord.numero"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Bairro:</mat-label>
-          <input matInput id="bairro" name="bairro"
+          <input
+            type="text"
+            aria-label="bairro"
+            matInput
+            id="bairro"
+            name="bairro"
             [(ngModel)]="currentRecord.bairro"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>CEP:</mat-label>
-          <input matInput id="cep" name="cep"
+          <input
+            type="text"
+            aria-label="cep"
+            matInput
+            id="cep"
+            name="cep"
             [(ngModel)]="currentRecord.cep"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Cidade:</mat-label>
-          <input matInput id="cidade" name="cidade"
+          <input
+            type="text"
+            aria-label="cidade"
+            matInput
+            id="cidade"
+            name="cidade"
             [(ngModel)]="currentRecord.cidade"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-1 col-md-1 p-2">
           <mat-label>Estado:</mat-label>
-          <input matInput id="uf" name="uf"
+          <input
+            type="text"
+            aria-label="uf"
+            matInput
+            id="uf"
+            name="uf"
             [(ngModel)]="currentRecord.uf"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Telefone:</mat-label>
-          <input matInput id="telefone" name="telefone"
+          <input
+            type="text"
+            aria-label="telefone"
+            matInput
+            id="telefone"
+            name="telefone"
             [(ngModel)]="currentRecord.telefone"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Fax:</mat-label>
-          <input matInput id="fax" name="fax"
+          <input
+            type="text"
+            aria-label="fax"
+            matInput
+            id="fax"
+            name="fax"
             [(ngModel)]="currentRecord.fax"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Iniciais:</mat-label>
-          <input matInput id="iniciais" name="iniciais"
+          <input
+            type="text"
+            aria-label="iniciais"
+            matInput
+            id="iniciais"
+            name="iniciais"
             [(ngModel)]="currentRecord.iniciais"
           >
-        </mat-form-field> 
+        </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Conselho:</mat-label>
-          <input matInput id="conselho" name="conselho"
+          <input
+            type="text"
+            aria-label="conselho"
+            matInput
+            id="conselho"
+            name="conselho"
             [(ngModel)]="currentRecord.conselho"
           >
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-1 col-md-1 p-2">
           <mat-label>Est. Conselho:</mat-label>
-          <input matInput id="uf_conselho" name="uf_conselho"
+          <input
+            type="text"
+            aria-label="uf_conselho"
+            matInput
+            id="uf_conselho"
+            name="uf_conselho"
             [(ngModel)]="currentRecord.uf_conselho"
           >
         </mat-form-field>
@@ -274,7 +365,12 @@
 
         <mat-form-field appearance="fill" class="col-lg-1 col-md-1 p-2">
           <mat-label>Status:</mat-label>
-          <input matInput id="status" name="status"
+          <input
+            type="text"
+            aria-label="status"
+            matInput
+            id="status"
+            name="status"
             [(ngModel)]="currentRecord.status"
           >
         </mat-form-field>
@@ -284,7 +380,7 @@
           <input
             title="Operadora telefonia"
             name="operadora_telefonia"
-            matInput [matAutocomplete]="autoOperadoraTelefonia" 
+            matInput [matAutocomplete]="autoOperadoraTelefonia"
             [(ngModel)]="currentRecord.operadora_telefonia_id"
             (ngModelChange)="searchOperadoraTelefonia()"
           />
@@ -333,19 +429,24 @@
 
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>Senha:</mat-label>
-          <input matInput id="senha" name="senha"
+          <input
+            type="text"
+            aria-label="senha"
+            matInput
+            id="senha"
+            name="senha"
             [(ngModel)]="currentRecord.senha"
           >
         </mat-form-field>
 
         <div class="col-md-12 d-flex justify-content-end p-2">
-          <button mat-button
+          <button mat-button type="submit"
           (click)="addGridData()" *ngIf="onCreate"
             [disabled]="formCreateMedico.invalid">Inserir</button>
-          <button mat-button
+          <button mat-button type="submit"
           (click)="updateGridData()"
            *ngIf="onEdit">Alterar</button>
-          <button mat-button color="warn"
+          <button mat-button color="warn" type="button"
           (click)="cancelar()">Cancelar</button>
         </div>
       </form>
