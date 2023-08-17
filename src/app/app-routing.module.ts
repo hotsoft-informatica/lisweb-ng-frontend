@@ -64,6 +64,7 @@ import { LocalDeAtendimentoReadComponent } from './components/local-de-atendimen
 import { LoteAmostraCreateComponent } from './components/lote-amostra/lote-amostra-create/lote-amostra-create.component';
 import { LoteAmostraDeleteComponent } from './components/lote-amostra/lote-amostra-delete/lote-amostra-delete.component';
 import { LoteAmostraUpdateComponent } from './components/lote-amostra/lote-amostra-update/lote-amostra-update.component';
+import { MaterialConsumoComponent } from './components/material-consumo/material-consumo.component';
 import { MarcacaoCreateComponent } from './components/marcacao/marcacao-create/marcacao-create.component';
 import { MarcacaoDeleteComponent } from './components/marcacao/marcacao-delete/marcacao-delete.component';
 import { MarcacaoReadComponent } from './components/marcacao/marcacao-read/marcacao-read.component';
@@ -199,6 +200,10 @@ const routes: Routes = [
   {
     path: 'laboratorios/delete/:id',
     component: LaboratorioDeleteComponent,
+  },
+  {
+    path: 'materiais_consumo',
+    component: MaterialConsumoComponent,
   },
   {
     path: 'metodos-exames/read',
