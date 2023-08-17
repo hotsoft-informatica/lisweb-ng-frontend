@@ -36,7 +36,7 @@
     "@popperjs/core": "^2.11.7",
     "@schematics/angular": "^15.2.3",
     "angular-hotkeys": "^1.7.0",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.0",
     "core-util-is": "^1.0.3",
     "got": "^12.5.3",
     "moment": "^2.29.1",
