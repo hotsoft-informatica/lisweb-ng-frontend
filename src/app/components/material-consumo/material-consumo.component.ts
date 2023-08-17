@@ -24,6 +24,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ValorSimNaoStatusPipe } from 'src/app/pipes/sim-nao-status.pipe';
+import { ValorModoUsoPipe } from 'src/app/pipes/modo-uso.pipe';
 
 @Component({
   selector: 'app-material-consumo',
@@ -33,14 +35,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgIf, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    MatDatepickerModule
+    MatDatepickerModule, ValorSimNaoStatusPipe, ValorModoUsoPipe
   ]
 
 })
 export class MaterialConsumoComponent implements OnInit, AfterViewInit {
-  @Input('fornecedoresSincronizacao') fornecedoresSincronizacao: FornecedorSincronizacao[] =[];
-  @Input('materiaisConsumo') materiaisConsumo: MaterialConsumo[] =[];
-  fornecedorSincronizacao: FornecedorSincronizacao;
+  @Input('fornecedores_sincronizacao') fornecedores_sincronizacao: FornecedorSincronizacao[] =[];
+  fornecedor_sincronizacao: FornecedorSincronizacao;
 
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
@@ -65,10 +66,11 @@ export class MaterialConsumoComponent implements OnInit, AfterViewInit {
   onCreate = false;
 
   displayedColumns = [
-    'nome',
-    'email',
-    'chave_web',
-    'operadora_id',
+    'codigo',
+    'descricao',
+    'fornecedor_id',
+    'modouso',
+    'ativo',
     'action'
   ];
 
@@ -79,7 +81,7 @@ export class MaterialConsumoComponent implements OnInit, AfterViewInit {
   ) {
     this.currentRecord = new MaterialConsumo({});
     this.record ||= new MaterialConsumo({});
-    this.fornecedorSincronizacao ||= new FornecedorSincronizacao({});
+    this.fornecedor_sincronizacao ||= new FornecedorSincronizacao({});
   }
 
   ngOnInit(): void {
@@ -92,9 +94,9 @@ export class MaterialConsumoComponent implements OnInit, AfterViewInit {
     this.subjectFornecedorSincronizacao.subscribe(() => {
       this.fornecedorSincronizacaoService
         .find('id', 'asc', 0, 90, [])
-        .subscribe((fornecedoresSincronizacao) => {
+        .subscribe((fornecedores_sincronizacao) => {
           console.table(this.queries);
-          this.fornecedoresSincronizacao = fornecedoresSincronizacao;
+          this.fornecedores_sincronizacao = fornecedores_sincronizacao;
         });
     });
     this.subjectFornecedorSincronizacao.next(null);
@@ -111,13 +113,13 @@ export class MaterialConsumoComponent implements OnInit, AfterViewInit {
 
   loadPage() {
     forkJoin({
-      materiaisConsumo: this.recordService
+      materiais_consumo: this.recordService
       .find(this.sort.active,
         this.sort.direction,
         this.paginator.pageIndex,
         this.paginator.pageSize, this.query)
     }).subscribe( resultado => {
-      this.records = resultado.materiaisConsumo;
+      this.records = resultado.materiais_consumo;
       this.datasource.data = [...this.records];
     })
   }
@@ -198,7 +200,7 @@ export class MaterialConsumoComponent implements OnInit, AfterViewInit {
     this.subjectFornecedorSincronizacao.next(null);
   }
 
-  displayFnOperadora(options: FornecedorSincronizacao[]): (id: any) => any {
+  displayFnFornecedor(options: FornecedorSincronizacao[]): (id: any) => any {
     return (id: any) => {
       const correspondingOption = Array.isArray(options)
         ? options.find((option) => option.id === id)
