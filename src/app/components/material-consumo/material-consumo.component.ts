@@ -93,7 +93,7 @@ export class MaterialConsumoComponent implements OnInit, AfterViewInit {
 
     this.subjectFornecedorSincronizacao.subscribe(() => {
       this.fornecedorSincronizacaoService
-        .find('id', 'asc', 0, 90, [])
+        .find('id', 'asc', 0, 90, this.queries)
         .subscribe((fornecedores_sincronizacao) => {
           console.table(this.queries);
           this.fornecedores_sincronizacao = fornecedores_sincronizacao;
