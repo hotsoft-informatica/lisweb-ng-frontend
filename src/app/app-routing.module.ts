@@ -96,6 +96,7 @@ import { ResponsavelTecnicoCrudComponent } from './views/responsavel-tecnico-cru
 import { ResponsavelTecnicoShowComponent } from './components/responsavel-tecnico/responsavel-tecnico-show/responsavel-tecnico-show.component';
 import { ResponsavelTecnicoUpdateComponent } from './components/responsavel-tecnico/responsavel-tecnico-update/responsavel-tecnico-update.component';
 import { ResponsavelTecnicoUploadComponent } from './components/responsavel-tecnico/responsavel-tecnico-upload/responsavel-tecnico-upload.component';
+import { SetorAtendimentoComponent } from './components/setor-atendimento/setor-atendimento.component';
 import { TipoExameCreateComponent } from './components/tipo-exame/tipo-exame-create/tipo-exame-create.component';
 import { TipoExameDeleteComponent } from './components/tipo-exame/tipo-exame-delete/tipo-exame-delete.component';
 import { TipoExameUpdateComponent } from './components/tipo-exame/tipo-exame-update/tipo-exame-update.component';
@@ -268,6 +269,10 @@ const routes: Routes = [
   {
     path: 'requisicoes/delete/:id',
     component: RequisicaoDeleteComponent,
+  },
+  {
+    path: 'setor_atendimentos',
+    component: SetorAtendimentoComponent,
   },
   {
     path: 'super_users',
