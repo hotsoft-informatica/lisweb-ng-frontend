@@ -56,7 +56,7 @@
     "@angular-devkit/schematics": "^15.2.4",
     "@angular/compiler": "^15.0.2",
     "@angular/language-service": "^16.2.0",
-    "@nrwl/jest": "16.6.0",
+    "@nrwl/jest": "16.7.4",
     "@nrwl/cypress": "16.6.0",
     "@nrwl/js": "15.8.7",
     "@nrwl/nx-cloud": "^16.3.0",
