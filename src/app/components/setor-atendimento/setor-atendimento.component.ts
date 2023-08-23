@@ -86,6 +86,8 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
       this.totalCount = totalCount;
     });
 
+    const query = new Query({ key: '', value: '', isNumeric: false });
+
     this.subjectLocalAtendimento.subscribe(() => {
       this.localDeAtendimentoService
         .find('id', 'asc', 0, 90, this.queries)
