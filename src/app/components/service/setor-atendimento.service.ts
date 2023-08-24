@@ -6,6 +6,7 @@ import { Injectable, Inject, Injector } from '@angular/core';
   providedIn: 'root',
 })
 export class SetorAtendimentoService extends BaseService {
+  baseUrl = '/setor_atendimentos';
 
   constructor(
     @Inject(Injector) public injector: Injector,
