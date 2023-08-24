@@ -24,14 +24,15 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { Subject } from 'rxjs';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @Component({
   selector: 'app-setor-atendimento',
   templateUrl: './setor-atendimento.component.html',
   standalone: true,
   imports: [ FormsModule, MatPaginatorModule, MatSortModule, MatTableModule,
     MatButtonModule, MatDialogModule, MatIconModule, MatFormFieldModule,
-    MatInputModule, NgIf, NgFor, NgStyle, DatePipe, MatSelectModule, MatOptionModule
+    MatInputModule, NgIf, NgFor, NgStyle, DatePipe, MatSelectModule, MatOptionModule,
+    MatAutocompleteModule
   ]
 
 })
@@ -79,6 +80,7 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
     this.currentRecord = new SetorAtendimento({});
     this.record ||= new SetorAtendimento({});
     this.local_atendimento ||= new LocalDeAtendimento({});
+    this.currentRecord.local_atendimento ||= new LocalDeAtendimento({});
   }
 
   ngOnInit(): void {
@@ -132,7 +134,7 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
     this.setorAtendimentoService.create(this.currentRecord).subscribe((record) => {
       this.records.unshift(record);
       this.datasource.data = [...this.records];
-      this.setorAtendimentoService.showMessage('Unidade de Medida criada com sucesso!');
+      this.setorAtendimentoService.showMessage('Setor atendimento criado com sucesso!');
     });
 
     this.currentRecord = new SetorAtendimento({});
@@ -140,7 +142,7 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
 
   updateGridData(): void {
     this.setorAtendimentoService.update(this.currentRecord).subscribe(() => {
-      this.setorAtendimentoService.showMessage('Unidade de Medida atualizada com sucesso!');
+      this.setorAtendimentoService.showMessage('Setor atendimento atualizado com sucesso!');
       this.onEdit = false;
     });
   }
@@ -182,7 +184,7 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
 
   searchLocalAtendimento(): void {
     const query_string = this.currentRecord
-      .fornecedor_id as unknown as string;
+      .local_atendimento_id as unknown as string;
     const query = new Query({
       key: 'nome',
       value: query_string,
