@@ -149,6 +149,7 @@
           <mat-form-field appearance="fill">
             <mat-label>Nome:</mat-label>
             <input matInput #nomeSearch
+              type="search"
               maxlength="50"
               placeholder="Filtrar por nome"
               (input)="search('nome', nomeSearch.value)"
