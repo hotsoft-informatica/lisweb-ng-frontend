@@ -95,7 +95,9 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
         .find('id', 'asc', 0, 90, this.queries)
         .subscribe((locais_atendimento) => {
           console.table(this.queries);
-          this.locais_atendimento = locais_atendimento;
+          if (locais_atendimento.length > 0) {
+            this.locais_atendimento = locais_atendimento;
+          }
         });
     });
     this.subjectLocalAtendimento.next(null);
@@ -192,7 +194,9 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
     });
     console.warn(query_string);
     this.queries = [];
-    this.queries.push(query);
+    if (query_string != null) {
+      this.queries.push(query);
+    }
     this.subjectLocalAtendimento.next(null);
   }
 
