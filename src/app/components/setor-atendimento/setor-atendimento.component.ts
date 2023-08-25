@@ -137,6 +137,7 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
       this.records.unshift(record);
       this.datasource.data = [...this.records];
       this.setorAtendimentoService.showMessage('Setor atendimento criado com sucesso!');
+      this.loadPage();
     });
 
     this.currentRecord = new SetorAtendimento({});
@@ -146,6 +147,7 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
     this.setorAtendimentoService.update(this.currentRecord).subscribe(() => {
       this.setorAtendimentoService.showMessage('Setor atendimento atualizado com sucesso!');
       this.onEdit = false;
+      this.loadPage();
     });
   }
 
