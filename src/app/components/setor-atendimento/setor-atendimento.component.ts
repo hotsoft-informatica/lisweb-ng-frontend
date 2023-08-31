@@ -1,4 +1,3 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { SetorAtendimento } from '../model/setor-atendimento.model';
 import { SetorAtendimentoService } from '../service/setor-atendimento.service';
 import { LocalDeAtendimento } from '../model/local-de-atendimento.model';
@@ -23,8 +22,9 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
-import { Subject } from 'rxjs';
+import { Subject, of } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 @Component({
   selector: 'app-setor-atendimento',
   templateUrl: './setor-atendimento.component.html',
@@ -50,6 +50,7 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
   queries: Query[] = [];
   id!: number;
   totalCount!: number;
+  nomeDuplicado: boolean = false;
 
   @ViewChild('local_atendimento_id') fornecedor_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
@@ -71,9 +72,6 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
 
   constructor(
     public dialog: MatDialog,
-    private renderer: Renderer2,
-    private router: Router,
-    private route: ActivatedRoute,
     private localDeAtendimentoService: LocalDeAtendimentoService,
     private setorAtendimentoService: SetorAtendimentoService
   ) {
@@ -133,13 +131,16 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
     console.table(this.currentRecord);
     this.onCreate = false;
     this.onEdit = false;
-    this.setorAtendimentoService.create(this.currentRecord).subscribe((record) => {
-      this.records.unshift(record);
-      this.datasource.data = [...this.records];
-      this.setorAtendimentoService.showMessage('Setor atendimento criado com sucesso!');
-      this.loadPage();
-    });
-
+    this.setorAtendimentoService.create(this.currentRecord).subscribe({
+      next: (v) => {
+        this.records.unshift(v);
+        this.datasource.data = [...this.records];
+        this.setorAtendimentoService.showMessage('Setor atendimento criado com sucesso!');
+        this.loadPage();
+      },
+      error: (e) => console.error(e),
+      complete: () => console.info('complete')
+    })
     this.currentRecord = new SetorAtendimento({});
   }
 
@@ -211,4 +212,28 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
     };
   }
 
+  duplicidadeNome(): any {
+    console.log(this.currentRecord.nome);
+
+    const query = new Query({ key: 'nome_eq', value: this.currentRecord.nome, isNumeric: false });
+
+    if (this.currentRecord.nome == ''){
+      this.nomeDuplicado = false;
+    } else {
+      this.setorAtendimentoService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe( (setoresAtendimento) => {
+        console.table(setoresAtendimento);
+        if (setoresAtendimento.length > 0) {
+          this.nomeDuplicado = true;
+        } else {
+          this.nomeDuplicado = false;
+        }
+      })
+    }
+  }
 }
