@@ -62,12 +62,18 @@
               maxlength="50"
               name="nome"
               [(ngModel)]="currentRecord.nome"
+              (change)="duplicidadeNome()"
               #nome="ngModel"
               required
             >
             <mat-error *ngIf="nome?.invalid && (nome?.dirty ||nome?.touched)">
               <span *ngIf="nome?.errors?.['required']">
                 O campo é obrigatório!
+              </span>
+            </mat-error>
+            <mat-error *ngIf="this.nomeDuplicado">
+              <span>
+                Esse nome já existe!
               </span>
             </mat-error>
           </div>
@@ -123,14 +129,14 @@
         </button>
         <button type="button" class="btn btn-primary" *ngIf="this.currentRecord.id"
           (click)="updateGridData()"
-          [disabled]="formCreateSetorAtendimento.invalid"
+          [disabled]="formCreateSetorAtendimento.invalid || this.nomeDuplicado"
           data-bs-dismiss="modal"
         >
           Salvar
         </button>
         <button type="button" class="btn btn-primary" *ngIf="!this.currentRecord.id"
         (click)="addGridData(); formCreateSetorAtendimento.resetForm();"
-        [disabled]="formCreateSetorAtendimento.invalid"
+        [disabled]="formCreateSetorAtendimento.invalid || this.nomeDuplicado"
         data-bs-dismiss="modal"
         >
           Salvar
