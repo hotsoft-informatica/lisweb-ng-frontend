@@ -5,7 +5,7 @@
     Buscar
   </button>
 
-  <button mat-flat-button 
+  <button mat-flat-button
     class="btn-success col-sm-1 float-end"
     color="primary"
     title="Adicionar especialidade"
@@ -57,12 +57,18 @@
               maxlength="50"
               name="nome"
               [(ngModel)]="currentRecord.nome"
+              (input)="duplicidadeNome()"
               #nome="ngModel"
               required
             >
             <mat-error *ngIf="nome?.invalid && (nome?.dirty ||nome?.touched)">
               <span *ngIf="nome?.errors?.['required']">
                 O campo é obrigatório!
+              </span>
+            </mat-error>
+            <mat-error *ngIf="this.nomeDuplicado">
+              <span>
+                Este nome já está em uso!
               </span>
             </mat-error>
           </div>
@@ -78,14 +84,14 @@
         </button>
         <button type="button" class="btn btn-primary" *ngIf="this.currentRecord.id"
           (click)="updateGridData()"
-          [disabled]="formCreateEspecialidade.invalid"
+          [disabled]="formCreateEspecialidade.invalid || this.nomeDuplicado"
           data-bs-dismiss="modal"
         >
           Salvar
         </button>
         <button type="button" class="btn btn-primary" *ngIf="!this.currentRecord.id"
         (click)="addGridData(); formCreateEspecialidade.resetForm();"
-        [disabled]="formCreateEspecialidade.invalid"
+        [disabled]="formCreateEspecialidade.invalid || this.nomeDuplicado"
         data-bs-dismiss="modal"
         >
           Salvar
@@ -182,7 +188,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator 
+  <mat-paginator
     [length]="this.totalCount"
     [pageSize]="10"
     [pageSizeOptions]="[10, 20, 50]">
