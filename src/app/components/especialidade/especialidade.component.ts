@@ -41,6 +41,7 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
   query: Query[] = [];
   id!: number;
   totalCount!: number;
+  nomeDuplicado: boolean = false;
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -147,5 +148,29 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
     this.query.push(query);
     this.paginator.pageIndex = 0;
     this.loadPage();
+  }
+
+  duplicidadeNome(): void {
+    const query = new Query({ key: 'nome_eq', value: this.currentRecord.nome, isNumeric: false });
+    // this.query = this.query.filter((q) => q.key !== key);
+    // this.query.push(query);
+    if (this.currentRecord.nome == ''){
+      this.nomeDuplicado = false;
+    } else {
+      this.especialidadeService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe((especialidades) => {
+        console.table(especialidades);
+        if (especialidades.length > 0) {
+          this.nomeDuplicado = true;
+        } else {
+          this.nomeDuplicado = false;
+        }
+      })
+    }
   }
 }
