@@ -213,8 +213,6 @@ export class SetorAtendimentoComponent implements OnInit, AfterViewInit {
   }
 
   duplicidadeNome(): any {
-    console.log(this.currentRecord.nome);
-
     const query = new Query({ key: 'nome_eq', value: this.currentRecord.nome, isNumeric: false });
 
     if (this.currentRecord.nome == ''){
