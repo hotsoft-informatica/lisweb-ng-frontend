@@ -85,6 +85,7 @@ import { OperadoraUpdateComponent } from './components/operadora/operadora-updat
 import { PacienteCreateComponent } from './components/paciente/paciente-create/paciente-create.component';
 import { PacienteDeleteComponent } from './components/paciente/paciente-delete/paciente-delete.component';
 import { PacienteReadComponent } from './components/paciente/paciente-read/paciente-read.component';
+import { PrioridadeColetaComponent } from './components/prioridade-coleta/prioridade-coleta.component';
 import { RecursoComponent } from './components/recurso/recurso.component';
 import { RequisicaoCreateComponent } from './components/requisicao/requisicao-create/requisicao-create.component';
 import { RequisicaoCrudComponent } from './views/requisicao-crud/requisicao-crud.component';
@@ -249,6 +250,10 @@ const routes: Routes = [
   {
     path: 'pacientes/show/:id',
     component: PacienteShowComponent,
+  },
+  {
+    path: 'prioridades_coleta',
+    component: PrioridadeColetaComponent,
   },
   {
     path: 'requisicoes',
