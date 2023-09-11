@@ -22,6 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { Subject, of } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { TipoPrioridadePipe } from 'src/app/pipes/tipo-prioridade.pipe';
+import { ValorSimNaoStatusPipe } from 'src/app/pipes/sim-nao-status.pipe';
 
 @Component({
   selector: 'app-prioridade-coleta',
@@ -30,7 +32,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   imports: [ FormsModule, MatPaginatorModule, MatSortModule, MatTableModule,
     MatButtonModule, MatDialogModule, MatIconModule, MatFormFieldModule,
     MatInputModule, NgIf, NgFor, NgStyle, DatePipe, MatSelectModule, MatOptionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule, TipoPrioridadePipe, ValorSimNaoStatusPipe
   ]
 })
 export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
@@ -163,7 +165,7 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
     this.loadPage();
   }
 
-  duplicidadeNome(): any {
+  duplicidadeDescricao(): any {
     const query = new Query({ key: 'nome_eq', value: this.currentRecord.nome, isNumeric: false });
 
     if (this.currentRecord.nome == ''){
