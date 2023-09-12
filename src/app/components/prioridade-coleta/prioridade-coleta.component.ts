@@ -107,6 +107,10 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
 
   addGridData(): void {
     console.table(this.currentRecord);
+
+    const query = new Query({ key: 'prioridade_padrao_coleta_eq', value: this.currentRecord.prioridade_padrao_coleta, isNumeric: false });
+    console.warn(this.query);
+
     this.onCreate = false;
     this.onEdit = false;
     this.recordService.create(this.currentRecord).subscribe({
@@ -166,9 +170,9 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
   }
 
   duplicidadeDescricao(): any {
-    const query = new Query({ key: 'nome_eq', value: this.currentRecord.nome, isNumeric: false });
+    const query = new Query({ key: 'descricao_eq', value: this.currentRecord.descricao, isNumeric: false });
 
-    if (this.currentRecord.nome == ''){
+    if (this.currentRecord.descricao == ''){
       this.nomeDuplicado = false;
     } else {
       this.recordService.find(

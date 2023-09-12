@@ -38,7 +38,7 @@
               maxlength="50"
               name="descricao"
               [(ngModel)]="currentRecord.descricao"
-              (change)="duplicidadeDescricao()"
+              (input)="duplicidadeDescricao()"
               #descricao="ngModel"
               required
             >
