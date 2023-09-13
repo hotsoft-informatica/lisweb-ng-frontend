@@ -24,6 +24,7 @@ import { Subject, of } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TipoPrioridadePipe } from 'src/app/pipes/tipo-prioridade.pipe';
 import { ValorSimNaoStatusPipe } from 'src/app/pipes/sim-nao-status.pipe';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-prioridade-coleta',
@@ -32,7 +33,7 @@ import { ValorSimNaoStatusPipe } from 'src/app/pipes/sim-nao-status.pipe';
   imports: [ FormsModule, MatPaginatorModule, MatSortModule, MatTableModule,
     MatButtonModule, MatDialogModule, MatIconModule, MatFormFieldModule,
     MatInputModule, NgIf, NgFor, NgStyle, DatePipe, MatSelectModule, MatOptionModule,
-    MatAutocompleteModule, TipoPrioridadePipe, ValorSimNaoStatusPipe
+    MatAutocompleteModule, TipoPrioridadePipe, ValorSimNaoStatusPipe, MatCheckboxModule
   ]
 })
 export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
@@ -47,6 +48,8 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
   id!: number;
   totalCount!: number;
   nomeDuplicado: boolean = false;
+  falseValue = 'N'
+  trueValue = 'S';
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -117,7 +120,7 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
       next: (v) => {
         this.records.unshift(v);
         this.datasource.data = [...this.records];
-        this.recordService.showMessage('Setor atendimento criado com sucesso!');
+        this.recordService.showMessage('Prioridade coleta criada com sucesso!');
         this.loadPage();
       },
       error: (e) => console.error(e),
@@ -128,7 +131,7 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
 
   updateGridData(): void {
     this.recordService.update(this.currentRecord).subscribe(() => {
-      this.recordService.showMessage('Setor atendimento atualizado com sucesso!');
+      this.recordService.showMessage('Prioridade coleta atualizada com sucesso!');
       this.onEdit = false;
       this.loadPage();
     });
@@ -190,6 +193,10 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
         }
       })
     }
+  }
+
+  checkboxChange(checkbox: MatCheckbox, checked: boolean) {
+    checkbox.value = checked ? this.trueValue : this.falseValue;
   }
 
 }

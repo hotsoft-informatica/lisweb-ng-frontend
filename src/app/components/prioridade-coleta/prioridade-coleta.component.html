@@ -54,22 +54,24 @@
             </mat-error>
           </div>
 
-          <div class="mb-3">
-            <mat-label>Tipo Prioridade:</mat-label>
-            <mat-select name="tipo_prioridade"
-              [(ngModel)]="currentRecord.tipo_prioridade">
-              <mat-option value="A">Atendimento</mat-option>
-              <mat-option value="C">Coleta</mat-option>
-            </mat-select>
-          </div>
-
-          <div class="mb-3">
-            <mat-label>Prioridade Padrão:</mat-label>
-            <mat-select name="prioridade_padrao_coleta"
-              [disabled]="currentRecord.tipo_prioridade != 'C'"
-              [(ngModel)]="currentRecord.prioridade_padrao_coleta">
-              <mat-option value="S">Sim</mat-option>
-            </mat-select>
+          <div class="modal-body row">
+            <div appearance="fill" class="col-lg-6 col-md-6 p-6">
+              <mat-label>Tipo Prioridade:</mat-label>
+              <mat-select name="tipo_prioridade"
+                [(ngModel)]="currentRecord.tipo_prioridade">
+                <mat-option value="A">Atendimento</mat-option>
+                <mat-option value="C">Coleta</mat-option>
+              </mat-select>
+            </div>
+            <div appearance="fill" class="col-lg-6 col-md-6 p-6">
+              <mat-checkbox
+                name="prioridade_padrao_coleta"
+                [disabled]="currentRecord.tipo_prioridade != 'C'"
+                [(ngModel)]="currentRecord.prioridade_padrao_coleta"
+                [value]="falseValue" (change)="checkboxChange($event.source, $event.checked)">
+                <mat-label>Prioridade Padrão </mat-label>
+              </mat-checkbox>
+            </div>
           </div>
 
           <div class="mb-3">
