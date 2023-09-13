@@ -58,19 +58,21 @@
             <div appearance="fill" class="col-lg-6 col-md-6 p-6">
               <mat-label>Tipo Prioridade:</mat-label>
               <mat-select name="tipo_prioridade"
-                [(ngModel)]="currentRecord.tipo_prioridade">
+                [(ngModel)]="currentRecord.tipo_prioridade"
+                (ngModelChange)="tipoChanges()">
                 <mat-option value="A">Atendimento</mat-option>
                 <mat-option value="C">Coleta</mat-option>
               </mat-select>
             </div>
+
             <div appearance="fill" class="col-lg-6 col-md-6 p-6">
-              <mat-checkbox
-                name="prioridade_padrao_coleta"
+              <mat-slide-toggle name="prioridade_padrao_coleta"
                 [disabled]="currentRecord.tipo_prioridade != 'C'"
-                [(ngModel)]="currentRecord.prioridade_padrao_coleta"
-                [value]="falseValue" (change)="checkboxChange($event.source, $event.checked)">
+                [checked]="currentRecord.prioridade_padrao_coleta == 'S'"
+                (change)="toggleChanges($event)"
+              >
                 <mat-label>Prioridade Padrão </mat-label>
-              </mat-checkbox>
+              </mat-slide-toggle>
             </div>
           </div>
 
@@ -174,7 +176,7 @@
      <!-- Tempo Column -->
      <ng-container matColumnDef="prioridade" class="col-2">
       <th mat-header-cell
-        *matHeaderCellDef mat-sort-header="prioridade">Tempo</th>
+        *matHeaderCellDef mat-sort-header="prioridade">Tempo (minutos)</th>
       <td mat-cell *matCellDef="let row">{{ row?.prioridade }}</td>
     </ng-container>
 
