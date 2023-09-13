@@ -24,7 +24,7 @@ import { Subject, of } from 'rxjs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TipoPrioridadePipe } from 'src/app/pipes/tipo-prioridade.pipe';
 import { ValorSimNaoStatusPipe } from 'src/app/pipes/sim-nao-status.pipe';
-import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-prioridade-coleta',
@@ -33,7 +33,7 @@ import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
   imports: [ FormsModule, MatPaginatorModule, MatSortModule, MatTableModule,
     MatButtonModule, MatDialogModule, MatIconModule, MatFormFieldModule,
     MatInputModule, NgIf, NgFor, NgStyle, DatePipe, MatSelectModule, MatOptionModule,
-    MatAutocompleteModule, TipoPrioridadePipe, ValorSimNaoStatusPipe, MatCheckboxModule
+    MatAutocompleteModule, TipoPrioridadePipe, ValorSimNaoStatusPipe, MatSlideToggleModule
   ]
 })
 export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
@@ -48,8 +48,7 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
   id!: number;
   totalCount!: number;
   nomeDuplicado: boolean = false;
-  falseValue = 'N'
-  trueValue = 'S';
+  prioridade_padrao_coleta: boolean = false;
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -195,8 +194,13 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
     }
   }
 
-  checkboxChange(checkbox: MatCheckbox, checked: boolean) {
-    checkbox.value = checked ? this.trueValue : this.falseValue;
+  toggleChanges(e: MatSlideToggleChange){
+    this.currentRecord.prioridade_padrao_coleta = e.source.checked ? 'S': 'N';
   }
 
+  tipoChanges(): any {
+    if (this.currentRecord.tipo_prioridade == 'A') {
+      this.currentRecord.prioridade_padrao_coleta = 'N'
+    }
+  }
 }
