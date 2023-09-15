@@ -37,6 +37,7 @@ import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/sl
   ]
 })
 export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
+  prioridadeColeta: PrioridadeColeta;
   datasource = new MatTableDataSource<any>([]);
   records: any[] = [];
   record!: any;
@@ -48,6 +49,7 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
   id!: number;
   totalCount!: number;
   nomeDuplicado: boolean = false;
+  descricao: string = '';
   prioridade_padrao_coleta: boolean = false;
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
@@ -71,6 +73,7 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
   ) {
     this.currentRecord = new PrioridadeColeta({});
     this.record ||= new PrioridadeColeta({});
+    this.prioridadeColeta ||= new PrioridadeColeta({});
   }
 
   ngOnInit(): void {
@@ -196,11 +199,29 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
 
   toggleChanges(e: MatSlideToggleChange){
     this.currentRecord.prioridade_padrao_coleta = e.source.checked ? 'S': 'N';
+
+    if (this.currentRecord.prioridade_padrao_coleta == 'S') {
+      const query = new Query({ key: 'prioridade_padrao_coleta_eq', value: 'S', isNumeric: false });
+
+      this.recordService.find(
+        'id', 'asc', 0, 1, [query]
+      ).subscribe( (prioridadeColeta) => {
+        if (prioridadeColeta.length > 0) {
+          const resultado = window.confirm(
+            "Prioridade padrão já cadastrada: " + prioridadeColeta[0].descricao + ", deseja altera-la?"
+          );
+
+          if (resultado == false) {
+            this.currentRecord.prioridade_padrao_coleta = 'N';
+          }
+        }
+      });
+    }
   }
 
   tipoChanges(): any {
     if (this.currentRecord.tipo_prioridade == 'A') {
-      this.currentRecord.prioridade_padrao_coleta = 'N'
+      this.currentRecord.prioridade_padrao_coleta = 'N';
     }
   }
 }
