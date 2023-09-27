@@ -43,22 +43,29 @@
     <div *ngIf="onCreate || onEdit">
       <form #formCreateConvenio="ngForm" class="justify-content-md-center">
 
-        <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
+        <mat-form-field #fieldNome appearance="fill" class="col-lg-3 col-md-3 p-2">
           <mat-label>Nome:</mat-label>
           <input
             type="text"
             aria-label="nome"
             id="nome"
-            required
             matInput
             maxlength="50"
             name="nome"
             [(ngModel)]="currentRecord.nome"
+            (input)="duplicidadeNome()"
             #nome="ngModel"
-          >
-          <mat-error *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+            required
+          />
+          <mat-error *ngIf="(nome.invalid) && (nome.dirty || nome.touched)">
             <span *ngIf="nome.errors?.['required']">
               O campo é obrigatório!
+            </span>
+          </mat-error>
+          {{nome.errors | json}}
+          <mat-error>
+            <span *ngIf="nome.errors?.['duplicado']">
+              Este nome já está em uso!
             </span>
           </mat-error>
         </mat-form-field>

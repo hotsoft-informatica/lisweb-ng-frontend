@@ -176,7 +176,7 @@ export class PrioridadeColetaComponent implements OnInit, AfterViewInit {
 
   duplicidadeDescricao(): any {
     const query = new Query({ key: 'descricao_eq', value: this.currentRecord.descricao, isNumeric: false });
-
+    console.warn(query);
     if (this.currentRecord.descricao == ''){
       this.nomeDuplicado = false;
     } else {

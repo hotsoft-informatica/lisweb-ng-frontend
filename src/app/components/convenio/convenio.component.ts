@@ -19,9 +19,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, NgModel } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -60,12 +60,14 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   query: Query[] = [];
   id!: number;
   totalCount!: number;
+  nomeDuplicado: boolean = false;
 
   @ViewChild('operadora_id') operadora_id!: ElementRef;
   @ViewChild('empresa_id') empresa_id!: ElementRef;
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  @ViewChild('nome') nome!: NgModel;
 
   queries: Query[] = [];
   subjectOperadora: Subject<any> = new Subject();
@@ -146,6 +148,7 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   }
 
   addGridData(): void {
+    console.table(this.currentRecord);
     this.onCreate = false;
     this.onEdit = false;
     this.recordService.create(this.currentRecord).subscribe((record) => {
@@ -224,5 +227,29 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
         : null;
       return correspondingOption ? correspondingOption.empresa?.nome_fantasia : '';
     };
+  }
+
+  duplicidadeNome(): any {
+    const query = new Query({ key: 'nome_eq', value: this.currentRecord.nome, isNumeric: false });
+    console.warn(query);
+
+    if (this.currentRecord.nome == ''){
+      this.nomeDuplicado = false;
+    } else {
+      this.recordService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe( (convenios) => {
+        console.table(convenios);
+        if (convenios.length > 0) {
+          this.nomeDuplicado = true;
+        } else {
+          this.nomeDuplicado = false;
+        }
+      })
+    }
   }
 }
