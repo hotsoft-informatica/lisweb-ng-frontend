@@ -19,9 +19,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { FormsModule, FormControl, NgModel } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, NgModel, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -39,7 +39,7 @@ import { Relatorio } from '../model/relatorio.model';
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgIf, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    MatDatepickerModule, ConvenioDetalheComponent
+    MatDatepickerModule, ConvenioDetalheComponent, ReactiveFormsModule
   ]
 })
 export class ConvenioComponent implements OnInit, AfterViewInit {
@@ -47,6 +47,10 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   @Input('relatoriosGuia') relatoriosGuia: Relatorio[] = [];
   @Input('relatoriosFatura') relatoriosFatura: Relatorio[] = [];
   @Input('relatoriosExportacao') relatoriosExportacao: Relatorio[] = [];
+
+  nomeFormControl = new FormControl('', [
+    Validators.required
+  ]);
 
   operadora: Operadora;
   empresa: Empresa;
@@ -60,7 +64,6 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
   query: Query[] = [];
   id!: number;
   totalCount!: number;
-  nomeDuplicado: boolean = false;
 
   @ViewChild('operadora_id') operadora_id!: ElementRef;
   @ViewChild('empresa_id') empresa_id!: ElementRef;
@@ -101,8 +104,6 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
     this.recordService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });
-
-    const query = new Query({ key: '', value: '', isNumeric: false });
 
     this.subjectOperadora.subscribe(() => {
       this.operadoraService
@@ -229,13 +230,10 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
     };
   }
 
-  duplicidadeNome(): any {
-    const query = new Query({ key: 'nome_eq', value: this.currentRecord.nome, isNumeric: false });
-    console.warn(query);
+  duplicidadeNome(nome: string): any {
+    const query = new Query({ key: 'nome_eq', value: (nome || this.currentRecord.nome), isNumeric: false });
 
-    if (this.currentRecord.nome == ''){
-      this.nomeDuplicado = false;
-    } else {
+    if (this.currentRecord.nome != ''){
       this.recordService.find(
         'id',
         'asc',
@@ -245,9 +243,11 @@ export class ConvenioComponent implements OnInit, AfterViewInit {
       ).subscribe( (convenios) => {
         console.table(convenios);
         if (convenios.length > 0) {
-          this.nomeDuplicado = true;
-        } else {
-          this.nomeDuplicado = false;
+          let _errors = this.nomeFormControl.errors
+          let _new_errors = {"nomeDuplicado": true}
+
+          Object.assign(_new_errors, _errors)
+          this.nomeFormControl.setErrors(_new_errors)
         }
       })
     }

@@ -53,21 +53,19 @@
             maxlength="50"
             name="nome"
             [(ngModel)]="currentRecord.nome"
-            (input)="duplicidadeNome()"
-            #nome="ngModel"
+            (input)="duplicidadeNome(currentRecord.nome)"
+            [formControl]="nomeFormControl"
             required
           />
-          <mat-error *ngIf="(nome.invalid) && (nome.dirty || nome.touched)">
-            <span *ngIf="nome.errors?.['required']">
+          <mat-error *ngIf="nomeFormControl.invalid && nomeFormControl.errors?.required">
+            <span>
               O campo é obrigatório!
             </span>
           </mat-error>
-          {{nome.errors | json}}
-          <mat-error>
-            <span *ngIf="nome.errors?.['duplicado']">
+          <mat-error *ngIf="nomeFormControl.invalid && nomeFormControl.errors?.nomeDuplicado">
               Este nome já está em uso!
-            </span>
           </mat-error>
+
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="col-lg-3 col-md-3 p-2">
