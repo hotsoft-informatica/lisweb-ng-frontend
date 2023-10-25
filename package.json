@@ -58,7 +58,7 @@
     "@angular/language-service": "^16.2.0",
     "@nrwl/jest": "16.6.0",
     "@nrwl/cypress": "16.6.0",
-    "@nrwl/js": "15.8.7",
+    "@nrwl/js": "17.0.2",
     "@nrwl/nx-cloud": "^16.3.0",
     "@nrwl/workspace": "^16.2.1",
     "@types/jasmine": "^4.3.1",
