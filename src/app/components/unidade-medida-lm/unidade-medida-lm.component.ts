@@ -43,6 +43,7 @@ export class UnidadeMedidaLmComponent implements OnInit, AfterViewInit {
   query: Query[] = [];
   id!: number;
   totalCount!: number;
+  unidadeDuplicada: boolean = false;
 
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
@@ -51,7 +52,7 @@ export class UnidadeMedidaLmComponent implements OnInit, AfterViewInit {
   onEdit = false;
   onCreate = false;
 
-  displayedColumns = ['descricao', 'unidade', 'action'];
+  displayedColumns = ['unidade', 'descricao', 'action'];
 
   constructor(
     public dialog: MatDialog,
@@ -149,6 +150,30 @@ export class UnidadeMedidaLmComponent implements OnInit, AfterViewInit {
     this.query.push(query);
     this.paginator.pageIndex = 0;
     this.loadPage();
+  }
+
+  duplicidadeUnidade(): void {
+    const query = new Query({ key: 'unidade_eq', value: this.currentRecord.unidade, isNumeric: false });
+    // this.query = this.query.filter((q) => q.key !== key);
+    // this.query.push(query);
+    if (this.currentRecord.unidade == ''){
+      this.unidadeDuplicada = false;
+    } else {
+      this.unidadeMedidaLmService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe((unidades) => {
+        console.table(unidades);
+        if (unidades.length > 0) {
+          this.unidadeDuplicada = true;
+        } else {
+          this.unidadeDuplicada = false;
+        }
+      })
+    }
   }
 
 }
