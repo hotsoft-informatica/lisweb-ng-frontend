@@ -37,6 +37,7 @@
               maxlength="6"
               name="unidade"
               [(ngModel)]="currentRecord.unidade"
+              (input)="duplicidadeUnidade()"
               #unidade="ngModel"
               required
               oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
@@ -44,6 +45,11 @@
             <mat-error *ngIf="unidade?.invalid && (unidade?.dirty ||unidade?.touched)">
               <span *ngIf="unidade?.errors?.['required']">
                 O campo é obrigatório!
+              </span>
+            </mat-error>
+            <mat-error *ngIf="this.unidadeDuplicada">
+              <span>
+                Esta unidade já está em uso!
               </span>
             </mat-error>
           </div>
@@ -131,7 +137,7 @@
 
     <!-- Descrição Column -->
     <ng-container matColumnDef="descricao" class="col-2">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header="descricao">descricao</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header="descricao">Descrição</th>
       <td mat-cell *matCellDef="let row">{{ row?.descricao }}</td>
     </ng-container>
 
