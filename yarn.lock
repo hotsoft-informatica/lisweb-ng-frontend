@@ -134,6 +134,18 @@
     rxjs "6.6.7"
     source-map "0.7.4"
 
+"@angular-devkit/core@16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-16.2.9.tgz#81c5c95de8c423634bf93f616683045c6cdd4dd0"
+  integrity sha512-dcHWjHBNGm3yCeNz19y8A1At4KgyC6XHNnbFL0y+nnZYiaESXjUoXJYKASedI6A+Bpl0HNq2URhH6bL6Af3+4w==
+  dependencies:
+    ajv "8.12.0"
+    ajv-formats "2.1.1"
+    jsonc-parser "3.2.0"
+    picomatch "2.3.1"
+    rxjs "7.8.1"
+    source-map "0.7.4"
+
 "@angular-devkit/core@8.3.23":
   version "8.3.23"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-8.3.23.tgz#612bf8a76b1ccde40cd6a5e85a02dc083bb666c6"
@@ -145,7 +157,7 @@
     rxjs "6.4.0"
     source-map "0.7.3"
 
-"@angular-devkit/schematics@15.2.8", "@angular-devkit/schematics@^15.2.4":
+"@angular-devkit/schematics@15.2.8":
   version "15.2.8"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-15.2.8.tgz#c7dfc692e3f54e43085a8845d8c9f390a2519aa3"
   integrity sha512-w6EUGC96kVsH9f8sEzajzbONMawezyVBiSo+JYp5r25rQArAz/a+KZntbuETWHQ0rQOEsKmUNKxwmr11BaptSQ==
@@ -163,6 +175,17 @@
   dependencies:
     "@angular-devkit/core" "8.3.23"
     rxjs "6.4.0"
+
+"@angular-devkit/schematics@^16.2.9":
+  version "16.2.9"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-16.2.9.tgz#71eed819c1665068d717d75f912f5ea689c201f9"
+  integrity sha512-lB51CGCILpcSI37CwKUAGDLxMqh7zmuRbiPo9s9mSkCM4ccqxFlaL+VFTq2/laneARD6aikpOHnkVm5myNzQPw==
+  dependencies:
+    "@angular-devkit/core" "16.2.9"
+    jsonc-parser "3.2.0"
+    magic-string "0.30.1"
+    ora "5.4.1"
+    rxjs "7.8.1"
 
 "@angular/animations@^15.0.2":
   version "15.2.9"
@@ -2865,7 +2888,7 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.14.tgz#add4c98d341472a289190b424efbdb096991bb24"
   integrity sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==
 
-"@jridgewell/sourcemap-codec@^1.4.10", "@jridgewell/sourcemap-codec@^1.4.13", "@jridgewell/sourcemap-codec@^1.4.14":
+"@jridgewell/sourcemap-codec@^1.4.10", "@jridgewell/sourcemap-codec@^1.4.13", "@jridgewell/sourcemap-codec@^1.4.14", "@jridgewell/sourcemap-codec@^1.4.15":
   version "1.4.15"
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.4.15.tgz#d7c6e6755c78567a951e04ab52ef0fd26de59f32"
   integrity sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==
@@ -10011,6 +10034,13 @@ magic-string@0.29.0:
   dependencies:
     "@jridgewell/sourcemap-codec" "^1.4.13"
 
+magic-string@0.30.1:
+  version "0.30.1"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.30.1.tgz#ce5cd4b0a81a5d032bd69aab4522299b2166284d"
+  integrity sha512-mbVKXPmS0z0G4XqFDCTllmDQ6coZzn94aMlb0o/A4HEHJCKcanlDZwYJgwnkmgD3jyWhUgj9VsPrfd972yPffA==
+  dependencies:
+    "@jridgewell/sourcemap-codec" "^1.4.15"
+
 magic-string@^0.27.0:
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.27.0.tgz#e4a3413b4bab6d98d2becffd48b4a257effdbbf3"
@@ -11141,7 +11171,7 @@ picocolors@^1.0.0:
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
   integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
-picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3, picomatch@^2.3.1:
+picomatch@2.3.1, picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3, picomatch@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
@@ -11954,7 +11984,7 @@ rxjs@6.6.7, rxjs@^6.4.0, rxjs@^6.5.4:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.5.1, rxjs@^7.5.5, rxjs@^7.8.0, rxjs@^7.8.1:
+rxjs@7.8.1, rxjs@^7.5.1, rxjs@^7.5.5, rxjs@^7.8.0, rxjs@^7.8.1:
   version "7.8.1"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.1.tgz#6f6f3d99ea8044291efd92e7c7fcf562c4057543"
   integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
