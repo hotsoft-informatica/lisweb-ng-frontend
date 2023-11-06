@@ -62,7 +62,7 @@
               maxlength="50"
               name="nome"
               [(ngModel)]="currentRecord.nome"
-              (change)="duplicidadeNome()"
+              (input)="duplicidadeNome()"
               #nome="ngModel"
               required
             >
