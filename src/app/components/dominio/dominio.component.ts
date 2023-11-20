@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, NgModel, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,7 +29,8 @@ import {
   templateUrl: './dominio.component.html',
   standalone: true,
   imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
-    MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule
+    MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
+    ReactiveFormsModule
   ]
 })
 export class DominioComponent implements OnInit, AfterViewInit {
@@ -43,6 +44,7 @@ export class DominioComponent implements OnInit, AfterViewInit {
   query: Query[] = [];
   id!: number;
   totalCount!: number;
+  dominioDuplicado: boolean = false;
 
   displayedColumns = ['id', 'descricao', 'num_ordem', 'action'];
 
@@ -50,6 +52,10 @@ export class DominioComponent implements OnInit, AfterViewInit {
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
+
+  descricaoFormControl = new FormControl('', [
+    Validators.required
+  ]);
 
   onEdit = false;
   onCreate = false;
@@ -167,5 +173,28 @@ export class DominioComponent implements OnInit, AfterViewInit {
     this.query.push(query);
     this.paginator.pageIndex = 0;
     this.loadPage();
+  }
+
+  duplicidadeDominio(descricao: string): any {
+    const query = new Query({ key: 'descricao_eq', value: (descricao || this.currentRecord.descricao), isNumeric: false });
+
+    if (this.currentRecord.descricao != ''){
+      this.recordService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe( (descricoes) => {
+        console.table(descricoes);
+        if (descricoes.length > 0) {
+          let _errors = this.descricaoFormControl.errors
+          let _new_errors = {"descricaoDuplicada": true}
+
+          Object.assign(_new_errors, _errors)
+          this.descricaoFormControl.setErrors(_new_errors)
+        }
+      })
+    }
   }
 }
