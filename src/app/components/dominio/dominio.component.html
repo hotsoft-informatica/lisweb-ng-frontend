@@ -51,14 +51,18 @@
             maxlength="50"
             name="descricao"
             [(ngModel)]="currentRecord.descricao"
-            #descricao2="ngModel"
-            #descricao
-            autofocus
+            (input)="duplicidadeDominio(currentRecord.descricao)"
+            [formControl]="descricaoFormControl"
             title="descricao"
           >
-          <mat-error *ngIf="descricao2.invalid && (descricao2.dirty || descricao2.touched)">
-            <span *ngIf="descricao2.errors?.['required']">
+          <mat-error *ngIf="descricaoFormControl.invalid && descricaoFormControl.errors?.required">
+            <span>
               O campo é obrigatório!
+            </span>
+          </mat-error>
+          <mat-error *ngIf="descricaoFormControl.errors?.descricaoDuplicada">
+            <span>
+              Este domínio já está em uso!
             </span>
           </mat-error>
         </mat-form-field>
