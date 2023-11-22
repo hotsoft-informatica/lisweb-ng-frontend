@@ -28,7 +28,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, NgModel, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
@@ -40,7 +40,8 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
-    MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule
+    MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
+    ReactiveFormsModule
   ]
 })
 export class RecursoComponent implements OnInit, AfterViewInit {
@@ -61,6 +62,10 @@ export class RecursoComponent implements OnInit, AfterViewInit {
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
+
+  nomeFormControl = new FormControl('', [
+    Validators.required
+  ]);
 
   queries: Query[] = [];
   subjectDominio: Subject<any> = new Subject();
@@ -260,5 +265,28 @@ export class RecursoComponent implements OnInit, AfterViewInit {
         : null;
       return correspondingOption ? correspondingOption.descricao : '';
     };
+  }
+
+  duplicidadeNome(nome: string): any {
+    const query = new Query({ key: 'nome_eq', value: (nome || this.currentRecord.nome), isNumeric: false });
+
+    if (this.currentRecord.nome != ''){
+      this.recordService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe( (nomes) => {
+        console.table(nomes);
+        if (nomes.length > 0) {
+          let _errors = this.nomeFormControl.errors
+          let _new_errors = {"nomeDuplicado": true}
+
+          Object.assign(_new_errors, _errors)
+          this.nomeFormControl.setErrors(_new_errors)
+        }
+      })
+    }
   }
 }
