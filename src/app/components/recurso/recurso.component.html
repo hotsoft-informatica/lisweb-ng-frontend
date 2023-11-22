@@ -91,12 +91,17 @@
             maxlength="50"
             name="nome"
             [(ngModel)]="currentRecord.nome"
-            #nome2="ngModel"
-            #nome
+            (input)="duplicidadeNome(currentRecord.nome)"
+            [formControl]="nomeFormControl"
           >
-          <mat-error *ngIf="nome2.invalid && (nome2.dirty || nome2.touched)">
-            <span *ngIf="nome2.errors?.['required']">
+          <mat-error *ngIf="nomeFormControl.invalid && nomeFormControl.errors?.required">
+            <span >
                 O campo é obrigatório!
+            </span>
+          </mat-error>
+          <mat-error *ngIf="nomeFormControl.errors?.nomeDuplicado">
+            <span>
+              Este domínio já está em uso!
             </span>
           </mat-error>
         </mat-form-field>
