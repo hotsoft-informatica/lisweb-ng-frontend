@@ -18,7 +18,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormControl, NgModel, Validators } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
@@ -35,7 +35,7 @@ import { ValorModoUsoPipe } from 'src/app/pipes/modo-uso.pipe';
     CommonModule, MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
     MatAutocompleteModule, NgIf, NgFor, MatOptionModule, MatSelectModule, MatTabsModule,
     MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    MatDatepickerModule, ValorSimNaoStatusPipe, ValorModoUsoPipe
+    MatDatepickerModule, ValorSimNaoStatusPipe, ValorModoUsoPipe, ReactiveFormsModule
   ]
 
 })
@@ -58,6 +58,14 @@ export class MaterialConsumoComponent implements OnInit, AfterViewInit {
   @ViewChild('deleteDialog') deleteDialog: TemplateRef<any> | any;
   @ViewChild(MatSort) sort: MatSort | any;
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
+
+  codigoFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
+  descricaoFormControl  = new FormControl('', [
+    Validators.required
+  ]);
 
   queries: Query[] = [];
   subjectFornecedorSincronizacao: Subject<any> = new Subject();
@@ -207,5 +215,51 @@ export class MaterialConsumoComponent implements OnInit, AfterViewInit {
         : null;
       return correspondingOption ? correspondingOption.nome : '';
     };
+  }
+
+  duplicidadeCodigo(codigo: string): any {
+    const query = new Query({ key: 'codigo_eq', value: (codigo || this.currentRecord.codigo), isNumeric: false });
+
+    if (this.currentRecord.codigo != ''){
+      this.recordService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe( (codigos) => {
+        console.table(codigos);
+        if (codigos.length > 0) {
+          let _errors = this.codigoFormControl.errors
+          let _new_errors = {"codigoDuplicado": true}
+
+          Object.assign(_new_errors, _errors)
+          this.codigoFormControl.setErrors(_new_errors)
+        }
+      })
+    }
+  }
+
+  duplicidadeDescricao(descricao: string): any {
+    const query = new Query({ key: 'descricao_eq', value: (descricao || this.currentRecord.descricao), isNumeric: false });
+
+    if (this.currentRecord.descricao != ''){
+      this.recordService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe( (descricoes) => {
+        console.table(descricoes);
+        if (descricoes.length > 0) {
+          let _errors = this.descricaoFormControl.errors
+          let _new_errors = {"descricaoDuplicado": true}
+
+          Object.assign(_new_errors, _errors)
+          this.descricaoFormControl.setErrors(_new_errors)
+        }
+      })
+    }
   }
 }
