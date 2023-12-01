@@ -74,11 +74,17 @@
             maxlength="50"
             name="descricao"
             [(ngModel)]="currentRecord.descricao"
-            #descricao="ngModel"
+            (input)="duplicidadeDescricao(currentRecord.descricao)"
+            [formControl]="descricaoFormControl"
           >
-          <mat-error *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
-            <span *ngIf="descricao.errors?.['required']">
+          <mat-error *ngIf="descricaoFormControl.invalid && descricaoFormControl.errors?.required">
+            <span>
               O campo é obrigatório!
+            </span>
+          </mat-error>
+          <mat-error *ngIf="descricaoFormControl.errors?.descricaoDuplicado">
+            <span>
+              Esta descrição já está em uso!
             </span>
           </mat-error>
         </mat-form-field>
