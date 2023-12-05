@@ -69,6 +69,10 @@ export class MedicoComponent implements OnInit, AfterViewInit {
     Validators.required
   ]);
 
+  crmFormControl = new FormControl('', [
+    Validators.required
+  ]);
+
   queries: Query[] = [];
   subjectEspecialidade: Subject<any> = new Subject();
   subjectOperadoraTelefonia: Subject<any> = new Subject();
@@ -271,6 +275,29 @@ export class MedicoComponent implements OnInit, AfterViewInit {
 
           Object.assign(_new_errors, _errors)
           this.nomeFormControl.setErrors(_new_errors)
+        }
+      })
+    }
+  }
+
+  duplicidadeCrm(crm: string): any {
+    const query = new Query({ key: 'crm_eq', value: (crm || this.currentRecord.crm), isNumeric: false });
+
+    if (this.currentRecord.crm != ''){
+      this.recordService.find(
+        'id',
+        'asc',
+        0,
+        1,
+        [query]
+      ).subscribe( (descricoes) => {
+        console.table(descricoes);
+        if (descricoes.length > 0) {
+          let _errors = this.crmFormControl.errors
+          let _new_errors = {"crmDuplicado": true}
+
+          Object.assign(_new_errors, _errors)
+          this.crmFormControl.setErrors(_new_errors)
         }
       })
     }
