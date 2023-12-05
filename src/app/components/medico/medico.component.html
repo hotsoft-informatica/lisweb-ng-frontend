@@ -97,7 +97,7 @@
         <mat-form-field appearance="fill" class="col-lg-2 col-md-2 p-2">
           <mat-label>CRM:</mat-label>
           <input
-            type="number"
+            type="text"
             aria-label="crm"
             min="1"
             maxlength="9"
@@ -107,11 +107,17 @@
             maxlength="50"
             name="crm"
             [(ngModel)]="currentRecord.crm"
-            #crm="ngModel"
+            (input)="duplicidadeCrm(currentRecord.crm)"
+            [formControl]="crmFormControl"
           >
-          <mat-error *ngIf="crm.invalid && (crm.dirty || crm.touched)">
-            <span *ngIf="crm.errors?.['required']">
+          <mat-error *ngIf="crmFormControl.invalid && crmFormControl.errors?.required">
+            <span>
               O campo é obrigatório!
+            </span>
+          </mat-error>
+          <mat-error *ngIf="crmFormControl.errors?.crmDuplicado">
+            <span>
+              Este CRM já está em uso!
             </span>
           </mat-error>
         </mat-form-field>
