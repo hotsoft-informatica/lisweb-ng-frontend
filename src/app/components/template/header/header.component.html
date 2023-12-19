@@ -2,17 +2,17 @@
   class="header mat-elevation-z4 navbar navbar-dark bg-primary justify-content-center">
   <mat-toolbar-row class="justify-content-center">
     <div class="navbar">
-      <button mat-button [matMenuTriggerFor]="home" class="nav-item dropdown">
+      <!-- <button mat-button [matMenuTriggerFor]="home" class="nav-item dropdown">
         <mat-icon>pageview</mat-icon>
         Inicio
-      </button>
+      </button> -->
       <mat-menu #home="matMenu" class="nav-item">
         <button mat-menu-item class="nav-item" routerLink="/">
           Página Inicial
         </button>
-        <button mat-menu-item class="nav-item" routerLink="/consulta_amostra_show">
+        <!-- <button mat-menu-item class="nav-item" routerLink="/consulta_amostra_show">
           Clta. Amostra
-        </button>
+        </button> -->
         <button mat-menu-item class="nav-item"
           routerLink="/hibrido_client_errors"
           *ngIf="currentSuperUser && !currentUser"
@@ -20,22 +20,22 @@
           Hibrido Client Errors
         </button>
       </mat-menu>
-      <button mat-button [matMenuTriggerFor]="requisicao" class="nav-item">
+      <!-- <button mat-button [matMenuTriggerFor]="requisicao" class="nav-item">
         <mat-icon>folder</mat-icon>
         Requisicao
-      </button>
-      <mat-menu #requisicao="matMenu" class="nav-item dropdown">
+      </button> -->
+      <!-- <mat-menu #requisicao="matMenu" class="nav-item dropdown">
         <button mat-menu-item class="nav-item" routerLink="/requisicoes">
           Requisições
         </button>
         <button mat-menu-item class="nav-item" routerLink="/pacientes/read">
           Pacientes
         </button>
-      </mat-menu>
-      <button mat-button class="nav-item" [matMenuTriggerFor]="versaoexames">
+      </mat-menu> -->
+      <!-- <button mat-button class="nav-item" [matMenuTriggerFor]="versaoexames">
         <mat-icon>list</mat-icon>
         Versões Exame
-      </button>
+      </button> -->
       <mat-menu #versaoexames="matMenu" class="nav-item dropdown">
         <button mat-menu-item class="nav-item" routerLink="/versao_exames">
           Listar Versões
@@ -50,11 +50,11 @@
           Listar Métodos de Exame
         </button>
       </mat-menu>
-      <button mat-button class="nav-item" [matMenuTriggerFor]="cadastro">
+      <!-- <button mat-button class="nav-item" [matMenuTriggerFor]="cadastro">
         <mat-icon>assignment</mat-icon>
         Cadastrar
-      </button>
-      <mat-menu #cadastro="matMenu" class="nav-item dropdown">
+      </button> -->
+      <!-- <mat-menu #cadastro="matMenu" class="nav-item dropdown">
         <button *ngIf="currentSuperUser || currentUser" mat-menu-item [matMenuTriggerFor]="tiposusuario">
           Usuários
         </button>
@@ -127,7 +127,7 @@
         <button mat-menu-item class="nav-item" routerLink="/unidades_medidas_lm">
           Unidade de Medida LM
         </button>
-      </mat-menu>
+      </mat-menu> -->
 
       <button mat-button class="nav-item" [matMenuTriggerFor]="stockfin">
         <mat-icon>timer</mat-icon>
@@ -211,18 +211,28 @@
         Perfil
       </button>
 
-      <mat-menu #consultar="matMenu" class="nav-item dropdown">
+      <!-- <mat-menu #consultar="matMenu" class="nav-item dropdown">
         <button mat-menu-item>
           <a mat-list-item routerLink="/consulta_amostra_show">
             Clta. Amostra
           </a>
         </button>
-      </mat-menu>
+      </mat-menu> -->
 
       <mat-menu #perfil="matMenu">
         <button mat-menu-item>
           <a mat-list-item routerLink="/">
             Perfil do Usuario
+          </a>
+        </button>
+        <button mat-menu-item *ngIf="currentSuperUser && !currentUser">
+          <a mat-list-item routerLink="/super_users">
+            Administrador
+          </a>
+        </button>
+        <button mat-menu-item *ngIf="currentSuperUser || currentUser">
+          <a mat-list-item routerLink="/users">
+            Usuário
           </a>
         </button>
         <div *ngIf="!isLogedIn();">
