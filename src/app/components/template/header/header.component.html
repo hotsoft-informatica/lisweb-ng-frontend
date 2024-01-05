@@ -230,7 +230,7 @@
             Administrador
           </a>
         </button>
-        <button mat-menu-item *ngIf="currentSuperUser || currentUser">
+        <button mat-menu-item *ngIf="currentSuperUser && !currentUser">
           <a mat-list-item routerLink="/users">
             Usuário
           </a>
