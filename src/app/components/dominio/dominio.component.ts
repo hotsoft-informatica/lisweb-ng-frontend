@@ -14,24 +14,16 @@ import { NgIf } from '@angular/common';
 import { Query } from '../model/query.model';
 import { tap } from 'rxjs/operators';
 import { timer, merge } from 'rxjs';
-import {
-  ViewChild,
-  TemplateRef,
-  Renderer2,
-  AfterViewInit,
-  OnInit,
-  Component,
-  ElementRef
-} from '@angular/core';
+import { ViewChild, TemplateRef, Renderer2, AfterViewInit,
+   OnInit, Component, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'app-dominio',
-  templateUrl: './dominio.component.html',
-  standalone: true,
-  imports: [MatIconModule, NgIf, MatFormFieldModule, MatInputModule, FormsModule,
-    MatButtonModule, MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule,
-    ReactiveFormsModule
-  ]
+    selector: 'app-dominio',
+    templateUrl: './dominio.component.html',
+    standalone: true,
+    imports: [MatIconModule, NgIf, MatFormFieldModule,
+       MatInputModule, FormsModule, MatButtonModule,
+       MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
 })
 export class DominioComponent implements OnInit, AfterViewInit {
   datasource = new MatTableDataSource<any>([]);
@@ -63,8 +55,6 @@ export class DominioComponent implements OnInit, AfterViewInit {
   constructor(
     public dialog: MatDialog,
     private renderer: Renderer2,
-    private router: Router,
-    private route: ActivatedRoute,
     private recordService: DominioService,
   ) {
     this.currentRecord = new Dominio({});
@@ -198,3 +188,4 @@ export class DominioComponent implements OnInit, AfterViewInit {
     }
   }
 }
+

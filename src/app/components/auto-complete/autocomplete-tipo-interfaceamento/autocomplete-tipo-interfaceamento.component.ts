@@ -15,7 +15,8 @@ import { VersaoExame } from '../../model/versao-exame.model';
     selector: 'app-autocomplete-tipo-interfaceamento',
     templateUrl: './autocomplete-tipo-interfaceamento.component.html',
     standalone: true,
-    imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, FormsModule, NgFor, MatOptionModule]
+    imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule,
+       FormsModule, NgFor, MatOptionModule]
 })
 export class AutocompleteTipoInterfaceamentoComponent implements OnInit {
   @Input('versaoExame') versaoExame:VersaoExame;

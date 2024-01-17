@@ -11,12 +11,7 @@ import { NgIf, AsyncPipe, DatePipe } from '@angular/common';
 import { Query } from '../../model/query.model';
 import { RouterLink } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import {
-  AfterViewInit,
-  ViewChild,
-  Component,
-  OnInit,
-} from '@angular/core';
+import { AfterViewInit, ViewChild, Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-empresa-read',

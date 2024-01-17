@@ -1,34 +1,25 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Especialidade } from '../model/especialidade.model';
 import { EspecialidadeService } from '../service/especialidade.service';
-import { MatSort, MatSortModule } from '@angular/material/sort'
-import { MatButtonModule } from '@angular/material/button';
-import { merge } from 'rxjs';
-import { Query } from '../model/query.model';
-import { tap } from 'rxjs/operators';
-import {
-  Component, OnInit, AfterViewInit,
-  ViewChild, TemplateRef, Renderer2
-} from '@angular/core';
-
-// imports referentes ao standalone:
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { NgIf, NgFor, NgStyle, DatePipe } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { merge } from 'rxjs';
+import { NgIf } from '@angular/common';
+import { Query } from '../model/query.model';
+import { tap } from 'rxjs/operators';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { Component, OnInit, AfterViewInit, ViewChild, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: 'app-especialidade',
-  templateUrl: './especialidade.component.html',
-  standalone: true,
-  imports: [FormsModule, MatPaginatorModule, MatSortModule, MatTableModule,
-    MatButtonModule, MatDialogModule, MatIconModule, MatFormFieldModule,
-    MatInputModule, NgIf, NgFor, NgStyle, DatePipe
-  ]
+    selector: 'app-especialidade',
+    templateUrl: './especialidade.component.html',
+    standalone: true,
+    imports: [MatDialogModule, NgIf, MatIconModule, MatPaginatorModule,
+      FormsModule, MatInputModule, MatFormFieldModule, MatTableModule]
 })
 
 export class EspecialidadeComponent implements OnInit, AfterViewInit {
@@ -54,9 +45,6 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
 
   constructor(
     public dialog: MatDialog,
-    private renderer: Renderer2,
-    private router: Router,
-    private route: ActivatedRoute,
     private especialidadeService: EspecialidadeService
   ) {
     this.currentRecord = new Especialidade({});
@@ -174,3 +162,4 @@ export class EspecialidadeComponent implements OnInit, AfterViewInit {
     }
   }
 }
+

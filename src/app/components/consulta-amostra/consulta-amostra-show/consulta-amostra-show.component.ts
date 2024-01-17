@@ -24,8 +24,8 @@ import { VersaoExameService } from '../../service/versao-exame.service';
     selector: 'app-consulta-amostra-show',
     templateUrl: './consulta-amostra-show.component.html',
     standalone: true,
-    imports: [MatFormFieldModule, MatInputModule, NgIf, MatButtonModule,
-       MatIconModule, NgFor, NgStyle, DatePipe]
+    imports: [MatFormFieldModule, MatInputModule, NgIf,
+       MatButtonModule, MatIconModule, NgFor, NgStyle, DatePipe]
 })
 export class ConsultaAmostraShowComponent implements OnInit {
   private loadingSubject = new BehaviorSubject<boolean>(false);
