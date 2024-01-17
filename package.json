@@ -60,7 +60,7 @@
     "@nrwl/cypress": "16.6.0",
     "@nrwl/js": "17.2.8",
     "@nrwl/nx-cloud": "^16.3.0",
-    "@nrwl/workspace": "^16.2.1",
+    "@nrwl/workspace": "^17.2.8",
     "@types/jasmine": "^4.3.1",
     "@types/jest": "^29.4.0",
     "@types/node": "^20.5.0",
