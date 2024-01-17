@@ -1,20 +1,18 @@
 import { Component, HostListener } from '@angular/core';
 import { Event, RouterOutlet } from '@angular/router';
-import { FooterComponent } from './components/template/footer/footer.component';
-import { HeaderComponent } from './components/template/header/header.component';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { NavComponent } from './components/template/nav/nav.component';
 import { NavigationStart, Router, NavigationCancel, NavigationError, NavigationEnd } from '@angular/router';
 import { NgIf, DatePipe } from '@angular/common';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FooterComponent } from 'src/app/components/template/footer/footer.component';
+import { NavComponent } from 'src/app/components/template/nav/nav.component';
+import { HeaderComponent } from 'src/app/components/template/header/header.component';
 
 @UntilDestroy({ checkProperties: true })
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    standalone: true,
-    imports: [HeaderComponent, NgIf, NavComponent, RouterOutlet,
-      MatProgressBarModule, FooterComponent, DatePipe]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  standalone: true,
+  imports: [NgIf, FooterComponent, NavComponent, DatePipe, RouterOutlet, HeaderComponent]
 })
 
 export class AppComponent {

@@ -1,31 +1,31 @@
 import { Component, OnInit, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { merge } from 'rxjs';
 import { Query } from '../../model/query.model';
+import { RouterLink } from '@angular/router';
+import { SlicePipe } from '@angular/common';
 import { tap } from 'rxjs/operators';
 import { Usuario } from '../../model/usuario.model';
 import { UsuarioCreateComponent } from './../usuario-create/usuario-create.component';
 import { UsuarioService } from '../../service/usuario.service';
 import { UsuarioUpdateComponent } from './../usuario-update/usuario-update.component';
-import { SlicePipe } from '@angular/common';
 import { UsuarioUpdateComponent as UsuarioUpdateComponent_1 } from '../usuario-update/usuario-update.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-usuario-read',
-  templateUrl: './usuario-read.component.html',
-  standalone: true,
-  imports: [RouterLink, MatIconModule, MatFormFieldModule, MatInputModule, MatTableModule,
-    MatSortModule, MatButtonModule, UsuarioUpdateComponent_1, MatDialogModule,
-    MatPaginatorModule, SlicePipe, MatButtonModule
-  ]
+    selector: 'app-usuario-read',
+    templateUrl: './usuario-read.component.html',
+    standalone: true,
+    imports: [RouterLink, MatIconModule, MatFormFieldModule,
+       MatInputModule, MatTableModule, MatSortModule,
+       MatButtonModule, UsuarioUpdateComponent_1,
+       MatDialogModule, MatPaginatorModule, SlicePipe]
 })
 export class UsuarioReadComponent implements AfterViewInit, OnInit {
 

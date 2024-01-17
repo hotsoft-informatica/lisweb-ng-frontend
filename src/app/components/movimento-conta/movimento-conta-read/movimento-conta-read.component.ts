@@ -5,7 +5,6 @@ import { Query } from '../../model/query.model';
 import { LaboratoryDomainService } from '../../service/laboratory-domain.service';
 import {
   AfterViewInit,
-  ElementRef,
   ViewChild,
   Component,
   OnInit,
@@ -16,6 +15,7 @@ import { tap } from 'rxjs/operators';import { merge, fromEvent } from 'rxjs';
 @Component({
   selector: 'app-laboratory-domain-read',
   templateUrl: './movimento-conta-read.component.html',
+  standalone: true
 })
 export class LaboratoryDomainReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;

@@ -70,6 +70,7 @@ import { MaterialBiologicoUpdateComponent } from './components/material-biologic
 import { MetodoExameComponent } from './components/metodo-exame/metodo-exame.component';
 import { MetodosExamesDeleteComponent } from './components/metodos-exames/metodos-exames-delete/metodos-exames-delete.component';
 import { MetodosExamesReadComponent } from './components/metodos-exames/metodos-exames-read/metodos-exames-read.component';
+import { MedicoComponent } from './components/medico/medico.component';
 import { NotaComponent } from './components/nota/nota.component';
 import { LgSuperUserComponent } from './components/login/lg-super-user/lg-super-user.component';
 import { OperadoraCreateComponent } from './components/operadora/operadora-create/operadora-create.component';
@@ -196,6 +197,10 @@ const routes: Routes = [
   {
     path: 'metodos-exames/delete/:id',
     component: MetodosExamesDeleteComponent,
+  },
+  {
+    path: 'medicos',
+    component: MedicoComponent,
   },
   {
     path: 'pacientes/read',
