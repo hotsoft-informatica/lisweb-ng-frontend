@@ -21,6 +21,7 @@ export class DefaultService {
   ) {
     // IP + Port + '/'
     this.baseUrl = this.backendIpService.getUrl() + this.baseUrl;
+    console.log("baseUrl: " + this.baseUrl);
   }
 
   showMessage(msg: string): void {

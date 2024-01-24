@@ -1,7 +1,6 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Dominio } from '../model/dominio.model';
 import { DominioService } from '../service/dominio.service';
-import { FormsModule, ReactiveFormsModule, FormControl, NgModel, Validators } from '@angular/forms';
+import { FormsModule, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -22,7 +21,7 @@ import { ViewChild, TemplateRef, Renderer2, AfterViewInit,
     templateUrl: './dominio.component.html',
     standalone: true,
     imports: [MatIconModule, NgIf, MatFormFieldModule,
-       MatInputModule, FormsModule, MatButtonModule,
+       MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule,
        MatTableModule, MatSortModule, MatDialogModule, MatPaginatorModule]
 })
 export class DominioComponent implements OnInit, AfterViewInit {

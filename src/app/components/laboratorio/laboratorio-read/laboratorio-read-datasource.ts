@@ -1,6 +1,6 @@
 import { Laboratorio } from './../../model/laboratorio.model';
 import { LaboratorioService } from '../../service/laboratorio.service';
-import { CollectionViewer, DataSource } from '@angular/cdk/collections';
+import { DataSource } from '@angular/cdk/collections';
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { Query } from '../../model/query.model';

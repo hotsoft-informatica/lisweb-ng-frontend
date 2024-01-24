@@ -28,10 +28,9 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
   totalCount!: number;
   dataSource!: LaboratorioReadDataSource;
   displayedColumns = [
-    'id',
+    'serie',
     'nome',
     'laboratory_domain_id',
-    'serie',
     'criado_em',
     'action',
   ];
@@ -54,7 +53,7 @@ export class LaboratorioReadComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new LaboratorioReadDataSource(this.laboratorioService);
-    this.dataSource.loadLaboratorios('id', 'desc', 0, 5, null);
+    this.dataSource.loadLaboratorios('serie', 'asc', 0, 240, null);
     this.laboratorioService.count().subscribe((totalCount) => {
       this.totalCount = totalCount;
     });

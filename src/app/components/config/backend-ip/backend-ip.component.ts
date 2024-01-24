@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BackendIp } from '../../model/backend-ip.model';
 import { BackendIpService } from '../../service/backend-ip.service';
 import { ActivatedRoute, Router } from '@angular/router';
