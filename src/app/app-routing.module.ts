@@ -22,7 +22,6 @@ import { BandejaAmostraUpdateComponent } from './components/bandeja-amostra/band
 import { BandejaCreateComponent } from './components/bandeja/bandeja-create/bandeja-create.component';
 import { BandejaDeleteComponent } from './components/bandeja/bandeja-delete/bandeja-delete.component';
 import { BandejaUpdateComponent } from './components/bandeja/bandeja-update/bandeja-update.component';
-import { ColetorCreateComponent } from './components/coletor/coletor-create/coletor-create.component';
 import { ColetorDeleteComponent } from './components/coletor/coletor-delete/coletor-delete.component';
 import { ColetorUpdateComponent } from './components/coletor/coletor-update/coletor-update.component';
 import { ConvenioComponent } from './components/convenio/convenio.component';
@@ -116,6 +115,8 @@ import { ValorReferenciaCreateComponent } from './components/valor-referencia/va
 import { ValorReferenciaReadComponent } from './components/valor-referencia/valor-referencia-read/valor-referencia-read.component';
 import { VersaoExameCreateComponent } from './components/versao-exame/versao-exame-create/versao-exame-create.component';
 import { VersaoExameReadComponent } from './components/versao-exame/versao-exame-read/versao-exame-read.component';
+import { LicencaComponent } from './components/licenca/licenca.component';
+
 
 // TODO Criar notFoundComponet classe e rota
 import { LaboratoryGetRuleComponent } from './components/laboratory-get-rule/laboratory-get-rule.component';
@@ -123,6 +124,10 @@ import { LaboratoryStatementRuleComponent } from './components/laboratory-statem
 import { LaboratoryPostRuleComponent } from './components/laboratory-post-rule/laboratory-post-rule.component';
 
 const routes: Routes = [
+  {
+    path: 'licencas',
+    component: LicencaComponent,
+  },
   {
     path: 'login',
     component: LgUserComponent,

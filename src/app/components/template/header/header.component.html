@@ -129,6 +129,23 @@
         </button>
       </mat-menu> -->
 
+      <!-- Hotdata e BAC -->
+      <button mat-button class="nav-item" [matMenuTriggerFor]="bac">
+        <mat-icon>assignment_ind</mat-icon>
+        BAC
+      </button>
+      <mat-menu #bac="matMenu" class="nav-item dropdown">
+        <button mat-menu-item routerLink="/laboratorios">
+          <mat-icon>groups</mat-icon>
+          Laboratórios
+        </button>
+        <button mat-menu-item routerLink="/licencas">
+          <mat-icon>key_vertical</mat-icon>
+          Licenças
+        </button>
+      </mat-menu>
+
+      <!--
       <button mat-button class="nav-item" [matMenuTriggerFor]="stockfin">
         <mat-icon>timer</mat-icon>
         Stockfin
@@ -195,6 +212,7 @@
           Pedidos
         </button>
       </mat-menu>
+      -->
 
       <button mat-button class="nav-item" [matMenuTriggerFor]="configurar">
         <mat-icon>settings</mat-icon>
@@ -202,6 +220,7 @@
       </button>
       <mat-menu #configurar="matMenu" class="nav-item dropdown">
         <button mat-menu-item class="nav-item" routerLink="backend_ip/create">
+          <mat-icon>public</mat-icon>
           Backend IP
         </button>
       </mat-menu>
@@ -222,33 +241,39 @@
       <mat-menu #perfil="matMenu">
         <button mat-menu-item>
           <a mat-list-item routerLink="/">
+            <mat-icon>face</mat-icon>
             Perfil do Usuario
           </a>
         </button>
         <button mat-menu-item *ngIf="currentSuperUser && !currentUser">
           <a mat-list-item routerLink="/super_users">
+            <mat-icon>assignment_ind</mat-icon>
             Administrador
           </a>
         </button>
         <button mat-menu-item *ngIf="currentSuperUser && !currentUser">
           <a mat-list-item routerLink="/users">
+            <mat-icon>assignment_ind</mat-icon>
             Usuário
           </a>
         </button>
         <div *ngIf="!isLogedIn();">
           <button mat-menu-item *ngIf="!currentSuperUser && !currentUser">
             <a mat-list-item routerLink="/login_super_user">
+              <mat-icon>assignment_ind</mat-icon>
               Admin
             </a>
           </button>
           <button mat-menu-item *ngIf="!currentUser && !currentSuperUser">
             <a mat-list-item routerLink="/login">
+              <mat-icon>assignment_ind</mat-icon>
               Login
             </a>
           </button>
         </div>
         <button mat-menu-item *ngIf="isLogedIn();" (click)="logout()">
           <a mat-list-item>
+            <mat-icon>logout</mat-icon>
             Sair
           </a>
         </button>
