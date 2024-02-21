@@ -43,7 +43,7 @@
     "ngx-mask": "^15.1.0",
     "node": "^20.5.0",
     "rxjs": "^7.8.1",
-    "sass": "^1.58.3",
+    "sass": "^1.71.1",
     "tslib": "^2.6.1",
     "sass-loader": "^13.3.2",
     "typescript-tslint-plugin": "^1.0.1",
