@@ -7,6 +7,7 @@
     <mat-form-field appearance="fill" class="col-lg-6 col-md-6 p-2">
       <mat-label>Tipo exame</mat-label>
       <input
+        aria-label="tipo_exame_id"
         name="tipo_exame_id"
         matInput [matAutocomplete]="autoTipoExames"
         [(ngModel)]="versaoExame.tipo_exame_id"
@@ -50,7 +51,7 @@
   </mat-tab>
 
   <mat-tab label="Parâmetro">
-    <app-versao-exame-parametro [versaoExame]="this.versaoExame" 
+    <app-versao-exame-parametro [versaoExame]="this.versaoExame"
       [parametrosVersaoExame]="this.parametrosVersaoExame">
     </app-versao-exame-parametro>
   </mat-tab>

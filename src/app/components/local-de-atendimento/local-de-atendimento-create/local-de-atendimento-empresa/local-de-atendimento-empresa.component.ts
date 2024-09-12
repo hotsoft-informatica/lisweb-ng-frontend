@@ -13,7 +13,6 @@ import { FormsModule } from '@angular/forms';
     imports: [FormsModule, MatFormFieldModule, MatInputModule]
 })
 export class LocalDeAtendimentoEmpresaComponent implements OnInit {
-
   @Input('localdeatendimento') localdeatendimento: LocalDeAtendimento;
   @Input('empresa') empresa: Empresa;
 
